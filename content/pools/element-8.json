@@ -2239,7 +2239,7 @@
     "answer": 2,
     "figure": null,
     "explanation": "A radar mixer is a semiconductor diode device rather than a tube or transistor stage. The classic element is a silicon point-contact crystal, and newer integrated front ends package PIN diodes with the mixer diodes; the diode's nonlinear conduction combines echo and local oscillator signals into the IF.",
-    "flag": null
+    "flag": "Radar mixers use silicon point-contact or Schottky diodes; PIN diodes serve as receiver limiters and switches, not mixers. The pool keys \"silicon crystal or PIN diode\"; choose it on the exam."
   },
   {
     "id": "8-20C5",
@@ -2277,7 +2277,7 @@
     "answer": 0,
     "figure": null,
     "explanation": "Radar mixer front ends use semiconductor diodes: the silicon point-contact crystal is the traditional mixing element, and modern integrated assemblies include PIN diodes as well. Naming only one of the two device types is therefore incomplete.",
-    "flag": null
+    "flag": "Radar mixers use silicon point-contact or Schottky diodes; PIN diodes serve as receiver limiters and switches, not mixers. The pool keys \"PIN diodes and silicon crystals\"; choose it on the exam."
   },
   {
     "id": "8-21C1",
@@ -2410,7 +2410,7 @@
     "answer": 3,
     "figure": null,
     "explanation": "Excessive coupling between the tuned stages of a high-gain IF strip lets energy feed back from output to input. With so much gain available, that unwanted coupling can drive the amplifier into self-oscillation instead of improving returns or reducing noise.",
-    "flag": null
+    "flag": "Overcoupling tuned IF stages normally broadens the response into a double-humped curve; oscillation comes from unwanted feedback, not overcoupling as such. The pool keys oscillations; choose it on the exam."
   },
   {
     "id": "8-22C2",
@@ -4329,7 +4329,7 @@
     "answer": 1,
     "figure": null,
     "explanation": "Fixed objects return echoes with the same phase pulse after pulse, while moving targets shift phase through Doppler. Using a discriminator-type (phase-sensitive) detector as the second detector exposes those phase changes, so the steady returns from stationary objects can be canceled.",
-    "flag": null
+    "flag": "Echoes from stationary objects are removed by MTI processing: a phase detector plus pulse-to-pulse cancellation. A discriminator on its own doesn't do it. The pool keys using a discriminator as the second detector; choose it on the exam."
   },
   {
     "id": "8-39E1",
@@ -4652,7 +4652,7 @@
     "answer": 1,
     "figure": null,
     "explanation": "A synchro transmitter's rotor receives its AC excitation through two rotor leads, R1 and R2, while three stator windings, S1, S2 and S3, spaced 120° apart, pick up induced voltages whose ratios represent the shaft angle.",
-    "flag": null
+    "flag": "A standard synchro transmitter has one rotor winding (two leads, R1 and R2) and three stator windings, which matches the \"single rotor and 3 stator windings\" choice better. The pool keys two rotor and three stator windings; choose that on the exam."
   },
   {
     "id": "8-41E6",

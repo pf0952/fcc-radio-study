@@ -1,7 +1,17 @@
 {
-  "3-31D4": "The pool keys C, broadband noise (phase noise). Real PLL synthesizers also produce spurs at discrete reference-related frequencies, so A is defensible too. Answer C on the exam.",
-  "3-95P4": "The pool keys A. Iridium satellites do have 48 spot beams, but each beam is roughly 400 km (about 250 miles) across, not 30 miles. A is still the closest statement; the other three are wrong. Answer A on the exam.",
-  "3-100Q4": "The choices in the official pool don't answer the question as asked. Electrical fires are Class C; the pool keys C, \"FE30\". Answer C on the exam.",
-  "9-44F4": "The pool keys 250 bps. The real NMEA 2000 backbone runs at 250 kbit/s (250,000 bits per second). Answer A on the exam.",
-  "9-49G2": "The keyed range (24 V ± 0.38 V) matches 1.5% accuracy plus 2 counts (0.36 V + 0.02 V), not the 0.15% in the question, which would give about 23.94 to 24.06 V. Answer B on the exam."
+  "3-31D4": "The pool keys broadband noise (phase noise). Real PLL synthesizers also produce spurs at discrete reference-related frequencies, so that choice is defensible too. Choose broadband noise on the exam.",
+  "3-66J4": "The wording is ambiguous. If \"7 dB of reflected power\" means the reflected power is 7 dB below the input (7 dB return loss), about 1 W comes back and about 4 W reaches the load. The keyed 1 W treats the whole 7 dB as loss on the way to the output; choose 1 watt on the exam.",
+  "3-79L1": "Real ESD wrist straps include a series resistor of about 1 megohm so the wearer isn't solidly grounded if they touch live voltage; \"less than 100,000 ohms\" isn't standard practice. It is still the keyed answer, and the other choices are plainly wrong.",
+  "3-95P4": "Iridium satellites do have 48 spot beams, but each beam is roughly 400 km (about 250 miles) across, not 30 miles. It is still the closest statement, since the other three are wrong; choose it on the exam.",
+  "3-100Q4": "The choices in the official pool don't answer the question as asked. Electrical fires are Class C; the pool keys \"FE30\". Choose FE30 on the exam.",
+  "8-20C4": "Radar mixers use silicon point-contact or Schottky diodes; PIN diodes serve as receiver limiters and switches, not mixers. The pool keys \"silicon crystal or PIN diode\"; choose it on the exam.",
+  "8-20C6": "Radar mixers use silicon point-contact or Schottky diodes; PIN diodes serve as receiver limiters and switches, not mixers. The pool keys \"PIN diodes and silicon crystals\"; choose it on the exam.",
+  "8-22C1": "Overcoupling tuned IF stages normally broadens the response into a double-humped curve; oscillation comes from unwanted feedback, not overcoupling as such. The pool keys oscillations; choose it on the exam.",
+  "8-38D6": "Echoes from stationary objects are removed by MTI processing: a phase detector plus pulse-to-pulse cancellation. A discriminator on its own doesn't do it. The pool keys using a discriminator as the second detector; choose it on the exam.",
+  "8-41E5": "A standard synchro transmitter has one rotor winding (two leads, R1 and R2) and three stator windings, which matches the \"single rotor and 3 stator windings\" choice better. The pool keys two rotor and three stator windings; choose that on the exam.",
+  "9-11B4": "With a 2 ppm counter the reading itself can be off by about 4.4 Hz at 2182 kHz and 8.3 Hz at 4125 kHz, so no pair is provably within the 10 Hz limit. The pool keys 2182.006 and 4124.995 kHz, the pair with the smallest offsets; choose it on the exam.",
+  "9-17B4": "The keyed choice says 1615 kHz, but the NBDP (SITOR) tones are audio frequencies, 1615 Hz and 1785 Hz. The pool means the 1615 Hz audio oscillator; choose it on the exam.",
+  "9-42F5": "192.168.2.0 is normally a network address, not a router address; the usual default is 192.168.2.1. The keyed set is still the only one with the common defaults 192.168.1.1 and 192.168.0.1.",
+  "9-44F4": "The pool keys 250 bps. The real NMEA 2000 backbone runs at 250 kbit/s (250,000 bits per second). Choose 250 bps on the exam.",
+  "9-49G2": "The keyed range (24 V ± 0.38 V) matches 1.5% accuracy plus 2 counts (0.36 V + 0.02 V), not the 0.15% in the question, which would give about 23.94 to 24.06 V. Choose 23.62 to 24.38 V on the exam."
 }

@@ -3493,7 +3493,7 @@
     "answer": 2,
     "figure": null,
     "explanation": "The VCO in a phase-locked-loop synthesizer has random phase jitter that the loop cannot fully correct. This phase noise appears as broadband noise skirts spreading out on both sides of the carrier.",
-    "flag": "The pool keys C, broadband noise (phase noise). Real PLL synthesizers also produce spurs at discrete reference-related frequencies, so A is defensible too. Answer C on the exam."
+    "flag": "The pool keys broadband noise (phase noise). Real PLL synthesizers also produce spurs at discrete reference-related frequencies, so that choice is defensible too. Choose broadband noise on the exam."
   },
   {
     "id": "3-31D5",
@@ -7483,7 +7483,7 @@
     "answer": 0,
     "figure": null,
     "explanation": "A lossless cable dissipates nothing, so the 7 dB reduction is due entirely to the mismatch and the output is 7 dB below the 5 W input: P = 5 W × 10<sup>−0.7</sup> ≈ 5 × 0.2 = 1 W.",
-    "flag": null
+    "flag": "The wording is ambiguous. If \"7 dB of reflected power\" means the reflected power is 7 dB below the input (7 dB return loss), about 1 W comes back and about 4 W reaches the load. The keyed 1 W treats the whole 7 dB as loss on the way to the output; choose 1 watt on the exam."
   },
   {
     "id": "3-66J5",
@@ -8908,7 +8908,7 @@
     "answer": 0,
     "figure": null,
     "explanation": "A grounded wrist strap keeps the technician's body at ground potential, continuously bleeding off static charge before it can punch through thin CMOS gate oxide. Its resistance must stay below 100,000 ohms so charge drains quickly; it connects to a proper ESD ground point, not a water pipe, and works fine with anti-static mats.",
-    "flag": null
+    "flag": "Real ESD wrist straps include a series resistor of about 1 megohm so the wearer isn't solidly grounded if they touch live voltage; \"less than 100,000 ohms\" isn't standard practice. It is still the keyed answer, and the other choices are plainly wrong."
   },
   {
     "id": "3-79L2",
@@ -10789,7 +10789,7 @@
     "answer": 0,
     "figure": null,
     "explanation": "Each Iridium satellite's three phased-array antenna panels form 48 spot beams that tile its coverage area. The other statements fail: Iridium uses 66 active satellites in six near-polar planes inclined 86.4°, with an orbital period of about 100 minutes.",
-    "flag": "The pool keys A. Iridium satellites do have 48 spot beams, but each beam is roughly 400 km (about 250 miles) across, not 30 miles. A is still the closest statement; the other three are wrong. Answer A on the exam."
+    "flag": "Iridium satellites do have 48 spot beams, but each beam is roughly 400 km (about 250 miles) across, not 30 miles. It is still the closest statement, since the other three are wrong; choose it on the exam."
   },
   {
     "id": "3-95P5",
@@ -11359,7 +11359,7 @@
     "answer": 2,
     "figure": null,
     "explanation": "Short-circuit fires involve energized equipment, so the extinguishing agent must not conduct electricity: carbon dioxide, dry chemical or a clean-agent gas, never water or foam, and de-energize the circuit if you can. For the exam, simply memorize FE30 as the keyed response.",
-    "flag": "The choices in the official pool don't answer the question as asked. Electrical fires are Class C; the pool keys C, \"FE30\". Answer C on the exam."
+    "flag": "The choices in the official pool don't answer the question as asked. Electrical fires are Class C; the pool keys \"FE30\". Choose FE30 on the exam."
   },
   {
     "id": "3-100Q5",

@@ -1213,7 +1213,7 @@
     "answer": 1,
     "figure": null,
     "explanation": "GMDSS MF/HF transmitters must stay within 10 Hz. Readings of 2182.006 kHz and 4124.995 kHz are 6 Hz high and 5 Hz low, the pair with the most margin left for counter error; the other pairs include offsets of 9 or 10 Hz, at or near the limit, where any counter error could mean the transmitter is out of tolerance.",
-    "flag": null
+    "flag": "With a 2 ppm counter the reading itself can be off by about 4.4 Hz at 2182 kHz and 8.3 Hz at 4125 kHz, so no pair is provably within the 10 Hz limit. The pool keys 2182.006 and 4124.995 kHz, the pair with the smallest offsets; choose it on the exam."
   },
   {
     "id": "9-11B5",
@@ -1897,7 +1897,7 @@
     "answer": 3,
     "figure": null,
     "explanation": "NBDP is produced by feeding audio FSK tones of 1615 Hz and 1785 Hz into the SSB transmitter. If the oscillator generating the 1615 Hz tone fails, the transmitter can't form the NBDP signal, while voice, which doesn't use that oscillator, works normally.",
-    "flag": null
+    "flag": "The keyed choice says 1615 kHz, but the NBDP (SITOR) tones are audio frequencies, 1615 Hz and 1785 Hz. The pool means the 1615 Hz audio oscillator; choose it on the exam."
   },
   {
     "id": "9-17B5",
@@ -4766,7 +4766,7 @@
     "answer": 2,
     "figure": null,
     "explanation": "Routers usually ship with a default address in the private 192.168.x.x block reserved for local networks, most often 192.168.1.1 or 192.168.0.1. The other address sets fall outside that private range and belong to public internet space.",
-    "flag": null
+    "flag": "192.168.2.0 is normally a network address, not a router address; the usual default is 192.168.2.1. The keyed set is still the only one with the common defaults 192.168.1.1 and 192.168.0.1."
   },
   {
     "id": "9-42F6",
@@ -4975,7 +4975,7 @@
     "answer": 0,
     "figure": null,
     "explanation": "NMEA 2000 runs on a Controller Area Network (CAN) bus, in which every device on the backbone must signal at the same fixed data rate. The standard sets that rate at 250, the figure to remember for this question.",
-    "flag": "The pool keys 250 bps. The real NMEA 2000 backbone runs at 250 kbit/s (250,000 bits per second). Answer A on the exam."
+    "flag": "The pool keys 250 bps. The real NMEA 2000 backbone runs at 250 kbit/s (250,000 bits per second). Choose 250 bps on the exam."
   },
   {
     "id": "9-44F5",
@@ -5507,7 +5507,7 @@
     "answer": 1,
     "figure": null,
     "explanation": "Meter tolerance is a percentage of the reading plus a fixed number of counts of the last digit. On the 60 V scale a 4-digit display resolves 0.01 V, so the 2 counts add 0.02 V to the percentage term, and the pool's keyed window is 24 V ± 0.38 V.",
-    "flag": "The keyed range (24 V ± 0.38 V) matches 1.5% accuracy plus 2 counts (0.36 V + 0.02 V), not the 0.15% in the question, which would give about 23.94 to 24.06 V. Answer B on the exam."
+    "flag": "The keyed range (24 V ± 0.38 V) matches 1.5% accuracy plus 2 counts (0.36 V + 0.02 V), not the 0.15% in the question, which would give about 23.94 to 24.06 V. Choose 23.62 to 24.38 V on the exam."
   },
   {
     "id": "9-49G3",
