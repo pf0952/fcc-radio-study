@@ -28,8 +28,13 @@ jobs:
 
       - run: npm run check
 
+      - run: npm test
+
       - name: Build portable .exe
         run: npx tauri build --no-bundle
+
+      - name: Rust tests
+        run: cargo test --manifest-path src-tauri/Cargo.toml
 
       - name: Name the .exe
         run: Copy-Item src-tauri/target/release/fcc-radio-study.exe FCC-Radio-Study.exe

@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [svelte()],
   clearScreen: false,
   server: { port: 1420, strictPort: true },
-  build: { target: 'chrome120', outDir: 'dist' },
+  // The 1,200 pool questions are bundled on purpose (the app is offline), so the main chunk is large.
+  build: { target: 'chrome120', outDir: 'dist', chunkSizeWarningLimit: 2000 },
 });

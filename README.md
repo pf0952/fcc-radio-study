@@ -8,7 +8,7 @@ A free, offline study program for the FCC commercial radio operator license exam
 
 It runs as a single portable `.exe` on Windows 10 and 11. Nothing to install, no account, no internet connection needed.
 
-> **Status:** in development. The app skeleton, portable data folder, automated builds and the three parsed question pools are done. Lessons and practice exams are coming.
+> **Status:** in development. Practice exams, results, the missed-questions deck and drills work, with all 1,200 questions explained. Lessons are coming next.
 
 ## What it does
 
@@ -72,6 +72,13 @@ To type-check the app and the build scripts:
 npm run check
 ```
 
+To run the tests (exam generation, answer shuffling, scoring, the missed-questions schedule, and saving progress):
+
+```powershell
+npm test
+cargo test --manifest-path src-tauri/Cargo.toml
+```
+
 To rebuild the question pool JSON from the official files in `content/source/pools/` (only needed if the pools or the parser change):
 
 ```powershell
@@ -91,8 +98,9 @@ git push origin v1.0.0
 
 | Path | What's there |
 | --- | --- |
-| `src/` | The app's interface (Svelte + TypeScript) |
-| `src-tauri/` | The Windows program around it (Tauri 2, Rust): window and data folder |
+| `src/` | The app's interface (Svelte + TypeScript); exam, scoring and review logic in `src/lib/` |
+| `src-tauri/` | The Windows program around it (Tauri 2, Rust): window, data folder, saving progress |
+| `tests/` | Unit tests, run with `npm test` |
 | `content/elements.json` | Exam rules and pool sources for each element |
 | `content/pools/` | All 1,200 questions as JSON, with answers, explanations and flagged-answer notes |
 | `content/figures/` | Figure images the Element 3 and 8 questions refer to |

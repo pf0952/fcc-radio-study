@@ -1,6 +1,8 @@
 <script lang="ts">
   import icon from '../src-tauri/app-icon.svg';
-  import { screens, type ScreenId } from './lib/screens';
+  import { go, nav } from './lib/nav.svelte';
+  import { loadProgress, status } from './lib/progress.svelte';
+  import { screens } from './lib/screens';
   import Home from './screens/Home.svelte';
   import Study from './screens/Study.svelte';
   import Exams from './screens/Exams.svelte';
@@ -9,14 +11,14 @@
   import Settings from './screens/Settings.svelte';
   import About from './screens/About.svelte';
 
-  let current = $state<ScreenId>('home');
   let main: HTMLElement;
+  const loading = loadProgress();
 
-  function go(id: ScreenId) {
-    current = id;
-    // Move focus to the new screen so keyboard and screen-reader users land on it.
-    main.focus();
-  }
+  // Move focus to each new screen so keyboard and screen-reader users land on it.
+  $effect(() => {
+    void nav.screen;
+    main?.focus();
+  });
 </script>
 
 <div class="layout">
@@ -27,7 +29,7 @@
     </div>
     <nav aria-label="Main">
       {#each screens as s (s.id)}
-        <button class="nav-item" aria-current={current === s.id ? 'page' : undefined} onclick={() => go(s.id)}>
+        <button class="nav-item" aria-current={nav.screen === s.id ? 'page' : undefined} onclick={() => go(s.id)}>
           {s.label}
         </button>
       {/each}
@@ -35,21 +37,39 @@
   </aside>
 
   <main bind:this={main} tabindex="-1">
-    {#if current === 'home'}
-      <Home {go} />
-    {:else if current === 'study'}
-      <Study />
-    {:else if current === 'exams'}
-      <Exams />
-    {:else if current === 'review'}
-      <Review />
-    {:else if current === 'browser'}
-      <QuestionBrowser />
-    {:else if current === 'settings'}
-      <Settings />
-    {:else}
-      <About />
+    {#if status.notice}
+      <div class="banner" role="alert">
+        <p>{status.notice}</p>
+        <button class="secondary small" onclick={() => (status.notice = null)}>Dismiss</button>
+      </div>
     {/if}
+    {#if status.saveError}
+      <div class="banner error" role="alert"><p>Your progress couldn't be saved: {status.saveError}</p></div>
+    {/if}
+
+    {#await loading}
+      <p class="muted">Loading your progress…</p>
+    {:then}
+      {#key nav.screen + JSON.stringify(nav.params)}
+        {#if nav.screen === 'home'}
+          <Home />
+        {:else if nav.screen === 'study'}
+          <Study />
+        {:else if nav.screen === 'exams'}
+          <Exams />
+        {:else if nav.screen === 'review'}
+          <Review />
+        {:else if nav.screen === 'browser'}
+          <QuestionBrowser />
+        {:else if nav.screen === 'settings'}
+          <Settings />
+        {:else}
+          <About />
+        {/if}
+      {/key}
+    {:catch error}
+      <div class="banner error" role="alert"><p>Your progress couldn't be loaded: {error}</p></div>
+    {/await}
   </main>
 </div>
 
@@ -117,5 +137,25 @@
 
   main:focus {
     outline: none;
+  }
+
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--warn);
+    background: var(--surface-2);
+  }
+
+  .banner.error {
+    border-left-color: var(--bad);
+  }
+
+  .banner p {
+    margin: 0;
   }
 </style>

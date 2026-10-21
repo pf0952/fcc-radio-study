@@ -1,8 +1,10 @@
 <script lang="ts">
   import { elements } from '../lib/elements';
-  import type { ScreenId } from '../lib/screens';
+  import { dueIds, localDate } from '../lib/leitner.ts';
+  import { go } from '../lib/nav.svelte';
+  import { progress } from '../lib/progress.svelte';
 
-  let { go }: { go: (id: ScreenId) => void } = $props();
+  const today = localDate();
 </script>
 
 <h1>Home</h1>
@@ -10,17 +12,24 @@
 
 <div class="grid">
   {#each elements as el (el.element)}
+    {@const exams = progress.exams.filter((e) => e.element === el.element)}
+    {@const best = exams.length ? Math.max(...exams.map((e) => e.score ?? 0)) : null}
+    {@const due = dueIds(progress.deck, el.element, today).length}
     <section class="card" aria-labelledby="home-el-{el.element}">
       <p class="eyebrow">Element {el.element}</p>
       <h2 id="home-el-{el.element}">{el.name}</h2>
       <dl>
         <div><dt>Lessons done</dt><dd>0 of {el.subelements.length}</dd></div>
         <div><dt>Section quizzes passed</dt><dd>0 of {el.subelements.length}</dd></div>
-        <div><dt>Exams taken</dt><dd>0</dd></div>
-        <div><dt>Best score</dt><dd>None yet</dd></div>
+        <div><dt>Exams taken</dt><dd>{exams.length}</dd></div>
+        <div><dt>Best score</dt><dd>{best === null ? 'None yet' : `${best} of ${el.exam.questions}`}</dd></div>
+        <div><dt>Missed questions due</dt><dd>{due}</dd></div>
       </dl>
       <p class="muted rule">Exam: {el.exam.questions} questions, pass with {el.exam.passMark} correct.</p>
-      <button class="primary" onclick={() => go('study')}>Start studying</button>
+      <div class="buttons">
+        <button class="primary" onclick={() => go('exams')}>Practice exam</button>
+        {#if due}<button class="secondary" onclick={() => go('review')}>Review {due} due</button>{/if}
+      </div>
     </section>
   {/each}
 </div>
@@ -69,7 +78,9 @@
     font-size: 0.9rem;
   }
 
-  button {
-    align-self: flex-start;
+  .buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
   }
 </style>
