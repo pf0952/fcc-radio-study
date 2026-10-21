@@ -1,6 +1,7 @@
 <script lang="ts">
   import { isCorrect, subelementStats } from '../lib/exam.ts';
   import { formatDate, formatDuration } from '../lib/keys';
+  import { lessons } from '../lib/lessons';
   import { go } from '../lib/nav.svelte';
   import { elementInfo, questionById } from '../lib/pools';
   import { progress } from '../lib/progress.svelte';
@@ -46,6 +47,8 @@
       <h2>Your weakest subelements</h2>
       <div class="weak">
         {#each weakest as s (s.subelement)}
+          {@const lessonId = `${exam.element}-${s.subelement}`}
+          {@const hasLesson = lessons.has(lessonId)}
           <div class="weak-item">
             <h3>Subelement {s.subelement}: {s.title}</h3>
             <p class="muted">{s.correct} of {s.total} correct. Missed key topics:</p>
@@ -55,8 +58,12 @@
               {/each}
             </ul>
             <div class="buttons">
-              <button class="secondary small" disabled title="Available once the lessons are added">Replay lesson</button>
-              <button class="secondary small" disabled title="Available once the lessons are added">Retake section quiz</button>
+              <button class="secondary small" disabled={!hasLesson} title={hasLesson ? undefined : 'This lesson is not built yet'} onclick={() => go('study', { lesson: lessonId, topic: s.missedTopics[0]?.keyTopic })}>
+                Replay lesson
+              </button>
+              <button class="secondary small" disabled={!hasLesson} title={hasLesson ? undefined : 'This lesson is not built yet'} onclick={() => go('study', { quiz: lessonId })}>
+                Retake section quiz
+              </button>
               <button class="primary small" onclick={() => go('review', { drill: { element: exam.element, topics: s.missedTopics.map((t) => t.keyTopic) } })}>
                 Drill these questions
               </button>

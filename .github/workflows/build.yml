@@ -30,6 +30,8 @@ jobs:
 
       - run: npm test
 
+      - run: npm run lessons
+
       - name: Build portable .exe
         run: npx tauri build --no-bundle
 

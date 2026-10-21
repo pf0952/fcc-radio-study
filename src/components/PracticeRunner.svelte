@@ -3,11 +3,29 @@
   import { choiceKey, fromInside, ignoreShortcut } from '../lib/keys';
   import { plain } from '../lib/rich';
   import { recordAnswer, saveProgress } from '../lib/progress.svelte';
+  import type { Snippet } from 'svelte';
   import type { Item, Question, Source } from '../lib/types.ts';
   import QuestionCard from './QuestionCard.svelte';
 
-  /** A short question set with feedback after each answer: drills and missed-question reviews. */
-  let { title, questions, source, onclose }: { title: string; questions: Question[]; source: Source; onclose: () => void } = $props();
+  type Result = { right: number; missed: Question[] };
+
+  /** A short question set with feedback after each answer: drills, missed-question reviews and section quizzes. */
+  let {
+    title,
+    questions,
+    source,
+    onclose,
+    onfinish,
+    summary,
+  }: {
+    title: string;
+    questions: Question[];
+    source: Source;
+    onclose: () => void;
+    onfinish?: (result: Result) => void;
+    /** Replaces the default end-of-set summary. */
+    summary?: Snippet<[Result]>;
+  } = $props();
 
   // The question set is fixed for the life of the runner.
   // svelte-ignore state_referenced_locally
@@ -18,6 +36,7 @@
   const item = $derived(items[index]);
   const question = $derived(questions[index]);
   const right = $derived(items.filter((i, n) => i.chosen === questions[n].answer).length);
+  const result = $derived({ right, missed: questions.filter((q, n) => items[n].chosen !== q.answer) });
 
   function choose(original: number) {
     if (item.chosen !== null) return;
@@ -29,7 +48,10 @@
   function next() {
     if (item.chosen === null) return;
     if (index < items.length - 1) index++;
-    else done = true;
+    else {
+      done = true;
+      onfinish?.(result);
+    }
   }
 
   function onkeydown(e: KeyboardEvent) {
@@ -50,14 +72,16 @@
 <button class="link back" onclick={onclose}>← Back</button>
 <h1>{title}</h1>
 
-{#if done}
+{#if done && summary}
+  {@render summary(result)}
+{:else if done}
   <section class="card">
     <p class="score">{right} of {items.length} correct</p>
-    {#if right < items.length}
+    {#if result.missed.length}
       <p>Missed this time (they're in your missed-questions deck):</p>
       <ul>
-        {#each questions as q, n (q.id)}
-          {#if items[n].chosen !== q.answer}<li><strong>{q.id}</strong> {plain(q.stem)}</li>{/if}
+        {#each result.missed as q (q.id)}
+          <li><strong>{q.id}</strong> {plain(q.stem)}</li>
         {/each}
       </ul>
     {/if}

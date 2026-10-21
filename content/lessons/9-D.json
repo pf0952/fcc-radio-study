@@ -1,0 +1,282 @@
+{
+  "id": "9-D",
+  "element": 9,
+  "title": "Other GMDSS Equipment",
+  "keyTopics": [33, 34, 35, 36],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 33,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 9 · Subelement D",
+        "title": "Other GMDSS Equipment",
+        "subtitle": "EPIRB, SART, survival craft VHF and NAVTEX: what they do, the numbers the exam asks about, and when parts must be replaced."
+      },
+      "onScreen": ["Other GMDSS Equipment", "EPIRB, SART, survival craft VHF and NAVTEX"],
+      "narration": "This lesson covers four pieces of GMDSS safety equipment you will maintain: the EPIRB, the SART, the survival craft VHF transceiver, and the NAVTEX receiver. For each one, we'll look at what it does, the numbers the exam asks about, and when its parts must be replaced. Let's start with the EPIRB, the Emergency Position Indicating Radio Beacon."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 33,
+      "template": "equipment-card",
+      "params": {
+        "title": "406 MHz satellite EPIRB",
+        "device": "epirb",
+        "callouts": [
+          { "label": "5-watt 406 MHz alert beacon, transmitting on 406.025 MHz", "at": "band" },
+          { "label": "121.5 MHz low-power homing transmitter, not the alert", "at": "antenna" },
+          { "label": "Strobe light", "at": "strobe" },
+          { "label": "Automatic Hydrostatic Release (ARM)", "at": "release" },
+          { "label": "Bracket magnet holds the switch safe: no accidental operation", "at": "magnet" },
+          { "label": "No aural locator signal: found by radio homing and the strobe", "at": "beacon" }
+        ]
+      },
+      "onScreen": ["5-watt 406 MHz alert beacon on 406.025 MHz", "121.5 MHz homing transmitter", "Strobe light", "Automatic Hydrostatic Release", "Bracket magnet prevents accidental operation", "No aural locator signal"],
+      "narration": "A 406 megahertz satellite EPIRB normally has three main parts: a 5-watt alert beacon on 406 megahertz, an automatic hydrostatic release, and a strobe light. The alert goes out on 406.025 megahertz. A separate 121.5 megahertz transmitter is only a low-power homing signal for searchers, not the alerting transmitter. The magnet in the mounting bracket holds the beacon's switch in the safe state, so it can't operate accidentally while it sits in the bracket. And there is no aural, or audible, locator signal: rescuers find the EPIRB by radio homing and by its flashing strobe light."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 33,
+      "template": "block-diagram",
+      "params": {
+        "title": "How the alert reaches rescuers",
+        "columns": 3,
+        "blocks": [
+          { "id": "epirb", "label": "EPIRB", "note": "Alert with its ID number" },
+          { "id": "sat", "label": "COSPAS-SARSAT satellite", "note": "Time-tags and relays the message" },
+          { "id": "followon", "label": "Follow-on SAR communications", "note": "Not a satellite function" },
+          { "id": "lut", "label": "Local User Terminal", "note": "Doppler shift gives the position" },
+          { "id": "db", "label": "Shore database", "note": "EPIRB ID gives the vessel information" }
+        ],
+        "links": [
+          { "from": "epirb", "to": "sat" },
+          { "from": "sat", "to": "followon", "struck": true },
+          { "from": "sat", "to": "lut" },
+          { "from": "lut", "to": "db" }
+        ]
+      },
+      "onScreen": ["EPIRB", "COSPAS-SARSAT satellite time-tags and relays", "No follow-on SAR communications", "Local User Terminal: Doppler shift gives position", "Shore database: EPIRB ID gives vessel information"],
+      "narration": "When the EPIRB transmits, a COSPAS-SARSAT satellite picks up the alert, time-tags it, and relays it to any Local User Terminal, or LUT, in the satellite's view. The satellites are one-way relays: they do not provide follow-on search and rescue communications after the EPIRB is located. Rescuers use other radio and satellite links for that. At the Local User Terminal, the Doppler shift of the EPIRB signal is measured to calculate its position. The message also carries the EPIRB's ID number, which is used to look up the vessel's information in the shore database."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 33,
+      "template": "timeline",
+      "params": {
+        "title": "EPIRB replacement intervals",
+        "badges": [
+          { "label": "EPIRB battery", "value": "5 years or after use", "note": "It must still give a full 48 hours of transmission" },
+          { "label": "Automatic release mechanism", "value": "2 years", "note": "So it is sure to work if the ship sinks" }
+        ]
+      },
+      "onScreen": ["EPIRB battery: 5 years or after use", "Automatic release mechanism: 2 years"],
+      "narration": "Two replacement intervals to remember. The EPIRB battery must be replaced every 5 years, or after use, because any use drains capacity it needs for a full 48 hours of transmission. The automatic release mechanism, the hydrostatic release, must be replaced every 2 years, so it is sure to work if the ship sinks."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 34,
+      "template": "key-facts",
+      "params": {
+        "title": "SART: Search And Rescue Radar Transponder",
+        "items": [
+          "Operates in the 9 GHz band: answers 3 cm X-band radars at about 9.2–9.5 GHz",
+          "Does not answer 3 GHz S-band radars; 406 MHz is the EPIRB frequency",
+          "After activation it waits in standby and responds only to radar interrogation",
+          "Battery: replace every 5 years or after use; it must give 96 hours of standby, then 8 hours of transmission"
+        ]
+      },
+      "onScreen": ["9 GHz band, 3 cm X-band radars", "Not S-band; 406 MHz is the EPIRB", "Standby until a radar interrogates it", "Battery: 5 years or after use"],
+      "narration": "The SART, or Search And Rescue Radar Transponder, works with ships' radars. It operates in the 9 gigahertz band, answering 3 centimeter X-band radars at about 9.2 to 9.5 gigahertz. It does not answer 3 gigahertz S-band radars, and 406 megahertz belongs to the EPIRB, not the SART. Once activated, a SART waits in standby and responds only when a radar interrogates it; it does not start radiating the moment it is switched on. Its battery must be replaced every 5 years or after being used, because it must still provide 96 hours of standby followed by 8 hours of transmission."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 34,
+      "template": "radar-ppi",
+      "params": {
+        "title": "A SART on the radar display",
+        "rangeNm": 10,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 40, "range": 6.5 },
+          { "bearing": 300, "range": 4 }
+        ],
+        "sart": { "bearing": 125, "range": 2, "dots": 12, "spacing": 0.64 },
+        "labels": [
+          "Other ships and land show as ordinary echoes",
+          "The SART paints 12 equally spaced dots, outward from its position along its bearing",
+          "Very close in, the dots become arcs and then circles"
+        ]
+      },
+      "onScreen": ["Ordinary echoes", "SART: 12 equally spaced dots outward along its bearing", "Close in: arcs, then circles"],
+      "narration": "Here's what the SART looks like on the searching ship's radar. Other ships and land show as ordinary echoes. When the radar's beam reaches the SART, it answers, and its signal appears as a line of 12 equally spaced dots, extending outward from the SART's position along its bearing. They are dots, not dashes or spirals. As the searching ship closes in, very near the SART the dots become arcs and then complete circles."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 34,
+      "template": "waveform",
+      "params": {
+        "title": "Why 12 dots: the SART sweep",
+        "kind": "sart-sweep",
+        "cycles": 12,
+        "fast": 0.4,
+        "slow": 7.5,
+        "yAxis": "frequency across the 3 cm band",
+        "xAxis": "time",
+        "labels": [
+          "Sweep of 0.4 µs across the entire 3 cm radar band",
+          "Returning sweep of 7.5 µs back to the beginning",
+          "12 sweeps in all",
+          "Each 7.5 µs sweep crosses the radar's frequency once: one dot"
+        ]
+      },
+      "onScreen": ["0.4 µs sweep across the band", "7.5 µs returning sweep", "12 sweeps", "One dot per crossing"],
+      "narration": "When it is interrogated, the SART starts with a sweep of 0.4 microseconds across the entire 3 centimeter radar band, followed by a returning sweep of 7.5 microseconds back to the beginning, for a total of 12 sweeps. The amber line is the searching radar's frequency. Each slow 7.5 microsecond sweep passes through that frequency once, and each pass paints one of the 12 dots."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 34,
+      "template": "formula",
+      "params": {
+        "title": "Spacing between the dots",
+        "formula": "d = one sweep cycle ÷ radar mile",
+        "steps": ["d = (7.5 µs + 0.4 µs) ÷ 12.34 µs/nm", "d = 7.9 µs ÷ 12.34 µs/nm"],
+        "answer": "d ≈ 0.64 nm, at 5 miles or any other range"
+      },
+      "onScreen": ["d = one sweep cycle ÷ radar mile", "7.9 µs ÷ 12.34 µs/nm", "≈ 0.64 nm at any range"],
+      "narration": "How far apart are the dots? Divide one complete sweep cycle by the radar mile. One cycle is 7.5 plus 0.4, or 7.9 microseconds. Divide by 12.34 microseconds per nautical mile, and you get about 0.64 nautical miles. The spacing is the same at any range, so a SART at a distance of 5 miles shows dots approximately 0.64 nautical miles apart."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 35,
+      "template": "equipment-card",
+      "params": {
+        "title": "Survival craft VHF transceiver",
+        "device": "vhf-handheld",
+        "callouts": [
+          { "label": "Antenna permanently affixed: fixed and non-removable", "at": "antenna" },
+          { "label": "Channel 16 (156.8 MHz) plus at least one other channel", "at": "display" },
+          { "label": "Watertight to a depth of 1 meter for 5 minutes", "at": "water" },
+          { "label": "Effective radiated power at least 0.25 watt", "at": "ptt" },
+          { "label": "Receiver sensitivity 2.0 microvolts", "at": "speaker" },
+          { "label": "Battery: every 5 years or after use for distress communications", "at": "body" }
+        ]
+      },
+      "onScreen": ["Permanently affixed antenna", "Channel 16 plus one other", "Watertight: 1 meter for 5 minutes", "0.25 watt ERP", "2.0 microvolts sensitivity", "Battery: 5 years or after use"],
+      "narration": "Every survival craft carries a portable two-way VHF radio. Its antenna is fixed and non-removable, permanently affixed. Under GMDSS it must operate on channel 16, 156.8 megahertz, the voice distress and calling channel, plus at least one other channel. It must be watertight to a depth of 1 meter for 5 minutes. The minimum effective radiated power is 0.25 watt, not 1 watt: enough for short-range, on-scene communication, and easy on the battery. The minimum receiver sensitivity is 2.0 microvolts. And the battery must be changed every 5 years, or after use for distress communications, because it must still deliver 8 hours of operation when it is needed."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 35,
+      "template": "band-strip",
+      "params": {
+        "title": "Which frequencies does it need?",
+        "min": 100,
+        "max": 500,
+        "ends": ["100 MHz", "500 MHz"],
+        "marks": [
+          { "at": 156.8, "label": "Channel 16, 156.8 MHz", "note": "Required: voice distress and calling", "tone": "key" },
+          { "at": 156.525, "label": "Channel 70", "note": "DSC only, not simplex voice", "tone": "muted" },
+          { "at": 121.5, "label": "121.5 MHz", "note": "Aeronautical", "tone": "muted" },
+          { "at": 457.525, "label": "457.525 MHz", "note": "On-board UHF", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Channel 16, 156.8 MHz: required", "Channel 70: DSC only", "121.5 MHz: aeronautical", "457.525 MHz: on-board UHF"],
+      "narration": "Here's how those frequencies line up. Channel 16, 156.8 megahertz, is the one the survival craft VHF must have. Channel 70 sits right beside it, but channel 70 is used only for digital selective calling, not simplex voice, so operating simplex on channel 70 is not a survival craft requirement. 121.5 megahertz is aeronautical, and 457.525 megahertz is an on-board UHF frequency. Neither is required."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 35,
+      "template": "timeline",
+      "params": {
+        "title": "Replacement intervals in this lesson",
+        "badges": [
+          { "label": "EPIRB battery", "value": "5 years or after use" },
+          { "label": "SART battery", "value": "5 years or after use" },
+          { "label": "Survival craft VHF battery", "value": "5 years or after use" },
+          { "label": "EPIRB automatic release mechanism", "value": "2 years" }
+        ]
+      },
+      "onScreen": ["EPIRB, SART and survival craft VHF batteries: 5 years or after use", "EPIRB automatic release mechanism: 2 years"],
+      "narration": "Let's collect the intervals. The batteries in the EPIRB, the SART and the survival craft VHF are all replaced every 5 years, or after they have been used. The one to keep separate is the EPIRB's automatic release mechanism, which is replaced every 2 years."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 36,
+      "template": "band-strip",
+      "params": {
+        "title": "NAVTEX frequencies",
+        "min": 400,
+        "max": 5000,
+        "scale": "log",
+        "marks": [
+          { "at": 518, "label": "518 kHz", "note": "International NAVTEX, in English", "tone": "key" },
+          { "at": 490, "label": "490 kHz", "note": "National or local-language NAVTEX" },
+          { "at": 4209.5, "label": "4209.5 kHz", "note": "HF NAVTEX" },
+          { "at": 2187.5, "label": "2187.5 kHz", "note": "MF DSC distress: not NAVTEX", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["518 kHz: international NAVTEX", "490 kHz: national or local language", "4209.5 kHz: HF NAVTEX", "2187.5 kHz: MF DSC distress, not NAVTEX"],
+      "narration": "Now NAVTEX, the automated broadcast of maritime safety information. 518 kilohertz is the primary frequency, used exclusively for NAVTEX broadcasts internationally, in English. 490 kilohertz carries national or local-language NAVTEX, and 4209.5 kilohertz is the HF NAVTEX frequency. Don't confuse these with 2187.5 kilohertz: that's an MF digital selective calling distress channel, not NAVTEX."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 36,
+      "template": "key-facts",
+      "params": {
+        "title": "Programming a NAVTEX receiver",
+        "items": [
+          "Broadcasts go out in categories of messages, each indicated by a single letter, in each station's scheduled time slots",
+          "Each transmitting station is identified by a single letter, not a two-digit number or a SELCALL",
+          "To reject messages, choose the category's single letter (A–Z) and deselect it",
+          "The receiver can be set to reject certain stations and message categories",
+          "Navigational warnings, meteorological warnings and search and rescue information cannot be turned off"
+        ]
+      },
+      "onScreen": ["Message categories: single letters", "Stations: single letters", "Reject a category: choose its letter, deselect it", "Reject stations and categories", "Navigational, meteorological and SAR messages can't be turned off"],
+      "narration": "NAVTEX broadcasts are sent in categories of messages, each indicated by a single letter, and each station transmits in its own scheduled time slots rather than on request. Stations are identified by a single letter too, not a two-digit number or a SELCALL. You can program the receiver to reject certain stations and message categories: choose the category's single-letter identifier, A to Z, and deselect it. But three kinds of messages can never be turned off: navigational warnings, meteorological warnings, and search and rescue information."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 36,
+      "template": "waveform",
+      "params": {
+        "title": "How NAVTEX keeps messages accurate",
+        "kind": "repeat",
+        "chars": ["N", "A", "V"],
+        "noiseAt": 2,
+        "labels": [
+          "Each character is sent twice, with a time interval between the copies",
+          "Collective FEC: the repeat follows about 280 ms later",
+          "The receiver prints whichever copy arrives correctly"
+        ]
+      },
+      "onScreen": ["Each character sent twice", "Repeat about 280 ms later", "Receiver uses the good copy"],
+      "narration": "Accuracy is ensured by sending each character twice, with a time interval between the two copies. This is called collective forward error correction, or FEC, and the repeat follows about 280 milliseconds later. If a burst of noise wipes out one copy, as it does here, the receiver simply uses the copy that arrived correctly, so the printed message is still clean."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 36,
+      "template": "equipment-card",
+      "params": {
+        "title": "Troubleshooting: no new messages",
+        "device": "navtex",
+        "callouts": [
+          { "label": "Powers on and works normally; station settings are correct", "at": "screen" },
+          { "label": "But no new messages arrive for an extended period", "at": "buttons" },
+          { "label": "Most likely cause: a defective RF amplifier at the antenna base", "at": "amplifier" },
+          { "label": "The amplifier is powered through the coax", "at": "coax" }
+        ]
+      },
+      "onScreen": ["Works normally, correct settings", "No new messages for a long time", "Defective RF amplifier at the antenna base", "Amplifier powered through the coax"],
+      "narration": "A common fault: the NAVTEX receiver powers on and appears to be working normally, and the station settings are correct, yet no new messages have arrived for an extended period. The most likely source of the problem is a defective RF amplifier at the base of the antenna. That amplifier is powered through the coax from the receiver."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [33] },
+    { "after": "s8", "keyTopics": [34] },
+    { "after": "s11", "keyTopics": [35] },
+    { "after": "s15", "keyTopics": [36] }
+  ],
+  "video": null
+}

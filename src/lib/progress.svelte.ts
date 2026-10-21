@@ -2,7 +2,16 @@ import { loadProgressFile, saveProgressFile } from './backend';
 import { localDate, nextCard } from './leitner.ts';
 import type { Progress, Source } from './types.ts';
 
-const empty = (): Progress => ({ schema: 1, answers: [], exams: [], activeExam: null, deck: {} });
+const empty = (): Progress => ({
+  schema: 1,
+  answers: [],
+  exams: [],
+  activeExam: null,
+  deck: {},
+  lessons: {},
+  quizzes: {},
+  prefs: { voice: null, rate: 1, captions: true },
+});
 
 /** Everything the user has done, saved to progress.json. */
 export const progress = $state<Progress>(empty());

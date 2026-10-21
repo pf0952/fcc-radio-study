@@ -79,6 +79,12 @@ npm test
 cargo test --manifest-path src-tauri/Cargo.toml
 ```
 
+To check the lessons in `content/lessons/` against their briefs (every key topic has a scene, every number matches the brief, checkpoints every 3 to 4 scenes):
+
+```powershell
+npm run lessons
+```
+
 To rebuild the question pool JSON from the official files in `content/source/pools/` (only needed if the pools or the parser change):
 
 ```powershell
@@ -103,6 +109,9 @@ git push origin v1.0.0
 | `tests/` | Unit tests, run with `npm test` |
 | `content/elements.json` | Exam rules and pool sources for each element |
 | `content/pools/` | All 1,200 questions as JSON, with answers, explanations and flagged-answer notes |
+| `content/lessons/` | One narrated, animated lesson per subelement (scenes, narration, checkpoints) |
+| `content/videos/` | Optional: put `<lesson id>.mp4` here (e.g. `9-D.mp4`) to offer "Watch video" for that lesson |
+| `src/lessons/` | The lesson player and its ten animated scene templates |
 | `content/figures/` | Figure images the Element 3 and 8 questions refer to |
 | `content/source/` | The official pool files, flagged-answer notes, and how the pools are checked |
 | `scripts/` | `build-pools.ts`, which parses and validates the pools |

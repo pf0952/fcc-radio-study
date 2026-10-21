@@ -19,8 +19,8 @@
       <p class="eyebrow">Element {el.element}</p>
       <h2 id="home-el-{el.element}">{el.name}</h2>
       <dl>
-        <div><dt>Lessons done</dt><dd>0 of {el.subelements.length}</dd></div>
-        <div><dt>Section quizzes passed</dt><dd>0 of {el.subelements.length}</dd></div>
+        <div><dt>Lessons done</dt><dd>{[...el.subelements].filter((s) => progress.lessons[`${el.element}-${s}`]?.completed).length} of {el.subelements.length}</dd></div>
+        <div><dt>Section quizzes passed</dt><dd>{[...el.subelements].filter((s) => progress.quizzes[`${el.element}-${s}`]?.passed).length} of {el.subelements.length}</dd></div>
         <div><dt>Exams taken</dt><dd>{exams.length}</dd></div>
         <div><dt>Best score</dt><dd>{best === null ? 'None yet' : `${best} of ${el.exam.questions}`}</dd></div>
         <div><dt>Missed questions due</dt><dd>{due}</dd></div>
