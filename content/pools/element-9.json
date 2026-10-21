@@ -15,7 +15,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Channel 16 (156.800 MHz) is the international voice distress, safety and calling channel, Channel 70 (156.525 MHz) is reserved exclusively for digital selective calling, and Channel 13 (156.650 MHz) is the bridge-to-bridge navigation safety channel used between vessels.",
     "flag": null
   },
   {
@@ -34,7 +34,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Marine VHF duplex channels pair a ship transmit frequency with a coast station transmit frequency 4.6 MHz higher. On Channel 26, for example, ships transmit on 157.300 MHz and the coast station on 161.900 MHz: 161.900 − 157.300 = 4.6 MHz.",
     "flag": null
   },
   {
@@ -53,7 +53,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Marine VHF channels sit on a 25 kHz raster. Consecutively numbered channels are 50 kHz apart and the 60-series channels fall halfway between them; Channel 70 at 156.525 MHz, for example, sits between Channel 10 (156.500 MHz) and Channel 11 (156.550 MHz).",
     "flag": null
   },
   {
@@ -72,7 +72,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "VHF ship transmitters, including DSC on Channel 70, must hold their carrier within 10 parts per million. At 156.525 MHz that allows 156.525 MHz × 10×10⁻⁶ ≈ 1565 Hz of error either way.",
     "flag": null
   },
   {
@@ -91,7 +91,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The counter itself may be off by 2 ppm, so a reading is only certainly legal if it lies within 10 − 2 = 8 ppm: 156.800 MHz × 8×10⁻⁶ ≈ 1254 Hz and 156.525 MHz × 8×10⁻⁶ ≈ 1252 Hz. Readings 1242 Hz low and 1243 Hz high both pass.",
     "flag": null
   },
   {
@@ -110,7 +110,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Subtract the counter's 5 ppm uncertainty from the 10 ppm limit, leaving 5 ppm: 156.875 MHz × 5×10⁻⁶ ≈ 784 Hz and 157.200 MHz × 5×10⁻⁶ = 786 Hz. Readings 774 Hz high and 679 Hz low are the only pair inside both limits.",
     "flag": null
   },
   {
@@ -129,7 +129,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Some channels that are duplex under the international plan are used simplex in U.S. waters, with ships and coast stations both on the ship transmit frequency (Channel 22A for Coast Guard liaison is the best-known). The USA setting switches those channels to simplex so the radio matches U.S. assignments.",
     "flag": null
   },
   {
@@ -148,7 +148,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "In INT mode, certain channels that are simplex in the U.S. operate duplex: the radio transmits on the ship frequency but listens 4.6 MHz higher. Other stations hear your call, but their replies on the simplex frequency never reach your receiver.",
     "flag": null
   },
   {
@@ -167,7 +167,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Dual watch lets a single receiver cover Channel 16 plus one other channel by switching back and forth rapidly, sampling each in turn. It doesn't receive both at once, which would take two receivers, and it has nothing to do with transmitting.",
     "flag": null
   },
   {
@@ -186,7 +186,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Squelch sets the signal level needed to open the audio. Advancing it only to the threshold where background noise is just silenced keeps the receiver quiet while still letting the weakest signals through; turning it further raises the threshold and blocks weak stations.",
     "flag": null
   },
   {
@@ -205,7 +205,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "FCC rules limit VHF marine ship transmitters to 25 W and require that power can be reduced to 1 W or less. The low setting is used for short-range calls such as harbor and bridge-to-bridge communications, keeping interference to a minimum.",
     "flag": null
   },
   {
@@ -224,7 +224,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "R.I.T. (receiver incremental tuning) fine-tunes the receive frequency on MF/HF single-sideband sets. Channelized VHF FM radios have no need for it, while distress, cancel and squelch controls are standard on a VHF-DSC transceiver.",
     "flag": null
   },
   {
@@ -243,7 +243,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "When two FM signals share a channel, the limiter and detector lock onto the stronger one and suppress the weaker, often completely if one is just a few dB stronger. This capture effect is why an FM receiver delivers only the strongest signal.",
     "flag": null
   },
   {
@@ -262,7 +262,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A ratio detector's output depends on the ratio of the voltages developed in its two diode arms, so amplitude variations tend to cancel. Adjusting the balance of those ratio arms equalizes the two halves, maximizing AM noise rejection and improving signal-to-noise.",
     "flag": null
   },
   {
@@ -281,7 +281,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A limiter is driven into saturation, so its output stays at a constant amplitude however much the input varies. That strips amplitude noise and fading from the FM signal before the detector, which only needs the frequency variations.",
     "flag": null
   },
   {
@@ -300,7 +300,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "SINAD compares everything at the receiver's audio output with the unwanted part: SINAD = (signal + noise + distortion) ÷ (noise + distortion), usually expressed in dB. A 12 dB SINAD reading is the common reference point for FM receiver sensitivity.",
     "flag": null
   },
   {
@@ -319,7 +319,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A healthy marine VHF receiver should reach 10 dB of quieting with roughly 1 µV of signal at its antenna input. If it takes 5 or 10 µV to quiet the receiver that much, its sensitivity is poor and the front end should be checked.",
     "flag": null
   },
   {
@@ -338,7 +338,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Full quieting means the incoming signal is strong enough to drive the limiters fully into saturation, so the receiver's background hiss disappears completely and only clean audio remains. It describes signal strength, not a squelch setting.",
     "flag": null
   },
   {
@@ -357,7 +357,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The synthesizer's phase-locked loop holds the oscillator on the selected channel by comparing it with a crystal reference. If the PLL loses lock, the oscillator drifts and the receiver can't stay on frequency. Mixing the local oscillator with the signal to make an IF is normal operation.",
     "flag": null
   },
   {
@@ -376,7 +376,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Squelch acts on the audio path, so if the AF amplifier is dead, opening the squelch changes nothing. A stuck Push-To-Talk circuit has the same effect, because keying the transmitter mutes the receiver. RF, mixer or oscillator faults would still leave noise audible with the squelch open.",
     "flag": null
   },
   {
@@ -395,7 +395,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A fuse reading zero ohms is intact, so the radio didn't blow it; the DC supply itself has shut off. A crowbar protection circuit in the power supply that has fired and clamped its output removes line voltage this way, protecting the radio. Antenna, coax or discriminator faults wouldn't remove DC line voltage.",
     "flag": null
   },
   {
@@ -414,7 +414,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "With the audio amplifier dead, nothing reaches the speaker no matter where the squelch is set. A Push-To-Talk circuit stuck in transmit gives the same symptom by muting the receiver. A failed RF, mixer or local oscillator stage would remove signals but still let noise through with the squelch open.",
     "flag": null
   },
   {
@@ -433,7 +433,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "When a stronger signal occupies the same channel, the FM limiter captures it and suppresses the weaker one, so a weak station disappears even though the receiver is working. Producing an IF by mixing is normal, and an AF stage with more output than input is simply doing its job.",
     "flag": null
   },
   {
@@ -452,7 +452,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Signal tracing with an oscilloscope shows the actual audio waveform at the output of each AF stage, so the stage where clean audio first turns distorted identifies the fault. Measuring bias or judging only the final speaker output doesn't pinpoint which stage is distorting.",
     "flag": null
   },
   {
@@ -471,7 +471,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A 12 V marine radio normally runs on about 12.8 to 13.8 V DC. A reading of only 9.6 V starves the receiver stages, reducing gain and sensitivity. Replacing 75 Ω RG-59/U with 50 Ω RG-8/U or LMR-400 would actually improve the match and cut line loss.",
     "flag": null
   },
   {
@@ -490,7 +490,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Minimum discernible signal is the input level equal to the receiver's own noise floor. Starting near zero, raise the generator output until the AF output rises 3 dB above noise alone; signal plus noise is then twice the noise power, so that input level is the MDS.",
     "flag": null
   },
   {
@@ -509,7 +509,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "NOAA Weather Radio broadcasts continuously on 162.550, 162.400 and 162.475 MHz (WX1, WX2 and WX3) along most U.S. coasts, so tuning one in is a quick, reliable receiver check. A radio can't monitor its own transmission, because the receiver is muted while transmitting.",
     "flag": null
   },
   {
@@ -528,7 +528,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A good base-emitter junction acts like a diode: low resistance one way, high resistance with the leads reversed. Low resistance in both directions means the junction is shorted. Zero ohms across a good fuse and infinite ohms across a bypass capacitor are normal readings.",
     "flag": null
   },
   {
@@ -547,7 +547,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Current through a bias resistor normally produces a voltage drop across it. Identical voltages at both ends of a 100 kΩ bias resistor mean no current is flowing or the resistor is shorted, so the stage is improperly biased. A speaker click, a drop across a resistor, and audio at an AF output are all normal.",
     "flag": null
   },
   {
@@ -566,7 +566,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A worn or dirty potentiometer, such as the volume control in the audio stage, makes intermittent contact along its track and produces crackling, scratchy noise. An open transformer winding would kill the audio instead, and an AF stage with more output than input is normal.",
     "flag": null
   },
   {
@@ -585,7 +585,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Marine VHF voice uses 16K0G3E emission with a maximum frequency deviation of ±5 kHz. Deviating more than 5 kHz spreads the signal beyond its 16 kHz necessary bandwidth toward adjacent channels and distorts reception.",
     "flag": null
   },
   {
@@ -604,7 +604,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Modulation index compares how far the carrier swings with how fast it swings: m = Δf / f<sub>m</sub>. For example, 5 kHz deviation with a 2.5 kHz tone gives m = 5 / 2.5 = 2. The index determines how many significant sidebands an FM signal produces.",
     "flag": null
   },
   {
@@ -623,7 +623,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "FM noise rises with audio frequency, so the transmitter boosts the higher audio frequencies by 6 dB per octave (pre-emphasis) and the receiver cuts them by the same 6 dB per octave (de-emphasis). Audio response ends up flat while high-frequency noise is reduced, improving signal-to-noise.",
     "flag": null
   },
   {
@@ -642,7 +642,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The modulation index reflects how hard the audio drives the carrier's deviation. An index below 1 means the deviation is small compared with the audio frequency, so the transmitter is undermodulated and the receiving station hears weak, low-level audio.",
     "flag": null
   },
   {
@@ -661,7 +661,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Marine VHF voice is 16K0G3E: G is phase modulation (the indirect FM most transceivers generate), 3 is a single channel of analog information, and E is telephony. J3E and H3E are HF single-sideband modes, and F1B is direct-FSK telegraphy.",
     "flag": null
   },
   {
@@ -680,7 +680,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Frequency modulation produces pairs of sidebands at multiples of the modulating frequency on both sides of the carrier, theoretically an infinite number. Their amplitudes follow Bessel functions of the modulation index; only those within the necessary bandwidth are significant, but there are many, not just one or two.",
     "flag": null
   },
   {
@@ -699,7 +699,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "FCC rules require ship VHF transmitters to deliver at least 8 W but no more than 25 W, with reduction to 1 W or less. An 8.5 W high-power reading is weaker than expected yet still legal, and the 1 W low setting is correct, so the inability to contact stations probably lies elsewhere.",
     "flag": null
   },
   {
@@ -718,7 +718,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "SWR must be measured on the actual antenna system, so the meter goes between the radio and the coax feeding the antenna. Keying on an unused channel avoids interfering with other stations; a radio check on Channel 16 is improper, and a dummy load or disconnected line can't show the antenna's match.",
     "flag": null
   },
   {
@@ -737,7 +737,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A directional wattmeter in the line to the working antenna reads forward and reflected power, from which SWR follows: SWR = (1 + √(P<sub>r</sub>/P<sub>f</sub>)) ÷ (1 − √(P<sub>r</sub>/P<sub>f</sub>)). An artificial antenna only tests the radio, and a line disconnected from the antenna reflects everything.",
     "flag": null
   },
   {
@@ -756,7 +756,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Most VHF transmitters sense reflected power and cut output when the antenna system presents a high SWR, protecting the power amplifier transistors. Output falling to near zero on every channel while the radio otherwise works fits that foldback. A 1.5:1 SWR or a 50 Ω load is normal, and a tripped crowbar would shut down the whole radio.",
     "flag": null
   },
   {
@@ -775,7 +775,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The VCO is the part of the synthesizer that the phase-locked loop steers onto frequency. If it fails, the loop can't bring the divided VCO output into step with the reference, so the PLL drops out of lock; many radios then display an unlock warning and inhibit transmit.",
     "flag": null
   },
   {
@@ -794,7 +794,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Normal reception shows that power, the synthesizer and the antenna path are working. The radio switches into transmit only when the Push-To-Talk line is activated, so a failed component in that circuit keeps the transmitter from ever keying.",
     "flag": null
   },
   {
@@ -813,7 +813,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A full 25 W output shows the PTT line, synthesizer and power amplifier are all working, so a carrier is going out; only the audio is missing. An open conductor in the microphone cable or connector produces exactly that unmodulated carrier, while a PTT fault would prevent any output at all.",
     "flag": null
   },
   {
@@ -832,7 +832,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The radio has normal supply voltage, yet the power amplifier delivers under 1 W. Insufficient bias keeps the PA transistor from conducting properly, so it amplifies very little. Excess drive to the PA would raise output, not reduce it, and the antenna connector shouldn't carry DC anyway.",
     "flag": null
   },
   {
@@ -851,7 +851,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "An in-line attenuator set to maximum, together with the LOW power setting, keeps transmitter power from damaging the analyzer's sensitive input. An inductive probe can then sample the input and output of each RF stage to show where the RF signal is lost, weakened or distorted.",
     "flag": null
   },
   {
@@ -870,7 +870,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Forward power equals the 25 W legal maximum, and 1.5 W reflected gives Γ = √(1.5/25) ≈ 0.245, so SWR = (1 + 0.245) ÷ (1 − 0.245) ≈ 1.65:1, an acceptable match. A 27.5 W reading would exceed the legal limit, and 25 W reflected means nothing reaches the antenna.",
     "flag": null
   },
   {
@@ -889,7 +889,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In marine FM, 100% modulation corresponds to the 5 kHz maximum deviation. At 150% the carrier swings about 7.5 kHz, more than the receiver's IF passband and detector handle cleanly, so the audio distorts and the signal splatters toward adjacent channels.",
     "flag": null
   },
   {
@@ -908,7 +908,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A dummy load, also called an artificial antenna, is a non-inductive 50 Ω resistor that absorbs transmitter power as heat. It gives the transmitter a matched load so power output can be measured without radiating a signal.",
     "flag": null
   },
   {
@@ -927,7 +927,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "VHF DSC is frequency-shift keyed audio: tones of 1300 Hz and 2100 Hz, centered on a 1700 Hz sub-carrier (1700 ± 400 Hz), modulate the transmitter on Channel 70. The 1500 to 2300 Hz pairs and the 1900 Hz sub-carrier don't match the DSC standard.",
     "flag": null
   },
   {
@@ -946,7 +946,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "ITU-R M.493 specifies VHF DSC signaling at 1200 baud, with the 1300/2100 Hz sub-carrier applied to the transmitter at a modulation index of 2.0 ± 10%. MF/HF DSC, by contrast, runs at only 100 baud.",
     "flag": null
   },
   {
@@ -965,7 +965,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "DSC addresses stations by MMSI, not call letters, so a test call to a coast station uses the TEST menu with that station's MMSI (coast station MMSIs begin with 00). The button under the red cover sends a distress alert and must never be used for testing.",
     "flag": null
   },
   {
@@ -984,7 +984,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Most DSC radios let the user enter an MMSI only once and then lock it against tampering. Clearing a stored MMSI so a new number can be entered requires the manufacturer or its authorized dealer; there is no user reset.",
     "flag": null
   },
   {
@@ -1003,7 +1003,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each DSC character is sent twice, with four other characters transmitted between the first sending (DX) and its repeat (RX). At 1200 baud with 10-bit characters, that interval is 4 × 10 bits ÷ 1200 bits/s = 33⅓ ms, so a brief fade or noise burst won't corrupt both copies.",
     "flag": null
   },
   {
@@ -1022,7 +1022,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "An outgoing DSC data stream switches rapidly between logic levels, far faster than a meter can follow, so a DC voltmeter shows a low reading wandering roughly between 0 and 2 V. A steady 12 V or no voltage at all would mean no data is moving.",
     "flag": null
   },
   {
@@ -1041,7 +1041,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A quarter-wave radiator makes a workable emergency antenna: L = 234 / f(MHz) = 234 / 156.8 ≈ 1.49 ft ≈ 18 inches. A wire or rod cut to that length and connected to the coax center conductor gives usable coverage on the marine VHF band.",
     "flag": null
   },
   {
@@ -1060,7 +1060,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A collinear array stacks half-wave elements end to end with phasing sections so their radiation adds in phase toward the horizon. That compresses the vertical pattern while keeping horizontal coverage omnidirectional, giving marine antennas gains of roughly 3 to 9 dB.",
     "flag": null
   },
   {
@@ -1079,7 +1079,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Many marine VHF antennas are shunt fed, with the base coil connecting the radiator to ground at DC. An ohmmeter therefore reads a short from center conductor to shield, which is normal and also drains static; it doesn't prove a shorted cable or connector.",
     "flag": null
   },
   {
@@ -1098,7 +1098,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Most marine VHF transceivers use the UHF-series connector: an SO-239 socket on the radio mating with a PL-259 plug on the coax. N, BNC and TNC connectors appear on some test equipment and handhelds but are less common on shipboard VHF sets.",
     "flag": null
   },
   {
@@ -1117,7 +1117,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "RG-8/U is a large-diameter 50 Ω cable with much lower loss per foot at VHF than thin cables such as RG-58/U or RG-174/U, and low loss matters most on a long run. RG-59/U is a 75 Ω cable that mismatches a 50 Ω marine radio.",
     "flag": null
   },
   {
@@ -1136,7 +1136,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "High-gain antennas get their gain by flattening the vertical radiation pattern into a narrow beam aimed at the horizon. When a small boat rolls and pitches in heavy weather, that beam tilts toward the sky or the water and signals fade in and out.",
     "flag": null
   },
   {
@@ -1155,7 +1155,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Marine SSB voice (J3E) occupies a 2.8 kHz necessary bandwidth, the 2K80J3E emission, and HF radiotelephone channels are spaced 3.0 kHz apart. The 300 Hz bandwidth and 500 Hz spacing apply to narrow-band SITOR (NBDP) channels.",
     "flag": null
   },
   {
@@ -1174,7 +1174,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "SITOR (NBDP) uses 170 Hz frequency-shift keying at 100 baud, which needs only about 300 Hz of bandwidth, so narrow-band direct-printing channels are spaced 500 Hz apart. The 2.8 kHz bandwidth and 3.0 kHz spacing belong to J3E voice.",
     "flag": null
   },
   {
@@ -1193,7 +1193,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "GMDSS MF/HF transmitters must hold frequency within 10 Hz, tight enough that narrow 170 Hz-shift DSC and NBDP signals land squarely in the receiver's narrow filters and SSB voice keeps its natural pitch.",
     "flag": null
   },
   {
@@ -1212,7 +1212,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "GMDSS MF/HF transmitters must stay within 10 Hz. Readings of 2182.006 kHz and 4124.995 kHz are 6 Hz high and 5 Hz low, the pair with the most margin left for counter error; the other pairs include offsets of 9 or 10 Hz, at or near the limit, where any counter error could mean the transmitter is out of tolerance.",
     "flag": null
   },
   {
@@ -1231,7 +1231,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The six MF/HF DSC distress and safety frequencies are 2187.5, 4207.5, 6312, 8414.5, 12577 and 16804.5 kHz. Frequencies such as 2182, 4125 and 8291 kHz are voice channels, and 4177.5, 8376.5 and 12520 kHz are NBDP follow-on channels.",
     "flag": null
   },
   {
@@ -1250,7 +1250,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "After a DSC distress alert, voice follow-on uses 2182, 4125, 6215, 8291, 12290 and 16420 kHz, while NBDP uses 2174.5, 4177.5, 6268, 8376.5, 12520 and 16695 kHz. Frequencies such as 6312 and 8414.5 kHz are DSC channels, not follow-on channels.",
     "flag": null
   },
   {
@@ -1269,7 +1269,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "R.I.T. (receiver incremental tuning), also called the clarifier, shifts only the receive frequency by a small amount so an off-frequency SSB voice sounds natural. The transmit frequency stays on the assigned channel.",
     "flag": null
   },
   {
@@ -1288,7 +1288,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Pressing TUNE makes the automatic antenna coupler adjust its matching network for the selected transmit frequency, usually while the transmitter sends a low-power carrier. This matches the antenna to the transmitter's 50 Ω output so full power can be delivered at low SWR.",
     "flag": null
   },
   {
@@ -1307,7 +1307,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "ENTER confirms a menu selection or a value just keyed in, such as an MMSI or frequency, so the radio accepts it and moves on. Distress alerts use a separate, dedicated covered button.",
     "flag": null
   },
   {
@@ -1326,7 +1326,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "TLX stands for telex, the display label for SITOR (NBDP) narrow-band direct printing on an MF/HF transceiver. SSB voice, DSC and AM operation are shown with their own mode labels.",
     "flag": null
   },
   {
@@ -1345,7 +1345,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The RF gain control sets the amplification of the receiver's RF stage. Turning it down reduces sensitivity, which helps when strong nearby signals or heavy noise would otherwise overload the receiver; it doesn't change feedback or interstage coupling.",
     "flag": null
   },
   {
@@ -1364,7 +1364,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Automatic gain control samples the signal level and adjusts RF and IF amplifier gain, cutting gain for strong signals and raising it for weak ones. The result is a relatively constant audio output as the incoming signal fades or varies.",
     "flag": null
   },
   {
@@ -1383,7 +1383,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A J3E signal has its carrier suppressed, so the receiver's beat frequency oscillator supplies a substitute carrier to the product detector. Mixing it with the sideband recovers the original audio. The BFO does not recreate the missing sideband.",
     "flag": null
   },
   {
@@ -1402,7 +1402,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A3E (double-sideband AM) and H3E (single sideband with full carrier) both transmit a carrier, so an ordinary envelope detector can demodulate them without the BFO. Suppressed-carrier J3E and J2B signals, and keyed modes such as A1A and F1B, need the BFO.",
     "flag": null
   },
   {
@@ -1421,7 +1421,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Garbled SSB voice usually means the receiver is slightly off the transmitting station's frequency. The R.I.T. or clarifier control shifts the receive frequency in small steps until the voice sounds natural, without moving your transmit frequency. Squelch only mutes or unmutes the audio.",
     "flag": null
   },
   {
@@ -1440,7 +1440,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Fast attack lets the AGC cut gain the instant a voice peak or strong signal arrives, preventing overload. Slow decay holds the gain down through the gaps between syllables and words, so background noise doesn't surge up every time the speaker pauses.",
     "flag": null
   },
   {
@@ -1459,7 +1459,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Image frequencies lie twice the IF away from the desired signal. A high first IF puts the image far outside the front-end passband, where it is easily rejected, and a lower second IF then provides the sharp selectivity and gain the receiver needs.",
     "flag": null
   },
   {
@@ -1478,7 +1478,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A noise blanker samples impulse noise such as ignition pulses, and each pulse triggers a blanking pulse that briefly gates off the IF amplifier. The receiver is silenced only for the length of the noise spike, too short to notice in the audio.",
     "flag": null
   },
   {
@@ -1497,7 +1497,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "SSB voice is intelligible only when the BFO reinserts the carrier at the correct frequency in the product detector. If the BFO fails or drifts, every SSB channel sounds garbled. A failed RF stage or synthesizer would leave signals weak or missing rather than distorted.",
     "flag": null
   },
   {
@@ -1516,7 +1516,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "If every other station sounds normal, the receiver's BFO, synthesizer and VCO must be working. A single high-pitched, barely readable voice means that station's transmitter is off frequency; the clarifier can often compensate.",
     "flag": null
   },
   {
@@ -1535,7 +1535,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "SITOR (NBDP) reception uses a narrow 500 Hz IF filter, while SSB voice passes through the wider 2.8 kHz filter. Since voice works, the RF amplifier, synthesizer and BFO are fine, so the fault lies in the path only NBDP uses: the 500 Hz filter.",
     "flag": null
   },
   {
@@ -1554,7 +1554,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The voltage controlled oscillator is part of the PLL itself, the stage the loop steers onto frequency. If the VCO stops oscillating, the phase comparator has nothing to lock and the whole loop appears faulty. AGC, BFO and IF filter circuits lie outside the synthesizer loop.",
     "flag": null
   },
   {
@@ -1573,7 +1573,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Voice/SSB reception passes through the 2.8 kHz IF filter, while NBDP uses a narrow 500 Hz filter. Since NBDP still works, the shared RF, BFO and audio stages are good, and a failed 2.8 kHz filter blocks only the voice path.",
     "flag": null
   },
   {
@@ -1592,7 +1592,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "AGC works by applying a control voltage to a variable-gain amplifier in the RF or IF stages. If that controlled amplifier fails, its gain can no longer be changed and AGC action stops. The BFO, VCO and audio amplifier don't set the receiver's gain.",
     "flag": null
   },
   {
@@ -1611,7 +1611,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Squelch mutes the audio until the incoming signal exceeds a set threshold. If noise keeps passing to the speaker with no strong signal present, the squelch circuit isn't doing its job. AGC controls gain, and a failed AF amplifier would silence everything.",
     "flag": null
   },
   {
@@ -1630,7 +1630,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A loudspeaker voice coil measures only a few ohms of DC resistance, so a near-zero reading across its leads is normal and shows the speaker isn't open. With the speaker checked out, the total absence of audio points to a failed audio amplifier stage.",
     "flag": null
   },
   {
@@ -1649,7 +1649,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Strong audio noise shows the receiver itself is working, yet no signals arrive on any frequency. A dummy load absorbs RF without radiating or picking anything up, so a transceiver left connected to one hears nothing but its own noise.",
     "flag": null
   },
   {
@@ -1668,7 +1668,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Strong audio noise shows the receiver and audio stages work, but an open transmission line keeps any antenna signal from reaching the receiver input, so nothing is heard on any frequency. A failed AF stage would kill the audio altogether.",
     "flag": null
   },
   {
@@ -1687,7 +1687,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A lit TX indicator means the radio is in transmit, which mutes the receiver audio. A shorted Push-To-Talk circuit in the microphone holds the set in transmit continuously, so no audio comes out. A crowbar trip would shut the radio down entirely.",
     "flag": null
   },
   {
@@ -1706,7 +1706,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The signal meter reads RF signal strength ahead of the audio stages, so its swing between mid-scale and zero shows the RF signal itself is coming and going. An intermittent connection between the antenna and coupler does exactly that; AF or squelch problems wouldn't move the meter.",
     "flag": null
   },
   {
@@ -1725,7 +1725,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A double balanced mixer combines the audio with the carrier oscillator and cancels the carrier, leaving a double-sideband suppressed-carrier signal. A sharp sideband filter then removes the unwanted sideband, producing the single-sideband suppressed-carrier J3E emission.",
     "flag": null
   },
   {
@@ -1744,7 +1744,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Operators should use only the power needed. About 150 W PEP is a typical starting level for MF/HF contacts at normal working distances, and power can be raised toward the transmitter's full rating only if the other station has trouble copying.",
     "flag": null
   },
   {
@@ -1763,7 +1763,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "After the balanced mixer produces both sidebands, a crystal or mechanical sideband filter passes the upper sideband and blocks the lower. Marine MF/HF radiotelephony uses upper sideband, so the lower sideband is the one removed.",
     "flag": null
   },
   {
@@ -1782,7 +1782,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Shipboard GMDSS sets usually generate NBDP by feeding audio FSK tones of 1615 Hz and 1785 Hz into the SSB transmitter. The tones sit at 1700 ± 85 Hz from the suppressed carrier, giving the standard 170 Hz shift, a J2B emission equivalent to F1B.",
     "flag": null
   },
   {
@@ -1801,7 +1801,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The master (reference) oscillator and VCO outputs are divided down by frequency dividers and fed to a phase comparator. Its error voltage, smoothed by the loop filter, steers the VCO until the two divided frequencies match; changing the divide ratio selects the channel.",
     "flag": null
   },
   {
@@ -1820,7 +1820,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "In a PLL synthesizer, the crystal master oscillator is divided down to a reference frequency and the VCO output is divided by a programmable ratio. The phase comparator compares these two divided signals and produces an error voltage that pulls the VCO onto frequency.",
     "flag": null
   },
   {
@@ -1839,7 +1839,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Voice and NBDP share most of the transceiver, including the PLL, RF amplifier and audio stages. Only NBDP depends on the narrow 500 Hz IF filter, so when voice works and NBDP doesn't, that filter is the likely failure.",
     "flag": null
   },
   {
@@ -1858,7 +1858,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Daytime ground-wave coverage on 2182 kHz normally extends roughly 100 to 150 nautical miles, so failing to reach a station only 60 miles away points to a fault in the radiotelephone system rather than normal propagation limits.",
     "flag": null
   },
   {
@@ -1877,7 +1877,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "In ARQ the transmitter sends a 210 ms block of three characters, then stops to listen for the acknowledgement, so the power meter swings regularly between zero and full output. In J3E, by contrast, no output should appear without speech, and voice peaks vary widely rather than holding near 60 W.",
     "flag": null
   },
   {
@@ -1896,7 +1896,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "NBDP is produced by feeding audio FSK tones of 1615 Hz and 1785 Hz into the SSB transmitter. If the oscillator generating the 1615 Hz tone fails, the transmitter can't form the NBDP signal, while voice, which doesn't use that oscillator, works normally.",
     "flag": null
   },
   {
@@ -1915,7 +1915,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "In J3E, speaking into the microphone should make the power meter rise with voice peaks; no indication at all means no RF is being produced. Not reaching a shore station 600 nautical miles away in daytime is normal, since daytime MF coverage is limited to ground wave.",
     "flag": null
   },
   {
@@ -1934,7 +1934,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "J3E suppresses the carrier, so RF output exists only when audio modulates the transmitter. Keyed but silent, a properly working SSB transmitter shows no output; with speech, the meter flickers with voice peaks up to, but not above, the 60 W PEP rating.",
     "flag": null
   },
   {
@@ -1953,7 +1953,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "ARQ sends three-character blocks lasting 210 ms, then pauses so the receiving station can reply with an acknowledgement, repeating every 450 ms. The power meter therefore swings between zero and the full 150 W during transmission rather than holding steady.",
     "flag": null
   },
   {
@@ -1972,7 +1972,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "In FEC (broadcast) mode the transmitter sends continuously, each character twice, without waiting for acknowledgements. FSK has a constant envelope, so a healthy 250 W transmitter shows a steady reading near its rated power, here 225 to 250 W.",
     "flag": null
   },
   {
@@ -1991,7 +1991,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A high SWR reflects much of the power back toward the transmitter, and its protection circuit reduces output to save the power amplifier. A dummy load is a matched 50 Ω termination and would let the transmitter deliver full output.",
     "flag": null
   },
   {
@@ -2010,7 +2010,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "An F1B signal simply shifts between two fixed frequencies 170 Hz apart, so frequency deviation, an FM voice measurement, isn't a meaningful test for locating the fault. Visual inspection, DVM checks of supply voltages, and signal tracing with a 10:1 oscilloscope probe are all valid troubleshooting steps.",
     "flag": null
   },
   {
@@ -2029,7 +2029,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A crowbar circuit protects the equipment from a voltage surge by shorting the power supply output, blowing a fuse or shutting the supply down. With no DC power reaching the transmitter, RF output drops to zero. A dummy load would still show full output on the meter.",
     "flag": null
   },
   {
@@ -2048,7 +2048,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "FEC transmits continuously with a constant-envelope FSK signal, so output should hold steady near rated power; swinging between 0 and 150 W is normal for ARQ but a fault in FEC. By contrast, 125 W forward with 5 W reflected gives Γ = √(5/125) = 0.2 and SWR = 1.2 / 0.8 = 1.5:1, which is acceptable.",
     "flag": null
   },
   {
@@ -2067,7 +2067,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A DSC distress alert begins with a 200-bit dot pattern of alternating 1s and 0s, which at the MF/HF rate of 100 baud lasts 2 seconds. That gives scanning DSC watch receivers time to stop on the channel and achieve bit synchronization before the phasing sequence arrives.",
     "flag": null
   },
   {
@@ -2086,7 +2086,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each DSC character is a 10-bit word: 7 information bits followed by 3 check bits giving the count of 0 bits in the information part, which lets the receiver verify every character. A fixed 4:3 ratio of 1s to 0s is the 7-bit SITOR code, not DSC.",
     "flag": null
   },
   {
@@ -2105,7 +2105,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "MF/HF DSC uses 170 Hz frequency-shift keying: the tones are 1700 Hz ± 85 Hz (1615 and 1785 Hz) on a 1700 Hz sub-carrier, sent through the SSB transmitter at 100 baud. The 1300/2100 Hz tones belong to VHF DSC.",
     "flag": null
   },
   {
@@ -2124,7 +2124,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "MF/HF DSC repeats each character with four other characters between the first sending and the repeat. At 100 baud with 10-bit characters: 4 × 10 bits ÷ 100 bits/s = 400 ms, long enough that a brief fade or static crash is unlikely to wipe out both copies.",
     "flag": null
   },
   {
@@ -2143,7 +2143,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "An MF/HF distress alert automatically carries the ship's MMSI and can include position, nature of distress and the type of follow-on communications, either J3E voice or F1B NBDP telex. DSC identifies ships by MMSI, not by call sign or vessel name.",
     "flag": null
   },
   {
@@ -2162,7 +2162,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "MMSI 003669999 is the group identity for U.S. Coast Guard coast stations, and the Coast Guard accepts MF/HF DSC test calls sent to it; its stations may return an automated acknowledgement. The claim that these calls may not be used to test shipboard MF/HF DSC equipment is therefore false.",
     "flag": null
   },
   {
@@ -2181,7 +2181,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "ARQ is a two-way, error-checked mode: the information sending station transmits blocks of three characters, and the information receiving station checks each block and either acknowledges it or requests a repeat. Sending every character twice is FEC, and NAVTEX is broadcast-only, so it can't be contacted.",
     "flag": null
   },
   {
@@ -2200,7 +2200,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The ISS sends a three-character block, and the IRS checks that each character has the code's fixed 4:3 bit ratio (the parity check). A correct block brings a control signal telling the ISS to send the next block; a failed check makes the IRS request the same block again.",
     "flag": null
   },
   {
@@ -2219,7 +2219,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In ARQ the ship sends one three-character group, and the shore station checks its parity. If the group checks good, the shore station signals readiness for the next group; only a failed check brings a request to repeat. Sending each character twice belongs to FEC, not ARQ.",
     "flag": null
   },
   {
@@ -2238,7 +2238,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Automated coast stations treat the plus sign as the end-of-command marker, much like pressing Enter, so commands such as HELP+, MSG+ or DIRTLX…+ all finish with +. The station acts on the command once the + arrives.",
     "flag": null
   },
   {
@@ -2257,7 +2257,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "DIRTLX requests a direct telex connection, followed by the shore subscriber's telex number and the + that ends the command. MSG+ retrieves waiting messages, AMV+ sends an AMVER report, and OPR+ calls the coast station operator.",
     "flag": null
   },
   {
@@ -2276,7 +2276,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "KKKK tells the coast station to clear the land-line telex connection to the shore subscriber, ending the direct telex link while the radio circuit can stay up for further commands.",
     "flag": null
   },
   {
@@ -2295,7 +2295,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "NAVTEX MSI is broadcast on 518 kHz in SITOR (NBDP) FEC mode, a one-way transmission any receiver can copy without replying. Tuning the MF/HF NBDP receiver to 518 kHz in FEC stands in for the failed NAVTEX receiver; ARQ needs a two-way link and can't copy a broadcast.",
     "flag": null
   },
   {
@@ -2314,7 +2314,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "ARQ is two-way, error-correcting traffic between two linked stations. FEC (collective) broadcasts one way to all stations, and selective FEC (SFEC) sends one way to a single addressed station, which receives without transmitting.",
     "flag": null
   },
   {
@@ -2333,7 +2333,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Selective FEC addresses one particular station, which copies the message without transmitting any acknowledgements. That suits a ship that must keep radio silence or can't transmit, unlike ARQ, which requires the receiving station to reply.",
     "flag": null
   },
   {
@@ -2352,7 +2352,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In FEC each character is transmitted twice, separated in time, and the receiver compares both copies. If a static crash corrupts one, the other is used, sharply reducing the error rate without any reply from the receiving station.",
     "flag": null
   },
   {
@@ -2371,7 +2371,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Beyond NAVTEX range, MSI is still broadcast in NBDP on the HF MSI frequencies. Since MSI is one-way, the MF/HF receiver must be set to FEC (broadcast) mode; ARQ needs a two-way link, and 518 kHz NAVTEX is out of range.",
     "flag": null
   },
   {
@@ -2390,7 +2390,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Tropical thunderstorm static heavily affects MF reception, including NAVTEX on 518 kHz. NBDP broadcasts on one of the eight HF MSI frequencies, from 4210 kHz to 26100.5 kHz, offer an alternative, received in FEC mode because MSI is one-way.",
     "flag": null
   },
   {
@@ -2409,7 +2409,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "An antenna tuner (coupler) cancels the antenna's reactance and transforms its impedance to match the transmitter's 50 Ω output at the operating frequency. That minimizes SWR and lets full power reach the antenna instead of being reflected.",
     "flag": null
   },
   {
@@ -2428,7 +2428,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A short antenna looks capacitive. Adding inductance in series cancels that capacitive reactance, making the antenna behave as if it were longer and lowering its resonant frequency, which is how loading coils let short whips work on MF.",
     "flag": null
   },
   {
@@ -2447,7 +2447,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "An antenna longer than resonance looks inductive. A series capacitor cancels that inductive reactance, making the antenna act electrically shorter and raising its resonant frequency.",
     "flag": null
   },
   {
@@ -2466,7 +2466,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "MF/HF transceivers and antenna couplers are designed for 50 Ω, and RG-8 is a sturdy 50 Ω cable that handles a GMDSS transmitter's power with low loss. The other cables are 72 to 75 Ω types that would mismatch the system.",
     "flag": null
   },
   {
@@ -2485,7 +2485,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "An automatic antenna coupler can match a wire of roughly the same length as the lost whip, so a wire about 35 to 40 ft long, rigged as the manual describes, restores MF/HF operation. A 10 ft wire is too short to tune on MF, and the VHF antenna isn't usable at these frequencies.",
     "flag": null
   },
   {
@@ -2504,7 +2504,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The PL-259 (UHF-series) plug is a rugged threaded coaxial connector widely used on MF/HF transceiver, coupler and antenna feed lines. F connectors are for 75 Ω TV cable, SMA is a small microwave connector, and EIA-232 is a serial data interface.",
     "flag": null
   },
   {
@@ -2523,7 +2523,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Inmarsat-C ship terminals receive the satellite downlink in the 1530.0–1545.0 MHz L-band segment and transmit on 1626.5–1645.5 MHz. The ship's transmit band is always the higher of the pair; the other choices list reversed or overly wide ranges.",
     "flag": null
   },
   {
@@ -2542,7 +2542,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "LNA stands for low noise amplifier, the first amplifying stage right after the antenna. Because it boosts the weak satellite signal while adding very little noise of its own, it largely sets the receiver's overall noise figure.",
     "flag": null
   },
   {
@@ -2561,7 +2561,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Satellite signals arrive extremely weak, so the LNA, mounted at or near the antenna, amplifies them before cable losses and later stages add noise. A good LNA lowers the system noise figure rather than raising it.",
     "flag": null
   },
   {
@@ -2580,7 +2580,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Fade margin is extra signal level designed into a link, above the minimum needed for acceptable reception, so the link keeps working when rain, multipath or other fading temporarily weakens the received signal.",
     "flag": null
   },
   {
@@ -2599,7 +2599,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Signal-to-noise ratio compares the strength of the wanted signal with the level of background noise, usually in decibels. The higher the ratio, the more easily the receiver recovers the information; distance and frequency aren't what it compares.",
     "flag": null
   },
   {
@@ -2618,7 +2618,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Signal-to-noise ratio is abbreviated SNR, also written S/N. It's usually given in decibels; for example, an SNR of 10 dB means the signal power is ten times the noise power.",
     "flag": null
   },
   {
@@ -2637,7 +2637,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Bonding the terminal's chassis to electrical ground gives fault current a low-resistance path, so a short to the case blows a fuse or trips a breaker instead of leaving the metal live for someone to touch. Isolating or floating the frame does the opposite.",
     "flag": null
   },
   {
@@ -2656,7 +2656,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A loopback test sends a message from your own terminal addressed back to itself. It travels up through the satellite to the LES and back down, so its arrival proves the whole transmit and receive path works. Pinging 127.0.0.1 tests only a computer's own network software.",
     "flag": null
   },
   {
@@ -2675,7 +2675,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Enhanced Group Call broadcasts carry SafetyNET maritime safety information (navigational and weather warnings, distress relays), FleetNET commercial messages to selected groups of ships, and system messages from the network. EGC has nothing to do with grounding codes or MMSI data.",
     "flag": null
   },
   {
@@ -2694,7 +2694,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The antenna should be grounded to the mast, not insulated from it, so static and lightning energy have a path to the hull. Grounding the chassis, forming a drip loop, and sealing and taping the connectors are all recommended installation practice.",
     "flag": null
   },
   {
@@ -2713,7 +2713,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each Inmarsat ocean region has just one Network Coordination Station per system. It manages the region's channels, transmits the NCS common channel that idle terminals monitor, and broadcasts EGC messages, while several LESs handle the actual traffic.",
     "flag": null
   },
   {
@@ -2732,7 +2732,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Inmarsat-C is a low-rate, store-and-forward data system with no voice capability, so it can't carry telephone calls, VoIP or otherwise. It does handle two-way text messaging, EGC broadcasts to groups of ships, and position reporting and polling.",
     "flag": null
   },
   {
@@ -2751,7 +2751,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "LRIT requires each ship to send a position report every 6 hours, so the U.S. National Data Center expects at least four reports per day from every U.S.-flag ship. It can poll for more frequent reports when needed; crew numbers aren't part of the report.",
     "flag": null
   },
   {
@@ -2770,7 +2770,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "LRIT, required under SOLAS Chapter V, reports a ship's identity, position and time through a data center to its own flag administration for security and safety purposes. It is a separate system from AIS and AMVER, and its data isn't broadcast publicly.",
     "flag": null
   },
   {
@@ -2789,7 +2789,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Most ships meet the LRIT requirement with their GMDSS Inmarsat-C or Mini-C terminal, which sends automatic position reports and answers polls over the Inmarsat-C network. LRIT doesn't use AIS's VHF channels and isn't a backup for AIS.",
     "flag": null
   },
   {
@@ -2808,7 +2808,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "On most compulsory ships the LRIT reports come from the GMDSS console's Inmarsat-C terminal, so if reports stop, first confirm that terminal is powered, logged in and operating normally. AIS plays no part in LRIT reporting.",
     "flag": null
   },
   {
@@ -2827,7 +2827,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "An LRIT terminal must be configurable to send automatic position reports (APRs) on its own, at a default interval of every 6 hours, or four per day, and must answer a poll by sending a position report on request. The interval can also be shortened remotely.",
     "flag": null
   },
   {
@@ -2846,7 +2846,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "GPS satellites only broadcast navigation signals; a ship can receive them but can't transmit anything back through them. GPS supplies the position that goes into an LRIT report, but the report itself must travel over a two-way system such as Inmarsat-C, Inmarsat-D+ or Iridium.",
     "flag": null
   },
   {
@@ -2865,7 +2865,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In a Fleet Broadband installation the below-deck terminal unit stores the configuration and carries the user interface ports and LED indicators. The radome above deck holds only the antenna, RF and antenna-control electronics.",
     "flag": null
   },
   {
@@ -2884,7 +2884,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Polling and data reporting are Inmarsat-C functions, not something a Fleet Broadband handset does. The IP handset makes VoIP calls and, through its menus, can show terminal status and change terminal settings.",
     "flag": null
   },
   {
@@ -2903,7 +2903,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "BGAN Streaming IP gives a dedicated, guaranteed-bandwidth connection that isn't shared with other users, so it suits time-critical uses such as live video. Ordinary shared traffic like e-mail, file transfer and web browsing goes over the Standard IP service.",
     "flag": null
   },
   {
@@ -2922,7 +2922,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Pressing the distress button sends a real alert that goes straight to a rescue coordination center. Instead, use special access code 33 (technical assistance) to contact the LES and arrange the distress test in advance, so the test alert is expected and handled correctly.",
     "flag": null
   },
   {
@@ -2941,7 +2941,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Analog fax machines and modems need the 3.1 kHz audio service on the RJ11 phone ports, which passes the full audio band unprocessed. Standard voice runs through a low-rate speech codec that would garble fax tones, and the LAN ports carry IP data, not audio.",
     "flag": null
   },
   {
@@ -2960,7 +2960,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Power over Ethernet flows the other way: the Fleet Broadband terminal's LAN port powers the IP handset. The handset uses TCP/IP to talk to the terminal, places calls the terminal carries as circuit-switched voice, and displays configuration menus.",
     "flag": null
   },
   {
@@ -2979,7 +2979,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The LAN interface is an Ethernet port, and computers talk to the terminal over it using TCP/IP. SMTP and FTP are application protocols that ride on top of TCP/IP, and ISDN is a separate interface with its own port.",
     "flag": null
   },
   {
@@ -2998,7 +2998,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Like a cell phone, a Fleet Broadband terminal uses a SIM card protected by a PIN. After too many wrong PIN entries the SIM locks, and the PUK (PIN Unlock Key) from the airtime provider is needed to unlock it and set a new PIN.",
     "flag": null
   },
   {
@@ -3017,7 +3017,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "ISDN handsets plug into the terminal's dedicated ISDN port, not the LAN port. The LAN (Ethernet) port carries IP traffic: the web interface for configuration and troubleshooting, Internet access for computers, and VoIP handsets.",
     "flag": null
   },
   {
@@ -3036,7 +3036,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Group 3 analog fax needs the 3.1 kHz audio channel, which carries fax tones transparently. The standard voice channel uses a compressed speech codec that distorts fax signals, and there is no Group 5 or 5.1 kHz channel.",
     "flag": null
   },
   {
@@ -3055,7 +3055,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Ordinary telephones plug into the RJ11 analog ports, which are set to standard voice for normal calls. Standard voice uses a compressed speech codec and costs less than 3.1 kHz audio, which is meant for fax and modem use.",
     "flag": null
   },
   {
@@ -3074,7 +3074,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The SIM is a small smart card, an integrated circuit that securely holds the subscriber's Inmarsat identity and the secret authentication key the network uses to verify the terminal before allowing calls or data.",
     "flag": null
   },
   {
@@ -3093,7 +3093,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "GPS was designed around a 24-satellite baseline: six orbital planes inclined 55°, four satellites in each, at about 20,200 km altitude, so at least four are in view anywhere on Earth. Spare satellites now bring the working total above 30.",
     "flag": null
   },
   {
@@ -3112,7 +3112,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A DGPS reference station sits at a precisely surveyed point, compares the satellite ranges it measures with those calculated from its known position, and broadcasts the resulting corrections by radio; marine systems use MF radiobeacons in the 285–325 kHz band. Nearby receivers apply them to remove most common errors.",
     "flag": null
   },
   {
@@ -3131,7 +3131,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Bridge navigation equipment shares data using the NMEA standards: NMEA 0183 serial talker/listener links or the NMEA 2000 network. The GPS sends position, speed and time data this way to radars, DSC radios, ECDIS and autopilots.",
     "flag": null
   },
   {
@@ -3150,7 +3150,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Ionospheric delay depends on frequency, so comparing the arrival times of the same signal on L2 (1227.60 MHz) and L1 (1575.42 MHz) lets a dual-frequency receiver calculate and remove it. The other statements give wrong carrier frequencies.",
     "flag": null
   },
   {
@@ -3169,7 +3169,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "GPS satellites transmit two separate carriers. L1 at 1575.42 MHz carries the navigation message and the SPS (C/A) code civilian receivers use, while L2 at 1227.60 MHz lets dual-frequency receivers measure ionospheric delay. They aren't mixed together, and 1650.5 MHz isn't a GPS frequency.",
     "flag": null
   },
   {
@@ -3188,7 +3188,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A receiver must solve for four unknowns, latitude, longitude, altitude and its own clock error, so it needs ranges from at least four satellites for a full three-dimensional fix. With only three it can give just a two-dimensional fix by assuming altitude.",
     "flag": null
   },
   {
@@ -3207,7 +3207,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "By definition, a radio wave's polarization is the orientation of its electric field. Satellite links use linear or circular polarization, and the antenna must match the signal's polarization to receive it efficiently.",
     "flag": null
   },
   {
@@ -3226,7 +3226,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A parabolic reflector focuses incoming energy onto a single point, so the feedhorn must sit at that focal point to collect it, or to illuminate the dish when transmitting. Dishes give high gain and narrow beams at microwave frequencies, not HF.",
     "flag": null
   },
   {
@@ -3245,7 +3245,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A phased array feeds several antenna elements and varies the phase (and often amplitude) of the RF to each, so their combined radiation forms and steers a beam electronically without physically moving the antenna.",
     "flag": null
   },
   {
@@ -3264,7 +3264,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "An Inmarsat-C antenna is a small fixed unit with no tracking, so it needs an omnidirectional pattern to see the satellite on any heading. Inmarsat L-band signals are right-hand circularly polarized, which also keeps reception steady as the ship rolls.",
     "flag": null
   },
   {
@@ -3283,7 +3283,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Mount Inmarsat antennas as high as practical with a clear view of the sky, so masts, funnels and other structures don't block the satellite at low elevation or as the ship turns. Keep them clear of other antennas and radar beams to avoid interference.",
     "flag": null
   },
   {
@@ -3302,7 +3302,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A Fleet Broadband radome houses a stabilized tracking antenna, the RF unit that transmits and receives, the antenna control unit that keeps the antenna pointed at the satellite, and a GPS antenna that supplies the position the system needs.",
     "flag": null
   },
   {
@@ -3321,7 +3321,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The Inmarsat-C data port is wired as DCE, so it expects a straight-through EIA-232 cable to the DTE. A null-modem cable crosses the transmit and receive (and handshake) lines, so neither end hears the other. Stop bits and parity are ordinary settings that just need to match.",
     "flag": null
   },
   {
@@ -3340,7 +3340,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Inmarsat-C distress alerts include a test flag. When a test alert is sent, for example during a performance verification test, the flag is set so the LES and RCC recognize it immediately as a test and don't start a rescue response.",
     "flag": null
   },
   {
@@ -3359,7 +3359,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "ACB means access barred: the system refused the message because access to the Inmarsat network has been blocked for that terminal or service. It's an administrative barring, not an answer-back, bit-error or channel failure.",
     "flag": null
   },
   {
@@ -3378,7 +3378,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Communication problems between the RX2 receiver and the Antenna Control Unit show up as explicit “RX2 Comm error” or “ACU Comm error” messages on the terminal. Locking onto the NCSC channel or receiving a valid frame are signs of normal operation, not a fault.",
     "flag": null
   },
   {
@@ -3397,7 +3397,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A nearby HF transmitter (3–30 MHz) can induce strong RF into the antenna cables and electronics, and a radar beam sweeping a close-by antenna can overload or damage its sensitive receiver. EPIRBs, SARTs and survival-craft radios are low power and seldom transmit.",
     "flag": null
   },
   {
@@ -3416,7 +3416,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "On Fleet 77/55 terminals, MPDS error codes 00F0h or 00F1h report that the terminal isn't registered with the Mobile Packet Data Service network, so the packet data connection can't be set up until registration succeeds.",
     "flag": null
   },
   {
@@ -3435,7 +3435,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The terminal powers the antenna's electronics with DC sent up the coax center conductor. A “No Receive Signal” alarm with no voltage on that pin points to an open antenna supply, most simply a blown antenna power fuse. A bad LNA would still leave the supply voltage present.",
     "flag": null
   },
   {
@@ -3454,7 +3454,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Because the terminal logs in once a new ADE is connected, the below-deck terminal is proven good and the original ADE is at fault, so the fix is to install the replacement ADE. Inmarsat-C antennas are fixed omnidirectional units with no AZ or EL motors.",
     "flag": null
   },
   {
@@ -3473,7 +3473,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "An “Antenna not connected” alarm suggests an open in the coax. Shorting the center conductor to the shield at one end and measuring from the other checks the whole loop; more than about one ohm means a damaged conductor or connector, so the cable should be replaced.",
     "flag": null
   },
   {
@@ -3492,7 +3492,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The motors move the antenna through the satellite's position, and manual pointing gets a good signal, so the drive, RF and receiver paths all work. What fails is the logic that should recognize the signal and lock on, which points to the antenna control module.",
     "flag": null
   },
   {
@@ -3511,7 +3511,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Up-and-down creep is an elevation problem. With power off, turn the EL step motor by hand; if it is stiff or binding, it can't hold position smoothly and should be replaced. Azimuth faults would show as side-to-side motion instead.",
     "flag": null
   },
   {
@@ -3530,7 +3530,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The level (tilt) platform sensor gives the antenna controller its horizontal reference. If it fails, the controller can't establish elevation during initialization, so the antenna drives to its straight-up limit and stops even though the motors work.",
     "flag": null
   },
   {
@@ -3549,7 +3549,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Fleet Broadband terminals record antenna, heading-input and tracking faults in an event log reached through the built-in web interface. Checking that log first shows why the antenna keeps hunting in azimuth before any parts are replaced.",
     "flag": null
   },
   {
@@ -3568,7 +3568,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "If AC is present at the power supply's input but the terminal won't power up, the fault lies inside the power supply itself, such as a failed fuse, rectifier or regulator. A bad coax, IF stage or monitor wouldn't stop the unit from powering on.",
     "flag": null
   },
   {
@@ -3587,7 +3587,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The ISDN port uses the same style RJ-45 connector as the LAN ports, but it carries ISDN signals, not Ethernet. A laptop plugged into it gets no IP link at all; it must go into a LAN port.",
     "flag": null
   },
   {
@@ -3606,7 +3606,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The terminal's configuration pages are reached by typing its IP address into a web browser. Enter the wrong address and the browser can't find the built-in web server, so no connection is made even though the cable and terminal are fine.",
     "flag": null
   },
   {
@@ -3625,7 +3625,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "HF energy is induced on the outside of the coax shield as common-mode current. Ferrite clamps add impedance to that current and choke it off without affecting the L-band signal inside the cable. Lengthening the ground lead would only make pickup worse.",
     "flag": null
   },
   {
@@ -3644,7 +3644,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Fleet Broadband Standard IP is a shared, contended channel: throughput in the spot beam is divided among everyone using it at the time. When the channel is busy with many active users, each terminal sees a lower bit rate.",
     "flag": null
   },
   {
@@ -3663,7 +3663,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "COSPAS-SARSAT satellites are one-way relays: they pass the beacon's ID and time-tagged signal data to Local User Terminals, where Doppler shift is used to locate the beacon. They carry no follow-on SAR communications; rescuers use other radio and satellite links for that.",
     "flag": null
   },
   {
@@ -3682,7 +3682,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The bracket's magnet holds the EPIRB's magnetic (reed) switch in the safe state while the beacon is stowed, so spray or rain on the bracket can't trigger an alert. Once the beacon floats free or is lifted out, the magnet's influence is gone and it can activate.",
     "flag": null
   },
   {
@@ -3701,7 +3701,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "EPIRB batteries are replaced by the expiration date marked on the unit, typically every 5 years, or right after the beacon has been used, since any operation drains capacity needed for a full 48 hours of transmission.",
     "flag": null
   },
   {
@@ -3720,7 +3720,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A 406 MHz EPIRB has a 406 MHz satellite alert transmitter, a 121.5 MHz homing transmitter, a strobe light and a float-free release bracket. It has no aural (audible) locator signal; searchers find it by radio homing and its flashing light.",
     "flag": null
   },
   {
@@ -3739,7 +3739,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The hydrostatic release unit that frees the EPIRB a few meters underwater is a dated, disposable part, normally replaced every 2 years so the mechanism is sure to work if the ship sinks.",
     "flag": null
   },
   {
@@ -3758,7 +3758,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A 406 MHz EPIRB transmits its satellite alert at 5 W, sits in a bracket with an automatic hydrostatic release so it floats free, and has a strobe light for visual location. Its 121.5 MHz signal is a low-power homing beacon, not a 5 W or alerting transmitter.",
     "flag": null
   },
   {
@@ -3777,7 +3777,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each time a SART is interrogated it sweeps the X band 12 times, and each sweep paints a blip on the searching radar. The result is a line of 12 equally spaced dots extending outward from the SART's position along its bearing; close in they become arcs and then circles.",
     "flag": null
   },
   {
@@ -3796,7 +3796,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "SARTs respond only to 3-cm X-band radars, around 9.2–9.5 GHz. They don't answer 3 GHz S-band radars, and 406 MHz is the satellite EPIRB frequency.",
     "flag": null
   },
   {
@@ -3815,7 +3815,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Once switched on, a SART sits in standby and transmits only when an X-band radar pulse interrogates it, so its reply appears on that radar's screen. It doesn't radiate on its own or need an operator to key it.",
     "flag": null
   },
   {
@@ -3834,7 +3834,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "SART batteries are replaced by the expiration date marked on the unit, typically every 5 years, or after any use, because the battery must still provide 96 hours of standby followed by 8 hours of transmission.",
     "flag": null
   },
   {
@@ -3853,7 +3853,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "When interrogated, the SART first makes a fast 0.4 µs sweep across the whole 9.2–9.5 GHz band, then a slow 7.5 µs sweep back, repeating for 12 sweeps. Each slow sweep passes through the searching radar's frequency once, producing one of the 12 dots.",
     "flag": null
   },
   {
@@ -3872,7 +3872,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Dot spacing equals one SART sweep cycle, 7.5 µs slow plus 0.4 µs fast, converted with the radar mile: d = 7.9 µs ÷ 12.34 µs/nm ≈ 0.64 nm. The spacing is the same at any range, including 5 miles.",
     "flag": null
   },
   {
@@ -3891,7 +3891,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Survival craft VHF batteries are replaced by their marked expiration date, typically every 5 years, or after being used in an emergency, since the battery must still deliver 8 hours of operation when needed.",
     "flag": null
   },
   {
@@ -3910,7 +3910,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "IMO performance standards require a survival craft VHF receiver sensitivity of 2 µV EMF or better for 12 dB SINAD. That modest figure is enough for the short ranges these handheld radios work over.",
     "flag": null
   },
   {
@@ -3929,7 +3929,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "IMO standards set the minimum effective radiated power of a survival craft two-way VHF at 0.25 W. That low power is adequate for short-range on-scene communication and conserves the battery.",
     "flag": null
   },
   {
@@ -3948,7 +3948,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Survival craft two-way VHF must operate on Channel 16 (156.8 MHz), the voice distress and calling channel, plus at least one other channel. Channel 70 is reserved for DSC, 121.5 MHz is aeronautical, and 457.525 MHz is an on-board UHF frequency.",
     "flag": null
   },
   {
@@ -3967,7 +3967,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Survival craft VHFs must operate on Channel 16 plus at least one other voice channel; Channel 70 is used only for DSC, not simplex voice. Watertightness to 1 m for 5 minutes, at least 0.25 W ERP and a fixed antenna are all genuine requirements.",
     "flag": null
   },
   {
@@ -3986,7 +3986,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Survival craft VHFs must operate on Channel 16, be watertight, and have a permanently attached antenna. The power requirement is only a 0.25 W minimum ERP, and Channel 70 is reserved for DSC rather than voice.",
     "flag": null
   },
   {
@@ -4005,7 +4005,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "518 kHz is the internationally coordinated NAVTEX frequency, carrying English-language broadcasts worldwide. 490 kHz serves national or local-language NAVTEX, 4209.5 kHz is the HF NAVTEX frequency, and 2187.5 kHz is an MF DSC distress channel.",
     "flag": null
   },
   {
@@ -4024,7 +4024,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "If the receiver powers up and the station settings are right but nothing arrives, the signal isn't reaching it. Active NAVTEX antennas have an RF preamplifier at the base, powered through the coax, and its failure leaves the receiver hearing nothing.",
     "flag": null
   },
   {
@@ -4043,7 +4043,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each NAVTEX message carries a single-letter subject indicator showing its category, and the receiver can be set to deselect unwanted categories. Navigational warnings, meteorological warnings and search-and-rescue information can't be turned off.",
     "flag": null
   },
   {
@@ -4062,7 +4062,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "NAVTEX receivers can be programmed to ignore particular transmitting stations, each identified by a single letter, and particular message categories, so only relevant broadcasts are printed. Navigational and weather warnings and SAR information can't be rejected.",
     "flag": null
   },
   {
@@ -4081,7 +4081,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "NAVTEX uses collective forward error correction (SITOR-B): every character is transmitted twice, the repeat following about 280 ms later. The receiver checks both copies and uses whichever arrives correctly, so a short burst of noise rarely corrupts the text.",
     "flag": null
   },
   {
@@ -4100,7 +4100,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Every NAVTEX message carries a single-letter subject indicator identifying its category, such as navigational warnings, weather warnings or SAR information, so receivers can sort or reject messages. Broadcasts go out in each station's scheduled time slots, not on request.",
     "flag": null
   },
   {
@@ -4119,7 +4119,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Nickel-cadmium cells have a nominal voltage of about 1.2 V each, so a NiCd pack needs more cells than a lead-acid battery to reach the same voltage. The 1.5 V figure belongs to alkaline and carbon-zinc dry cells.",
     "flag": null
   },
   {
@@ -4138,7 +4138,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Warm electrolyte expands and becomes less dense, so a hydrometer shows a lower specific gravity at higher temperature even though the state of charge hasn't changed. Readings are corrected to a reference temperature, typically 80 °F, by adding about 0.004 for every 10 °F above it.",
     "flag": null
   },
   {
@@ -4157,7 +4157,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "During a deep discharge the weakest cell runs out of capacity first, but the other cells in the series string keep pushing load current through it. That current now charges the exhausted cell backward, driving it into reverse polarity.",
     "flag": null
   },
   {
@@ -4176,7 +4176,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Electrolyte in a fully charged lead-acid cell has a specific gravity of about 1.280, dropping to around 1.12 when the cell is discharged. Specific gravity is read with a hydrometer, which floats in a sample drawn from the cell; a voltmeter measures voltage, not electrolyte density.",
     "flag": null
   },
   {
@@ -4195,7 +4195,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Gel cells are sealed lead-acid batteries with the electrolyte immobilized as a gel, so water can't be added, gas can't be vented and individual cells can't be reached. The charger must be set to the maker's specific rates and voltages, generally lower than for flooded cells, to prevent gassing and drying out.",
     "flag": null
   },
   {
@@ -4214,7 +4214,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Lead-acid chemistry produces about 2.1 V per fully charged cell, so a 12 V battery has six cells (6 × 2.1 = 12.6 V) and a 24 V GMDSS bank has twelve. The 1.5 V value belongs to dry cells.",
     "flag": null
   },
   {
@@ -4233,7 +4233,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Flooded lead-acid batteries benefit from a periodic boost (equalizing) charge, about once a week, carried just into the gassing range. The gassing stirs the electrolyte and brings every cell to an equal full charge, preventing stratification and sulfation, after which the charger drops back to float.",
     "flag": null
   },
   {
@@ -4252,7 +4252,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "GMDSS chargers/supplies operate in three modes: charging the reserve battery, automatic change-over that switches the radio load to the battery when ship's power fails, and parallel operation in which charger and battery feed the load together. Float and trickle describe charge rates rather than these supply operating modes.",
     "flag": null
   },
   {
@@ -4271,7 +4271,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Thirty volts is 2.5 V per cell on a 12-cell, 24 V lead-acid bank (30 ÷ 12 = 2.5 V), well above the normal float level of about 27 V. Reading that level constantly means the charger is stuck in high charge, overcharging the battery; a brief high reading or tapering charge current after a battery test is normal.",
     "flag": null
   },
   {
@@ -4290,7 +4290,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "SOLAS requires a reserve source of energy, normally batteries, to power the radio installation for distress and safety communications if both the ship's main and emergency electrical sources fail. It is separate from the emergency generator, which is itself the emergency source.",
     "flag": null
   },
   {
@@ -4309,7 +4309,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Once the battery reaches its gassing voltage, further high-rate charging mostly breaks water down into hydrogen and oxygen. An automatic GMDSS charger ends the high charge at that point and switches to float, limiting explosive gas and electrolyte loss.",
     "flag": null
   },
   {
@@ -4328,7 +4328,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Maintenance-free gel batteries are sealed, so gas produced by a high charge can't escape and lost water can't be replaced; overcharging dries out and damages the gel. The charger's high (full) charge mode is therefore disabled and the battery is held at the maker's recommended float voltage.",
     "flag": null
   },
   {
@@ -4347,7 +4347,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Full-wave rectification uses both halves of each AC cycle, giving two output pulses per input cycle, so ripple frequency = 2 × 60 Hz = 120 Hz. Bridge rectifiers do this without a center-tapped secondary, and every full-wave design needs more than one diode.",
     "flag": null
   },
   {
@@ -4366,7 +4366,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Choke-input filters draw rectifier current over most of each cycle, giving low peak currents, good regulation and high transformer utilization. The trade-off is lower output, about 0.9 times the RMS input, whereas a capacitor-input filter charges to nearly the peak but with poor regulation and high peak currents.",
     "flag": null
   },
   {
@@ -4385,7 +4385,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Off-line switchers rectify and filter the line voltage directly, then chop it at high frequency. High-frequency operation makes the transformer and filter parts much smaller and lighter, and switching transistors that are fully on or off waste little power, so efficiency is far better than a linear supply's.",
     "flag": null
   },
   {
@@ -4404,7 +4404,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Switching supplies need many more parts than linear supplies (controller, switching transistors, high-frequency magnetics, feedback circuitry), which raises cost and the chance of a failure. Their fast switching edges also generate radiated and conducted RF interference that must be filtered and shielded.",
     "flag": null
   },
   {
@@ -4423,7 +4423,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "With a choke first in the filter, current flows through the rectifiers for most of each cycle instead of in short spikes. That gives good voltage regulation and a high transformer utilization factor, at the cost of a lower output voltage than a capacitor input.",
     "flag": null
   },
   {
@@ -4442,7 +4442,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Capacitor-input filters charge toward the peak voltage but are topped up only in brief bursts near each peak, so the rectifiers carry high peak currents. As load increases, the capacitor discharges further between peaks and the output falls, which means poor voltage regulation.",
     "flag": null
   },
   {
@@ -4461,7 +4461,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Crowbar circuits sense an overvoltage on the supply output and fire an SCR that shorts the output, like dropping a crowbar across the terminals. The short blows the fuse or trips the current limit, protecting the load from damaging voltage.",
     "flag": null
   },
   {
@@ -4480,7 +4480,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Freedom from RFI is not a switcher advantage: rapid on-off switching produces harmonics that cause radio-frequency interference unless the supply is filtered and shielded. Wide input range, DC operation and light weight are genuine advantages.",
     "flag": null
   },
   {
@@ -4499,7 +4499,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Line voltage is first rectified and filtered, then chopped at high frequency by the inverter and passed through the output transformer. The output rectifier and filter produce the DC, and a feedback loop from the output to the chopper controller adjusts the inverter's duty cycle to hold the voltage regulated.",
     "flag": null
   },
   {
@@ -4518,7 +4518,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Switching supplies run at tens or hundreds of kilohertz, where laminated steel would suffer heavy eddy-current and hysteresis losses. Ferrite has high resistivity and low loss at these frequencies, so it is used for the transformer and inductor cores.",
     "flag": null
   },
   {
@@ -4537,7 +4537,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Buck converters step voltage down in proportion to duty cycle: V<sub>out</sub> = duty cycle × V<sub>in</sub> = 0.5 × 10 V = 5 V. Their output can never exceed the input voltage.",
     "flag": null
   },
   {
@@ -4556,7 +4556,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Without power-factor correction, a switcher's input rectifier charges its filter capacitor only near the peaks of the AC wave, drawing short, sharp current pulses. Those pulses are rich in harmonics, and the distorted current gives a low power factor, often only 0.5 to 0.7.",
     "flag": null
   },
   {
@@ -4575,7 +4575,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The graphics card drives the monitor and plays no part in sending a job to the printer. Frozen print queues, empty toner or ink, and paper jams are all common reasons a document won't print.",
     "flag": null
   },
   {
@@ -4594,7 +4594,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "No picture points to the video path: a failed video card, a bad 15-pin VGA connector or cable, or no power reaching the monitor. CD-ROM drives and hard-drive fragmentation have nothing to do with whether the screen shows an image.",
     "flag": null
   },
   {
@@ -4613,7 +4613,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "BIOS firmware runs the power-on self-test (P.O.S.T.), holds the bootstrap loader that finds and starts the operating system, supplies basic BIOS drivers for low-level hardware access, and provides the setup utility for changing configuration. Printer drivers are loaded by the operating system, not the BIOS.",
     "flag": null
   },
   {
@@ -4632,7 +4632,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "When the computer powers up but the operating system won't load, check BIOS setup first: the boot device order, drive detection and related settings decide whether the bootstrap loader can find the system disk. It's a quick, non-invasive check before pulling hardware.",
     "flag": null
   },
   {
@@ -4651,7 +4651,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Windows XP's System Information utility is found under Start, Programs, Accessories (System Tools). It lists the computer's hardware, including the type of each disk drive under Components, Storage, Drives.",
     "flag": null
   },
   {
@@ -4670,7 +4670,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Replacement optical drives must match the computer's drive interface, such as IDE/ATAPI, SATA or SCSI, or they can't connect to the controller and be recognized. Speed and transfer rate need not match the old drive; a faster one works fine.",
     "flag": null
   },
   {
@@ -4689,7 +4689,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Twisted-pair Ethernet uses a star layout: every node gets its own cable run straight back to the central hub, the “home run,” and the hub links all the nodes together. Switches play the same central role in modern networks.",
     "flag": null
   },
   {
@@ -4708,7 +4708,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "USB 2.0 limits each cable segment, hub to hub or hub to device, to 5 meters because of its signal timing budget. Longer distances are covered by adding hubs, with each new segment again limited to 5 meters.",
     "flag": null
   },
   {
@@ -4727,7 +4727,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "10Base-T and 100Base-TX are twisted-pair Ethernet standards run over standard CAT-5 UTP cable, which contains four twisted pairs terminated in RJ-45 connectors. Coax belongs to older 10Base2 and 10Base5 networks, and fiber to types such as 100Base-FX.",
     "flag": null
   },
   {
@@ -4746,7 +4746,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Routers are configured through a built-in web page: open a browser, type the router's LAN address (often 192.168.1.1), and log in with the admin username and password. No internet connection or downloaded software is needed for this initial setup.",
     "flag": null
   },
   {
@@ -4765,7 +4765,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Routers usually ship with a default address in the private 192.168.x.x block reserved for local networks, most often 192.168.1.1 or 192.168.0.1. The other address sets fall outside that private range and belong to public internet space.",
     "flag": null
   },
   {
@@ -4784,7 +4784,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "On shared Ethernet, nodes whose transmissions can collide form a collision domain, and only one can transmit at a time, so they split the available bandwidth. Switches and routers divide a network into separate collision domains, each with its own full bandwidth.",
     "flag": null
   },
   {
@@ -4803,7 +4803,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "HyperTerminal, the serial communications program supplied with older Windows versions, can open a COM port at NMEA 0183's 4800 baud and display or log the ASCII sentences as they arrive. That makes it handy for checking talker output and troubleshooting.",
     "flag": null
   },
   {
@@ -4822,7 +4822,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "NMEA 0183 listeners must tolerate up to ±15 V on their inputs without damage, because they may be connected to older RS-232-style talkers whose signal swings can reach that level. Normal NMEA signaling uses considerably lower voltages.",
     "flag": null
   },
   {
@@ -4841,7 +4841,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Since version 2.0, NMEA 0183 has used RS-422 (EIA-422) balanced differential signaling, which lets one talker drive several listeners and rejects noise better than single-ended RS-232. Early versions were RS-232 compatible.",
     "flag": null
   },
   {
@@ -4860,7 +4860,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "NMEA 0183 sends ASCII sentences one bit at a time over a single pair, as asynchronous serial data at 4800 baud (38,400 baud for the high-speed variant). It uses no parallel bus, CAN bus or Ethernet.",
     "flag": null
   },
   {
@@ -4879,7 +4879,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "NMEA 0183 listeners use opto-isolated inputs, so no ground connection is shared between devices. Grounding the cable shield only at the talker chassis prevents the ground loops that would form if the shield were tied down at both ends.",
     "flag": null
   },
   {
@@ -4898,7 +4898,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "NMEA 0183 allows only one talker per line, with several listeners, so multiple sources need a multiplexer. NMEA 2000 is a CAN-based network on which many devices can both talk and listen on the same backbone.",
     "flag": null
   },
   {
@@ -4917,7 +4917,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "NMEA 2000 devices are designed to run from 9 to 16 V on the backbone's power pair, normally fed from a nominal 12 V supply. Voltage drop along the backbone must not pull any device below 9 V.",
     "flag": null
   },
   {
@@ -4936,7 +4936,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "One LEN (Load Equivalency Number) represents 50 mA drawn from the backbone, so a device rated 3 LEN draws up to 3 × 50 mA = 150 mA. Adding up LENs lets installers check power supply capacity and cable voltage drop.",
     "flag": null
   },
   {
@@ -4955,7 +4955,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "NMEA 2000 networks are built from backbone cables, tees, drop cables, a power cable and a terminating resistor at each end. Multiplexers and combiners are NMEA 0183 devices used to merge single-talker lines, and routers belong to IP networks.",
     "flag": null
   },
   {
@@ -4974,7 +4974,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "NMEA 2000 runs on a Controller Area Network (CAN) bus, in which every device on the backbone must signal at the same fixed data rate. The standard sets that rate at 250, the figure to remember for this question.",
     "flag": "The pool keys 250 bps. The real NMEA 2000 backbone runs at 250 kbit/s (250,000 bits per second). Answer A on the exam."
   },
   {
@@ -4993,7 +4993,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "NMEA 2000 is a CAN-bus network, so a PC or other display can't read it directly through a serial port. The gateway translates NMEA 2000 messages into a format such as USB, Ethernet or NMEA 0183 that the viewing equipment understands.",
     "flag": null
   },
   {
@@ -5012,7 +5012,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Drop cables connect each device to a tee on the backbone, and NMEA 2000 limits any single drop to 6 meters to keep signal reflections and voltage drop under control. The combined length of all drops has its own limit as well.",
     "flag": null
   },
   {
@@ -5031,7 +5031,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Echo sounders use ultrasonic pulses, and the 200–400 kHz region gives a narrow beam and fine resolution while still reaching useful depths before seawater absorbs the sound. Several hundred hertz is audible sound, and megahertz signals are absorbed too quickly for depth sounding.",
     "flag": null
   },
   {
@@ -5050,7 +5050,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Pulse length is matched to depth: short pulses of a few tens of microseconds give fine resolution in shallow water, while pulses of several hundred microseconds put more energy into the water for deeper soundings. That trade-off gives the typical 25 to 600 µs span.",
     "flag": null
   },
   {
@@ -5069,7 +5069,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Older gyrocompasses were powered from a motor-generator, and a carbon pile regulator held its output voltage steady. Squeezing the stack of carbon disks lowers its resistance, so the pile acts as a variable resistor controlled by the output voltage.",
     "flag": null
   },
   {
@@ -5088,7 +5088,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Fiber-optic gyrocompasses use three fiber-optic coils, one per axis, as Sagnac-effect rotation sensors that measure the components of the earth's rotation. Adding a dual-axis electronic level sensor for the horizontal reference, the computer resolves true north without any spinning rotor.",
     "flag": null
   },
   {
@@ -5107,7 +5107,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The Ship Security Alert System sends a covert alert, usually through the Inmarsat-C terminal, only to preset addresses such as the company security officer and the flag-state authority. It sounds no alarm aboard and doesn't alert other ships, so attackers aren't tipped off.",
     "flag": null
   },
   {
@@ -5126,7 +5126,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "AIS transmits on two dedicated VHF channels, AIS 1 on 87B (161.975 MHz) and AIS 2 on 88B (162.025 MHz), using 9.6 kbps GMSK modulation in self-organized TDMA time slots. Channels 16 and 70 are reserved for voice distress calling and DSC.",
     "flag": null
   },
   {
@@ -5145,7 +5145,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "C-Map chart licenses are tied to the specific computer's system ID, so license information must be entered on every computer that will display the charts. Entering it once on a master terminal doesn't unlock the charts on other machines.",
     "flag": null
   },
   {
@@ -5164,7 +5164,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Electronic chart systems take navigation inputs such as position, speed, depth, heading and radar overlay data. The Ship Security Alert System is a covert security alerting device that supplies no chart data, so the list containing SSAS is the incorrect one.",
     "flag": null
   },
   {
@@ -5183,7 +5183,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Autopilots work as closed-loop servos: the rudder feedback unit reports the actual rudder angle so the autopilot can compare it with the ordered angle and stop the steering gear at the right point. Without rudder feedback it cannot steer, whereas GPS is merely a useful extra input.",
     "flag": null
   },
   {
@@ -5202,7 +5202,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Autopilots need course information, normally heading from the gyrocompass compared with the set course, plus rudder feedback showing where the rudder actually is. With those two inputs they can order and verify rudder movement; GPS and radar inputs are extras, not requirements.",
     "flag": null
   },
   {
@@ -5221,7 +5221,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "VDRs store items such as date, time, position, speed, heading, depth, radar images, bridge audio and VHF communications. EGC (SafetyNET) message data is not a recorded item, so the list that includes it is the inaccurate one.",
     "flag": null
   },
   {
@@ -5240,7 +5240,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "VDRs capture navigation data such as position, date, time and depth, plus bridge audio, VHF communications, rudder feedback and radar images. Maritime Safety Information broadcasts are not among the required inputs, so the statement listing MSI is the untrue one.",
     "flag": null
   },
   {
@@ -5259,7 +5259,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "RF grounding needs a low-impedance path, and a wide copper strap has far less inductance than round wire. Brazing gives a permanent, low-resistance joint that won't loosen or corrode like a bolted connection, and aluminum against steel invites galvanic corrosion.",
     "flag": null
   },
   {
@@ -5278,7 +5278,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In full duplex the receiver listens while the transmitter is on, only a few megahertz away. Separating the transmitting antenna as far as possible from the duplex receiving antenna cuts the coupled transmitter power that would desensitize or overload the receiver.",
     "flag": null
   },
   {
@@ -5297,7 +5297,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Air bubbles from cavitation and turbulent flow absorb and scatter the acoustic pulse, causing weak or lost bottom echoes. The transducer must sit where water flows smoothly over the hull, free of cavitation, rather than at some fixed position such as the centerline or bow.",
     "flag": null
   },
   {
@@ -5316,7 +5316,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Bridge electronics contain magnets, motors and DC currents that can deflect a magnetic compass. Manufacturers therefore specify a compass safe distance, and bridge equipment separation recommendations are stated in terms of the magnetic compass.",
     "flag": null
   },
   {
@@ -5335,7 +5335,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Inmarsat antennas share the same L-band frequencies, so another terminal's transmissions can overload or interfere with a nearby Inmarsat-C antenna. Installation guidelines call for at least 8 meters between the Inmarsat-C antenna and other Inmarsat antennas.",
     "flag": null
   },
   {
@@ -5354,7 +5354,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "An Inmarsat-C terminal is identified on the network by its Inmarsat Mobile Number, assigned when the terminal is commissioned. Until that number is entered in the terminal, it can't be properly identified for messaging or distress alerting; a distress alert must never be sent as a test.",
     "flag": null
   },
   {
@@ -5373,7 +5373,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "FCC rules require the annual inspection of a GMDSS ship station to be done by a technician holding a GMDSS Radio Maintainer's License, since it involves testing and certifying the equipment. An operator's license covers operating the station, not inspecting it.",
     "flag": null
   },
   {
@@ -5392,7 +5392,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "After a successful inspection the station records must carry a certification, signed by both the inspecting technician and the vessel's master or owner, that the inspection was satisfactorily completed. One signature alone doesn't meet the requirement.",
     "flag": null
   },
   {
@@ -5411,7 +5411,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The reserve battery is checked by taking it off charge, applying the maximum load the radio installation requires, and measuring and recording the discharge current and terminal voltage. That shows whether the battery can actually carry the station when ship's power fails.",
     "flag": null
   },
   {
@@ -5430,7 +5430,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Sending a short message to your own Inmarsat-C terminal exercises the whole chain: the terminal transmits via satellite to the land earth station, which routes the message back to the ship. Receiving it proves that both transmit and receive work.",
     "flag": null
   },
   {
@@ -5449,7 +5449,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "SOLAS cargo ships must hold a safety certificate covering their radio installation, and passing the radio survey is what allows the Cargo Ship Safety Certificate to be issued or endorsed. The Radio Station License is a separate FCC authorization, and there is no “SOLAS Annual Certificate.”",
     "flag": null
   },
   {
@@ -5468,7 +5468,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Required annual VHF checks cover power output and VSWR on channels 6, 13 and 16, frequency tolerance, and operation from every required power source. Carrier deviation measurement is not on that required list.",
     "flag": null
   },
   {
@@ -5487,7 +5487,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Meter error = (0.15% × reading) + 2 counts, and on the 6 V scale a 4-digit meter resolves 0.001 V: 0.0015 × 5 V + 2 × 0.001 V = 0.0075 + 0.002 = 0.0095 V ≈ 0.01 V. The display may therefore read anywhere from 4.99 to 5.01 V.",
     "flag": null
   },
   {
@@ -5506,7 +5506,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Meter tolerance is a percentage of the reading plus a fixed number of counts of the last digit. On the 60 V scale a 4-digit display resolves 0.01 V, so the 2 counts add 0.02 V to the percentage term, and the pool's keyed window is 24 V ± 0.38 V.",
     "flag": "The keyed range (24 V ± 0.38 V) matches 1.5% accuracy plus 2 counts (0.36 V + 0.02 V), not the 0.15% in the question, which would give about 23.94 to 24.06 V. Answer B on the exam."
   },
   {
@@ -5525,7 +5525,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Receiver sensitivity tests at VHF need accurately known signals of a microvolt or less. If RF leaks from the generator's case or cables, the receiver picks up more signal than the attenuator setting indicates and the readings are meaningless, so good shielding matters most.",
     "flag": null
   },
   {
@@ -5544,7 +5544,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "VHF receivers typically reach 12 dB SINAD at a few tenths of a microvolt, so a lab-grade generator must go down to about 0.1 µV to test sensitivity and squelch thresholds below that level.",
     "flag": null
   },
   {
@@ -5563,7 +5563,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The 10:1 probe places a 9 MΩ resistor in series with the scope's 1 MΩ input, so the circuit sees about 10 MΩ shunted by roughly 10 to 15 pF of compensated capacitance. That light load disturbs the circuit much less than a 1:1 probe.",
     "flag": null
   },
   {
@@ -5582,7 +5582,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "On a dual-trace scope the vertical Mode switch selects channel 1 alone, channel 2 alone, or both displayed together (alternate or chopped), often with an add setting that sums them. Input coupling and time base have their own separate controls.",
     "flag": null
   },
   {
@@ -5601,7 +5601,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Simple function generators produce the three classic waveforms, sine, square and triangle, with adjustable frequency and amplitude. Fancier units add sawtooth, pulse or modulation outputs, but those three are the standard set.",
     "flag": null
   },
   {
@@ -5620,7 +5620,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "SINAD = (signal + noise + distortion) ÷ (noise + distortion). The meter reads total audio, then a sharp 1000 Hz notch (bandstop) filter removes the test tone, leaving only noise and distortion; the ratio reads directly in decibels, with 12 dB SINAD the usual sensitivity reference.",
     "flag": null
   },
   {
@@ -5639,7 +5639,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Logic probes show a high with the red LED, a low with the green LED, and pulse activity with a separate amber pulse indicator. The probe only reads the logic level at a node and has no way to identify a short, so “both LEDs on indicates a short” is the false statement.",
     "flag": null
   },
   {
@@ -5658,7 +5658,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Analog wattmeter accuracy is specified as a percentage of full scale, so the absolute error is about the same anywhere on the dial. On a 100 W scale with ±5% accuracy, ±5 W is about 6% of a 90 W reading but 25% of a 20 W reading, so aim for the upper third.",
     "flag": null
   },
   {
@@ -5677,7 +5677,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Deviation meters are essentially calibrated FM receivers that demodulate the transmitter signal and show how far the carrier swings from its center frequency, in kHz. Marine VHF is limited to ±5 kHz deviation, so this is how overmodulation is checked.",
     "flag": null
   },
   {
@@ -5696,7 +5696,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Spectrum analyzers display amplitude against frequency, so harmonics, parasitic oscillations and other spurious emissions appear as separate spikes beside the carrier. Finding and measuring those unwanted signals is the analyzer's main job in transmitter testing.",
     "flag": null
   }
 ]

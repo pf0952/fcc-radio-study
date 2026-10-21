@@ -15,7 +15,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Echo strength follows the radar range equation: it grows with transmitted power, antenna effective area, and the target's radar cross section, and shrinks with transmit and receive losses and the fourth power of range. Receiver gain only amplifies an echo after it arrives.",
     "flag": null
   },
   {
@@ -34,7 +34,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Recovery time is how quickly the TR tube and receiver regain full sensitivity after each transmitted pulse, so it limits how close a target can be seen, the minimum range. Carrier frequency, PRF, and receiver sensitivity all affect how far the radar can detect.",
     "flag": null
   },
   {
@@ -53,7 +53,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Average power is the peak pulse power spread over the whole repetition period, so it is measured over time: P<sub>avg</sub> = P<sub>peak</sub> × pulse width × PRF. Peak power is the power during the brief pulse itself.",
     "flag": null
   },
   {
@@ -72,7 +72,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The synchronizer, also called the timer or trigger generator, produces the timing pulses that fire the modulator and at the same instant start the indicator sweep and range circuits, keeping the whole radar in step.",
     "flag": null
   },
   {
@@ -91,7 +91,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The duplexer switches the antenna between transmitter and receiver: during each pulse it routes energy to the antenna while blocking the receiver, then passes the weak returning echoes to the receiver between pulses.",
     "flag": null
   },
   {
@@ -110,7 +110,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each transmitted pulse triggers one sweep on the indicator, so the sweeps repeat at the pulse repetition frequency. Carrier frequency and pulse width have nothing to do with how often the trace restarts.",
     "flag": null
   },
   {
@@ -129,7 +129,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A radio wave covers one nautical mile in about 6.17 µs, half of the 12.34 µs radar mile, which is a round trip. One way over three miles: t = 3 × 6.17 µs = 18.51 µs.",
     "flag": null
   },
   {
@@ -148,7 +148,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A radar mile is the time for a pulse to travel out to a target one nautical mile away and back: about 6.17 µs each way, or 12.34 µs in total. Dividing echo time by 12.34 µs gives range in nautical miles.",
     "flag": null
   },
   {
@@ -167,7 +167,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radio waves travel about 300 meters per microsecond, but the pulse must go out and come back, so each microsecond of echo delay equals 300 ÷ 2 = 150 meters of range.",
     "flag": null
   },
   {
@@ -186,7 +186,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each nautical mile of range takes 12.34 µs for the pulse to go out and return, so t = 5 × 12.34 µs = 61.7 µs.",
     "flag": null
   },
   {
@@ -205,7 +205,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A radar mile is 12.34 µs of round-trip time per nautical mile of range: t = 10 × 12.34 µs = 123.4 µs.",
     "flag": null
   },
   {
@@ -224,7 +224,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The 308.5 µs is round-trip time, so divide by the 12.34 µs radar mile: R = 308.5 ÷ 12.34 = 25 nautical miles. Halving the time first would count the return trip twice and give only half the range.",
     "flag": null
   },
   {
@@ -243,7 +243,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Marine radars operate in the SHF (super high frequency) band, 3 to 30 GHz, mainly S-band near 3 GHz and X-band near 9.4 GHz. These microwave frequencies allow narrow beams from antennas of practical size.",
     "flag": null
   },
   {
@@ -262,7 +262,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "At microwave frequencies the wavelength is small compared with ships, buoys, and coastlines, so targets reflect strongly, and a practical-size antenna can form a narrow, high-gain beam that concentrates energy on the target, producing stronger echoes.",
     "flag": null
   },
   {
@@ -281,7 +281,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "S-band covers 2 to 4 GHz, wavelengths of about 15 down to 7.5 cm. Marine S-band radars typically operate near 3 GHz, a wavelength of roughly 10 cm.",
     "flag": null
   },
   {
@@ -300,7 +300,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "λ = c / f = 3 × 10<sup>8</sup> m/s ÷ 3 × 10<sup>9</sup> Hz = 0.1 m = 10 cm. That is why S-band radar near 3 GHz is often called 10-centimeter radar.",
     "flag": null
   },
   {
@@ -319,7 +319,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The longer S-band wavelength, about 10 cm versus 3 cm, is scattered and absorbed far less by rain, snow, and fog, so S-band sees through bad weather better. X-band, with a narrower beam from the same size antenna, actually has better bearing resolution.",
     "flag": null
   },
   {
@@ -338,7 +338,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "X-band spans 8 to 12 GHz. Marine X-band radars usually transmit near 9.4 GHz, a wavelength of about 3.2 cm.",
     "flag": null
   },
   {
@@ -357,7 +357,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Average power equals peak power times duty cycle: P<sub>avg</sub> = P<sub>pk</sub> × PW × PRF = 100,000 W × 1 × 10<sup>−6</sup> s × 400 Hz = 40 W.",
     "flag": null
   },
   {
@@ -376,7 +376,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Duty cycle is the fraction of time the transmitter is on: duty cycle = PW × PRF = 0.5 × 10<sup>−6</sup> s × 1,000 Hz = 0.0005. The peak power and minimum range figures are not needed.",
     "flag": null
   },
   {
@@ -395,7 +395,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Average power = peak power × pulse width ÷ pulse period = 100,000 W × 0.5 µs ÷ 1,600 µs = 31.25 W. The PRF is actually 1 ÷ 1,600 µs = 625 Hz, and the duty cycle only 0.03125 percent.",
     "flag": null
   },
   {
@@ -414,7 +414,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "P<sub>avg</sub> = P<sub>pk</sub> × PW × PRF = 15,000 W × 0.5 × 10<sup>−6</sup> s × 900 Hz = 6.75 W. The duty cycle is only 0.00045, so average power is a tiny fraction of peak power.",
     "flag": null
   },
   {
@@ -433,7 +433,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "P<sub>avg</sub> = P<sub>pk</sub> × PW × PRF = 100,000 W × 1 × 10<sup>−6</sup> s × 1,000 Hz = 100 W, which corresponds to a duty cycle of 0.001.",
     "flag": null
   },
   {
@@ -452,7 +452,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Rearrange the average-power formula: P<sub>pk</sub> = P<sub>avg</sub> ÷ (PW × PRF) = 18 W ÷ (1 × 10<sup>−6</sup> s × 900 Hz) = 18 ÷ 0.0009 = 20,000 W = 20 kW.",
     "flag": null
   },
   {
@@ -471,7 +471,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each echo must return before the next pulse fires, so the pulse period must be at least the round-trip time: t = 5 × 12.34 µs = 61.7 µs, and PRF ≤ 1 ÷ 61.7 µs ≈ 16.2 kHz.",
     "flag": null
   },
   {
@@ -490,7 +490,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The echo from 100 nautical miles takes 100 × 12.34 µs = 1,234 µs to return, and the next pulse must wait at least that long: PRF ≤ 1 ÷ 1,234 µs ≈ 810 Hz.",
     "flag": null
   },
   {
@@ -509,7 +509,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "While the transmitted pulse is on, the receiver is protected and cannot hear echoes, so a target whose echo returns before the pulse ends is masked. Minimum range is about 150 m per microsecond of pulse width.",
     "flag": null
   },
   {
@@ -528,7 +528,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Narrow pulses give a small minimum range and fine range resolution, and because close-in echoes return quickly, pulses can be sent at a fast repetition rate, which also puts more hits on each target.",
     "flag": null
   },
   {
@@ -547,7 +547,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Round-trip time for 30 nautical miles is 30 × 12.34 µs = 370.2 µs, so the PRF must not exceed 1 ÷ 370.2 µs ≈ 2.7 kHz, or echoes would arrive after the next pulse had fired.",
     "flag": null
   },
   {
@@ -566,7 +566,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The echo from 10 nautical miles returns after 10 × 12.34 µs = 123.4 µs, so the maximum PRF is 1 ÷ 123.4 µs ≈ 8.1 kHz. A faster rate would fire the next pulse before distant echoes arrive.",
     "flag": null
   },
   {
@@ -585,7 +585,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The pulse repetition interval is the reciprocal of the PRF: PRI = 1 ÷ PRF = 1 ÷ 2,500 Hz = 0.0004 s = 400 µs.",
     "flag": null
   },
   {
@@ -604,7 +604,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "PRI = 1 ÷ PRF = 1 ÷ 2,000 Hz = 0.0005 s, or 500 µs, the time from the start of one pulse to the start of the next.",
     "flag": null
   },
   {
@@ -623,7 +623,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The pulse repetition rate is how many times per second the magnetron is fired to transmit an RF pulse. The receiver's local oscillator, klystron or solid-state, runs continuously and is not pulsed.",
     "flag": null
   },
   {
@@ -642,7 +642,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Duty cycle = PW × PRF = 0.05 × 10<sup>−6</sup> s × 2,000 Hz = 0.0001, so the transmitter is on only one ten-thousandth of the time.",
     "flag": null
   },
   {
@@ -661,7 +661,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A small target returns very little energy, so detecting it depends on the energy in each pulse. A long pulse at high output power puts more energy on the target and produces an echo strong enough to stand out above receiver noise.",
     "flag": null
   },
   {
@@ -680,7 +680,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Long-range settings use wider pulses for more energy on target and lower the PRR, both to allow time for distant echoes and to keep the duty cycle and magnetron average power within limits. Short-range settings do the opposite.",
     "flag": null
   },
   {
@@ -699,7 +699,7 @@
     ],
     "answer": 1,
     "figure": "8A1",
-    "explanation": "",
+    "explanation": "Block 46 sits between the waveguide and the receiver's crystal detector (mixer), which is where the TR box belongs. It fires during the transmitted pulse to protect the crystal and passes weak echoes the rest of the time.",
     "flag": null
   },
   {
@@ -718,7 +718,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "An analog switch connects the signal to a hold capacitor, then opens to freeze the voltage. A buffer amplifier on the input charges the capacitor quickly, and one on the output keeps the load from draining the stored charge.",
     "flag": null
   },
   {
@@ -737,7 +737,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Both gates actively drive their outputs high: standard TTL uses the upper transistor of its totem-pole output, and CMOS uses P-channel MOSFETs. Neither is a three-state device, and their input current requirements differ greatly.",
     "flag": null
   },
   {
@@ -756,7 +756,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Silicon mixer and detector crystals are fragile point-contact diodes: static discharge can destroy them, they are stored wrapped in lead foil or in shielded holders to keep stray fields off, and they handle only a few milliamps of current.",
     "flag": null
   },
   {
@@ -775,7 +775,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar mixer and detector crystals are delicate point-contact diodes that run at only a few milliamperes; a crystal current of about 3 mA is typical, and much higher currents would burn out the tiny junction.",
     "flag": null
   },
   {
@@ -794,7 +794,7 @@
     ],
     "answer": 2,
     "figure": "8A1",
-    "explanation": "",
+    "explanation": "Block 47 is fed directly from the magnetron and feeds the AFC mixer, so it must be the RF attenuator, which cuts a small sample of the powerful transmitter output down to a safe level for the AFC crystal.",
     "flag": null
   },
   {
@@ -813,7 +813,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The Gunn diode supplies the negative resistance that sustains oscillation, but the resonant cavity it is mounted in sets the frequency. Supply voltage and loading only pull the frequency slightly.",
     "flag": null
   },
   {
@@ -832,7 +832,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Delta-sigma, switched-capacitor (charge redistribution), and dual-slope integration are all genuine analog-to-digital conversion techniques. Dynamic range describes the span of signal levels a converter can handle; it is a specification, not a conversion method.",
     "flag": null
   },
   {
@@ -851,7 +851,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "CMOS draws almost no current while static, but every switching transition charges and discharges load capacitance, so its power rises in proportion to switching frequency. At high clock rates CMOS dissipation approaches that of TTL.",
     "flag": null
   },
   {
@@ -870,7 +870,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The physical size of the resonant cavity sets a reflex klystron's main operating frequency, and coarse tuning is done by mechanically changing it. The repeller voltage only fine-tunes the frequency within a narrow range.",
     "flag": null
   },
   {
@@ -889,7 +889,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A Gunn diode has no PN junction. At high fields, electrons in the bulk of the gallium arsenide transfer to a slower energy band, creating a region of negative resistance, so the device relies on both the bulk effect and negative resistance to oscillate.",
     "flag": null
   },
   {
@@ -908,7 +908,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Changing the repeller voltage changes how long the electron bunches take to return to the cavity, shifting the frequency slightly, so it provides fine tuning and is what AFC circuits adjust. Coarse tuning changes the cavity dimensions mechanically.",
     "flag": null
   },
   {
@@ -927,7 +927,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A blocking oscillator conducts for one brief pulse, then is held cut off while its timing capacitor discharges through a resistor. That RC time constant, T = RC, sets the off time and therefore the pulse repetition rate.",
     "flag": null
   },
   {
@@ -946,7 +946,7 @@
     ],
     "answer": 1,
     "figure": "8A2",
-    "explanation": "",
+    "explanation": "In Fig. 8A2 the memory and I/O interface is the only block connected to the external memory and I/O bus, so it handles all communication with memory and peripherals. The internal bus is shared and carries one transfer at a time.",
     "flag": null
   },
   {
@@ -965,7 +965,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A phantastron is a triggered, one-shot sweep generator: when fired by an external trigger, its Miller-integrator action produces a very linear ramp voltage whose length can be set precisely, useful for range-marker and delay timing.",
     "flag": null
   },
   {
@@ -984,7 +984,7 @@
     ],
     "answer": 0,
     "figure": "8A2",
-    "explanation": "",
+    "explanation": "The ALU (arithmetic logic unit) performs arithmetic and logic operations on data from the general registers and the TEMP register, and its result returns over the internal bus. Address decoding and instruction control happen elsewhere.",
     "flag": null
   },
   {
@@ -1003,7 +1003,7 @@
     ],
     "answer": 1,
     "figure": "8A3",
-    "explanation": "",
+    "explanation": "Box X terminates the 50 Ω coax at the receiving end. A 51 Ω resistor, the nearest standard value, matches the cable's characteristic impedance and prevents reflections that would distort the fast digital pulses.",
     "flag": null
   },
   {
@@ -1022,7 +1022,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The magnetron anode is grounded and the cathode is pulsed to a high negative voltage. Because the filament heats the cathode and is tied to it, the filament circuit rides at that same high voltage and is dangerous to touch.",
     "flag": null
   },
   {
@@ -1041,7 +1041,7 @@
     ],
     "answer": 3,
     "figure": "8A4",
-    "explanation": "",
+    "explanation": "The left flip-flop's Q̄ output is fed back to its own data input, so from reset (Q low, Q̄ high) its first clock edge loads a high and pin 5 goes high. Pin 5 drives the right flip-flop's data input, so its clock edge then sets pin 9 high.",
     "flag": null
   },
   {
@@ -1060,7 +1060,7 @@
     ],
     "answer": 2,
     "figure": "8A5",
-    "explanation": "",
+    "explanation": "The 12 V battery reverse-biases the photodiode, the normal way to operate one, so only a tiny dark current flows. Light creates electron-hole pairs in the junction, so more light means more reverse current through the diode and meter.",
     "flag": null
   },
   {
@@ -1079,7 +1079,7 @@
     ],
     "answer": 1,
     "figure": "8A6",
-    "explanation": "",
+    "explanation": "Fig. 8A6 is a TTL NAND gate. A low on either emitter of the multi-emitter Q<sub>1</sub> lets its base current flow out through that emitter, saturating Q<sub>1</sub>; its collector then pulls the base of Q<sub>2</sub> low, so Q<sub>2</sub> turns off and the output goes high.",
     "flag": null
   },
   {
@@ -1098,7 +1098,7 @@
     ],
     "answer": 2,
     "figure": "8A7",
-    "explanation": "",
+    "explanation": "The series resistor must drop the supply voltage minus the LED voltage at the maximum forward current: R<sub>S</sub> = (5 V − 1.9 V) ÷ 40 mA = 3.1 V ÷ 0.040 amperes = 77.5 Ω ≈ 77 Ω.",
     "flag": null
   },
   {
@@ -1117,7 +1117,7 @@
     ],
     "answer": 3,
     "figure": "8A2",
-    "explanation": "",
+    "explanation": "The general-register block holds both the data registers and the address registers, so address pointers are kept there. The ALU does arithmetic rather than address decoding, and the control unit decodes instructions rather than doing arithmetic.",
     "flag": null
   },
   {
@@ -1136,7 +1136,7 @@
     ],
     "answer": 0,
     "figure": "8A8",
-    "explanation": "",
+    "explanation": "On each low-to-high clock edge, Qn takes the opposite of Dn (a high in gives a low out), which is the behavior of an inverting D-type flip-flop. A high on the active-low output enable forces the high-impedance Z state, making it three-state.",
     "flag": null
   },
   {
@@ -1155,7 +1155,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The magnetron is the radar's RF oscillator: when the modulator pulses it with high voltage, it generates the microwave output at the operating frequency. Pulse shape and width come from the modulator, and the repetition rate from the synchronizer.",
     "flag": null
   },
   {
@@ -1174,7 +1174,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The modulator stores energy and, when triggered, delivers a high-voltage pulse of the correct shape and width to the magnetron, which oscillates for exactly that time. It does not set the repetition rate or tune the magnetron.",
     "flag": null
   },
   {
@@ -1193,7 +1193,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar high-voltage supplies deliver DC to charge the modulator, not thousands of volts of AC, so that is the false statement. Separate low- and high-voltage supplies, switching low-voltage supplies with multiple outputs, and low-voltage supplies providing both AC and DC are all normal.",
     "flag": null
   },
   {
@@ -1212,7 +1212,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The pulse forming network is an artificial transmission line that charges between pulses and then discharges into the magnetron for a fixed time set by its inductors and capacitors, producing a pulse of the correct width. The synchronizer, not the PFN, sets the repetition rate.",
     "flag": null
   },
   {
@@ -1231,7 +1231,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The synchronizer produces the trigger pulses that fire the modulator and start the display sweep, so it establishes the pulse repetition rate and keeps the system in step. Pulse width comes from the modulator's pulse forming network.",
     "flag": null
   },
   {
@@ -1250,7 +1250,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The transmitting system consists of the modulator, its pulse forming network, and the magnetron. A klystron, where one is used in a marine radar, serves as the receiver's local oscillator, not as part of the transmitter.",
     "flag": null
   },
   {
@@ -1269,7 +1269,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The high-voltage pulse goes to the magnetron cathode as a strongly negative voltage, while the anode block stays at ground. This keeps the large external anode and the attached waveguide safe to touch.",
     "flag": null
   },
   {
@@ -1288,7 +1288,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Range is timed from the leading edge of the transmitted pulse, so a fast, sharp rise time gives a precise starting reference. A slow, sloping rise makes the timing point uncertain and degrades range accuracy.",
     "flag": null
   },
   {
@@ -1307,7 +1307,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Marine radars use a magnetron as the transmitter because it efficiently produces high-power microwave pulses from a compact, rugged tube. A klystron served as the receiver's local oscillator in older sets, and a thyratron is a modulator switch.",
     "flag": null
   },
   {
@@ -1326,7 +1326,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A magnetron has only two elements, a cathode and an anode block, so it is a diode. A permanent magnet outside the tube supplies the magnetic field that curves the electrons' paths so they excite the resonant cavities.",
     "flag": null
   },
   {
@@ -1345,7 +1345,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A negative pulse on the cathode produces the same anode-to-cathode potential as a positive pulse on the anode, but lets the anode block, which is bolted to the waveguide and housing, sit safely at ground potential.",
     "flag": null
   },
   {
@@ -1364,7 +1364,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The anode block forms the magnetron's outer body and connects to the waveguide and chassis, so it is kept at ground for safety and the high voltage is applied as a negative pulse to the cathode. The anode is still positive relative to the cathode.",
     "flag": null
   },
   {
@@ -1383,7 +1383,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "In a line-type solid-state modulator, an SCR or similar switch simply discharges the pulse forming network into the pulse transformer. The PFN's inductors and capacitors set how long that discharge lasts, and therefore the transmitted pulse duration; the trigger only starts it.",
     "flag": null
   },
   {
@@ -1402,7 +1402,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The modulator fires the magnetron once per transmitted pulse, so the modulation frequency is simply the pulse repetition rate. The exam takes the typical range as 60 to 500 Hz, low enough to leave long listening time between pulses for distant echoes.",
     "flag": null
   },
   {
@@ -1421,7 +1421,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The PFN discharges through the step-up transformer to put brief high-voltage pulses on the magnetron cathode, so the magnetron switches fully on and off. RF emitted only in short bursts is pulse modulation.",
     "flag": null
   },
   {
@@ -1440,7 +1440,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The pulse forming network is an artificial transmission line; when the switch discharges it, its inductors and capacitors determine the width and shape of the high-voltage pulse sent to the magnetron. The thyratron only acts as the switch.",
     "flag": null
   },
   {
@@ -1459,7 +1459,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The modulator's switching element, a hydrogen thyratron in older sets or an SCR in solid-state ones, discharges the PFN to form the drive pulse. The magnetron and klystron are microwave oscillators, and the video amplifier belongs to the receiver.",
     "flag": null
   },
   {
@@ -1478,7 +1478,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The modulator delivers a high-voltage pulse of the correct amplitude, width, and shape to the magnetron at each trigger, giving the transmitter the waveform it needs. Bearing resolution and sea return depend on the antenna and receiver, not the modulator.",
     "flag": null
   },
   {
@@ -1497,7 +1497,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A resonant charging choke forms a series resonant circuit with the PFN capacitance; its collapsing magnetic field keeps current flowing after the capacitors reach supply voltage, charging them to nearly twice that voltage. A diode holds the charge until the switch fires.",
     "flag": null
   },
   {
@@ -1516,7 +1516,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The switch that discharges the PFN must withstand high voltage, carry very high peak current, and turn on fast. Hydrogen thyratrons and SCRs are latching switches that turn off once the PFN is discharged, which makes them the usual devices for the job.",
     "flag": null
   },
   {
@@ -1535,7 +1535,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The PFN is an artificial transmission line whose delay sets the pulse duration: when discharged, it delivers a flat-topped pulse lasting twice the line's one-way delay. The synchronizer, not the PFN, sets the repetition rate.",
     "flag": null
   },
   {
@@ -1554,7 +1554,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The pulse forming network is an artificial delay line of inductors and capacitors. When it discharges, the pulse lasts twice its electrical delay, so its component values fix the shape and duration of the high-voltage pulse sent to the magnetron.",
     "flag": null
   },
   {
@@ -1573,7 +1573,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A PFN imitates a transmission line with lumped parts: inductors in series along the line and capacitors shunted to ground, matching a real line's series inductance and shunt capacitance. This ladder delivers a nearly rectangular pulse when discharged.",
     "flag": null
   },
   {
@@ -1592,7 +1592,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "An artificial transmission line, the pulse forming network, stores energy in its LC sections and releases it as a pulse lasting twice its delay time, so it determines the shape and duration of the modulator pulse.",
     "flag": null
   },
   {
@@ -1611,7 +1611,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In a magnetic field, the ferrite shifts the phase of a wave by different amounts depending on its direction of travel. This nonreciprocal phase shift steers energy around the ports in one direction only: transmitter to antenna, antenna to receiver.",
     "flag": null
   },
   {
@@ -1630,7 +1630,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "In the usual TM<sub>010</sub> mode of a cylindrical cavity, the electric field runs straight between the flat end walls, parallel to the axis and perpendicular to those walls, while the magnetic field forms circles around the axis.",
     "flag": null
   },
   {
@@ -1649,7 +1649,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A ferrite circulator acts as the duplexer: its one-way coupling sends the magnetron's pulse to the antenna and routes incoming echoes from the antenna to the receiver, isolating the receiver from the transmitter.",
     "flag": null
   },
   {
@@ -1668,7 +1668,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The circulator's one-way ports send transmitter power to the antenna and returning echoes to the receiver, so it performs the duplexing job otherwise done by TR and ATR tubes. It has nothing to do with cooling, testing, or antenna position.",
     "flag": null
   },
   {
@@ -1687,7 +1687,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A −30 dB coupler samples 1/1,000 of the line power, since 10<sup>30/10</sup> = 1,000. The line therefore carries P = 100 mW × 1,000 = 100 W.",
     "flag": null
   },
   {
@@ -1706,7 +1706,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The duplexer or circulator acts as a fast switch: during each pulse it connects the transmitter to the antenna and isolates the receiver, then connects the antenna to the receiver to pick up echoes, so one antenna serves both jobs.",
     "flag": null
   },
   {
@@ -1725,7 +1725,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The ATR (anti-transmit-receive) box sits in the transmitter branch. Between pulses it is unfired and blocks that branch, so weak echoes go to the receiver instead of being lost into the magnetron. Protecting the receiver is the TR box's job.",
     "flag": null
   },
   {
@@ -1744,7 +1744,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The high-power transmitted pulse ionizes the gas in both tubes: the TR tube fires to short the receiver path and protect it, and the ATR tube fires so the pulse passes freely to the antenna.",
     "flag": null
   },
   {
@@ -1763,7 +1763,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The TR tube ionizes during each transmitted pulse, placing a short across the receiver input. This shields the crystal from the high-power pulse and effectively mutes the receiver until the gas deionizes after the pulse.",
     "flag": null
   },
   {
@@ -1782,7 +1782,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The ATR tube sits in the transmitter branch, between the magnetron and the junction leading to the mixer. Unfired between pulses, it blocks that branch so received echoes go to the mixer rather than being absorbed by the magnetron.",
     "flag": null
   },
   {
@@ -1801,7 +1801,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A small DC keep-alive voltage maintains a little ionization in the TR tube, so it fires almost instantly when the transmitted pulse arrives and protects the receiver crystal from the leading edge of the pulse.",
     "flag": null
   },
   {
@@ -1820,7 +1820,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The keep-alive electrode maintains a small, partial ionization in the TR tube's gas, which makes the tube far more sensitive so it fires almost instantly when the transmitter pulse arrives. Full ionization all the time would short the receiver and block echoes.",
     "flag": null
   },
   {
@@ -1839,7 +1839,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The timer, or synchronizer, generates the trigger pulses that fire the modulator, so it sets how many pulses are transmitted each second, the PRR. It also starts the indicator sweep with each pulse.",
     "flag": null
   },
   {
@@ -1858,7 +1858,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The triggering section is called the synchronizer because its trigger pulses synchronize the modulator, the indicator sweep, and the range-marker circuits so they all start together with each transmitted pulse.",
     "flag": null
   },
   {
@@ -1877,7 +1877,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Every radar cycle starts with a trigger: the triggering section, or synchronizer, fires the modulator, which drives the magnetron, and at the same moment starts the display sweep. Without the trigger nothing else operates.",
     "flag": null
   },
   {
@@ -1896,7 +1896,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The timer is the radar's master clock. Besides setting the PRR, it times the range-marker generator and sends the blanking and unblanking gates to the CRT, so all the listed functions belong to it.",
     "flag": null
   },
   {
@@ -1915,7 +1915,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A single-swing blocking oscillator is a transformer-coupled circuit that fires once and is then cut off by its own RC timing, producing very short, sharp, stable pulses with fast rise times, ideal for precise radar trigger timing.",
     "flag": null
   },
   {
@@ -1934,7 +1934,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Unblanking pulses go to the CRT, turning its electron beam on only during the active sweep so echoes are visible, and leaving the beam blanked during retrace.",
     "flag": null
   },
   {
@@ -1953,7 +1953,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "With resonant charging, a charging choke resonates with the PFN so the PFN charges to nearly twice the DC supply voltage. The supply therefore needs to produce only about half the pulse voltage required.",
     "flag": null
   },
   {
@@ -1972,7 +1972,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A MOSFET that is fully on behaves like a small pure resistance, R<sub>DS(on)</sub>, with no junction voltage drop. When off it is essentially an open circuit, like the open contacts of a mechanical relay.",
     "flag": null
   },
   {
@@ -1991,7 +1991,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The PWM keeps the switching frequency fixed and changes how long the switch is on in each cycle, the duty cycle. A longer on-time delivers more energy per cycle, so varying the duty cycle holds the output voltage constant.",
     "flag": null
   },
   {
@@ -2010,7 +2010,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A lower load impedance draws more current, which tends to pull the output voltage down. The regulator responds by widening the switching pulses to deliver more energy per cycle. Less load current or a rising input or output voltage narrows the pulses instead.",
     "flag": null
   },
   {
@@ -2029,7 +2029,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A switching regulator's transistor is either fully on or fully off, so it wastes little power and often reaches 80 to 90 percent efficiency or more. A linear regulator burns the excess voltage as heat in its pass transistor, so its efficiency is much lower.",
     "flag": null
   },
   {
@@ -2048,7 +2048,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A power MOSFET's insulated gate gives it very high input impedance, but the thin gate oxide can be punctured by excess gate voltage or static. Unlike bipolar transistors, MOSFETs resist thermal runaway because their on-resistance rises with temperature.",
     "flag": null
   },
   {
@@ -2067,7 +2067,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Marine radar receivers traditionally have no RF amplifier: the echo passes from the duplexer straight to a crystal mixer, which has conversion loss rather than gain. Nearly all amplification happens in the IF strip, and that strip's bandwidth is switched wide or narrow with range, so it is not always narrow.",
     "flag": null
   },
   {
@@ -2086,7 +2086,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A logarithmic receiver's output rises with the logarithm of the input, compressing an enormous range of echo strengths into a usable output. Strong returns that would drive a linear receiver into saturation still produce distinct, unclipped responses, which is why log receivers suit radar so well.",
     "flag": null
   },
   {
@@ -2105,7 +2105,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar receivers operate at microwave frequencies (X-band near 9.4 GHz, S-band near 3 GHz), using waveguide, a crystal mixer and a microwave local oscillator. That makes them microwave receivers in design, quite unlike FM, HF or TV sets.",
     "flag": null
   },
   {
@@ -2124,7 +2124,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "After the second detector recovers the echo pulses, the video amplifier boosts them to the level needed to drive the display. The IF amplifier feeds the detector, not the display, and a radar receiver has no audio stage.",
     "flag": null
   },
   {
@@ -2143,7 +2143,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A digital receiver adds decision circuitry that compares the signal against a threshold and declares each sample on or off (1 or 0). An analog receiver simply passes the continuously varying signal level along without making that decision.",
     "flag": null
   },
   {
@@ -2162,7 +2162,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A radar receiver has no RF amplifier stage at all, let alone an RF power amplifier. The weak echo goes from the TR/duplexer directly to the crystal mixer, and gain is provided after conversion by the IF amplifier.",
     "flag": null
   },
   {
@@ -2181,7 +2181,7 @@
     ],
     "answer": 3,
     "figure": "8C9",
-    "explanation": "",
+    "explanation": "The 60 MHz IF is the difference between the 4155 MHz local oscillator and the 4095 MHz echoes (4155 − 4095 = 60 MHz). With no echoes, the diode sees only the steady LO, which it merely rectifies to DC; nothing exists at 60 MHz for the tuned transformer to pass.",
     "flag": null
   },
   {
@@ -2200,7 +2200,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar receivers convert the microwave echo to the IF in a crystal diode mixer, whose nonlinear conduction combines the echo with the local oscillator signal. Pentagrid converter tubes cannot work at microwave frequencies, and waveguide sections or ferrite devices do not mix signals.",
     "flag": null
   },
   {
@@ -2219,7 +2219,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The mixer combines the weak echo with the local oscillator signal to produce a lower intermediate frequency, typically 30 or 60 MHz, that can be amplified easily. It does not form the transmitted pulse or protect the antenna.",
     "flag": null
   },
   {
@@ -2238,7 +2238,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A radar mixer is a semiconductor diode device rather than a tube or transistor stage. The classic element is a silicon point-contact crystal, and newer integrated front ends package PIN diodes with the mixer diodes; the diode's nonlinear conduction combines echo and local oscillator signals into the IF.",
     "flag": null
   },
   {
@@ -2257,7 +2257,7 @@
     ],
     "answer": 3,
     "figure": "8A1",
-    "explanation": "",
+    "explanation": "In Fig. 8A1, block 49 receives a sample of magnetron output through block 47 and the klystron signal from block 48. It is the AFC crystal mixer, producing the difference-frequency IF that feeds the AFC IF amplifier and the discriminator.",
     "flag": null
   },
   {
@@ -2276,7 +2276,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar mixer front ends use semiconductor diodes: the silicon point-contact crystal is the traditional mixing element, and modern integrated assemblies include PIN diodes as well. Naming only one of the two device types is therefore incomplete.",
     "flag": null
   },
   {
@@ -2295,7 +2295,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The discriminator's DC error voltage goes to the reflex klystron's repeller (reflector), because changing the repeller voltage shifts the klystron's frequency electronically. This pulls the local oscillator back to the frequency that produces the correct IF.",
     "flag": null
   },
   {
@@ -2314,7 +2314,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Classic shipboard radars use a reflex klystron as the local oscillator because it generates low-power microwave energy and can be tuned electronically by its repeller voltage for AFC. A hydrogen thyratron is a switch used in the modulator.",
     "flag": null
   },
   {
@@ -2333,7 +2333,7 @@
     ],
     "answer": 0,
     "figure": "8A1",
-    "explanation": "",
+    "explanation": "Block 48 feeds both the main crystal detector and the AFC mixer (block 49), and it receives the correction voltage from the AFC output circuit. That makes it the klystron local oscillator, whose signal mixes with both the echoes and the magnetron sample.",
     "flag": null
   },
   {
@@ -2352,7 +2352,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Either a reflex klystron (older sets) or a Gunn diode oscillator (solid-state sets) can generate the low-power microwave signal a radar local oscillator needs, so the answer naming both is complete. A thyratron is a switching tube used in modulators.",
     "flag": null
   },
   {
@@ -2371,7 +2371,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The AFC circuit mixes a magnetron sample with the klystron output, checks the resulting IF in a discriminator, and feeds an error voltage to the klystron repeller. This holds the local oscillator on frequency automatically as the magnetron or klystron drifts.",
     "flag": null
   },
   {
@@ -2390,7 +2390,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A reflex klystron is tuned electronically over a small range by its repeller voltage, which changes the electrons' transit time, and mechanically over a large range by changing the size of its resonant cavity, which sets the basic resonant frequency.",
     "flag": null
   },
   {
@@ -2409,7 +2409,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Excessive coupling between the tuned stages of a high-gain IF strip lets energy feed back from output to input. With so much gain available, that unwanted coupling can drive the amplifier into self-oscillation instead of improving returns or reducing noise.",
     "flag": null
   },
   {
@@ -2428,7 +2428,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Shipboard radar receivers usually use an intermediate frequency of 30 or 60 MHz, high enough to pass the several-megahertz bandwidth that short pulses need. 455 kHz and 10.7 MHz are standard AM and FM broadcast receiver IFs.",
     "flag": null
   },
   {
@@ -2447,7 +2447,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Short ranges use short pulses, whose sharp edges need a wide IF bandwidth to preserve range resolution. Long ranges use long pulses, so a narrower bandwidth is enough and it cuts noise, improving sensitivity for weak distant echoes.",
     "flag": null
   },
   {
@@ -2466,7 +2466,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A logarithmic IF amplifier compresses its output, so both very weak and very strong echoes are handled without saturating. That gives a much greater dynamic range than a linear amplifier, whose output clips on strong returns; its gain and noise figure are not inherently better.",
     "flag": null
   },
   {
@@ -2485,7 +2485,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Voltage gain in decibels is 20 times the log of the voltage ratio: G = 20 log(2 V / 2 µV) = 20 log(10⁶) = 20 × 6 = 120 dB.",
     "flag": null
   },
   {
@@ -2504,7 +2504,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar AGC and instantaneous AGC (IAGC) typically provide a gain-control range of about 20 to 40 dB. That is enough to keep strong echoes from large targets or clutter from saturating the IF strip while leaving full gain for weak returns.",
     "flag": null
   },
   {
@@ -2523,7 +2523,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The signal path runs from mixer to IF amplifier to second detector, then to the video amplifier, which boosts the detected pulses to drive the display. The video amplifier handles baseband pulses, not 60 to 120 MHz signals, and has nothing to do with the local oscillator.",
     "flag": null
   },
   {
@@ -2542,7 +2542,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Echo pulses leaving the detector are both weak and very short. The video amplifier must raise these weak pulses to display level while keeping their steep edges, and that takes a bandwidth of several megahertz; a narrow amplifier would smear and shrink the small pulses.",
     "flag": null
   },
   {
@@ -2561,7 +2561,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "This is series and shunt peaking. A coil in series with the next stage's input capacitance (series peaking) and a coil in the load branch parallel to the output capacitance (shunt peaking) offset those capacitances at high frequencies, extending the response so pulse edges stay sharp.",
     "flag": null
   },
   {
@@ -2580,7 +2580,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The resolver carries antenna bearing information to the sweep and deflection circuits, not to the video amplifier. Range marker signals and the brilliance and contrast settings all act on the video signal itself.",
     "flag": null
   },
   {
@@ -2599,7 +2599,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Range markers are mixed with the echo video, and the brilliance and contrast controls set the bias and level of the video sent to the display. All of the listed items are therefore normal inputs to the video amplifier.",
     "flag": null
   },
   {
@@ -2618,7 +2618,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Pulse radar echoes are amplitude-modulated bursts of IF energy, so a simple diode envelope detector recovers the video pulses. Discriminators and ratio detectors are FM detectors and respond to frequency, not amplitude.",
     "flag": null
   },
   {
@@ -2637,7 +2637,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "AFC keeps the IF correct by retuning the klystron local oscillator to follow the magnetron. The magnetron's frequency is not controlled; it drifts, and the klystron is moved to track it.",
     "flag": null
   },
   {
@@ -2656,7 +2656,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The discriminator puts out a DC voltage whose polarity and size depend on how far the AFC IF is from its center frequency. That error voltage, amplified, is the AFC voltage applied to the klystron.",
     "flag": null
   },
   {
@@ -2675,7 +2675,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A sample of magnetron output is mixed with the klystron signal, and the discriminator checks whether their difference equals the nominal IF. In effect it compares the magnetron and klystron frequencies and produces an error voltage when their spacing is wrong.",
     "flag": null
   },
   {
@@ -2694,7 +2694,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The magnetron cannot practically be retuned in operation, so AFC shifts the local oscillator (klystron) to follow magnetron drift. Keeping the LO a fixed IF away from the transmitter keeps the receiver tuned to the echoes.",
     "flag": null
   },
   {
@@ -2713,7 +2713,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "With the LO above the transmitter, IF = 3.060 GHz − 3.000 GHz = 60 MHz. If the magnetron drifts higher, the IF shrinks, so the klystron must also move higher. Making a reflex klystron's repeller more negative returns the electrons sooner and raises its frequency.",
     "flag": null
   },
   {
@@ -2732,7 +2732,7 @@
     ],
     "answer": 2,
     "figure": "8A1",
-    "explanation": "",
+    "explanation": "In Fig. 8A1, block 50 sits between the AFC IF amplifier and the AFC output circuit. It is the discriminator, which converts any deviation of the AFC IF from its center frequency into a correction voltage for the klystron.",
     "flag": null
   },
   {
@@ -2751,7 +2751,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Sensitivity time control cuts receiver gain right after each transmitted pulse and lets it recover with time. Strong sea return from nearby waves is suppressed, while weaker distant echoes still get full gain.",
     "flag": null
   },
   {
@@ -2770,7 +2770,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "STC lowers receiver gain immediately after the transmitted pulse, when strong echoes from nearby waves arrive, then restores gain for longer ranges. This reduces the sea clutter around the center of the PPI without affecting bearing resolution.",
     "flag": null
   },
   {
@@ -2789,7 +2789,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Sea return, or sea clutter, is radar energy reflected from waves close to the ship. It shows as a cluttered area around the center of the display, strongest at short range and in rough seas.",
     "flag": null
   },
   {
@@ -2808,7 +2808,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Sea clutter is suppressed by the sensitivity time control circuit, adjusted with the front-panel sea clutter (anti-clutter sea) control. If that control has no effect, suspect the STC circuit; FTC deals with rain clutter, not sea return.",
     "flag": null
   },
   {
@@ -2827,7 +2827,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The STC (sensitivity time control) circuit, set by the sea clutter control, reduces gain for short-range returns where wave echoes are strongest. The EBL, local oscillator and audio stages play no part in clutter suppression.",
     "flag": null
   },
   {
@@ -2846,7 +2846,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "STC reduces receiver sensitivity immediately after each transmitted pulse, when echoes from close objects and nearby waves arrive, then lets the gain rise with time. It acts on the receiver, never on the transmitter.",
     "flag": null
   },
   {
@@ -2865,7 +2865,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Many switching supplies rectify the AC line directly, with no isolation transformer, so their circuit common can sit at line potential. Clipping a grounded oscilloscope's ground lead there can short the line and destroy parts, so know the supply's design before taking live measurements.",
     "flag": null
   },
   {
@@ -2884,7 +2884,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Output equals input times duty cycle. T = 1 / 20 kHz = 50 µs; duty cycle = 27 µs / 50 µs = 0.54; V<sub>out</sub> = 0.54 × 165 V = 89.1 V DC. The 1-ampere load current does not enter the calculation.",
     "flag": null
   },
   {
@@ -2903,7 +2903,7 @@
     ],
     "answer": 3,
     "figure": "8C10",
-    "explanation": "",
+    "explanation": "CR6 and CR7 rectify the secondary of T1, which Q1 drives at the high switching frequency. Ahead of the L1 and C6 filter, that junction carries rectified pulses at the switching rate, far above the 60 Hz line frequency.",
     "flag": null
   },
   {
@@ -2922,7 +2922,7 @@
     ],
     "answer": 0,
     "figure": "8C11",
-    "explanation": "",
+    "explanation": "The sine drives the inverting input, so the output goes high only after the input falls below the lower trip point of about −1.285 V. That happens just past the negative-going zero crossing, about 180° after the positive zero crossing (slightly more, because of the small hysteresis).",
     "flag": null
   },
   {
@@ -2941,7 +2941,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A power MOSFET has a gate threshold of roughly 2 to 4 V and needs well above that, typically about 10 V, to switch fully on with low resistance. The gate therefore swings by more than 2 volts between low and high.",
     "flag": null
   },
   {
@@ -2960,7 +2960,7 @@
     ],
     "answer": 3,
     "figure": "8C11",
-    "explanation": "",
+    "explanation": "Fig. 8C11 is an inverting Schmitt trigger: the 5 kΩ / 2 kΩ divider feeds part of the output back to the noninverting input. With the output swinging ±4.5 V, V<sub>trip</sub> = ±4.5 × 2k / (5k + 2k) = ±1.2857 V ≈ ±1.285 V.",
     "flag": null
   },
   {
@@ -2979,7 +2979,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Isolating the receiver through shielding, physical separation and decoupling of power and signal leads keeps noise from the modulator, transmitter and other shipboard equipment out of its sensitive front end. Changing the frequency or the IF strip does not remove the noise source.",
     "flag": null
   },
   {
@@ -2998,7 +2998,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The dominant noise in a radar receiver is thermal noise from random electron motion in its own components, especially the mixer and first IF stages. It sets the receiver's noise figure and limits how weak an echo can be detected.",
     "flag": null
   },
   {
@@ -3017,7 +3017,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Noise is random, so on an LCD it shows as erratic video speckle with sudden, sharp changes in intensity, rather than as fixed black spots or shifts in target bearing.",
     "flag": null
   },
   {
@@ -3036,7 +3036,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A radar transmits pulses at a fixed repetition rate, so a nearby communications receiver hears them as a steady tone or buzz at the PRF. Its pitch stays constant, unlike random static or hiss.",
     "flag": null
   },
   {
@@ -3055,7 +3055,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Echoes from rain or snow (weather clutter) and from waves near the ship (sea return) are the most common unwanted returns on a marine radar. They are countered by the FTC rain control and the STC sea control.",
     "flag": null
   },
   {
@@ -3074,7 +3074,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Echoes from small targets can be as weak as the receiver's own noise, so they get lost in it. Large targets return strong echoes that stand well above the noise, and noise does not alter bearings.",
     "flag": null
   },
   {
@@ -3093,7 +3093,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The radar discriminator is part of the AFC loop: it senses how far the AFC IF is from its center frequency and produces a corrective voltage that retunes the klystron local oscillator. It does not separate targets or demodulate an FM signal.",
     "flag": null
   },
   {
@@ -3112,7 +3112,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Moving target indication compares successive echoes and cancels those that are unchanged from pulse to pulse. Stationary targets and clutter are thereby blocked, while moving targets, whose echoes change because of Doppler shift, pass through to the display.",
     "flag": null
   },
   {
@@ -3131,7 +3131,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The AFC section needs only a tiny sample of the magnetron's high-power output, so an RF attenuator sits between the magnetron and the AFC mixer (block 47 in Fig. 8A1), reducing the sample to a level the crystal can safely handle.",
     "flag": null
   },
   {
@@ -3150,7 +3150,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "In MTI processing, stationary clutter should cancel identically from one pulse to the next. When the MTI filter is not functioning properly, the clutter residue shifts with each pulse, producing the glint effect.",
     "flag": null
   },
   {
@@ -3169,7 +3169,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The TR (transmit-receive) cell ionizes during the transmit pulse, shorting the receiver path so the magnetron's high power cannot burn out the sensitive crystal mixer. After the pulse it deionizes and passes the weak echoes to the receiver.",
     "flag": null
   },
   {
@@ -3188,7 +3188,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "An MTI receiver cancels echoes that are unchanged from pulse to pulse, so fixed objects and ground clutter disappear. Only targets whose echoes change because of motion (Doppler shift) remain on the display.",
     "flag": null
   },
   {
@@ -3207,7 +3207,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Current LCD technology routinely exceeds 200 pixels per inch, with phones and tablets commonly at 300 ppi or more, so limits of 50 or 125 ppi understate what modern panels achieve.",
     "flag": null
   },
   {
@@ -3226,7 +3226,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A CRT's final anode needs a very high accelerating voltage, typically 10 to 50 kV (about 17 kV in many radar displays), to give the beam enough energy for a bright trace. Millivolts or a few hundred volts are far too low.",
     "flag": null
   },
   {
@@ -3245,7 +3245,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The conductive graphite aquadag coating inside the bulb connects to the high-voltage anode. It therefore acts as a second anode, shields the electron beam from stray electric fields and collects secondary electrons knocked off the screen, so all of the listed items apply.",
     "flag": null
   },
   {
@@ -3264,7 +3264,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Energizing a liquid crystal cell makes its molecules align with the applied drive, changing how the cell passes polarized light; selected cells darken or lighten to form the pattern. Deflection coils and antenna bearing play no part in an LCD.",
     "flag": null
   },
   {
@@ -3283,7 +3283,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A raster display builds the picture like a TV: the beam sweeps horizontally line by line while stepping vertically down the screen. Radial sweeps rotating with the antenna belong to a conventional PPI, and point-to-point X-Y movement is a stroke display.",
     "flag": null
   },
   {
@@ -3302,7 +3302,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "In a raster-scan radar, echo data is held in video memory. Clock pulses step the scan while an address bus selects which memory location is read for each pixel. Radar raster displays are not simply TV receivers, and their frame rate is not fixed at 30 per second.",
     "flag": null
   },
   {
@@ -3321,7 +3321,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The video amplifier combines the low-level echo video with the fixed range rings and the variable range ring into one composite signal for the display, so all of the listed items are its usual inputs.",
     "flag": null
   },
   {
@@ -3340,7 +3340,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The resolver supplies antenna bearing information to the sweep and deflection circuits, not to the video amplifier. Low-level video and the fixed and variable range rings are all mixed in the video amplifier.",
     "flag": null
   },
   {
@@ -3359,7 +3359,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The sweep amplifier boosts the sweep generator's sawtooth drive to the current the CRT deflection coils need, producing the radial trace. It does not drive the resolver or add power to the video stage.",
     "flag": null
   },
   {
@@ -3378,7 +3378,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The sweep amplifier drives two deflection coils, one for X (horizontal) and one for Y (vertical) deflection. Feeding them sweep currents weighted by the sine and cosine of antenna bearing makes the trace rotate in step with the antenna.",
     "flag": null
   },
   {
@@ -3397,7 +3397,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The sweep generator, triggered by the synchronizer, produces the sawtooth waveform that the sweep amplifier boosts to drive the deflection coils. Range rings and composite video come from other circuits.",
     "flag": null
   },
   {
@@ -3416,7 +3416,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The video amplifier combines echo video with the range rings and sends this composite video to the CRT cathode, where it varies beam intensity so targets show as bright spots. Sweep drive and resolver signals are handled elsewhere.",
     "flag": null
   },
   {
@@ -3435,7 +3435,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Timing circuits produce the synchronizing trigger pulses that fire the modulator and transmitter at the pulse repetition frequency and start the display sweep at the same instant, so every range measurement begins at transmission.",
     "flag": null
   },
   {
@@ -3454,7 +3454,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The synchronizer, or timer, generates the master timing pulses that trigger the modulator, start the sweep and time the range markers. The pulse forming network only shapes the modulator's high-voltage pulse.",
     "flag": null
   },
   {
@@ -3473,7 +3473,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The resolver's output follows the antenna's rotation, not the timing pulses. The timing circuit sets the pulse repetition frequency, triggers the modulator and starts the sweep drive.",
     "flag": null
   },
   {
@@ -3492,7 +3492,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The synchronizer's main job is to trigger the modulator, which fires the magnetron at the pulse repetition frequency. Its pulses also start the display sweep, keeping transmission and display in step.",
     "flag": null
   },
   {
@@ -3511,7 +3511,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A synchronizer outputs sharp trigger pulses, or square waves from which they are derived, at the pulse repetition rate, because its job is to mark exact instants for the modulator and sweep to start.",
     "flag": null
   },
   {
@@ -3530,7 +3530,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The synchronizer's trigger pulse starts the sweep generator at the instant the transmitter fires, so the sweep begins at zero range. The sweep amplifier only amplifies the drive once it has been started.",
     "flag": null
   },
   {
@@ -3549,7 +3549,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A blocking oscillator produces very narrow, steep-sided pulses with fast rise times, which is exactly what sharp, accurately placed range marks on the CRT require.",
     "flag": null
   },
   {
@@ -3568,7 +3568,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Range markers are generated by the timer (synchronizer) circuits, which produce marker pulses at fixed time intervals after each transmitted pulse, each interval corresponding to the ring spacing. The CRT only displays them.",
     "flag": null
   },
   {
@@ -3587,7 +3587,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Each oscillator cycle becomes one range mark. T = 1 / 27 kHz = 37.04 µs; range = 37.04 µs ÷ 12.34 µs per nautical mile ≈ 3.0 nautical miles between markers.",
     "flag": null
   },
   {
@@ -3606,7 +3606,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar range time is 12.34 µs per nautical mile, so T = 10 × 12.34 µs = 123.4 µs and f = 1 / 123.4 µs ≈ 8.1 kHz, about 8 kHz.",
     "flag": null
   },
   {
@@ -3625,7 +3625,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "T = 1 / 20 kHz = 50 µs; range = 50 µs ÷ 12.34 µs per nautical mile ≈ 4.05, so about 4 nautical miles between markers.",
     "flag": null
   },
   {
@@ -3644,7 +3644,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Ring spacing time is T = 0.25 × 12.34 µs = 3.085 µs, and f = 1 / T ≈ 324 kHz. The exam's 322 kHz figure evidently comes from rounding the period to 3.1 µs: f = 1 / 3.1 µs ≈ 322 kHz, the closest listed value.",
     "flag": null
   },
   {
@@ -3663,7 +3663,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The VRM pulse is mixed with the echo video in the video amplifier so it appears on the display as a ring, just like the fixed range rings. The sweep amplifier handles only deflection drive.",
     "flag": null
   },
   {
@@ -3682,7 +3682,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The VRM is a single ring the operator moves out until it touches a target's echo, then reads the range from its readout. It gives a far more precise range than estimating between fixed rings and is easily readjusted as a moving target's range changes.",
     "flag": null
   },
   {
@@ -3701,7 +3701,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "VRM calibration checks both ends of its travel: at the minimum and maximum settings the VRM is adjusted to line up exactly with the matching fixed range rings, which serve as the accurate reference.",
     "flag": null
   },
   {
@@ -3720,7 +3720,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The VRM panel control is normally a potentiometer. Turning it changes a DC voltage that sets the marker's delay after the transmit pulse, moving the ring in or out.",
     "flag": null
   },
   {
@@ -3739,7 +3739,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In digital VRM circuits, a shift register (or counter chain) steps clock pulses after each transmit trigger and generates the marker after a precisely set delay, and that delay sets the ring's range.",
     "flag": null
   },
   {
@@ -3758,7 +3758,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The VRM produces one ring whose radius the operator adjusts to match a target's range. It is generated separately from the fixed range marker oscillator and is calibrated against the fixed rings rather than with a frequency counter.",
     "flag": null
   },
   {
@@ -3777,7 +3777,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The EBL is a line from own ship's position that the operator rotates onto a target, and its readout then gives that target's bearing. Own heading comes from the heading marker, and range is measured with the VRM.",
     "flag": null
   },
   {
@@ -3796,7 +3796,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The Electronic Bearing Line runs from own ship at the display center out through a selected target, and its readout gives that target's bearing. Distance is measured with the VRM, not the EBL.",
     "flag": null
   },
   {
@@ -3815,7 +3815,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Showing azimuth referenced to true north requires a heading reference, and gyrocompass signals provide it, letting the picture be stabilized to north. The resolver alone reports only antenna angle relative to the ship's bow.",
     "flag": null
   },
   {
@@ -3834,7 +3834,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The gyrocompass reports own ship's heading relative to true north. The radar uses it to position the heading flash and stabilize the picture; target ranges and bearings come from the radar itself.",
     "flag": null
   },
   {
@@ -3853,7 +3853,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "In a true-bearing (north-up) presentation, true north is fixed at the top of the screen and the heading flash points along the vessel's course, so target bearings read directly as true bearings. A heading flash fixed at the top is the head-up (relative) presentation.",
     "flag": null
   },
   {
@@ -3872,7 +3872,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A true-bearing presentation is north-up: north stays at the top and the heading flasher rotates to show the vessel's course. A display with the bow always pointing up is the relative, head-up presentation.",
     "flag": null
   },
   {
@@ -3891,7 +3891,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Digitized radars typically divide each 360° antenna rotation into 4,096 (2¹²) bearing segments, a 12-bit azimuth count, so each segment is 360° / 4096 ≈ 0.088° wide.",
     "flag": null
   },
   {
@@ -3910,7 +3910,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Dynamic RAM stores each bit as a charge on a tiny capacitor that leaks away, so it needs a periodic refresh cycle. SRAM holds data in flip-flops without refresh, and ROM and PROM are nonvolatile.",
     "flag": null
   },
   {
@@ -3929,7 +3929,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "DRAM stands for dynamic random access memory. It is called dynamic because its capacitor-stored bits leak and must be refreshed continually, unlike static RAM.",
     "flag": null
   },
   {
@@ -3948,7 +3948,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Sea clutter is random and changes from sweep to sweep, while real targets return consistently. The dual memory stores successive digitized sweeps and displays only returns present in both, so fluctuating clutter is dropped.",
     "flag": null
   },
   {
@@ -3967,7 +3967,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Correlation processing requires a target return in two sequential memory cells, from successive sweeps, before it is displayed. Real targets pass this test, while random clutter and noise rarely appear twice in the same place.",
     "flag": null
   },
   {
@@ -3986,7 +3986,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Display memory lets the processor compare successive sweeps, so returns that fluctuate from sweep to sweep, such as sea clutter and noise, are eliminated while steady targets remain.",
     "flag": null
   },
   {
@@ -4005,7 +4005,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Own speed that stays at a manually set value regardless of the actual speed means the ARPA is not receiving speed log data. A “LOG OUT” alarm indicates exactly that speed log input failure; “GYRO OUT” concerns heading.",
     "flag": null
   },
   {
@@ -4024,7 +4024,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "ARPA (automatic radar plotting aid), used as a collision avoidance system (CAS), acquires radar targets and automatically tracks them, computing their course, speed, CPA and TCPA. It does not steer the ship.",
     "flag": null
   },
   {
@@ -4043,7 +4043,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A collision avoidance computer needs own ship's position, gyro heading and log speed to work out targets' relative motion. Wind velocity does not affect target tracking or CPA calculations, so an anemometer is not an input.",
     "flag": null
   },
   {
@@ -4062,7 +4062,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "An ARPA vector is a line from a target's position whose direction shows its course and whose length shows its speed, as the distance covered in the selected vector time. An EBL shows only a bearing.",
     "flag": null
   },
   {
@@ -4081,7 +4081,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Trial maneuver mode lets the operator enter a proposed course or speed change and see the predicted results, such as new CPA and TCPA values for tracked targets, before actually maneuvering.",
     "flag": null
   },
   {
@@ -4100,7 +4100,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "CPA, the closest point of approach, is the minimum distance a tracked target will come to own ship if both keep their present courses and speeds. TCPA is the time remaining until that point.",
     "flag": null
   },
   {
@@ -4119,7 +4119,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The display power supply delivers 5 V DC for the digital logic and ±12 V DC for the analog and sweep circuits. Pulse forming network voltage belongs to the transmitter's modulator supply, not the display.",
     "flag": null
   },
   {
@@ -4138,7 +4138,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A display power supply provides 5 V DC for logic, ±12 V DC for analog and sweep circuits, and about 17 kV DC for the CRT anode, so all of the listed items are its outputs.",
     "flag": null
   },
   {
@@ -4157,7 +4157,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The chopper is an electronic switch between the raw rectified DC and the inverter, turning that DC on and off at high speed. It does not interrupt the AC line or regulate one particular output.",
     "flag": null
   },
   {
@@ -4176,7 +4176,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The inverter turns the switched DC into a pulsed drive for the power transformer, since a transformer cannot pass steady DC. The secondary outputs are then rectified, filtered and regulated.",
     "flag": null
   },
   {
@@ -4195,7 +4195,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Display switching supplies commonly run around 18 kHz, near the top of the audio range, high enough to shrink transformer and filter size. 120 Hz is the ripple frequency of rectified 60 Hz line power, not a switching rate.",
     "flag": null
   },
   {
@@ -4214,7 +4214,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A voltage tripler multiplies the pulsed transformer output to produce the very high DC (about 17 kV) the CRT anode needs, without an even larger step-up winding. The low-voltage logic and sweep supplies need no multiplication.",
     "flag": null
   },
   {
@@ -4233,7 +4233,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The heading flash brightens the sweep each time the antenna passes the ship's bow, marking the dead-ahead direction on the PPI so the operator can relate targets to the ship's heading.",
     "flag": null
   },
   {
@@ -4252,7 +4252,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Digital processing can store and integrate successive sweeps, so real but weak echoes that repeat are reinforced while random noise averages out. This enhancement of weak target returns is its major advantage.",
     "flag": null
   },
   {
@@ -4271,7 +4271,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The Nyquist rule requires sampling above twice the highest frequency present. Sampling at exactly twice that frequency would need an ideal brick-wall filter; sampling higher leaves a guard band so a practical filter can remove the unwanted alias components.",
     "flag": null
   },
   {
@@ -4290,7 +4290,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Bearing resolution is the ability to show two targets at the same range but slightly different bearings as separate echoes; it depends mainly on horizontal beamwidth. Separating targets at different ranges is range resolution.",
     "flag": null
   },
   {
@@ -4309,7 +4309,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "With a period much shorter than RC, the capacitor charges only slightly each half cycle, staying on the nearly linear start of its exponential curve. The output ramps up and down in straight lines, forming a small triangle wave.",
     "flag": null
   },
   {
@@ -4328,7 +4328,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Fixed objects return echoes with the same phase pulse after pulse, while moving targets shift phase through Doppler. Using a discriminator-type (phase-sensitive) detector as the second detector exposes those phase changes, so the steady returns from stationary objects can be canceled.",
     "flag": null
   },
   {
@@ -4347,7 +4347,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "In an end-fed slotted waveguide, each slot is excited with a phase set by the guide wavelength, which changes with frequency. Changing the transmitter frequency therefore swings the beam direction slightly, an effect called frequency scanning or beam squint.",
     "flag": null
   },
   {
@@ -4366,7 +4366,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Shipboard radars almost universally use a slotted waveguide array: a length of waveguide with precisely spaced slots cut in one wall, each radiating a small share of the energy to form a narrow horizontal beam. It is compact, rugged and needs no separate feed horn.",
     "flag": null
   },
   {
@@ -4385,7 +4385,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Bearing resolution is the ability to separate two targets at the same range but slightly different bearings. That depends on how narrow the beam is in azimuth, the horizontal plane; the vertical beam is kept fairly wide so targets stay in view as the ship rolls.",
     "flag": null
   },
   {
@@ -4404,7 +4404,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "The slots in an end-fed array are deliberately spaced slightly off a half guide wavelength so their small reflections don't add up into a high VSWR. The resulting progressive phase shift tilts, or squints, the main lobe a few degrees away from the perpendicular.",
     "flag": null
   },
   {
@@ -4423,7 +4423,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Beamwidth is inversely proportional to the antenna's length in wavelengths, roughly θ ≈ 70λ/L degrees. A longer array therefore produces a narrower horizontal beam and better bearing resolution; doubling the length roughly halves the beamwidth.",
     "flag": null
   },
   {
@@ -4442,7 +4442,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Commercial marine radars overwhelmingly use slotted waveguide arrays, which give a narrow, low-sidelobe horizontal beam from a compact, rugged radiator. Truncated parabolic reflectors were common on older sets but have largely been replaced.",
     "flag": null
   },
   {
@@ -4461,7 +4461,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "VSWR comes from comparing forward and reflected power. A dual directional coupler samples both and a power meter reads them, from which VSWR is calculated, while a network analyzer measures the reflection directly. A spectrum analyzer alone shows frequencies and levels, not reflections.",
     "flag": null
   },
   {
@@ -4480,7 +4480,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Convert to base units first: Z<sub>O</sub> = √(L/C) = √(250 × 10⁻⁶ H / 1 × 10⁻⁹ F) = √250,000 = 500 Ω.",
     "flag": null
   },
   {
@@ -4499,7 +4499,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A poorly shielded or mismatched line radiates energy and picks up stray RF, so radar pulses can leak into nearby communications receivers as interference. Proper shielding and a correct termination keep the energy inside the line.",
     "flag": null
   },
   {
@@ -4518,7 +4518,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Characteristic impedance depends only on the line's construction: conductor size, spacing and dielectric, which set its inductance and capacitance per unit length. Cutting the line changes its length, not that L/C ratio, so each half is still 72 Ω.",
     "flag": null
   },
   {
@@ -4537,7 +4537,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Standing waves form when part of the forward wave is reflected from a load that doesn't match the line's Z<sub>O</sub>. The reflected wave combines with the incident wave, so their presence shows that not all the energy is being absorbed by the load.",
     "flag": null
   },
   {
@@ -4556,7 +4556,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Moisture that condenses inside the guide needs a way out. Sloping horizontal runs slightly down toward an elbow and drilling a small drain hole there lets water escape instead of pooling, where it would cause loss, reflections and corrosion.",
     "flag": null
   },
   {
@@ -4575,7 +4575,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A synchro transmitter geared to the antenna drives a synchro receiver at the display, so the PPI sweep rotates in step with the antenna. Synchros send shaft angle electrically over a few wires, a simple and long-standing way to keep the two aligned.",
     "flag": null
   },
   {
@@ -4594,7 +4594,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "In a synchro pair both rotors are excited by the same AC reference, and the three stator leads (S1, S2, S3) of the two units are wired together. The relative voltages on those stator lines represent the shaft angle, so they carry the angular information.",
     "flag": null
   },
   {
@@ -4613,7 +4613,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Resolvers are rotary transformers whose two output windings, set 90° apart, produce voltages proportional to the sine and cosine of the antenna angle. Those signals convert easily to digital bearing data for the sweep and processing circuits, which is why they displaced synchros in later radar designs.",
     "flag": null
   },
   {
@@ -4632,7 +4632,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A basic resolver has one rotor winding excited with AC and two stator windings at right angles. As the rotor turns, the stator voltages vary as the sine and cosine of the shaft angle, giving the antenna position directly.",
     "flag": null
   },
   {
@@ -4651,7 +4651,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A synchro transmitter's rotor receives its AC excitation through two rotor leads, R1 and R2, while three stator windings, S1, S2 and S3, spaced 120° apart, pick up induced voltages whose ratios represent the shaft angle.",
     "flag": null
   },
   {
@@ -4670,7 +4670,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Any device that reports shaft angle electrically can do the job: synchros send it on three stator lines, resolvers as sine and cosine voltages, and optical encoders as digital pulses or codes. Different manufacturers and generations of radar use each of these methods.",
     "flag": null
   },
   {
@@ -4689,7 +4689,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Waveguides are made from good conductors so wall currents see little resistance. Brass, aluminum and copper are all used, often silver plated inside; aluminum is light, copper has the lowest loss of the three, and brass is easy to machine.",
     "flag": null
   },
   {
@@ -4708,7 +4708,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Stripline sandwiches a flat center conductor in dielectric between two parallel ground planes, making a shielded, flat form of coax. Microstrip differs by having only one ground plane, with the conductor on the surface.",
     "flag": null
   },
   {
@@ -4727,7 +4727,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A waveguide doesn't carry current along a conductor the way a wire does. Energy travels as an electromagnetic wave reflecting between the walls, and the conductive walls simply confine and guide the field.",
     "flag": null
   },
   {
@@ -4746,7 +4746,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "At microwave frequencies coax suffers heavy conductor and dielectric losses. A hollow waveguide has a large conducting surface and an air dielectric, so it carries radar pulses with far less attenuation, even though it is costlier and harder to install.",
     "flag": null
   },
   {
@@ -4765,7 +4765,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A waveguide can be pictured as a two-wire line supported by countless quarter-wave shorted stubs, each presenting a very high impedance at the line, which merge into a closed box. Skin effect keeps the currents on the inner surfaces, so the inside walls do the work.",
     "flag": null
   },
   {
@@ -4784,7 +4784,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Energy is coupled out with a small loop of wire bent into a J shape, called a J-hook, inserted into the magnetron cavity or the guide. The magnetic field links the loop and induces a current that carries the RF to the output line.",
     "flag": null
   },
   {
@@ -4803,7 +4803,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The antenna turns continuously while the waveguide from the transceiver stays fixed. A rotary joint is a choke-coupled section that lets one half rotate against the other while passing microwave energy with little loss or leakage.",
     "flag": null
   },
   {
@@ -4822,7 +4822,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Current in a waveguide flows over the large inner wall surface rather than through a thin center conductor. Spreading the current over that big area keeps the resistance, and therefore the I²R loss, very small.",
     "flag": null
   },
   {
@@ -4841,7 +4841,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Bends must be gradual to avoid reflections and mode distortion; the rule of thumb is a radius of at least two wavelengths. At X-band (about 9.4 GHz) a wavelength is roughly 3.2 cm, about 1.25 in, so the bend radius must be more than two inches.",
     "flag": null
   },
   {
@@ -4860,7 +4860,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Energy is coupled into or out of a waveguide by a probe that excites the electric field, a loop that links the magnetic field, or a slot or aperture window. Capacitive coupling of the kind used between circuit stages is not a waveguide coupling method.",
     "flag": null
   },
   {
@@ -4879,7 +4879,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In the dominant TE<sub>10</sub> mode the electric field peaks at the center of the wide dimension and falls to zero at the narrow walls. The magnetic field forms closed loops that crowd toward the walls, so it is strongest at the edges, where the wall currents flow.",
     "flag": null
   },
   {
@@ -4898,7 +4898,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Coax at microwave frequencies loses much energy in its small center conductor and its dielectric. A waveguide's large walls and air filling cut those losses considerably, which matters for both the outgoing pulse and the weak returning echoes.",
     "flag": null
   },
   {
@@ -4917,7 +4917,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "STC reduces receiver gain right after the transmit pulse to suppress sea clutter, then lets it recover with range. Set too high, it blanks all close-in video; that blanked distance stays fixed, so it looks smaller on longer range scales.",
     "flag": null
   },
   {
@@ -4936,7 +4936,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Range rings are circular only when the horizontal and vertical deflection sweeps have equal amplitude. If the sweep generator gives one axis more amplitude than the other, every sweep line is stretched along that axis and the rings become ovals.",
     "flag": null
   },
   {
@@ -4955,7 +4955,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "A worn TR cell recovers slowly after the transmit pulse, keeping the receiver blocked for a fixed time, so nothing appears within a fixed distance of center. Because that distance is constant, the blank spot looks smaller as the range scale increases.",
     "flag": null
   },
   {
@@ -4974,7 +4974,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The display must start timing when the pulse actually leaves the antenna, so a delay line compensates for the waveguide and feeder length. If it is set wrong, close-in ranges are shifted, and straight edges near the center, like a pier, appear bent.",
     "flag": null
   },
   {
@@ -4993,7 +4993,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Digital video is stored in memory locations that correspond to range cells. A stuck bit or faulty location in the video RAM or shift register produces the same bright ring at the same place on the screen on every range, regardless of the actual echoes.",
     "flag": null
   },
   {
@@ -5012,7 +5012,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A raster-scan display builds its picture from video stored in memory, with each block of memory mapped to an area of the screen. Losing video in a neat rectangle points to a failed section of that memory rather than sweep or power circuits.",
     "flag": null
   },
   {
@@ -5031,7 +5031,7 @@
     ],
     "answer": 3,
     "figure": "8F12",
-    "explanation": "",
+    "explanation": "The circuit is an inverting summing amplifier, V<sub>out</sub> = −R<sub>F</sub> × Σ(V/R). Normally V<sub>out</sub> = −10 kΩ × (5/200k + 5/100k + 5/50k + 5/25k) = −10 kΩ × 0.375 mA = −3.75 V. With a 25 kΩ in the 50 kΩ position, the current sum becomes 0.025 + 0.05 + 0.2 + 0.2 = 0.475 mA, giving −4.75 V, exactly the reading.",
     "flag": null
   },
   {
@@ -5050,7 +5050,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The AFC uses a crystal detector to compare a sample of the magnetron pulse with the local oscillator and keep the receiver tuned. A bad crystal lets the AFC lose lock and hunt, so tuning swings in and out as the antenna rotates, producing bright flashing pie-shaped sectors.",
     "flag": null
   },
   {
@@ -5069,7 +5069,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Spokes or sectors of false video are frequently caused by pulses from a nearby ship's radar on a similar frequency. Ruling out that external source first, for instance by switching on interference rejection, is quick and avoids needless troubleshooting of good circuits.",
     "flag": null
   },
   {
@@ -5088,7 +5088,7 @@
     ],
     "answer": 0,
     "figure": "8F12",
-    "explanation": "",
+    "explanation": "Only the 100 kΩ and 50 kΩ inputs carry 5 V; the others are at 0 V and add no current. For this inverting summer, V<sub>out</sub> = −R<sub>F</sub>(5 V/100 kΩ + 5 V/50 kΩ) = −10 kΩ × (0.05 + 0.1) mA = −1.5 V.",
     "flag": null
   },
   {
@@ -5107,7 +5107,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "The TR tube shorts the receiver input while the transmitter fires. If it fails to fire or recovers poorly, high-power pulse energy reaches the crystal mixer and can burn it out, so the receiver is the part at risk.",
     "flag": null
   },
   {
@@ -5126,7 +5126,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Range to a target is read against range rings whose spacing is set by the range ring oscillator's frequency. If that oscillator drifts, the rings are misplaced and every range read from them, such as to a lighthouse, is wrong.",
     "flag": null
   },
   {
@@ -5145,7 +5145,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "A good mixer crystal is a diode, so an ohmmeter should show low resistance one way and much higher resistance with the leads reversed. Equal readings both ways mean it is shorted or open and won't rectify or mix.",
     "flag": null
   },
   {
@@ -5164,7 +5164,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A failed mixer crystal is usually the result of a faulty TR tube letting transmitter energy leak into the receiver. Replacing only the crystal would let the new one burn out the same way, so the TR tube is replaced along with it.",
     "flag": null
   },
   {
@@ -5183,7 +5183,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The magnetron's magnet makes electrons spiral past the resonant cavities, giving up energy as RF. If the magnet weakens, more electrons go straight to the anode, so tube current rises while RF output falls.",
     "flag": null
   },
   {
@@ -5202,7 +5202,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Small targets give weak echoes, so anything that cuts transmitted power or receiver sensitivity loses them first. A weak magnetron, low IF amplifier gain, or a receiver tuned off frequency all reduce the signal-to-noise ratio for marginal targets.",
     "flag": null
   },
   {
@@ -5221,7 +5221,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "The magnetic field forces electrons into curved paths around the cathode. When that field is weak or defective, more electrons strike the anode directly, so magnetron current rises sharply while useful RF output drops.",
     "flag": null
   },
   {
@@ -5240,7 +5240,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Mixer current comes from local oscillator drive rectified by the mixer diode. A misadjusted LO delivers less drive, a degraded diode rectifies poorly, and a failed TR cell lets transmitter energy reach and damage the diode, so each can reduce or stop mixer current.",
     "flag": null
   },
   {
@@ -5259,7 +5259,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Without its magnetic field, nothing curves the electrons, so they rush straight from cathode to anode as a heavy current with no oscillation. The tube overheats and is destroyed in a very short time.",
     "flag": null
   },
   {
@@ -5278,7 +5278,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A target's displayed bearing depends on the sweep being in step with antenna position. If targets are consistently off their visual bearings, first check the antenna bearing data, such as the synchro, resolver or encoder signals and the heading alignment.",
     "flag": null
   },
   {
@@ -5297,7 +5297,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Water entering through a leaking waveguide joint or rotary joint attenuates the signal both ways and causes reflections. Weak, distant echoes vanish first, and the problem lingers after the rain until the moisture dries out.",
     "flag": null
   },
   {
@@ -5316,7 +5316,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "An end-fed slotted array ends in a matched absorbing load that soaks up the energy the slots don't radiate. If that termination fails, the leftover energy reflects back down the guide, raising VSWR even when the waveguide and rotary joint are good.",
     "flag": null
   },
   {
@@ -5335,7 +5335,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Range accuracy depends on each indicator's sweep speed and timing, including range ring and zero-range calibration. Checking both sets' sweep and timing circuits against correct readings shows which one is in error; averaging the two readings would just spread the error.",
     "flag": null
   },
   {
@@ -5354,7 +5354,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A weaker magnetic field lets more electrons reach the anode directly instead of spiraling past the cavities, so the current meter reads higher. A lower duty cycle or a weaker modulator pulse would reduce average current, not increase it.",
     "flag": null
   },
   {
@@ -5373,7 +5373,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Heavy rust and corrosion spoil the smooth conductive surface of the reflector, reducing antenna gain on both transmit and receive. Strong echoes still appear, but weak targets drop below the detection threshold, so the loss of performance is most noticeable on them.",
     "flag": null
   },
   {
@@ -5392,7 +5392,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "An echo box is a high-Q resonant cavity that stores energy from the transmitted pulse and rings it back to the receiver as an artificial target. The length of that ringing plume shows transmitter power and receiver tuning, so it is used for testing and tuning.",
     "flag": null
   },
   {
@@ -5411,7 +5411,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Because of skin effect, microwave currents flow only on the inner surface of a waveguide. Dirt, corrosion or debris there adds resistance and causes reflections, so keeping the interior clean preserves its low loss; paint or oil would add loss.",
     "flag": null
   },
   {
@@ -5430,7 +5430,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar servicing is largely about pulses and timing: modulator and trigger pulses, video, sweep waveforms and sync signals. An oscilloscope shows their shape, amplitude and timing, which no frequency counter, wattmeter or audio generator can do.",
     "flag": null
   },
   {
@@ -5449,7 +5449,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "The magnetron sits in a very strong permanent magnet field. A steel screwdriver can be yanked toward the magnet, damaging the tube or injuring the hand holding it, and magnetic tools can weaken the magnet, so non-magnetic tools are used.",
     "flag": null
   },
   {
@@ -5468,7 +5468,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Water in the guide forms a mismatch close to the transmitter, reflecting part of each pulse back into the receiver. Those internal reflections show up as large bright rings near the center of the display.",
     "flag": null
   },
   {
@@ -5487,7 +5487,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "S-band wavelengths are about 10 cm, so S-band waveguide is large, heavy and costly to run. At those frequencies good low-loss coax keeps losses acceptable while being far cheaper and easier to install.",
     "flag": null
   },
   {
@@ -5506,7 +5506,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radar pulses can couple into other equipment by radiation and through power and signal wiring. Good grounding, bonding of all units to the ship's ground, and shielding of cables and cabinets keep that energy contained and cure the interference.",
     "flag": null
   },
   {
@@ -5525,7 +5525,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "In a long horizontal run, moisture that condenses inside the guide can't drain and collects in pools. That water increases attenuation, causes reflections and corrodes the walls, so runs should be mostly vertical or sloped with drainage.",
     "flag": null
   },
   {
@@ -5544,7 +5544,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Condensation forms inside a waveguide as temperatures change, and in long horizontal sections it has nowhere to drain. The trapped water absorbs RF energy and corrodes the guide, so horizontal runs are kept short.",
     "flag": null
   },
   {
@@ -5563,7 +5563,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Every bend or twist is a discontinuity that can cause reflections and distort the field pattern in the guide. Keeping runs as straight as possible, with only gradual bends where needed, minimizes loss and distortion.",
     "flag": null
   },
   {
@@ -5582,7 +5582,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Masts, funnels and other structures in the beam path create blind or shadow sectors where targets can't be seen. Siting the antenna clear of obstructions comes first; height, run length and maintenance access are secondary.",
     "flag": null
   },
   {
@@ -5601,7 +5601,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "Electrostatic discharge can destroy a semiconductor outright, but it can also cause partial, latent damage that passes testing and fails weeks or months later. Discharges too small to feel can still do this, so ESD precautions are always needed.",
     "flag": null
   },
   {
@@ -5620,7 +5620,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "Radiated radar energy can induce currents that fire electrically initiated explosives or cause sparks that ignite flammable vapors. Before transmitting, make sure no explosives or flammable cargo, such as fuel, is being loaded nearby.",
     "flag": null
   },
   {
@@ -5639,7 +5639,7 @@
     ],
     "answer": 1,
     "figure": null,
-    "explanation": "",
+    "explanation": "Filter and pulse-forming network capacitors in radar modulators can hold lethal charges long after power is removed. Before touching any circuit, discharge all high-voltage capacitors to ground with a grounding stick.",
     "flag": null
   },
   {
@@ -5658,7 +5658,7 @@
     ],
     "answer": 2,
     "figure": null,
-    "explanation": "",
+    "explanation": "A CRT holds a high vacuum, and a cracked envelope can implode and throw glass fragments violently. Wearing gloves and safety goggles while handling it protects your hands and eyes.",
     "flag": null
   },
   {
@@ -5677,7 +5677,7 @@
     ],
     "answer": 3,
     "figure": null,
-    "explanation": "",
+    "explanation": "A CRT's glass envelope holds a near-perfect vacuum with atmospheric pressure bearing on its large face. A drop can crack it, causing a violent implosion that sprays glass fragments at high speed, injuring people and damaging nearby equipment.",
     "flag": null
   },
   {
@@ -5696,7 +5696,7 @@
     ],
     "answer": 0,
     "figure": null,
-    "explanation": "",
+    "explanation": "Static charge from a technician's body or a bare bench can destroy or weaken CMOS and other semiconductors on radar boards. A grounded wrist strap and static-dissipative work surface keep everything at the same potential while boards are handled or measured.",
     "flag": null
   }
 ]
