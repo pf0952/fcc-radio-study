@@ -1,0 +1,150 @@
+/* Theme tokens. Dark follows Windows unless data-theme on <html> overrides it. */
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #eaeef3;
+  --text: #17202b;
+  --muted: #566273;
+  --border: #d6dce4;
+  --sidebar: #12355b;
+  --sidebar-text: #ffffff;
+  --accent: #1a5fb4;
+  --accent-hover: #164f96;
+  --accent-text: #ffffff;
+  --good: #1b7a43;
+  --bad: #b42318;
+  --warn: #8a5300;
+  --focus: #0b57d0;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgb(16 24 40 / 0.06), 0 1px 3px rgb(16 24 40 / 0.08);
+  color-scheme: light;
+  font-size: var(--text-scale, 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0f1620;
+    --surface: #17212d;
+    --surface-2: #1f2b3a;
+    --text: #e6ebf1;
+    --muted: #9eabba;
+    --border: #2c3a4b;
+    --sidebar: #0b1a2b;
+    --accent: #6aa9f0;
+    --accent-hover: #8bbcf3;
+    --accent-text: #0b1520;
+    --good: #5cc98a;
+    --bad: #f28b82;
+    --warn: #f4b942;
+    --focus: #ffd166;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f1620;
+  --surface: #17212d;
+  --surface-2: #1f2b3a;
+  --text: #e6ebf1;
+  --muted: #9eabba;
+  --border: #2c3a4b;
+  --sidebar: #0b1a2b;
+  --accent: #6aa9f0;
+  --accent-hover: #8bbcf3;
+  --accent-text: #0b1520;
+  --good: #5cc98a;
+  --bad: #f28b82;
+  --warn: #f4b942;
+  --focus: #ffd166;
+  --shadow: none;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin: 0 0 0.35rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+code {
+  font-family: 'Cascadia Mono', Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--surface-2);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+/* High-contrast focus ring for keyboard users. */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0 0 1.75rem;
+  max-width: 46rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 1rem;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  color: var(--accent-text);
+  border: 0;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+}
+
+button.primary:hover {
+  background: var(--accent-hover);
+}

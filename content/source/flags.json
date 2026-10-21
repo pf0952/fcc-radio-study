@@ -1,0 +1,7 @@
+{
+  "3-31D4": "The pool keys C, broadband noise (phase noise). Real PLL synthesizers also produce spurs at discrete reference-related frequencies, so A is defensible too. Answer C on the exam.",
+  "3-95P4": "The pool keys A. Iridium satellites do have 48 spot beams, but each beam is roughly 400 km (about 250 miles) across, not 30 miles. A is still the closest statement; the other three are wrong. Answer A on the exam.",
+  "3-100Q4": "The choices in the official pool don't answer the question as asked. Electrical fires are Class C; the pool keys C, \"FE30\". Answer C on the exam.",
+  "9-44F4": "The pool keys 250 bps. The real NMEA 2000 backbone runs at 250 kbit/s (250,000 bits per second). Answer A on the exam.",
+  "9-49G2": "The keyed range (24 V ± 0.38 V) matches 1.5% accuracy plus 2 counts (0.36 V + 0.02 V), not the 0.15% in the question, which would give about 23.94 to 24.06 V. Answer B on the exam."
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "element": 3,
+    "name": "General Radiotelephone",
+    "short": "GROL",
+    "subelements": "ABCDEFGHIJKLMNOPQ",
+    "questions": 600,
+    "keyTopics": 100,
+    "exam": { "questions": 100, "passMark": 75 },
+    "pool": {
+      "publisher": "FCC",
+      "date": "Effective 25 June 2009",
+      "url": "https://www.fcc.gov/file/3799/download"
+    }
+  },
+  {
+    "element": 8,
+    "name": "Ship Radar Techniques",
+    "short": "Radar",
+    "subelements": "ABCDEF",
+    "questions": 300,
+    "keyTopics": 50,
+    "exam": { "questions": 50, "passMark": 38 },
+    "pool": {
+      "publisher": "FCC",
+      "date": "Approved 25 June 2009",
+      "url": "https://www.fcc.gov/file/3803/download"
+    }
+  },
+  {
+    "element": 9,
+    "name": "GMDSS Radio Maintenance",
+    "short": "GMDSS Maintainer",
+    "subelements": "ABCDEFG",
+    "questions": 300,
+    "keyTopics": 50,
+    "exam": { "questions": 50, "passMark": 38 },
+    "pool": {
+      "publisher": "U.S. Coast Guard NAVCEN",
+      "date": "September 2012",
+      "url": "https://www.navcen.uscg.gov/sites/default/files/pdf/GMDSS_QPool_Maintainer_EL_9Sept_2012.pdf"
+    }
+  }
+]
