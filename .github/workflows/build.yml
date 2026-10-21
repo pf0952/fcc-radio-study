@@ -34,7 +34,7 @@ jobs:
       - name: Name the .exe
         run: Copy-Item src-tauri/target/release/fcc-radio-study.exe FCC-Radio-Study.exe
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: FCC-Radio-Study
           path: FCC-Radio-Study.exe
