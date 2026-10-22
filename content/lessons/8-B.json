@@ -1,0 +1,553 @@
+{
+  "id": "8-B",
+  "element": 8,
+  "title": "Transmitting Systems",
+  "keyTopics": [11, 12, 13, 14, 15, 16, 17, 18],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 11,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 8 · Subelement B",
+        "title": "Transmitting Systems",
+        "subtitle": "Synchronizer, modulator, PFN and magnetron; TR and ATR tubes and circulators; timers and power supplies."
+      },
+      "onScreen": ["Transmitting Systems", "Synchronizer, modulator, PFN and magnetron", "TR and ATR tubes, circulators, timers and power supplies"],
+      "narration": "This lesson follows a RADAR pulse from start to finish. RADAR stands for radio detection and ranging. First, we'll see how the synchronizer, the modulator, the pulse forming network and the magnetron produce each pulse. Then, how a pair of gas tubes, or a ferrite circulator, lets one antenna both transmit and receive. And finally, how the transmitter's power supplies work. Let's start with the transmitting system as a whole."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 11,
+      "template": "block-diagram",
+      "params": {
+        "title": "The RADAR transmitter chain",
+        "columns": 4,
+        "blocks": [
+          { "id": "sync", "label": "Synchronizer", "note": "Trigger pulses set the PRR" },
+          { "id": "mod", "label": "Modulator and PFN", "note": "High-voltage pulse, shape and width" },
+          { "id": "mag", "label": "Magnetron", "note": "RF oscillator: operating frequency" },
+          { "id": "ant", "label": "Antenna", "note": "Radiates the RF pulse" },
+          { "id": "disp", "label": "Display sweep", "note": "Started by the same trigger" },
+          { "id": "psu", "label": "Power supplies", "note": "Feed the modulator" }
+        ],
+        "links": [
+          { "from": "sync", "to": "mod" },
+          { "from": "mod", "to": "mag" },
+          { "from": "mag", "to": "ant" },
+          { "from": "sync", "to": "disp" },
+          { "from": "psu", "to": "mod" }
+        ]
+      },
+      "onScreen": ["Synchronizer: trigger pulses set the PRR", "Modulator and PFN: high-voltage pulse", "Magnetron: RF oscillator", "Antenna", "Display sweep started by the trigger", "Power supplies feed the modulator"],
+      "narration": "Here's the transmitting system, block by block. The synchronizer generates a timing signal. Its trigger pulses establish the pulse repetition rate, or PRR. Each trigger fires the modulator and its pulse forming network, or PFN, which send high-voltage pulses of the proper shape and width to the magnetron. The magnetron is the RADAR's RF, or radio frequency, oscillator. When the modulator pulses it with high voltage, it oscillates for exactly that time, generating the output signal at the proper operating frequency, and that goes out to the antenna. The same trigger also starts the display sweep, keeping the whole system in step. And the power supplies feed the modulator."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 11,
+      "template": "comparison-table",
+      "params": {
+        "title": "Which block sets what?",
+        "columns": ["Block", "Its job", "It sets"],
+        "rows": [
+          ["Synchronizer", "Trigger pulses that fire the modulator", "Pulse repetition rate (PRR)"],
+          ["Modulator", "High-voltage pulses to the magnetron", "Pulse shape and width"],
+          ["Pulse forming network", "Artificial transmission line", "Pulse width: a fixed discharge time"],
+          ["Magnetron", "RF oscillator", "Operating frequency"],
+          ["Klystron", "Receiver's local oscillator", "Not part of the transmitting system"]
+        ]
+      },
+      "onScreen": ["Synchronizer sets the PRR", "Modulator: pulse shape and width", "PFN: pulse width, a fixed discharge time", "Magnetron: operating frequency", "Klystron: receiver's local oscillator"],
+      "narration": "Keep these pairings straight. The synchronizer sets the pulse repetition rate. The modulator provides high-voltage pulses of the proper shape and width; it does not set the repetition rate or tune the magnetron. The pulse forming network produces a pulse of the correct width. It's an artificial transmission line that charges between pulses, then discharges into the magnetron for a fixed time set by its inductors and capacitors. The magnetron sets the operating frequency. So the transmitting system is the modulator, its pulse forming network and the magnetron. A klystron is not part of it: where a marine RADAR uses one, it's the receiver's local oscillator."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 11,
+      "template": "key-facts",
+      "params": {
+        "title": "Transmitter power supplies",
+        "items": [
+          "Separate low voltage and high voltage supplies are normal",
+          "Low voltage supplies use switching circuits to deliver multiple voltages",
+          "Low voltage supplies may supply both AC and DC voltages",
+          "False: \"high voltage supplies produce in excess of 5,000 volts AC\"",
+          "RADAR high-voltage supplies deliver DC to charge the modulator"
+        ]
+      },
+      "onScreen": ["Separate low and high voltage supplies", "Low voltage: switching circuits, multiple voltages", "Low voltage: AC and DC", "False: in excess of 5,000 volts AC", "High voltage supplies deliver DC"],
+      "narration": "Now the power supplies. It's normal for a RADAR transmitter to have separate low voltage and high voltage supplies. The low voltage supplies use switching circuits to deliver multiple voltages, and they may supply both alternating current and direct current, AC and DC. The exam asks which statement about modern RADAR transmitter power supplies is false. The false one says high voltage supplies produce voltages in excess of 5,000 volts AC. That's wrong because RADAR high-voltage supplies deliver DC, which charges the modulator."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 12,
+      "template": "equipment-card",
+      "params": {
+        "title": "The magnetron",
+        "device": "magnetron",
+        "callouts": [
+          { "label": "Cathode: high voltage arrives as a strongly negative pulse", "at": "cathode" },
+          { "label": "Anode block: kept at ground potential", "at": "anode" },
+          { "label": "The anode body connects to the waveguide and the chassis", "at": "output" },
+          { "label": "External permanent magnet: a diode that needs a magnetic field", "at": "magnet" },
+          { "label": "Curved electron paths excite the resonant cavities", "at": "cavities" }
+        ]
+      },
+      "onScreen": ["Cathode: strongly negative high-voltage pulse", "Anode block at ground", "Anode body joins waveguide and chassis", "External permanent magnet", "Resonant cavities"],
+      "narration": "Meet the magnetron. It's a type of diode that requires an external magnetic field, and it has only 2 elements: a cathode and an anode block. High voltage is applied to the cathode, as a strongly negative pulse. The anode block stays at ground. It forms the outer body of the tube and connects to the waveguide and the chassis. A permanent magnet outside the tube curves the electrons' paths, so they excite the resonant cavities."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 12,
+      "template": "key-facts",
+      "params": {
+        "title": "Why the cathode goes negative",
+        "items": [
+          "High voltage goes on the cathode as a negative pulse",
+          "So the anode can be operated at ground potential, for safety",
+          "The anode-to-cathode voltage is the same either way",
+          "The anode is the outer body, joined to the waveguide and chassis",
+          "At ground, the anode is still positive relative to the cathode"
+        ]
+      },
+      "onScreen": ["Negative high voltage on the cathode", "Anode at ground for safety", "Same anode-to-cathode voltage either way", "Anode is the outer body", "Anode still positive relative to the cathode"],
+      "narration": "Why put a negative voltage on the cathode, rather than a positive voltage on the anode? So that the anode can be operated at ground potential, for safety. The anode-to-cathode voltage is the same either way. The anode of a magnetron is normally kept at ground because it forms the outer body and connects to the waveguide and the chassis. And even at ground, the anode is still positive relative to the cathode, so the tube works just the same."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 12,
+      "template": "waveform",
+      "params": {
+        "title": "Rise time and range accuracy",
+        "kind": "pulse",
+        "cycles": 3,
+        "duty": 0.15,
+        "xAxis": "time",
+        "yAxis": "transmitted pulse",
+        "labels": [
+          "Range is timed from the pulse's leading edge",
+          "Fast, sharp rise: a precise starting reference",
+          "Slow rise: the timing point becomes uncertain"
+        ]
+      },
+      "onScreen": ["Range timed from the leading edge", "Fast rise: precise reference", "Slow rise: uncertain timing"],
+      "narration": "The magnetron's output pulse has a rise time, and it relates to accurate range measurement. Range is timed from the pulse's leading edge. A fast, sharp rise gives a precise starting reference for that timing. A slow rise makes the timing point uncertain, so the measured range is less accurate. That's why you want a sharp rising edge, like the ones drawn here."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 12,
+      "template": "comparison-table",
+      "params": {
+        "title": "Which tube does which job?",
+        "columns": ["Tube", "Job in a marine RADAR", "Remember"],
+        "rows": [
+          ["Magnetron", "The transmitter", "Efficient high-power microwave pulses"],
+          ["Klystron", "Receiver's local oscillator", "In older sets"],
+          ["Thyratron", "Modulator switch", "Discharges the PFN"]
+        ]
+      },
+      "onScreen": ["Magnetron: the transmitter", "Klystron: receiver's local oscillator in older sets", "Thyratron: modulator switch"],
+      "narration": "Which device is used as the transmitter in a marine RADAR? The magnetron, because it efficiently produces high-power microwave pulses from a compact, rugged tube. Don't mix it up with its neighbors. The klystron served as the receiver's local oscillator in older sets. And the thyratron is a modulator switch: it discharges the pulse forming network, as we'll see next."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 13,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the pulse modulator",
+        "columns": 4,
+        "blocks": [
+          { "id": "trig", "label": "Trigger", "note": "From the synchronizer: only starts it" },
+          { "id": "sw", "label": "Thyratron or SCR switch", "note": "Fires and discharges the PFN" },
+          { "id": "xfmr", "label": "Step-up pulse transformer" },
+          { "id": "mag", "label": "Magnetron cathode" },
+          { "id": "hv", "label": "High-voltage supply", "note": "Charges the PFN between pulses" },
+          { "id": "pfn", "label": "Pulse forming network", "note": "Its L and C set the pulse duration" }
+        ],
+        "links": [
+          { "from": "trig", "to": "sw" },
+          { "from": "sw", "to": "xfmr" },
+          { "from": "xfmr", "to": "mag" },
+          { "from": "hv", "to": "pfn" },
+          { "from": "pfn", "to": "sw" }
+        ]
+      },
+      "onScreen": ["Trigger only starts the pulse", "Switch: thyratron or SCR", "Step-up pulse transformer", "Magnetron cathode", "High-voltage supply charges the PFN", "PFN's inductors and capacitors set the pulse duration"],
+      "narration": "Let's look inside the modulator. A trigger from the synchronizer fires the switch. In older sets the switch is a hydrogen thyratron; in solid-state sets it's an SCR, a silicon-controlled rectifier. Either one may act as the modulator, as the switching element. The switch feeds a step-up pulse transformer, which drives the magnetron cathode. Where does the energy come from? Between pulses, the high-voltage supply charges the pulse forming network. When the switch fires, it discharges the PFN into the pulse transformer. The PFN's inductors and capacitors set how long the discharge lasts. So in a solid-state modulator, the duration of the transmitted pulse is determined by the pulse forming network. The trigger only starts it."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 13,
+      "template": "waveform",
+      "params": {
+        "title": "Pulse modulation",
+        "kind": "pulse",
+        "cycles": 6,
+        "duty": 0.08,
+        "xAxis": "time",
+        "yAxis": "high-voltage pulse",
+        "labels": [
+          "Brief high-voltage pulses switch the magnetron fully on and off",
+          "RF is emitted only in short bursts",
+          "Once per pulse: the modulation frequency is the PRR",
+          "For the exam: most RADAR systems, 60 to 500 Hz"
+        ]
+      },
+      "onScreen": ["Magnetron switched fully on and off", "RF only in short bursts", "Modulation frequency = PRR", "Exam: 60 to 500 Hz"],
+      "narration": "A PFN driving the magnetron cathode through a step-up transformer gives pulse modulation. Brief high-voltage pulses switch the magnetron fully on and off, so RF is emitted only in short bursts, with silence in between. The modulator fires the magnetron once per pulse, so the modulation frequency is simply the pulse repetition rate. For the exam, the modulation frequency of most RADAR systems is between 60 and 500 hertz."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 13,
+      "template": "key-facts",
+      "params": {
+        "title": "The modulator's job",
+        "items": [
+          "In a pulse modulated magnetron, the PFN sets pulse shape and width",
+          "The thyratron only acts as the switch that discharges the PFN",
+          "Purpose of the modulator: the correct waveform to the transmitter",
+          "A high-voltage pulse of correct amplitude, width and shape at each trigger",
+          "Bearing resolution and sea return depend on the antenna and receiver"
+        ]
+      },
+      "onScreen": ["PFN sets pulse shape and width", "Thyratron is only the switch", "Modulator: correct waveform to the transmitter", "Correct amplitude, width and shape", "Not bearing resolution or sea return"],
+      "narration": "In a pulse modulated magnetron, the pulse forming network determines the shape and width of the pulse. The thyratron only acts as the switch that discharges it. So what is the purpose of the modulator? To provide the correct waveform to the transmitter: a high-voltage pulse of the correct amplitude, width and shape at each trigger. Bearing resolution and sea return are not its job; they depend on the antenna and the receiver. And when asked what may act as the modulator, pick the thyratron or the SCR. The magnetron and klystron are microwave oscillators, and the video amplifier belongs to the receiver."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 14,
+      "template": "block-diagram",
+      "params": {
+        "title": "The PFN: an artificial transmission line",
+        "columns": 4,
+        "blocks": [
+          { "id": "l1", "label": "Series inductor", "note": "Imitates a line's series inductance" },
+          { "id": "l2", "label": "Series inductor" },
+          { "id": "l3", "label": "Series inductor" },
+          { "id": "out", "label": "Output", "note": "A nearly rectangular pulse" },
+          { "id": "c1", "label": "Shunt capacitor", "note": "Imitates a line's shunt capacitance" },
+          { "id": "c2", "label": "Shunt capacitor" },
+          { "id": "c3", "label": "Shunt capacitor" }
+        ],
+        "links": [
+          { "from": "l1", "to": "l2" },
+          { "from": "l2", "to": "l3" },
+          { "from": "l3", "to": "out" },
+          { "from": "l1", "to": "c1" },
+          { "from": "l2", "to": "c2" },
+          { "from": "l3", "to": "c3" }
+        ]
+      },
+      "onScreen": ["Series inductors", "Output: a nearly rectangular pulse", "Shunt capacitors", "An artificial transmission line, or delay line", "Component values fix the pulse shape and duration"],
+      "narration": "Here's the pulse forming network up close. Pulse forming networks are usually composed of series inductors and shunt capacitors. Along the top, a chain of series inductors leads to the output. From each section, a shunt capacitor drops down. This ladder imitates a real transmission line's series inductance and shunt capacitance, so the PFN is an artificial transmission line, also called an artificial delay line. It stores energy in its inductor and capacitor sections, then releases it as a nearly rectangular pulse. The shape and duration of the high-voltage pulse delivered to the magnetron are established by this delay line: its component values fix the pulse."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 14,
+      "template": "waveform",
+      "params": {
+        "title": "Charging the PFN, then the pulse",
+        "kind": "pulse",
+        "cycles": 3,
+        "duty": 0.25,
+        "xAxis": "time",
+        "yAxis": "high-voltage pulse",
+        "labels": [
+          "Charging choke: PFN charges to nearly twice the supply voltage",
+          "A diode holds the charge until the switch fires",
+          "Discharge: a flat-topped pulse lasting twice the line's one-way delay",
+          "The PFN sets the pulse width; the synchronizer sets the PRR"
+        ]
+      },
+      "onScreen": ["Charges to nearly twice the supply voltage", "Diode holds the charge", "Flat-topped pulse, twice the one-way delay", "PFN: width; synchronizer: PRR"],
+      "narration": "How can the modulator pulse have an amplitude greater than the supply voltage? By employing a resonant charging choke. The choke resonates with the PFN capacitance. As its magnetic field collapses, it keeps current flowing, so the capacitors charge to nearly twice the supply voltage. A diode holds them there until the switch fires. Then the PFN discharges, delivering a flat-topped pulse that lasts twice the line's one-way delay time. That's the purpose of the pulse forming network: to determine the width of the modulating pulses. The synchronizer, not the PFN, sets the pulse repetition rate."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 14,
+      "template": "key-facts",
+      "params": {
+        "title": "Switches for the PFN",
+        "items": [
+          "Most often used in pulse-forming circuits: SCRs and thyratrons",
+          "Latching switches that withstand high voltage",
+          "They carry very high peak current and turn on fast",
+          "They turn off once the PFN is discharged"
+        ]
+      },
+      "onScreen": ["SCRs and thyratrons", "Latching, withstand high voltage", "Very high peak current, fast turn-on", "Turn off once the PFN is discharged"],
+      "narration": "Which switching devices are most often used in pulse-forming circuits? Silicon-controlled rectifiers and thyratrons. They are latching switches: once triggered, they stay on. They withstand high voltage, carry very high peak current and turn on fast. Then they turn off once the PFN is discharged, ready for the next charge."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 15,
+      "template": "block-diagram",
+      "params": {
+        "title": "One antenna: the ferrite circulator",
+        "columns": 3,
+        "blocks": [
+          { "id": "mag", "label": "Magnetron", "note": "The transmitter" },
+          { "id": "circ", "label": "Ferrite circulator", "note": "The duplexer: one-way coupling" },
+          { "id": "ant", "label": "Antenna", "note": "Pulse out, echoes back" },
+          { "id": "rx", "label": "Receiver", "note": "Gets only the echoes" }
+        ],
+        "links": [
+          { "from": "mag", "to": "circ" },
+          { "from": "circ", "to": "ant" },
+          { "from": "mag", "to": "rx", "struck": true },
+          { "from": "circ", "to": "rx" }
+        ]
+      },
+      "onScreen": ["Magnetron", "Ferrite circulator: the duplexer", "One antenna transmits and receives", "Receiver isolated during the pulse, gets the echoes"],
+      "narration": "A RADAR uses one antenna for both transmission and reception. The duplexer is the electronic switch that makes this possible. A ferrite circulator is most commonly used in the duplexer. During each pulse, its one-way coupling sends the magnetron's pulse to the antenna and isolates the receiver. Then it routes the incoming echoes from the antenna to the receiver. In the RF section, a circulator replaces the TR, or transmit-receive, cell and functions as a duplexer. It does the job otherwise done by TR and ATR tubes, ATR meaning anti-transmit-receive."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 15,
+      "template": "key-facts",
+      "params": {
+        "title": "Ferrites and cavities",
+        "items": [
+          "The ferrite in a circulator is used as a phase shifter",
+          "Its phase shift depends on the wave's direction of travel",
+          "So energy circles one way: transmitter → antenna → receiver",
+          "A circulator replaces the TR cell; not cooling, testing or antenna position",
+          "Circular cavity, flat ends: E-lines perpendicular to the end walls, parallel to the axis"
+        ]
+      },
+      "onScreen": ["Ferrite: a phase shifter", "Shift depends on direction", "Transmitter to antenna to receiver", "Replaces the TR cell", "Cavity E-lines perpendicular to the end walls"],
+      "narration": "How does the circulator steer the energy? The ferrite material in it is used as a phase shifter. In a magnetic field, the ferrite shifts a wave's phase by different amounts depending on its direction of travel. That steers energy one way around the ports: transmitter to antenna, and antenna to receiver. Remember, the circulator replaces the TR cell; it has nothing to do with cooling, testing or antenna position. One more microwave fact. In a circular resonant cavity with flat ends, the electric field lines, or E-lines, are perpendicular to the end walls. They run straight from one flat end wall to the other, parallel to the cavity's axis."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 15,
+      "template": "formula",
+      "params": {
+        "title": "Directional coupler: −30 dB",
+        "formula": "10<sup>30/10</sup> = 1,000",
+        "steps": [
+          "A −30 dB coupler samples 1/1,000 of the line power",
+          "The meter at the coupler reads 100 mW",
+          "P = 100 mW × 1,000"
+        ],
+        "answer": "P = 100 W in the line"
+      },
+      "onScreen": ["10 to the 30/10 = 1,000", "−30 dB samples 1/1,000 of the line power", "Meter reads 100 mW", "Line carries 100 W"],
+      "narration": "A directional coupler samples a small part of the power in a line. One with an attenuation of minus 30 decibels samples 1 part in 1,000 of the line power, because 10 to the power of 30 over 10 equals 1,000. So if the meter at the coupler reads 100 milliwatts, the line carries 100 milliwatts times 1,000, or 100 watts."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 16,
+      "template": "block-diagram",
+      "params": {
+        "title": "Transmitting: TR and ATR both fire",
+        "columns": 2,
+        "blocks": [
+          { "id": "mag", "label": "Magnetron", "note": "High-power pulse" },
+          { "id": "atr", "label": "ATR tube: fired", "note": "Pulse passes freely" },
+          { "id": "ant", "label": "Antenna", "note": "Radiates the pulse" },
+          { "id": "junc", "label": "Junction", "note": "Transmitter, antenna and receiver branches" },
+          { "id": "mix", "label": "Mixer", "note": "Receiver protected and muted" },
+          { "id": "tr", "label": "TR tube: fired", "note": "Shorts the receiver input" }
+        ],
+        "links": [
+          { "from": "mag", "to": "atr", "label": "Pulse" },
+          { "from": "atr", "to": "junc" },
+          { "from": "junc", "to": "ant", "label": "Pulse out" },
+          { "from": "junc", "to": "tr" },
+          { "from": "tr", "to": "mix", "struck": true, "label": "Shorted" }
+        ]
+      },
+      "onScreen": ["Both tubes energized while radiating", "ATR fired: pulse passes to the antenna", "TR fired: shorts the receiver input", "Receiver protected and muted", "Keep-alive voltage: TR fires almost instantly"],
+      "narration": "Without a circulator, the duplexer uses gas-filled TR and ATR tubes. When a pulse RADAR is radiating, both the TR and ATR tubes are energized: the magnetron's high-power pulse ionizes the gas in both. The ATR tube fires, so the pulse passes freely to the antenna. The TR tube fires too, shorting the receiver input. So the TR box protects the receiver from the strong RADAR pulse and mutes it while the transmitter is on, until the gas deionizes. To make that happen fast, a DC keep-alive voltage is applied to the TR tube. It partially ionizes the gas, making the tube more sensitive, so it fires almost instantly when the transmitter pulse arrives."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 16,
+      "template": "block-diagram",
+      "params": {
+        "title": "Receiving: echoes go to the mixer",
+        "columns": 2,
+        "blocks": [
+          { "id": "mag", "label": "Magnetron", "note": "Echoes kept out" },
+          { "id": "atr", "label": "ATR tube: unfired", "note": "Blocks the transmitter branch" },
+          { "id": "ant", "label": "Antenna", "note": "Weak echoes come in" },
+          { "id": "junc", "label": "Junction" },
+          { "id": "mix", "label": "Mixer", "note": "Receives the echoes" },
+          { "id": "tr", "label": "TR tube: deionized", "note": "Keep-alive only partly ionizes it" }
+        ],
+        "links": [
+          { "from": "ant", "to": "junc", "label": "Echoes" },
+          { "from": "junc", "to": "atr", "struck": true },
+          { "from": "junc", "to": "tr" },
+          { "from": "tr", "to": "mix", "label": "Echoes" }
+        ]
+      },
+      "onScreen": ["Weak echoes from the antenna", "ATR unfired: blocks the transmitter branch", "Echoes kept out of the magnetron", "Echoes pass the TR tube to the mixer", "Keep-alive: partial ionization only"],
+      "narration": "Between pulses, the RADAR listens, and weak echoes come in from the antenna. The ATR box prevents the received signal from entering the transmitter. Unfired between pulses, it blocks the transmitter branch. The ATR tube is located between the magnetron and the mixer, so echoes go to the mixer instead of being absorbed by the magnetron. Protecting and muting the receiver is the TR box's job, not the ATR's. Meanwhile the TR tube's gas has deionized, so the echoes pass through to the mixer. That's why the keep-alive voltage only partially ionizes the TR tube: full ionization all the time would short the receiver and block the echoes."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 16,
+      "template": "comparison-table",
+      "params": {
+        "title": "TR tube versus ATR tube",
+        "columns": ["Compare", "TR tube", "ATR tube"],
+        "rows": [
+          ["Name", "Transmit-receive", "Anti-transmit-receive"],
+          ["Where", "At the receiver input", "Between the magnetron and the mixer"],
+          ["During the pulse", "Fires: protects and mutes the receiver", "Fires: pulse passes freely to the antenna"],
+          ["Between pulses", "Deionized: echoes reach the receiver", "Unfired: keeps echoes out of the magnetron"],
+          ["Keep-alive voltage", "Yes: DC, partial ionization", "Not applied"]
+        ]
+      },
+      "onScreen": ["TR: transmit-receive, at the receiver input", "ATR: anti-transmit-receive, magnetron to mixer", "Both fire during the pulse", "Between pulses echoes reach the mixer", "Keep-alive voltage: TR tube"],
+      "narration": "Here's the side-by-side. TR stands for transmit-receive, and ATR for anti-transmit-receive. Where are they? The TR tube sits at the receiver input. The ATR tube sits between the magnetron and the mixer, in the transmitter branch. During the pulse, both fire. The TR tube protects the receiver and mutes it, and the ATR tube lets the pulse pass freely to the antenna. Between pulses, the TR tube's gas deionizes, so echoes reach the receiver, while the unfired ATR tube keeps echoes out of the magnetron. And the DC keep-alive voltage goes on the TR tube, not the ATR tube."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 17,
+      "template": "block-diagram",
+      "params": {
+        "title": "The triggering section starts it all",
+        "columns": 3,
+        "blocks": [
+          { "id": "timer", "label": "Timer (synchronizer)", "note": "Trigger pulses set the PRR" },
+          { "id": "mod", "label": "Modulator", "note": "Fired by each trigger" },
+          { "id": "mag", "label": "Magnetron", "note": "Driven by the modulator" },
+          { "id": "crt", "label": "Indicator sweep", "note": "Starts at the same moment" },
+          { "id": "rm", "label": "Range-marker circuits", "note": "Start together with each pulse" }
+        ],
+        "links": [
+          { "from": "timer", "to": "mod" },
+          { "from": "mod", "to": "mag" },
+          { "from": "timer", "to": "crt" },
+          { "from": "timer", "to": "rm" }
+        ]
+      },
+      "onScreen": ["Timer, also called the synchronizer", "Trigger fires the modulator", "Modulator drives the magnetron", "Indicator sweep starts at the same moment", "Range markers start with each pulse"],
+      "narration": "Operation of any RADAR system begins in the triggering section. Its trigger fires the modulator, which drives the magnetron, and at the same moment it starts the display sweep. This timer circuit determines the pulse repetition rate, by generating the trigger pulses that fire the modulator, and it starts the indicator sweep with each pulse. The triggering section is also known as the synchronizer, because its trigger pulses synchronize the modulator, the indicator sweep and the range-marker circuits, so they all start together with each transmitted pulse."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 17,
+      "template": "key-facts",
+      "params": {
+        "title": "The timer: the RADAR's master clock",
+        "items": [
+          "Determines the pulse repetition rate (PRR)",
+          "Determines the range markers",
+          "Provides blanking and unblanking signals for the CRT",
+          "Unblanking: beam on only during the active sweep, blanked in retrace"
+        ]
+      },
+      "onScreen": ["Determines the PRR", "Determines the range markers", "Blanking and unblanking for the CRT", "Beam on only during the active sweep"],
+      "narration": "The timer circuit is the RADAR's master clock, and it does all of these jobs. It determines the pulse repetition rate. It determines the range markers. And it provides blanking and unblanking signals for the CRT, the cathode ray tube. The unblanking pulses from the timer are sent to the CRT. They turn its electron beam on only during the active sweep, so echoes are visible, and leave it blanked during retrace."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 17,
+      "template": "waveform",
+      "params": {
+        "title": "Accurate timing pulses",
+        "kind": "pulse",
+        "cycles": 5,
+        "duty": 0.04,
+        "xAxis": "time",
+        "yAxis": "trigger pulses",
+        "labels": [
+          "Single-swing blocking oscillator: transformer-coupled",
+          "Fires once, then its own RC timing cuts it off",
+          "Very short, sharp, stable pulses with fast rise times"
+        ]
+      },
+      "onScreen": ["Single-swing blocking oscillator", "Fires once, cut off by its RC timing", "Short, sharp, stable pulses"],
+      "narration": "Which circuit best provides accurate RADAR timing pulses? A single-swing blocking oscillator. It's a transformer-coupled circuit that fires once and is then cut off by its own R C timing, set by a resistor and a capacitor. The result is very short, sharp, stable pulses with fast rise times, just what the timer needs to keep everything in step."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 18,
+      "template": "block-diagram",
+      "params": {
+        "title": "Resonant charging: a smaller supply",
+        "columns": 4,
+        "blocks": [
+          { "id": "dc", "label": "DC supply", "note": "Only about half the pulse voltage" },
+          { "id": "choke", "label": "Resonant charging choke", "note": "Resonates with the PFN" },
+          { "id": "diode", "label": "Diode", "note": "Holds the charge" },
+          { "id": "pfn", "label": "PFN", "note": "Charges to nearly twice the supply" }
+        ],
+        "links": [
+          { "from": "dc", "to": "choke" },
+          { "from": "choke", "to": "diode" },
+          { "from": "diode", "to": "pfn" }
+        ]
+      },
+      "onScreen": ["DC supply: about half the pulse voltage", "Resonant charging choke", "Diode holds the charge", "PFN charges to nearly twice the supply"],
+      "narration": "Back to the high-voltage supply. An advantage of resonant charging is that it reduces the high-voltage power supply requirements. The charging choke resonates with the pulse forming network, so the PFN charges to nearly twice the DC supply voltage, and a diode holds it there. That means the supply needs to produce only about half the pulse voltage."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 18,
+      "template": "waveform",
+      "params": {
+        "title": "Pulse-width modulation",
+        "kind": "pulse",
+        "cycles": 6,
+        "duty": 0.35,
+        "xAxis": "time",
+        "yAxis": "regulator switch on",
+        "labels": [
+          "PWM varies the switch's duty cycle to control the output voltage",
+          "The switching frequency stays fixed; the on-time changes",
+          "Load impedance decreases → more current → wider pulses",
+          "Less load current, or rising input or output voltage → narrower pulses"
+        ]
+      },
+      "onScreen": ["PWM varies the duty cycle", "Fixed frequency, changing on-time", "Lower load impedance: wider pulses", "Less load current or rising voltage: narrower pulses"],
+      "narration": "Now the switching power supplies in a modern RADAR. A pulse-width modulator, or PWM, varies the duty cycle of the regulator switch to control the output voltage. The switching frequency stays fixed, while the on-time in each cycle changes. In a fixed-frequency switching power supply, the pulse width increases when the load impedance decreases. The lower impedance draws more current and pulls the output down, so the pulses widen to make up for it. Less load current, or a rising input or output voltage, narrows the pulses instead."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 18,
+      "template": "comparison-table",
+      "params": {
+        "title": "Switching versus linear regulator",
+        "columns": ["Compare", "Switching regulator", "Linear regulator"],
+        "rows": [
+          ["How it works", "Switch is fully on or fully off", "Pass transistor burns the excess voltage"],
+          ["Overall efficiency", "Much higher: often 80 to 90 percent or more", "Lower: the excess is lost as heat"]
+        ]
+      },
+      "onScreen": ["Switching: fully on or fully off", "Linear: excess voltage burned as heat", "Switching efficiency often 80 to 90 percent or more"],
+      "narration": "A major reason to use a switching regulator instead of a linear regulator is much higher overall efficiency. The switching regulator's switch is either fully on or fully off, so it wastes very little power, and its efficiency often reaches 80 to 90 percent or more. A linear regulator burns the excess voltage as heat in its pass transistor."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 18,
+      "template": "key-facts",
+      "params": {
+        "title": "The power MOSFET switch",
+        "items": [
+          "FET on: like a pure resistor, a small R<sub>DS(on)</sub>, no junction voltage drop",
+          "FET off: like a mechanical relay with open contacts",
+          "High input impedance from its insulated gate",
+          "Failure mode: gate punch-through from excess gate voltage or static",
+          "Resists thermal runaway: on-resistance rises with temperature"
+        ]
+      },
+      "onScreen": ["On: like a pure resistor", "Off: like a relay with open contacts", "High input impedance", "Failure mode: gate punch-through", "Resists thermal runaway"],
+      "narration": "In a modern RADAR switching power supply, the switch can be an FET, a field-effect transistor. When the FET is on, it compares to a pure resistor: a small R sub D S on, with no junction voltage drop. When it's off, it compares to a mechanical relay with open contacts. A power MOSFET, a metal-oxide-semiconductor field-effect transistor, has a high input impedance from its insulated gate. Its failure mode can be gate punch-through, when excess gate voltage or static punctures the thin gate oxide. And it resists thermal runaway, because its on-resistance rises with temperature."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [11] },
+    { "after": "s8", "keyTopics": [12] },
+    { "after": "s11", "keyTopics": [13] },
+    { "after": "s14", "keyTopics": [14] },
+    { "after": "s17", "keyTopics": [15] },
+    { "after": "s20", "keyTopics": [16] },
+    { "after": "s23", "keyTopics": [17] },
+    { "after": "s27", "keyTopics": [18] }
+  ],
+  "video": null
+}

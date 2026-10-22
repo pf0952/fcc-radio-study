@@ -1,5 +1,6 @@
 <script lang="ts">
   import { rich } from '../../lib/rich';
+  import { shrinkToFit } from '../fit';
   import { revealed } from '../reveal';
 
   type Block = { id: string; label: string; note?: string };
@@ -10,20 +11,19 @@
   const W = 1600;
   const H = 900;
   const TOP = 140;
-  const BW = 300;
-  const BH = 150;
 
   const cols = $derived(params.columns ?? Math.min(4, params.blocks.length));
   const rows = $derived(Math.ceil(params.blocks.length / cols));
+  const cw = $derived((W - 120) / cols);
+  const ch = $derived((H - TOP - 40) / rows);
   const centers = $derived(
-    new Map(
-      params.blocks.map((b, i) => {
-        const cw = (W - 120) / cols;
-        const ch = (H - TOP - 40) / rows;
-        return [b.id, { x: 60 + cw * (i % cols) + cw / 2, y: TOP + ch * Math.floor(i / cols) + ch / 2 }];
-      }),
-    ),
+    new Map(params.blocks.map((b, i) => [b.id, { x: 60 + cw * (i % cols) + cw / 2, y: TOP + ch * Math.floor(i / cols) + ch / 2 }])),
   );
+  // A labeled arrow between neighbours in a row needs a wider gap to hold its label.
+  const rowLabels = $derived(params.links.some((l) => l.label && centers.get(l.from)!.y === centers.get(l.to)!.y));
+  // Boxes grow when there is room; long labels still shrink to fit (shrinkToFit).
+  const BW = $derived(Math.min(360, cw - (rowLabels ? 150 : 60)));
+  const BH = $derived(rows === 1 ? 200 : rows === 2 ? 180 : 150);
   const shown = $derived(revealed(fraction, params.blocks.length));
   const isShown = (id: string) => params.blocks.findIndex((b) => b.id === id) < shown;
 
@@ -69,8 +69,10 @@
           </circle>
         {/if}
         {#if l.label}
-          <foreignObject x={l.mid.x - 150} y={l.mid.y - (Math.abs(l.q.y - l.p.y) < 20 ? 70 : 25)} width="300" height="60">
-            <div class="link-label">{@html rich(l.label)}</div>
+          {@const flat = l.p.y === l.q.y}
+          {@const lw = flat ? cw - BW - 8 : 300}
+          <foreignObject x={l.mid.x - lw / 2} y={l.mid.y - (flat ? 72 : 25)} width={lw} height="60">
+            <div class="link-label" class:flat use:shrinkToFit><span>{@html rich(l.label)}</span></div>
           </foreignObject>
         {/if}
       </g>
@@ -82,7 +84,7 @@
     <g class="block" class:shown={i < shown}>
       <rect x={c.x - BW / 2} y={c.y - BH / 2} width={BW} height={BH} rx="18" />
       <foreignObject x={c.x - BW / 2} y={c.y - BH / 2} width={BW} height={BH}>
-        <div class="block-text">
+        <div class="block-text" use:shrinkToFit>
           <strong>{@html rich(b.label)}</strong>
           {#if b.note}<span>{@html rich(b.note)}</span>{/if}
         </div>
@@ -132,8 +134,8 @@
   }
 
   .block-text span {
-    margin-top: 6px;
-    font-size: 23px;
+    margin-top: 0.2em;
+    font-size: 0.77em;
     color: var(--st-muted);
   }
 
@@ -161,10 +163,19 @@
   }
 
   .link-label {
+    height: 100%;
     text-align: center;
     color: var(--st-muted);
     font-size: 24px;
     line-height: 1.15;
+  }
+
+  /* Between two boxes in a row: sits on the arrow. */
+  .link-label.flat {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 22px;
   }
 
   .link.struck .link-label {

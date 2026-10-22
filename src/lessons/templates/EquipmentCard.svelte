@@ -24,7 +24,7 @@
   // Labels are stacked in the order of their anchors from top to bottom, so leader lines don't cross;
   // they still appear in the lesson's teaching order.
   const slots = $derived.by(() => {
-    const byHeight = params.callouts.map((c, i) => ({ i, y: anchor(c).y })).sort((a, b) => a.y - b.y);
+    const byHeight = params.callouts.map((c, i) => ({ i, y: c.at || c.y !== undefined ? anchor(c).y : i })).sort((a, b) => a.y - b.y);
     return params.callouts.map((_, i) => byHeight.findIndex((s) => s.i === i));
   });
 
@@ -52,9 +52,12 @@
     {#if i < shown}
       {@const a = anchor(c)}
       {@const y = labelY(slots[i]) + (slotH - 20) / 2}
+      {@const pointed = !!(device ? c.at : c.x !== undefined && c.y !== undefined)}
       <g class="callout" class:latest={i === shown - 1}>
-        <polyline points="{a.x},{a.y} {a.x + (840 - a.x) * 0.6},{y} 860,{y}" class="leader" />
-        <circle cx={a.x} cy={a.y} r="11" class="dot" />
+        {#if pointed}
+          <polyline points="{a.x},{a.y} {a.x + (840 - a.x) * 0.6},{y} 860,{y}" class="leader" />
+          <circle cx={a.x} cy={a.y} r="11" class="dot" />
+        {/if}
         <foreignObject x="870" y={labelY(slots[i])} width="690" height={slotH - 16}>
           <div class="label">{@html rich(c.label)}</div>
         </foreignObject>

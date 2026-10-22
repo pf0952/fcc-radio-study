@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { rich } from '../../lib/rich';
   import { revealed } from '../reveal';
 
   /** Interval badges, e.g. "EPIRB battery: 5 years or after use". */
@@ -15,9 +16,9 @@
           <circle cx="24" cy="24" r="20" />
           <path d="M24 12v13l8 5" />
         </svg>
-        <p class="value">{b.value}</p>
-        <p class="label">{b.label}</p>
-        {#if b.note}<p class="note">{b.note}</p>{/if}
+        <p class="value">{@html rich(b.value)}</p>
+        <p class="label">{@html rich(b.label)}</p>
+        {#if b.note}<p class="note">{@html rich(b.note)}</p>{/if}
       </div>
     {/each}
   </div>

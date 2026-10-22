@@ -1,0 +1,350 @@
+{
+  "id": "3-J",
+  "element": 3,
+  "title": "Antennas",
+  "keyTopics": [63, 64, 65, 66, 67],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 63,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement J",
+        "title": "Antennas",
+        "subtitle": "Radiation resistance, SWR, bandwidth and loading, transmission lines, and the decibel math behind line loss and repeater ERP."
+      },
+      "onScreen": ["Antennas", "Radiation resistance, SWR, loading, transmission lines and ERP"],
+      "narration": "This lesson is about antennas and the lines that feed them. We'll cover radiation resistance and standing wave ratio, how coils and capacitors change an antenna's resonance and bandwidth, and how transmission lines behave. Along the way we'll work the decibel math the exam loves: antenna current, attenuation, line loss, and the effective radiated power of a repeater. Let's start with some antenna theory."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 63,
+      "template": "equipment-card",
+      "params": {
+        "title": "Mismatch and radiation resistance",
+        "device": "antenna",
+        "callouts": [
+          { "label": "Detuned antenna coupler: no longer matches the antenna to the line", "at": "coupler" },
+          { "label": "Part of the power reflects back: high SWR on the transmission line", "at": "coax" },
+          { "label": "Radiation resistance: would dissipate the same power the antenna radiates", "at": "whip" },
+          { "label": "P = I²R: an equivalent resistance, not a physical loss", "at": "tip" },
+          { "label": "Knowing it lets you match impedances for maximum power transfer", "at": "insulator" }
+        ]
+      },
+      "onScreen": ["Detuned coupler: mismatch", "Reflected power: high SWR", "Radiation resistance: equivalent resistance", "P = I²R, not a physical loss", "Match impedances for maximum power transfer"],
+      "narration": "Here's an antenna fed through an antenna coupler. If the coupler is detuned, it no longer matches the antenna's impedance to the transmission line, so part of the power is reflected back down the line. That causes a high standing wave ratio, or SWR. Changing the modulation level or the transmitter power does not change the SWR. Now, the antenna itself has a radiation resistance. That's an equivalent resistance that would dissipate the same amount of power as the antenna radiates, using P equals I squared R. It is not a physical loss. Knowing the radiation resistance is important because it makes it possible to match impedances for maximum power transfer."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 63,
+      "template": "block-diagram",
+      "params": {
+        "title": "Isolators and circulators",
+        "columns": 3,
+        "blocks": [
+          { "id": "tx", "label": "Transmitter" },
+          { "id": "iso", "label": "Isolator", "note": "Passes power one way, very little loss" },
+          { "id": "ant", "label": "Antenna" },
+          { "id": "load", "label": "Internal load", "note": "Absorbs power traveling the other way" },
+          { "id": "circ", "label": "Circulator", "note": "Routes power from port to port" }
+        ],
+        "links": [
+          { "from": "tx", "to": "iso", "label": "Forward power" },
+          { "from": "iso", "to": "ant" },
+          { "from": "iso", "to": "load", "label": "Reverse power" },
+          { "from": "circ", "to": "load", "label": "1 port terminated = isolator" }
+        ]
+      },
+      "onScreen": ["Transmitter", "Isolator: one way, very little loss", "Antenna", "Reverse power absorbed in a load", "Circulator: port to port; an isolator only with 1 port terminated"],
+      "narration": "An isolator is the radio frequency, or RF, device that passes energy in 1 direction with very little loss, but absorbs power traveling in the opposite direction. Here, forward power from the transmitter goes through the isolator to the antenna. Any power coming back the other way is soaked up in the isolator's internal load. Don't confuse it with a circulator. A circulator routes power from port to port, and it acts as an isolator only when 1 of its ports is terminated in a load."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 63,
+      "template": "key-facts",
+      "params": {
+        "title": "Trap antennas and bandwidth",
+        "items": [
+          "Trap antenna: may be used for multiband operation",
+          "Each trap is a parallel LC circuit: high impedance at its resonant frequency",
+          "At that frequency the trap electrically disconnects the outer part of the antenna",
+          "Bandwidth: the frequency range where the antenna performs well, such as SWR below 2:1",
+          "The angle between the half-power points is beamwidth, not bandwidth"
+        ]
+      },
+      "onScreen": ["Trap antenna: multiband operation", "Traps: parallel LC circuits", "Trap disconnects the outer part", "Bandwidth: frequency range, SWR below 2:1", "Half-power angle: beamwidth"],
+      "narration": "The advantage of a trap antenna is that it may be used for multiband operation. Its traps are parallel LC, or inductor-capacitor, circuits. A parallel LC circuit presents a high impedance at its resonant frequency, so on that frequency the trap electrically disconnects the outer part of the antenna. That's how 1 antenna serves more than 1 band. Next, antenna bandwidth. It is the frequency range over which an antenna can be expected to perform well, often judged by the SWR staying below a limit such as 2 to 1. Watch out: the angle between the half-power points is the beamwidth, not the bandwidth."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 64,
+      "template": "formula",
+      "params": {
+        "title": "Current from power and resistance",
+        "formula": "P = I²R, so I = √(P ÷ R)",
+        "steps": ["I = √(1,872 W ÷ 52 Ω)", "I = √36"],
+        "answer": "I = 6 A"
+      },
+      "onScreen": ["I = √(P ÷ R)", "√(1,872 ÷ 52) = √36", "6 amps"],
+      "narration": "Time for some math. Power equals I squared R, so the current I is the square root of P divided by R. Take a 52 ohm line with an input of 1,872 watts. Divide 1,872 by 52 and you get 36. The square root of 36 is 6, so the line carries 6 amps."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 64,
+      "template": "waveform",
+      "params": {
+        "title": "Voltage and current on a half-wave antenna",
+        "kind": "sine",
+        "cycles": 0.5,
+        "yAxis": "current",
+        "xAxis": "along the antenna, end to end",
+        "labels": [
+          "Center: maximum current, minimum voltage",
+          "Ends: maximum voltage, minimum current",
+          "The ends are open, so the current falls to a minimum there"
+        ]
+      },
+      "onScreen": ["Center: maximum current, minimum voltage", "Ends: maximum voltage, minimum current", "The ends are open"],
+      "narration": "This curve shows the current along a half-wave antenna, from 1 end to the other. At the center there is maximum current and minimum voltage. At the ends it's the opposite: maximum voltage and minimum current. Why? The ends are open, so the current has nowhere to go and falls to a minimum there, while the voltage peaks."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 64,
+      "template": "formula",
+      "params": {
+        "title": "Attenuation in decibels",
+        "formula": "dB = 10 log(P<sub>1</sub> ÷ P<sub>2</sub>)",
+        "steps": ["dB = 10 log(500 W ÷ 0.5 W)", "dB = 10 log 1,000"],
+        "answer": "30 dB of attenuation"
+      },
+      "onScreen": ["dB = 10 log(P1 ÷ P2)", "10 log(500 ÷ 0.5) = 10 log 1,000", "30 dB"],
+      "narration": "Next, attenuation in decibels, or dB. The formula is 10 times the log of P1 divided by P2. Say a transmitter's primary signal is 500 watts and its 2nd harmonic is 0.5 watt. 500 divided by 0.5 is 1,000. The log of 1,000 is 3, and 10 times 3 gives 30. The 2nd harmonic is attenuated 30 dB."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 64,
+      "template": "key-facts",
+      "params": {
+        "title": "Received voltage, SWR and radiated power",
+        "items": [
+          "Receiving antenna voltage is always proportional to the received field strength",
+          "The antenna acts like a generator driven by the passing wave, not by the station's SWR",
+          "Best SWR is 1:1: the load matches the line and no power is reflected",
+          "Radiated power = forward power − reflected power",
+          "30 W transmitter, 5 W reflected: 30 W − 5 W = 25 W radiated"
+        ]
+      },
+      "onScreen": ["Received voltage proportional to field strength", "Not set by SWR", "Best SWR: 1:1", "Radiated = forward − reflected", "30 W − 5 W = 25 W"],
+      "narration": "A few more facts. The voltage produced in a receiving antenna is always proportional to the received field strength. The antenna acts like a generator driven by the passing wave; the station's SWR doesn't determine it. The best standing wave ratio is 1 to 1. That means the load matches the line perfectly and no power is reflected. When some power is reflected, the radiated power is the forward power minus the reflected power. A 30 watt transmitter with 5 watts reflected radiates 30 minus 5, or 25 watts."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 65,
+      "template": "equipment-card",
+      "params": {
+        "title": "Antenna patterns and fields",
+        "device": "antenna",
+        "callouts": [
+          { "label": "Vertical 1/4 wave: receives equally from all horizontal directions", "at": "whip" },
+          { "label": "Its pattern is omnidirectional in the horizontal plane", "at": "deck" },
+          { "label": "Excited 1/2 wavelength antenna: electro-magnetic and electro-static fields", "at": "insulator" },
+          { "label": "Current along the antenna sets up the magnetic field", "at": "whip" },
+          { "label": "Voltage between its ends sets up the electro-static field", "at": "tip" }
+        ]
+      },
+      "onScreen": ["Vertical 1/4 wave: equal from all horizontal directions", "Omnidirectional in the horizontal plane", "1/2 wavelength: both fields", "Current: magnetic field", "Voltage: electro-static field"],
+      "narration": "A vertical quarter-wave antenna receives signals equally from all horizontal directions, because its pattern is omnidirectional in the horizontal plane. Now, what fields does an antenna produce? An excited half-wavelength antenna produces both electro-magnetic and electro-static fields. The current flowing along it sets up the magnetic field, and the voltage between its ends sets up the electric, or electro-static, field."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 65,
+      "template": "comparison-table",
+      "params": {
+        "title": "Coils and capacitors in series",
+        "columns": ["Add in series", "Acts electrically", "Resonant frequency", "How"],
+        "rows": [
+          ["Coil (loading inductor)", "Longer", "Lower", "Adds inductance"],
+          ["Capacitor", "Shorter", "Higher", "Cancels some inductive reactance"]
+        ]
+      },
+      "onScreen": ["Series coil: electrically longer, lower resonant frequency", "Series capacitor: electrically shorter, higher resonant frequency"],
+      "narration": "Coils and capacitors change an antenna's resonance. To lower the resonant frequency of a Hertz antenna, place an inductance in series with it. The coil makes the antenna act electrically longer. That's also how you lengthen an antenna electrically: add a coil, called a loading inductor, in series. It's how short mobile antennas are made resonant on lower bands. To go the other way, and increase the resonant frequency of a quarter-wavelength antenna, add a capacitor in series. It cancels some of the inductive reactance and makes the antenna act electrically shorter."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 65,
+      "template": "block-diagram",
+      "params": {
+        "title": "Loading coils narrow the bandwidth",
+        "columns": 4,
+        "blocks": [
+          { "id": "short", "label": "Shortened with loading coils" },
+          { "id": "react", "label": "Large reactance", "note": "Compared with its low radiation resistance" },
+          { "id": "q", "label": "Q rises" },
+          { "id": "bw", "label": "Bandwidth decreases", "note": "More loading, narrower bandwidth" }
+        ],
+        "links": [
+          { "from": "short", "to": "react" },
+          { "from": "react", "to": "q" },
+          { "from": "q", "to": "bw" }
+        ]
+      },
+      "onScreen": ["Antenna shortened with loading coils", "Large reactance vs low radiation resistance", "Q rises", "Bandwidth decreases"],
+      "narration": "Loading has a price. When an antenna is shortened through the use of loading coils, its bandwidth is decreased. Here's why. The short antenna has a low radiation resistance, and its reactance is large compared with it. That makes its Q, or quality factor, rise, and a higher Q means a narrower bandwidth. The more loading you add, the narrower the bandwidth gets."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 66,
+      "template": "formula",
+      "params": {
+        "title": "Velocity factor",
+        "formula": "VF = v ÷ c",
+        "steps": [
+          "v: velocity on the line; c: light in a vacuum",
+          "VF = 1 ÷ √(dielectric constant)",
+          "Air dielectric: VF approaches 1",
+          "Solid polyethylene: VF ≈ 0.66"
+        ],
+        "answer": "VF is always less than 1"
+      },
+      "onScreen": ["VF = v ÷ c", "VF = 1 ÷ √(dielectric constant)", "Air: approaches 1", "Solid polyethylene: about 0.66", "Always less than 1"],
+      "narration": "Now transmission lines. The velocity factor, or VF, of a line is the velocity of the wave on the line divided by the velocity of light in a vacuum: VF equals v over c. What sets it? The dielectrics in the line. The velocity factor equals 1 divided by the square root of the dielectric constant. An air-dielectric line approaches 1, while solid polyethylene gives about 0.66. Either way, the velocity factor is always less than 1."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 66,
+      "template": "block-diagram",
+      "params": {
+        "title": "Nitrogen and a harmonic stub",
+        "columns": 2,
+        "blocks": [
+          { "id": "tx", "label": "Transmitter" },
+          { "id": "line", "label": "Line filled with nitrogen", "note": "Keeps moisture out" },
+          { "id": "stub", "label": "Shorted 1/4 wavelength stub", "note": "At the fundamental: looks like an open" },
+          { "id": "ant", "label": "Antenna" }
+        ],
+        "links": [
+          { "from": "tx", "to": "line" },
+          { "from": "line", "to": "stub", "label": "2nd harmonic to ground" },
+          { "from": "line", "to": "ant", "label": "Fundamental passes" }
+        ]
+      },
+      "onScreen": ["Nitrogen keeps moisture out of the line", "Shorted 1/4 wavelength stub", "Even harmonics shunted to ground", "Fundamental passes to the antenna"],
+      "narration": "Why put nitrogen in a transmission line? To prevent moisture from entering the line. Moisture raises losses, changes the line's impedance and causes corrosion. This line also has a shorted stub to absorb even harmonics. It could be a quarter wavelength long at the fundamental. At the fundamental, the shorted quarter-wave stub looks like an open circuit, so the signal passes on to the antenna. But at the 2nd harmonic the same stub is a half wavelength long, so it shunts that harmonic, and other even harmonics, to ground."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 66,
+      "template": "formula",
+      "params": {
+        "title": "Line loss adds in decibels",
+        "formula": "Loss = 6 dB per 100 ft × 200 ft = 12 dB",
+        "steps": [
+          "P = 100 W × 10<sup>−1.2</sup>",
+          "P ≈ 100 W × 0.063 = 6.3 W",
+          "Each 3 dB halves: 100 → 50 → 25 → 12.5 → 6.25 W"
+        ],
+        "answer": "About 6 watts at the antenna feed point"
+      },
+      "onScreen": ["6 dB per 100 feet × 200 feet = 12 dB", "100 W × 10 to the −1.2 ≈ 6.3 W", "100 → 50 → 25 → 12.5 → 6.25 W", "About 6 watts at the feed point"],
+      "narration": "Line loss adds up in decibels. Say a line loses 6 dB per 100 feet, and it's 200 feet long. That's 12 dB of loss. With a 100 watt transmitter, the power at the antenna end is 100 watts times 10 to the minus 1.2. That's about 100 times 0.063, or 6.3 watts. The rule of thumb makes it easy: every minus 3 dB halves the power. 100 watts becomes 50, then 25, then 12.5, then 6.25 watts. So about 6 watts reach the antenna feed point."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 66,
+      "template": "formula",
+      "params": {
+        "title": "For the exam: 7 dB of reflected power",
+        "formula": "P<sub>out</sub> = P<sub>in</sub> × 10<sup>(−dB ÷ 10)</sup>",
+        "steps": [
+          "Perfect coax, 5 W in, 7 dB treated as a reduction",
+          "P = 5 W × 10<sup>−0.7</sup>",
+          "P ≈ 5 W × 0.2"
+        ],
+        "answer": "1 watt output: the keyed exam answer"
+      },
+      "onScreen": ["Perfect coax, 5 W in, 7 dB reflected", "5 W × 10 to the −0.7 ≈ 5 × 0.2", "1 watt: the keyed exam answer"],
+      "narration": "This next one is keyed in a way you should simply learn for the exam. A perfect, no-loss coaxial cable has 7 dB of reflected power when the input is 5 watts. What is the output? The exam treats the whole 7 dB as a reduction on the way to the output. So the output is 5 watts times 10 to the minus 0.7, which is about 5 times 0.2, or 1 watt. The wording of the question is ambiguous, but for the exam, the answer is 1 watt."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 67,
+      "template": "block-diagram",
+      "params": {
+        "title": "Repeater ERP: the net dB tally",
+        "columns": 4,
+        "blocks": [
+          { "id": "tx", "label": "Transmitter", "note": "50 W" },
+          { "id": "feed", "label": "Feedline", "note": "−4 dB loss" },
+          { "id": "dup", "label": "Duplexer and circulator", "note": "−3 dB loss" },
+          { "id": "ant", "label": "Antenna", "note": "+6 dB gain: net −1 dB, ERP ≈ 39.7 W" }
+        ],
+        "links": [
+          { "from": "tx", "to": "feed", "label": "50 W" },
+          { "from": "feed", "to": "dup", "label": "Net −4 dB" },
+          { "from": "dup", "to": "ant", "label": "Net −7 dB" }
+        ]
+      },
+      "onScreen": ["Transmitter: 50 W", "Feedline: −4 dB", "Duplexer and circulator: −3 dB", "Antenna: +6 dB, net −1 dB, ERP about 39.7 W"],
+      "narration": "Last topic: effective radiated power, or ERP, from a repeater. Keep a running tally in decibels: subtract the feedline loss and the duplexer and circulator loss, and add the antenna gain. This transmitter puts out 50 watts. The feedline loses 4 dB. The duplexer and circulator lose 3 more, so we're at minus 7. Then the antenna adds 6 dB of gain, for a net of minus 1 dB. ERP is the transmitter power times 10 to the power of the net dB over 10. Here that's 50 watts times 10 to the minus 0.1, about 50 times 0.794, or about 39.7 watts."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 67,
+      "template": "formula",
+      "params": {
+        "title": "Plus 3 dB doubles the power",
+        "formula": "ERP = P × 10<sup>(net dB ÷ 10)</sup>",
+        "steps": [
+          "75 W: −4 dB − 3 dB + 10 dB = +3 dB",
+          "ERP = 75 W × 10<sup>0.3</sup>",
+          "ERP ≈ 75 W × 2"
+        ],
+        "answer": "ERP ≈ 150 W: +3 dB doubles the power"
+      },
+      "onScreen": ["ERP = P × 10 to the (net dB ÷ 10)", "Net: −4 − 3 + 10 = +3 dB", "75 W × 2 = 150 W", "+3 dB doubles, −3 dB halves, 0 dB unchanged"],
+      "narration": "Now a 75 watt transmitter, with 4 dB of feedline loss, 3 dB of duplexer and circulator loss, and a 10 dB gain antenna. The net is minus 4, minus 3, plus 10, which is plus 3 dB. ERP is 75 watts times 10 to the 0.3, and 10 to the 0.3 is about 2. So the ERP is 150 watts. Remember the rules of thumb: plus 3 dB doubles the power, minus 3 dB halves it, and 0 dB leaves it unchanged."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 67,
+      "template": "formula",
+      "params": {
+        "title": "Minus 3 dB halves the power",
+        "formula": "ERP = P × 10<sup>(net dB ÷ 10)</sup>",
+        "steps": [
+          "75 W: −5 dB − 4 dB + 6 dB = −3 dB",
+          "ERP = 75 W × 10<sup>−0.3</sup>",
+          "ERP ≈ 75 W × 0.501"
+        ],
+        "answer": "ERP ≈ 37.6 W: about half"
+      },
+      "onScreen": ["Net: −5 − 4 + 6 = −3 dB", "75 W × 10 to the −0.3 ≈ 75 × 0.501", "ERP about 37.6 W"],
+      "narration": "Same transmitter power, different losses: 75 watts, with 5 dB of feedline loss, 4 dB of duplexer and circulator loss, and 6 dB of antenna gain. The net is minus 5, minus 4, plus 6, which is minus 3 dB. ERP is 75 watts times 10 to the minus 0.3, about 75 times 0.501, or 37.6 watts. Minus 3 dB halved the power, just as the rule of thumb says."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 67,
+      "template": "comparison-table",
+      "params": {
+        "title": "More repeater cases",
+        "columns": ["Transmitter", "Losses and gain", "Net dB", "ERP"],
+        "rows": [
+          ["100 W", "−4 dB, −3 dB, +7 dB", "0 dB", "100 W, unchanged"],
+          ["100 W", "−5 dB, −4 dB, +10 dB", "+1 dB: × 1.259", "≈ 126 W"],
+          ["50 W", "−5 dB, −4 dB, +7 dB", "−2 dB: × 0.631", "≈ 31.5 W"]
+        ]
+      },
+      "onScreen": ["100 W, net 0 dB: ERP 100 W", "100 W, net +1 dB: ERP about 126 W", "50 W, net −2 dB: ERP about 31.5 W"],
+      "narration": "The last 3 repeater problems work the same way. First, 100 watts with 4 dB of feedline loss, 3 dB of duplexer and circulator loss, and 7 dB of antenna gain. Minus 4, minus 3, plus 7 is 0 dB. The losses exactly cancel the gain, so the ERP is 100 watts. Next, 100 watts with 5 dB and 4 dB of loss and 10 dB of gain. The net is plus 1 dB, so the ERP is 100 times 10 to the 0.1, about 100 times 1.259, or 126 watts. Last, 50 watts with 5 dB and 4 dB of loss and 7 dB of gain. The net is minus 2 dB, so the ERP is 50 times 10 to the minus 0.2, about 50 times 0.631, or 31.5 watts."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [63] },
+    { "after": "s8", "keyTopics": [64] },
+    { "after": "s11", "keyTopics": [65] },
+    { "after": "s15", "keyTopics": [66] },
+    { "after": "s19", "keyTopics": [67] }
+  ],
+  "video": null
+}

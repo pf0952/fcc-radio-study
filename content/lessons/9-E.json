@@ -1,0 +1,272 @@
+{
+  "id": "9-E",
+  "element": 9,
+  "title": "Power Sources",
+  "keyTopics": [37, 38, 39, 40],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 37,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 9 · Subelement E",
+        "title": "Power Sources",
+        "subtitle": "GMDSS batteries, chargers and the reserve source of energy, plus linear and switching power supplies and their protection."
+      },
+      "onScreen": ["Power Sources", "Batteries, chargers, the reserve source of energy and power supplies"],
+      "narration": "This lesson is about power for the GMDSS, the Global Maritime Distress and Safety System. We'll cover the batteries, how they're charged, and the reserve source of energy that keeps the radios on the air when ship's power fails. Then we'll look inside power supplies: rectifiers, filters, switching supplies and their protection circuits. First, the battery cells themselves."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 37,
+      "template": "comparison-table",
+      "params": {
+        "title": "Normal cell voltages",
+        "columns": ["Cell or battery", "Normal voltage", "Remember"],
+        "rows": [
+          ["NICAD (nickel-cadmium) cell", "1.2 volts", "Not 1.5 volts"],
+          ["Dry cell", "1.5 volts", "Not a NICAD value"],
+          ["Lead acid cell", "2.1 volts", "Building block of the GMDSS bank"],
+          ["12 volt lead acid battery", "6 × 2.1 = 12.6 volts", "6 cells"],
+          ["24 volt GMDSS bank", "24 volts", "12 cells"]
+        ]
+      },
+      "onScreen": ["NICAD cell: 1.2 volts", "Dry cell: 1.5 volts", "Lead acid cell: 2.1 volts", "12 volt battery: 6 cells, 12.6 volts", "24 volt GMDSS bank: 12 cells"],
+      "narration": "Each NICAD, or nickel-cadmium, battery cell has a normal voltage of 1.2 volts. Don't confuse it with 1.5 volts: that belongs to dry cells. Each lead acid battery cell has a normal voltage of 2.1 volts. So a 12 volt battery has 6 cells: 6 times 2.1 is 12.6 volts. And a 24 volt GMDSS battery bank has 12 cells."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 37,
+      "template": "equipment-card",
+      "params": {
+        "title": "Checking a lead acid cell",
+        "device": "battery",
+        "callouts": [
+          { "label": "Measure the electrolyte with a hydrometer, not a voltmeter", "at": "caps" },
+          { "label": "Fully charged lead acid cell: specific gravity 1.280", "at": "case" },
+          { "label": "Higher temperature: lower reading, though the charge is unchanged", "at": "case" },
+          { "label": "Gel cell: sealed, so special charging rates and voltages may be needed", "at": "right-battery" }
+        ]
+      },
+      "onScreen": ["Hydrometer, not a voltmeter", "Fully charged: specific gravity 1.280", "Higher temperature: lower reading", "Gel cells: sealed, special charging"],
+      "narration": "To check a lead acid cell's state of charge, measure its electrolyte with a hydrometer, not a voltmeter. The normal specific gravity of a fully charged lead acid cell is 1.280. Watch the temperature, though. A higher temperature results in a lower specific gravity reading, because warm electrolyte expands and becomes less dense, even though the state of charge hasn't changed. And gel cell batteries are typically sealed: they're lead acid, with the electrolyte held as a gel. So special charging rates and voltages may be required."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 37,
+      "template": "block-diagram",
+      "params": {
+        "title": "A weak cell during discharge",
+        "columns": 4,
+        "blocks": [
+          { "id": "c1", "label": "Cell", "note": "Discharging normally" },
+          { "id": "weak", "label": "Weak cell", "note": "Charged in reverse polarity" },
+          { "id": "c3", "label": "Cell", "note": "Discharging normally" },
+          { "id": "load", "label": "Load", "note": "Draws the discharge current" }
+        ],
+        "links": [
+          { "from": "c1", "to": "weak", "label": "Discharge current" },
+          { "from": "weak", "to": "c3" },
+          { "from": "c3", "to": "load" }
+        ]
+      },
+      "onScreen": ["Cells in series, discharging", "A weak cell", "Discharge current charges it in reverse polarity", "Into the load"],
+      "narration": "Picture a string of cells in a battery, discharging. What happens if one cell becomes weaker than the remaining cells? The same discharge current still has to flow through every cell. So the discharge current of the remaining cells effectively charges the weaker cell in reverse polarity, all while the battery feeds its load. That's another reason to keep every cell equally charged, which brings us to battery chargers."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 38,
+      "template": "block-diagram",
+      "params": {
+        "title": "The Reserve Source of Energy",
+        "columns": 3,
+        "blocks": [
+          { "id": "main", "label": "Ship's main power" },
+          { "id": "charger", "label": "GMDSS charger/supply", "note": "Modes: Charging, Change-over, Parallel" },
+          { "id": "radio", "label": "Radio installation", "note": "Distress and Safety communications" },
+          { "id": "emerg", "label": "Ship's emergency power", "note": "Emergency generator: not the reserve" },
+          { "id": "batt", "label": "Reserve battery", "note": "The Reserve Source of Energy" }
+        ],
+        "links": [
+          { "from": "main", "to": "charger" },
+          { "from": "emerg", "to": "charger" },
+          { "from": "charger", "to": "radio", "label": "Parallel, with battery" },
+          { "from": "charger", "to": "batt", "label": "Charging" },
+          { "from": "batt", "to": "radio", "label": "Change-over" }
+        ]
+      },
+      "onScreen": ["Ship's main and emergency power feed the charger", "Reserve Source of Energy: when both fail", "Not the emergency generator", "Modes: Charging, Change-over, Parallel", "Float and trickle are charge rates, not modes"],
+      "narration": "Now the GMDSS power system. Normally the ship's power feeds a GMDSS compliant battery charger, which supplies the radio installation. The Reserve Source of Energy is power to operate the radio installation and conduct Distress and Safety communications if the ship's main and emergency sources of electrical power fail. It is not the emergency generator. The charger has 3 modes. Charging keeps the battery charged. Change-over switches the radio load to the battery when ship's power fails. Parallel has the charger and battery feeding the load together. Float and trickle are charge rates, not these modes."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 38,
+      "template": "timeline",
+      "params": {
+        "title": "How the automatic charger charges",
+        "badges": [
+          { "label": "Standard lead acid battery", "value": "High charge once a week", "note": "Until the gassing range: every cell equally full" },
+          { "label": "At the gassing range", "value": "Charger stops high charge", "note": "Inhibits electrolytic gas, then switches to float" },
+          { "label": "Maintenance free gel batteries", "value": "High charge disabled", "note": "Set during setup: sealed cells can't vent gas" }
+        ]
+      },
+      "onScreen": ["High charge once a week, to the gassing range", "Then interrupt high charge and float", "Gel batteries: high charge disabled at setup"],
+      "narration": "With a standard lead acid battery and a fully automatic GMDSS compliant charger, high charging is used once a week until the battery reaches the gassing range. That brings every cell to an equal full charge. Then the automatic charger interrupts the high charging process to inhibit the generation of electrolytic gas, and switches to float. Maintenance free lead acid gel batteries are different. During setup, the high, or Full, charging mode must be disabled, because sealed gel cells cannot vent gas or have water added."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 38,
+      "template": "formula",
+      "params": {
+        "title": "Reading the console voltmeter",
+        "formula": "Volts per cell = meter reading ÷ cells",
+        "steps": [
+          "24 VDC GMDSS station: 12 lead acid cells",
+          "Constant 30 V ÷ 12 = 2.5 V per cell",
+          "Charger stuck in high charge: overcharging"
+        ],
+        "answer": "Constant 30 V: a fault. Brief high reading: normal"
+      },
+      "onScreen": ["24 VDC station: 12 cells", "Constant 30 V ÷ 12 = 2.5 V per cell", "Stuck in high charge: malfunction", "Brief high reading after a battery test: normal"],
+      "narration": "On a 24 volt DC, or direct current, GMDSS station, keep an eye on the console voltmeter. The battery has 12 lead acid cells. A constant 30 volt reading indicates a malfunction. Divide it out: 30 volts over 12 cells is 2.5 volts per cell. That means the charger is stuck in high charge and overcharging the battery. Don't mistake a normal reading for a fault, though. After testing the station on battery power, a brief high voltage reading, or a high charge current that then declines, is normal, not a malfunction."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 39,
+      "template": "block-diagram",
+      "params": {
+        "title": "Full wave rectifier power supply",
+        "columns": 4,
+        "blocks": [
+          { "id": "ac", "label": "AC input", "note": "60 Hz" },
+          { "id": "rect", "label": "Full wave rectifier", "note": "2 or more diodes; bridge: no center tap" },
+          { "id": "filter", "label": "Filter", "note": "Choke input or capacitive input" },
+          { "id": "dc", "label": "DC output", "note": "Ripple at 120 Hz: twice the input" }
+        ],
+        "links": [
+          { "from": "ac", "to": "rect" },
+          { "from": "rect", "to": "filter", "label": "2 pulses per input cycle" },
+          { "from": "filter", "to": "dc" }
+        ]
+      },
+      "onScreen": ["60 Hz AC input", "Full wave rectifier: more than 1 diode", "Bridge: no center tapped secondary", "120 Hz ripple: twice the input frequency"],
+      "narration": "Now power supplies. A standard full wave rectifier power supply starts with an AC, or alternating current, input, here at 60 hertz. Full wave rectifiers always use more than 1 diode, and a bridge rectifier needs no center tapped transformer secondary. The rectifier uses both halves of each input cycle, so there are 2 pulses per input cycle. After the rectifier comes the filter, which smooths the pulses into DC. What's left is ripple, and its frequency is twice the input frequency: a 60 hertz input gives 120 hertz ripple."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 39,
+      "template": "comparison-table",
+      "params": {
+        "title": "Choke input versus capacitive input",
+        "columns": ["Property", "Inductive (choke) input", "Capacitive input"],
+        "rows": [
+          ["Voltage regulation", "Good", "Poor"],
+          ["Transformer utilization factor", "High", "Lower"],
+          ["Rectifier peak currents", "Low", "High"],
+          ["Output voltage", "Relatively low", "Higher: charges toward the peak"]
+        ]
+      },
+      "onScreen": ["Regulation: choke good, capacitive poor", "Transformer utilization: choke high", "Peak currents: choke low, capacitive high", "Output: choke relatively low, capacitive higher"],
+      "narration": "There are 2 kinds of input filter to compare, row by row. Voltage regulation: an inductive, or choke, input filter gives good regulation, and a capacitive input gives poor regulation. Transformer utilization factor: high for the choke input. Rectifier peak currents: low for the choke input, high for the capacitive input. Output voltage: relatively low for the choke input. A capacitive input charges toward the peak voltage, so its output is higher."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 39,
+      "template": "comparison-table",
+      "params": {
+        "title": "Switcher type power supply",
+        "columns": ["Advantages", "Disadvantages"],
+        "rows": [
+          ["Line voltage directly rectified and filtered", "Increased complexity: more likely to fail"],
+          ["Much smaller, lighter components", "Increased cost: many more parts"],
+          ["Much better efficiency", "Tends to create radiated RF, not AF"]
+        ]
+      },
+      "onScreen": ["Advantage: line voltage directly rectified", "Advantage: smaller, lighter components", "Advantage: much better efficiency", "Disadvantages: complexity, cost, radiated RF"],
+      "narration": "Now the switcher type power supply, its advantages and disadvantages side by side. Its first advantage: the line voltage itself, not a transformed voltage, is directly rectified and filtered to produce a high DC voltage. Against that, increased complexity, which means more likelihood of a component failure. Next, its components are much smaller and lighter weight, but the cost goes up, because there are many more parts. Finally, it can provide much better efficiency, but it has a tendency to create radiated RF, or radio frequency energy, not AF, audio frequency."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 40,
+      "template": "block-diagram",
+      "params": {
+        "title": "Mains switching supply with regulation",
+        "columns": 4,
+        "blocks": [
+          { "id": "in", "label": "Input rectifier and filter", "note": "Mains in" },
+          { "id": "inv", "label": "Inverter (chopper)", "note": "Chops the DC at high frequency" },
+          { "id": "xfmr", "label": "Output transformer", "note": "Ferrite core, not laminated steel" },
+          { "id": "out", "label": "Output rectifier and filter" },
+          { "id": "ctrl", "label": "Chopper controller", "note": "Drives the inverter" },
+          { "id": "dc", "label": "DC output" }
+        ],
+        "links": [
+          { "from": "in", "to": "inv" },
+          { "from": "inv", "to": "xfmr" },
+          { "from": "xfmr", "to": "out" },
+          { "from": "out", "to": "dc" },
+          { "from": "dc", "to": "ctrl", "label": "Feedback loop" },
+          { "from": "ctrl", "to": "inv" }
+        ]
+      },
+      "onScreen": ["Input rectifier and filter", "Inverter (chopper)", "Output transformer with a ferrite core", "Output rectifier and filter to DC output", "Feedback loop to the chopper controller and inverter"],
+      "narration": "Here's the configuration of a mains operated switching power supply with output regulation. The mains go to the input rectifier and filter. The inverter, or chopper, chops that DC at high frequency into the output transformer. Switching power supply transformers use a ferrite core to reduce losses at high frequencies, not a laminated steel core. Then come the output rectifier and filter. Regulation comes from a chopper controller: a feedback loop runs from the DC output back to the controller, which drives the inverter to hold the output steady."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 40,
+      "template": "waveform",
+      "params": {
+        "title": "Duty cycle: the switch's on time",
+        "kind": "pulse",
+        "cycles": 6,
+        "duty": 0.5,
+        "xAxis": "time",
+        "yAxis": "switch on or off",
+        "labels": [
+          "On for half of each period: a 50% duty cycle",
+          "A BUCK supply steps the voltage down in proportion to the duty cycle",
+          "Its output never exceeds its input"
+        ]
+      },
+      "onScreen": ["50% duty cycle", "BUCK: steps voltage down in proportion to duty cycle", "Output never exceeds input"],
+      "narration": "Now the buck switching power supply. Its switch turns on and off rapidly, and the duty cycle is the fraction of each period the switch is on. Here it's on for half of each period, a 50 percent duty cycle. A buck supply steps the voltage down in proportion to the duty cycle. Since the switch can't be on for more than the whole period, a buck output never exceeds its input."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 40,
+      "template": "formula",
+      "params": {
+        "title": "BUCK supply: 10 volts in",
+        "formula": "V<sub>out</sub> = duty cycle × V<sub>in</sub>",
+        "steps": ["Duty cycle 50% = 0.5", "V<sub>out</sub> = 0.5 × 10 V"],
+        "answer": "V<sub>out</sub> = 5 V: 10 volts in, 5 volts out"
+      },
+      "onScreen": ["V out = duty cycle × V in", "50% duty cycle = 0.5", "0.5 × 10 V = 5 V", "10 volts in, 5 volts out"],
+      "narration": "Let's work the numbers. V sub out equals the duty cycle times V sub in. Take a 50 percent duty cycle, which is 0.5, and an input of 10 volts. V sub out is 0.5 times 10 volts, which is 5 volts. So 10 volts in gives 5 volts out. Raise or lower the duty cycle and the output follows, but it never goes above the input."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 40,
+      "template": "key-facts",
+      "params": {
+        "title": "Protection and the truth about switchers",
+        "items": [
+          "Crowbar: shorts the output on overvoltage, blowing the fuse or tripping the current limit",
+          "\"No RFI problems\" is not a switcher advantage: fast switching creates interference",
+          "Real advantages: wide input voltage range, works on DC input, lighter than linear supplies",
+          "Input current: short pulses near the AC peaks, high harmonic content, low power factor"
+        ]
+      },
+      "onScreen": ["Crowbar: shorts the output on overvoltage", "\"No RFI problems\" is not an advantage", "Wide input range, DC input, lighter weight", "High harmonic content, low power factor"],
+      "narration": "Protection first. The function of a crowbar circuit is to prevent an overvoltage condition from damaging circuitry. It shorts the power supply output, which blows the fuse or trips the current limit. Now a trap. No RFI problems is not an advantage of a switching power supply. RFI means radio-frequency interference, and fast switching creates it. The real advantages include working with a wide range of input voltages, working with direct current input, and lighter weight than linear power supplies. Finally, switching mode power supply input current has high harmonic content and a low power factor, because it is drawn in short pulses near the AC peaks."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [37] },
+    { "after": "s7", "keyTopics": [38] },
+    { "after": "s10", "keyTopics": [39] },
+    { "after": "s14", "keyTopics": [40] }
+  ],
+  "video": null
+}

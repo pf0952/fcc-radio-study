@@ -1,0 +1,424 @@
+{
+  "id": "3-G",
+  "element": 3,
+  "title": "Transmitters",
+  "keyTopics": [51, 52, 53, 54, 55, 56],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 51,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement G",
+        "title": "Transmitters",
+        "subtitle": "Amplifier classes, FM index and bandwidth, SSB and PEP, matching networks, and the fixes for transmitter interference."
+      },
+      "onScreen": ["Transmitters", "Amplifier classes, FM and SSB calculations, matching networks, interference fixes"],
+      "narration": "This lesson is all about transmitters. First we'll sort the amplifier classes by how much of each cycle they conduct, how linear they are and how efficient they are. Then we'll work the exam's calculations: the index and bandwidth of FM, or frequency modulation, peak envelope power, or PEP, and dummy-load voltage. Along the way you'll see matching networks, how single sideband, or SSB, signals are generated, and fixes for interference. Let's begin with the amplifier classes."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 51,
+      "template": "waveform",
+      "params": {
+        "title": "Class A: output for the whole cycle",
+        "kind": "sine",
+        "cycles": 3,
+        "xAxis": "time",
+        "yAxis": "output",
+        "labels": [
+          "Biased near the middle of the linear region",
+          "The input never goes into cutoff",
+          "Output flows for the entire 360° of the signal cycle"
+        ]
+      },
+      "onScreen": ["Class A: biased near the middle of the linear region", "Input never goes into cutoff", "Output for the entire 360°"],
+      "narration": "The key idea for amplifier classes is the conduction angle: the part of the input cycle during which the device conducts. A Class A amplifier is biased near the middle of its linear region. The input swings up and down around that point, but never far enough to go into cutoff. So the device conducts all the time, and output flows for the entire 360 degrees of the signal cycle. Output throughout the whole cycle is the distinguishing feature of Class A."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 51,
+      "template": "waveform",
+      "params": {
+        "title": "Moving the bias toward cutoff",
+        "kind": "pulse",
+        "cycles": 4,
+        "duty": 0.3,
+        "xAxis": "time",
+        "yAxis": "Class C device current",
+        "labels": [
+          "Class AB: bias between A and B, more than 180° but less than 360°",
+          "Class B: biased right at cutoff",
+          "Class C: bias set well beyond cutoff",
+          "Only the drive peaks make Class C conduct: less than 180°"
+        ]
+      },
+      "onScreen": ["Class AB: more than 180°, less than 360°", "Class B: biased at cutoff", "Class C: biased well beyond cutoff", "Class C conducts only on the peaks, less than 180°"],
+      "narration": "Now move the bias point down toward cutoff. Class AB sits between Class A and Class B, so with a sine wave drive it has an operating angle of more than 180 degrees but less than 360 degrees. Class B is biased right at cutoff. Class C goes further still: its bias is set well beyond cutoff. Only the peaks of the drive signal push it into conduction, so it conducts for less than 180 degrees of the cycle. The short pulses on screen are a Class C device's brief moments of conduction."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 51,
+      "template": "comparison-table",
+      "params": {
+        "title": "Class A versus Class C",
+        "columns": ["Feature", "Class A", "Class C"],
+        "rows": [
+          ["Linearity", "Highest, least distortion", "Too nonlinear for SSB; fine for CW and FM"],
+          ["Efficiency", "No more than 50%, even in theory", "Highest: around 70 to 80%"],
+          ["Why", "Stays on the straight part of its curve", "Cut off for most of each cycle"]
+        ]
+      },
+      "onScreen": ["Class A: highest linearity, least distortion", "Class C: too nonlinear for SSB, fine for CW and FM", "Class A: no more than 50% efficient", "Class C: highest efficiency, 70 to 80%"],
+      "narration": "Here's the trade-off. Start with linearity. Class A has the highest linearity and the least distortion. Class C is too nonlinear for SSB, but it works well for continuous wave, or CW, and for FM. Now efficiency. Class A's efficiency is no more than 50 percent, even in theory, while Class C provides the highest efficiency, around 70 to 80 percent. Why the difference? Class A stays linear because it always stays on the straight part of its curve. Class C is efficient because the device is cut off for most of each cycle."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 52,
+      "template": "comparison-table",
+      "params": {
+        "title": "Conduction angle by class",
+        "columns": ["Class", "Output present for", "Because"],
+        "rows": [
+          ["Class A", "The entire 360°", "Biased near the middle of its linear region"],
+          ["Class AB", "More than 180°, less than 360°", "Conducts a little even with no signal"],
+          ["Class B", "Exactly 180°: half the wave", "Biased exactly at cutoff"],
+          ["Class C", "Less than 180°", "Biased well beyond cutoff"]
+        ]
+      },
+      "onScreen": ["Class A: 360°", "Class AB: more than 180°, less than 360°", "Class B: exactly 180°", "Class C: less than 180°"],
+      "narration": "Let's line up all 4 classes by conduction angle. Class A: output for the entire 360 degrees. Class AB: more than 180 but less than 360 degrees, because it conducts a little even with no signal. Class B is biased exactly at cutoff, so it conducts for 180 degrees, one half of the input wave. Class C: output is present for less than 180 degrees of the input cycle. Remember the order: 360, more than 180, exactly 180, and less than 180."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 52,
+      "template": "block-diagram",
+      "params": {
+        "title": "Getting the whole sine wave back",
+        "columns": 3,
+        "blocks": [
+          { "id": "b1", "label": "Class B device 1", "note": "Conducts one half: 180°" },
+          { "id": "pp", "label": "Push-pull output", "note": "The complete waveform" },
+          { "id": "b2", "label": "Class B device 2", "note": "Conducts the other half" },
+          { "id": "c", "label": "Class C device", "note": "Output only on the peaks" },
+          { "id": "tank", "label": "Tuned output tank circuit", "note": "Restores a complete sine wave" },
+          { "id": "sine", "label": "Complete sine wave out" }
+        ],
+        "links": [
+          { "from": "b1", "to": "pp" },
+          { "from": "b2", "to": "pp" },
+          { "from": "c", "to": "tank" },
+          { "from": "tank", "to": "sine" }
+        ]
+      },
+      "onScreen": ["Push-pull: 2 Class B devices, each conducting one half", "Together: the complete waveform", "Class C: output only on the peaks", "Tuned output tank circuit restores a complete sine wave"],
+      "narration": "Class B and Class C both leave out part of the wave, so how do we get the whole wave back? For Class B, use 2 devices in push-pull. Device 1 conducts for one half of the cycle, 180 degrees, and device 2 conducts for the other half. Together they reproduce the complete waveform. Class C conducts only on the peaks, for less than 180 degrees. There, the tuned output tank circuit does the work: each pulse keeps the tank ringing, and it restores a complete sine wave at the output."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 52,
+      "template": "key-facts",
+      "params": {
+        "title": "Judging a Class A amplifier's input",
+        "items": [
+          "Most valuable input-amplitude parameter: the peak voltage",
+          "Peaks that reach cutoff or saturation cause clipping",
+          "Average or RMS values can hide those peaks"
+        ]
+      },
+      "onScreen": ["Peak voltage is the most valuable parameter", "Peaks reaching cutoff or saturation clip", "Average or RMS values can hide the peaks"],
+      "narration": "How do you judge how big a signal a Class A amplifier can handle? Of all the ways to measure input amplitude, the most valuable is the peak voltage. Class A stays linear only between cutoff and saturation. If the signal's peaks reach either one, the output is clipped. An average value, or a root mean square, RMS, value, can look perfectly safe while hiding those peaks. So for signal-handling capability, check the peak voltage."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 52,
+      "template": "formula",
+      "params": {
+        "title": "DC input power for a Class AB amplifier",
+        "formula": "DC input = output power ÷ efficiency",
+        "steps": ["Class AB RF linear amplifier: about 50% efficient", "DC input = 500 W PEP ÷ 0.5"],
+        "answer": "DC input ≈ 1,000 W"
+      },
+      "onScreen": ["DC input = output ÷ efficiency", "Class AB: about 50% efficient", "500 W ÷ 0.5 = 1,000 W"],
+      "narration": "Now a calculation. DC, or direct current, input power equals the output power divided by the efficiency. Radio frequency, or RF, linear amplifiers in Class AB are roughly 50 percent efficient. So if a Class AB RF power amplifier delivers 500 watts PEP output, the DC input is 500 watts divided by 0.5, which is 1,000 watts. The approximate DC input is 1,000 watts, twice the output."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 53,
+      "template": "formula",
+      "params": {
+        "title": "FM modulation index",
+        "formula": "m = deviation ÷ modulating frequency",
+        "steps": ["m = 3,000 Hz ÷ 1,000 Hz = 3", "m = 6 kHz ÷ 2 kHz = 3", "Hz ÷ Hz: the units cancel"],
+        "answer": "m = 3: a plain number, no units"
+      },
+      "onScreen": ["m = deviation ÷ modulating frequency", "3,000 Hz ÷ 1,000 Hz = 3", "6 kHz ÷ 2 kHz = 3", "Units cancel: a plain number"],
+      "narration": "On to modulation. The FM modulation index, m, is the frequency deviation divided by the modulating frequency. First example: a maximum deviation of 3,000 hertz on either side of the carrier, with a 1,000 hertz modulating frequency. 3,000 divided by 1,000 gives an index of 3. Second example: a maximum carrier deviation of 6 kilohertz with a 2 kilohertz modulating frequency. 6 divided by 2 is again 3. Hertz divided by hertz cancel, so the index is a ratio: just a plain number with no units."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 53,
+      "template": "formula",
+      "params": {
+        "title": "Carson's rule for FM bandwidth",
+        "formula": "BW = 2 × (deviation + highest mod. freq.)",
+        "steps": ["BW = 2 × (5 kHz + 3 kHz)"],
+        "answer": "BW = 16 kHz"
+      },
+      "onScreen": ["BW = 2 × (deviation + highest modulating frequency)", "2 × (5 kHz + 3 kHz)", "BW = 16 kHz"],
+      "narration": "To estimate FM bandwidth, use Carson's rule: the bandwidth is twice the sum of the deviation and the highest modulating frequency. Take 5 kilohertz of deviation and a 3 kilohertz modulating frequency. Add them, then double the result: 2 times the quantity 5 kilohertz plus 3 kilohertz gives 16 kilohertz. The estimated bandwidth is 16 kilohertz."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 53,
+      "template": "waveform",
+      "params": {
+        "title": "Phase modulation index",
+        "kind": "fm",
+        "cycles": 16,
+        "xAxis": "time",
+        "labels": [
+          "Phase modulation index = the peak phase shift",
+          "Set by the amplitude of the modulating signal",
+          "Does not depend on the RF carrier frequency"
+        ]
+      },
+      "onScreen": ["Phase modulation index = peak phase shift", "Set by the modulating signal's amplitude", "Independent of the RF carrier frequency"],
+      "narration": "Phase modulation is a close cousin of FM, and it has a modulation index too. For a phase-modulated emission, the index is the peak phase shift of the carrier, and that is set by the amplitude of the modulating signal. A stronger modulating signal means a bigger phase shift. What the index does not depend on is the RF carrier frequency. Change the carrier frequency, and the phase modulation index stays the same."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 53,
+      "template": "block-diagram",
+      "params": {
+        "title": "Generating a single-sideband signal",
+        "columns": 2,
+        "blocks": [
+          { "id": "audio", "label": "Audio", "note": "Speech from the microphone" },
+          { "id": "osc", "label": "Carrier oscillator" },
+          { "id": "bal", "label": "Balanced modulator", "note": "Double sideband, suppressed carrier" },
+          { "id": "filter", "label": "Sideband filter", "note": "Removes the unwanted sideband" },
+          { "id": "ssb", "label": "Single-sideband phone signal" }
+        ],
+        "links": [
+          { "from": "audio", "to": "bal" },
+          { "from": "osc", "to": "bal" },
+          { "from": "bal", "to": "filter", "label": "Carrier canceled" },
+          { "from": "filter", "to": "ssb" }
+        ]
+      },
+      "onScreen": ["Audio and carrier oscillator", "Balanced modulator: double sideband, suppressed carrier", "Filter removes the unwanted sideband", "Single-sideband phone signal"],
+      "narration": "Now single sideband. Feed audio from the microphone and a signal from the carrier oscillator into a balanced modulator. The balanced modulator produces a double sideband, or DSB, suppressed carrier signal: the carrier cancels, while the sum and difference sidebands pass through. Next, a filter removes the unwanted sideband. What's left is a single-sideband phone signal. So the recipe is a balanced modulator followed by a filter."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 54,
+      "template": "comparison-table",
+      "params": {
+        "title": "The 3 matching networks",
+        "columns": ["Network", "Parts", "Shape"],
+        "rows": [
+          ["L network", "1 inductor and 1 capacitor", "One in series, one shunted to ground: an L"],
+          ["Pi network", "1 inductor and 2 capacitors", "Series part between 2 shunt parts: like π"],
+          ["Pi network (other form)", "2 inductors and 1 capacitor", "The same π shape"],
+          ["Pi-L network", "2 inductors and 2 capacitors", "Pi + series inductor sharing output capacitor"]
+        ]
+      },
+      "onScreen": ["L: 1 inductor, 1 capacitor, shaped like an L", "Pi: 3 parts, shaped like π", "Pi-L: 2 inductors, 2 capacitors"],
+      "narration": "Transmitters use tuning networks for matching. An L network has 1 inductor and 1 capacitor, one in series and the other shunted to ground, so the schematic looks like the letter L. A pi network has 3 parts: 1 inductor and 2 capacitors, or 2 inductors and 1 capacitor. Its series element sits between 2 shunt elements, like the Greek letter pi. A pi-L network has 2 inductors and 2 capacitors: a pi network followed by a second series inductor that shares the pi's output capacitor."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 54,
+      "template": "formula",
+      "params": {
+        "title": "Resonance",
+        "formula": "X<sub>L</sub> = X<sub>C</sub>",
+        "steps": ["The reactances cancel: a purely resistive circuit"],
+        "answer": "f = 1 / (2π√(LC))"
+      },
+      "onScreen": ["At resonance, XL = XC", "Reactances cancel: purely resistive", "f = 1 / (2π√(LC))"],
+      "narration": "These networks are tuned with inductors and capacitors, so let's review resonance. The resonant frequency is the frequency at which the capacitive reactance equals the inductive reactance: X sub L equals X sub C. At that frequency the reactances cancel, leaving a purely resistive circuit. Solve for the frequency and you get f equals 1 over the quantity 2 pi times the square root of L times C."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 54,
+      "template": "block-diagram",
+      "params": {
+        "title": "Networks that match and filter",
+        "columns": 4,
+        "blocks": [
+          { "id": "amp", "label": "Amplifying device" },
+          { "id": "pi", "label": "Pi section", "note": "Matches, and acts as a low-pass filter" },
+          { "id": "l", "label": "Extra L section", "note": "Pi-L: the greatest harmonic suppression" },
+          { "id": "line", "label": "Transmission line" }
+        ],
+        "links": [
+          { "from": "amp", "to": "pi" },
+          { "from": "pi", "to": "l" },
+          { "from": "l", "to": "line" }
+        ]
+      },
+      "onScreen": ["Matching networks: L, pi and pi-L", "Each is also a low-pass filter", "Pi-L: the greatest harmonic suppression"],
+      "narration": "Why do transmitters use these networks? The 3 types commonly used to match an amplifying device to a transmission line are the L network, the pi network and the pi-L network. Each one also acts as a low-pass filter, passing the signal while cutting down the harmonics above it. Of these 3, the pi-L network provides the greatest harmonic suppression. Its extra low-pass L section adds more filtering than a simple L or pi network."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 55,
+      "template": "waveform",
+      "params": {
+        "title": "Single sideband, suppressed carrier",
+        "kind": "ssb",
+        "sideband": "upper",
+        "carrier": "suppressed",
+        "xAxis": "frequency",
+        "labels": [
+          "Balanced modulator: cancels the carrier",
+          "Crystal or mechanical filter: removes the unwanted sideband",
+          "Amplitude follows the speech: amplify it linearly",
+          "A non-linear amplifier distorts it: intermodulation and splatter"
+        ]
+      },
+      "onScreen": ["Carrier canceled in a balanced modulator", "Unwanted sideband removed by a crystal or mechanical filter", "Amplify linearly", "Non-linear amplifier: distortion, intermodulation, splatter"],
+      "narration": "Here's the SSB spectrum. To produce single sideband, suppressed carrier, you do 2 things: cancel the carrier in a balanced modulator, and filter out the unwanted sideband with a crystal or mechanical filter. The SSB signal's amplitude follows the speech, so the amplifiers after this point must be linear. Use a non-linear amplifier with a single-sideband phone transmitter and you get distortion: the distorted envelope creates intermodulation products and splatter."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 55,
+      "template": "key-facts",
+      "params": {
+        "title": "Peak to average power in SSB voice",
+        "items": [
+          "No carrier: the output follows the voice",
+          "The talker's speech characteristics set the PEP-to-average power ratio",
+          "Normal voice modulation peaks: about 2.5 to 1"
+        ]
+      },
+      "onScreen": ["No carrier: output follows the voice", "Speech characteristics set the PEP-to-average ratio", "About 2.5 to 1 on normal voice peaks"],
+      "narration": "In an SSB phone signal there is no carrier, so the output simply follows the voice. That means the speech characteristics of the talker determine the ratio of peak envelope power to average power. During normal voice modulation peaks, that PEP-to-average power ratio is approximately 2.5 to 1. In other words, the peaks are about 2.5 times the average power."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 55,
+      "template": "formula",
+      "params": {
+        "title": "PEP from an oscilloscope reading",
+        "formula": "PEP = E<sub>rms</sub>² ÷ R",
+        "steps": ["E<sub>rms</sub> = (200 V ÷ 2) × 0.707", "E<sub>rms</sub> = 70.7 V", "PEP = 70.7² ÷ 50 Ω ≈ 5,000 ÷ 50"],
+        "answer": "PEP ≈ 100 W"
+      },
+      "onScreen": ["PEP = Erms² ÷ R", "Erms = (200 V ÷ 2) × 0.707 = 70.7 V", "70.7² ÷ 50 ≈ 100 W"],
+      "narration": "To find PEP from an oscilloscope, use PEP equals E sub r-m-s squared over R. To get E sub r-m-s, halve the peak-to-peak voltage, then multiply by 0.707. Say the scope shows 200 volts peak-to-peak across a 50-ohm load. Half of 200 is 100, and 100 times 0.707 is 70.7 volts. 70.7 squared is about 5,000, and 5,000 divided by 50 ohms gives a PEP of 100 watts."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 55,
+      "template": "formula",
+      "params": {
+        "title": "Voltage across a dummy load",
+        "formula": "P = E² ÷ R, so E = √(P × R)",
+        "steps": ["E = √(1,200 W × 50 Ω)", "E = √60,000"],
+        "answer": "E ≈ 245 V"
+      },
+      "onScreen": ["E = √(P × R)", "√(1,200 × 50) = √60,000", "About 245 V"],
+      "narration": "Turn the power formula around to find voltage. P equals E squared over R, so E equals the square root of P times R. A 50-ohm dummy load dissipating 1,200 watts has E equal to the square root of 1,200 times 50, which is the square root of 60,000. That comes to about 245 volts across the load."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 56,
+      "template": "block-diagram",
+      "params": {
+        "title": "Intermodulation and the fix",
+        "columns": 3,
+        "blocks": [
+          { "id": "near", "label": "Nearby transmitter", "note": "In close proximity" },
+          { "id": "fa", "label": "Final amplifier", "note": "The 2 signals mix here" },
+          { "id": "prod", "label": "Sum and difference frequencies", "note": "Unwanted intermodulation signals" },
+          { "id": "ant", "label": "Antenna side", "note": "Power arriving on the feed line" },
+          { "id": "iso", "label": "Terminated circulator", "note": "Or ferrite isolator, in the feed line" },
+          { "id": "load", "label": "Load", "note": "Absorbs power from the antenna side" }
+        ],
+        "links": [
+          { "from": "near", "to": "fa" },
+          { "from": "fa", "to": "prod" },
+          { "from": "ant", "to": "iso" },
+          { "from": "iso", "to": "load" },
+          { "from": "iso", "to": "fa", "struck": true }
+        ]
+      },
+      "onScreen": ["Signals of 2 nearby transmitters mix in a final amplifier", "Unwanted sum and difference frequencies", "Fix: terminated circulator or ferrite isolator in the feed line", "Power from the antenna side goes into a load"],
+      "narration": "Now interference. Intermodulation interference happens when the signals of 2 nearby transmitters mix in one or both final amplifiers. The mixing generates unwanted signals at the sum and difference frequencies. The cure works on power arriving from the antenna side, such as the other transmitter's signal. Between transmitters in close proximity, intermodulation can often be reduced or eliminated by installing a terminated circulator or ferrite isolator in the feed line to the transmitter and duplexer. It routes that power into a load, so it never reaches the final amplifier to mix."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 56,
+      "template": "key-facts",
+      "params": {
+        "title": "Stopping parasitic oscillations",
+        "items": [
+          "Parasitic oscillations in a power amplifier are eliminated by neutralization",
+          "Neutralization feeds back an equal signal of opposite phase",
+          "It cancels coupling through the device's internal capacitance",
+          "Tuning for maximum output or SWR does not remove that feedback path"
+        ]
+      },
+      "onScreen": ["Parasitic oscillations: cured by neutralization", "Equal signal of opposite phase fed back", "Cancels coupling through internal capacitance", "Tuning for output or SWR doesn't remove it"],
+      "narration": "A power amplifier can also oscillate on its own at unwanted frequencies. These parasitic oscillations are eliminated by neutralization. Neutralization feeds back an equal signal of opposite phase. That cancels the signal coupling back through the device's own internal capacitance. Tuning for maximum output, or for the standing wave ratio, SWR, does not remove that feedback path, so tuning won't cure parasitics."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 56,
+      "template": "band-strip",
+      "params": {
+        "title": "Spread spectrum: a hopping carrier",
+        "min": 0,
+        "max": 10,
+        "scale": "linear",
+        "marks": [
+          { "at": 7, "label": "Hop 1", "note": "Pre-determined sequence", "tone": "key" },
+          { "at": 2, "label": "Hop 2", "tone": "key" },
+          { "at": 5.5, "label": "Hop 3", "tone": "key" },
+          { "at": 9, "label": "SSB or FM", "note": "Stays on 1 fixed carrier frequency", "tone": "muted" },
+          { "at": 3.5, "label": "AMTOR or SITOR", "note": "Narrow-band teleprinting, not spread", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Spread spectrum: wide bandwidth", "Carrier hops in a pre-determined sequence", "SSB and FM: 1 fixed carrier", "AMTOR and SITOR: narrow-band teleprinting"],
+      "narration": "Spread spectrum is a wide-bandwidth communication system in which the RF carrier varies according to a pre-determined sequence. Watch the carrier hop across the band in its set order. Spread spectrum is the modulation type that can be a frequency hopping of 1 carrier, or of multiple simultaneous carriers. Compare that with SSB and FM: each stays on 1 fixed carrier frequency. And don't confuse spread spectrum with AMTOR or SITOR. Those are narrow-band teleprinting modes."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 56,
+      "template": "block-diagram",
+      "params": {
+        "title": "Push-pull cancels even harmonics",
+        "columns": 2,
+        "blocks": [
+          { "id": "drive", "label": "Input drive" },
+          { "id": "a", "label": "Device 1" },
+          { "id": "b", "label": "Device 2", "note": "Driven 180° out of phase" },
+          { "id": "xf", "label": "Center-tapped output transformer", "note": "Even-harmonic currents cancel" },
+          { "id": "pp", "label": "Push-push stage", "note": "Reinforces even harmonics" },
+          { "id": "dbl", "label": "Frequency doubler" }
+        ],
+        "links": [
+          { "from": "drive", "to": "a" },
+          { "from": "drive", "to": "b" },
+          { "from": "a", "to": "xf" },
+          { "from": "b", "to": "xf" },
+          { "from": "pp", "to": "dbl" }
+        ]
+      },
+      "onScreen": ["Push-pull: 2 devices driven 180° out of phase", "Even harmonics cancel in the output transformer", "Push-push reinforces even harmonics", "Push-push: a frequency doubler"],
+      "narration": "Last, harmonics. Even-order harmonics are reduced or prevented by a push-pull amplifier. Its 2 devices are driven 180 degrees out of phase, so the even-harmonic currents cancel in the output transformer. Don't mix this up with a push-push stage. Push-push reinforces even harmonics instead of canceling them, which is why it is used as a frequency doubler."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [51] },
+    { "after": "s8", "keyTopics": [52] },
+    { "after": "s12", "keyTopics": [53] },
+    { "after": "s15", "keyTopics": [54] },
+    { "after": "s19", "keyTopics": [55] },
+    { "after": "s23", "keyTopics": [56] }
+  ],
+  "video": null
+}

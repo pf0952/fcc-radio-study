@@ -83,7 +83,7 @@
           "Operates in the 9 GHz band: answers 3 cm X-band radars at about 9.2–9.5 GHz",
           "Does not answer 3 GHz S-band radars; 406 MHz is the EPIRB frequency",
           "After activation it waits in standby and responds only to radar interrogation",
-          "Battery: replace every 5 years or after use; it must give 96 hours of standby, then 8 hours of transmission"
+          "Battery: 5 years or after use; must give 96 hours of standby, then 8 hours of transmission"
         ]
       },
       "onScreen": ["9 GHz band, 3 cm X-band radars", "Not S-band; 406 MHz is the EPIRB", "Standby until a radar interrogates it", "Battery: 5 years or after use"],
@@ -226,11 +226,11 @@
       "params": {
         "title": "Programming a NAVTEX receiver",
         "items": [
-          "Broadcasts go out in categories of messages, each indicated by a single letter, in each station's scheduled time slots",
+          "Messages go out in categories, each marked by a single letter, in scheduled time slots",
           "Each transmitting station is identified by a single letter, not a two-digit number or a SELCALL",
           "To reject messages, choose the category's single letter (A–Z) and deselect it",
           "The receiver can be set to reject certain stations and message categories",
-          "Navigational warnings, meteorological warnings and search and rescue information cannot be turned off"
+          "Navigational and meteorological warnings and search and rescue information can't be turned off"
         ]
       },
       "onScreen": ["Message categories: single letters", "Stations: single letters", "Reject a category: choose its letter, deselect it", "Reject stations and categories", "Navigational, meteorological and SAR messages can't be turned off"],

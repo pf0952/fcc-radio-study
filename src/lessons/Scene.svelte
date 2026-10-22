@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Scene } from '../lib/types.ts';
+  import { fitToStage } from './fit';
   import BandStrip from './templates/BandStrip.svelte';
   import BlockDiagram from './templates/BlockDiagram.svelte';
   import ComparisonTable from './templates/ComparisonTable.svelte';
@@ -28,9 +29,15 @@
   };
   // Each template declares its own params shape; lesson files are checked by scripts/check-lessons.ts.
   const Template = $derived(templates[scene.template] as unknown as typeof KeyFacts);
+
+  let stage: HTMLDivElement | undefined = $state();
+  $effect(() => {
+    void scene.id;
+    if (stage) fitToStage(stage);
+  });
 </script>
 
-<div class="stage" role="img" aria-label={scene.onScreen.join('. ')}>
+<div class="stage" bind:this={stage} role="img" aria-label={scene.onScreen.join('. ')}>
   {#key scene.id}
     <Template params={scene.params as never} {fraction} />
   {/key}

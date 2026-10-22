@@ -1,0 +1,720 @@
+{
+  "id": "9-B",
+  "element": 9,
+  "title": "MF-HF-DSC-SITOR (NBDP) Equip. & Ops",
+  "keyTopics": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 11,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 9 · Subelement B",
+        "title": "MF-HF-DSC-SITOR (NBDP) Equip. & Ops",
+        "subtitle": "MF and HF frequencies and controls, how SSB, DSC and SITOR (NBDP) signals work, and how to diagnose receiver and transmitter faults."
+      },
+      "onScreen": ["MF-HF-DSC-SITOR (NBDP) Equip. & Ops", "Frequencies, controls, signals and faults"],
+      "narration": "This lesson covers the GMDSS, or Global Maritime Distress and Safety System, equipment that works in the medium frequency and high frequency bands, MF and HF for short. We'll learn the frequencies and bandwidths, the transceiver's controls, and how single sideband, or SSB, digital selective calling, or DSC, and SITOR signals are generated, received and exchanged. SITOR, simplex teletype over radio, is also called NBDP, narrow-band direct printing. Then we'll diagnose receiver and transmitter faults from their symptoms and meter readings. First up: frequencies and bandwidth."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 11,
+      "template": "comparison-table",
+      "params": {
+        "title": "Bandwidth and channel spacing",
+        "columns": ["Emission", "Assigned bandwidth", "Channel spacing"],
+        "rows": [
+          ["J3E: SSB voice (2K80J3E)", "2.8 kHz", "3.0 kHz"],
+          ["J2B: SITOR (NBDP)", "300 Hz: 170 Hz FSK at 100 baud", "500 Hz"]
+        ]
+      },
+      "onScreen": ["J3E SSB voice: 2.8 kHz bandwidth, 3.0 kHz spacing", "J2B SITOR (NBDP): 300 Hz bandwidth, 500 Hz spacing", "170 Hz FSK at 100 baud needs only about 300 Hz"],
+      "narration": "Every signal type has an assigned bandwidth and a channel spacing. J3E is single-sideband voice. Its assigned bandwidth is 2.8 kilohertz, which is why the emission is written 2K80J3E, and its channel spacing is 3.0 kilohertz. J2B is SITOR, or NBDP. Its assigned bandwidth is only 300 hertz, with a channel spacing of 500 hertz. Why so narrow? NBDP uses frequency-shift keying, or FSK, with a 170 hertz shift at 100 baud, and that needs only about 300 hertz."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 11,
+      "template": "formula",
+      "params": {
+        "title": "Frequency tolerance: 10 Hz",
+        "formula": "offset = |reading − assigned frequency|",
+        "steps": [
+          "2182.006 − 2182.000 kHz = 6 Hz high",
+          "4125.000 − 4124.995 kHz = 5 Hz low",
+          "Other pairs: 9 or 10 Hz off, at or near the limit",
+          "Flag: a 2 ppm counter may be off ≈4.4 or 8.3 Hz"
+        ],
+        "answer": "For the exam: 2182.006 and 4124.995 kHz"
+      },
+      "onScreen": ["Tolerance: 10 Hz", "2182.006 kHz: 6 Hz high", "4124.995 kHz: 5 Hz low", "Other pairs: 9 or 10 Hz", "Flag: 2 ppm counter error", "Exam answer: 2182.006 and 4124.995 kHz"],
+      "narration": "The allowable frequency tolerance for GMDSS MF-HF transmitters is 10 hertz. That's tight enough for narrow, 170 hertz shift DSC and NBDP signals to land in the receiver's narrow filters. The exam checks this with a frequency counter accurate to 2 parts per million, or 2 ppm. A reading of 2182.006 kilohertz is 6 hertz high. A reading of 4124.995 kilohertz is 5 hertz low. Every other pair includes an offset of 9 or 10 hertz, at or near the limit. A flag note: a 2 ppm counter can itself be off by about 4.4 hertz at 2182 kilohertz and 8.3 hertz at 4125 kilohertz, so no pair is provably legal. For the exam, choose 2182.006 and 4124.995 kilohertz: the smallest offsets."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 11,
+      "template": "key-facts",
+      "params": {
+        "title": "DSC and follow-on frequencies",
+        "items": [
+          "DSC: 2187.5, 4207.5, 6312, 8414.5, 12577 and 16804.5 kHz",
+          "Voice follow-on: 2182, 4125, 6215, 8291, 12290 and 16420 kHz",
+          "SITOR (NBDP) follow-on: 2174.5, 4177.5, 6268, 8376.5, 12520 and 16695 kHz",
+          "Exam sets: voice 4125, 8291, 16420 kHz · NBDP 2174.5, 6268, 12520 kHz",
+          "DSC frequencies are not follow-on channels; follow-on frequencies are not DSC"
+        ]
+      },
+      "onScreen": ["DSC: 2187.5, 4207.5, 6312, 8414.5, 12577, 16804.5 kHz", "Voice: 2182, 4125, 6215, 8291, 12290, 16420 kHz", "NBDP: 2174.5, 4177.5, 6268, 8376.5, 12520, 16695 kHz", "Exam sets: voice 4125, 8291, 16420 · NBDP 2174.5, 6268, 12520", "Keep DSC and follow-on lists apart"],
+      "narration": "Now the frequencies. Each band from 2 to 16 megahertz has a DSC frequency, with voice and NBDP follow-on frequencies beside it. The 6 DSC frequencies are 2187.5, 4207.5, 6312, 8414.5, 12577 and 16804.5 kilohertz. Voice follow-on uses 2182, 4125, 6215, 8291, 12290 and 16420 kilohertz. NBDP follow-on uses 2174.5, 4177.5, 6268, 8376.5, 12520 and 16695 kilohertz. The exam's voice set is 4125, 8291 and 16420. Its NBDP set is 2174.5, 6268 and 12520. Keep the lists apart: DSC frequencies such as 6312 and 8414.5 are not follow-on channels, and follow-on frequencies such as 2182, 4125, 4177.5, 8291, 8376.5 and 12520 are not DSC frequencies."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 12,
+      "template": "equipment-card",
+      "params": {
+        "title": "The MF/HF console",
+        "device": "transceiver",
+        "callouts": [
+          { "label": "R.I.T. (clarifier): slight changes to the receive frequency only", "at": "volume" },
+          { "label": "TLX on the display: operating in SITOR (NBDP)", "at": "display" },
+          { "label": "ENTER: accepts the previous selection or data input", "at": "keypad" },
+          { "label": "Distress alerts: a separate, covered button", "at": "distress" }
+        ]
+      },
+      "onScreen": ["R.I.T.: adjusts receive frequency, transmit stays put", "TLX: SITOR (NBDP) mode", "ENTER: accepts the previous input", "Distress: separate covered button"],
+      "narration": "Here's the MF-HF transceiver console. The R.I.T. control, for receiver incremental tuning, is also called the clarifier. It makes slight adjustments in the receiver frequency, while the transmit frequency stays on the assigned channel. When the display shows TLX, for telex, the transceiver is operating in SITOR, or NBDP. The ENTER function accepts the previous selection or data input, such as a frequency or an MMSI, a Maritime Mobile Service Identity. Distress alerts don't go through ENTER: they use a separate, covered button."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 12,
+      "template": "block-diagram",
+      "params": {
+        "title": "TUNE: matching the antenna",
+        "columns": 4,
+        "blocks": [
+          { "id": "tune", "label": "TUNE button" },
+          { "id": "tx", "label": "Transmitter", "note": "50 Ω output, low-power carrier" },
+          { "id": "atu", "label": "Automatic antenna coupler", "note": "Adjusts its matching network" },
+          { "id": "ant", "label": "Antenna", "note": "Tuned to the transmit frequency" }
+        ],
+        "links": [
+          { "from": "tune", "to": "tx" },
+          { "from": "tx", "to": "atu", "label": "Low-power carrier" },
+          { "from": "atu", "to": "ant" }
+        ]
+      },
+      "onScreen": ["TUNE button", "Transmitter: low-power carrier", "Coupler adjusts its matching network to 50 Ω", "Antenna tuned to the transmit frequency"],
+      "narration": "Next, the TUNE button. Pressing TUNE tunes the antenna to the transmit frequency. The transmitter usually sends a low-power carrier while the automatic antenna coupler adjusts its matching network, until the antenna matches the transmitter's 50 ohm output."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 12,
+      "template": "comparison-table",
+      "params": {
+        "title": "RF Gain and AGC",
+        "columns": ["Control", "What it does", "How it helps"],
+        "rows": [
+          ["RF Gain, turned down", "Reduces RF amplifier sensitivity", "Stops strong nearby signals or noise overloading"],
+          ["AGC", "Keeps AF output relatively constant", "Cuts gain on strong signals, raises it on weak"]
+        ]
+      },
+      "onScreen": ["RF Gain down: less RF amplifier sensitivity", "Helps with strong nearby signals or heavy noise", "AGC: relatively constant AF output", "Less gain on strong signals, more on weak"],
+      "narration": "2 gain controls. Reducing the RF Gain control reduces the sensitivity of the radio frequency, or RF, amplifier stage. That helps when strong nearby signals or heavy noise would overload the receiver. AGC, automatic gain control, works on its own. It maintains a relatively constant audio frequency, or AF, output when the input signal varies, by cutting the gain on strong signals and raising it on weak ones."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 13,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the MF/HF receiver",
+        "columns": 4,
+        "blocks": [
+          { "id": "rf", "label": "RF amplifier" },
+          { "id": "if1", "label": "High first I.F.", "note": "Image signals fall far outside" },
+          { "id": "if2", "label": "Low second I.F. amplifier", "note": "Sharp selectivity and gain" },
+          { "id": "det", "label": "Product detector" },
+          { "id": "img", "label": "Image signal", "note": "Twice the I.F. away" },
+          { "id": "noise", "label": "Noise pulses" },
+          { "id": "nb", "label": "Noise blanker", "note": "Gates the I.F. off for each spike" },
+          { "id": "bfo", "label": "BFO", "note": "Re-injects the carrier" }
+        ],
+        "links": [
+          { "from": "rf", "to": "if1" },
+          { "from": "if1", "to": "if2" },
+          { "from": "if2", "to": "det" },
+          { "from": "img", "to": "rf", "label": "Outside the passband", "struck": true },
+          { "from": "noise", "to": "nb" },
+          { "from": "nb", "to": "if2", "label": "Blanking pulse" },
+          { "from": "bfo", "to": "det" }
+        ]
+      },
+      "onScreen": ["RF amplifier, high first I.F., low second I.F., product detector", "High first I.F.: eliminates image signals", "Low second I.F.: sharp selectivity and gain", "Noise blanker gates off the I.F. amplifier for each spike", "BFO feeds the detector"],
+      "narration": "Inside the receiver, the signal passes the RF amplifier, then a high first I.F., or intermediate frequency, then a low second I.F., and on to the product detector. Why a high first I.F.? Its primary purpose is eliminating image signals. An image lies twice the I.F. away from the wanted signal, so with a high I.F. it falls far outside the front-end passband. The low second I.F. then supplies sharp selectivity and gain. Against noise spikes, a noise blanker uses the noise pulses themselves to develop a blanking pulse that briefly gates off the I.F. amplifier for the length of each spike. It doesn't clip peaks or reduce RF gain. Last, the beat frequency oscillator, or BFO, feeds the detector."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 13,
+      "template": "waveform",
+      "params": {
+        "title": "The BFO restores the carrier",
+        "kind": "ssb",
+        "sideband": "upper",
+        "carrier": "suppressed",
+        "xAxis": "frequency",
+        "labels": [
+          "J3E: carrier suppressed, a single sideband sent",
+          "The BFO re-injects the carrier frequency at the detector",
+          "It does not recreate the missing sideband",
+          "Garbled voice: adjust R.I.T. or Clarifier, not squelch"
+        ]
+      },
+      "onScreen": ["J3E: suppressed carrier", "BFO re-injects the carrier at the detector", "Missing sideband is not recreated", "Garbled voice: R.I.T. or Clarifier"],
+      "narration": "J3E suppresses the carrier and sends a single sideband. To demodulate it, the BFO re-injects the carrier frequency in the receiver's detector. Note what the BFO does not do: it does not recreate the missing sideband. And if another vessel's HF transmission sounds garbled, use the R.I.T. or Clarifier control to adjust the receiver frequency until the voice sounds natural. Don't reach for squelch: it only mutes or unmutes the audio."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 13,
+      "template": "comparison-table",
+      "params": {
+        "title": "With the BFO turned off",
+        "columns": ["Emission", "With the BFO off"],
+        "rows": [
+          ["A3E: double-sideband AM", "Still received: carries its own carrier"],
+          ["H3E: SSB with full carrier", "Still received: carries its own carrier"],
+          ["J3E: SSB voice, suppressed carrier", "Needs the BFO"],
+          ["J2B, A1A and F1B", "Need the BFO"]
+        ]
+      },
+      "onScreen": ["A3E: received without the BFO", "H3E: received without the BFO", "J3E: needs the BFO", "J2B, A1A, F1B: need the BFO"],
+      "narration": "What if the BFO is turned off? A3E, double-sideband amplitude modulation, and H3E, single sideband with full carrier, can still be received, because they carry their own carrier. J3E needs the BFO, and so do J2B, A1A and F1B. So with the BFO off, you'll still hear A3E and H3E, but not the others."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 13,
+      "template": "timeline",
+      "params": {
+        "title": "AGC for SSB voice",
+        "badges": [
+          { "label": "Attack", "value": "Fast", "note": "Gain drops instantly on voice peaks" },
+          { "label": "Decay", "value": "Slow", "note": "Noise doesn't surge up between words" }
+        ]
+      },
+      "onScreen": ["Fast attack: gain drops instantly on peaks", "Slow decay: no noise surge between words"],
+      "narration": "One more receiver setting the exam asks about. An AGC circuit for SSB voice reception should have fast attack and slow decay. Fast attack means the gain drops instantly when a voice peak arrives. Slow decay means the gain recovers gently, so the noise doesn't surge up in the gaps between words."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 14,
+      "template": "block-diagram",
+      "params": {
+        "title": "Two I.F. filters, two paths",
+        "columns": 3,
+        "blocks": [
+          { "id": "rx", "label": "Receiver front end" },
+          { "id": "wide", "label": "2.8 kHz filter", "note": "The wider path: voice/SSB only" },
+          { "id": "voice", "label": "Voice/SSB audio" },
+          { "id": "f500", "label": "500 Hz I.F. filter", "note": "The narrow path: SITOR (NBDP) only" },
+          { "id": "nbdp", "label": "SITOR (NBDP) output" }
+        ],
+        "links": [
+          { "from": "rx", "to": "wide" },
+          { "from": "wide", "to": "voice" },
+          { "from": "rx", "to": "f500" },
+          { "from": "f500", "to": "nbdp", "label": "Defective: no NBDP", "struck": true }
+        ]
+      },
+      "onScreen": ["2.8 kHz filter: voice/SSB path", "500 Hz I.F. filter: NBDP path", "Voice but no NBDP: 500 Hz filter", "NBDP but no voice: 2.8 kHz filter"],
+      "narration": "The receiver has 2 I.F. filter paths. Voice and SSB go through a 2.8 kilohertz filter. SITOR, or NBDP, goes through a narrow 500 hertz I.F. filter. So if you hear signals in voice or SSB mode but not in NBDP mode, suspect a defective 500 hertz I.F. filter: it's the narrow path only NBDP uses. Now flip it. If you hear signals in NBDP mode but not in voice or SSB mode, suspect a defective 2.8 kilohertz filter, the wider path only voice uses."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 14,
+      "template": "comparison-table",
+      "params": {
+        "title": "Receiver symptoms and causes",
+        "columns": ["Symptom", "Most likely cause"],
+        "rows": [
+          ["Garbled voice on all SSB channels", "Failed BFO circuit"],
+          ["One very high-pitched voice; all else normal", "That station's transmitter is off frequency"],
+          ["Phase locked loop appears faulty", "Inoperative VCO, part of the loop"],
+          ["AGC inoperative", "Failed variable gain amplifier in the RF stage"]
+        ]
+      },
+      "onScreen": ["All SSB garbled: BFO failed", "One high-pitched voice: that transmitter off frequency", "PLL faulty: inoperative VCO", "No AGC: variable gain amplifier in the RF stage"],
+      "narration": "4 more symptoms. Garbled, unreadable voice on all MF-HF SSB channels most likely means the BFO circuit has failed. SSB is intelligible only when the BFO reinserts the carrier at the correct frequency. But if all signals sound normal except one very high-pitched, barely readable voice, that station's transmitter is off frequency. Your receiver's BFO, synthesizer and voltage controlled oscillator, or VCO, are clearly working. A phase locked loop, or PLL, that appears faulty is most likely caused by an inoperative VCO, which is part of the loop itself. And an inoperative AGC function is most likely caused by failure of a variable gain amplifier in the RF stage: the amplifier the AGC control voltage acts on."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 15,
+      "template": "block-diagram",
+      "params": {
+        "title": "No signals? Work out to the antenna",
+        "columns": 4,
+        "blocks": [
+          { "id": "rx", "label": "Receiver", "note": "Strong AF output, no signals" },
+          { "id": "line", "label": "Transmission line", "note": "Open circuit: no antenna signal" },
+          { "id": "coup", "label": "Antenna coupler", "note": "Intermittent link: signal breaks up" },
+          { "id": "ant", "label": "Antenna" },
+          { "id": "dummy", "label": "Dummy load", "note": "Connected in place of the antenna" }
+        ],
+        "links": [
+          { "from": "ant", "to": "coup", "label": "Intermittent" },
+          { "from": "coup", "to": "line" },
+          { "from": "line", "to": "rx", "label": "Open circuit", "struck": true },
+          { "from": "dummy", "to": "rx", "label": "No antenna signal" }
+        ]
+      },
+      "onScreen": ["Strong AF, no signals: no antenna signal reaches the receiver", "Open circuit in the transmission line", "Signal breaks up, meter mid scale to 0: intermittent antenna-coupler link", "Or connected to a dummy load"],
+      "narration": "Now work outward from the receiver. Suppose it gives strong AF output, but you hear no signals on any frequency. No antenna signal is reaching it. One cause is an open circuit in the transmission line to the antenna. A different symptom: the signal breaks up while the Signal meter alternates between mid scale and 0. That points to an intermittent connection between the antenna and the coupler. The Signal meter reads RF strength ahead of the audio stages, so the fault is out in the antenna circuit. And back to strong AF with no signals: the other cause is a transceiver connected to a dummy load instead of the antenna."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 15,
+      "template": "equipment-card",
+      "params": {
+        "title": "Audio-end faults",
+        "device": "transceiver",
+        "callouts": [
+          { "label": "AF not suppressed without a strong enough signal: squelch failed", "at": "squelch" },
+          { "label": "No AF, speaker leads read near 0 Ω: audio amplifier stage failed", "at": "speaker" },
+          { "label": "TX lamp lit, powered on, no AF output", "at": "panel" },
+          { "label": "Shorted Push-To-Talk circuit holds the set in transmit", "at": "mic" }
+        ]
+      },
+      "onScreen": ["AF not suppressed with no signal: squelch failed", "No AF, speaker reads near 0 Ω: audio amplifier failed", "TX lit, no AF output", "Shorted Push-To-Talk in the microphone"],
+      "narration": "Now the audio end. If the receiver fails to suppress the AF output in the absence of a sufficiently strong input signal, the squelch circuit has failed. If there's no AF output, check between the speaker leads with an ohmmeter. A speaker voice coil normally measures only a few ohms, so a reading near 0 ohms means the speaker is fine and the audio amplifier stage has failed. Last, no AF output while the radio is powered on and TX, the transmit indicator, is illuminated. That points to a shorted Push-To-Talk circuit in the microphone. It holds the set in transmit, which mutes the receiver."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 16,
+      "template": "block-diagram",
+      "params": {
+        "title": "Making J3E",
+        "columns": 4,
+        "blocks": [
+          { "id": "audio", "label": "Microphone audio" },
+          { "id": "dbm", "label": "Double balanced mixer", "note": "Cancels the carrier" },
+          { "id": "filt", "label": "Sideband filter", "note": "Passes upper, blocks lower" },
+          { "id": "out", "label": "J3E: upper sideband" },
+          { "id": "osc", "label": "Carrier oscillator" },
+          { "id": "lsb", "label": "Lower sideband", "note": "Eliminated by the filter" }
+        ],
+        "links": [
+          { "from": "audio", "to": "dbm" },
+          { "from": "dbm", "to": "filt", "label": "2 sidebands, no carrier" },
+          { "from": "filt", "to": "out" },
+          { "from": "osc", "to": "dbm" },
+          { "from": "filt", "to": "lsb", "struck": true }
+        ]
+      },
+      "onScreen": ["Double balanced mixer cancels the carrier", "Sideband filter removes a sideband", "Upper sideband passed, lower blocked", "Start at 150 W PEP"],
+      "narration": "How is a J3E signal generated? Audio from the microphone goes into a double balanced mixer, which cancels the carrier and leaves 2 sidebands. Then a sideband filter removes one sideband, giving J3E. The carrier oscillator feeds the mixer, but its carrier never comes out. Which sideband goes? The lower sideband is eliminated by a filter that passes the upper sideband and blocks the lower, because marine MF-HF radiotelephony uses upper sideband. And for initial MF-HF communications, the most likely power level is 150 watts P E P, peak envelope power, raised only if the other station has trouble copying."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 16,
+      "template": "band-strip",
+      "params": {
+        "title": "SITOR (NBDP) tones",
+        "min": 1580,
+        "max": 1820,
+        "scale": "linear",
+        "marks": [
+          { "at": 1615, "label": "1615 Hz", "note": "1700 − 85 Hz", "tone": "key" },
+          { "at": 1785, "label": "1785 Hz", "note": "1700 + 85 Hz", "tone": "key" },
+          { "at": 1700, "label": "1700 Hz offset", "note": "From the carrier frequency: a 170 Hz shift" }
+        ]
+      },
+      "onScreen": ["1615 Hz", "1785 Hz", "1700 ± 85 Hz from the carrier: 170 Hz shift"],
+      "narration": "Shipboard GMDSS equipment most commonly generates SITOR, or NBDP, by feeding audio tones into the SSB transmitter. The result is 2 alternating sidebands of 1615 hertz and 1785 hertz, offset from the carrier frequency by 1700 hertz. That's 1700 plus or minus 85 hertz: a 170 hertz shift."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 16,
+      "template": "block-diagram",
+      "params": {
+        "title": "Phase locked loop synthesizer",
+        "columns": 2,
+        "blocks": [
+          { "id": "mo", "label": "Master oscillator" },
+          { "id": "div1", "label": "Frequency divider" },
+          { "id": "pc", "label": "Phase comparator", "note": "Produces an error voltage" },
+          { "id": "div2", "label": "Frequency divider" },
+          { "id": "lf", "label": "Loop filter" },
+          { "id": "vco", "label": "Voltage controlled oscillator", "note": "Pulled onto frequency" }
+        ],
+        "links": [
+          { "from": "mo", "to": "div1" },
+          { "from": "div1", "to": "pc" },
+          { "from": "vco", "to": "div2" },
+          { "from": "div2", "to": "pc" },
+          { "from": "pc", "to": "lf", "label": "Error voltage" },
+          { "from": "lf", "to": "vco" }
+        ]
+      },
+      "onScreen": ["Master oscillator and frequency dividers", "Phase comparator compares the divided outputs", "Loop filter", "Error voltage pulls the VCO onto frequency"],
+      "narration": "Now the phase locked loop frequency synthesizer. It's made up of a master oscillator, frequency dividers, a phase comparator, a loop filter and a voltage controlled oscillator. The master oscillator's output is divided down and fed to the phase comparator. The VCO's output is divided down too. The phase comparator compares the 2 divided outputs and produces an error voltage. Through the loop filter, that voltage pulls the VCO onto frequency."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 17,
+      "template": "key-facts",
+      "params": {
+        "title": "2182 kHz radiotelephone: fault or normal?",
+        "items": [
+          "No contact with a station 60 miles away by day: malfunction",
+          "Daytime ground wave normally reaches roughly 100 to 150 nautical miles",
+          "No power output indicated when speaking into the microphone: malfunction",
+          "Can't reach a shore station 600 nautical miles away by day: normal"
+        ]
+      },
+      "onScreen": ["60 miles by day, no contact: malfunction", "Ground wave: roughly 100 to 150 nautical miles", "No power output when speaking: malfunction", "600 nautical miles by day: normal"],
+      "narration": "Now transmitter faults, starting with a 2182 kilohertz radiotelephone system. Failure to contact another station 60 miles away during daytime indicates a malfunction, because daytime ground-wave coverage normally reaches roughly 100 to 150 nautical miles. No indication of power output when you speak into the microphone is also a symptom of malfunction in a 2182 kilohertz SSB radiotelephone. But failing to reach a shore station 600 nautical miles away in daytime is normal: that's beyond daytime coverage."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 17,
+      "template": "block-diagram",
+      "params": {
+        "title": "Voice works, but no SITOR (NBDP)",
+        "columns": 3,
+        "blocks": [
+          { "id": "mic", "label": "Microphone audio", "note": "Voice path: working" },
+          { "id": "exc", "label": "SSB exciter" },
+          { "id": "pa", "label": "Transmitter output" },
+          { "id": "tone", "label": "1615 / 1785 Hz tone oscillator", "note": "Exam keys '1615 kHz audio oscillator'" },
+          { "id": "f500", "label": "500 Hz I.F. filter", "note": "Only NBDP depends on it" }
+        ],
+        "links": [
+          { "from": "mic", "to": "exc" },
+          { "from": "exc", "to": "pa", "label": "Voice" },
+          { "from": "tone", "to": "exc", "label": "NBDP tones" },
+          { "from": "exc", "to": "f500" },
+          { "from": "f500", "to": "pa", "label": "NBDP" }
+        ]
+      },
+      "onScreen": ["Voice path works", "Tone oscillator: 1615 and 1785 Hz", "Flag: '1615 kHz audio oscillator' means 1615 Hz", "Most likely: failed 500 Hz I.F. filter"],
+      "narration": "Next: an MF-HF transceiver works properly on voice but not on SITOR, or NBDP. Voice goes from the microphone through the SSB exciter to the output, and it's fine. NBDP depends on parts voice never uses. A tone oscillator supplies the 1615 and 1785 hertz tones, and without the 1615 hertz tone the transmitter cannot form the NBDP signal. The 500 hertz I.F. filter is a part only NBDP depends on, and it's the most likely failure. A flag note: the exam also keys 'the 1615 kilohertz audio oscillator is not working' for this same symptom. It means the 1615 hertz tone oscillator. Choose it if you see it."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 17,
+      "template": "comparison-table",
+      "params": {
+        "title": "Power meter on a 60 W PEP SSB set",
+        "columns": ["Mode", "Proper meter reading"],
+        "rows": [
+          ["J3E keyed, not speaking", "No power output"],
+          ["J3E while speaking", "Flickers widely, peaks up to 60 W, not above"],
+          ["SITOR (NBDP) ARQ", "Swings regularly from 0 to 60 W"]
+        ]
+      },
+      "onScreen": ["J3E keyed, silent: no output", "J3E with speech: flickers up to 60 W, not above", "ARQ: swings regularly from 0 to 60 W", "210 ms block of 3 characters, then a pause"],
+      "narration": "What does proper operation look like on a 60 watt P E P SSB transmitter's power meter? In J3E, keyed without speaking, there's no power output. With speech, the meter flickers widely with the voice peaks, up to but not above 60 watts, instead of holding steady. In SITOR ARQ, automatic repeat request, the meter fluctuates regularly from 0 to the 60 watt reading. Each 210 millisecond block of 3 characters is followed by a pause while the set listens for the acknowledgement."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 18,
+      "template": "timeline",
+      "params": {
+        "title": "F1B power: ARQ versus FEC",
+        "badges": [
+          { "label": "ARQ: 3-character block", "value": "210 ms", "note": "Transmitting: meter up to full power" },
+          { "label": "ARQ: full cycle with the pause", "value": "Repeats every 450 ms", "note": "Meter drops to 0 while listening" },
+          { "label": "FEC: constant-envelope FSK", "value": "Continuous", "note": "250 W set: steady 225 to 250 W" }
+        ]
+      },
+      "onScreen": ["ARQ: 210 ms block", "Cycle repeats every 450 ms: 0 to 150 W on a 150 W set", "FEC: continuous, steady 225 to 250 W on a 250 W set"],
+      "narration": "Now the F1B modes. A 150 watt MF-HF transmitter working properly in F1B ARQ mode shows output that fluctuates between 0 and 150 watts. ARQ sends a 210 millisecond block of 3 characters, then pauses for the acknowledgement, repeating every 450 milliseconds. FEC, forward error correction, is different. It sends continuously with a constant-envelope FSK signal, so the meter holds steady. A 250 watt transmitter working properly in F1B FEC mode shows constant output between 225 and 250 watts."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 18,
+      "template": "comparison-table",
+      "params": {
+        "title": "Proper or improper? F1B power readings",
+        "columns": ["Transmitter, mode", "Power meter", "Verdict"],
+        "rows": [
+          ["150 W, F1B ARQ", "Fluctuates 0 to 150 W", "Proper"],
+          ["250 W, F1B FEC", "Constant 225 to 250 W", "Proper"],
+          ["150 W, F1B FEC", "Constant 125 to 150 W", "Proper"],
+          ["150 W, F1B FEC", "Fluctuates 0 to 150 W", "Improper: normal only in ARQ"]
+        ]
+      },
+      "onScreen": ["ARQ swinging 0 to 150 W: proper", "FEC steady 225 to 250 W: proper", "FEC steady 125 to 150 W: proper", "FEC swinging 0 to 150 W: improper"],
+      "narration": "Put them side by side, because the exam likes to swap the modes. A 0 to 150 watt swing is proper in ARQ. Constant output near rated power is proper in FEC: 225 to 250 watts on a 250 watt set, or 125 to 150 watts on a 150 watt set. But in F1B FEC mode, output that fluctuates between 0 and 150 watts on a 150 watt transmitter indicates improper operation. That swing is normal only for ARQ."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 18,
+      "template": "formula",
+      "params": {
+        "title": "125 W forward, 5 W reflected",
+        "formula": "Γ = √(reflected ÷ forward)",
+        "steps": ["Γ = √(5 W ÷ 125 W) = 0.2", "SWR = (1 + Γ) ÷ (1 − Γ)", "SWR = 1.2 ÷ 0.8"],
+        "answer": "SWR = 1.5:1, acceptable"
+      },
+      "onScreen": ["Γ = √(5/125) = 0.2", "SWR = 1.2 ÷ 0.8 = 1.5:1: acceptable", "High SWR: very low RF output in FEC", "Dummy load: matched 50 Ω, full output"],
+      "narration": "A standing wave ratio, or SWR, meter reads 125 watts forward and 5 watts reflected. Acceptable? First the reflection coefficient, gamma: the square root of 5 over 125, which is 0.2. Then SWR is 1 plus gamma over 1 minus gamma: 1.2 over 0.8, or 1.5 to 1. That's acceptable. A high SWR in the antenna system is a different story. In F1B FEC mode it can cause very low RF output, as the protection circuit cuts power to save the amplifier. A dummy load, by contrast, is a matched 50 ohm termination, so it allows full output."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 18,
+      "template": "key-facts",
+      "params": {
+        "title": "No RF output, and valid FEC tests",
+        "items": [
+          "Crowbar circuit activated: DC power to the transmitter shut off, so 0 RF output",
+          "Not valid for F1B FEC: spectrum analyzer test of frequency deviation",
+          "F1B simply shifts between 2 fixed frequencies 170 Hz apart",
+          "Valid: visual inspection and DVM power supply checks",
+          "Valid: input/output checks with a 10:1 oscilloscope probe"
+        ]
+      },
+      "onScreen": ["Crowbar activated: 0 RF output", "Spectrum analyzer deviation test: not valid", "F1B: 2 fixed frequencies 170 Hz apart", "Valid: visual inspection, DVM checks", "Valid: 10:1 probe input/output checks"],
+      "narration": "If the RF output drops to 0, look at the power supply. Activation of a crowbar circuit, which prevents an unregulated voltage increase, shuts off the DC power to the transmitter, so there's 0 RF output. And when hunting an F1B FEC transmitter fault, know which tests are valid. Modulation testing with an RF spectrum analyzer to measure frequency deviation is not valid, because F1B simply shifts between 2 fixed frequencies 170 hertz apart. Valid methods are visual inspection, power supply checks with a DVM, or digital voltmeter, and input and output checks with a 10 to 1 oscilloscope probe."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 19,
+      "template": "timeline",
+      "params": {
+        "title": "Anatomy of a DSC distress alert",
+        "badges": [
+          { "label": "Dot pattern", "value": "200 bits, 2 seconds", "note": "Alternating dots at 100 baud: scanners stop and synchronize" },
+          { "label": "Phasing signal", "value": "After the dot pattern" },
+          { "label": "Each message character", "value": "Repeated 400 ms later", "note": "Time diversity: sent again after 4 other characters" }
+        ]
+      },
+      "onScreen": ["200-bit dot pattern: 2 seconds at 100 baud", "Then the phasing signal", "Each character repeated 400 ms later"],
+      "narration": "Now DSC on MF and HF. A DSC distress alert call starts with an alternating dot pattern of 200 bits, which precedes the phasing signal. At 100 baud, those 200 bits last 2 seconds, long enough for scanning watch receivers to stop and synchronize. Then comes the phasing signal, and then the message. Each character is sent again 400 milliseconds later. That's the time diversity reception interval, and 400 milliseconds is a number the exam tests."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 19,
+      "template": "formula",
+      "params": {
+        "title": "The DSC code and the 400 ms interval",
+        "formula": "time diversity = 4 × 10 bits ÷ 100 bits/s",
+        "steps": [
+          "10-bit code: 7 information bits + 3 check bits",
+          "Check bits count the 0 bits in the information",
+          "Each character repeats after 4 other characters",
+          "4 × 10 bits = 40 bits, at 100 bits/s"
+        ],
+        "answer": "Time diversity interval = 400 ms"
+      },
+      "onScreen": ["10-bit code: 7 information + 3 error-check bits", "Check bits count the 0 bits", "4/3 ratio is the 7-bit SITOR code, not DSC", "4 × 10 bits ÷ 100 bits/s = 400 ms"],
+      "narration": "Here's where 400 milliseconds comes from. DSC uses a 10 bit code: 7 bits used for information and 3 bits used for error correction. Those 3 check bits are a count of the 0 bits in the information part. Don't confuse this with a constant 4 to 3 ratio of 1 bits to 0 bits: that's the 7 bit SITOR code, not DSC. Each character is repeated after 4 other characters. 4 times 10 bits is 40 bits, and at 100 bits per second, that takes 400 milliseconds: the MF-HF-DSC time diversity reception interval."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 19,
+      "template": "comparison-table",
+      "params": {
+        "title": "MF/HF DSC versus VHF DSC",
+        "columns": ["Feature", "MF/HF DSC", "VHF DSC"],
+        "rows": [
+          ["Tones", "1615 / 1785 Hz (1700 ± 85 Hz)", "1300 / 2100 Hz"],
+          ["Speed", "100 baud", "1200 baud"],
+          ["Time diversity", "400 ms", "33-1/3 ms"]
+        ]
+      },
+      "onScreen": ["MF/HF DSC: ±85 Hz on a 1700 Hz sub-carrier", "1615 and 1785 Hz at 100 baud", "1300/2100 Hz: VHF DSC", "400 ms versus 33-1/3 ms"],
+      "narration": "Compare MF-HF DSC with the VHF, or very high frequency, version. MF-HF-DSC uses a frequency shift of plus or minus 85 hertz on a 1700 hertz sub-carrier, giving tones of 1615 and 1785 hertz. The 1300 and 2100 hertz tones belong to VHF DSC. MF-HF DSC runs at 100 baud, VHF DSC at 1200 baud. And the time diversity interval is 400 milliseconds on MF-HF, against 33 and a third milliseconds on VHF."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 19,
+      "template": "key-facts",
+      "params": {
+        "title": "Distress calls and MMSI 003669999",
+        "items": [
+          "Distress call: MMSI, position, nature of distress, follow-on by J3E or F1B",
+          "DSC identifies ships by MMSI, not by call sign or vessel name",
+          "MMSI 003669999: group call for all U.S. Coast Guard coast stations",
+          "Received by all DSC-equipped USCG coast stations in range; may auto-acknowledge",
+          "May be used to test MF/HF DSC equipment aboard ships"
+        ]
+      },
+      "onScreen": ["Distress call contents: MMSI, position, nature, follow-on mode", "Ships identified by MMSI", "003669999: all USCG coast stations", "Automated acknowledgement possible", "OK for testing ship MF/HF DSC"],
+      "narration": "An MF-HF distress priority DSC call may include the ship's MMSI, its position, the nature of distress, and follow-on communications by J3E voice or F1B telex. DSC identifies ships by MMSI, not by call sign or vessel name. One MMSI to know: 0 0 3 6 6 9 9 9 9. It's the group call for all U.S. Coast Guard coast stations. A call to it is received by all DSC-equipped Coast Guard coast stations within range, which may send an automated acknowledgement. And it may be used to test MF-HF DSC equipment aboard ships."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 20,
+      "template": "timeline",
+      "params": {
+        "title": "ARQ: 3 characters at a time",
+        "badges": [
+          { "label": "ISS: information sending station", "value": "Sends 3 characters" },
+          { "label": "IRS: information receiving station", "value": "Checks parity", "note": "Each character's fixed 4:3 bit ratio" },
+          { "label": "Parity OK", "value": "Control signal: proceed", "note": "Ready for the next 3 characters" },
+          { "label": "Parity check fails", "value": "Block resent" }
+        ]
+      },
+      "onScreen": ["ISS sends a block of 3 characters", "IRS checks parity: 4:3 ratio", "OK: next 3 characters", "Fail: block resent", "NAVTEX and MSI broadcasts: not ARQ"],
+      "narration": "SITOR ARQ is a two-way exchange. The information sending station, or ISS, transmits a block of 3 characters. The information receiving station, or IRS, checks each block for parity: each character's fixed 4 to 3 bit ratio. If the block is correct, a control signal tells the ISS to proceed. If the parity check fails, the block must be resent. So when a ship works a shore station, the ship sends a group of 3 characters and the shore station checks parity. If parity is OK, the shore station indicates readiness for the next 3 characters, asking for a repeat only when the check fails. Sending each character twice belongs to FEC, not ARQ. And NAVTEX and maritime safety information, or MSI, broadcasts are one-way, so they cannot be contacted or copied in ARQ."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 20,
+      "template": "block-diagram",
+      "params": {
+        "title": "Direct telex through a coast station",
+        "columns": 3,
+        "blocks": [
+          { "id": "ship", "label": "Ship", "note": "Sends DIRTLX0xxyyyy+" },
+          { "id": "coast", "label": "Automated coast station" },
+          { "id": "sub", "label": "Shoreside TELEX subscriber", "note": "KKKK clears this land-line link" }
+        ],
+        "links": [
+          { "from": "ship", "to": "coast", "label": "SITOR ARQ radio circuit" },
+          { "from": "coast", "to": "sub", "label": "Land line" }
+        ]
+      },
+      "onScreen": ["Ship sends DIRTLX0xxyyyy+", "Automated coast station", "Land line to the TELEX subscriber", "KKKK ends the direct TELEX connection"],
+      "narration": "To send a message via a direct connection to a shoreside TELEX subscriber, the ship works the automated coast station in ARQ and sends D I R T L X, followed by the subscriber's telex number and a plus sign. The coast station connects the radio circuit to the subscriber over the land line. When you're done, send K K K K. That terminates the direct TELEX connection, clearing the land-line link, while the radio circuit can stay up."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 20,
+      "template": "key-facts",
+      "params": {
+        "title": "Coast station commands",
+        "items": [
+          "Most ARQ commands end with '+': HELP+, MSG+",
+          "DIRTLX0xxyyyy+: direct connection to a shoreside TELEX subscriber",
+          "MSG+ retrieves waiting messages",
+          "AMV+ sends an AMVER report · OPR+ calls the operator",
+          "KKKK terminates a direct TELEX connection"
+        ]
+      },
+      "onScreen": ["Commands end with +", "DIRTLX0xxyyyy+: direct TELEX", "MSG+: waiting messages", "AMV+: AMVER report · OPR+: operator", "KKKK: end direct TELEX"],
+      "narration": "When working an automated coast station, most ARQ commands are followed by a plus sign, as in HELP plus and M S G plus. Here's the set to know. D I R T L X with the subscriber's number and a plus sign asks for a direct TELEX connection. M S G plus retrieves messages waiting for you. A M V plus sends an AMVER report, to the Automated Mutual-assistance Vessel Rescue system. O P R plus calls the operator. And K K K K terminates a direct TELEX connection."
+    },
+    {
+      "id": "s33",
+      "keyTopic": 21,
+      "template": "comparison-table",
+      "params": {
+        "title": "ARQ, FEC and SFEC",
+        "columns": ["Mode", "Communications"],
+        "rows": [
+          ["ARQ", "Two-way"],
+          ["FEC", "One-way, to all stations"],
+          ["SFEC (selective FEC)", "One-way, to a single station"]
+        ]
+      },
+      "onScreen": ["ARQ: two-way", "FEC: one-way to all stations", "SFEC: one-way to a single station", "SFEC: receive without transmitting, as under radio silence"],
+      "narration": "SITOR has 3 modes, and the exam lists them in order: ARQ, FEC, SFEC. ARQ is two-way communications. FEC is one-way communications to all stations. SFEC, selective FEC, is one-way communications to a single station. When would you use SFEC? When an individual station must receive communications without transmitting, as under radio silence."
+    },
+    {
+      "id": "s34",
+      "keyTopic": 21,
+      "template": "waveform",
+      "params": {
+        "title": "FEC: every character sent twice",
+        "kind": "repeat",
+        "chars": ["M", "S", "I"],
+        "noiseAt": 1,
+        "xAxis": "time",
+        "labels": [
+          "Mode B: each character sent twice, separated in time",
+          "A static crash corrupts one copy",
+          "The receiver replaces it with the other copy"
+        ]
+      },
+      "onScreen": ["Mode B FEC: each character sent twice", "Static crash corrupts a copy", "The other copy replaces it"],
+      "narration": "In SITOR Mode B, forward error correction reduces the error rate in the presence of static crashes. Each character is transmitted twice, separated in time. If a static crash corrupts one copy, as it does here, the receiver replaces it with the other copy. No reply is needed, so FEC works one-way."
+    },
+    {
+      "id": "s35",
+      "keyTopic": 21,
+      "template": "band-strip",
+      "params": {
+        "title": "Receiving MSI on the MF/HF console",
+        "min": 400,
+        "max": 30000,
+        "scale": "log",
+        "marks": [
+          { "at": 518, "label": "518 kHz FEC TELEX", "note": "In NAVTEX range, NAVTEX and Sat-C both down", "tone": "key" },
+          { "at": 4210, "label": "4210 kHz", "note": "Lowest of the 8 HF MSI frequencies" },
+          { "at": 26100.5, "label": "26100.5 kHz", "note": "Highest HF MSI frequency" }
+        ]
+      },
+      "onScreen": ["In NAVTEX range: 518 kHz FEC TELEX", "Beyond range or in the tropics: HF MSI frequency, FEC TELEX", "8 HF MSI frequencies: 4210 to 26100.5 kHz", "Never ARQ for a broadcast"],
+      "narration": "Now a practical one. You're within range of NAVTEX broadcasts, but both the Inmarsat-C and the NAVTEX receiver are inoperative. Select 518 kilohertz FEC TELEX on the MF-HF console to receive MSI. Not ARQ: ARQ cannot copy a broadcast. Beyond range of NAVTEX with the Sat-C system failed, select an HF MSI frequency and FEC TELEX mode. And when atmospheric interference spoils NAVTEX, especially in the tropics, select one of the 8 HF MSI frequencies, from 4210 to 26100.5 kilohertz, and set up the transceiver in FEC TELEX mode."
+    },
+    {
+      "id": "s36",
+      "keyTopic": 22,
+      "template": "equipment-card",
+      "params": {
+        "title": "The MF/HF antenna system",
+        "device": "antenna",
+        "callouts": [
+          { "label": "Antenna tuner: cancels reactance, transforms impedance to 50 Ω", "at": "coupler" },
+          { "label": "RG-8, 50 Ω coax; not 72–75 Ω RG-59, RG-6 or RG-179", "at": "coax" },
+          { "label": "PL-259 connector; not F (75 Ω TV), SMA (microwave) or EIA-232 (serial)", "at": "deck" }
+        ]
+      },
+      "onScreen": ["Antenna tuner: matches to 50 Ω, minimizes SWR", "RG-8, 50 ohm coax", "Not RG-59, RG-6 or RG-179", "PL-259 connector"],
+      "narration": "Now the antenna system. The antenna tuner matches the antenna to the operating frequency. It cancels reactance and transforms the impedance to the transmitter's 50 ohms, so SWR is minimized. The feed line is RG-8, 50 ohm coax. 72 to 75 ohm cables such as RG-59, RG-6 and RG-179 would mismatch the system. And the connector you'll often see is the PL-259. F connectors are for 75 ohm TV cable, SMA is a small microwave connector, and EIA-232 is a serial data interface."
+    },
+    {
+      "id": "s37",
+      "keyTopic": 22,
+      "template": "comparison-table",
+      "params": {
+        "title": "Series inductance versus series capacitance",
+        "columns": ["Added in series", "Electrical length", "Resonant frequency"],
+        "rows": [
+          ["Inductance (loading coil)", "Lengthens", "Lowers"],
+          ["Capacitance", "Shortens", "Raises"]
+        ]
+      },
+      "onScreen": ["Series inductance: electrically longer, lower resonant frequency", "Series capacitance: electrically shorter, higher resonant frequency"],
+      "narration": "You can change an antenna's electrical length without changing its physical length. An inductance in series with the antenna electrically lengthens a physically fixed length antenna and lowers its resonant frequency. That's how loading coils let short whips work on MF. A capacitance in series does the opposite: it electrically shortens the antenna and raises its resonant frequency."
+    },
+    {
+      "id": "s38",
+      "keyTopic": 22,
+      "template": "block-diagram",
+      "params": {
+        "title": "Whip carried away? Rig a wire",
+        "columns": 3,
+        "blocks": [
+          { "id": "tx", "label": "MF/HF transceiver" },
+          { "id": "atu", "label": "Antenna tuner" },
+          { "id": "whip", "label": "MF-HF whip", "note": "Carried away" },
+          { "id": "vhf", "label": "VHF antenna", "note": "Not usable at these frequencies" },
+          { "id": "short", "label": "10 ft wire", "note": "Too short to tune on MF" },
+          { "id": "wire", "label": "35–40 ft wire antenna", "note": "Per the equipment instruction manual" }
+        ],
+        "links": [
+          { "from": "tx", "to": "atu" },
+          { "from": "atu", "to": "whip", "struck": true },
+          { "from": "atu", "to": "vhf", "struck": true },
+          { "from": "atu", "to": "short", "struck": true },
+          { "from": "atu", "to": "wire" }
+        ]
+      },
+      "onScreen": ["Whip carried away", "VHF antenna: not usable", "10 ft wire: too short", "Rig a 35–40 ft wire per the manual"],
+      "narration": "Suppose the MF-HF whip antenna is carried away. Don't use the VHF antenna: it is not usable at these frequencies. A 10 foot wire won't do either: it's too short to tune on MF. Instead, rig a wire antenna approximately 35 to 40 feet long, following the equipment instruction manual, and let the antenna tuner match it."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [11] },
+    { "after": "s7", "keyTopics": [12] },
+    { "after": "s11", "keyTopics": [13] },
+    { "after": "s15", "keyTopics": [14, 15] },
+    { "after": "s18", "keyTopics": [16] },
+    { "after": "s21", "keyTopics": [17] },
+    { "after": "s25", "keyTopics": [18] },
+    { "after": "s29", "keyTopics": [19] },
+    { "after": "s32", "keyTopics": [20] },
+    { "after": "s35", "keyTopics": [21] },
+    { "after": "s38", "keyTopics": [22] }
+  ],
+  "video": null
+}

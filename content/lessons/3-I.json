@@ -1,0 +1,211 @@
+{
+  "id": "3-I",
+  "element": 3,
+  "title": "Power Sources",
+  "keyTopics": [60, 61, 62],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 60,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement I",
+        "title": "Power Sources",
+        "subtitle": "Cell voltages and the charging hazard, battery capacity, run-time and internal-resistance problems, and DC motors and generators."
+      },
+      "onScreen": ["Power Sources", "Batteries, battery arithmetic, motors and generators"],
+      "narration": "This lesson covers power sources. First, batteries: cell voltages, the hazard when charging, and the arithmetic of charging, capacity, run time and internal resistance. Then DC, or direct current, motors and generators: how they react to load and field changes, and how to work out a motor's current. Most of this is arithmetic, so we'll take each calculation one step at a time."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 60,
+      "template": "equipment-card",
+      "params": {
+        "title": "Charging a battery",
+        "device": "battery",
+        "callouts": [
+          { "label": "Trickle charge at 0.5 A from a 110 V DC line, through a series resistor", "at": "cables" },
+          { "label": "The resistor drops the difference: 110 V − 12.5 V = 97.5 V", "at": "link" },
+          { "label": "R = 97.5 V ÷ 0.5 A = 195 Ω", "at": "positive" },
+          { "label": "Charging a lead-acid battery releases hydrogen gas", "at": "caps" },
+          { "label": "Hydrogen is explosive in air", "at": "case" },
+          { "label": "Charge in a well-ventilated space, away from sparks and flames", "at": "right-battery" }
+        ]
+      },
+      "onScreen": ["Trickle charge at 0.5 A from 110 V DC", "Resistor drops 97.5 V", "R = 195 Ω", "Hydrogen gas released", "Explosive in air", "Ventilate; no sparks or flames"],
+      "narration": "Let's put a battery on charge. A battery with a terminal voltage of 12.5 volts is to be trickle-charged at 0.5 amperes from a 110 volt DC line. What series resistance do you need? The resistor must drop the difference between line and battery voltage at the charging current. 110 minus 12.5 is 97.5 volts. 97.5 volts divided by 0.5 amperes is 195 ohms. Now the hazard. Charging a lead-acid storage battery releases hydrogen gas. That's harmful because hydrogen is explosive in air. So always charge in a well-ventilated space, away from sparks and flames."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 60,
+      "template": "comparison-table",
+      "params": {
+        "title": "Cell voltages",
+        "columns": ["Cell", "Voltage", "In a battery"],
+        "rows": [
+          ["Lead-acid", "2.06 volts, fully charged (average)", "6 cells: called a 12-volt battery"],
+          ["Fresh alkaline or carbon-zinc", "1.5 volts", "For comparison"],
+          ["Nickel-cadmium", "About 1.25 volts", "12 in series: 12 × 1.25 V = 15 V"]
+        ]
+      },
+      "onScreen": ["Lead-acid: 2.06 volts", "Alkaline or carbon-zinc: 1.5 volts", "Nickel-cadmium: about 1.25 volts", "12 nickel-cadmium in series: 15 volts"],
+      "narration": "Now cell voltages. The average fully-charged voltage of a lead-acid storage cell is 2.06 volts. That's why a 6-cell battery is called a 12-volt battery. A fresh alkaline or carbon-zinc cell gives 1.5 volts. A nickel-cadmium cell is a little below that: its operating voltage is about 1.25 volts. Voltages in series add. So 12 nickel-cadmium batteries in series give 12 times 1.25 volts: 15 volts."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 60,
+      "template": "formula",
+      "params": {
+        "title": "Battery capacity",
+        "formula": "Capacity (ampere-hours) = current × time",
+        "steps": [
+          "Transmitter: 70% of 40 A = 0.7 × 40 A",
+          "Load = 0.7 × 40 A + 1.5 A = 29.5 A",
+          "Capacity = 29.5 A × 6 h"
+        ],
+        "answer": "177 ampere-hours"
+      },
+      "onScreen": ["Capacity = load current × time", "0.7 × 40 A + 1.5 A = 29.5 A", "29.5 A × 6 h", "177 ampere-hours"],
+      "narration": "Battery capacity in ampere-hours equals load current times time. Here's the exam problem. A transmitter draws a continuous load of 70 percent of its 40 ampere key-locked demand, plus there's a 1.5 ampere emergency light, for 6 hours. First the current: 0.7 times 40 amperes, plus 1.5 amperes, is 29.5 amperes. Then multiply by the time: 29.5 amperes times 6 hours is 177 ampere-hours."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 61,
+      "template": "formula",
+      "params": {
+        "title": "Battery run time",
+        "formula": "Time = ampere-hours ÷ (total watts ÷ volts)",
+        "steps": [
+          "Total power = 325 W + 50 W = 375 W",
+          "I = P ÷ E = 375 W ÷ 12.6 V ≈ 29.8 A",
+          "Time = 55 Ah ÷ 29.8 A ≈ 1.85 h"
+        ],
+        "answer": "About 1.8 hours"
+      },
+      "onScreen": ["Add the loads: 375 W", "I = P ÷ E ≈ 29.8 A", "55 Ah ÷ 29.8 A ≈ 1.85 h", "About 1.8 hours"],
+      "narration": "How long will a battery run your equipment? Take it in 3 steps. Add the power of all the loads. Find the current with I equals P over E. Then divide the ampere-hour rating by that current. Example: a 325 watt transmitter and a 50 watt receiver on a 12.6 volt, 55 ampere-hour battery. Total power: 375 watts. Current: 375 divided by 12.6 is about 29.8 amperes. Time: 55 ampere-hours divided by 29.8 amperes is about 1.85 hours, which the exam lists as 1.8 hours."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 61,
+      "template": "comparison-table",
+      "params": {
+        "title": "Run-time problems, same method",
+        "columns": ["Loads", "Current", "Battery ÷ current", "Run time"],
+        "rows": [
+          ["325 W + 50 W = 375 W", "375 ÷ 12.6 ≈ 29.8 A", "55 Ah ÷ 29.8 A ≈ 1.85 h", "About 1.8 hours"],
+          ["315 W + 50 W = 365 W", "365 ÷ 12.6 ≈ 28.97 A", "50 Ah ÷ 28.97 A ≈ 1.73 h", "1 hour 43 minutes"],
+          ["75 W + 325 W = 400 W", "400 ÷ 12 ≈ 33.3 A", "50 Ah ÷ 33.3 A = 1.5 h", "1 1/2 hours"],
+          ["50 W + 300 W = 350 W", "350 ÷ 12.6 ≈ 27.8 A", "8 Ah ÷ 27.8 A ≈ 0.29 h", "17 minutes or 0.3 hours"]
+        ]
+      },
+      "onScreen": ["375 W on 55 Ah: about 1.8 hours", "365 W on 50 Ah: 1 hour 43 minutes", "400 W on 50 Ah at 12 V: 1 1/2 hours", "350 W on 8 Ah: 17 minutes or 0.3 hours"],
+      "narration": "Here's that first problem again, and the others use the same steps. A 315 watt radar and a 50 watt radio draw 365 watts. At 12.6 volts, that's about 28.97 amperes, so a 50 ampere-hour battery lasts about 1.73 hours: 1 hour 43 minutes. A 75 watt receiver and a 325 watt transmitter draw 400 watts. On a 12 volt battery, that's about 33.3 amperes, so 50 ampere-hours lasts 1.5 hours: 1 and a half hours. A 50 watt receiver and a 300 watt radar draw 350 watts, about 27.8 amperes at 12.6 volts. An 8 ampere-hour battery lasts only about 0.29 hours: about 17 minutes, or 0.3 hours."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 61,
+      "template": "formula",
+      "params": {
+        "title": "Internal resistance: the lamp problem",
+        "formula": "I = E ÷ (R<sub>load</sub> + R<sub>internal</sub>)",
+        "steps": [
+          "R<sub>lamp</sub> = E² ÷ P = 6² ÷ 3 = 12 Ω",
+          "R<sub>total</sub> = 12 Ω + 0.01 Ω = 12.01 Ω",
+          "I = 6 V ÷ 12.01 Ω ≈ 0.4996 A"
+        ],
+        "answer": "Listed as 0.4995 amps"
+      },
+      "onScreen": ["I = E ÷ (R load + R internal)", "Lamp: 6² ÷ 3 = 12 Ω", "12 Ω + 0.01 Ω = 12.01 Ω", "6 V ÷ 12.01 Ω ≈ 0.4996 A, listed as 0.4995 amps"],
+      "narration": "A battery's internal resistance adds in series with the load. So the current is the battery voltage divided by the load resistance plus the internal resistance. Example: a 6 volt battery with 0.01 ohms of internal resistance lights a 3-watt, 6-volt lamp. First the lamp's resistance: R equals E squared over P, 6 squared over 3, which is 12 ohms. Add the internal resistance: 12.01 ohms. Current: 6 volts divided by 12.01 ohms is about 0.4996 amperes, which the exam lists as 0.4995 amps."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 61,
+      "template": "formula",
+      "params": {
+        "title": "Internal resistance: two bulbs in parallel",
+        "formula": "I = E ÷ (R<sub>load</sub> + R<sub>internal</sub>)",
+        "steps": [
+          "Two 12 Ω bulbs in parallel = 6 Ω",
+          "R<sub>total</sub> = 6 Ω + 1.2 Ω = 7.2 Ω",
+          "I = 6 V ÷ 7.2 Ω"
+        ],
+        "answer": "I ≈ 0.83 A"
+      },
+      "onScreen": ["Two 12 Ω bulbs in parallel = 6 Ω", "6 Ω + 1.2 Ω = 7.2 Ω", "I = 6 V ÷ 7.2 Ω ≈ 0.83 A"],
+      "narration": "Same idea, with a parallel load. A 6 volt battery with 1.2 ohms of internal resistance is connected across two light bulbs in parallel, each 12 ohms. Two equal 12 ohm resistances in parallel make 6 ohms. Add the 1.2 ohm internal resistance in series: 7.2 ohms. Then I equals E over R: 6 volts divided by 7.2 ohms is about 0.83 amperes."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 62,
+      "template": "comparison-table",
+      "params": {
+        "title": "DC motors: load and field changes",
+        "columns": ["Motor", "Change", "Result", "Why"],
+        "rows": [
+          ["Series DC motor", "Load removed", "Accelerates until it falls apart", "Field weakens: spins faster for counter-EMF"],
+          ["Shunt motor, with load", "Shunt field opened", "Speeds up, possibly to runaway", "Only weak residual magnetism left"]
+        ]
+      },
+      "onScreen": ["Series motor, load removed: accelerates until it falls apart", "Shunt motor, field opened: speeds up"],
+      "narration": "Now DC motors, and what happens when the load or the field changes. Remove the load from an operating series DC motor, and it will accelerate until it falls apart. Without the load, little current flows in its field, the field weakens, and the motor must spin ever faster to generate counter-EMF, that's counter electromotive force. That's why series motors are kept coupled to their loads. Now take a shunt motor running with a load, and open its shunt field. It will speed up, possibly to a dangerous runaway, because only weak residual magnetism is left to make counter-EMF."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 62,
+      "template": "key-facts",
+      "params": {
+        "title": "Generators",
+        "items": [
+          "Shunt-wound DC generator: voltage regulation means voltage fluctuations from load to no-load",
+          "Usually (no-load voltage − full-load voltage) as a percentage of the full-load voltage",
+          "Separately-excited AC generator at constant speed: output controlled by the field current",
+          "Output voltage is proportional to the magnetic flux the field current sets"
+        ]
+      },
+      "onScreen": ["Voltage regulation: fluctuations from load to no-load", "No-load minus full-load, as a percentage of full-load", "Separately-excited AC generator: output set by field current", "Output proportional to field flux"],
+      "narration": "Now generators. For a shunt-wound DC generator, the expression voltage regulation refers to the voltage fluctuations from load to no-load. It's usually given as the no-load voltage minus the full-load voltage, as a percentage of the full-load voltage. Next, a separately-excited AC, or alternating current, generator running at a constant speed. Its output is controlled by the amount of field current, because the output voltage is proportional to the magnetic flux that the field current sets."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 62,
+      "template": "formula",
+      "params": {
+        "title": "Motor current: AC motor",
+        "formula": "I = (hp × 746 ÷ efficiency) ÷ (E × PF)",
+        "steps": [
+          "Output = 7 × 745.7 W ≈ 5,220 W",
+          "Input = 5,220 W ÷ 0.95 ≈ 5,495 W",
+          "I = 5,495 W ÷ (120 V × 0.8)"
+        ],
+        "answer": "I ≈ 57.2 A"
+      },
+      "onScreen": ["I = (hp × 746 ÷ efficiency) ÷ (E × PF)", "7 × 745.7 W ≈ 5,220 W", "5,220 W ÷ 0.95 ≈ 5,495 W", "5,495 W ÷ (120 V × 0.8) ≈ 57.2 A"],
+      "narration": "To find a motor's current, work in 3 steps. Output watts equal horsepower times 746, or more exactly 745.7 watts per horsepower. Input watts equal output divided by efficiency. Then I equals P over E for a DC motor, or P over the quantity E times PF for an AC motor, where PF is the power factor. Example: a 7 horsepower motor on 120 volts, 95 percent efficient, with a power factor of 0.8. Output: 7 times 745.7 is about 5,220 watts. Input: 5,220 divided by 0.95 is about 5,495 watts. Current: 5,495 watts divided by the quantity 120 volts times 0.8 is about 57.2 amperes."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 62,
+      "template": "formula",
+      "params": {
+        "title": "Motor current: DC motor",
+        "formula": "I = (hp × 746 ÷ efficiency) ÷ E",
+        "steps": [
+          "Output = 3 × 746 W = 2,238 W",
+          "Input = 2,238 W ÷ 0.85 ≈ 2,633 W",
+          "I = 2,633 W ÷ 100 V"
+        ],
+        "answer": "I ≈ 26.3 A (listed as 26.300 amps)"
+      },
+      "onScreen": ["I = (hp × 746 ÷ efficiency) ÷ E", "3 × 746 W = 2,238 W", "2,238 W ÷ 0.85 ≈ 2,633 W", "2,633 W ÷ 100 V ≈ 26.3 A"],
+      "narration": "A DC motor is simpler: there's no power factor. Example: a 3 horsepower, 100 volt DC motor, 85 percent efficient. Output: 3 times 746 is 2,238 watts. Input: 2,238 divided by 0.85 is about 2,633 watts. Current: 2,633 watts divided by 100 volts is about 26.3 amperes, listed on the exam as 26.300 amps."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [60] },
+    { "after": "s8", "keyTopics": [61] },
+    { "after": "s12", "keyTopics": [62] }
+  ],
+  "video": null
+}

@@ -1,0 +1,591 @@
+{
+  "id": "3-F",
+  "element": 3,
+  "title": "Receivers",
+  "keyTopics": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 41,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement F",
+        "title": "Receivers",
+        "subtitle": "Follow a signal through a superheterodyne receiver, from the RF amplifier and mixer to the IF stages, detector, AGC, squelch and audio."
+      },
+      "onScreen": ["Receivers", "Follow a signal through a superheterodyne receiver"],
+      "narration": "This lesson follows a signal through a superheterodyne receiver, the kind of receiver the exam asks about. We'll start at the RF, or radio frequency, amplifier, then the mixer and the LO, or local oscillator. Next come the IF, or intermediate frequency, amplifiers and their filters, then the detector, the AGC, or automatic gain control, the squelch and the audio. Along the way we'll work two image frequency problems and pick the right filter bandwidths. First, a few ideas about what limits any receiver."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 41,
+      "template": "block-diagram",
+      "params": {
+        "title": "The superheterodyne receiver (Figure 3F15)",
+        "columns": 4,
+        "blocks": [
+          { "id": "rf", "label": "RF amplifier", "note": "Sets the noise figure" },
+          { "id": "mixer", "label": "Mixer · block 1", "note": "Converts the signal to the IF" },
+          { "id": "ifamp", "label": "IF amplifiers", "note": "Most of the gain" },
+          { "id": "det", "label": "Detector · block 3", "note": "Recovers the audio" },
+          { "id": "lo", "label": "Local oscillator · block 2", "note": "Feeds the mixer" },
+          { "id": "agc", "label": "AGC · block 4", "note": "Sets the IF gain" },
+          { "id": "audio", "label": "Audio amplifier and speaker" }
+        ],
+        "links": [
+          { "from": "rf", "to": "mixer" },
+          { "from": "mixer", "to": "ifamp" },
+          { "from": "ifamp", "to": "det" },
+          { "from": "lo", "to": "mixer" },
+          { "from": "det", "to": "agc" },
+          { "from": "agc", "to": "ifamp" },
+          { "from": "det", "to": "audio" }
+        ]
+      },
+      "onScreen": ["RF amplifier: sets the noise figure", "Mixer, block 1", "IF amplifiers: most of the gain", "Detector, block 3", "Local oscillator, block 2", "AGC, block 4, and the audio amplifier"],
+      "narration": "Here is the receiver from pool Figure 3F15, laid out as blocks. The signal enters the RF amplifier. Remember this stage: it primarily establishes the receiver's noise figure, because any noise made in the first stage is amplified by every stage after it. Next comes the mixer, block 1, which converts the signal to the intermediate frequency. The IF amplifiers provide most of the gain, and the detector, block 3, recovers the audio. Below them, the local oscillator, block 2, feeds the mixer. The AGC, block 4, takes a voltage from the detector and sets the IF gain, and the audio amplifier drives the speaker. So what is the noise figure? It is the level of noise generated in the front end and succeeding stages of the receiver. Noise arriving from the antenna is not part of it."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 41,
+      "template": "comparison-table",
+      "params": {
+        "title": "Sensitivity and its limits",
+        "columns": ["Term", "What it means"],
+        "rows": [
+          ["Noise floor", "Limits sensitivity: weaker signals are lost"],
+          ["Desensitizing", "A strong nearby signal reduces sensitivity"],
+          ["Intermodulation", "Strong signals create new spurious signals"],
+          ["Dynamic range", "Largest tolerable to minimum discernible signal"]
+        ]
+      },
+      "onScreen": ["Noise floor limits sensitivity", "Desensitizing: a strong nearby signal reduces sensitivity", "Intermodulation: new spurious signals", "Dynamic range: largest tolerable to minimum discernible signal"],
+      "narration": "Now a few terms. The noise floor of the receiver is the limiting condition for sensitivity, because a receiver cannot detect signals weaker than its own internal noise. Receiver desensitizing is a reduction in sensitivity caused by a strong signal on a nearby frequency. Those unwanted high-level adjacent channel signals overload the front end or drive the AGC. Don't confuse that with intermodulation, which creates new spurious signals from two or more strong ones. Finally, dynamic range is the ratio between the largest tolerable receiver input signal and the minimum discernible signal."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 42,
+      "template": "block-diagram",
+      "params": {
+        "title": "The receiver front end",
+        "columns": 4,
+        "blocks": [
+          { "id": "pre", "label": "Preselector", "note": "Tuned circuit: front-end selectivity" },
+          { "id": "rf", "label": "Low noise RF amplifier", "note": "Improves the noise figure" },
+          { "id": "mix", "label": "First mixer", "note": "Adds noise of its own" },
+          { "id": "ifs", "label": "IF stages", "note": "Most of the receiver's gain" }
+        ],
+        "links": [
+          { "from": "pre", "to": "rf" },
+          { "from": "rf", "to": "mix" },
+          { "from": "mix", "to": "ifs" }
+        ]
+      },
+      "onScreen": ["Preselector: front-end selectivity", "Low noise RF amplifier: improves the noise figure", "First mixer", "IF stages: most of the gain"],
+      "narration": "Let's look closer at the front end. Selectivity in the front-end circuitry of a receiver is achieved by a preselector, a tuned circuit ahead of the RF amplifier and mixer. Adding more amplifier stages adds gain, not selectivity. The primary purpose of the RF amplifier is to improve the receiver's noise figure. Its main job is not gain: most of the receiver's gain comes from the IF stages. That's why a low noise amplifier is most advantageous in the front end RF stage of a VHF, or very high frequency, receiver. The first stage sets the noise figure of the whole receiver, so that's where low noise counts."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 42,
+      "template": "key-facts",
+      "params": {
+        "title": "How much RF gain?",
+        "items": [
+          "Enough gain for weak signals to overcome the noise generated in the first mixer stage",
+          "Not as much gain as possible",
+          "Too much gain in a VHF front end: intermodulation from nearby transmitters",
+          "GaAsFET preamplifier: high gain and a low noise floor"
+        ]
+      },
+      "onScreen": ["Enough gain to overcome first mixer noise", "Not as much gain as possible", "Too much gain: intermodulation", "GaAsFET: high gain, low noise floor"],
+      "narration": "How much gain should the RF amplifier have? Just enough to allow weak signals to overcome the noise generated in the first mixer stage. Not as much gain as possible. Too much gain in a VHF receiver front end causes susceptibility to intermodulation interference from nearby transmitters. For a modern VHF receiver, a gallium arsenide field-effect transistor, or GaAsFET, preamplifier gives high gain and a low noise floor."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 43,
+      "template": "comparison-table",
+      "params": {
+        "title": "Three major oscillator circuits",
+        "columns": ["Oscillator", "What to remember"],
+        "rows": [
+          ["Colpitts", "Capacitive-divider feedback; stable VFO choice"],
+          ["Hartley", "Tapped-coil feedback"],
+          ["Pierce", "Crystal-controlled; essentially fixed frequency"],
+          ["Any oscillator", "Needs sufficient positive feedback"]
+        ]
+      },
+      "onScreen": ["Colpitts: capacitive divider, the stable VFO choice", "Hartley: tapped coil", "Pierce: crystal-controlled, fixed frequency", "Oscillation needs sufficient positive feedback"],
+      "narration": "Every superheterodyne needs a local oscillator, so let's look at oscillators. The three major oscillator circuits found in radio equipment are the Colpitts, which takes its feedback from a capacitive divider, the Hartley, which uses a tapped coil, and the Pierce, which is crystal-controlled. The Colpitts is the circuit commonly used in a VFO, a variable frequency oscillator, because it is stable. The Pierce is a crystal oscillator and essentially fixed in frequency, so it isn't the VFO choice. Whatever the circuit, to oscillate it must have sufficient positive feedback. Negative feedback and neutralization suppress oscillation."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 43,
+      "template": "block-diagram",
+      "params": {
+        "title": "Frequency synthesizer loop",
+        "columns": 4,
+        "blocks": [
+          { "id": "ref", "label": "Reference standard", "note": "A stable reference frequency" },
+          { "id": "pd", "label": "Phase detector", "note": "Compares the two signals" },
+          { "id": "vco", "label": "VCO", "note": "Voltage-controlled oscillator" },
+          { "id": "out", "label": "Selected frequency", "note": "On to the mixer" },
+          { "id": "div", "label": "Divider", "note": "Feeds a sample of the VCO back" }
+        ],
+        "links": [
+          { "from": "ref", "to": "pd" },
+          { "from": "pd", "to": "vco", "label": "Correction voltage" },
+          { "from": "vco", "to": "out" },
+          { "from": "vco", "to": "div" },
+          { "from": "div", "to": "pd" }
+        ]
+      },
+      "onScreen": ["Reference standard", "Phase detector", "VCO: the oscillator stage", "Selected frequency out", "Divider feeds the VCO back"],
+      "narration": "Many radios make their local oscillator signal with a frequency synthesizer. It starts with a stable reference standard. A phase detector compares the reference with the oscillator's output. The oscillator stage in a frequency synthesizer is the VCO, the voltage-controlled oscillator. Its output is the selected frequency, sent on to the mixer. A divider feeds a sample of the VCO back to the phase detector, and any difference becomes a correction voltage that pulls the VCO onto the selected frequency. The whole loop is called a phase-locked loop, or PLL."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 43,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3F15: the local oscillator",
+        "figure": "3F15",
+        "callouts": [
+          { "label": "Block 1: the mixer, right after the RF amplifier" },
+          { "label": "Block 2: the circle feeding the mixer from below" },
+          { "label": "Block 2 is the symbol for the local oscillator" }
+        ]
+      },
+      "onScreen": ["Figure 3F15", "Block 1: the mixer", "Block 2 feeds the mixer from below", "Block 2: the local oscillator"],
+      "narration": "The exam shows this receiver as pool Figure 3F15. Block 1, the circle right after the RF amplifier, is the mixer. Block 2 is the circle feeding the mixer from below. Block 2 is the symbol for the local oscillator. The local oscillator's signal and the incoming signal meet in the mixer, and that's our next topic."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 44,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the mixer",
+        "columns": 2,
+        "blocks": [
+          { "id": "sig", "label": "Signal from the RF amplifier" },
+          { "id": "mix", "label": "Mixer", "note": "Combines two signals" },
+          { "id": "lo", "label": "Local oscillator" },
+          { "id": "out", "label": "Mixer output", "note": "Originals, plus sum and difference" },
+          { "id": "iff", "label": "IF filter", "note": "Selects the wanted product" },
+          { "id": "spur", "label": "Overdriven mixer", "note": "Too much signal: spurious products" }
+        ],
+        "links": [
+          { "from": "sig", "to": "mix" },
+          { "from": "lo", "to": "mix" },
+          { "from": "mix", "to": "out" },
+          { "from": "out", "to": "iff" }
+        ]
+      },
+      "onScreen": ["Signal from the RF amplifier", "Mixer combines two signals", "Local oscillator", "Output: originals, sum and difference", "IF filter selects the wanted product", "Overdriven mixer: spurious products"],
+      "narration": "The signal from the RF amplifier goes into the mixer. The mixing process is the combination of two signals to produce sum and difference frequencies. Here the second signal comes from the local oscillator. So the principal frequencies at the output of the mixer are the original frequencies, plus their sum and their difference. The IF filter then selects the wanted product. One warning: excessive signal energy overdriving the mixer circuit generates spurious mixer products."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 44,
+      "template": "formula",
+      "params": {
+        "title": "Image frequency: LO below the signal",
+        "formula": "f<sub>image</sub> = f<sub>LO</sub> − IF",
+        "steps": [
+          "Signal 151.000, IF 11.000, LO 140.000 MHz",
+          "f<sub>image</sub> = 140 − 11 = 129 MHz",
+          "Check: 151 − 2 × 11 = 129 MHz"
+        ],
+        "answer": "Image frequency = 129.000 MHz"
+      },
+      "onScreen": ["f image = f LO − IF", "Signal 151.000 MHz, IF 11.000 MHz, LO 140.000 MHz", "140 − 11 = 129 MHz", "Image = 129.000 MHz"],
+      "narration": "Every superheterodyne has a weak spot: the image frequency. When the LO is below the signal, the image lies the same IF distance below the LO. So f sub image equals f sub LO minus IF. Here's the exam example. The normal channel is 151.000 megahertz, the IF is 11.000 megahertz, and the LO sits at 140.000 megahertz. The image is 140 minus 11, which is 129 megahertz. You can check it another way: 151 minus 2 times 11 is also 129. So the image frequency is 129.000 megahertz."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 44,
+      "template": "band-strip",
+      "params": {
+        "title": "Why the image must be stopped early",
+        "min": 125,
+        "max": 155,
+        "scale": "linear",
+        "marks": [
+          { "at": 151, "label": "Signal: 151.000 MHz", "note": "11 MHz above the LO: mixes to the IF", "tone": "key" },
+          { "at": 140, "label": "LO: 140.000 MHz", "note": "Local oscillator" },
+          { "at": 129, "label": "Image: 129.000 MHz", "note": "11 MHz below the LO: the same IF", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Signal 151.000 MHz, 11 MHz above the LO", "LO 140.000 MHz", "Image 129.000 MHz, 11 MHz below the LO", "Reject the image in the RF stage"],
+      "narration": "Here's why the image matters. The signal at 151 megahertz sits 11 megahertz above the LO, so it mixes down to the 11 megahertz IF. The LO is at 140 megahertz. But a signal at 129 megahertz sits 11 megahertz below the LO, and it mixes down to exactly the same IF. Once an image reaches the mixer, it converts to the same IF as the desired signal, and nothing after the mixer can separate them. That's why the image frequency is normally rejected in the RF stage, before the mixer."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 44,
+      "template": "formula",
+      "params": {
+        "title": "Second example: a 455 kHz IF",
+        "formula": "f<sub>image</sub> = f<sub>VFO</sub> − IF",
+        "steps": [
+          "Signal 14.255 MHz, VFO 13.8 MHz, IF 455 kHz",
+          "Check: 14.255 − 13.8 = 0.455 MHz = 455 kHz",
+          "f<sub>image</sub> = 13.8 − 0.455"
+        ],
+        "answer": "Image frequency = 13.345 MHz"
+      },
+      "onScreen": ["f image = f VFO − IF", "Signal 14.255 MHz, VFO 13.8 MHz, IF 455 kHz", "13.8 − 0.455", "Image = 13.345 MHz"],
+      "narration": "Same idea, different numbers. A receiver mixes a 13.8 megahertz VFO with a 14.255 megahertz receive signal to produce a 455 kilohertz IF. Check it: 14.255 minus 13.8 is 0.455 megahertz, which is 455 kilohertz. Here the VFO is the local oscillator, and it is below the signal. So f sub image equals f sub VFO minus IF: 13.8 minus 0.455, which is 13.345 megahertz. A 13.345 megahertz signal also mixes down to 455 kilohertz, so it produces an image response."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 45,
+      "template": "band-strip",
+      "params": {
+        "title": "Sizing the IF passband",
+        "min": 0,
+        "max": 100,
+        "scale": "linear",
+        "marks": [
+          { "at": 50, "label": "Received signal", "note": "All its sidebands must pass", "tone": "key" },
+          { "at": 42, "label": "IF passband edge", "note": "Slightly wider than the signal" },
+          { "at": 58, "label": "IF passband edge", "note": "Keeps extra noise out" },
+          { "at": 22, "label": "Adjacent signal", "note": "Outside the passband: kept out", "tone": "muted" },
+          { "at": 80, "label": "Too-wide passband edge", "note": "Lets undesired signals reach the audio stage", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Received signal: all sidebands pass", "IF passband slightly wider than the signal", "Extra noise kept out", "Adjacent signals kept out", "Too wide: undesired signals reach the audio"],
+      "narration": "Now the IF amplifiers and their filters. Here is a received signal. The IF filter bandwidth should be slightly greater than the received-signal bandwidth. That way all the sidebands pass, while extra noise is kept out, and signals on nearby channels fall outside the passband and are kept out too. But if the filter bandwidth in the IF section is too wide, undesired signals get through and reach the audio stage."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 45,
+      "template": "comparison-table",
+      "params": {
+        "title": "IF selectivity by signal type",
+        "columns": ["Signal", "IF selectivity", "Why"],
+        "rows": [
+          ["Wideband FM phone", "15 kHz", "±5 kHz deviation voice: about 15 kHz"],
+          ["Double-sideband AM", "10 kHz", "2 sidebands × 5 kHz of audio"],
+          ["SSB voice", "2.4 kHz", "1 sideband: about 300 to 2700 Hz"]
+        ]
+      },
+      "onScreen": ["Wideband FM phone: 15 kHz", "Double-sideband AM: 10 kHz", "SSB voice: 2.4 kHz"],
+      "narration": "Match the IF selectivity to the signal. For a wideband FM, or frequency modulation, phone receiver, 15 kilohertz is desirable, because a voice FM signal with plus or minus 5 kilohertz deviation occupies roughly 15 kilohertz. For double-sideband AM, or amplitude modulation, 10 kilohertz is optimum: both sidebands of voice audio up to about 5 kilohertz occupy 2 times 5, or 10 kilohertz. For SSB, or single sideband, voice, 2.4 kilohertz is optimum, because it carries just one sideband of speech, from roughly 300 to 2700 hertz."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 45,
+      "template": "key-facts",
+      "params": {
+        "title": "SAW IF filters",
+        "items": [
+          "SAW: surface acoustic wave, used as a receiver IF filter",
+          "A tiny piezoelectric chip with patterned electrodes",
+          "So it can be used in micro-miniature electronic circuits"
+        ]
+      },
+      "onScreen": ["SAW: surface acoustic wave IF filter", "A tiny piezoelectric chip", "Used in micro-miniature circuits"],
+      "narration": "One more IF filter for the exam. A receiver SAW, or surface acoustic wave, IF filter is a tiny piezoelectric chip. The signal crosses its surface as a sound wave, and patterned electrodes on the chip decide which frequencies pass. Because it is so small, a SAW filter can be used in micro-miniature electronic circuits."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 46,
+      "template": "block-diagram",
+      "params": {
+        "title": "First and final IF amplifiers",
+        "columns": 4,
+        "blocks": [
+          { "id": "mix", "label": "Mixer" },
+          { "id": "if1", "label": "First IF amplifier", "note": "Purpose: selectivity, from its filter" },
+          { "id": "fin", "label": "Final IF amplifier", "note": "Purpose: gain" },
+          { "id": "det", "label": "Detector and AGC", "note": "Need a strong enough signal" }
+        ],
+        "links": [
+          { "from": "mix", "to": "if1" },
+          { "from": "if1", "to": "fin" },
+          { "from": "fin", "to": "det" }
+        ]
+      },
+      "onScreen": ["Mixer", "First IF amplifier: selectivity (crystal, ceramic or mechanical filter)", "Final IF amplifier: gain", "Detector and AGC"],
+      "narration": "Inside the IF strip, the first and final IF amplifiers have different jobs. The mixer feeds the first IF amplifier stage. Its primary purpose is selectivity, set by its crystal, ceramic or mechanical filter. The primary purpose of the final IF amplifier stage is gain. It raises the signal to the level the detector and the AGC need."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 46,
+      "template": "key-facts",
+      "params": {
+        "title": "Two design choices",
+        "items": [
+          "Choosing an IF: consider image rejection and selectivity",
+          "Higher IF: the image lands farther away, so it is easier to reject",
+          "Lower IF: narrow selectivity is easier",
+          "Op-amp audio filter: select its bandpass characteristics",
+          "Center frequency, bandwidth and cutoff points"
+        ]
+      },
+      "onScreen": ["Choosing an IF: image rejection and selectivity", "Higher IF: easier image rejection", "Lower IF: easier narrow selectivity", "Op-amp audio filter: bandpass characteristics", "Center frequency, bandwidth, cutoff points"],
+      "narration": "Two design questions. First, when selecting an intermediate frequency, consider image rejection and selectivity. A higher IF puts the image farther away from the signal, so it is easier to reject. A lower IF makes narrow selectivity easier. Second, when designing an audio filter using an op-amp, an operational amplifier, you must select its bandpass characteristics: the center frequency, the bandwidth and the cutoff points."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 46,
+      "template": "comparison-table",
+      "params": {
+        "title": "Chebyshev or Butterworth?",
+        "columns": ["Filter", "Passband", "Rolloff"],
+        "rows": [
+          ["Chebyshev", "Ripple allowed", "Steeper"],
+          ["Butterworth", "Maximally flat", "Less steep"]
+        ]
+      },
+      "onScreen": ["Chebyshev: ripple in the passband, steeper rolloff", "Butterworth: maximally flat passband"],
+      "narration": "Two classic filter designs. A Chebyshev filter is distinguished by allowing ripple in its passband. In exchange, it gets a steeper rolloff. The maximally flat passband belongs to the Butterworth filter, which gives up some of that steepness. So if a question mentions ripple in the passband, think Chebyshev. If it says maximally flat, think Butterworth."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 46,
+      "template": "band-strip",
+      "params": {
+        "title": "When to choose an m-derived filter",
+        "min": 0,
+        "max": 100,
+        "scale": "linear",
+        "marks": [
+          { "at": 25, "label": "Passband", "note": "Wanted signals pass", "tone": "key" },
+          { "at": 55, "label": "Cut-off frequency", "note": "Attenuation begins here" },
+          { "at": 63, "label": "Unwanted frequency", "note": "Too close to cut-off for a constant-k filter", "tone": "muted" },
+          { "at": 64, "label": "m-derived trap", "note": "More attenuation right there", "tone": "key" }
+        ]
+      },
+      "onScreen": ["Passband", "Cut-off frequency", "Unwanted frequency too close to cut-off for constant-k", "m-derived trap attenuates it"],
+      "narration": "Here's a filter's passband, and here's its cut-off frequency. Now suppose an unwanted frequency sits just beyond the cut-off. A constant-k filter rolls off too gradually to attenuate it enough. An m-derived filter is more desirable than a constant-k filter when you need more attenuation at a certain frequency that is too close to the cut-off frequency for a constant-k filter. Its trap notches out that frequency."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 47,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3F16: filter curves",
+        "figure": "3F16",
+        "callouts": [
+          { "label": "Curve A: low-pass, passes the low frequencies" },
+          { "label": "Curve B: band-pass, passes a band in the middle" },
+          { "label": "Curve C: high-pass, passes the high frequencies" },
+          { "label": "Curve D: band-stop, stops a band in the middle" }
+        ]
+      },
+      "onScreen": ["Figure 3F16", "Curve A: low-pass", "Curve B: band-pass", "Curve C: high-pass", "Curve D: band-stop"],
+      "narration": "The three general groupings of filters are high-pass, low-pass and band-pass. Pool Figure 3F16 shows filter response curves, amplitude against frequency. Curve A passes the low frequencies and cuts off the highs, so curve A is a low pass curve. Curve B passes a band in the middle, so it is band-pass. Curve C blocks the lows and passes the highs: high-pass. And curve D is the opposite of curve B. It stops a band in the middle, so curve D is a band stop curve."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 47,
+      "template": "comparison-table",
+      "params": {
+        "title": "Constant-k, m-derived and Butterworth",
+        "columns": ["Filter", "Key feature", "Advantage"],
+        "rows": [
+          ["Constant-k", "Constant product of series and shunt impedances", "High attenuation far from the pass band"],
+          ["m-derived", "A trap added to the filter", "Attenuates frequencies too near cut-off"],
+          ["Butterworth", "Both inductors and capacitors", "Maximally flat passband"]
+        ]
+      },
+      "onScreen": ["Constant-k: constant series and shunt impedance product", "Constant-k: high attenuation far from the pass band", "m-derived: a trap near cut-off", "Butterworth: maximally flat, inductors and capacitors"],
+      "narration": "Three filter families to keep straight. A constant-k filter is the one described by a constant product of its series- and shunt-element impedances. Its advantage is high attenuation of signals at frequencies far removed from the pass band. An m-derived filter uses a trap to attenuate undesired frequencies too near cutoff for a constant-k filter. The constant product describes the constant-k filter, not the m-derived one. And a Butterworth filter has a maximally flat response over its passband. It uses both inductors and capacitors, not one kind alone."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 47,
+      "template": "key-facts",
+      "params": {
+        "title": "Filter groups and the SSB crystal filter",
+        "items": [
+          "Three general groupings: high-pass, low-pass and band-pass",
+          "Crystal band-pass filter for single-sideband phone: 2.1 kHz wide",
+          "Wide enough for intelligible speech",
+          "Narrow enough to reject the opposite sideband"
+        ]
+      },
+      "onScreen": ["High-pass, low-pass, band-pass", "SSB phone crystal filter: 2.1 kHz", "Intelligible speech", "Rejects the opposite sideband"],
+      "narration": "Let's lock in two facts. The three general groupings of filters are high-pass, low-pass and band-pass. And a good crystal band-pass filter for a single-sideband phone is 2.1 kilohertz wide. That's wide enough for intelligible speech, while still rejecting the opposite sideband. The exam asks about two separate numbers here: 2.1 kilohertz for this crystal filter, and 2.4 kilohertz for the IF selectivity of SSB voice."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 48,
+      "template": "comparison-table",
+      "params": {
+        "title": "Three detectors",
+        "columns": ["Detector", "Used for", "How it works"],
+        "rows": [
+          ["Diode detector", "AM", "Rectifies and filters the RF"],
+          ["Product detector", "SSB and CW", "Mixes in a locally generated carrier"],
+          ["Frequency discriminator", "FM, including FM phone", "Detects FM signals"]
+        ]
+      },
+      "onScreen": ["Detection: recovering intelligence from the RF signal", "Diode detector: rectify and filter", "Product detector: mix with a local carrier", "Frequency discriminator: FM"],
+      "narration": "Detection in a radio receiver is the recovery of intelligence from the modulated RF signal. Modulation is the opposite process, done at the transmitter. A diode detector handles AM. It works by rectification and filtering of the RF, leaving the audio envelope. A product detector, used for SSB and for CW, or continuous wave, uses a mixing process with a locally generated carrier, replacing the carrier that SSB suppresses. A frequency discriminator is a circuit for detecting FM signals, so it is the circuit used to detect FM phone signals. Balanced modulators and product detectors belong to SSB, not FM."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 48,
+      "template": "waveform",
+      "params": {
+        "title": "Inside the diode detector",
+        "kind": "am",
+        "cycles": 36,
+        "depth": 0.6,
+        "xAxis": "time",
+        "labels": [
+          "An AM signal: an RF carrier inside its audio envelope",
+          "Rectification keeps one polarity",
+          "Filtering removes the RF",
+          "What is left: the audio envelope"
+        ]
+      },
+      "onScreen": ["AM signal with its audio envelope", "Rectification: one polarity", "Filtering removes the RF", "The audio envelope remains"],
+      "narration": "Here's the diode detector at work. An AM signal arrives: a radio frequency carrier whose peaks trace out the audio, drawn here as the envelope. The diode rectifies it, passing only one polarity. A filter then removes the RF. What is left is the audio envelope, the intelligence we wanted to recover."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 48,
+      "template": "block-diagram",
+      "params": {
+        "title": "Where the CTCSS tone is removed",
+        "columns": 4,
+        "blocks": [
+          { "id": "ifa", "label": "IF amplifiers" },
+          { "id": "disc", "label": "Frequency discriminator", "note": "Demodulates the FM: the tone appears" },
+          { "id": "filt", "label": "CTCSS tone filter", "note": "Removes the tone" },
+          { "id": "aud", "label": "Audio section", "note": "Voice only" }
+        ],
+        "links": [
+          { "from": "ifa", "to": "disc" },
+          { "from": "disc", "to": "filt" },
+          { "from": "filt", "to": "aud" }
+        ]
+      },
+      "onScreen": ["IF amplifiers", "Frequency discriminator", "CTCSS tone filtered out here", "Audio section"],
+      "narration": "Now an FM receiver controlled by CTCSS, the Continuous Tone-Coded Squelch System. The IF amplifiers feed the frequency discriminator. The CTCSS tone exists only once the FM is demodulated, so it can't be removed any earlier. It is filtered out after the discriminator but before the audio section, so you hear the voice without the tone."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 49,
+      "template": "comparison-table",
+      "params": {
+        "title": "Three kinds of squelch",
+        "columns": ["Squelch", "Works on", "Detail"],
+        "rows": [
+          ["Conventional squelch", "Presence of noise", "No carrier: noise mutes the audio"],
+          ["CTCSS", "Tones", "Opens only on a sub-audible tone, 67–254 Hz"],
+          ["Digital Coded Squelch", "Digital codes", "Sent continuously beneath the voice"]
+        ]
+      },
+      "onScreen": ["Conventional squelch: presence of noise", "CTCSS: tones, 67 to 254 Hz", "Digital Coded Squelch: digital codes"],
+      "narration": "Squelch keeps the speaker quiet when there's nothing to hear. A conventional squelch circuit functions on the presence of noise. With no carrier, strong noise mutes the audio. When a carrier arrives, it quiets the noise and opens the squelch. A CTCSS squelch works on tones. It opens only when a specific sub-audible tone, roughly 67 to 254 hertz, is present. And a Digital Coded Squelch, or DCS, works on digital codes, sent continuously beneath the voice."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 49,
+      "template": "block-diagram",
+      "params": {
+        "title": "Pre-emphasis and de-emphasis",
+        "columns": 4,
+        "blocks": [
+          { "id": "pre", "label": "Transmitter pre-emphasis", "note": "Boosts the high audio frequencies" },
+          { "id": "path", "label": "Radio path", "note": "Noise adds hiss" },
+          { "id": "de", "label": "Receiver de-emphasis", "note": "Cuts the highs by the same amount" },
+          { "id": "out", "label": "Flat audio and less noise", "note": "Not flat audio alone" }
+        ],
+        "links": [
+          { "from": "pre", "to": "path" },
+          { "from": "path", "to": "de" },
+          { "from": "de", "to": "out" }
+        ]
+      },
+      "onScreen": ["Transmitter pre-emphasis boosts the highs", "Noise adds hiss", "Receiver de-emphasis cuts the highs", "Flat audio and noise reduction"],
+      "narration": "Audio gets shaped on its way through, too. At the transmitter, pre-emphasis boosts the high audio frequencies. Along the way, noise adds hiss. At the receiver, de-emphasis cuts the highs by the same amount, which cuts the hiss along with them. So receiver de-emphasis, coupled with transmitter pre-emphasis, gives flat audio and noise reduction, not flat audio alone."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 49,
+      "template": "block-diagram",
+      "params": {
+        "title": "Digital signal processing",
+        "columns": 3,
+        "blocks": [
+          { "id": "ain", "label": "Analog signal in" },
+          { "id": "adc", "label": "Analog-to-digital converter", "note": "Samples the analog signal" },
+          { "id": "proc", "label": "Processing as numbers", "note": "Adaptive filtering and autocorrelation" },
+          { "id": "dac", "label": "Digital-to-analog converter", "note": "Converts back to analog" },
+          { "id": "aout", "label": "Analog signal out" }
+        ],
+        "links": [
+          { "from": "ain", "to": "adc" },
+          { "from": "adc", "to": "proc" },
+          { "from": "proc", "to": "dac" },
+          { "from": "dac", "to": "aout" }
+        ]
+      },
+      "onScreen": ["Analog signal in", "Sampled", "Recorded and processed as numbers", "Converted back to analog", "Noise subtraction: adaptive filtering and autocorrelation"],
+      "narration": "Modern receivers also use DSP, digital signal processing. An analog signal comes in. The DSP circuit samples it in an analog-to-digital converter, records and processes it as numbers, then converts it back to an analog signal in a digital-to-analog converter. The DSP term for noise subtraction circuitry is adaptive filtering and autocorrelation. Noise blanking and noise limiting are different: they only suppress impulse noise peaks."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 50,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3F15: block 4, the AGC",
+        "figure": "3F15",
+        "callouts": [
+          { "label": "Block 4: the AGC circuit, fed from the detector" },
+          { "label": "Its DC voltage rises with signal strength" },
+          { "label": "A DC voltmeter at point 4 monitors signal strength" }
+        ]
+      },
+      "onScreen": ["Figure 3F15", "Block 4: the AGC", "DC voltage rises with signal strength", "DC voltmeter at point 4: signal strength"],
+      "narration": "Back to pool Figure 3F15. Block 4, in the path from the detector back to the IF amplifiers, is the AGC circuit. Its DC, or direct current, voltage rises with signal strength. That makes it handy for testing: a DC voltmeter connected at point 4 can monitor signal strength, just like a signal-strength meter."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 50,
+      "template": "key-facts",
+      "params": {
+        "title": "Cross-modulation and low-pass filters",
+        "items": [
+          "Cross-modulation: a very strong station's signals superimposed on the signals being received",
+          "Its modulation is heard in addition to the desired signal",
+          "Intermodulation is different: it creates new signals on new frequencies",
+          "Low-pass filters: in the AVC circuit and power supply, not the oscillator"
+        ]
+      },
+      "onScreen": ["Cross-modulation: a strong station superimposed", "Unwanted modulation heard with the desired signal", "Intermodulation: new signals on new frequencies", "Low-pass filters: AVC and power supply, not the oscillator"],
+      "narration": "Cross-modulation interference is the term for signals from a very strong station superimposed on other signals being received. You hear the modulation from the unwanted signal in addition to the desired signal. Intermodulation, by contrast, creates new signals on new frequencies. And one more filter fact: a low-pass filter is normally found in a receiver's AVC, or automatic volume control, circuit and in its power supply, but not in the oscillator stage."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 50,
+      "template": "comparison-table",
+      "params": {
+        "title": "Quieting engine noise",
+        "columns": ["Problem", "Fix"],
+        "rows": [
+          ["Ignition noise", "Ferrite beads in primary and secondary leads"],
+          ["Pulses that follow engine speed", "Resistances in series with spark plug wires"]
+        ]
+      },
+      "onScreen": ["Ignition noise: ferrite beads in the primary and secondary leads", "Pulses following engine speed: resistances in series with spark plug wires"],
+      "narration": "Finally, noise from engines. To suppress ignition noise, install ferrite beads in the primary and secondary ignition leads. And pulse type interference to automobile radio receivers that follows engine speed, rising and falling as the engine revs, can often be reduced by installing resistances in series with the spark plug wires. That completes our trip through the receiver, from the antenna to the speaker."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [41] },
+    { "after": "s8", "keyTopics": [42, 43] },
+    { "after": "s12", "keyTopics": [44] },
+    { "after": "s15", "keyTopics": [45] },
+    { "after": "s19", "keyTopics": [46] },
+    { "after": "s22", "keyTopics": [47] },
+    { "after": "s25", "keyTopics": [48] },
+    { "after": "s28", "keyTopics": [49] },
+    { "after": "s31", "keyTopics": [50] }
+  ],
+  "video": null
+}

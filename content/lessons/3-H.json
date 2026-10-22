@@ -1,0 +1,231 @@
+{
+  "id": "3-H",
+  "element": 3,
+  "title": "Modulation",
+  "keyTopics": [57, 58, 59],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 57,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement H",
+        "title": "Modulation",
+        "subtitle": "Deviation ratio versus modulation index, how FM, double-sideband and SSB signals are made and tested, and pulse modulation."
+      },
+      "onScreen": ["Modulation", "Deviation ratio, FM, DSB, SSB and pulse modulation"],
+      "narration": "This lesson is about modulation. We'll start with FM, frequency modulation, and the difference between deviation ratio and modulation index. Then we'll see how FM and double sideband, or DSB, signals are produced, read the SSB, or single sideband, transmitter in Figure 3H17, and test its linearity. Finally, we'll look at what each pulse modulation method varies."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 57,
+      "template": "formula",
+      "params": {
+        "title": "Deviation ratio",
+        "formula": "Deviation ratio = max deviation ÷ max audio",
+        "steps": [
+          "±5 kHz ÷ 3 kHz = 1.666…, listed as 1.66",
+          "Not 3 ÷ 5 = 0.6: that's upside down",
+          "±7.5 kHz ÷ 3.5 kHz ≈ 2.14",
+          "Not 3.5 ÷ 7.5 = 0.47: upside down again"
+        ],
+        "answer": "1.66 and 2.14: deviation on top"
+      },
+      "onScreen": ["Deviation ratio = maximum deviation ÷ highest audio frequency", "5 kHz ÷ 3 kHz = 1.66", "Not 0.6", "7.5 kHz ÷ 3.5 kHz ≈ 2.14", "Not 0.47"],
+      "narration": "The deviation ratio is the maximum carrier frequency deviation divided by the highest audio modulating frequency. It's a fixed figure for a given FM system. Deviation goes on top, audio on the bottom, never the other way round. Example 1: a maximum deviation of plus or minus 5 kilohertz, and a maximum modulation rate of 3 kilohertz. 5 divided by 3 is 1.666, listed as 1.66. Divide upside down and you get the wrong answer, 0.6. Example 2: a maximum swing of plus or minus 7.5 kilohertz, with a maximum modulation rate of 3.5 kilohertz. 7.5 divided by 3.5 is about 2.14. Upside down gives the wrong 0.47."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 57,
+      "template": "comparison-table",
+      "params": {
+        "title": "Modulation index or deviation ratio?",
+        "columns": ["Term", "Deviation used", "Divided by", "Value"],
+        "rows": [
+          ["Modulation index", "Actual deviation at a given time", "Modulating frequency at that time", "Varies with audio level and frequency"],
+          ["Deviation ratio", "Maximum deviation", "Highest audio modulating frequency", "Fixed for the FM system"]
+        ]
+      },
+      "onScreen": ["Modulation index: deviation over modulating frequency at a given time, varies", "Deviation ratio: maximum deviation over highest audio frequency, fixed"],
+      "narration": "Don't mix up these two terms. The modulation index is the ratio between the deviation of a frequency modulated signal and the modulating frequency at a given time. So it changes as the audio level and frequency change. The deviation ratio uses the limits: the maximum deviation divided by the maximum audio modulating frequency. It's fixed for the system. So if the exam asks for the term for maximum deviation divided by maximum audio modulating frequency, the answer is deviation ratio, not modulation index."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 57,
+      "template": "block-diagram",
+      "params": {
+        "title": "Producing an FM-phone signal",
+        "columns": 4,
+        "blocks": [
+          { "id": "audio", "label": "Audio", "note": "Fed directly to the oscillator" },
+          { "id": "modulator", "label": "Varactor or reactance modulator", "note": "Varies the oscillator's tuning" },
+          { "id": "osc", "label": "Oscillator", "note": "Frequency swings with the audio" },
+          { "id": "fm", "label": "FM signal" },
+          { "id": "supply", "label": "Amplifier supply voltage", "note": "Varying it makes AM instead" }
+        ],
+        "links": [
+          { "from": "audio", "to": "modulator" },
+          { "from": "modulator", "to": "osc" },
+          { "from": "osc", "to": "fm" },
+          { "from": "audio", "to": "supply", "label": "Not for FM", "struck": true }
+        ]
+      },
+      "onScreen": ["Audio fed directly to the oscillator", "Varactor or reactance modulator", "Oscillator frequency swings with the audio", "FM signal", "Varying amplifier supply voltage gives AM, not FM"],
+      "narration": "How is an FM-phone signal produced in a transmitter? By feeding the audio directly to the oscillator. In practice, the audio goes through a varactor or a reactance modulator, which varies the oscillator's tuning, so the oscillator frequency swings with the audio. Out comes the FM signal. Don't confuse this with varying an amplifier's supply voltage. That produces AM, amplitude modulation, instead."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 58,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3H17: the numbered blocks",
+        "figure": "3H17",
+        "callouts": [
+          { "label": "Block 1: 455 kHz crystal oscillator, supplies the carrier" },
+          { "label": "Block 2: microphone, where audio intelligence is inserted" },
+          { "label": "Block 3: balanced modulator, fed audio through an amplifier" },
+          { "label": "Block 4: mixer, heterodynes up to the operating frequency" },
+          { "label": "Block 4 shows this is most likely an SSB radio transmitter" }
+        ]
+      },
+      "onScreen": ["Block 1: 455 kHz crystal oscillator", "Block 2: microphone, audio in", "Block 3: balanced modulator", "Block 4: mixer", "An SSB radio transmitter"],
+      "narration": "Here's Figure 3H17. Block 1 is the 455 kilohertz crystal oscillator that supplies the carrier. Block 2 is the microphone: that's where audio intelligence is inserted. Its audio passes through an amplifier into block 3, the balanced modulator. Block 4 is a mixer. Remember those two numbers: audio goes in at block 2, and block 4 is the mixer. A mixer that moves the signal up to the operating frequency, followed by amplifiers and an antenna, tells you this schematic is most likely an SSB radio transmitter."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 58,
+      "template": "block-diagram",
+      "params": {
+        "title": "The SSB transmitter signal path",
+        "columns": 4,
+        "blocks": [
+          { "id": "osc", "label": "Block 1: oscillator", "note": "455 kHz crystal: the carrier" },
+          { "id": "balmod", "label": "Block 3: balanced modulator", "note": "Audio joins here" },
+          { "id": "if", "label": "I.F. amplifier", "note": "455 kHz sideband signal" },
+          { "id": "mixer", "label": "Block 4: mixer", "note": "Up to the operating frequency" },
+          { "id": "mic", "label": "Block 2: microphone", "note": "Audio intelligence in" },
+          { "id": "audioamp", "label": "Audio amplifier" },
+          { "id": "linear", "label": "Linear amplifiers" },
+          { "id": "antenna", "label": "Antenna" }
+        ],
+        "links": [
+          { "from": "osc", "to": "balmod" },
+          { "from": "balmod", "to": "if" },
+          { "from": "if", "to": "mixer" },
+          { "from": "mic", "to": "audioamp" },
+          { "from": "audioamp", "to": "balmod" },
+          { "from": "mixer", "to": "linear" },
+          { "from": "linear", "to": "antenna" }
+        ]
+      },
+      "onScreen": ["Block 1: 455 kHz oscillator", "Block 3: balanced modulator", "I.F. amplifier: 455 kHz sideband", "Block 4: mixer to operating frequency", "Block 2: microphone and audio amplifier", "Linear amplifiers feed the antenna"],
+      "narration": "Now the same path as a block diagram. The 455 kilohertz crystal oscillator, block 1, feeds the carrier to the balanced modulator, block 3. The I.F., or intermediate frequency, amplifier passes the 455 kilohertz sideband signal on to block 4, the mixer. Audio from the microphone, block 2, goes through an audio amplifier and joins at the balanced modulator. The mixer heterodynes the sideband signal up to the operating frequency, and linear amplifiers then feed the antenna. Oscillator, balanced modulator, I.F. stage, mixer and linear amplifiers: that's an SSB transmitter."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 58,
+      "template": "waveform",
+      "params": {
+        "title": "Two-tone test: SSB linearity",
+        "kind": "am",
+        "cycles": 36,
+        "depth": 1,
+        "xAxis": "time",
+        "yAxis": "output on the oscilloscope",
+        "labels": [
+          "Two-tone audio sine wave in; output viewed on an oscilloscope",
+          "Non-harmonic tones within the passband, about 700 and 1,900 Hz",
+          "Clean, evenly shaped loops: the transmitter is linear",
+          "Flat tops or distortion at the zero crossings: non-linear"
+        ]
+      },
+      "onScreen": ["Two-tone audio sine wave, oscilloscope", "Non-harmonic tones, about 700 and 1,900 Hz", "Clean loops: linear", "Flat-topping or crossover distortion: non-linear"],
+      "narration": "How do you test the amplitude linearity of a single sideband phone transmitter? Feed it a two-tone audio-frequency sine wave, and view the output on an oscilloscope. A single tone won't do: it gives a constant envelope that shows nothing about linearity. The two tones must be non-harmonically related audio signals within the transmitter's modulation passband, for example about 700 hertz and 1,900 hertz. So a two-tone test illustrates linearity. Clean, evenly shaped envelope loops like these mean the transmitter is linear. Flat-topping, or distortion where the envelope crosses zero, means it's non-linear."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 58,
+      "template": "waveform",
+      "params": {
+        "title": "Producing a double-sideband signal",
+        "kind": "ssb",
+        "sideband": "both",
+        "carrier": "full",
+        "xAxis": "frequency",
+        "yAxis": "amplitude",
+        "labels": [
+          "Audio modulates the supply voltage to a class C amplifier",
+          "Result: ordinary AM, a carrier with two sidebands",
+          "Reactance modulators and varactor-tuned oscillators make FM instead"
+        ]
+      },
+      "onScreen": ["Modulate the supply voltage to a class C amplifier", "Ordinary AM: carrier with two sidebands", "Reactance modulators and varactors make FM"],
+      "narration": "How is a double sideband phone signal produced? By modulating the supply voltage to a class C amplifier. That gives ordinary AM: a carrier in the middle, with a sideband on each side. Two sidebands, so it's double sideband. Watch out for the wrong choices: a reactance modulator, or varying the voltage to a varactor in an oscillator circuit, produces FM, not double sideband."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 59,
+      "template": "comparison-table",
+      "params": {
+        "title": "Pulse modulation: what changes?",
+        "columns": ["Method", "Signal varies", "Stays fixed"],
+        "rows": [
+          ["Pulse-width (pulse-duration)", "Pulse duration", "Amplitude and repetition rate"],
+          ["Pulse-position", "Time each pulse occurs", "Width and amplitude"],
+          ["Pulse-amplitude", "Pulse amplitude", "Width and timing"]
+        ]
+      },
+      "onScreen": ["Pulse-width: varies duration", "Pulse-position: varies timing", "Pulse-amplitude: varies amplitude"],
+      "narration": "Now pulse modulation. In a pulse-width modulation system, or PWM, the modulating signal varies the pulse duration, while pulse amplitude and repetition rate stay fixed. That's why modulation that varies the duration of the transmitted pulse is called pulse-width, or pulse-duration, modulation. To send voice this way, a standard pulse is varied in duration by an amount depending on the voice waveform at that instant. In a pulse-position modulation system, or PPM, the modulating signal varies the time at which each pulse occurs, while pulse width and amplitude stay constant. Varying the pulse amplitude instead would be pulse-amplitude modulation."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 59,
+      "template": "waveform",
+      "params": {
+        "title": "Peak power versus average power",
+        "kind": "pulse",
+        "cycles": 6,
+        "duty": 0.06,
+        "xAxis": "time",
+        "yAxis": "transmitter power",
+        "labels": [
+          "Short pulses separated by long off periods",
+          "Average power = peak power × duty cycle",
+          "So peak power is normally much greater than average power",
+          "Radar works this way"
+        ]
+      },
+      "onScreen": ["Short pulses, long off periods", "Average = peak × duty cycle", "Peak much greater than average", "As in radar"],
+      "narration": "In a pulse modulation system, the peak transmitter power is normally much greater than the average power. Here's why. The transmitter sends short pulses separated by long off periods. Average power equals peak power times the duty cycle, the fraction of the time the transmitter is on. With short pulses and long gaps, that fraction is small, so the average sits far below the peaks. Radar is the classic example."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 59,
+      "template": "block-diagram",
+      "params": {
+        "title": "PCM with time-division multiplex",
+        "columns": 4,
+        "blocks": [
+          { "id": "channels", "label": "Channels 1, 2 and 3", "note": "Each sampled in turn" },
+          { "id": "txclock", "label": "Transmit clock", "note": "Puts each sample in its time slot" },
+          { "id": "rxclock", "label": "Receive clock", "note": "Synchronized with the transmit clock" },
+          { "id": "sorted", "label": "Channels separated", "note": "Out of step: channels scrambled" }
+        ],
+        "links": [
+          { "from": "channels", "to": "txclock" },
+          { "from": "txclock", "to": "rxclock", "label": "PCM in time slots" },
+          { "from": "rxclock", "to": "sorted" }
+        ]
+      },
+      "onScreen": ["Channels sampled in turn", "Transmit clock assigns time slots", "Receive clock synchronized", "Out of step: channels scrambled"],
+      "narration": "Finally, pulse-code modulation, or PCM, using time-division multiplex. Several channels share one link, each sampled in turn. The transmit clock puts each sample into its assigned time slot. At the far end, the receive clock must keep in step, so the transmit and receive clock pulse rates must be synchronized. That's the important factor. If the clocks drift apart, samples land in the wrong time slots and the channels are scrambled."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [57] },
+    { "after": "s8", "keyTopics": [58] },
+    { "after": "s11", "keyTopics": [59] }
+  ],
+  "video": null
+}

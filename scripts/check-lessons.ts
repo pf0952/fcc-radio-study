@@ -73,6 +73,44 @@ const TEMPLATES: Record<string, (p: Record<string, any>) => string | null> = {
   },
 };
 
+// How much text each template can show without overflowing the stage.
+const len = (s: unknown) => (typeof s === 'string' ? s.replace(/<\/?su[bp]>/g, '').length : 0);
+function tooMuch(template: string, p: Record<string, any>): string | null {
+  const over = (what: string, items: unknown[], max: number) => items.filter((s) => len(s) > max).map((s) => `${what} over ${max} characters: "${s}"`)[0] ?? null;
+  const count = (what: string, items: unknown[] | undefined, min: number, max: number) =>
+    !items || items.length < min || items.length > max ? `needs ${min}-${max} ${what} (has ${items?.length ?? 0})` : null;
+  if (template !== 'title-card' && len(p.title) > 48) return `title over 48 characters: "${p.title}"`;
+  switch (template) {
+    case 'title-card':
+      return over('title', [p.title], 40) ?? over('kicker', [p.kicker], 40) ?? over('subtitle', [p.subtitle], 150);
+    case 'key-facts':
+      return count('items', p.items, 2, 5) ?? over('item', p.items, 95);
+    case 'comparison-table':
+      return count('columns', p.columns, 2, 4) ?? count('rows', p.rows, 1, 5) ?? over('column heading', p.columns, 24) ?? over('cell', p.rows.flat(), 48);
+    case 'timeline':
+      return count('badges', p.badges, 1, 4) ?? over('value', p.badges.map((b: any) => b.value), 26) ?? over('label', p.badges.map((b: any) => b.label), 40) ?? over('note', p.badges.map((b: any) => b.note), 60);
+    case 'band-strip':
+      return count('marks', p.marks, 2, 5) ?? over('label', p.marks.map((m: any) => m.label), 26) ?? over('note', p.marks.map((m: any) => m.note), 44) ?? over('end', p.ends ?? [], 14);
+    case 'equipment-card':
+      return count('callouts', p.callouts, 2, 6) ?? over('callout', p.callouts.map((c: any) => c.label), 75);
+    case 'block-diagram':
+      return (
+        count('blocks', p.blocks, 2, 8) ??
+        ((p.columns ?? 4) > 4 ? 'columns must be 4 or fewer' : null) ??
+        over('block label', p.blocks.map((b: any) => b.label), 32) ??
+        over('block note', p.blocks.map((b: any) => b.note), 44) ??
+        over('link label', p.links.map((l: any) => l.label), 28)
+      );
+    case 'formula':
+      return over('formula', [p.formula], 44) ?? count('steps', p.steps, 0, 4) ?? over('step', p.steps, 52) ?? over('answer', [p.answer], 52);
+    case 'waveform':
+      return count('labels', p.labels ?? [], 0, 4) ?? over('label', p.labels ?? [], 72);
+    case 'radar-ppi':
+      return count('labels', p.labels ?? [], 0, 4) ?? over('label', p.labels ?? [], 95);
+  }
+  return null;
+}
+
 const problems: string[] = [];
 const files = readdirSync(new URL('content/lessons/', root)).filter((f) => f.endsWith('.json'));
 const lessons = files.map((f) => JSON.parse(readFileSync(new URL(`content/lessons/${f}`, root), 'utf8')) as Lesson);
@@ -100,8 +138,10 @@ for (const [i, lesson] of lessons.entries()) {
     const check = TEMPLATES[s.template];
     if (!check) p(`${s.id}: unknown template "${s.template}"`);
     else if (check(s.params)) p(`${s.id} (${s.template}): ${check(s.params)}`);
-    if (!s.narration?.trim()) p(`${s.id}: no narration`);
-    if (!Array.isArray(s.onScreen) || !s.onScreen.length) p(`${s.id}: no onScreen labels`);
+    else if (tooMuch(s.template, s.params)) p(`${s.id} (${s.template}): ${tooMuch(s.template, s.params)}`);
+    const words = s.narration?.trim().split(/\s+/).length ?? 0;
+    if (words < 25 || words > 150) p(`${s.id}: narration is ${words} words (should be 25-150)`);
+    if (!Array.isArray(s.onScreen) || !s.onScreen.length || s.onScreen.length > 6) p(`${s.id}: needs 1-6 onScreen labels`);
     for (const text of [s.narration, ...s.onScreen, ...strings(s.params)]) {
       for (const n of numbersIn(text ?? '')) {
         checkedNumbers++;

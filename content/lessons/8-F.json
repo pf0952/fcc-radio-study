@@ -1,0 +1,466 @@
+{
+  "id": "8-F",
+  "element": 8,
+  "title": "Installation, Maintenance & Repair",
+  "keyTopics": [44, 45, 46, 47, 48, 49, 50],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 44,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 8 · Subelement F",
+        "title": "Installation, Maintenance & Repair",
+        "subtitle": "Read a faulty radar display, find the suspect circuit, and install, maintain and service the radar safely."
+      },
+      "onScreen": ["Installation, Maintenance & Repair", "Symptom, then suspect: radar faults, maintenance, installation and safety"],
+      "narration": "This lesson is about keeping a radar working. First we'll read the symptoms a faulty radar shows on its display and on its meters, and match each one to the circuit to suspect. Then we'll cover maintenance, installation and safety. Listen for the pattern: symptom, then suspect. Most symptoms show up on the PPI, the plan position indicator, which is the round radar display."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 44,
+      "template": "radar-ppi",
+      "params": {
+        "title": "A blank center that shrinks on longer ranges",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 35, "range": 7 },
+          { "bearing": 140, "range": 9.5 },
+          { "bearing": 245, "range": 5.5 },
+          { "bearing": 320, "range": 10 }
+        ],
+        "vrm": { "range": 3.5 },
+        "labels": [
+          "No target video in the center of the display",
+          "The blank spot gets smaller as the range scale is increased",
+          "Front panel control to check: the STC, set too high",
+          "Most likely defective area: a worn TR (TRL) cell"
+        ]
+      },
+      "onScreen": ["No target video in the center", "Blank spot shrinks on longer range scales", "Check the STC control", "Suspect a worn TR (TRL) cell"],
+      "narration": "Our first symptom. There's no target video in the center of the display, and the blank spot gets smaller as you increase the range scale. Something is blanking a fixed distance around your ship, and a fixed distance looks smaller on a longer range scale. The operator front panel control to check is the STC, the sensitivity time control. Set too high, it blanks all close-in video. For the same symptom, the most likely defective area is the TR cell, the transmit-receive cell, listed on the exam as the TR or TRL cell. A worn TR cell recovers slowly after the transmit pulse and keeps the receiver blocked for a fixed time, so nothing appears within a fixed distance of center."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 44,
+      "template": "comparison-table",
+      "params": {
+        "title": "Symptom, then suspect",
+        "columns": ["Symptom on the display", "Suspect", "Why"],
+        "rows": [
+          ["Oval range rings on the PPI", "Sweep generation circuit", "Rings are round only with equal sweeps"],
+          ["Docked: pier bends concave near center", "Waveguide compensation delay line", "Timing starts as the pulse leaves the antenna"]
+        ]
+      },
+      "onScreen": ["Oval range rings: sweep generation circuit", "Pier bends concave near center: waveguide compensation delay line"],
+      "narration": "Next, the shape of what you see. If the range rings on the PPI are oval, suspect the sweep generation circuit. The rings are circular only when the horizontal and vertical deflection sweeps have equal amplitude. Now picture your ship docked. The pier appears distorted near the center of the PPI, bending in a concave fashion. That's the primary sign that the waveguide compensation delay line needs adjusting. The delay line makes the display start timing when the pulse actually leaves the antenna."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 44,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Digital video faults",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 50, "range": 8.5 },
+          { "bearing": 200, "range": 10 },
+          { "bearing": 300, "range": 6.5 }
+        ],
+        "vrm": { "range": 5 },
+        "labels": [
+          "The transmitter is operating normally",
+          "A bright, wide ring at a fixed distance from center, on all digital ranges",
+          "Suspect the video storage RAM or shift register",
+          "Raster scan: video missing in a rectangular block means a memory area failure"
+        ]
+      },
+      "onScreen": ["Transmitter operating normally", "Bright, wide ring at a fixed distance on all digital ranges", "Suspect video storage RAM or shift register", "Rectangular block missing on a raster scan: memory area failure"],
+      "narration": "Now a radar using digital video processing. The transmitter is operating normally, but a bright, wide ring appears at a fixed distance from center on all digital ranges. Suspect the video storage RAM, or random access memory, or the shift register. A stuck bit or a faulty memory location repeats the same ring at the same place on every range. Memory also explains the next symptom. On a raster scan display, if video is missing in a rectangular block, the most likely problem is a memory area failure, because each block of video memory maps to an area of the screen."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 45,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8F12: an inverting summing amplifier",
+        "figure": "8F12",
+        "callouts": [
+          { "label": "Point A: 200 kΩ input resistor" },
+          { "label": "Point B: 100 kΩ input resistor" },
+          { "label": "Point C: 50 kΩ input resistor" },
+          { "label": "Point D: 25 kΩ input resistor" },
+          { "label": "Feedback resistor R<sub>F</sub> = 10 kΩ" },
+          { "label": "All inputs meet at the inverting input; the output is point E" }
+        ]
+      },
+      "onScreen": ["Point A: 200 kΩ", "Point B: 100 kΩ", "Point C: 50 kΩ", "Point D: 25 kΩ", "Feedback resistor R F = 10 kΩ", "Output at point E"],
+      "narration": "Now some troubleshooting with a circuit card. Figure 8F12 is an inverting summing amplifier. Point A feeds a 200 kilohm resistor, point B a 100 kilohm resistor, point C a 50 kilohm resistor, and point D a 25 kilohm resistor. The exam calls them the 200 K, 100 K, 50 K and 25 K resistors. All 4 meet at the inverting input of the operational amplifier, or op amp. The feedback resistor, R sub F, is 10 kilohms, and the output is at point E."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 45,
+      "template": "formula",
+      "params": {
+        "title": "Point E with 5 volts at B and C",
+        "formula": "V<sub>out</sub> = −R<sub>F</sub> × Σ(V/R)",
+        "steps": [
+          "B and C at 5 V; A and D at zero volts",
+          "V<sub>out</sub> = −10 kΩ × (5 V/100 kΩ + 5 V/50 kΩ)",
+          "V<sub>out</sub> = −10 kΩ × (0.05 + 0.1) mA"
+        ],
+        "answer": "V<sub>out</sub> = −1.5 V at point E"
+      },
+      "onScreen": ["V out = −R F × Σ(V/R)", "B and C at 5 V, A and D at zero volts", "−10 kΩ × (0.05 + 0.1) mA", "V out = −1.5 V at point E"],
+      "narration": "To find the voltage at point E, use the summing amplifier formula. V sub out equals minus R sub F, times the sum of each input voltage divided by its resistor. The minus sign is there because the amplifier inverts. Say there are 5 volts at points B and C, and zero volts at points A and D. The zero-volt inputs add no current. 5 volts over 100 kilohms is 0.05 milliamps, and 5 volts over 50 kilohms is 0.1 milliamps. Multiply their sum by 10 kilohms and flip the sign. The voltage at point E is minus 1.5 volts."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 45,
+      "template": "formula",
+      "params": {
+        "title": "After a card swap: −4.75 V at point E",
+        "formula": "All inputs 5 V: V<sub>out</sub> = −R<sub>F</sub> × Σ(V/R)",
+        "steps": [
+          "Normal: 0.025 + 0.05 + 0.1 + 0.2 = 0.375 mA",
+          "−10 kΩ × 0.375 mA = −3.75 V, the normal reading",
+          "50 K → 25 K: 0.025 + 0.05 + 0.2 + 0.2 = 0.475 mA",
+          "−10 kΩ × 0.475 mA = −4.75 V"
+        ],
+        "answer": "−4.75 V: the 50 K was replaced with a 25 K"
+      },
+      "onScreen": ["All inputs at 5 V", "Normal: 0.375 mA, so −3.75 V", "50 K replaced by 25 K: 0.475 mA", "−4.75 V: the 50 K resistor became a 25 K"],
+      "narration": "Now a real fault. A circuit card has just been replaced with a spare, and with all inputs at 5 volts, point E reads minus 4.75 volts. What should it read? The input currents are 0.025, 0.05, 0.1 and 0.2 milliamps, a total of 0.375 milliamps. Times 10 kilohms, inverted, that's minus 3.75 volts, the normal reading. So the card draws extra current. If the 50 K resistor at point C was mistakenly replaced with a 25 K resistor, its current doubles to 0.2 milliamps. The sum becomes 0.475 milliamps, and point E reads minus 4.75 volts, exactly what you measured. The 50 K resistor has been replaced with a 25 K."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 45,
+      "template": "comparison-table",
+      "params": {
+        "title": "More symptoms, more suspects",
+        "columns": ["Symptom or fault", "Suspect or result", "Why"],
+        "rows": [
+          ["Bright flashing pie sections on the PPI", "Defective crystal in the AFC section", "AFC loses lock and hunts as the antenna turns"],
+          ["Sectors of solid video (spoking)", "First check: interference from nearby ships", "Their radars on a similar frequency"],
+          ["Range to a lighthouse is in error", "Range ring oscillator", "Its frequency sets the range ring spacing"],
+          ["TR tube malfunctions", "The receiver might be damaged", "Pulse energy can burn out the crystal mixer"]
+        ]
+      },
+      "onScreen": ["Flashing pie sections: defective AFC crystal", "Spoking: check for interference from nearby ships", "Lighthouse range error: range ring oscillator", "TR tube malfunction: receiver might be damaged"],
+      "narration": "More pairs to learn. Bright, flashing pie sections on the PPI come from a defective crystal in the AFC, or automatic frequency control, section. The AFC loses lock and hunts, swinging the receiver tuning in and out as the antenna rotates. Sectors of solid video, called spoking, have a different first check: interference from nearby ships, whose radars on a similar frequency are a frequent cause. If the indicated distance to a lighthouse is in error, suspect the range ring oscillator, whose frequency sets the range ring spacing. And if the TR tube malfunctions, the receiver might be damaged, because high-power pulse energy reaches the crystal mixer and can burn it out."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 46,
+      "template": "equipment-card",
+      "params": {
+        "title": "Checking a mixer crystal with an ohmmeter",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Silicon crystals are used in radar mixer and detector stages", "at": "body" },
+          { "label": "Leads one way: low resistance", "at": "display" },
+          { "label": "Leads reversed: high resistance in the opposite direction", "at": "probes" },
+          { "label": "Low one way, high the other: it's a working diode", "at": "selector" }
+        ]
+      },
+      "onScreen": ["Silicon crystals in mixer and detector stages", "Low resistance one way", "High resistance with the leads reversed", "Low one way, high the other: functional"],
+      "narration": "Silicon crystals are used in radar mixer and detector stages. How do you check one with an ohmmeter? A crystal is a diode, so it should conduct one way and block the other. Put the leads across it, and a functional crystal shows low resistance in one direction. Reverse the leads, and it shows high resistance in the opposite direction. Low one way, high the other: the crystal is good."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 46,
+      "template": "block-diagram",
+      "params": {
+        "title": "Small targets and mixer current",
+        "columns": 3,
+        "blocks": [
+          { "id": "ant", "label": "Antenna" },
+          { "id": "tr", "label": "TR cell", "note": "Failure: low or no mixer current" },
+          { "id": "mag", "label": "Magnetron", "note": "Weak output: small targets lost" },
+          { "id": "lo", "label": "Local oscillator", "note": "Misadjusted frequency: low mixer current" },
+          { "id": "mix", "label": "Crystal mixer", "note": "Diode degraded: low mixer current" },
+          { "id": "if", "label": "IF amplifier", "note": "Low gain: small targets lost" }
+        ],
+        "links": [
+          { "from": "mag", "to": "tr", "label": "Transmit pulse" },
+          { "from": "tr", "to": "ant" },
+          { "from": "tr", "to": "mix", "label": "Echoes" },
+          { "from": "lo", "to": "mix", "label": "Receiver tuning" },
+          { "from": "mix", "to": "if" }
+        ]
+      },
+      "onScreen": ["Antenna, TR cell and magnetron", "Local oscillator and crystal mixer feed the IF amplifier", "Small targets lost: magnetron, IF amplifier or receiver tuning", "Low mixer current: local oscillator, TR cell or mixer diode"],
+      "narration": "Here's the receive path. Echoes from the antenna pass through the TR cell, which guards the receiver from the magnetron's transmit pulse. The local oscillator drives the crystal mixer, which converts the echoes to the IF, or intermediate frequency, for the IF amplifier. If the radar is not receiving small targets, the most likely causes are the magnetron, the IF amplifier, or receiver tuning, because anything that cuts transmitted power or receiver sensitivity loses weak echoes first. Now mixer current. It's local oscillator drive, rectified by the mixer diode. So low or no mixer current could be caused by any of these: local oscillator frequency misadjustment, TR cell failure, or mixer diode degradation."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 46,
+      "template": "key-facts",
+      "params": {
+        "title": "Crystal replacement and magnetron current",
+        "items": [
+          "Defective crystal mixer? Replace the crystal and the TR tube, not the ATR tube or klystron",
+          "A faulty TR tube usually caused the failure and would burn out a new crystal the same way",
+          "Magnetron current up while power output falls: the external magnetic field is weakening",
+          "A simply high magnetron current also means a defective external magnetic field",
+          "Weak field: electrons go straight to the anode instead of spiraling past the cavities"
+        ]
+      },
+      "onScreen": ["Bad crystal mixer: replace the crystal and the TR tube", "A faulty TR tube would burn out a new crystal", "Current up, power down: weakening magnet", "High magnetron current: defective magnetic field", "Electrons go straight to the anode"],
+      "narration": "When the crystal mixer becomes defective, replace the crystal and the TR tube. Not the ATR, or anti-transmit-receive, tube, and not the klystron. A faulty TR tube usually caused the failure, and it would burn out a new crystal the same way. Next, the magnetron current meter. An increase in magnetron current that coincides with a decrease in power output, or simply a high magnetron current, indicates a weakening or defective external magnetic field. With a weak magnet, more electrons go straight to the anode instead of spiraling past the cavities, so current rises while useful output drops."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 47,
+      "template": "equipment-card",
+      "params": {
+        "title": "The magnetron and its magnet",
+        "device": "magnetron",
+        "callouts": [
+          { "label": "External magnet: makes electrons spiral past the cavities", "at": "magnet" },
+          { "label": "Weaker field: more electrons go straight from cathode to anode", "at": "cathode" },
+          { "label": "Current meter rises: suspect a decrease in magnetic field strength", "at": "anode" },
+          { "label": "Lower duty cycle or weaker modulator pulse: less current, not more", "at": "filament" },
+          { "label": "No magnetic field at all: no oscillation, excessive current, tube destroyed", "at": "cavities" }
+        ]
+      },
+      "onScreen": ["Magnet makes electrons spiral past the cavities", "Weaker field: electrons go straight to the anode", "Current meter rises: magnetic field decreasing", "Lower duty cycle or weaker pulse: less current", "No magnetic field: it destroys itself"],
+      "narration": "Here's why the magnetron current meter matters. The external magnet makes electrons spiral past the cavities on their way from cathode to anode. If the field weakens, more electrons go straight to the anode. So an increase in the deflection on the magnetron current meter is likely caused by a decrease of the magnetic field strength. A lower duty cycle or a weaker modulator pulse would work the other way: they reduce the current, not increase it. And if the magnetron is allowed to operate without its magnetic field in place, electrons rush straight from cathode to anode with no oscillation, and it will quickly destroy itself from excessive current flow."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 47,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Radar bearing versus visual bearing",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [{ "bearing": 55, "range": 7.5 }],
+        "ebl": { "bearing": 72 },
+        "labels": [
+          "The radar shows the target on this bearing",
+          "The visual bearing to the same target doesn't agree",
+          "First suspect: incorrect antenna position information",
+          "Check the synchro, resolver or encoder signals and the heading alignment"
+        ]
+      },
+      "onScreen": ["Radar bearing of the target", "Visual bearing doesn't agree", "Suspect incorrect antenna position information", "Synchro, resolver or encoder signals and heading alignment"],
+      "narration": "Next symptom: targets on the radar display are not on the same bearing as their visual bearing. Here the echo sits on one bearing, but your line of sight to the same target says another. What should you suspect first? Incorrect antenna position information. The display can only place an echo correctly if it knows where the antenna is pointing. So check the antenna position signals from the synchro, resolver or encoder, and the heading alignment."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 47,
+      "template": "block-diagram",
+      "params": {
+        "title": "From the magnetron to the array termination",
+        "columns": 3,
+        "blocks": [
+          { "id": "mag", "label": "Magnetron", "note": "VSWR measured at its output" },
+          { "id": "wg", "label": "Waveguide", "note": "A leak lets in water" },
+          { "id": "rj", "label": "Rotary joint", "note": "A leak lets in water" },
+          { "id": "refl", "label": "Reflected energy", "note": "Comes back down the guide" },
+          { "id": "term", "label": "Array termination", "note": "Matched load: absorbs leftover energy" },
+          { "id": "arr", "label": "Slotted array", "note": "Radiates through its slots" }
+        ],
+        "links": [
+          { "from": "mag", "to": "wg" },
+          { "from": "wg", "to": "rj" },
+          { "from": "rj", "to": "arr" },
+          { "from": "arr", "to": "term" },
+          { "from": "term", "to": "refl", "label": "If it fails" },
+          { "from": "refl", "to": "mag", "label": "High VSWR" }
+        ]
+      },
+      "onScreen": ["Magnetron, waveguide, rotary joint", "Wet weather loses distant targets: leak in waveguide or rotary joint", "High VSWR means reflected energy", "Array termination absorbs what the slots don't radiate", "Slotted array"],
+      "narration": "Follow the energy from the magnetron through the waveguide and the rotary joint. If you lose distant targets during and immediately after wet weather, suspect a leak in the waveguide or rotary joint. Water gets in and attenuates the signal until it dries out. Now a high VSWR, or voltage standing wave ratio, at the magnetron output. That means energy is reflecting back. If the waveguide and rotary joint appear to work properly, suspect the waveguide array termination. It's the matched load at the end of the slotted array that absorbs the energy the slots don't radiate. When it fails, that energy reflects back down the guide."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 47,
+      "template": "comparison-table",
+      "params": {
+        "title": "Equipment faults: symptom, then suspect",
+        "columns": ["Symptom", "Check first"],
+        "rows": [
+          ["Magnetron current meter rises", "Decrease in magnetic field strength"],
+          ["Targets off their visual bearing", "Antenna position information"],
+          ["Distant targets lost after wet weather", "Leak in waveguide or rotary joint"],
+          ["High VSWR; waveguide and joint OK", "Waveguide array termination"],
+          ["2 radars, different ranges to a target", "Sweep and timing circuits of both indicators"]
+        ]
+      },
+      "onScreen": ["Current meter rises: weaker magnetic field", "Off visual bearing: antenna position information", "Wet weather: waveguide or rotary joint leak", "High VSWR: array termination", "2 radars disagree on range: check sweep and timing of both"],
+      "narration": "Let's line up this topic's faults, and add a new one at the end. A rising magnetron current meter: a weaker magnetic field. Targets off their visual bearing: antenna position information. Distant targets lost after wet weather: a leak in the waveguide or rotary joint. High VSWR with a good waveguide and rotary joint: the array termination. And the new one. When 2 radars on one vessel show different ranges to the same target, check the sweep and timing circuits of both indicators for correct readings, to find which one is wrong. Don't average the readings. Averaging would just spread the error."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 48,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Water in the waveguide",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 40, "range": 9 },
+          { "bearing": 160, "range": 7 },
+          { "bearing": 280, "range": 10 }
+        ],
+        "vrm": { "range": 2 },
+        "labels": [
+          "Ordinary echoes",
+          "Large circular rings near the center",
+          "Cause: water in the waveguide",
+          "The water reflects pulse energy back into the receiver"
+        ]
+      },
+      "onScreen": ["Ordinary echoes", "Large circular rings near the center", "Water in the waveguide", "Pulse energy reflected into the receiver"],
+      "narration": "Now maintenance, starting with what the display tells you. Alongside the ordinary echoes, this display shows large circular rings near the center. That's the sign of water in the waveguide. The water reflects pulse energy straight back into the receiver, and those reflections paint the rings. So large rings near the center mean water inside the guide."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 48,
+      "template": "key-facts",
+      "params": {
+        "title": "Maintenance rules",
+        "items": [
+          "Thick rust and corrosion on a parabolic dish: lower performance, especially for weak targets",
+          "Keep the waveguide's interior surface as clean as possible to minimize signal loss",
+          "Echo box: tests and tunes the radar by providing artificial targets",
+          "Replacing the magnetron? Always use a non-magnetic screwdriver"
+        ]
+      },
+      "onScreen": ["Rusty dish: lower performance on weak targets", "Keep the waveguide interior clean", "Echo box: artificial targets for testing and tuning", "Non-magnetic screwdriver for the magnetron"],
+      "narration": "A few maintenance rules. Thick rust and corrosion on the surface of a parabolic dish cause a decrease in performance, especially for weak targets, because they reduce antenna gain on transmit and receive. Keep the interior surface of a waveguide as clean as possible to minimize signal loss. Skin effect puts the microwave current on that surface, so paint or oil would only add loss. The echo box is used for testing and tuning the radar by providing artificial targets. It's a high-Q resonant cavity that stores energy from the transmitted pulse and rings it back to the receiver. And always use a non-magnetic screwdriver when replacing the magnetron. Its strong permanent magnet can yank a steel tool, damaging the tube or injuring your hand, and magnetic tools can weaken the magnet."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 48,
+      "template": "equipment-card",
+      "params": {
+        "title": "The most useful radar servicing instrument",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "The oscilloscope: most useful instrument for radar servicing", "at": "screen" },
+          { "label": "Shows the shape, amplitude and timing of a waveform", "at": "trace" },
+          { "label": "Probe the pulses, the video and the sweep waveforms", "at": "probe" }
+        ]
+      },
+      "onScreen": ["Oscilloscope: most useful for radar servicing", "Shape, amplitude and timing", "Pulses, video and sweep waveforms"],
+      "narration": "Which instrument is most useful for radar servicing? The oscilloscope. Radar work is all about pulses and timing, and the oscilloscope shows you the shape, amplitude and timing of the waveforms you need to check: the pulses, the video, and the sweep waveforms. A frequency counter, a wattmeter or an audio generator can't show you those waveforms."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 49,
+      "template": "comparison-table",
+      "params": {
+        "title": "S-band: coax or waveguide?",
+        "columns": ["Coaxial cable", "S-band waveguide"],
+        "rows": [
+          ["Losses kept reasonable at S-band", "Large and heavy"],
+          ["Lower installation cost", "Costly to install"]
+        ]
+      },
+      "onScreen": ["Coax: losses kept reasonable at S-band", "Coax: lower installation cost", "S-band waveguide: large, heavy and costly"],
+      "narration": "On to installation. Why is coaxial cable often used for S-band installations instead of waveguide? Because losses can be kept reasonable at S-band frequencies, and the installation cost is lower. S-band waveguide is large, heavy and costly to run. Coax does the job for less."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 49,
+      "template": "block-diagram",
+      "params": {
+        "title": "Running the waveguide",
+        "columns": 3,
+        "blocks": [
+          { "id": "tx", "label": "Transceiver" },
+          { "id": "wg", "label": "Waveguide run", "note": "As straight and vertical as possible" },
+          { "id": "ant", "label": "Antenna" },
+          { "id": "horiz", "label": "Long horizontal run", "note": "Condensation collects: absorbs RF, corrodes" },
+          { "id": "bends", "label": "Extra bends and twists", "note": "Each can cause reflections and distortion" }
+        ],
+        "links": [
+          { "from": "tx", "to": "wg" },
+          { "from": "wg", "to": "ant" },
+          { "from": "tx", "to": "horiz", "struck": true },
+          { "from": "wg", "to": "bends", "struck": true }
+        ]
+      },
+      "onScreen": ["Transceiver, straight waveguide, antenna", "Avoid long horizontal runs: condensation", "Avoid bends and twists: reflections and distortion"],
+      "narration": "Next, the waveguide run from the transceiver up to the antenna. The ideal run is straight and mostly vertical. Avoid long horizontal runs of waveguide to prevent accumulation of condensation. Moisture can collect in a horizontal section with nowhere to drain, where it absorbs RF, or radio frequency, energy and corrodes the walls. And install waveguides as straight as possible to reduce distortion, since every bend or twist can cause reflections."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 49,
+      "template": "equipment-card",
+      "params": {
+        "title": "Siting the antenna",
+        "device": "radar-antenna",
+        "callouts": [
+          { "label": "Most important: a location not shadowed by other structures", "at": "array" },
+          { "label": "Masts and funnels in the beam create blind sectors", "at": "rotation" },
+          { "label": "Height, run length and maintenance access come second", "at": "waveguide" },
+          { "label": "Properly ground, bond and shield all units to stop receiver interference", "at": "motor" }
+        ]
+      },
+      "onScreen": ["Not shadowed by other structures: most important", "Masts and funnels create blind sectors", "Height, run length and access come second", "Ground, bond and shield all units"],
+      "narration": "Where should the antenna go? The most important factor is a location that is not shadowed by other structures. Masts and funnels in the beam's path create blind sectors where targets can't be seen. Height, the length of the run, and easy maintenance access all come second. And another installation rule: radar interference to a communications receiver is eliminated by properly grounding, bonding and shielding all units, which keeps the pulse energy contained."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 50,
+      "template": "timeline",
+      "params": {
+        "title": "ESD damage: now or much later",
+        "badges": [
+          { "label": "Immediate damage", "value": "Circuit fails right away" },
+          { "label": "Hidden damage", "value": "Fails much later", "note": "At a time when the radar set is critically needed" },
+          { "label": "Discharges too small to feel", "value": "Can still do damage", "note": "You may never notice it happened" }
+        ]
+      },
+      "onScreen": ["ESD: immediate failure", "ESD: failure much later, when critically needed", "Discharges too small to feel can do it"],
+      "narration": "Last topic: safety, starting with ESD, which stands for electrostatic discharge. ESD damage may cause immediate circuit failures. But it may also cause failures much later, at times when the radar set is critically needed. And discharges too small to feel can do it, so you may never know the damage happened."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 50,
+      "template": "comparison-table",
+      "params": {
+        "title": "Before you start work",
+        "columns": ["Before you…", "Make sure"],
+        "rows": [
+          ["Handle solid state circuit boards", "Proper work surfaces and ESD straps in place"],
+          ["Test a radar transmitter", "No explosives or flammable cargo being loaded"],
+          ["Repair or adjust a radar unit", "High-voltage capacitors discharged to ground"]
+        ]
+      },
+      "onScreen": ["Boards: ESD straps and proper work surfaces", "Transmitter test: no explosives or flammable cargo being loaded", "Repairs: discharge high-voltage capacitors to ground"],
+      "narration": "Before removing, servicing or making measurements on any solid state circuit boards, make sure the proper work surfaces and ESD grounding straps are in place. Before testing a radar transmitter, make sure there are no explosives or flammable cargo being loaded, since radiated energy can fire electrically initiated explosives or ignite flammable vapors. And while making repairs or adjustments to radar units, discharge all high-voltage capacitors to ground. They can hold lethal charges after the power is removed."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 50,
+      "template": "key-facts",
+      "params": {
+        "title": "Handling a CRT",
+        "items": [
+          "Removing a CRT from its operating casing: wear gloves and goggles",
+          "A cracked envelope can implode and throw glass",
+          "A dropped CRT might implode, causing damage to workers and equipment"
+        ]
+      },
+      "onScreen": ["Removing a CRT: gloves and goggles", "Cracked envelope can implode", "Dropped CRT might implode"],
+      "narration": "Radar displays may use a CRT, a cathode ray tube. While removing a CRT from its operating casing, wear gloves and goggles, because a cracked envelope can implode and throw glass. And handle it with care: if a CRT is dropped, it might implode, causing damage to workers and equipment. That's the end of this lesson. Remember the pattern, symptom then suspect, and put safety first."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [44] },
+    { "after": "s8", "keyTopics": [45] },
+    { "after": "s11", "keyTopics": [46] },
+    { "after": "s15", "keyTopics": [47] },
+    { "after": "s18", "keyTopics": [48] },
+    { "after": "s21", "keyTopics": [49] },
+    { "after": "s24", "keyTopics": [50] }
+  ],
+  "video": null
+}

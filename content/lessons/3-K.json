@@ -1,0 +1,347 @@
+{
+  "id": "3-K",
+  "element": 3,
+  "title": "Aircraft",
+  "keyTopics": [68, 69, 70, 71, 72, 73],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 68,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement K",
+        "title": "Aircraft",
+        "subtitle": "DME, VOR and ILS, ADF and transponders, aircraft antennas and frequencies, ELTs and SELCAL."
+      },
+      "onScreen": ["Aircraft", "Navigation, surveillance and communication equipment"],
+      "narration": "This lesson covers the radio equipment on an aircraft: how it navigates, how it is tracked from the ground, and how it communicates. For each system we'll learn its frequencies, how it works and what antenna it uses. Listen closely for megahertz versus kilohertz, because wrong answers often swap the units. Let's begin with Distance Measuring Equipment, or DME."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 68,
+      "template": "block-diagram",
+      "params": {
+        "title": "How DME measures distance",
+        "columns": 4,
+        "blocks": [
+          { "id": "ask", "label": "Aircraft interrogates", "note": "A radio signal through the atmosphere" },
+          { "id": "wait", "label": "Ground station delay", "note": "Typically 50 µs, for close-range use" },
+          { "id": "reply", "label": "Ground station replies", "note": "Back to the aircraft" },
+          { "id": "dist", "label": "Airborne DME", "note": "Round-trip time minus the delay: distance" }
+        ],
+        "links": [
+          { "from": "ask", "to": "wait" },
+          { "from": "wait", "to": "reply" },
+          { "from": "reply", "to": "dist" }
+        ]
+      },
+      "onScreen": ["Aircraft sends an interrogation", "Ground station delay, typically 50 µs", "Ground station replies", "Round-trip time minus the delay gives distance"],
+      "narration": "The main operating principle of DME is that a measurable amount of time is required to send and receive a radio signal through the Earth's atmosphere. The aircraft sends an interrogation. The DME ground station has a built-in delay, typically 50 microseconds, between receiving the interrogation and transmitting its reply. That delay allows operation at close range. The reply travels back to the aircraft, and the airborne unit subtracts the known delay. What's left is the round-trip time, which converts to distance."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 68,
+      "template": "key-facts",
+      "params": {
+        "title": "DME: band, slant range and tuning",
+        "items": [
+          "DME operates from 962 MHz to 1213 MHz",
+          "It measures slant range: the direct, slanted line from the aircraft at altitude to the station",
+          "Finds the distance to a selected VORTAC station by timing the signal; not radar or Loran C",
+          "Most airborne DME auto-tunes to the paired VOR/LOC channel"
+        ]
+      },
+      "onScreen": ["962 MHz to 1213 MHz", "Slant range", "Distance to a selected VORTAC; not radar or Loran C", "Auto-tunes to the paired VOR/LOC channel"],
+      "narration": "DME operates from 962 to 1213 megahertz. The distance it measures from the aircraft to the ground station is called the slant range, because it runs along the direct, slanted line from the aircraft at altitude down to the station. DME is the navigation aid that finds the distance to a selected VORTAC station by measuring how long the radio signal takes to travel to and from the station. It is not radar, and it is not Loran C, the long range navigation system. A VORTAC station combines a Very-high-frequency Omnidirectional Range, or VOR, with TACAN, tactical air navigation. Most airborne DME systems automatically tune to the paired channel of a VOR or a localizer, LOC for short. So selecting the VOR or localizer frequency sets the DME."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 69,
+      "template": "radar-ppi",
+      "params": {
+        "title": "VOR radials and magnetic north",
+        "rangeNm": 10,
+        "rings": 4,
+        "ebl": { "bearing": 90 },
+        "labels": [
+          "Radial: a line drawn outward from the station in a magnetic direction",
+          "The 090 radial points magnetic east from the station",
+          "All VOR directions are related to magnetic north",
+          "VOR stations transmit from 108.00 MHz to 117.95 MHz"
+        ]
+      },
+      "onScreen": ["Radials drawn outward from the station", "090 radial: magnetic east", "Directions related to magnetic north", "108.00 MHz to 117.95 MHz"],
+      "narration": "Picture a VOR station at the center of this compass rose, with magnetic north at the top. A line drawn from the station in a particular magnetic direction is called a radial. This one is the 090 radial, which points magnetic east from the station. In fact, all directions associated with a VOR station are related to magnetic north. Ground-based VOR stations transmit from 108.00 to 117.95 megahertz. That's megahertz, not kilohertz."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 69,
+      "template": "waveform",
+      "params": {
+        "title": "Comparing the 2 VOR signals",
+        "kind": "sine",
+        "cycles": 3,
+        "xAxis": "time",
+        "yAxis": "signal",
+        "labels": [
+          "Variable phase signal: amplitude modulated, 30 Hz",
+          "Reference phase signal: frequency modulated, 30 Hz",
+          "In phase at 360 degrees North, magnetic bearing position",
+          "Phase difference = azimuth from the station; VOR gives no distance"
+        ]
+      },
+      "onScreen": ["Variable phase: AM, 30 Hz", "Reference phase: FM, 30 Hz", "In phase at 360 degrees North, magnetic", "Phase difference gives azimuth, not distance"],
+      "narration": "A VOR station sends 2 signals at 30 hertz. The variable phase signal is amplitude modulated, and the reference phase signal is frequency modulated. They are synchronized to be in phase at 360 degrees North, the magnetic bearing position. The main VOR principle is that the phase difference between these 2 alternating current, or AC, voltages gives the aircraft's azimuth position in relation to the selected VOR station. Notice what VOR doesn't give you: distance. That's the job of DME."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 69,
+      "template": "formula",
+      "params": {
+        "title": "How fast the VOR signal rotates",
+        "formula": "Revolutions per second = rpm ÷ 60",
+        "steps": ["The antenna pattern turns at 1800 rpm", "1800 ÷ 60 = 30"],
+        "answer": "30 revolutions per second"
+      },
+      "onScreen": ["Revolutions per second = rpm ÷ 60", "1800 rpm ÷ 60 = 30", "30 revolutions per second"],
+      "narration": "How fast does the VOR variable signal rotate? The antenna pattern turns at 1800 revolutions per minute. Divide by 60 to get revolutions per second: 1800 divided by 60 is 30. So the variable signal rotates at 30 revolutions per second, which matches the 30 hertz signals we just saw."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 70,
+      "template": "band-strip",
+      "params": {
+        "title": "ILS frequencies",
+        "min": 60,
+        "max": 125,
+        "scale": "linear",
+        "marks": [
+          { "at": 110, "label": "108.10–111.95 MHz", "note": "ILS localizer: finds the runway centerline", "tone": "key" },
+          { "at": 113, "label": "108.00–117.95 MHz", "note": "VOR stations, for comparison", "tone": "muted" },
+          { "at": 75, "label": "75 MHz", "note": "Outer, middle and inner marker beacons", "tone": "key" }
+        ]
+      },
+      "onScreen": ["Localizer: 108.10 MHz to 111.95 MHz", "VOR: 108.00 MHz to 117.95 MHz", "Marker beacons: 75 MHz"],
+      "narration": "Now the Instrument Landing System, or ILS. Its localizer beam system, used to find the runway centerline, operates from 108.10 to 111.95 megahertz. Notice that this sits inside the VOR range of 108.00 to 117.95 megahertz, so don't mix them up. The ILS marker beacons are much lower, at 75 megahertz. We'll look at them in a moment."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 70,
+      "template": "block-diagram",
+      "params": {
+        "title": "The localizer and the runway centerline",
+        "columns": 3,
+        "blocks": [
+          { "id": "lobe90", "label": "90 Hz pattern", "note": "Amplitude modulated, one side" },
+          { "id": "loc", "label": "Localizer", "note": "Required ILS component" },
+          { "id": "lobe150", "label": "150 Hz pattern", "note": "Amplitude modulated, other side" },
+          { "id": "gs", "label": "Glideslope", "note": "Above/below the glide path; folded dipole" },
+          { "id": "dev", "label": "Left or right deviation", "note": "Horizontal, from the runway centerline" },
+          { "id": "wind", "label": "Ground speed or wind", "note": "Not shown by the localizer" }
+        ],
+        "links": [
+          { "from": "loc", "to": "lobe90" },
+          { "from": "loc", "to": "lobe150" },
+          { "from": "loc", "to": "gs", "struck": true },
+          { "from": "loc", "to": "dev" },
+          { "from": "loc", "to": "wind", "struck": true }
+        ]
+      },
+      "onScreen": ["90 Hz pattern on one side", "Localizer: required ILS component", "150 Hz pattern on the other side", "Above and below the glide path: glideslope, folded dipole antenna", "Shows left or right deviation", "Not ground speed or wind"],
+      "narration": "The localizer is a required component of the ILS. It produces 2 amplitude modulated antenna patterns, one with a 90 hertz audio tone and one with a 150 hertz audio tone, one left and one right of the runway centerline. Patterns above and below the glide path belong to the glideslope, not the localizer. On the aircraft, the ILS glideslope installation uses a folded dipole reception antenna. What the localizer shows is the aircraft's horizontal deviation from the center of the runway: left or right of the runway center line. It does not show ground speed or wind."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 70,
+      "template": "comparison-table",
+      "params": {
+        "title": "ILS marker beacons",
+        "columns": ["Marker beacon", "Carrier", "Tone (95% modulated)"],
+        "rows": [
+          ["Outer", "75 MHz", "400 Hz"],
+          ["Middle", "75 MHz", "1300 Hz"],
+          ["Inner", "75 MHz", "3000 Hz"]
+        ]
+      },
+      "onScreen": ["Outer marker: 75 MHz, 400 Hz", "Middle marker: 75 MHz, 1300 Hz", "Inner marker: 75 MHz, 3000 Hz", "95% tone modulation"],
+      "narration": "The ILS marker beacons are easy to remember. The outer, middle and inner markers all use the same carrier frequency, 75 megahertz. Each one is 95 percent tone-modulated, and only the tone changes: 400 hertz for the outer marker, 1300 hertz for the middle marker, and 3000 hertz for the inner marker."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 71,
+      "template": "key-facts",
+      "params": {
+        "title": "Automatic Direction Finding (ADF)",
+        "items": [
+          "ADF covers 190 kHz to 1750 kHz: kilohertz, not megahertz",
+          "Low and medium frequency signals follow the curvature of the Earth",
+          "Received from over the horizon, sometimes several hundred miles away",
+          "Night effect: NDB signals bounce off the ionosphere and arrive from almost any direction",
+          "At night the ADF needle wanders"
+        ]
+      },
+      "onScreen": ["ADF: 190 kHz to 1750 kHz", "Signals follow the Earth's curvature", "Over the horizon, not line of sight", "Night effect: ionosphere bounce", "Needle wanders at night"],
+      "narration": "An aircraft's Automatic Direction Finding equipment, or ADF, covers 190 to 1750 kilohertz. That's kilohertz, not megahertz. ADF antennas can receive transmissions from over the Earth's horizon, sometimes several hundred miles away, because these low and medium frequency signals follow the curvature of the Earth. They are not limited to line of sight. But watch for night effect. At night, Non Directional Beacon, or NDB, transmissions can bounce off the Earth's ionosphere and be received from almost any direction, so the ADF needle wanders."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 71,
+      "template": "block-diagram",
+      "params": {
+        "title": "Transponders: receive 1030, transmit 1090",
+        "columns": 3,
+        "blocks": [
+          { "id": "gi", "label": "ATCRBS ground interrogator", "note": "Interrogates on 1030 MHz" },
+          { "id": "xp", "label": "Mode C transponder", "note": "Receives 1030 MHz, transmits 1090 MHz" },
+          { "id": "gr", "label": "ATCRBS ground station", "note": "Gets the pulse position modulated reply" },
+          { "id": "ms", "label": "Mode S transponder", "note": "Mode C functions plus collision avoidance" }
+        ],
+        "links": [
+          { "from": "gi", "to": "xp", "label": "1030 MHz" },
+          { "from": "xp", "to": "gr", "label": "1090 MHz reply" }
+        ]
+      },
+      "onScreen": ["Ground interrogation on 1030 MHz", "Mode C: receives 1030 MHz, transmits 1090 MHz", "Reply uses pulse position modulation", "Mode S adds collision avoidance"],
+      "narration": "Next, transponders in the Air Traffic Control Radar Beacon System, or ATCRBS. The ground station interrogates the aircraft on 1030 megahertz. A mode C transponder receives at 1030 megahertz and transmits its reply at 1090 megahertz. Don't reverse them: receive 1030, transmit 1090. The mode C transponder encodes its transmission to the ATCRBS ground station using pulse position modulation. A mode S transponder duplicates the mode C functions, and in addition it can provide mid-air collision avoidance capabilities."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 71,
+      "template": "waveform",
+      "params": {
+        "title": "Pulse position modulation",
+        "kind": "pulse",
+        "cycles": 8,
+        "duty": 0.12,
+        "xAxis": "time",
+        "labels": [
+          "Code pulses sit in fixed time positions between 2 framing pulses",
+          "Mode C encodes its reply with pulse position modulation",
+          "Interrogation received on 1030 MHz, reply sent on 1090 MHz"
+        ]
+      },
+      "onScreen": ["Code pulses in fixed time positions", "Mode C reply: pulse position modulation", "Receive 1030 MHz, transmit 1090 MHz"],
+      "narration": "What does pulse position modulation look like? The reply is a train of pulses, and the information is carried by where each pulse sits in time: code pulses in fixed time positions between 2 framing pulses. That's how a mode C transponder encodes its reply to the ATCRBS ground station. And keep the direction straight: the transponder hears its interrogation on 1030 megahertz and answers on 1090 megahertz."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 72,
+      "template": "band-strip",
+      "params": {
+        "title": "Aircraft frequencies, lowest to highest",
+        "min": 0.1,
+        "max": 10000,
+        "scale": "log",
+        "marks": [
+          { "at": 0.6, "label": "190–1750 kHz", "note": "ADF: kilohertz, not megahertz", "tone": "muted" },
+          { "at": 127, "label": "118.000–136.975 MHz", "note": "VHF communications; worldwide to 151.975 MHz", "tone": "key" },
+          { "at": 243, "label": "121.5, 243 and 406 MHz", "note": "Emergency Locator Transmitters (ELT)", "tone": "key" },
+          { "at": 1030, "label": "1030 MHz", "note": "Transponder interrogations" },
+          { "at": 4300, "label": "4250–4350 MHz", "note": "Radio altimeter", "tone": "key" }
+        ]
+      },
+      "onScreen": ["ADF: 190 kHz to 1750 kHz", "VHF communications: 118.000 MHz to 136.975 MHz", "ELT: 121.5, 243 and 406 MHz", "Interrogations: 1030 MHz", "Radio altimeter: 4250 MHz to 4350 MHz"],
+      "narration": "Let's line up the aircraft frequencies, lowest to highest. ADF, from the last topic, is down in kilohertz. Aircraft Very High Frequency, or VHF, communications use 118.000 to 136.975 megahertz, and worldwide up to 151.975 megahertz. Emergency Locator Transmitters, or ELTs, operate on 121.5, 243 and 406 megahertz. Transponder interrogations go out on 1030 megahertz. And at the top, the aircraft's radio altimeter operates from 4250 to 4350 megahertz."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 72,
+      "template": "block-diagram",
+      "params": {
+        "title": "Mode S interrogation for TCAS",
+        "columns": 3,
+        "blocks": [
+          { "id": "arr", "label": "Ground phased-array antenna", "note": "Forms a steerable beam" },
+          { "id": "beam", "label": "Mode S interrogation", "note": "PPM pulses, 1030 MHz directional pattern" },
+          { "id": "ac", "label": "Aircraft with TCAS", "note": "Traffic alert and Collision Avoidance System" },
+          { "id": "omni", "label": "1090 MHz or omnidirectional", "note": "Not the pattern radiated" }
+        ],
+        "links": [
+          { "from": "arr", "to": "beam" },
+          { "from": "beam", "to": "ac" },
+          { "from": "arr", "to": "omni", "struck": true }
+        ]
+      },
+      "onScreen": ["Ground phased-array antenna: steerable beam", "Mode S PPM pulses: 1030 MHz directional pattern", "Aircraft with TCAS", "Not 1090 MHz, not omnidirectional"],
+      "narration": "When a ground station's phased-array directional antenna transmits the pulse position modulation, or PPM, pulses of a Mode S interrogation for an aircraft's Traffic alert and Collision Avoidance System, or TCAS, what pattern does it radiate? A 1030 megahertz directional pattern. Interrogations go out on 1030 megahertz, and a phased array forms a steerable beam, so the pattern is directional. It is not 1090 megahertz, and it is not omnidirectional."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 72,
+      "template": "comparison-table",
+      "params": {
+        "title": "Which reception antenna?",
+        "columns": ["Installation", "Reception antenna"],
+        "rows": [
+          ["Mode C transponder (1030 MHz)", "L-band monopole blade, omnidirectional"],
+          ["ILS marker beacon", "Balanced loop"],
+          ["ILS glideslope (from earlier)", "Folded dipole"]
+        ]
+      },
+      "onScreen": ["Mode C transponder: L-band monopole blade, omnidirectional", "Marker beacon: balanced loop", "Glideslope: folded dipole"],
+      "narration": "Now the antennas on the aircraft. A mode C transponder receives its 1030 megahertz ATCRBS interrogation signals through an L-band monopole blade-type omnidirectional antenna. The aircraft's ILS marker beacon installation uses a balanced loop reception antenna. And as we saw earlier, the glideslope uses a folded dipole. Keep these pairs straight."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 73,
+      "template": "comparison-table",
+      "params": {
+        "title": "Why aircraft use 400 Hz power",
+        "columns": ["Line power", "Magnetic devices"],
+        "rows": [
+          ["400 Hz aircraft power", "Smaller, lighter transformers, chokes, filters"],
+          ["60 Hz power supplies", "Larger and heavier"]
+        ]
+      },
+      "onScreen": ["400 Hz: smaller, lighter transformers, chokes and filters", "60 Hz: larger and heavier"],
+      "narration": "On to equipment functions. Aircraft use 400 hertz line power. Its principal advantage is that magnetic devices such as transformers, chokes and filters are smaller and lighter than those used in 60 hertz power supplies. On an aircraft, saving size and weight matters."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 73,
+      "template": "key-facts",
+      "params": {
+        "title": "Aircraft equipment facts",
+        "items": [
+          "Aviation uses mostly dynamic microphones: rugged against vibration, humidity, temperature",
+          "Airborne HF transmitter: nominal 100 watts RF output; typical VHF: 20 watts",
+          "Before ground testing a radar, clear personnel from the area in front of the antenna",
+          "VOR and localizer (LOC) antennas: horizontally polarized omnidirectional"
+        ]
+      },
+      "onScreen": ["Dynamic microphones", "HF 100 watts, VHF 20 watts", "Clear the area in front of the radar antenna", "VOR/LOC: horizontally polarized omnidirectional"],
+      "narration": "A few more equipment facts. Aviation services use predominantly dynamic microphones. They're rugged, and they tolerate vibration, humidity and temperature extremes. Typical airborne High Frequency, or HF, transmitters provide a nominal radio frequency output of 100 watts to the antenna, compared with 20 watts from a typical VHF transmitter. Before ground testing an aircraft radar, make sure the area in front of the antenna is clear of other maintenance personnel, to avoid radiation hazards. And aircraft VOR and localizer installations use a horizontally polarized omnidirectional reception antenna."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 73,
+      "template": "block-diagram",
+      "params": {
+        "title": "SELCAL: selective calling",
+        "columns": 3,
+        "blocks": [
+          { "id": "gt", "label": "Ground-based transmitter", "note": "Sends a SELCAL code" },
+          { "id": "ac", "label": "Selected aircraft or group", "note": "Its decoder recognizes the code" },
+          { "id": "crew", "label": "Flight crew alerted", "note": "No need to monitor the frequency" },
+          { "id": "other", "label": "Other aircraft", "note": "Not called" }
+        ],
+        "links": [
+          { "from": "gt", "to": "ac" },
+          { "from": "ac", "to": "crew", "label": "Chime" },
+          { "from": "gt", "to": "other", "struck": true }
+        ]
+      },
+      "onScreen": ["Ground-based transmitter sends a code", "Selected aircraft or group decodes it", "Crew alerted without monitoring the frequency", "Other aircraft not called"],
+      "narration": "Finally, SELCAL, short for selective calling. It's a system where a ground-based transmitter can call a selected aircraft, or a group of aircraft, without the flight crew monitoring the ground-station frequency. The ground station sends a code. The selected aircraft's decoder recognizes it and sounds a chime to alert the crew. Other aircraft aren't called."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s3", "keyTopics": [68] },
+    { "after": "s6", "keyTopics": [69] },
+    { "after": "s9", "keyTopics": [70] },
+    { "after": "s12", "keyTopics": [71] },
+    { "after": "s15", "keyTopics": [72] },
+    { "after": "s18", "keyTopics": [73] }
+  ],
+  "video": null
+}

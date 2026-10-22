@@ -1,0 +1,501 @@
+{
+  "id": "3-A",
+  "element": 3,
+  "title": "Principles",
+  "keyTopics": [1, 2, 3, 4, 5, 6, 7, 8],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 1,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement A",
+        "title": "Principles",
+        "subtitle": "Electrical units, magnetism, materials, components, AC measurements, waveforms and conduction: the basics the exam builds on."
+      },
+      "onScreen": ["Principles", "Units, magnetism, materials, components, AC values, waveforms and conduction"],
+      "narration": "This lesson covers the electrical principles the Element 3 exam builds on. We'll name the basic units of power and energy, see how magnetism works, and compare materials. Then we'll look at resistors, capacitors, inductors and semiconductors, and learn the AC, or alternating current, values you'll measure: root mean square, or RMS, peak and peak-to-peak. We'll finish with waveforms and conduction. Let's start with the electrical elements: power, energy and reactance."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 1,
+      "template": "comparison-table",
+      "params": {
+        "title": "Apparent, true and reactive power",
+        "columns": ["Power", "Unit", "What it is"],
+        "rows": [
+          ["Apparent power", "Volt-amperes", "AC voltmeter reading × AC ammeter reading"],
+          ["True power", "Watts: 1 joule per second", "Apparent power × power factor"],
+          ["Reactive power", "VAR: volt-amperes reactive", "Out of phase; stored and returned, no net work"]
+        ]
+      },
+      "onScreen": ["Apparent power: voltmeter × ammeter, in volt-amperes", "True power: watts, needs the power factor", "Watt: 1 joule per second, or 1 volt × 1 ampere", "Reactive power: VAR, stored and returned, no net work"],
+      "narration": "Multiply the reading of an AC voltmeter by the reading of an AC ammeter, and you get apparent power, measured in volt-amperes. That isn't true power, because the voltage and current may be out of phase. True power also needs the power factor, and it's measured in watts. The watt is the basic unit of electrical power: 1 joule per second, or 1 volt times 1 ampere. Reactive power is the out-of-phase power associated with inductors and capacitors. It's measured in VAR, volt-amperes reactive. It is stored and returned each cycle, so it does no net work."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 1,
+      "template": "key-facts",
+      "params": {
+        "title": "Where energy is stored",
+        "items": [
+          "A capacitor stores energy in the electrostatic field between its plates",
+          "An inductor stores energy in a magnetic field instead",
+          "Energy stored in an electrostatic field is measured in joules",
+          "Coulombs measure charge; watts measure the rate of energy flow"
+        ]
+      },
+      "onScreen": ["Capacitor: electrostatic field between the plates", "Inductor: magnetic field", "Stored energy: joules", "Coulombs: charge; watts: rate of energy flow"],
+      "narration": "Where does a capacitor keep its energy? In the electrostatic field between its plates. An inductor is different: it stores energy in a magnetic field instead. The amount of electrical energy stored in an electrostatic field is expressed in joules, the unit of energy. Don't mix that up with coulombs, which measure electric charge, or with watts, which measure the rate at which energy flows."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 1,
+      "template": "formula",
+      "params": {
+        "title": "Inductive reactance of a coil",
+        "formula": "X<sub>L</sub> = 2π f L",
+        "steps": [
+          "f = frequency, in hertz",
+          "L = inductance, in henrys",
+          "X<sub>L</sub> = inductive reactance, in ohms",
+          "1 / 2π f C is capacitive reactance, not inductive"
+        ],
+        "answer": "Coil reactance: X<sub>L</sub> = 2π f L, in ohms"
+      },
+      "onScreen": ["X sub L = 2π f L", "f in hertz, L in henrys", "X sub L in ohms", "1 / 2π f C is capacitive reactance"],
+      "narration": "To find the inductive reactance of a coil from its frequency and inductance, use X sub L equals two pi f L. Here f is the frequency in hertz, L is the inductance in henrys, and the answer, X sub L, comes out in ohms. Watch for the look-alike, 1 over two pi f C. That form is capacitive reactance, for a capacitor, not inductive reactance. So for a coil, X sub L equals two pi f L, in ohms."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 2,
+      "template": "block-diagram",
+      "params": {
+        "title": "Current makes the magnetic field",
+        "columns": 2,
+        "blocks": [
+          { "id": "current", "label": "Current through a conductor", "note": "Double the current, double the field" },
+          { "id": "field", "label": "Magnetic field", "note": "Strength set by the amount of current" },
+          { "id": "voltage", "label": "Voltage with no current", "note": "Unconnected DC source or charged capacitor" },
+          { "id": "nofield", "label": "Magnetic field", "note": "Not produced without current" }
+        ],
+        "links": [
+          { "from": "current", "to": "field" },
+          { "from": "voltage", "to": "nofield", "struck": true }
+        ]
+      },
+      "onScreen": ["Current through a conductor makes a magnetic field", "Field strength set by the amount of current", "Voltage with no current: no magnetic field"],
+      "narration": "A current flowing through a conductor produces a magnetic field around it. The strength of that field is determined by the amount of current: double the current, and the field doubles. Voltage alone isn't enough. An unconnected DC, or direct current, source has voltage across its terminals, and so does a charged capacitor. But with no current flowing, neither of them produces a magnetic field. Remember it this way: current makes magnetism."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 2,
+      "template": "key-facts",
+      "params": {
+        "title": "Lenz's law and back EMF",
+        "items": [
+          "Lenz's law: induced currents produce expanding fields that oppose the original field",
+          "Back EMF: a voltage that opposes the applied EMF",
+          "It is induced by a coil's own changing magnetic field",
+          "Back EMF is a voltage, not a current",
+          "Both oppose the change that caused them"
+        ]
+      },
+      "onScreen": ["Lenz's law: induced fields oppose the original field", "Back EMF opposes the applied EMF", "Induced by the coil's own changing field", "A voltage, not a current"],
+      "narration": "These ideas share a theme: opposition. When induced currents produce expanding magnetic fields that oppose the original magnetic field, that's Lenz's law. A coil shows the same kind of opposition. Back EMF, or back electromotive force, is a voltage that opposes the applied EMF. It is induced by the coil's own changing magnetic field. Notice that back EMF is a voltage, not a current. Lenz's law and back EMF both oppose the change that caused them."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 2,
+      "template": "comparison-table",
+      "params": {
+        "title": "Reluctance and permeability",
+        "columns": ["Term", "What it is", "Remember"],
+        "rows": [
+          ["Reluctance", "Opposition to creating magnetic lines of force", "Magnetic counterpart of resistance"],
+          ["Permeability", "Flux density ÷ magnetizing force", "High in iron and ferrite"]
+        ]
+      },
+      "onScreen": ["Reluctance: opposition to creating magnetic lines of force", "The magnetic counterpart of resistance", "Permeability: flux density ÷ magnetizing force", "Iron and ferrite: high permeability"],
+      "narration": "Next, a pair of magnetic terms. In a magnetic circuit, reluctance is the opposition to the creation of magnetic lines of force. Think of it as the magnetic counterpart of resistance. Permeability is the ratio of the magnetic flux density in a substance to the magnetizing force that produces it. Iron and ferrite have high permeability."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 3,
+      "template": "key-facts",
+      "params": {
+        "title": "Corrosion in seawater",
+        "items": [
+          "Galvanic corrosion: current flow between dissimilar metals",
+          "Stray current corrosion: driven by an outside source instead",
+          "Zinc bar: sacrificial anode, more active than bronze, steel and copper",
+          "Stainless steel propeller shaft: may be least affected",
+          "Aluminum outdrive: corrodes readily"
+        ]
+      },
+      "onScreen": ["Galvanic corrosion: current between dissimilar metals", "Stray current corrosion: outside source", "Zinc bar: sacrificial anode", "Stainless steel propeller shaft: least affected", "Aluminum outdrive: corrodes readily"],
+      "narration": "Now materials, starting with corrosion. Corrosion resulting from electric current flow between dissimilar metals is called galvanic corrosion. Stray current corrosion is different: it's driven by an outside source instead. To protect a vessel, a zinc bar is usually employed as a sacrificial anode. Zinc is more active than the vessel's bronze, steel and copper fittings, so the zinc corrodes instead of them. Of common underwater fittings in seawater, a stainless steel propeller shaft may be least affected by galvanic corrosion, while an aluminum outdrive corrodes readily."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 3,
+      "template": "block-diagram",
+      "params": {
+        "title": "Skin effect",
+        "columns": 3,
+        "blocks": [
+          { "id": "low", "label": "Lower frequency", "note": "Current uses more of the conductor" },
+          { "id": "high", "label": "Frequency increases", "note": "RF current flows in a thin surface layer" },
+          { "id": "res", "label": "AC resistance rises", "note": "Less of the conductor carries current" }
+        ],
+        "links": [
+          { "from": "low", "to": "high" },
+          { "from": "high", "to": "res" }
+        ]
+      },
+      "onScreen": ["Lower frequency: current uses more of the conductor", "Higher frequency: RF current in a thin surface layer", "AC resistance rises"],
+      "narration": "Next, the skin effect. At lower frequencies, current uses more of the conductor. But as the frequency increases, RF, or radio frequency, current flows in a thinner and thinner layer of the conductor, closer to its surface. That phenomenon is called skin effect. With less of the conductor carrying the current, its AC resistance goes up."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 3,
+      "template": "comparison-table",
+      "params": {
+        "title": "Dielectrics and UHF insulators",
+        "columns": ["Material", "What to know"],
+        "rows": [
+          ["Air", "Relative dielectric constant 1, as in a vacuum"],
+          ["Mica", "Best UHF insulator: very low dielectric loss"],
+          ["Rubber", "Lossy at UHF"],
+          ["Wax impregnated paper", "Lossy at UHF"],
+          ["Lead", "A conductor, not an insulator"]
+        ]
+      },
+      "onScreen": ["Air: relative dielectric constant 1, same as a vacuum", "Mica: best UHF insulator, very low loss", "Rubber and wax impregnated paper: lossy", "Lead: a conductor, not an insulator"],
+      "narration": "Insulators matter too. The relative dielectric constant for air is 1, the same value defined for a vacuum. At UHF, ultra high frequency, mica is the most useful insulator, because its dielectric loss is very low. Rubber and wax impregnated paper become lossy at those frequencies. And lead doesn't belong on the list at all: it's a conductor, not an insulator."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 4,
+      "template": "formula",
+      "params": {
+        "title": "Combining inductors and capacitors",
+        "formula": "Series: L<sub>T</sub> = L<sub>1</sub> + L<sub>2</sub>",
+        "steps": [
+          "Series inductors add like series resistors",
+          "Reciprocal formula: inductors in parallel",
+          "Parallel: C<sub>T</sub> = C<sub>1</sub> + C<sub>2</sub> + C<sub>3</sub>",
+          "Sum of reciprocals: capacitors in series"
+        ],
+        "answer": "Series inductors and parallel capacitors add"
+      },
+      "onScreen": ["Series inductors: L sub T = L sub 1 + L sub 2", "Reciprocal formula is for parallel inductors", "Parallel capacitors: C sub T = C sub 1 + C sub 2 + C sub 3", "Sum of reciprocals is for series capacitors"],
+      "narration": "Now resistance, capacitance and inductance. The total inductance of inductors in series is L sub T equals L sub 1 plus L sub 2. Series inductors add just like series resistors. The reciprocal formula is for inductors in parallel. Capacitors work the other way around. The total capacitance of 3 capacitors in parallel is C sub T equals C sub 1 plus C sub 2 plus C sub 3. The sum-of-reciprocals formula is for capacitors in series. So series inductors and parallel capacitors simply add."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 4,
+      "template": "block-diagram",
+      "params": {
+        "title": "The bypass capacitor",
+        "columns": 2,
+        "blocks": [
+          { "id": "supply", "label": "Supply line", "note": "DC with unwanted AC riding on it" },
+          { "id": "circuit", "label": "Circuit", "note": "Receives the DC" },
+          { "id": "cap", "label": "Bypass capacitor", "note": "Low impedance path for AC; blocks DC" },
+          { "id": "ground", "label": "Ground", "note": "AC removed here" }
+        ],
+        "links": [
+          { "from": "supply", "to": "circuit", "label": "DC continues" },
+          { "from": "supply", "to": "cap", "label": "AC" },
+          { "from": "cap", "to": "ground", "label": "AC to ground" }
+        ]
+      },
+      "onScreen": ["Supply line: DC with unwanted AC", "DC continues to the circuit", "Bypass capacitor: low impedance path for AC, blocks DC", "AC removed to ground"],
+      "narration": "Here a supply line carries DC, with some unwanted AC riding on it, and the circuit needs only the DC. A bypass capacitor removes the alternating current by providing a low impedance path to ground. The AC takes that easy path and is gone. The capacitor blocks DC, so the DC continues along the line to the circuit."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 4,
+      "template": "key-facts",
+      "params": {
+        "title": "What makes a good conductor",
+        "items": [
+          "Many free electrons, loosely bound to their atoms",
+          "Best low-resistance conductors: gold, silver and copper",
+          "Higher resistance: stainless steel, bronze, lead, iron, nickel, zinc, manganese"
+        ]
+      },
+      "onScreen": ["Many loosely bound free electrons", "Best: gold, silver and copper", "Higher resistance: stainless steel, bronze, lead, iron, nickel, zinc, manganese"],
+      "narration": "Why do some metals conduct better than others? Good conductors, with minimum resistance, have many free electrons, loosely bound to their atoms and free to move. Gold, silver and copper are the best low-resistance conductors. Stainless steel, bronze, lead, iron, nickel, zinc and manganese all have higher resistance."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 4,
+      "template": "comparison-table",
+      "params": {
+        "title": "Changing an antenna coil's inductance",
+        "columns": ["Change to the coil", "Inductance"],
+        "rows": [
+          ["Reduce the number of turns", "Goes down"],
+          ["Add turns", "Goes up"],
+          ["Add core permeability", "Goes up"],
+          ["Compress the turns", "Goes up"]
+        ]
+      },
+      "onScreen": ["Fewer turns: less inductance", "More turns: more inductance", "More core permeability: more inductance", "Compressed turns: more inductance"],
+      "narration": "To reduce the inductance of an antenna coil, reduce the number of turns. That's the only change here that lowers it. Adding turns raises the inductance. So does adding core permeability, for example with an iron or ferrite core. And so does compressing the turns closer together. If the question asks how to reduce inductance, the answer is fewer turns."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 5,
+      "template": "key-facts",
+      "params": {
+        "title": "Junction diode ratings",
+        "items": [
+          "Most used specs: maximum forward current and PIV, peak inverse voltage",
+          "Junction temperature limits the maximum forward current",
+          "Exceed the junction temperature limit and the diode is destroyed"
+        ]
+      },
+      "onScreen": ["Specs: maximum forward current and PIV", "Junction temperature limits forward current", "Exceeding it destroys the diode"],
+      "narration": "On to semiconductors. The 2 most commonly used specifications for a junction diode are its maximum forward current and its PIV, peak inverse voltage. What limits the maximum forward current? The junction temperature. Push too much current through the diode and the junction gets too hot. Exceed that limit and the diode is destroyed."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 5,
+      "template": "block-diagram",
+      "params": {
+        "title": "Field-effect transistor families",
+        "columns": 3,
+        "blocks": [
+          { "id": "jfet", "label": "JFET", "note": "Junction field-effect transistor" },
+          { "id": "mosfet", "label": "MOSFET", "note": "Metal oxide semiconductor FET" },
+          { "id": "gaasfet", "label": "GaAsFET", "note": "A separate FET family" },
+          { "id": "n", "label": "N-channel", "note": "Basic JFET type" },
+          { "id": "p", "label": "P-channel", "note": "Basic JFET type" },
+          { "id": "zener", "label": "Zener diode in the gate", "note": "Protects the thin gate oxide" }
+        ],
+        "links": [
+          { "from": "jfet", "to": "n" },
+          { "from": "jfet", "to": "p" },
+          { "from": "mosfet", "to": "zener" }
+        ]
+      },
+      "onScreen": ["JFET, MOSFET and GaAsFET: separate FET families", "JFET types: N-channel and P-channel", "MOSFET: Zener diode in the gate protects the gate oxide"],
+      "narration": "FETs, or field-effect transistors, come in separate families: the JFET, or junction field-effect transistor, the MOSFET, or metal oxide semiconductor field-effect transistor, and the GaAsFET, a gallium arsenide FET. The 2 basic types of junction field-effect transistor are N-channel and P-channel. MOSFETs and GaAsFETs are separate FET families, not JFET types. MOSFETs are built with a Zener diode in their gate. It protects the thin gate oxide from static charges and excessive voltages."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 5,
+      "template": "comparison-table",
+      "params": {
+        "title": "FET versus bipolar, emitter versus collector",
+        "columns": ["Compare", "Result"],
+        "rows": [
+          ["FET", "High input impedance"],
+          ["Bipolar transistor", "Low input impedance: the base draws current"],
+          ["Common emitter amplifier", "More voltage gain"],
+          ["Common collector amplifier", "Voltage gain slightly below 1"]
+        ]
+      },
+      "onScreen": ["FET: high input impedance", "Bipolar: low input impedance, base draws current", "Common emitter: more voltage gain", "Common collector: gain slightly below 1"],
+      "narration": "A pair of comparisons the exam likes. Start with input impedance. An FET has high input impedance. A bipolar transistor has low input impedance, because its base draws current. Now voltage gain. A common emitter amplifier has more voltage gain than a common collector amplifier. The common collector's voltage gain is slightly below 1."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 6,
+      "template": "equipment-card",
+      "params": {
+        "title": "What an AC meter reads",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Shows the effective, or RMS, value of the AC current", "at": "display" },
+          { "label": "RMS = root mean square; there is no such measure as TRM", "at": "body" },
+          { "label": "Household outlet: 117 V AC RMS", "at": "probes" }
+        ]
+      },
+      "onScreen": ["AC ammeter: effective, or RMS, values", "RMS: root mean square, not TRM", "Household outlet: 117 V AC RMS"],
+      "narration": "Now electrical measurements. An AC ammeter indicates effective values of current, called RMS values. RMS stands for root mean square. Watch out for T R M: there's no such measure. An AC voltmeter reads RMS values too, and the RMS voltage at a common household electrical power outlet is 117 volts AC."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 6,
+      "template": "waveform",
+      "params": {
+        "title": "Household AC: RMS, peak and peak-to-peak",
+        "kind": "sine",
+        "cycles": 2,
+        "labels": ["RMS: 117 V", "Peak: 165.5 V, that is 117 × √2", "Peak-to-peak: 331 V, from top to bottom"],
+        "yAxis": "voltage",
+        "xAxis": "time"
+      },
+      "onScreen": ["RMS: 117 volts", "Peak: 165.5 volts (117 × √2)", "Peak-to-peak: 331 volts"],
+      "narration": "Here's a sine wave we'll keep coming back to: the household outlet. Its RMS voltage is 117 volts. The peak voltage, at the top of the wave, is higher: 117 times the square root of 2, or 165.5 volts. Measured from the positive peak all the way down to the negative peak, the peak-to-peak voltage is 331 volts. Don't confuse them: 165.5 volts is the peak, and 331 volts is peak-to-peak."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 6,
+      "template": "formula",
+      "params": {
+        "title": "From meter reading to peak and average",
+        "formula": "Peak = RMS reading × 1.414",
+        "steps": [
+          "117 V × √2 ≈ 165.5 V peak",
+          "Peak × 0.707 = RMS: the opposite direction",
+          "Average = RMS reading × 0.9"
+        ],
+        "answer": "× 1.414 for peak, × 0.9 for average"
+      },
+      "onScreen": ["Peak = RMS reading × 1.414", "117 V × √2 ≈ 165.5 V", "Peak × 0.707 = RMS", "Average = RMS reading × 0.9"],
+      "narration": "To get the peak voltage from an AC voltmeter reading, multiply the reading by 1.414. For the household outlet, 117 volts times the square root of 2, which is about 1.414, gives 165.5 volts peak. Multiplying by 0.707 does the opposite: it takes you from peak back to RMS. And to obtain the average voltage, multiply the voltmeter reading by 0.9. So remember: 1.414 for peak, 0.9 for average."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 6,
+      "template": "equipment-card",
+      "params": {
+        "title": "Reading a sine wave on an oscilloscope",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "A pure sine wave on the graticule, the grid on the screen", "at": "trace" },
+          { "label": "Peak-to-peak: easiest to measure, read straight off the graticule", "at": "screen" }
+        ]
+      },
+      "onScreen": ["Pure sine wave on the graticule", "Peak-to-peak: easiest amplitude to measure"],
+      "narration": "Now put a pure sine wave on an oscilloscope. Which voltage amplitude is easiest to measure? Peak-to-peak. You read it straight off the graticule, the measuring grid on the screen, from the top of the wave to the bottom. No other amplitude is as easy to read directly on the screen."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 7,
+      "template": "waveform",
+      "params": {
+        "title": "Where the sine wave comes from",
+        "kind": "sine",
+        "cycles": 1,
+        "labels": [
+          "Amplitude: projection of a point on a wheel turning at uniform speed",
+          "1 complete cycle: 360°",
+          "Each half cycle: 180°"
+        ],
+        "yAxis": "amplitude",
+        "xAxis": "rotation of the wheel"
+      },
+      "onScreen": ["Point on a wheel rotating at uniform speed", "1 complete cycle: 360 degrees", "Each half cycle: 180 degrees"],
+      "narration": "On to waveforms. Where does the sine wave's shape come from? Picture a point on a wheel rotating at a uniform speed. A sine wave's amplitude at any given instant can be represented by the projection of that point. A full turn of the wheel traces 1 complete cycle, and there are 360 degrees in 1 complete sine wave cycle. Each half cycle spans 180 degrees."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 7,
+      "template": "waveform",
+      "params": {
+        "title": "The square wave",
+        "kind": "square",
+        "cycles": 3,
+        "labels": [
+          "Changes abruptly between 2 voltage levels",
+          "Stays at each level for equal amounts of time",
+          "Made of the fundamental plus all the odd harmonics"
+        ],
+        "yAxis": "voltage",
+        "xAxis": "time"
+      },
+      "onScreen": ["Abrupt changes between 2 voltage levels", "Equal time at each level", "Fundamental plus all odd harmonics"],
+      "narration": "A square wave abruptly changes back and forth between 2 voltage levels, and it stays at these levels for equal amounts of time. What is it made of? Sine waves: the fundamental frequency and all the odd harmonics. Add odd harmonics to the fundamental, and the edges sharpen toward a square."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 7,
+      "template": "comparison-table",
+      "params": {
+        "title": "Square wave versus sawtooth wave",
+        "columns": ["Feature", "Square wave", "Sawtooth wave"],
+        "rows": [
+          ["Made of", "Fundamental + all odd harmonics", "Fundamental + all harmonics, even and odd"],
+          ["Shape", "2 levels, equal time at each", "A slow ramp and a fast edge"],
+          ["Rise and fall", "Equally fast", "Rise much faster than fall, or vice versa"]
+        ]
+      },
+      "onScreen": ["Square wave: fundamental plus odd harmonics", "Sawtooth wave: fundamental plus all harmonics, even and odd", "Square: rises and falls equally fast", "Sawtooth: rise much faster than fall, or vice versa"],
+      "narration": "Now compare the square wave with the sawtooth wave. A sawtooth wave is made up of sine waves at the fundamental frequency and all the harmonics, even and odd. The square wave uses only the odd ones. A square wave sits at 2 levels for equal times. A sawtooth wave is characterized by a rise time significantly faster than its fall time, or the other way around. A square wave rises and falls equally fast."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 8,
+      "template": "waveform",
+      "params": {
+        "title": "RMS: the effective value",
+        "kind": "sine",
+        "cycles": 2,
+        "labels": ["RMS: 117 V AC", "Same heating in a resistor as 117 V DC", "Peak 165.5 V, peak-to-peak 331 V"],
+        "yAxis": "voltage",
+        "xAxis": "time"
+      },
+      "onScreen": ["RMS: 117 volts AC", "Same heating in a resistor as 117 volts DC", "Peak 165.5 volts, peak-to-peak 331 volts"],
+      "narration": "Now conduction, and back to our sine wave. Why is RMS called the effective value? Root mean square is the AC voltage that causes the same heating in a resistor as a corresponding value of DC voltage. So 117 volts RMS heats a resistor just as much as 117 volts DC, even though the wave's peak reaches 165.5 volts and its peak-to-peak is 331 volts. That equal heating is why RMS is also called the effective value."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 8,
+      "template": "formula",
+      "params": {
+        "title": "True power",
+        "formula": "True power = apparent power × power factor",
+        "steps": [
+          "RMS voltage × RMS current = apparent power only",
+          "True power is the power actually dissipated",
+          "Reactive power swaps between fields, not dissipated"
+        ],
+        "answer": "Out of phase: apparent power × power factor"
+      },
+      "onScreen": ["True power = apparent power × power factor", "RMS voltage × RMS current: apparent power only", "True power: the power dissipated", "Reactive power alternates between fields, not dissipated"],
+      "narration": "When AC voltage and current are out of phase, how much power is really dissipated? To find the true power, multiply the apparent power by the power factor. Multiplying RMS voltage by RMS current alone gives only the apparent power. True power is the power actually dissipated. Where does the rest go? In a circuit with both inductors and capacitors, the reactive power alternates between the magnetic and electric fields. It is not dissipated."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 8,
+      "template": "key-facts",
+      "params": {
+        "title": "Conductivity and cross-sectional area",
+        "items": [
+          "Descending conductivity: silver, copper, aluminum, iron, lead",
+          "Resistance is inversely proportional to cross-sectional area",
+          "Halve the cross-sectional area and the resistance doubles"
+        ]
+      },
+      "onScreen": ["Descending conductivity: silver, copper, aluminum, iron, lead", "Resistance inversely proportional to area", "Half the area: double the resistance"],
+      "narration": "Common materials in order of descending conductivity are silver, copper, aluminum, iron and lead. Silver conducts best, and lead is the poorest of these. The size of the conductor matters too. Resistance is inversely proportional to cross-sectional area. So halving the cross-sectional area of a conductor doubles its resistance."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 8,
+      "template": "block-diagram",
+      "params": {
+        "title": "Maximum power transfer",
+        "columns": 3,
+        "blocks": [
+          { "id": "source", "label": "Source", "note": "Fixed internal resistance" },
+          { "id": "load", "label": "Load", "note": "Impedance = source's internal impedance" },
+          { "id": "max", "label": "Maximum power transferred", "note": "Delivered to the load" }
+        ],
+        "links": [
+          { "from": "source", "to": "load" },
+          { "from": "load", "to": "max" }
+        ]
+      },
+      "onScreen": ["Source with fixed internal resistance", "Load impedance equals the source's internal impedance", "Maximum power transferred"],
+      "narration": "Last, getting the most power out of a source. Every source has some internal resistance. With that internal resistance fixed, maximum power is transferred to the load when the load impedance equals the internal impedance of the source. Match the load to the source, and the load gets the most power."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [1] },
+    { "after": "s7", "keyTopics": [2] },
+    { "after": "s10", "keyTopics": [3] },
+    { "after": "s14", "keyTopics": [4] },
+    { "after": "s17", "keyTopics": [5] },
+    { "after": "s21", "keyTopics": [6] },
+    { "after": "s24", "keyTopics": [7] },
+    { "after": "s28", "keyTopics": [8] }
+  ],
+  "video": null
+}

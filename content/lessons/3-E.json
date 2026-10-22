@@ -1,0 +1,491 @@
+{
+  "id": "3-E",
+  "element": 3,
+  "title": "Digital Logic",
+  "keyTopics": [33, 34, 35, 36, 37, 38, 39, 40],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 33,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement E",
+        "title": "Digital Logic",
+        "subtitle": "TTL logic levels, gates and the pool figures, flip-flops, multivibrators, memory, microprocessors, counters and converters."
+      },
+      "onScreen": ["Digital Logic", "TTL levels, gates, pool figures, flip-flops, multivibrators, memory, microprocessors, counters and converters"],
+      "narration": "This lesson covers digital logic, the way the Element 3 exam tests it. We'll start with TTL, which stands for transistor-transistor logic, and its voltage levels. Then come the logic gates and the 3 gate figures from the question pool, which we'll walk through slowly, gate by gate. After that: flip-flops, multivibrators, memory, microprocessors, and finally counters, dividers and converters."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 33,
+      "template": "key-facts",
+      "params": {
+        "title": "TTL: transistor-transistor logic",
+        "items": [
+          "Bipolar transistors do both the gating and the output amplification",
+          "Common power supply voltage for TTL integrated circuits: 5 volts",
+          "12 volts or 13.6 volts would destroy them"
+        ]
+      },
+      "onScreen": ["Transistor-transistor logic: bipolar transistors gate and amplify", "TTL supply: 5 volts", "12 or 13.6 volts would destroy TTL"],
+      "narration": "TTL stands for transistor-transistor logic. It gets that name because bipolar transistors do both jobs inside the chip: the gating and the output amplification. The common power supply voltage for TTL series integrated circuits is 5 volts. Watch out for 12 volts or 13.6 volts on the exam. Either one would destroy a TTL chip."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 33,
+      "template": "comparison-table",
+      "params": {
+        "title": "TTL input levels on a 5 volt supply",
+        "columns": ["Input voltage", "Logic state"],
+        "rows": [
+          ["0 to 0.8 volts", "Valid low"],
+          ["0.8 to 2.0 volts", "Undefined"],
+          ["2.0 to 5.5 volts", "Valid high"],
+          ["Open, unconnected input", "High: no current flows out of it"]
+        ]
+      },
+      "onScreen": ["0 to 0.8 volts: valid low", "0.8 to 2.0 volts: undefined", "2.0 to 5.5 volts: valid high", "Open input: high"],
+      "narration": "Here are the input levels for a TTL device operating at 5 volts. A valid logic low input is 0 to 0.8 volts. From 0.8 to 2.0 volts is an undefined zone: a voltage there is neither a valid low nor a valid high. A valid logic high input is 2.0 to 5.5 volts. And what about an input left open, connected to nothing? TTL inputs left open develop a high logic state, because no current flows out of the unconnected input. An open input is not ignored, and it does not go random. It acts as a high."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 33,
+      "template": "key-facts",
+      "params": {
+        "title": "Checking a TTL logic circuit",
+        "items": [
+          "Logic probe: the best instrument, showing high, low or pulsing activity directly",
+          "VOM (volt-ohm-milliammeter) or DMM (digital multimeter): only an average voltage",
+          "Continuity tester: shows nothing about logic states"
+        ]
+      },
+      "onScreen": ["Logic probe: best, shows high, low or pulsing", "VOM or DMM: only an average voltage", "Continuity tester: nothing about logic states"],
+      "narration": "What's the best instrument for checking a TTL logic circuit? A logic probe. Touch it to a test point and it directly shows whether that point is high, low, or pulsing with activity. A VOM, or volt-ohm-milliammeter, and a DMM, or digital multimeter, show only an average voltage, so they can't tell you the logic state of a busy line. And a continuity tester shows nothing about logic states at all."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 34,
+      "template": "comparison-table",
+      "params": {
+        "title": "The basic gates: AND, OR and NOT",
+        "columns": ["Gate", "Output is 1 when…", "Output is 0 when…"],
+        "rows": [
+          ["AND", "All inputs are 1", "Any input is 0"],
+          ["OR", "Any input is 1", "Every input is 0"],
+          ["NOT (inverter)", "The input is 0", "The input is 1"]
+        ]
+      },
+      "onScreen": ["AND: 1 only if all inputs are 1", "OR: 1 if any input is 1", "NOT: output is the opposite of the input"],
+      "narration": "Now the logic gates. An AND gate produces a logic 1 at its output only if all of its inputs are logic 1. A 0 at any input forces the output to 0. An OR gate produces a logic 1 at its output if any input is logic 1. It gives a 0 only when every input is 0. And a NOT gate, also called an inverter, simply flips the signal: it produces a logic 0 at its output when the input is logic 1, and a logic 1 when the input is logic 0."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 34,
+      "template": "key-facts",
+      "params": {
+        "title": "NAND and NOR: a gate plus an inverter",
+        "items": [
+          "The small bubble on a gate symbol means the output is inverted",
+          "NAND = AND followed by an inverter: output 0 only when all inputs are 1",
+          "NOR = OR followed by an inverter: output 0 if any or all inputs are 1",
+          "So a NOR output is 1 only when every input is 0"
+        ]
+      },
+      "onScreen": ["Bubble = inverted output", "NAND: 0 only when all inputs are 1", "NOR: 0 if any or all inputs are 1", "NOR: 1 only when every input is 0"],
+      "narration": "Put an inverter after a gate and you get its opposite. On a gate symbol, that inverter is drawn as a small bubble at the output. A NAND gate is an AND gate followed by an inverter, so it produces a logic 0 at its output only when all inputs are logic 1. Any other combination gives a 1. A NOR gate is an OR gate followed by an inverter. It produces a logic 0 at its output if any or all inputs are logic 1, so its output is 1 only when every input is 0."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 34,
+      "template": "comparison-table",
+      "params": {
+        "title": "Both inputs high: which gate gives a high?",
+        "columns": ["Gate", "Both inputs high (1, 1)"],
+        "rows": [
+          ["AND", "1: an active high out"],
+          ["NAND", "0: low"],
+          ["NOR", "0: low"],
+          ["XOR (exclusive OR)", "0: low, because its inputs are equal"]
+        ]
+      },
+      "onScreen": ["AND: 1, an active high out", "NAND: 0", "NOR: 0", "XOR: 0, inputs are equal"],
+      "narration": "Here's a favorite exam question: which gate gives an active high out when both inputs are active high? Put a 1 on both inputs of each gate. The AND gate outputs a 1, an active high. The NAND gate outputs a 0, because all its inputs are 1. The NOR gate outputs a 0, because at least 1 input is high. And the XOR, or exclusive OR, gate also outputs a 0. Its output is high only when its inputs differ, and here they're equal. So the answer is the AND gate."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 35,
+      "template": "key-facts",
+      "params": {
+        "title": "Logic levels and truth tables",
+        "items": [
+          "Positive logic: high level = logic 1, low level = logic 0",
+          "Negative logic: reversed, high level = logic 0, low level = logic 1",
+          "Truth table: every input combination with its corresponding output",
+          "It characterizes a digital device's function; nothing to do with op-amps"
+        ]
+      },
+      "onScreen": ["Positive logic: high = 1, low = 0", "Negative logic: high = 0, low = 1", "Truth table: every input combination and its output", "Not related to op-amps"],
+      "narration": "Which voltage level means 1? That depends on the convention. In a positive-logic circuit, the high level represents logic 1 and the low level represents logic 0. In a negative-logic circuit, the convention is reversed: the high level represents logic 0 and the low level represents logic 1. To describe what a digital device does, we use a truth table: a list of every input combination and its corresponding output. A truth table characterizes a digital device's function. It has nothing to do with op-amps, or operational amplifiers. The 3 pool figures coming up all assume positive logic, so high means 1."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 35,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3E12: find test points A, B and C",
+        "figure": "3E12",
+        "callouts": [
+          { "label": "Positive logic: H is high (1), L is low (0)" },
+          { "label": "Top AND gets the inverted H, a low, so test point A is low" },
+          { "label": "Bottom AND gets the inverted L (now high) with H, so test point B is high" },
+          { "label": "OR gate: input B is high, so test point C is high" },
+          { "label": "Answer: A is low, B is high and C is high" }
+        ]
+      },
+      "onScreen": ["Figure 3E12, positive logic", "Top AND gets inverted H: A is low", "Bottom AND gets inverted L and H: B is high", "OR gate: C is high", "A low, B high, C high"],
+      "narration": "Let's walk through Figure 3E12, slowly. Assume positive logic: H is a high, or 1, and L is a low, or 0. Start at the top. H passes through an inverter, so the AND gate feeding test point A gets a low. With a 0 at any input, an AND gate outputs 0, so point A is low. Now the bottom. L passes through its inverter and is now high, and it reaches the AND gate together with H. Both inputs are high, so test point B is high. Finally, the OR gate. Its inputs are A, which is low, and B, which is high. An OR gate needs only 1 high input, so test point C is high. The answer: A is low, B is high and C is high."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 35,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3E13: find test points A, B and C",
+        "figure": "3E13",
+        "callouts": [
+          { "label": "NAND making A sees L and H, so test point A is high" },
+          { "label": "Top NAND sees L and point A, so test point B is high" },
+          { "label": "Lower NAND sees point A and H, both high, so it outputs low" },
+          { "label": "Output NAND gets that low, so test point C is high" },
+          { "label": "Answer: all 3 test points are high" }
+        ]
+      },
+      "onScreen": ["NAND sees L and H: A is high", "Top NAND sees L and A: B is high", "Lower NAND sees A and H: low", "Output NAND: C is high", "All 3 test points high"],
+      "narration": "Figure 3E13 uses only NAND gates, again with positive logic. Remember: a NAND outputs 0 only when all its inputs are 1, so any low input makes its output high. The NAND gate making test point A sees L and H. It has a low input, so point A is high. The top NAND sees L and point A. Again there's a low input, so test point B is high. The lower NAND sees point A and H, and both are high, so its output is low. The output NAND gets B, which is high, and that low from the lower gate. With a low input, it makes test point C high. So all 3 test points are high."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 35,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3E14: an open input",
+        "figure": "3E14",
+        "callouts": [
+          { "label": "The open XOR input floats high in TTL" },
+          { "label": "XOR sees H and a high: both inputs equal, so test point A is low" },
+          { "label": "Inverter turns H into a low; lower NAND sees 2 lows, so B is high" },
+          { "label": "Output NAND has point A low, so test point C is high" },
+          { "label": "Answer: A is low, B is high and C is high" }
+        ]
+      },
+      "onScreen": ["Open XOR input floats high", "XOR inputs equal: A is low", "Lower NAND sees 2 lows: B is high", "Output NAND: C is high", "A low, B high, C high"],
+      "narration": "Figure 3E14, with positive logic devices, has a trap: an XOR input marked open. Remember, an open TTL input floats high. So the XOR gate sees H and a high. Both inputs are high and equal, so test point A is low. Down below, the inverter turns H into a low. The lower NAND gate sees L and that low, 2 lows, so test point B is high. Finally, the output NAND gets point A, which is low. A low input makes a NAND output high, so test point C is high. The answer: A is low, B is high and C is high."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 36,
+      "template": "key-facts",
+      "params": {
+        "title": "Flip-flops: 2 stable states",
+        "items": [
+          "A binary sequential logic element with 2 stable states: set and reset, 1 and 0",
+          "Holds its state until an input pulse switches it",
+          "A single flip-flop stores 1 bit of information",
+          "An 8 bit storage register needs 8 R-S flip-flops, 1 per bit position"
+        ]
+      },
+      "onScreen": ["2 stable states: set and reset, 1 and 0", "Holds its state until a pulse switches it", "1 flip-flop stores 1 bit", "8 bit register: 8 R-S flip-flops"],
+      "narration": "A flip-flop is a binary sequential logic element with 2 stable states: set and reset, or 1 and 0. It holds whichever state it's in until an input pulse switches it. Because it holds 1 of 2 states, a single flip-flop circuit stores 1 bit of information. So to build an 8 bit storage register, you need 8 R-S, or reset-set, flip-flops, 1 for each bit position."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 36,
+      "template": "block-diagram",
+      "params": {
+        "title": "Cascaded flip-flops divide the frequency",
+        "columns": 4,
+        "blocks": [
+          { "id": "in", "label": "Input pulses", "note": "The input frequency" },
+          { "id": "ff1", "label": "Flip-flop 1", "note": "Toggles: divides by 2" },
+          { "id": "ff2", "label": "Flip-flop 2", "note": "Divides by 2 again" },
+          { "id": "out", "label": "Output", "note": "Input frequency ÷ 4" }
+        ],
+        "links": [
+          { "from": "in", "to": "ff1" },
+          { "from": "ff1", "to": "ff2", "label": "÷ 2" },
+          { "from": "ff2", "to": "out", "label": "÷ 4" }
+        ]
+      },
+      "onScreen": ["Input pulses", "Flip-flop 1 divides by 2", "Flip-flop 2 divides by 2 again", "Output: input frequency ÷ 4"],
+      "narration": "Flip-flops also divide frequency. Feed a pulse train into a toggling flip-flop, and its output changes state once for each input cycle. It comes out as a square wave at half the input frequency. Each toggling flip-flop divides its input frequency by 2. Now cascade another flip-flop after the first. It divides by 2 again, so its output is at a quarter of the input frequency: the input divided by 4."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 36,
+      "template": "formula",
+      "params": {
+        "title": "How many flip-flops to divide by 4?",
+        "formula": "Division = 2<sup>n</sup>",
+        "steps": ["n = number of flip-flops in cascade", "Divide by 4: 2<sup>n</sup> = 4", "2<sup>2</sup> = 2 × 2 = 4"],
+        "answer": "n = 2 flip-flops divide by 4"
+      },
+      "onScreen": ["Division = 2 to the power of n", "n = flip-flops in cascade", "2 to the power of 2 = 2 × 2 = 4", "2 flip-flops divide by 4"],
+      "narration": "So how many flip-flops does it take to divide a signal frequency by 4? With n flip-flops in cascade, the frequency is divided by 2 to the power of n. We need 2 to the power of n to equal 4. 2 to the power of 2 is 2 times 2, which is 4. So 2 flip-flops are required to divide a signal frequency by 4."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 36,
+      "template": "comparison-table",
+      "params": {
+        "title": "What an R-S flip-flop can and cannot do",
+        "columns": ["Operation", "R-S flip-flop"],
+        "rows": [
+          ["Accept data into R-S inputs with CLK initiated", "Yes"],
+          ["Accept data into PRE and CLR inputs without CLK", "Yes"],
+          ["Refuse synchronous data during async input", "Yes"],
+          ["Toggle with R-S held constant and CLK initiated", "No: toggling is a J-K or T job"]
+        ]
+      },
+      "onScreen": ["Yes: data into R-S inputs with CLK", "Yes: data into PRE and CLR without CLK", "Yes: refuse synchronous data during asynchronous input", "No: toggle mode with R-S held constant"],
+      "narration": "Now a tricky exam question about the R-S flip-flop. It can accept data into its R-S inputs with CLK, the clock, initiated. It can accept data into its PRE, or preset, and CLR, or clear, inputs without the clock. And it can refuse synchronous data while asynchronous data is being input at the same time. What it cannot do is operate in toggle mode with its R-S inputs held constant and the clock initiated. With R and S fixed, clock pulses just keep setting or resetting it. Toggling is a job for a J-K flip-flop or a T, or toggle, flip-flop."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 37,
+      "template": "comparison-table",
+      "params": {
+        "title": "3 kinds of multivibrator",
+        "columns": ["Type", "Stable states", "Behavior"],
+        "rows": [
+          ["Astable (free-running)", "None: 2 unstable states", "Switches back and forth, no trigger input"],
+          ["Monostable (one-shot)", "1", "Flips when triggered, returns after a set time"],
+          ["Bistable", "2", "Holds 1 or 0 until triggered: a flip-flop"]
+        ]
+      },
+      "onScreen": ["Astable: 2 unstable states, free-running", "Monostable: 1 stable state, one-shot", "Bistable: 2 stable states, a flip-flop"],
+      "narration": "Multivibrators come in 3 kinds, named for how many stable states they have. An astable multivibrator alternates between 2 unstable states. It switches back and forth on its own, with no trigger input, so it's free-running. A monostable, or one-shot, multivibrator has 1 stable state. It can be switched momentarily to the opposite binary state, and then, after a set time fixed by an RC, or resistor-capacitor, network, it returns to its original state. A bistable multivibrator has 2 stable states and holds a 1 or a 0 until it's triggered. Its common name is the flip-flop."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 37,
+      "template": "key-facts",
+      "params": {
+        "title": "The bistable multivibrator is a flip-flop",
+        "items": [
+          "Bistable multivibrator = flip-flop: 2 stable states, holds a 1 or 0",
+          "A clock is astable, and AND or OR gates have no memory: none is bistable",
+          "A bistable changes state once per input cycle, dividing an AC frequency by 2",
+          "An astable multivibrator generates its own signal instead"
+        ]
+      },
+      "onScreen": ["Bistable multivibrator = flip-flop", "Clock, AND and OR gates: not bistable", "Bistable divides an AC frequency by 2", "Astable generates its own signal"],
+      "narration": "Remember this one: a bistable multivibrator circuit is a flip-flop, and flip-flop is its common name. Watch for the wrong choices. A clock is an astable circuit, and AND or OR gates have no memory, so none of them is a bistable multivibrator. Because a bistable changes state once per input cycle, it divides by 2. That's how the frequency of an AC, or alternating current, signal can be divided electronically: with a bistable multivibrator. An astable, free-running multivibrator isn't the answer there. It generates its own signal instead."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 37,
+      "template": "waveform",
+      "params": {
+        "title": "Astable output: a square wave",
+        "kind": "square",
+        "cycles": 4,
+        "xAxis": "time",
+        "yAxis": "collector voltage",
+        "labels": [
+          "Collector outputs of the common-emitter stage: square waves",
+          "Each transistor snaps between fully on and fully off",
+          "No trigger input: it keeps switching on its own"
+        ]
+      },
+      "onScreen": ["Square waves at the collectors", "Transistors snap fully on and fully off", "Free-running: no trigger"],
+      "narration": "What does an astable multivibrator's output look like? The voltage outputs at the collectors of its common-emitter stage are square waves. That's because each transistor snaps between fully on and fully off, so the voltage jumps straight from low to high and back again. And since there's no trigger input, it keeps doing this on its own, which is why a clock is an astable circuit."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 38,
+      "template": "comparison-table",
+      "params": {
+        "title": "Semiconductor memory: RAM, ROM and DRAM",
+        "columns": ["Memory IC", "What to know"],
+        "rows": [
+          ["RAM (random-access memory)", "Read and write, any address in any order"],
+          ["ROM (read-only memory)", "Fixed data pattern: read, but not changed"],
+          ["DRAM (dynamic RAM)", "Must be refreshed periodically: charge leaks"]
+        ]
+      },
+      "onScreen": ["RAM: read and write, random access", "ROM: fixed data, read only", "DRAM: must be refreshed"],
+      "narration": "Now memory. RAM, or random-access memory, is the semiconductor memory IC, or integrated circuit, whose digital data can be written or read, and whose memory word address can be accessed randomly, in any order. ROM, or read-only memory, has a fixed pattern of digital data stored in its memory matrix. You can read it, but you can't change it. DRAM, or dynamic random-access memory, must be refreshed periodically to keep reliable data. That's because each bit is stored as a charge on a tiny capacitor, and that charge leaks away."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 38,
+      "template": "formula",
+      "params": {
+        "title": "How many memory cells?",
+        "formula": "cells = 2<sup>address pins</sup> × data pins",
+        "steps": ["4 address pins: 2<sup>4</sup> = 16 locations", "4 data pins: 4 bits in each location", "cells = 16 × 4"],
+        "answer": "64 memory cells"
+      },
+      "onScreen": ["cells = 2 to the power of the address pins × data pins", "4 address pins: 16 locations", "4 data pins: 4 bits each", "16 × 4 = 64 memory cells"],
+      "narration": "Here's a formula the exam uses. The number of memory cells equals 2 raised to the number of address pins, times the number of data pins. Take a memory IC with 4 address pins and 4 data bus input-output pins. 4 address pins give 2 to the power of 4, which is 16 locations. Each location holds 4 bits, 1 for each data pin. So the cells are 16 times 4, which is 64 memory cells."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 38,
+      "template": "key-facts",
+      "params": {
+        "title": "Microprocessor terms: I/O and program",
+        "items": [
+          "I/O means input-output",
+          "I/O ports and circuits move data between the microprocessor and external devices",
+          "Program: a microprocessor's sequence of commands and instructions"
+        ]
+      },
+      "onScreen": ["I/O: input-output", "Moves data between the microprocessor and external devices", "Program: the sequence of commands and instructions"],
+      "narration": "A couple more terms. Within a microprocessor system, I-O, usually written I slash O, means input-output. Those are the ports and circuits that move data between the microprocessor and external devices. And the name for a microprocessor's sequence of commands and instructions is a program. The microprocessor works through that program step by step."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 39,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside a microprocessor system",
+        "columns": 3,
+        "blocks": [
+          { "id": "clock", "label": "Clock", "note": "The pulse generator" },
+          { "id": "cpu", "label": "Microprocessor", "note": "ALU: arithmetic and logic" },
+          { "id": "wd", "label": "Watchdog timer", "note": "Checks the program is running" },
+          { "id": "ram", "label": "RAM", "note": "Memory: read and write" },
+          { "id": "bus", "label": "Data bus line", "note": "Links processor, memory and I/O" },
+          { "id": "rom", "label": "ROM", "note": "Memory: fixed data" },
+          { "id": "io", "label": "I/O", "note": "Input-output system" },
+          { "id": "ext", "label": "External devices" }
+        ],
+        "links": [
+          { "from": "clock", "to": "cpu" },
+          { "from": "wd", "to": "cpu" },
+          { "from": "cpu", "to": "bus" },
+          { "from": "bus", "to": "ram" },
+          { "from": "bus", "to": "rom" },
+          { "from": "bus", "to": "io" },
+          { "from": "io", "to": "ext" }
+        ]
+      },
+      "onScreen": ["Clock: the pulse generator", "Microprocessor with its ALU", "Watchdog timer", "RAM and ROM memory", "Data bus line links processor, memory and I/O", "I/O to external devices"],
+      "narration": "Here's a microprocessor system. The clock is the pulse generator of a microprocessor circuit: its pulses step the processor through each instruction. Inside the microprocessor is the ALU, the arithmetical logic unit, the part that performs arithmetic and logic operations. Beside the processor sits a watchdog timer, more on that in a moment. Then comes the memory, starting with RAM. The data bus line is the circuit that interconnects the microprocessor with the memory, RAM and ROM, and with the input-output system, the I-O ports that reach external devices."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 39,
+      "template": "key-facts",
+      "params": {
+        "title": "Watchdog timer and clock",
+        "items": [
+          "Watchdog timer: verifies the microprocessor is executing the program",
+          "If the program stops resetting it, it times out and resets the processor",
+          "Clock: the pulse generator of a microprocessor circuit",
+          "Not the pulse generator: RAM and ROM are memory; a PLL is a frequency-control loop"
+        ]
+      },
+      "onScreen": ["Watchdog timer verifies the program is executing", "Times out and resets the processor", "Clock: the pulse generator", "RAM and ROM: memory; PLL: frequency control"],
+      "narration": "In a microprocessor-controlled two-way radio, the watchdog timer verifies that the microprocessor is executing the program. While the program runs normally, it keeps resetting the watchdog. If the program stops resetting it, the watchdog times out and resets the processor. And remember which part is the pulse generator: it's the clock. RAM and ROM are memory, and a PLL, or phase-locked loop, is a frequency-control loop."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 39,
+      "template": "comparison-table",
+      "params": {
+        "title": "ALU, DAC and MCU",
+        "columns": ["Term", "Stands for", "What to know"],
+        "rows": [
+          ["ALU", "Arithmetical logic unit", "Performs arithmetic and logic operations"],
+          ["DAC", "Digital to analog converter", "Binary values → proportional voltage or current"],
+          ["MCU", "Microcontroller unit", "Contains RAM, ROM and I/O"],
+          ["Voltage regulator", "Not part of the MCU", "A separate external component"]
+        ]
+      },
+      "onScreen": ["ALU: arithmetical logic unit", "DAC: digital to analog converter", "MCU: contains RAM, ROM and I/O", "Voltage regulator: separate, outside the MCU"],
+      "narration": "3 abbreviations to know. In a microprocessor, ALU means arithmetical logic unit, the part that does the arithmetic and logic. In a microprocessor circuit, DAC means digital to analog converter: it turns binary values into a proportional voltage or current. And an MCU, or microcontroller unit, contains RAM, ROM and I-O. But the voltage regulator is not part of the MCU processor. It's a separate external component."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 40,
+      "template": "block-diagram",
+      "params": {
+        "title": "Prescalers and decade counters",
+        "columns": 3,
+        "blocks": [
+          { "id": "hf", "label": "HF signal", "note": "High frequency" },
+          { "id": "pre", "label": "Prescaler", "note": "Divides: it does not multiply" },
+          { "id": "cnt", "label": "Low-frequency counter", "note": "Displays the operating frequency" },
+          { "id": "in", "label": "10 input pulses" },
+          { "id": "dec", "label": "Decade counter IC", "note": "A divide-by-10 function" },
+          { "id": "out", "label": "1 output pulse", "note": "Display decoding is a separate job" }
+        ],
+        "links": [
+          { "from": "hf", "to": "pre" },
+          { "from": "pre", "to": "cnt" },
+          { "from": "in", "to": "dec" },
+          { "from": "dec", "to": "out" }
+        ]
+      },
+      "onScreen": ["HF signal into a prescaler", "Prescaler divides, does not multiply", "Low-frequency counter displays the frequency", "Decade counter: 1 output pulse per 10 input pulses"],
+      "narration": "On to counters and dividers. A prescaler divides an HF, or high frequency, signal so that a low-frequency counter can display the operating frequency. It divides; it does not multiply. Below, a decade counter digital IC produces 1 output pulse for every 10 input pulses: a divide-by-10 function. Decoding a number for a seven-segment display is not its job. That's done by a separate decoder."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 40,
+      "template": "comparison-table",
+      "params": {
+        "title": "Converters: ADC and DAC",
+        "columns": ["Device", "Input", "Output"],
+        "rows": [
+          ["ADC (analog-to-digital converter)", "Analog signal", "Digital signal"],
+          ["DAC (digital-to-analog converter)", "Digital signal", "Analog signal"]
+        ]
+      },
+      "onScreen": ["ADC: analog in, digital out", "DAC: digital in, analog out"],
+      "narration": "Converters work in both directions. An ADC, or analog-to-digital converter, is the integrated circuit device that converts an analog signal to a digital signal. A DAC, a digital-to-analog converter, is the integrated circuit device that converts digital signals to analog signals, the reverse of an ADC. Keep them straight by reading the letters in order: an ADC goes from analog to digital, and a DAC goes from digital to analog."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 40,
+      "template": "key-facts",
+      "params": {
+        "title": "BCD: binary coded decimal",
+        "items": [
+          "Each decimal digit, 0 through 9, gets its own 4-bit binary group",
+          "2 → 0010 and 5 → 0101",
+          "So 25 becomes 0010 0101"
+        ]
+      },
+      "onScreen": ["Each decimal digit 0 through 9: its own 4-bit group", "2 → 0010, 5 → 0101", "25 → 0010 0101"],
+      "narration": "BCD means binary coded decimal. Each decimal digit, 0 through 9, gets its own 4-bit binary group. Take the number 25. The 2 is written 0 0 1 0, and the 5 is written 0 1 0 1. So in BCD, 25 becomes 0 0 1 0, 0 1 0 1."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 40,
+      "template": "formula",
+      "params": {
+        "title": "Writing the quantity 2 in binary",
+        "formula": "Place values: 8, 4, 2, 1",
+        "steps": ["0×8 + 0×4 + 1×2 + 0×1", "= 0 + 0 + 2 + 0 = 2", "The digit 2 never appears in a binary number"],
+        "answer": "2 = 0010 in binary"
+      },
+      "onScreen": ["Place values 8, 4, 2, 1", "0×8 + 0×4 + 1×2 + 0×1 = 2", "No digit 2 in binary", "2 = 0010"],
+      "narration": "Last, binary numbers. Binary uses place values of 8, 4, 2 and 1. To write the quantity 2, put a 1 in the place worth 2 and a 0 everywhere else. 0 times 8, plus 0 times 4, plus 1 times 2, plus 0 times 1, equals 2. So 2 is written 0 0 1 0. Binary uses only the digits 0 and 1, so the digit 2 never appears in a binary number."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [33] },
+    { "after": "s7", "keyTopics": [34] },
+    { "after": "s11", "keyTopics": [35] },
+    { "after": "s15", "keyTopics": [36] },
+    { "after": "s18", "keyTopics": [37] },
+    { "after": "s21", "keyTopics": [38] },
+    { "after": "s24", "keyTopics": [39] },
+    { "after": "s28", "keyTopics": [40] }
+  ],
+  "video": null
+}

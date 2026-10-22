@@ -1,0 +1,339 @@
+{
+  "id": "3-O",
+  "element": 3,
+  "title": "RADAR",
+  "keyTopics": [90, 91, 92, 93, 94],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 90,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement O",
+        "title": "RADAR",
+        "subtitle": "Range from echo time, what each radar part does, pulse settings for each range, antennas and waveguides, and safety."
+      },
+      "onScreen": ["RADAR", "Range, components, pulse settings, antennas, waveguides and safety"],
+      "narration": "Welcome to radar, short for radio detection and ranging. In this lesson you'll learn to work out a target's range from its echo time, what each part of a radar does, which pulse width and repetition rate to choose for each range setting, how radar antennas and waveguides work, and the safety precautions the exam asks about. We'll start with the theory: the band a ship's radar uses, and the pulses it sends."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 90,
+      "template": "band-strip",
+      "params": {
+        "title": "Where shipboard radar operates",
+        "min": 2,
+        "max": 40,
+        "scale": "log",
+        "marks": [
+          { "at": 3, "label": "3 GHz", "note": "Bottom of the SHF band" },
+          { "at": 30, "label": "30 GHz", "note": "Top of the SHF band" },
+          { "at": 9.4, "label": "X-band, near 9.4 GHz", "note": "Where most ship radars work", "tone": "key" }
+        ]
+      },
+      "onScreen": ["SHF band: 3 to 30 GHz", "Most ship radars: X-band near 9.4 GHz"],
+      "narration": "Shipboard radar is most commonly operated in the SHF, or super high frequency, band. The SHF band runs from 3 gigahertz up to 30 gigahertz. Within it, most ship radars work in the X-band, near 9.4 gigahertz. So if the exam asks which band shipboard radar normally uses, the answer is SHF, 3 to 30 gigahertz."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 90,
+      "template": "waveform",
+      "params": {
+        "title": "The radar pulse train",
+        "kind": "pulse",
+        "cycles": 5,
+        "duty": 0.15,
+        "xAxis": "time",
+        "yAxis": "transmitter output",
+        "labels": [
+          "Pulse width (PW): normally 0.05 µs to 1.0 µs",
+          "Pulse repetition rate (PRR): normally 500 to 2,000 pps",
+          "The PRR is the pulse rate of the magnetron",
+          "Duty cycle = pulse width × PRR"
+        ]
+      },
+      "onScreen": ["Pulse width: 0.05 to 1.0 µs", "PRR: 500 to 2,000 pps", "PRR is the magnetron's pulse rate", "Duty cycle = PW × PRR"],
+      "narration": "A radar transmits short, powerful pulses. Each pulse lasts for its pulse width, or PW, normally 0.05 microseconds to 1.0 microseconds. Short pulses give fine range resolution; longer pulses put more energy on distant targets. The pulse repetition rate, or PRR, is how many pulses go out each second. Its normal range is 500 to 2,000 pulses per second, with lower rates on long ranges and higher rates on short ranges. The PRR is the pulse rate of the magnetron, not of the local oscillator or a klystron. And the duty cycle equals the pulse width times the PRR, not its reciprocal."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 90,
+      "template": "formula",
+      "params": {
+        "title": "Range from the echo time",
+        "formula": "Range (nm) = elapsed time ÷ 12.346 µs",
+        "steps": ["Check: 123.46 µs ÷ 12.346 µs = 10 nm", "Echo returns after 62 µs", "62 ÷ 12.346 ≈ 5.02"],
+        "answer": "The object is 5 nautical miles away"
+      },
+      "onScreen": ["Range = elapsed time ÷ 12.346 µs", "123.46 µs gives 10 nautical miles", "62 µs ÷ 12.346 ≈ 5.02", "5 nautical miles"],
+      "narration": "Now the most important radar formula. A radio wave travels out to a target 1 nautical mile away and back again in 12.346 microseconds. So the range in nautical miles is the elapsed time divided by 12.346 microseconds. Check it: an echo after 123.46 microseconds gives 123.46 divided by 12.346, exactly 10 nautical miles. Now the worked example. An echo returns after an elapsed time of 62 microseconds. 62 divided by 12.346 is about 5.02, so the object is 5 nautical miles away."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 91,
+      "template": "block-diagram",
+      "params": {
+        "title": "From magnetron to antenna and back",
+        "columns": 4,
+        "blocks": [
+          { "id": "mag", "label": "Magnetron", "note": "Provides the transmitter output power" },
+          { "id": "atr", "label": "ATR box", "note": "Keeps echoes out of the transmitter" },
+          { "id": "dup", "label": "Duplexer/circulator", "note": "Switch: one antenna for both jobs" },
+          { "id": "ant", "label": "Antenna", "note": "Sends pulses, catches echoes" },
+          { "id": "mod", "label": "Modulator", "note": "Thyratron or SCR only switches the pulse" },
+          { "id": "rx", "label": "Receiver", "note": "Klystron local oscillator in older sets" },
+          { "id": "tr", "label": "TR tube", "note": "Protects the receiver from the pulse" }
+        ],
+        "links": [
+          { "from": "mod", "to": "mag" },
+          { "from": "mag", "to": "atr" },
+          { "from": "atr", "to": "dup" },
+          { "from": "dup", "to": "ant" },
+          { "from": "dup", "to": "tr" },
+          { "from": "tr", "to": "rx" }
+        ]
+      },
+      "onScreen": ["Magnetron: transmitter output power", "ATR box: keeps echoes out of the transmitter", "Duplexer/circulator: one antenna for transmit and receive", "Modulator: thyratron or SCR only switches the pulse", "Receiver: klystron local oscillator in older radars", "TR tube: protects the receiver"],
+      "narration": "Let's follow a pulse through the radar. The magnetron is the component that provides the transmitter output power. Next comes the ATR, or anti-transmit-receive, box, which prevents the received signal from entering the transmitter. The duplexer, or circulator, is an electronic switch that allows one antenna to be used for both transmission and reception. Below, the modulator pulses the magnetron. Thyratrons and SCRs, silicon controlled rectifiers, only switch that modulator pulse; they don't make the output power. The receiver handles the echoes, and in older radars klystrons served as its low-power local oscillators. Echoes reach it through the TR, or transmit-receive, tube, whose job is protecting the receiver from the transmitted pulse."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 91,
+      "template": "equipment-card",
+      "params": {
+        "title": "Synchros and the echo box",
+        "device": "radar-antenna",
+        "callouts": [
+          { "label": "Synchro transmitter, geared to the antenna, reads its angle", "at": "gearbox" },
+          { "label": "Synchro receiver at the indicator keeps the sweep in step", "at": "rotation" },
+          { "label": "Echo box: high-Q cavity rings part of the pulse back to the receiver", "at": "waveguide" },
+          { "label": "Echo box: used to determine radar performance at sea", "at": "waveguide" }
+        ]
+      },
+      "onScreen": ["Synchro transmitter reads the antenna angle", "Synchro receiver keeps the sweep in step", "Echo box: high-Q cavity rings the pulse back", "Echo box tests radar performance at sea"],
+      "narration": "A few more components. The antenna's direction has to reach the display. A synchro transmitter and receiver do that job. The synchro transmitter, geared to the antenna, transmits the antenna's angular position to the indicator unit, where the synchro receiver keeps the display sweep in step with the antenna. To check the radar's health, use an echo box. It's a high-Q resonant cavity, very sharply tuned, that rings part of the transmitted pulse back to the receiver. The echo box is the device used to determine the performance of a radar system at sea."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 91,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Digital signal processing",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 60, "range": 7 },
+          { "bearing": 200, "range": 9 },
+          { "bearing": 320, "range": 4 }
+        ],
+        "labels": [
+          "Analog: a weak target can be lost in the noise",
+          "DSP averages the echoes over many sweeps",
+          "Random noise averages out; a real target builds up",
+          "Result: improved weak signal or target enhancement"
+        ]
+      },
+      "onScreen": ["Analog: weak targets lost in noise", "DSP averages echoes over many sweeps", "Noise is suppressed", "Improved weak signal or target enhancement"],
+      "narration": "Modern radars use DSP, digital signal processing. Compared with analog processing, what does DSP give you? On an analog display, a weak target can be lost in the noise. DSP averages the echoes over many sweeps. Noise is random, so it averages out, while a real target returns in the same place every sweep and builds up. The result is improved weak signal, or target, enhancement."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 92,
+      "template": "key-facts",
+      "params": {
+        "title": "Matching the pulse to the range",
+        "items": [
+          "Long ranges: wide pulse width and slow repetition rate",
+          "Wide pulses carry more energy to distant targets",
+          "A slow rate lets echoes return before the next pulse",
+          "Short ranges: narrow pulse width and fast repetition rate",
+          "Fine range resolution, a short minimum range, more hits on each target per sweep"
+        ]
+      },
+      "onScreen": ["Long range: wide pulse, slow rate", "More energy to distant targets", "Echoes return before the next pulse", "Short range: narrow pulse, fast rate", "Fine resolution, short minimum range, more hits"],
+      "narration": "Here's the rule for choosing pulse settings. At long ranges, use a wide pulse width and a slow repetition rate. Wide pulses carry more energy out to distant targets, and a slow rate lets each echo return before the next pulse goes out. At short ranges, do the opposite: a narrow pulse width and fast repetition rates. Narrow pulses give fine range resolution and a short minimum range, and the fast rate puts more hits on each target per sweep."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 92,
+      "template": "comparison-table",
+      "params": {
+        "title": "Best settings for each range scale",
+        "columns": ["Range setting", "Pulse width", "Repetition rate"],
+        "rows": [
+          ["1.5 miles", "0.05 µs", "2,000 pps"],
+          ["6 miles", "0.25 µs", "1,000 pps"],
+          ["25 miles", "1.0 µs", "500 pps"],
+          ["48 miles", "1.0 µs", "500 pps"]
+        ]
+      },
+      "onScreen": ["1.5 miles: 0.05 µs, 2,000 pps", "6 miles: 0.25 µs, 1,000 pps", "25 miles: 1.0 µs, 500 pps", "48 miles: 1.0 µs, 500 pps"],
+      "narration": "Now the exam's range settings. On the 1.5 mile range, the most appropriate settings are a 0.05 microsecond pulse width and 2,000 pulses per second. On the 6 mile range, 0.25 microseconds and 1,000 pulses per second. On the 25 mile range, use a 1.0 microsecond pulse width and 500 pulses per second, because detecting weak, distant echoes matters more than fine resolution. And on the 48 mile range, the same: 1.0 microsecond and 500 pulses per second."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 92,
+      "template": "formula",
+      "params": {
+        "title": "Why slow rates suit long ranges",
+        "formula": "R<sub>max</sub> = (1 ÷ PRR) ÷ 12.346 µs",
+        "steps": [
+          "500 pps: 1 s ÷ 500 = 2,000 µs between pulses",
+          "2,000 µs ÷ 12.346 µs ≈ 162 nmi",
+          "1,000 pps: 1,000 µs ÷ 12.346 µs ≈ 81 nmi",
+          "2,000 pps: only about 40 nmi"
+        ],
+        "answer": "At 500 pps, R<sub>max</sub> ≈ 162 nmi"
+      },
+      "onScreen": ["R max = (1 ÷ PRR) ÷ 12.346 µs", "500 pps: 2,000 µs between pulses, about 162 nmi", "1,000 pps: about 81 nmi", "2,000 pps: only about 40 nmi"],
+      "narration": "Why use a slow rate on long ranges? Each echo must return before the next pulse goes out. The maximum range, R sub max, is the time between pulses divided by 12.346 microseconds. At 500 pulses per second, the time between pulses is 1 second divided by 500, or 2,000 microseconds. 2,000 divided by 12.346 is about 162 nautical miles. At 1,000 pulses per second, used on the 6 mile range, the 1,000 microsecond interval still covers about 81 nautical miles. But 2,000 pulses per second would allow only about 40 nautical miles. So at 500 pulses per second, the maximum range is about 162 nautical miles, plenty for the 48 mile setting."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 92,
+      "template": "waveform",
+      "params": {
+        "title": "Short range: a very narrow pulse",
+        "kind": "pulse",
+        "cycles": 8,
+        "duty": 0.05,
+        "xAxis": "time",
+        "yAxis": "transmitter output",
+        "labels": [
+          "1.5 mile setting: 0.05 µs pulses at 2,000 pps",
+          "Minimum range = c·τ ÷ 2",
+          "(3×10⁸ m/s × 0.05×10⁻⁶ s) ÷ 2 = 7.5 m",
+          "Narrow pulses: fine resolution and a short minimum range"
+        ]
+      },
+      "onScreen": ["1.5 miles: 0.05 µs at 2,000 pps", "Minimum range = c·τ ÷ 2", "0.05 µs pulse: 7.5 m", "Fine resolution, short minimum range"],
+      "narration": "On the 1.5 mile range, the pulses are very narrow, just 0.05 microseconds, and very fast, 2,000 pulses per second. The narrow pulse gives a short minimum range. The minimum range is c times tau, divided by 2: the speed of light times the pulse width, halved, because the pulse has to go out and come back. With a 0.05 microsecond pulse, that works out to only 7.5 meters. That's why narrow pulses are the choice for close-in work."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 93,
+      "template": "equipment-card",
+      "params": {
+        "title": "The slotted array antenna",
+        "device": "radar-antenna",
+        "callouts": [
+          { "label": "Slotted array: a common shipboard radar antenna", "at": "array" },
+          { "label": "A length of waveguide that rotates", "at": "rotation" },
+          { "label": "Its slots form a narrow horizontal beam", "at": "slots" }
+        ]
+      },
+      "onScreen": ["Slotted array: a common shipboard radar antenna", "A rotating length of waveguide", "Slots form a narrow horizontal beam"],
+      "narration": "Now antennas. A common shipboard radar antenna is the slotted array. It's a length of waveguide that rotates continuously above the ship. A row of slots is cut along the waveguide, and each slot lets out some of the energy. Together, the slots form a narrow horizontal beam."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 93,
+      "template": "formula",
+      "params": {
+        "title": "Dish gain when the frequency doubles",
+        "formula": "G = η(πd/λ)²",
+        "steps": ["Double the frequency: λ is halved", "πd/λ doubles, so G is multiplied by 4", "10 log 4 ≈ 6 dB"],
+        "answer": "Gain increases 6 dB"
+      },
+      "onScreen": ["G = η(πd/λ)²", "Double the frequency: λ halves", "Gain × 4", "10 log 4 ≈ 6 dB"],
+      "narration": "For a parabolic dish, the gain G equals eta times pi d over lambda, all squared. Eta is the efficiency, d the dish diameter, and lambda the wavelength. Double the operating frequency, and the wavelength is cut in half. Pi d over lambda doubles, and squaring it multiplies the gain by 4. In decibels, 10 log 4 is about 6. So doubling the frequency increases the gain by 6 decibels."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 93,
+      "template": "comparison-table",
+      "params": {
+        "title": "Gain vs. beamwidth: dish ≈ 70λ/d degrees",
+        "columns": ["Gain", "Beamwidth", "The power is"],
+        "rows": [
+          ["Low", "Wide", "Spread over a wide beam"],
+          ["High", "Narrow", "Concentrated into a narrow beam"]
+        ]
+      },
+      "onScreen": ["Low gain: wide beam", "High gain: narrow beam", "Dish beamwidth ≈ 70λ/d degrees"],
+      "narration": "Gain and beamwidth go together: the beamwidth of an antenna decreases as the gain is increased. A low-gain antenna spreads its power over a wide beam. A high-gain antenna gets its gain by concentrating the power into a narrower beam. For a dish, a handy rule is that the beamwidth is about 70 lambda over d degrees, where d is the diameter. A bigger dish, or a shorter wavelength, means a narrower beam."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 93,
+      "template": "key-facts",
+      "params": {
+        "title": "Inside the waveguide",
+        "items": [
+          "No center conductor, so it doesn't conduct like a transmission line",
+          "Conductance: through electromagnetic and electrostatic fields in the walls",
+          "To couple energy in or out: a thin piece of wire as an antenna",
+          "Place the wire at an electric-field maximum inside the guide",
+          "J-hook: the pickup that extracts the radar signal from the waveguide"
+        ]
+      },
+      "onScreen": ["No center conductor", "Fields in the walls carry the energy", "Couple with a thin wire antenna", "At an electric-field maximum", "J-hook extracts the radar signal"],
+      "narration": "A waveguide has no center conductor, so conductance doesn't take place in the same manner as in a transmission line. It takes place through electromagnetic and electrostatic fields in the walls of the waveguide. To couple energy into and out of a waveguide, use a thin piece of wire as an antenna, placed at an electric-field maximum inside the guide. The pickup device used to extract the radar signal from the waveguide is a J-hook. A circulator only routes energy, and a folded dipole is a wire antenna for much lower frequencies, so neither is the answer."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 94,
+      "template": "equipment-card",
+      "params": {
+        "title": "Before you test: keep clear",
+        "device": "radar-antenna",
+        "callouts": [
+          { "label": "First assure no personnel are in front of the antenna", "at": "array" },
+          { "label": "High-power microwaves can heat body tissue, especially the eyes", "at": "rotation" },
+          { "label": "Exposure limit: 5.0 mW/cm² (U.S. Health Department)" }
+        ]
+      },
+      "onScreen": ["No personnel in front of the antenna", "Microwaves heat body tissue, especially the eyes", "Exposure limit: 5.0 mW/cm²"],
+      "narration": "Now safety. Prior to testing any radar system, the operator should first assure that no personnel are in front of the antenna. Its high-power microwaves can heat body tissue, and the eyes are especially at risk. U.S. Health Department regulations limit exposure to microwave energy from radar or other electronic devices to 5.0 milliwatts per square centimeter."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 94,
+      "template": "key-facts",
+      "params": {
+        "title": "Magnetron precautions and the TWT magnet",
+        "items": [
+          "Magnetron: keep metal tools away from the magnet",
+          "Magnetron: don't subject it to excessive heat",
+          "Magnetron: don't subject it to shocks and blows",
+          "Keeping the TR properly tuned is not a magnetron precaution",
+          "TWT: its permanent magnetic field keeps the electron beam from spreading"
+        ]
+      },
+      "onScreen": ["Keep metal tools away from the magnet", "No excessive heat", "No shocks and blows", "Tuning the TR: not a magnetron precaution", "TWT magnet keeps the beam from spreading"],
+      "narration": "Now some care for the tubes. To keep a magnetron from being weakened, keep metal tools away from its magnet, and don't subject it to excessive heat, or to shocks and blows. Watch for the distractor: keeping the TR properly tuned is not a magnetron precaution. The traveling-wave tube, or TWT, also has a permanent magnetic field around it. That field is intended to prevent the electron beam from spreading."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 94,
+      "template": "block-diagram",
+      "params": {
+        "title": "What feeds collision avoidance",
+        "columns": 3,
+        "blocks": [
+          { "id": "gyro", "label": "Gyrocompass", "note": "Own ship's heading" },
+          { "id": "pos", "label": "Navigation position receiver", "note": "Own ship's position" },
+          { "id": "speed", "label": "Speed indicator", "note": "Own ship's speed" },
+          { "id": "wind", "label": "Anemometer", "note": "Wind speed: not an input" },
+          { "id": "arpa", "label": "ARPA", "note": "Course, speed and closest point of approach" }
+        ],
+        "links": [
+          { "from": "gyro", "to": "arpa" },
+          { "from": "pos", "to": "arpa" },
+          { "from": "speed", "to": "arpa" },
+          { "from": "wind", "to": "arpa", "struck": true }
+        ]
+      },
+      "onScreen": ["Gyrocompass", "Navigation position receiver", "Speed indicator", "Anemometer: not an input", "ARPA: tracks targets' course, speed and closest point of approach"],
+      "narration": "Finally, collision avoidance. Radar collision avoidance systems use inputs from your own ship's gyrocompass, for heading, its navigation position receiver, for position, and its speed indicator. They do not use the anemometer, which only measures the wind. Those inputs feed the ARPA, the Automatic RADAR Plotting Aid. It tracks selected targets and computes their course, speed and closest point of approach."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [90] },
+    { "after": "s7", "keyTopics": [91] },
+    { "after": "s11", "keyTopics": [92] },
+    { "after": "s15", "keyTopics": [93] },
+    { "after": "s18", "keyTopics": [94] }
+  ],
+  "video": null
+}

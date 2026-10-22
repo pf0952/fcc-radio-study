@@ -1,0 +1,258 @@
+{
+  "id": "9-G",
+  "element": 9,
+  "title": "Inspections, Installations and Instruments",
+  "keyTopics": [47, 48, 49, 50],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 47,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 9 · Subelement G",
+        "title": "Inspections, Installations, Instruments",
+        "subtitle": "Installing GMDSS equipment correctly, the annual ship station inspection, and the test instruments a maintainer sets up and reads."
+      },
+      "onScreen": ["Inspections, Installations and Instruments", "Installation, the annual inspection and test instruments"],
+      "narration": "This lesson covers 3 parts of a GMDSS maintainer's job. GMDSS is the Global Maritime Distress and Safety System. First, installing equipment correctly. Second, carrying out and recording the annual GMDSS ship station inspection. Third, choosing, setting up and reading the test instruments you'll use. Let's start with installation, beginning with the Inmarsat-C terminal."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 47,
+      "template": "equipment-card",
+      "params": {
+        "title": "Installing an Inmarsat-C system",
+        "device": "satcom-terminal",
+        "callouts": [
+          { "label": "Ground: copper strap brazed to the steel terminal and steel hull", "at": "terminal" },
+          { "label": "Wide strap: low impedance; brazing won't loosen; no aluminum on steel" },
+          { "label": "Antenna: at least 8 meters from other Inmarsat antennas", "at": "radome" },
+          { "label": "After installation: enter your Inmarsat Mobile Number", "at": "screen" },
+          { "label": "Never send a distress alert as a test", "at": "keyboard" }
+        ]
+      },
+      "onScreen": ["Copper strap brazed to the terminal and the steel hull", "Low impedance, won't loosen, no galvanic corrosion", "Antenna 8 meters from other Inmarsat antennas", "Enter the Inmarsat Mobile Number", "Never send a distress alert as a test"],
+      "narration": "The best method for grounding an Inmarsat-C terminal is a copper strap brazed to the steel terminal and the ship's steel hull. A wide strap has low impedance, a brazed joint won't loosen like a bolted one, and aluminum on steel invites galvanic corrosion. When installing the Inmarsat-C antenna, the minimum distance to other Inmarsat antennas is 8 meters. After the system is fully installed, your Inmarsat Mobile Number must be entered in the terminal. And a distress alert must never be sent as a test."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 47,
+      "template": "key-facts",
+      "params": {
+        "title": "Antennas, transducers and the compass",
+        "items": [
+          "Full-duplex VHF: maximum separation between the transmitting and duplex receiver antennas",
+          "So the transmitter does not desensitize the receiver",
+          "Depth finder transducers: in an area not subject to cavitation",
+          "Air bubbles absorb and scatter the acoustic pulse",
+          "Bridge equipment separation: refers to the magnetic compass (compass safe distance)"
+        ]
+      },
+      "onScreen": ["Duplex VHF: maximum antenna separation", "Keeps the receiver from being desensitized", "Transducer: away from cavitation", "Bubbles absorb and scatter the pulse", "Separation rules: the magnetic compass"],
+      "narration": "3 more installation rules. For a full-duplex VHF, or very high frequency, radiotelephone, the most important consideration is maximum separation between the transmitting antenna and the duplex receiver antenna, so the transmitter does not desensitize the receiver. For depth finder transducers, the most important factor is an area not subject to cavitation, because air bubbles absorb and scatter the acoustic pulse. And bridge equipment separation recommendations generally refer to the magnetic compass. That's the compass safe distance."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 48,
+      "template": "key-facts",
+      "params": {
+        "title": "The annual GMDSS inspection",
+        "items": [
+          "Requires a GMDSS Maintainer's License, not an operator's license",
+          "Battery test: off charge, at the maximum required load",
+          "Measure and record the maximum discharge current and voltage",
+          "Inmarsat-C: send a brief test message to your own terminal",
+          "That 1 message proves both transmit and receive"
+        ]
+      },
+      "onScreen": ["GMDSS Maintainer's License", "Battery: off charge, maximum required load", "Record maximum discharge current and voltage", "Inmarsat-C: test message to your own terminal", "Proves transmit and receive"],
+      "narration": "Every year, a GMDSS ship station gets an annual inspection. Conducting it requires a GMDSS Maintainer's License, not an operator's license. The battery test is made with the battery off charge and at the maximum required load. You measure and record the maximum discharge current and voltage. And the easiest way to test the Inmarsat-C terminal for proper operation is to send a brief test message to your own terminal. Getting it back proves both transmit and receive."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 48,
+      "template": "comparison-table",
+      "params": {
+        "title": "Annual VHF tests",
+        "columns": ["VHF test", "Required each year?"],
+        "rows": [
+          ["Power output on channels 6, 13 and 16", "Yes"],
+          ["VSWR on channels 6, 13 and 16", "Yes"],
+          ["Frequency tolerance", "Yes"],
+          ["Operation from all required power sources", "Yes"],
+          ["Carrier deviation measurement", "No: not required"]
+        ]
+      },
+      "onScreen": ["Power output on channels 6, 13 and 16", "VSWR on channels 6, 13 and 16", "Frequency tolerance", "All required power sources", "Carrier deviation: not required"],
+      "narration": "The VHF radio has its own list of required annual tests. Measure the power output and the VSWR, the voltage standing wave ratio, on channels 6, 13 and 16. Check that the equipment is within frequency tolerance, and that it operates from all required power sources. Carrier deviation measurement is not a required annual VHF test. Remember the channels: 6, 13 and 16."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 48,
+      "template": "block-diagram",
+      "params": {
+        "title": "After the station passes the survey",
+        "columns": 2,
+        "blocks": [
+          { "id": "passed", "label": "Annual inspection passed" },
+          { "id": "log", "label": "Log entries", "note": "Technician and Master/owner both certify" },
+          { "id": "certificate", "label": "Cargo Ship Safety Certificate", "note": "Issued to the vessel" },
+          { "id": "license", "label": "Radio Station License", "note": "A separate document" }
+        ],
+        "links": [
+          { "from": "passed", "to": "log" },
+          { "from": "passed", "to": "certificate" },
+          { "from": "passed", "to": "license", "struck": true }
+        ]
+      },
+      "onScreen": ["Inspection passed", "Log: technician and Master/owner both certify", "Cargo Ship Safety Certificate issued", "Separate from the Radio Station License"],
+      "narration": "After the station passes the annual inspection, or survey, 2 things follow. First, the log entries must include certification by both the inspecting technician and the vessel's Master or owner that the inspection was successful. Both of them sign, not just 1. Second, the vessel is issued a Cargo Ship Safety Certificate. That certificate is separate from the Radio Station License, which is not the document the survey issues."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 49,
+      "template": "formula",
+      "params": {
+        "title": "Meter tolerance: 5 V on the 6 volt scale",
+        "formula": "Error = (0.15% × reading) + 2 counts",
+        "steps": ["= 0.0015 × 5 V + 2 × 0.001 V", "= 0.0075 V + 0.002 V", "= 0.0095 V ≈ 0.01 V"],
+        "answer": "Expect 4.99 to 5.01 volts DC"
+      },
+      "onScreen": ["Error = 0.15% of reading + 2 counts", "0.0015 × 5 V + 2 × 0.001 V", "0.0095 V ≈ 0.01 V", "4.99 to 5.01 volts DC"],
+      "narration": "Now test instruments, starting with the multimeter. Its tolerance is a percentage of the reading plus a fixed number of counts of the last digit. Take a 4 digit meter with an accuracy of 0.15 percent and 2 counts, set on the 6 volt scale, measuring a 5 volt DC, or direct current, source. On the 6 volt scale it resolves 0.001 volts, so 2 counts add 0.002 volts. The error is 0.0015 times 5 volts, which is 0.0075, plus 0.002, for 0.0095 volts. That's about 0.01 volts. So expect 4.99 to 5.01 volts DC."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 49,
+      "template": "key-facts",
+      "params": {
+        "title": "For the exam: 24 volts on the 60 volt scale",
+        "items": [
+          "On the 60 volt scale the meter resolves 0.01 V, so 2 counts add 0.02 V",
+          "For the exam, a 24 volt DC source reads 23.62 to 24.38 volts DC",
+          "That keyed window is 24 V ± 0.38 V",
+          "It matches 1.5% plus 2 counts (0.36 V + 0.02 V), not the 0.15% in the question"
+        ]
+      },
+      "onScreen": ["60 volt scale: 2 counts = 0.02 V", "For the exam: 23.62 to 24.38 volts DC", "24 V ± 0.38 V", "Matches 1.5%, not 0.15%"],
+      "narration": "Now the same meter, 0.15 percent and 2 counts, set on the 60 volt scale and measuring a 24 volt DC source. On the 60 volt scale the meter resolves 0.01 volts, so 2 counts add 0.02 volts. For the exam, the keyed answer is 23.62 to 24.38 volts DC. That's 24 volts, plus or minus 0.38 volts. Be aware that this window really matches 1.5 percent plus 2 counts, 0.36 plus 0.02 volts, not the 0.15 percent in the question. Choose 23.62 to 24.38 volts DC on the exam anyway."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 49,
+      "template": "block-diagram",
+      "params": {
+        "title": "A VHF signal generator: what matters most",
+        "columns": 2,
+        "blocks": [
+          { "id": "generator", "label": "RF signal generator", "note": "Most important spec: low signal leakage" },
+          { "id": "attenuator", "label": "Output attenuator", "note": "Good lab type: down to 0.1 µV" },
+          { "id": "leakage", "label": "Leaked signal", "note": "Low leakage keeps it out" },
+          { "id": "receiver", "label": "VHF receiver under test", "note": "Sees only what the attenuator indicates" }
+        ],
+        "links": [
+          { "from": "generator", "to": "attenuator" },
+          { "from": "attenuator", "to": "receiver" },
+          { "from": "leakage", "to": "receiver", "struck": true }
+        ]
+      },
+      "onScreen": ["RF signal generator: low signal leakage", "Output down to 0.1 microvolt", "No leaked signal reaching the receiver", "Receiver sees only the indicated signal"],
+      "narration": "For VHF measurements, the most important specification for an RF, or radio frequency, signal generator is low signal leakage. You set its output level with the attenuator, and a good lab type signal generator for VHF should be able to reduce its output to 0.1 microvolt. If signal leaked out around the attenuator, the receiver under test would pick up more than the setting shows. With low leakage, the receiver sees only the signal the attenuator setting indicates."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 49,
+      "template": "equipment-card",
+      "params": {
+        "title": "Oscilloscope probe and Mode control",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "10:1 attenuation probe: a load of about 10 MΩ shunted by 12 pF", "at": "probe" },
+          { "label": "A 9 MΩ probe resistor in series with the scope's 1 MΩ input", "at": "input" },
+          { "label": "Dual-trace Mode control: either channel alone, or both channels combined" },
+          { "label": "Input coupling and time base have their own separate controls", "at": "timebase" }
+        ]
+      },
+      "onScreen": ["10:1 probe: about 10 megohms shunted by 12 pF", "9 megohms in the probe plus the 1 megohm input", "Mode: either channel alone or both combined", "Coupling and time base: separate controls"],
+      "narration": "On the oscilloscope, a 10 to 1 attenuation probe presents a load of about 10 megohms shunted by 12 picofarads. That's a 9 megohm resistor in the probe, in series with the scope's 1 megohm input. On a dual-trace oscilloscope, the Mode control selects either channel alone, or a combination of both channels. Input coupling and the time base are set with their own controls, not with the Mode control."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 50,
+      "template": "key-facts",
+      "params": {
+        "title": "Function generator and logic probe",
+        "items": [
+          "Simple function generator: sine, square and triangular waves",
+          "Logic probe red LED: a high state",
+          "Green LED: a low state",
+          "Amber LED: a pulse",
+          "It can't identify a short: red and green LEDs on together don't indicate one"
+        ]
+      },
+      "onScreen": ["Function generator: sine, square, triangular", "Red LED: high", "Green LED: low", "Amber LED: pulse", "A logic probe can't identify a short"],
+      "narration": "A simple function generator usually provides 3 kinds of signal: sine waves, square waves and triangular waves. Now the logic probe and its LEDs, or light emitting diodes. The red LED indicates a high state. The green LED indicates a low state. The amber LED indicates a pulse. A logic probe cannot identify a short, so the statement that both red and green LEDs on indicate a short is false."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 50,
+      "template": "block-diagram",
+      "params": {
+        "title": "How a SINAD meter works",
+        "columns": 4,
+        "blocks": [
+          { "id": "audio", "label": "Total audio in", "note": "Signal + noise + distortion" },
+          { "id": "notch", "label": "Sharp 1000 Hz bandstop", "note": "Notch filter removes the test tone" },
+          { "id": "residue", "label": "Noise + distortion", "note": "What is left" },
+          { "id": "meter", "label": "Audio voltmeter in decibels", "note": "(S + N + D) ÷ (N + D)" }
+        ],
+        "links": [
+          { "from": "audio", "to": "notch" },
+          { "from": "notch", "to": "residue" },
+          { "from": "residue", "to": "meter" }
+        ]
+      },
+      "onScreen": ["Total audio: signal + noise + distortion", "Sharp 1000 Hz bandstop filter removes the tone", "Noise + distortion left", "SINAD in decibels; 12 dB is the usual reference"],
+      "narration": "SINAD is short for signal plus noise and distortion. A SINAD meter is a multi-range audio frequency voltmeter, calibrated in decibels, with a sharp internal 1000 hertz bandstop, or notch, filter. It first measures the total audio: signal plus noise plus distortion. Then the bandstop filter removes the 1000 hertz test tone, leaving only noise and distortion. SINAD is the ratio of the 2: signal plus noise plus distortion, divided by noise plus distortion. 12 decibels SINAD is the usual sensitivity reference."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 50,
+      "template": "formula",
+      "params": {
+        "title": "Reading an analog RF wattmeter",
+        "formula": "Error = ±5% of full scale (100 W) = ±5 W",
+        "steps": ["At 90 W: 5 W ÷ 90 W ≈ 6% of the reading", "At 20 W: 5 W ÷ 20 W = 25% of the reading"],
+        "answer": "Most accurate in the upper one third of the dial"
+      },
+      "onScreen": ["±5% of a 100 W scale = ±5 W", "About 6% of a 90 W reading", "25% of a 20 W reading", "Most accurate: upper one third of the dial"],
+      "narration": "An analog RF wattmeter gives its most accurate reading at the upper one third of the dial. Here's why. Its accuracy is a percentage of full scale. On a 100 watt scale with plus or minus 5 percent accuracy, the error is plus or minus 5 watts anywhere on the dial. At a 90 watt reading, 5 watts is only about 6 percent of the reading. At a 20 watt reading, the same 5 watts is 25 percent. So choose a scale that puts the needle in the upper one third."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 50,
+      "template": "waveform",
+      "params": {
+        "title": "Deviation meter and spectrum analyzer",
+        "kind": "fm",
+        "cycles": 16,
+        "xAxis": "time",
+        "yAxis": "FM transmitter output",
+        "labels": [
+          "Deviation meter: measures carrier deviation in an FM transmitter",
+          "Spectrum analyzer: most likely used to measure spurious signals",
+          "Spurious signals show as separate spikes beside the carrier"
+        ]
+      },
+      "onScreen": ["Deviation meter: FM carrier deviation", "Spectrum analyzer: spurious signals", "Spurious signals: spikes beside the carrier"],
+      "narration": "Last, 2 transmitter instruments. The purpose of a deviation meter is to measure the carrier deviation in an FM, or frequency modulation, transmitter: how far the carrier frequency swings as it is modulated, like the bunching and spreading in this FM signal. And the most likely reason to observe a transmitter's output with a spectrum analyzer is to measure spurious signals. On the analyzer, spurious signals show up as separate spikes beside the carrier."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s3", "keyTopics": [47] },
+    { "after": "s6", "keyTopics": [48] },
+    { "after": "s10", "keyTopics": [49] },
+    { "after": "s14", "keyTopics": [50] }
+  ],
+  "video": null
+}

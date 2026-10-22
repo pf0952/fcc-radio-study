@@ -1,0 +1,145 @@
+{
+  "id": "3-Q",
+  "element": 3,
+  "title": "SAFETY",
+  "keyTopics": [99, 100],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 99,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 3 · Subelement Q",
+        "title": "SAFETY",
+        "subtitle": "The FCC's RF exposure rules, then the lightning, tool, fire and electrical safety steps the exam asks about."
+      },
+      "onScreen": ["SAFETY", "RF exposure rules, then lightning, tool, fire and electrical safety"],
+      "narration": "This lesson is about staying safe around radio equipment. First, the rules of the FCC, the Federal Communications Commission, on RF, or radio frequency, exposure, and how RF and light can harm your eyes. Then the practical safety steps the exam asks about: lightning protection, using power tools, fighting an electrical fire, and preventing electrical shock. Let's begin with radiation exposure."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 99,
+      "template": "timeline",
+      "params": {
+        "title": "MPE averaging times and training",
+        "badges": [
+          { "label": "Controlled environment", "value": "6 minutes", "note": "Occupational: people who work there" },
+          { "label": "Uncontrolled environment", "value": "30 minutes", "note": "The general public" },
+          { "label": "Training and certification", "value": "Yearly", "note": "Anyone accessing an area where MPE power is present" }
+        ]
+      },
+      "onScreen": ["Controlled (occupational): averaged over 6 minutes", "Uncontrolled (general public): averaged over 30 minutes", "Training and certification: yearly"],
+      "narration": "The FCC's exposure limits are called MPE, Maximum Permissible Exposure. Under FCC Part 1, in OET Bulletin 65 from the Office of Engineering and Technology, MPE compliance is averaged over time. In a controlled, or occupational, environment, exposure is averaged over 6 minutes. In an uncontrolled environment, where the general public may be, it's averaged over 30 minutes. And if MPE power is present, the personnel accessing the affected area must be trained and certified yearly."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 99,
+      "template": "key-facts",
+      "params": {
+        "title": "When to evaluate RF exposure",
+        "items": [
+          "Multiple-antenna sites: include every antenna above 5% of the MPE power density limit",
+          "An MPE study is required at an aggregate power level of 1000 watts ERP"
+        ]
+      },
+      "onScreen": ["Include every antenna above 5% of the limit", "MPE study at 1000 watts ERP aggregate"],
+      "narration": "Now, which transmitters count? At a site with multiple transmitting antennas, the RF site exposure evaluation must include every antenna producing more than 5 percent of the maximum permissible power density exposure limit. And an MPE study is required at an aggregate power level of 1000 watts E R P, that's effective radiated power. Aggregate means the total from all the transmitters added together."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 99,
+      "template": "comparison-table",
+      "params": {
+        "title": "How RF and light can harm the eyes",
+        "columns": ["Source", "Part of the eye", "Harm", "Why"],
+        "rows": [
+          ["Portable radio RF", "Lens", "Cataracts from RF heating", "Little blood flow carries heat away"],
+          ["Active fiber optic cable", "Retina", "Burns", "Infrared light can't be seen"]
+        ]
+      },
+      "onScreen": ["Portable radio RF: cataracts in the lens from heating", "Live fiber: invisible infrared can burn the retina", "Never look into a fiber optic cable"],
+      "narration": "RF can harm your eyes. Exposure from portable radio transceivers may be harmful because RF heating may cause cataracts. The eye's lens has little blood flow to carry the heat away. Light is a hazard too. Never look directly into a fiber optic cable. An active fiber signal may burn the retina, and because it's infrared light, you can't see it to know it's there."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 100,
+      "template": "equipment-card",
+      "params": {
+        "title": "Lightning: limit the damage",
+        "device": "antenna",
+        "callouts": [
+          { "label": "A direct lightning hit: no device can protect the station", "at": "tip" },
+          { "label": "Surge protectors, grounding and bonding only limit the damage", "at": "coax" },
+          { "label": "Ground leads: sweeping bends; lightning jumps off sharp corners", "at": "ground" }
+        ]
+      },
+      "onScreen": ["No protection from a direct hit", "Grounding, bonding and surge protectors only limit damage", "Ground leads: gradual, sweeping bends, no sharp corners"],
+      "narration": "Now the safety steps, starting with lightning. Is there a device that protects a station from a direct lightning hit? No. Good grounding, bonding and surge protectors can only limit the damage. How you run the ground leads matters too. Ground leads within a building should not have sharp corners. Lightning is not able to make sharp bends, so at a sharp corner it will jump off the ground lead. Use gradual, sweeping bends instead."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 100,
+      "template": "block-diagram",
+      "params": {
+        "title": "Shorted-stub lightning protector",
+        "columns": 3,
+        "blocks": [
+          { "id": "ant", "label": "Antenna", "note": "Signal plus a lightning surge" },
+          { "id": "stub", "label": "Shorted quarter-wave stub", "note": "Looks open at its tuned band" },
+          { "id": "radio", "label": "Radio", "note": "Gets the tuned-band signal" },
+          { "id": "gnd", "label": "Ground", "note": "Lightning is shorted here" }
+        ],
+        "links": [
+          { "from": "ant", "to": "stub" },
+          { "from": "stub", "to": "radio", "label": "tuned band only" },
+          { "from": "stub", "to": "gnd", "label": "lightning" }
+        ]
+      },
+      "onScreen": ["Antenna: signal plus lightning", "Shorted quarter-wave stub: open at its tuned band", "Radio: tuned band only", "Lightning shorted to ground"],
+      "narration": "A shorted-stub lightning protector is a quarter-wave stub on the feed line, shorted to ground. Do shorted-stub protectors work at all frequencies? No, only at the tuned frequency band. At that band, the quarter-wave stub looks like an open circuit to the signal, so the signal passes through to the radio, while lightning is shorted to ground. Away from its tuned band, the stub no longer looks open, so it can't be used at every frequency."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 100,
+      "template": "key-facts",
+      "params": {
+        "title": "Power tools and electrical fires",
+        "items": [
+          "Never use a power drill without eye protection",
+          "Chips, shavings and broken bits fly fast; keeping your face away won't stop them",
+          "Short-circuit fire: for the exam, choose the keyed answer FE30",
+          "Use a non-conducting agent: carbon dioxide, dry chemical or clean-agent gas",
+          "Never water or foam; de-energize the circuit if you can"
+        ]
+      },
+      "onScreen": ["Power drill: always wear eye protection", "Flying chips, shavings and bits", "Electrical fire: exam answer FE30", "Carbon dioxide, dry chemical or clean-agent gas", "No water or foam; de-energize"],
+      "narration": "Next, tools. You should never use a power drill without eye protection. Chips, shavings and broken bits fly at high speed, and just keeping your face away doesn't stop them. Now, fire. The exam asks what class of fire an electrical short circuit causes, and the preferred substance to put it out. The pool's choices don't really answer that, and electrical fires are actually Class C. For the exam, choose the keyed response, F E 30. In real life, a short-circuit fire involves energized equipment, so use a non-conducting agent: carbon dioxide, dry chemical or a clean-agent gas. Never water or foam, and de-energize the circuit if you can."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 100,
+      "template": "block-diagram",
+      "params": {
+        "title": "How a GFI socket prevents shock",
+        "blocks": [
+          { "id": "fault", "label": "Current on a ground path", "note": "Perhaps through a person" },
+          { "id": "sense", "label": "GFI senses it", "note": "Ground path current" },
+          { "id": "trip", "label": "Trips at about 5 mA", "note": "A very small current" },
+          { "id": "off", "label": "Circuit shut down", "note": "Shock prevented" }
+        ],
+        "links": [
+          { "from": "fault", "to": "sense" },
+          { "from": "sense", "to": "trip" },
+          { "from": "trip", "to": "off" }
+        ]
+      },
+      "onScreen": ["Current on a ground path", "GFI senses ground path current", "Trips at about 5 mA", "Circuit shut down: shock prevented"],
+      "narration": "Last, the GFI, or ground fault interrupter, electrical socket. What is it used for? To prevent electrical shock. If current starts flowing along a ground path, perhaps through a person, the GFI senses that ground path current and shuts the circuit down. It trips at about 5 milliamps, a very small current. That's why GFI sockets protect people from dangerous shocks."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [99] },
+    { "after": "s8", "keyTopics": [100] }
+  ],
+  "video": null
+}

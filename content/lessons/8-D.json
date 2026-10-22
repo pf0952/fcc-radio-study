@@ -1,0 +1,653 @@
+{
+  "id": "8-D",
+  "element": 8,
+  "title": "Display & Control Systems",
+  "keyTopics": [29, 30, 31, 32, 33, 34, 35, 36, 37, 38],
+  "scenes": [
+    {
+      "id": "s1",
+      "keyTopic": 29,
+      "template": "title-card",
+      "params": {
+        "kicker": "Element 8 · Subelement D",
+        "title": "Display & Control Systems",
+        "subtitle": "How a radar display builds its picture: screens, sweep and timing, range markers, bearings, memory, ARPA and power."
+      },
+      "onScreen": ["Display & Control Systems", "Screens, sweep and timing, range markers, bearings, memory, ARPA and power"],
+      "narration": "This lesson follows the radar picture from the screen back to the circuits that build it. We'll cover the screens, the video and sweep circuits, the synchronizer, fixed and variable range markers, bearings, display memory, the automatic radar plotting aid, and the display power supply, and we'll work the range marker calculations step by step. First, the screens: the LCD, or liquid crystal display, and the CRT, or cathode ray tube."
+    },
+    {
+      "id": "s2",
+      "keyTopic": 29,
+      "template": "key-facts",
+      "params": {
+        "title": "Liquid crystal displays (LCDs)",
+        "items": [
+          "Modern LCDs: a pixel count greater than 200 pixels per inch",
+          "Phones and tablets: commonly 300 pixels per inch or more",
+          "Current passes through the crystals, causing them to align",
+          "That changes how each cell passes polarized light: selected cells darken or lighten"
+        ]
+      },
+      "onScreen": ["More than 200 pixels per inch", "Phones and tablets: 300 or more", "Current aligns the crystals", "Cells darken or lighten"],
+      "narration": "Modern liquid crystal displays have a pixel count greater than 200 pixels per inch, and phones and tablets commonly reach 300 pixels per inch or more. So how does an LCD form its patterns? Current passes through the crystals, causing them to align. That changes how each cell passes polarized light, so selected cells darken or lighten, and together they draw the picture."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 29,
+      "template": "key-facts",
+      "params": {
+        "title": "The CRT: anode voltage and aquadag",
+        "items": [
+          "CRT anode circuits: 10–50 kV, about 17 kV in many radar displays",
+          "Aquadag: a conductive graphite coating inside the bulb, tied to the high-voltage anode",
+          "It acts as a second anode",
+          "It protects the electrons from strong electric fields",
+          "It attracts secondary emissions from the CRT screen"
+        ]
+      },
+      "onScreen": ["Anode: 10–50 kV, about 17 kV", "Aquadag: graphite coating tied to the anode", "Acts as a second anode", "Shields electrons from strong fields", "Attracts secondary emissions"],
+      "narration": "Now the CRT. Voltages used in CRT anode circuits are in the 10 to 50 kilovolt range, about 17 kilovolts in many radar displays. That gives the beam enough energy for a bright trace. Inside the bulb is the aquadag coating, a conductive graphite coating connected to the high-voltage anode. Its purpose? It does all 3 of these jobs. It acts as a second anode. It protects the electrons from strong electric fields. And it attracts secondary emissions from the CRT screen. When the exam asks its purpose, pick all of the above."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 29,
+      "template": "comparison-table",
+      "params": {
+        "title": "Raster scan versus conventional PPI",
+        "columns": ["Feature", "Raster scan", "Conventional PPI"],
+        "rows": [
+          ["Beam path", "Horizontal and vertical", "Rotating, like the antenna"],
+          ["Picture", "Line by line, like a TV", "Radial sweeps from the center"],
+          ["Controlled by", "Clock pulses", "—"],
+          ["Needs", "An address bus to read video memory", "—"],
+          ["Just a TV?", "No; frame rate not fixed at 30/s", "—"]
+        ]
+      },
+      "onScreen": ["Raster: horizontal and vertical, line by line", "PPI: rotating sweep", "Raster: controlled by clock pulses", "Raster: address bus selects video memory", "Not just a TV; not fixed at 30 frames per second"],
+      "narration": "In a raster-type display, the electron beam is scanned horizontally and vertically across the CRT face, line by line, like a television picture. That's different from a conventional PPI, or plan position indicator, where the sweep rotates out from the center, turning with the antenna. Raster scanning in a radar is controlled by clock pulses, and it requires an address bus, which selects the video memory location read for each pixel. But a radar raster display is not simply a television receiver, and its frame rate is not fixed at 30 per second."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 30,
+      "template": "block-diagram",
+      "params": {
+        "title": "What goes into the video amplifier",
+        "columns": 3,
+        "blocks": [
+          { "id": "lowvideo", "label": "Low-level video" },
+          { "id": "fixed", "label": "Fixed range rings" },
+          { "id": "variable", "label": "Variable range rings" },
+          { "id": "resolver", "label": "Resolver", "note": "Antenna bearing: not a video input" },
+          { "id": "videoamp", "label": "Video amplifier", "note": "Combines all 3 into composite video" },
+          { "id": "cathode", "label": "CRT cathode", "note": "Video varies the beam intensity" },
+          { "id": "sweep", "label": "Sweep and deflection circuits", "note": "Where the resolver signal goes" }
+        ],
+        "links": [
+          { "from": "lowvideo", "to": "videoamp" },
+          { "from": "fixed", "to": "videoamp" },
+          { "from": "variable", "to": "videoamp" },
+          { "from": "resolver", "to": "videoamp", "struck": true },
+          { "from": "videoamp", "to": "cathode", "label": "Composite video" },
+          { "from": "resolver", "to": "sweep" }
+        ]
+      },
+      "onScreen": ["Inputs: low-level video, fixed range rings, variable range rings", "Resolver: not a video input", "Video amplifier: composite video", "To the CRT cathode: beam intensity", "Resolver goes to the sweep and deflection circuits"],
+      "narration": "Now the circuits behind the picture. The usual input signals to the video amplifier are low-level video, fixed range rings and variable range rings. The resolver signal would not normally be an input to the video amplifier. The video amplifier combines its 3 inputs into one composite signal. Its main purpose is to provide that composite video to the cathode of the CRT, where it varies the beam intensity so targets show as bright spots. And the resolver? It supplies antenna bearing information to the sweep and deflection circuits."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 30,
+      "template": "waveform",
+      "params": {
+        "title": "The sweep generator's sawtooth",
+        "kind": "sawtooth",
+        "cycles": 4,
+        "xAxis": "time",
+        "yAxis": "sweep drive",
+        "labels": [
+          "Sweep generator: provides the drive signal to the sweep amplifier",
+          "The drive is a sawtooth, started by the synchronizer's trigger",
+          "Each sweep begins at zero range as the transmitter fires"
+        ]
+      },
+      "onScreen": ["Sweep generator drives the sweep amplifier", "Sawtooth started by the synchronizer", "Each sweep begins at zero range"],
+      "narration": "The main purpose of the sweep generator is to provide the drive signal to the sweep amplifier. That drive signal is a sawtooth. Each ramp is started by a trigger from the synchronizer, so the sweep begins at zero range just as the transmitter fires. The ramp rises steadily while echoes return from farther and farther away, then snaps back to wait for the next trigger."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 30,
+      "template": "block-diagram",
+      "params": {
+        "title": "Driving the deflection coils",
+        "columns": 3,
+        "blocks": [
+          { "id": "sync", "label": "Synchronizer", "note": "Trigger starts the sweep" },
+          { "id": "sweepgen", "label": "Sweep generator", "note": "Sawtooth drive signal" },
+          { "id": "sweepamp", "label": "Sweep amplifier", "note": "Currents weighted by sine and cosine" },
+          { "id": "videoamp", "label": "Video amplifier", "note": "Not driven by the sweep amplifier" },
+          { "id": "xcoil", "label": "X deflection coil", "note": "Horizontal" },
+          { "id": "ycoil", "label": "Y deflection coil", "note": "Vertical" }
+        ],
+        "links": [
+          { "from": "sync", "to": "sweepgen" },
+          { "from": "sweepgen", "to": "sweepamp" },
+          { "from": "sweepamp", "to": "videoamp", "struck": true },
+          { "from": "sweepamp", "to": "xcoil" },
+          { "from": "sweepamp", "to": "ycoil" }
+        ]
+      },
+      "onScreen": ["Synchronizer → sweep generator → sweep amplifier", "Sweep amplifier drives the CRT deflection coils", "Not the video amplifier or the resolver coils", "2 coils: X horizontal, Y vertical", "Sine and cosine weighting rotates the trace"],
+      "narration": "Here's the whole sweep chain. The synchronizer triggers the sweep generator, and its sawtooth goes to the sweep amplifier. The purpose of the sweep amplifier is to drive the CRT deflection coils. It does not drive the video amplifier, and it does not drive the resolver coils. It drives 2 deflection coils: one for X, or horizontal, deflection, and one for Y, or vertical, deflection. The sweep currents are weighted by the sine and cosine of the antenna bearing, so the trace rotates with the antenna."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 31,
+      "template": "block-diagram",
+      "params": {
+        "title": "The synchronizer sets the timing",
+        "columns": 3,
+        "blocks": [
+          { "id": "sync", "label": "Synchronizer (timer)", "note": "Develops the timing pulses" },
+          { "id": "modulator", "label": "Modulator", "note": "Triggered at the PRF" },
+          { "id": "magnetron", "label": "Magnetron", "note": "Fires the transmitted pulse" },
+          { "id": "sweepgen", "label": "Sweep generator", "note": "Started at the same instant" },
+          { "id": "pfn", "label": "Pulse forming network", "note": "Only shapes the modulator's pulse" }
+        ],
+        "links": [
+          { "from": "sync", "to": "modulator", "label": "Trigger" },
+          { "from": "modulator", "to": "magnetron" },
+          { "from": "sync", "to": "sweepgen", "label": "Trigger" },
+          { "from": "pfn", "to": "modulator" }
+        ]
+      },
+      "onScreen": ["Synchronizer, or timer: develops timing pulses", "Triggers the modulator at the PRF", "Modulator fires the magnetron", "Starts the sweep at the same instant", "Pulse forming network only shapes the pulse"],
+      "narration": "Every radar needs a timekeeper. Timing circuits develop synchronizing pulses for the transmitter system. The circuit that develops these timing signals is called the synchronizer, or timer. It primarily affects the modulator, which it triggers to fire the magnetron at the PRF, the pulse repetition frequency. At that same instant, it starts the display sweep. Don't confuse it with the pulse forming network: that network only shapes the modulator's high-voltage pulse. It doesn't develop the timing."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 31,
+      "template": "waveform",
+      "params": {
+        "title": "The synchronizer's output",
+        "kind": "pulse",
+        "cycles": 5,
+        "duty": 0.12,
+        "xAxis": "time",
+        "yAxis": "trigger",
+        "labels": [
+          "Usually a pulse or square wave",
+          "Each pulse marks the instant the modulator fires and the sweep starts",
+          "The synchronizer starts the sweep; the sweep amplifier only amplifies it"
+        ]
+      },
+      "onScreen": ["Pulse or square wave", "Marks when the modulator fires and the sweep starts", "Sweep initiated by the synchronizer"],
+      "narration": "What does the synchronizer's output look like? It usually consists of a pulse or a square wave, because its job is to mark exact instants: the moment the modulator fires and the moment the sweep starts. So the sweep drive is initiated by the synchronizer. Its trigger starts the sweep generator as the transmitter fires, so the sweep begins at zero range. The sweep amplifier only amplifies the sweep; it doesn't start it."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 31,
+      "template": "comparison-table",
+      "params": {
+        "title": "What the timing circuit affects",
+        "columns": ["Signal", "Timing circuit sets it?"],
+        "rows": [
+          ["Pulse repetition frequency", "Yes"],
+          ["Modulation", "Yes: it triggers the modulator"],
+          ["Sweep drive", "Yes: it starts the sweep"],
+          ["Resolver output", "No: it follows the antenna's rotation"]
+        ]
+      },
+      "onScreen": ["PRF: set by the timing circuit", "Modulation: set", "Sweep drive: set", "Resolver output: not affected"],
+      "narration": "Here's a favorite exam question: which signal is not affected by the timing circuit? The timing circuit does set the PRF. It sets the modulation, by triggering the modulator. And it sets the sweep drive. But the resolver output is not affected by the timing circuit, because the resolver follows the antenna's rotation, not the transmitter's timing."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 32,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Fixed range rings",
+        "rangeNm": 12,
+        "rings": 4,
+        "labels": [
+          "Fixed range rings, here every 3 nautical miles",
+          "The timer sends marker pulses at fixed times after each transmitted pulse",
+          "Each time interval matches the ring spacing; the CRT only displays them",
+          "A blocking oscillator gives the narrow, steep-sided, fast-rising pulses needed"
+        ]
+      },
+      "onScreen": ["Rings every 3 nautical miles", "Timer: marker pulses at fixed intervals", "Interval matches the ring spacing", "Blocking oscillator: narrow, fast-rising pulses"],
+      "narration": "Fixed range rings are evenly spaced circles for judging distance. Here they're every 3 nautical miles. Range markers are determined by the timer. It produces marker pulses at fixed time intervals after each transmitted pulse, and each interval matches the ring spacing. The CRT only displays them. Accurate rings need very narrow, steep-sided, fast-rising pulses, and a blocking oscillator could be used to provide them."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 32,
+      "template": "formula",
+      "params": {
+        "title": "From oscillator frequency to ring spacing",
+        "formula": "range = T ÷ 12.34 µs, where T = 1 / f",
+        "steps": [
+          "27 kHz: T = 1 / 27 kHz = 37.04 µs",
+          "37.04 µs ÷ 12.34 µs ≈ 3.0",
+          "20 kHz: T = 1 / 20 kHz = 50 µs",
+          "50 µs ÷ 12.34 µs ≈ 4.05"
+        ],
+        "answer": "27 kHz → 3 nm apart; 20 kHz → 4 nm apart"
+      },
+      "onScreen": ["range = T ÷ 12.34 µs, with T = 1 / f", "27 kHz: 37.04 µs → 3 nautical miles", "20 kHz: 50 µs → 4 nautical miles"],
+      "narration": "Now the math. Element 8 uses a radar range time of 12.34 microseconds per nautical mile. The oscillator period is T equals 1 over f, and the distance between markers in nautical miles is T divided by 12.34 microseconds. First example: a gated L C, or inductor-capacitor, oscillator at 27 kilohertz, with each cycle made into a range mark. T equals 1 over 27 kilohertz, or 37.04 microseconds. Divide by 12.34 and you get about 3.0, so the markers are 3 nautical miles apart. Second example: a controlling oscillator at 20 kilohertz. T equals 1 over 20 kilohertz, or 50 microseconds. Divide by 12.34 and you get about 4.05, so 4 nautical miles between markers."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 32,
+      "template": "formula",
+      "params": {
+        "title": "From ring spacing to oscillator frequency",
+        "formula": "T = spacing × 12.34 µs, then f = 1 / T",
+        "steps": [
+          "Rings every 10 nm",
+          "T = 10 × 12.34 µs = 123.4 µs",
+          "f = 1 / 123.4 µs ≈ 8.1 kHz"
+        ],
+        "answer": "An 8 kHz marker oscillator"
+      },
+      "onScreen": ["T = spacing × 12.34 µs, then f = 1 / T", "10 nautical miles: T = 123.4 µs", "f ≈ 8.1 kHz, so 8 kHz"],
+      "narration": "Now work it the other way, starting from the ring spacing. Multiply the spacing by 12.34 microseconds to get the period T, then f equals 1 over T. Say you want rings every 10 nautical miles. T equals 10 times 12.34 microseconds, or 123.4 microseconds. Then f equals 1 over 123.4 microseconds, about 8.1 kilohertz. So the answer is an 8 kilohertz marker oscillator."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 32,
+      "template": "formula",
+      "params": {
+        "title": "Rings every 0.25 nm: the exam's answer",
+        "formula": "T = spacing × 12.34 µs, then f = 1 / T",
+        "steps": [
+          "T = 0.25 × 12.34 µs = 3.085 µs",
+          "3.085 µs rounds to 3.1 µs",
+          "f = 1 / 3.1 µs ≈ 322 kHz"
+        ],
+        "answer": "For the exam: a 322 kHz marker oscillator"
+      },
+      "onScreen": ["0.25 nautical miles: T = 3.085 µs", "Rounded to 3.1 µs", "For the exam: 322 kHz"],
+      "narration": "Now the one the exam expects you to know. For rings every 0.25 nautical miles, T equals 0.25 times 12.34 microseconds, which is 3.085 microseconds. That rounds to 3.1 microseconds. Then f equals 1 over 3.1 microseconds, about 322 kilohertz. So for the exam, rings every 0.25 nautical miles need a 322 kilohertz marker oscillator. Remember the rounding step: it's how the exam's answer comes out to 322 kilohertz."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 33,
+      "template": "radar-ppi",
+      "params": {
+        "title": "The variable range marker (VRM)",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [{ "bearing": 50, "range": 7 }],
+        "vrm": { "range": 7 },
+        "labels": [
+          "The echo of a moving target",
+          "VRM: a single adjustable ring, generated separately from the fixed range marker oscillator",
+          "Move it out until it touches the echo, read the range, and readjust as the range changes"
+        ]
+      },
+      "onScreen": ["Moving target echo", "VRM: a single adjustable ring", "Touch the echo, read the range, readjust"],
+      "narration": "Here's the echo of a moving target. To measure its range accurately, use the VRM, or variable range marker. The VRM system develops a single adjustable range ring, generated separately from the fixed range marker oscillator. Its purpose is to provide an accurate means of determining the range of a moving target. The operator moves the ring out until it touches the echo and reads the range, then readjusts it as the target's range changes."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 33,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the VRM system",
+        "columns": 4,
+        "blocks": [
+          { "id": "pot", "label": "Potentiometer (panel control)", "note": "Sets a DC voltage: the marker's delay" },
+          { "id": "shiftreg", "label": "Shift register", "note": "Steps clock pulses after each trigger" },
+          { "id": "videoamp", "label": "Video amplifier", "note": "VRM mixed with the echo video" },
+          { "id": "crt", "label": "CRT", "note": "Shows as a ring, like the fixed rings" }
+        ],
+        "links": [
+          { "from": "pot", "to": "shiftreg" },
+          { "from": "shiftreg", "to": "videoamp" },
+          { "from": "videoamp", "to": "crt" }
+        ]
+      },
+      "onScreen": ["Panel control: a potentiometer setting a DC voltage", "Shift register: a precisely set delay", "Fed to the video amplifier input", "Shown as a ring on the CRT"],
+      "narration": "Inside, the panel control for the VRM is normally a variable resistor, a potentiometer. It sets a DC, or direct current, voltage that controls the marker's delay after the transmit pulse. An important component of the VRM system is the shift register. After each transmit trigger, it steps clock pulses to produce the marker after a precisely set delay. The VRM signal is normally fed to the input of the video amplifier, where it's mixed with the echo video, so on the CRT it shows as a ring, just like the fixed range rings."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 33,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Checking VRM accuracy",
+        "rangeNm": 12,
+        "rings": 4,
+        "vrm": { "range": 3 },
+        "labels": [
+          "VRM at minimum range: lined up on the matching fixed ring",
+          "VRM at maximum range: lined up on the matching fixed ring",
+          "Adjusted against the fixed range rings, not with a frequency counter"
+        ]
+      },
+      "onScreen": ["Minimum range: on the matching fixed ring", "Maximum range: on the matching fixed ring", "Not a frequency counter"],
+      "narration": "How do you make sure the VRM reads true? It's usually adjusted for accuracy by aligning its minimum and maximum ranges with the matching fixed range rings. Set the VRM to its minimum range and line it up on the matching fixed ring. Then set it to its maximum range and line it up on the matching fixed ring there. The fixed rings are the reference, so this adjustment doesn't use a frequency counter."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 34,
+      "template": "radar-ppi",
+      "params": {
+        "title": "The electronic bearing line (EBL)",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [{ "bearing": 60, "range": 8 }],
+        "ebl": { "bearing": 60 },
+        "labels": [
+          "A target echo",
+          "EBL: a line from your own vessel to the target, to measure its bearing",
+          "Not own heading (heading marker), not true north, not distance (VRM)"
+        ]
+      },
+      "onScreen": ["Target echo", "EBL: own vessel to target, measures bearing", "Not heading, not true north, not distance"],
+      "narration": "Next, the EBL, or electronic bearing line. Here's a target. The EBL is a line from your own vessel to a specific target, and its purpose is to measure the bearing of that target. Rotate the line onto the echo and read the bearing. Watch for the wrong answers. The EBL does not show your own heading; that's the heading marker. It doesn't show true north. And it doesn't measure a target's distance; that's what the VRM is for."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 34,
+      "template": "block-diagram",
+      "params": {
+        "title": "Where true azimuth comes from",
+        "columns": 3,
+        "blocks": [
+          { "id": "gyro", "label": "Gyro", "note": "Heading reference to true north" },
+          { "id": "heading", "label": "Own heading", "note": "Also stabilizes the picture" },
+          { "id": "flash", "label": "Heading flash", "note": "Positioned by own heading" },
+          { "id": "resolver", "label": "Resolver", "note": "Antenna angle relative to the bow only" },
+          { "id": "azimuth", "label": "True azimuth", "note": "Needs gyro signals" }
+        ],
+        "links": [
+          { "from": "gyro", "to": "heading" },
+          { "from": "heading", "to": "flash" },
+          { "from": "heading", "to": "azimuth" },
+          { "from": "resolver", "to": "azimuth" }
+        ]
+      },
+      "onScreen": ["Gyro: heading reference to true north", "Own heading from the gyro", "Positions the heading flash and stabilizes the picture", "Resolver: antenna angle relative to the bow", "Azimuth needs gyro signals"],
+      "narration": "Where does true bearing come from? The gyro. Bearing information from the gyro is used to provide the vessel's own heading. Own heading positions the heading flash and stabilizes the picture. The resolver, on its own, reports only the antenna angle relative to the bow. That's why gyro signals are required to indicate azimuth: they give the heading reference to true north, and together with the resolver's angle, the display can show each target's true azimuth."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 34,
+      "template": "comparison-table",
+      "params": {
+        "title": "True bearing versus head-up",
+        "columns": ["Presentation", "Top of the display", "Heading flasher", "Bearings read as"],
+        "rows": [
+          ["True bearing (north-up)", "North", "Indicates the vessel's course", "True bearings"],
+          ["Head-up (relative)", "The bow, always", "At the top of the screen", "Relative bearings"]
+        ]
+      },
+      "onScreen": ["True bearing: North at the top", "Heading flasher shows the course", "Head-up: bow always up, flasher at the top", "Head-up is relative, not true bearing"],
+      "narration": "There are 2 ways to orient the picture. In a true bearing presentation, North is at the top of the display, and the ship's heading flasher indicates the vessel's course, so target bearings read directly as true bearings. A display with the bow always pointing up, with the heading flasher at the top of the screen, is the head-up, or relative, presentation. That is not true bearing. On the exam, North at the top with the heading flasher showing the course means true bearing."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 35,
+      "template": "formula",
+      "params": {
+        "title": "Dividing the sweep into segments",
+        "formula": "segment = 360° ÷ 4,096",
+        "steps": [
+          "4,096 = 2¹², a 12-bit azimuth count",
+          "360° ÷ 4,096 ≈ 0.088°"
+        ],
+        "answer": "4,096 segments, each about 0.088° wide"
+      },
+      "onScreen": ["360° sweep in 4,096 segments", "2 to the 12th: a 12-bit count", "Each about 0.088°"],
+      "narration": "Modern radars store the picture digitally. In a digitized radar, the 360 degree sweep is divided into 4,096 digitized segments. That's 2 to the 12th power, a 12-bit azimuth count. Each segment is 360 degrees divided by 4,096, or about 0.088 degrees wide."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 35,
+      "template": "key-facts",
+      "params": {
+        "title": "DRAM and the REFRESH cycle",
+        "items": [
+          "DRAM: dynamic random access memory",
+          "Dynamic: its bits are charges on tiny capacitors that leak away",
+          "A memory with a REFRESH cycle is DRAM: it must be refreshed periodically",
+          "SRAM (static RAM): holds data in flip-flops, no refresh needed",
+          "ROM and PROM: nonvolatile"
+        ]
+      },
+      "onScreen": ["DRAM: dynamic random access memory", "Bits are charges that leak away", "REFRESH cycle means DRAM", "SRAM: flip-flops, no refresh", "ROM and PROM: nonvolatile"],
+      "narration": "That digitized picture is held in memory. The term DRAM stands for dynamic random access memory. It's called dynamic because its bits are stored as charges on tiny capacitors, and those charges leak away. So a memory with a REFRESH cycle is DRAM: it must be refreshed periodically. SRAM, or static random access memory, holds its data in flip-flops and needs no refresh. ROM, read-only memory, and PROM, programmable read-only memory, are nonvolatile."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 35,
+      "template": "comparison-table",
+      "params": {
+        "title": "Dual memory: how sea clutter is removed",
+        "columns": ["Return", "Sweep 1", "Sweep 2", "Displayed?"],
+        "rows": [
+          ["Steady target", "Echo", "Echo", "Yes: in 2 sequential cells"],
+          ["Sea clutter", "Echo", "Nothing", "No: it changed"],
+          ["Sea clutter", "Nothing", "Echo", "No: it changed"]
+        ]
+      },
+      "onScreen": ["Purpose: eliminate fluctuating targets like sea return", "Successive sweeps compared", "Target in both sweeps: displayed", "Clutter in only one: dropped", "Must appear in 2 sequential memory cells"],
+      "narration": "The primary purpose of display system memory is to eliminate fluctuating targets, such as sea return, while steady targets remain. Here's how dual memory reduces sea clutter. Successive sweeps are digitized and compared, and only signals appearing in both sweeps are displayed. A real target shows up in sweep 1 and in sweep 2, so it stays. Random clutter changes from sweep to sweep, so it's dropped. The rule: a target return must appear in 2 sequential memory cells, from successive sweeps, before the target is displayed."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 36,
+      "template": "radar-ppi",
+      "params": {
+        "title": "ARPA: tracking targets",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 40, "range": 7 },
+          { "bearing": 110, "range": 5 },
+          { "bearing": 300, "range": 9 }
+        ],
+        "labels": [
+          "ARPA acquires and tracks targets displayed on the radar",
+          "It computes each target's course, speed, CPA and TCPA",
+          "It does not steer the ship"
+        ]
+      },
+      "onScreen": ["ARPA acquires and tracks targets", "Computes course, speed, CPA and TCPA", "Does not steer the ship"],
+      "narration": "Now ARPA, the automatic radar plotting aid. Used as a collision avoidance system, or CAS, it's called ARPA CAS. The term refers to the device which acquires and tracks targets displayed on the radar indicator. For each tracked target, it computes the course, the speed, the closest point of approach, or CPA, and the time to CPA, or TCPA. What it does not do is steer the ship."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 36,
+      "template": "key-facts",
+      "params": {
+        "title": "CPA, TCPA, vectors and Trial Mode",
+        "items": [
+          "CPA: the closest a target will come to you if both keep present courses and speeds",
+          "TCPA: the time remaining until that closest point",
+          "Vector: a line from a target's position; direction shows course, length shows speed",
+          "Trial Mode: assess a proposed maneuver's predicted CPA and TCPA before making it"
+        ]
+      },
+      "onScreen": ["CPA: closest point of approach", "TCPA: time to CPA", "Vector: direction is course, length is speed", "Trial Mode: test a maneuver first"],
+      "narration": "A few definitions. CPA, the closest point of approach, is the closest point a ship or target will approach your own ship if both keep their present courses and speeds. TCPA is the time remaining until that point. On the display, a tracked target carries a vector: a line from the target's position. The line's direction shows the target's course, and its length shows its speed. And the ARPA Trial Mode allows the results of proposed maneuvers to be assessed, showing the predicted CPA and TCPA before the ship actually maneuvers."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 36,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inputs to the collision avoidance computer",
+        "columns": 3,
+        "blocks": [
+          { "id": "sat", "label": "Navigation satellite receiver", "note": "Own ship's position" },
+          { "id": "gyro", "label": "Gyrocompass", "note": "Heading; GYRO OUT concerns heading" },
+          { "id": "log", "label": "Doppler log", "note": "Speed; LOG OUT points to a log failure" },
+          { "id": "anemo", "label": "Anemometer", "note": "Wind velocity: not an input" },
+          { "id": "computer", "label": "Collision avoidance computer", "note": "ARPA" }
+        ],
+        "links": [
+          { "from": "sat", "to": "computer" },
+          { "from": "gyro", "to": "computer" },
+          { "from": "log", "to": "computer" },
+          { "from": "anemo", "to": "computer", "struck": true }
+        ]
+      },
+      "onScreen": ["Position: navigation satellite receiver", "Heading: gyrocompass", "Speed: Doppler log", "Wind velocity: not an input", "LOG OUT: speed log failure"],
+      "narration": "What feeds the collision avoidance computer? Own ship's position from a navigation satellite receiver, heading from the gyrocompass, and speed from the Doppler log. Wind velocity from an anemometer is not an input. Now a troubleshooting case. The ARPA's own-speed indication can be set manually, but it doesn't change with the vessel's speed. A LOG OUT indication points to the related failure: the speed log. GYRO OUT, by contrast, concerns heading."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 37,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the display power supply",
+        "columns": 4,
+        "blocks": [
+          { "id": "rawdc", "label": "Raw DC" },
+          { "id": "chopper", "label": "Chopper", "note": "Electronic switch: DC on and off, fast" },
+          { "id": "inverter", "label": "Inverter", "note": "Pulsed DC into the transformer" },
+          { "id": "xfmr", "label": "Power transformer", "note": "Cannot pass steady DC" },
+          { "id": "hv", "label": "17 kV DC", "note": "For the CRT high-voltage anode" },
+          { "id": "tripler", "label": "Tripler", "note": "Multiplies up to very high DC" },
+          { "id": "lv", "label": "5 V DC and ±12 V DC", "note": "Low-voltage outputs" },
+          { "id": "rect", "label": "Rectify, filter, regulate", "note": "The secondary outputs" }
+        ],
+        "links": [
+          { "from": "rawdc", "to": "chopper" },
+          { "from": "chopper", "to": "inverter" },
+          { "from": "inverter", "to": "xfmr" },
+          { "from": "xfmr", "to": "tripler" },
+          { "from": "tripler", "to": "hv" },
+          { "from": "xfmr", "to": "rect" },
+          { "from": "rect", "to": "lv" }
+        ]
+      },
+      "onScreen": ["Chopper: electronic switch on the raw DC", "Inverter: pulsed DC to the transformer", "Tripler: 17 kV DC for the CRT anode", "Rectified, filtered, regulated: 5 V and ±12 V DC"],
+      "narration": "Inside the display power supply, the chopper acts as an electronic switch between the raw DC output and the inverter, turning the raw DC on and off at high speed. The inverter produces the pulsed DC input voltage to the power transformer, since a transformer cannot pass steady DC. On the high-voltage side, the 17 kilovolts DC for the CRT anode comes from a tripler circuit, which multiplies the pulsed transformer output up to the very high DC the anode needs. On the low-voltage side, the 5 volt and plus or minus 12 volt DC outputs come from secondaries that are rectified, filtered and regulated."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 37,
+      "template": "comparison-table",
+      "params": {
+        "title": "Display power supply outputs",
+        "columns": ["Output", "Used for"],
+        "rows": [
+          ["5 V DC", "Logic circuits"],
+          ["±12 V DC", "Analog and sweep circuits"],
+          ["17 kV DC", "The CRT high-voltage anode"],
+          ["Pulse forming network voltage", "Not this supply: the modulator supply"]
+        ]
+      },
+      "onScreen": ["5 V DC: logic", "±12 V DC: analog and sweep", "17 kV DC: CRT anode", "Pulse forming network voltage: from the modulator supply"],
+      "narration": "Let's line up the outputs. The display power supply provides 5 volts DC for the logic circuits, plus or minus 12 volts DC for the analog and sweep circuits, and 17 kilovolts DC for the CRT's high-voltage anode. So if a question asks which of these the display supply provides, all 3 are its outputs. But pulse forming network voltage does not come from the display supply. It comes from the transmitter's modulator supply."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 37,
+      "template": "band-strip",
+      "params": {
+        "title": "Display supply switching frequency",
+        "min": 40,
+        "max": 40000,
+        "scale": "log",
+        "marks": [
+          { "at": 18000, "label": "18 kHz", "note": "A common switching frequency", "tone": "key" },
+          { "at": 120, "label": "120 Hz", "note": "Ripple of rectified 60 Hz, not switching", "tone": "muted" },
+          { "at": 60, "label": "60 Hz", "note": "Line power", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["18 kHz: a common switching frequency", "120 Hz: ripple of rectified 60 Hz", "60 Hz: line power"],
+      "narration": "One more number for the power supply. A common switching frequency for a display system power supply is 18 kilohertz. Don't be tempted by 120 hertz. That's the ripple frequency of rectified 60 hertz line power, not a switching rate. So remember the pair: 18 kilohertz for switching, 120 hertz for ripple."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 38,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Heading flash and bearing resolution",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 70, "range": 8 },
+          { "bearing": 77, "range": 8 }
+        ],
+        "labels": [
+          "Heading flash: the sweep brightens at dead ahead each time the antenna passes the bow",
+          "2 targets at equal range on close bearings, shown as separate echoes",
+          "Bearing resolution: depends mainly on horizontal beamwidth"
+        ]
+      },
+      "onScreen": ["Heading flash marks dead ahead", "2 targets, equal range, close bearings", "Bearing resolution: horizontal beamwidth"],
+      "narration": "A few remaining topics. First, the heading flash. It's a momentary intensification of the sweep line on the PPI, and it informs the operator of the dead-ahead position on the PPI scope each time the antenna passes the bow. Next, these 2 targets sit at equal distance on close bearings, and the radar shows them as separate echoes. That's bearing resolution: the ability to distinguish 2 adjacent targets of equal distance. It depends mainly on horizontal beamwidth. Separating targets at different distances is range resolution."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 38,
+      "template": "waveform",
+      "params": {
+        "title": "RC integrator: square in, triangle out",
+        "kind": "square",
+        "cycles": 6,
+        "xAxis": "time",
+        "yAxis": "input voltage",
+        "labels": [
+          "Input: a square wave with a period much less than 1 time constant",
+          "Output: a triangle wave",
+          "The capacitor charges only along the nearly straight start of its curve"
+        ]
+      },
+      "onScreen": ["Square wave in, period much less than 1 time constant", "Triangle wave out", "Charging stays on the straight part of the curve"],
+      "narration": "Now a circuit question. Feed an R C integrator, a resistor-capacitor integrator, with a square wave whose period is much less than 1 time constant. What comes out? A triangle wave. The capacitor never has time to charge very far, so it charges and discharges only along the nearly straight start of its curve. Straight ramps up and down make a triangle."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 38,
+      "template": "key-facts",
+      "params": {
+        "title": "Digital processing and sampling",
+        "items": [
+          "Major advantage of digital processing: enhancement of weak target returns",
+          "Successive sweeps are stored and integrated: repeating weak echoes are reinforced",
+          "Random noise averages out",
+          "Sample at greater than 2 times the highest frequency component",
+          "Exactly 2 times would need an ideal brick-wall filter"
+        ]
+      },
+      "onScreen": ["Digital processing enhances weak returns", "Sweeps stored and integrated", "Noise averages out", "Sample at more than 2 times the highest frequency", "Exactly 2 times needs a brick-wall filter"],
+      "narration": "The major advantage of digitally processing a radar signal is enhancement of weak target returns. Successive sweeps are stored and integrated, so weak echoes that repeat sweep after sweep are reinforced, while random noise averages out. When digitizing, watch the sampling rate. So that a practical filter can remove undesired components from an analog-to-digital converter's output, the sampling frequency should be greater than 2 times the highest component of the sampled frequency. Exactly 2 times would need an ideal brick-wall filter."
+    },
+    {
+      "id": "s33",
+      "keyTopic": 38,
+      "template": "comparison-table",
+      "params": {
+        "title": "For the exam: removing fixed objects",
+        "columns": ["Echo", "Discriminator shows", "On the PPI"],
+        "rows": [
+          ["Moving target", "A phase shift", "Kept"],
+          ["Trees, buildings, bridges", "A steady return", "Canceled"]
+        ]
+      },
+      "onScreen": ["For the exam: a discriminator as second detector", "Moving targets: phase shift, kept", "Fixed objects: steady, canceled", "In practice: full MTI processing"],
+      "narration": "Last, a question where the exam has a specific answer in mind. For the exam, stationary objects such as trees, buildings and bridges are eliminated from the PPI by using a discriminator as a second detector. The discriminator exposes the phase shift of moving targets, so the steady returns of fixed objects can be canceled. In practice, this takes full MTI, or moving target indication, processing. But on the exam, choose the discriminator as a second detector."
+    }
+  ],
+  "checkpoints": [
+    { "after": "s4", "keyTopics": [29] },
+    { "after": "s7", "keyTopics": [30] },
+    { "after": "s10", "keyTopics": [31] },
+    { "after": "s14", "keyTopics": [32] },
+    { "after": "s17", "keyTopics": [33] },
+    { "after": "s20", "keyTopics": [34] },
+    { "after": "s23", "keyTopics": [35] },
+    { "after": "s26", "keyTopics": [36] },
+    { "after": "s29", "keyTopics": [37] },
+    { "after": "s33", "keyTopics": [38] }
+  ],
+  "video": null
+}
