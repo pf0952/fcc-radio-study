@@ -50,7 +50,7 @@
     if (!pending) return;
     const { name, data } = pending;
     importDialog.close();
-    // Settings (voice, theme, text size) belong to this computer and stay as they are.
+    // Settings (speed, theme, text size) belong to this computer and stay as they are.
     await replaceProgress({ ...data, prefs: $state.snapshot(progress.prefs) });
     message = { text: `Imported ${name}: ${summary(data)}.`, error: false };
   }

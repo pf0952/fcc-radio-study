@@ -1,20 +1,9 @@
-// Narration with the Windows voices through the Web Speech API (offline).
-// Pausing cancels speech and resuming restarts from the last spoken word: more reliable than
-// speechSynthesis.pause() across Windows voices. With no voice installed, captions advance on a timer.
+// Narration: each scene's recorded audio (content/narration/<lesson>/<scene>.ogg), played offline.
+// Progress through the text follows the audio's position; the lengths come from durations.json because the
+// browser reports these files' duration as Infinity. A scene without audio advances at reading speed.
 
-const synth = typeof speechSynthesis === 'undefined' ? null : speechSynthesis;
-/** Typical speaking speed at rate 1, used for the no-voice fallback and the safety timeout. */
+/** Typical speaking speed at rate 1, for scenes without audio. */
 const CHARS_PER_SECOND = 15;
-
-export const speech = $state<{ voices: string[] }>({ voices: [] });
-
-function loadVoices() {
-  speech.voices = (synth?.getVoices() ?? []).filter((v) => v.lang.toLowerCase().startsWith('en')).map((v) => v.name);
-}
-if (synth) {
-  loadVoices();
-  synth.addEventListener('voiceschanged', loadVoices);
-}
 
 export class Narration {
   /** Characters of the text spoken so far. */
@@ -22,92 +11,64 @@ export class Narration {
   playing = $state(false);
   done = $state(false);
   readonly text: string;
+  #audio: HTMLAudioElement | null;
   #rate: number;
-  #voice: string | null;
   #onend: () => void;
-  #token = 0;
   #timer: ReturnType<typeof setTimeout> | undefined;
 
-  constructor(text: string, options: { rate: number; voice: string | null; onend: () => void }) {
+  constructor(text: string, options: { audio: { src: string; seconds: number } | null; rate: number; onend: () => void }) {
     this.text = text;
     this.#rate = options.rate;
-    this.#voice = options.voice;
     this.#onend = options.onend;
+    const audio = options.audio ? new Audio(options.audio.src) : null;
+    this.#audio = audio;
+    if (!audio) return;
+    const seconds = options.audio!.seconds;
+    audio.playbackRate = options.rate;
+    audio.ontimeupdate = () => {
+      this.progress = Math.min(text.length, Math.floor((audio.currentTime / seconds) * text.length));
+    };
+    audio.onended = () => this.#finish();
+    audio.onerror = () => this.#withoutAudio();
   }
 
   play() {
     if (this.done) return;
     this.playing = true;
-    this.#speakFrom(this.progress);
+    if (this.#audio) this.#audio.play().catch(() => this.#withoutAudio());
+    else this.#tick();
   }
 
   pause() {
     this.playing = false;
-    this.#cancel();
+    this.#audio?.pause();
+    clearTimeout(this.#timer);
   }
 
   /** Stop for good (scene left). */
   stop() {
-    this.playing = false;
-    this.#cancel();
+    this.pause();
   }
 
   setRate(rate: number) {
     this.#rate = rate;
-    if (this.playing) this.#speakFrom(this.progress);
+    if (this.#audio) this.#audio.playbackRate = rate;
   }
 
-  setVoice(voice: string | null) {
-    this.#voice = voice;
-    if (this.playing) this.#speakFrom(this.progress);
+  #withoutAudio() {
+    this.#audio = null;
+    if (this.playing) this.#tick();
   }
 
-  #cancel() {
-    this.#token++;
+  #tick() {
     clearTimeout(this.#timer);
-    synth?.cancel();
+    if (!this.playing) return;
+    this.progress = Math.min(this.text.length, this.progress + (CHARS_PER_SECOND * this.#rate) / 10);
+    if (this.progress >= this.text.length) this.#finish();
+    else this.#timer = setTimeout(() => this.#tick(), 100);
   }
 
-  #speakFrom(index: number) {
-    this.#cancel();
-    const token = this.#token;
-    const rest = this.text.slice(index);
-    if (!rest.trim()) return this.#finish(token);
-    const english = (synth?.getVoices() ?? []).filter((v) => v.lang.toLowerCase().startsWith('en'));
-    const voice = english.find((v) => v.name === this.#voice) ?? english.find((v) => v.default) ?? english[0];
-    if (!synth || !voice) return this.#timed(token, index);
-
-    const utterance = new SpeechSynthesisUtterance(rest);
-    utterance.voice = voice;
-    utterance.lang = voice.lang;
-    utterance.rate = this.#rate;
-    utterance.onboundary = (e) => {
-      if (token === this.#token) this.progress = Math.max(this.progress, index + e.charIndex);
-    };
-    utterance.onend = () => this.#finish(token);
-    utterance.onerror = (e) => {
-      if (token === this.#token && e.error !== 'interrupted' && e.error !== 'canceled') this.#timed(token, this.progress);
-    };
-    synth.speak(utterance);
-    // Safety net in case a voice never reports the end.
-    this.#timer = setTimeout(() => this.#finish(token), (rest.length / (CHARS_PER_SECOND * this.#rate)) * 2500 + 4000);
-  }
-
-  /** Advance at reading speed without audio. */
-  #timed(token: number, index: number) {
-    const start = performance.now();
-    const tick = () => {
-      if (token !== this.#token) return;
-      const at = index + ((performance.now() - start) / 1000) * CHARS_PER_SECOND * this.#rate;
-      this.progress = Math.min(this.text.length, Math.floor(at));
-      if (at >= this.text.length) this.#finish(token);
-      else this.#timer = setTimeout(tick, 100);
-    };
-    tick();
-  }
-
-  #finish(token: number) {
-    if (token !== this.#token) return;
+  #finish() {
     clearTimeout(this.#timer);
     this.progress = this.text.length;
     this.playing = false;

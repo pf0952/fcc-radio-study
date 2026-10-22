@@ -3,8 +3,8 @@
   import QuestionCard from '../components/QuestionCard.svelte';
   import { newItem } from '../lib/exam.ts';
   import { choiceKey, fromInside, ignoreShortcut } from '../lib/keys';
-  import { firstSceneOf, videoUrl } from '../lib/lessons';
-  import { Narration, speech } from '../lib/narrator.svelte';
+  import { firstSceneOf, narrationOf, videoUrl } from '../lib/lessons';
+  import { Narration } from '../lib/narrator.svelte';
   import { pools } from '../lib/pools';
   import { progress, recordAnswer, saveProgress } from '../lib/progress.svelte';
   import { drawCheckpoint } from '../lib/quiz';
@@ -55,7 +55,8 @@
     saved.scene = index;
     saveProgress();
     const at = index;
-    narration = new Narration(lesson.scenes[at].narration, { rate: prefs.rate, voice: prefs.voice, onend: () => sceneEnded(at) });
+    const s = lesson.scenes[at];
+    narration = new Narration(s.narration, { audio: narrationOf(lesson.id, s.id), rate: prefs.rate, onend: () => sceneEnded(at) });
     if (play) narration.play();
   }
 
@@ -118,12 +119,6 @@
   function setRate(rate: number) {
     prefs.rate = rate;
     narration?.setRate(rate);
-    saveProgress();
-  }
-
-  function setVoice(voice: string) {
-    prefs.voice = voice || null;
-    narration?.setVoice(prefs.voice);
     saveProgress();
   }
 
@@ -221,13 +216,6 @@
         Speed
         <select value={prefs.rate} onchange={(e) => setRate(Number(e.currentTarget.value))}>
           {#each [0.75, 1, 1.25, 1.5] as r (r)}<option value={r}>{r}×</option>{/each}
-        </select>
-      </label>
-      <label>
-        Voice
-        <select value={prefs.voice ?? ''} onchange={(e) => setVoice(e.currentTarget.value)} disabled={!speech.voices.length}>
-          <option value="">{speech.voices.length ? 'Windows default' : 'No voice installed (captions only)'}</option>
-          {#each speech.voices as v (v)}<option value={v}>{v}</option>{/each}
         </select>
       </label>
       <label class="check"><input type="checkbox" bind:checked={prefs.captions} onchange={saveProgress} /> Captions</label>

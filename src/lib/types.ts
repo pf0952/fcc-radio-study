@@ -95,7 +95,7 @@ export type QuizResult = { passed: boolean; best: number; last: number; attempts
 export type Theme = 'system' | 'light' | 'dark';
 
 /** Settings: lesson player, appearance, and the developer switch that opens every practice exam. */
-export type Prefs = { voice: string | null; rate: number; captions: boolean; theme: Theme; textSize: number; unlockAll: boolean };
+export type Prefs = { rate: number; captions: boolean; theme: Theme; textSize: number; unlockAll: boolean };
 
 export type Progress = {
   schema: 1;

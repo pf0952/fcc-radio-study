@@ -9,7 +9,7 @@ export const emptyProgress = (): Progress => ({
   lessons: {},
   quizzes: {},
   lastLesson: null,
-  prefs: { voice: null, rate: 1, captions: true, theme: 'system', textSize: 100, unlockAll: false },
+  prefs: { rate: 1, captions: true, theme: 'system', textSize: 100, unlockAll: false },
 });
 
 const isObject = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
