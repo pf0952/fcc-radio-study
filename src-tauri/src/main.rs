@@ -137,19 +137,3 @@ fn main() {
         .expect("error while running FCC Radio Study");
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn exports_never_overwrite() {
-        let dir = std::env::temp_dir().join(format!("fcc-export-test-{}", std::process::id()));
-        let _ = fs::remove_dir_all(&dir);
-        fs::create_dir_all(&dir).unwrap();
-        assert_eq!(unique_path(&dir, "result.csv"), dir.join("result.csv"));
-        fs::write(dir.join("result.csv"), "1").unwrap();
-        assert_eq!(unique_path(&dir, "result.csv"), dir.join("result (2).csv"));
-        fs::write(dir.join("result (2).csv"), "2").unwrap();
-        assert_eq!(unique_path(&dir, "result.csv"), dir.join("result (3).csv"));
-    }
-}

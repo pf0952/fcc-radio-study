@@ -1,142 +1,24 @@
 # FCC Radio Study
 
-A free, offline study program for the FCC commercial radio operator license exams:
+Offline study app for the FCC commercial radio exams: Element 3 (GROL), Element 8 (ship radar) and Element 9 (GMDSS maintainer). Narrated lessons, practice exams built like the real thing, and all 1,200 pool questions with explanations. Windows 10/11.
 
-- **Element 3**: General Radiotelephone (GROL)
-- **Element 8**: Ship Radar Techniques
-- **Element 9**: GMDSS Radio Maintenance
+## Get it
 
-It runs as a single portable `.exe` on Windows 10 and 11. Nothing to install, no account, no internet connection needed.
+Download **[FCC-Radio-Study.exe](https://github.com/pf0952/fcc-radio-study/raw/main/FCC-Radio-Study.exe)** and run it. Nothing to install.
 
-![Home: continue where you left off, and a readiness meter for each element](docs/screenshots/home.png)
+Your progress lives in a `FCC-Radio-Study-Data` folder next to the exe, so you can keep the whole thing on a USB stick. The exe isn't signed, so SmartScreen might complain: hit **More info → Run anyway**.
 
-## What it does
+## Build it yourself
 
-- Narrated, animated lessons for every subelement, with pop-up checkpoint questions and an end-of-lesson section quiz
-- Practice exams built like the real ones (one question from each key topic), in exam mode or study mode
-- Results with weak-spot feedback by subelement, a missed-questions deck with spaced repetition, and quick drills
-- A searchable browser for all 1,200 pool questions, formula and fact sheets, light and dark themes, full keyboard use
+Needs Node, Rust and the Visual Studio C++ build tools.
 
-Each element's practice exams open once you've played its lessons to the end and passed their section quizzes; the locked card lists what's left.
-
-| | |
-| --- | --- |
-| ![A lesson scene: a SART on the radar display, with captions](docs/screenshots/lesson.png) | ![A practice exam in exam mode, with the question navigator](docs/screenshots/exam.png) |
-| Lessons: animated scenes, narration and captions | Practice exams: exam mode or study mode |
-| ![Exam results with accuracy by subelement](docs/screenshots/results.png) | ![The question browser showing a figure question and its answer](docs/screenshots/browser.png) |
-| Results with your weakest subelements | Every pool question, with answers on request |
-
-![The Element 8 formula and fact sheet](docs/screenshots/factsheet.png)
-
-## Download and run
-
-1. Open the [latest release](../../releases/latest) and download **FCC-Radio-Study.exe**.
-2. Put it in any folder, for example on a USB stick, and double-click it.
-
-On first launch the program creates a folder called `FCC-Radio-Study-Data` next to the `.exe` and keeps all your progress there, so the whole folder can move between computers. If that location isn't writable (for example under `C:\Program Files`), it uses `%APPDATA%\FCC-Radio-Study` instead. Settings shows which folder is in use.
-
-The program needs the Microsoft Edge WebView2 runtime, which is already part of Windows 11 and up-to-date Windows 10. If the window doesn't open on an older Windows 10 PC, install the [WebView2 Evergreen runtime](https://developer.microsoft.com/microsoft-edge/webview2/) from Microsoft.
-
-Windows SmartScreen may warn about an unrecognized app because the `.exe` isn't code-signed. Choose **More info**, then **Run anyway**.
-
-## Build from source on Windows
-
-### Prerequisites
-
-Install these once, from PowerShell:
-
-```powershell
-# C++ build tools that Rust uses on Windows (choose "Desktop development with C++")
-winget install --id Microsoft.VisualStudio.2022.BuildTools --override "--wait --passive --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"
-
-# Rust (stable, MSVC toolchain)
-winget install --id Rustlang.Rustup
-rustup default stable
-
-# Node.js LTS and Git
-winget install --id OpenJS.NodeJS.LTS
-winget install --id Git.Git
 ```
-
-Close and reopen PowerShell after installing so the new tools are on your `PATH`. WebView2 is already installed on Windows 10 and 11.
-
-### Build
-
-```powershell
-git clone https://github.com/pf0952/fcc-radio-study.git
-cd fcc-radio-study
 npm ci
 npx tauri build --no-bundle
 ```
 
-The portable program is `src-tauri\target\release\fcc-radio-study.exe`. The first build takes several minutes; later builds are faster.
+The exe lands in `src-tauri/target/release/`.
 
-To run it during development with live reload:
+## Heads up
 
-```powershell
-npx tauri dev
-```
-
-To type-check the app and the build scripts:
-
-```powershell
-npm run check
-```
-
-To run the tests (exam generation, answer shuffling, scoring, the missed-questions schedule, unlocking, the calculator, import and reset, and saving and restoring progress):
-
-```powershell
-npm test
-cargo test --manifest-path src-tauri/Cargo.toml
-```
-
-To check the lessons in `content/lessons/` against their briefs (every key topic has a scene, every number matches the brief, checkpoints every 3 to 4 scenes):
-
-```powershell
-npm run lessons
-```
-
-To rebuild the question pool JSON from the official files in `content/source/pools/` (only needed if the pools or the parser change):
-
-```powershell
-npm run pools
-```
-
-### Automated builds
-
-GitHub Actions ([.github/workflows/build.yml](.github/workflows/build.yml)) builds the portable `.exe` on every push and uploads it as a workflow artifact. Pushing a version tag such as `v1.0.0` also attaches the `.exe` to a GitHub Release:
-
-```powershell
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-## Project layout
-
-| Path | What's there |
-| --- | --- |
-| `src/` | The app's interface (Svelte + TypeScript); exam, scoring and review logic in `src/lib/` |
-| `src-tauri/` | The Windows program around it (Tauri 2, Rust): window, data folder, saving progress |
-| `tests/` | Unit tests, run with `npm test` |
-| `content/elements.json` | Exam rules and pool sources for each element |
-| `content/pools/` | All 1,200 questions as JSON, with answers, explanations and flagged-answer notes |
-| `content/lessons/` | One narrated, animated lesson per subelement (scenes, narration, checkpoints) |
-| `content/videos/` | Optional: put `<lesson id>.mp4` here (e.g. `9-D.mp4`) to offer "Watch video" for that lesson |
-| `src/lessons/` | The lesson player and its ten animated scene templates |
-| `content/figures/` | Figure images the Element 3 and 8 questions refer to |
-| `content/source/` | The official pool files, flagged-answer notes, and how the pools are checked |
-| `scripts/` | `build-pools.ts`, which parses and validates the pools |
-| `docs/screenshots/` | The screenshots in this README |
-| `.github/workflows/` | The build that produces the portable `.exe` |
-
-## License and sources
-
-The program's code is released under the [MIT License](LICENSE).
-
-The question pools are works of the U.S. government and are not subject to copyright in the United States:
-
-- Element 3 pool: Federal Communications Commission, effective 25 June 2009
-- Element 8 pool: Federal Communications Commission, approved 25 June 2009
-- Element 9 pool: U.S. Coast Guard Navigation Center, September 2012
-
-Before you sit an exam, confirm with your exam provider (COLEM) that these pools are still current.
+The question pools are public domain (FCC, 2009, for Elements 3 and 8; U.S. Coast Guard, 2012, for Element 9). Check with your COLEM that they're still current before you test.

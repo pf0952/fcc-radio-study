@@ -27,7 +27,7 @@
     'band-strip': BandStrip,
     'key-facts': KeyFacts,
   };
-  // Each template declares its own params shape; lesson files are checked by scripts/check-lessons.ts.
+  // Each template declares its own params shape.
   const Template = $derived(templates[scene.template] as unknown as typeof KeyFacts);
 
   let stage: HTMLDivElement | undefined = $state();
