@@ -1,4 +1,5 @@
 <script lang="ts">
+  import FactSheet from '../components/FactSheet.svelte';
   import LessonPlayer from '../lessons/LessonPlayer.svelte';
   import SectionQuiz from '../lessons/SectionQuiz.svelte';
   import { elements } from '../lib/elements';
@@ -7,7 +8,7 @@
   import { subelementsOf } from '../lib/pools';
   import { progress } from '../lib/progress.svelte';
 
-  type View = { kind: 'list' } | { kind: 'play'; id: string; start: number | null } | { kind: 'quiz'; id: string };
+  type View = { kind: 'list' } | { kind: 'play'; id: string; start: number | null } | { kind: 'quiz'; id: string } | { kind: 'sheet'; element: number };
 
   function initial(): View {
     const p = nav.params;
@@ -32,13 +33,19 @@
 {:else if view.kind === 'quiz'}
   {@const lesson = lessons.get(view.id)!}
   <SectionQuiz {lesson} onreplay={(t) => play(lesson.id, firstSceneOf(lesson, t))} onclose={list} />
+{:else if view.kind === 'sheet'}
+  <FactSheet element={view.element} onback={list} />
 {:else}
   <h1>Study</h1>
   <p class="lead">One narrated lesson per subelement, with checkpoint questions along the way and a 5-question section quiz at the end. Pass the quiz with 4 of 5.</p>
 
   {#each elements as el (el.element)}
+    {@const element = el.element}
     <section class="element" aria-labelledby="study-el-{el.element}">
-      <h2 id="study-el-{el.element}">Element {el.element}: {el.name}</h2>
+      <div class="element-head">
+        <h2 id="study-el-{el.element}">Element {el.element}: {el.name}</h2>
+        <button class="secondary small" onclick={() => (view = { kind: 'sheet', element })}>Formula and fact sheet</button>
+      </div>
       <div class="lessons">
         {#each subelementsOf(el.element) as s (s.letter)}
           {@const id = `${el.element}-${s.letter}`}
@@ -75,6 +82,14 @@
 <style>
   .element + .element {
     margin-top: 2rem;
+  }
+
+  .element-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .lessons {

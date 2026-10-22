@@ -7,6 +7,8 @@
 
   let { lesson, onreplay, onclose }: { lesson: Lesson; onreplay: (keyTopic: number) => void; onclose: () => void } = $props();
 
+  // svelte-ignore state_referenced_locally
+  progress.lastLesson = lesson.id;
   const draw = () => drawQuiz(pools[lesson.element], lesson.keyTopics, Math.random);
   let attempt = $state(0);
   let questions = $state(draw());

@@ -68,6 +68,42 @@ fn save_progress(data: String, dir: State<DataDir>, lock: State<SaveLock>) -> Re
     store::save(&dir.path, &data)
 }
 
+/// `folder/name`, or `folder/stem (2).ext` and so on when that file already exists.
+fn unique_path(folder: &Path, name: &str) -> PathBuf {
+    let (stem, ext) = name.rsplit_once('.').unwrap_or((name, ""));
+    std::iter::once(folder.join(name))
+        .chain((2..).map(|n| folder.join(format!("{stem} ({n}).{ext}"))))
+        .find(|p| !p.exists())
+        .expect("an unused file name")
+}
+
+/// Saves an export (progress or an exam result) in the user's Downloads folder, or in the data
+/// folder when there is no Downloads folder, and returns where it went. Never overwrites a file.
+#[tauri::command]
+fn export_file(name: String, contents: String, dir: State<DataDir>) -> Result<PathBuf, String> {
+    if name.is_empty() || name.starts_with('.') || name.contains(['/', '\\', ':']) {
+        return Err(format!("Not a plain file name: {name}"));
+    }
+    let downloads = std::env::var_os("USERPROFILE").map(|home| PathBuf::from(home).join("Downloads")).filter(|d| d.is_dir());
+    let path = unique_path(&downloads.unwrap_or_else(|| dir.path.clone()), &name);
+    fs::write(&path, contents).map_err(|e| e.to_string())?;
+    Ok(path)
+}
+
+/// Opens File Explorer with the file selected.
+#[tauri::command]
+fn show_in_folder(path: String) -> Result<(), String> {
+    use std::os::windows::process::CommandExt;
+    if !Path::new(&path).is_file() {
+        return Err(format!("{path} no longer exists"));
+    }
+    std::process::Command::new("explorer")
+        .raw_arg(format!("/select,\"{path}\""))
+        .spawn()
+        .map(|_| ())
+        .map_err(|e| e.to_string())
+}
+
 /// Opens a web link (e.g. an official question pool) in the default browser.
 #[tauri::command]
 fn open_url(url: String) -> Result<(), String> {
@@ -96,7 +132,24 @@ fn main() {
             app.manage(SaveLock(Mutex::new(())));
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![data_info, load_progress, save_progress, open_url])
+        .invoke_handler(tauri::generate_handler![data_info, load_progress, save_progress, export_file, show_in_folder, open_url])
         .run(tauri::generate_context!())
         .expect("error while running FCC Radio Study");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn exports_never_overwrite() {
+        let dir = std::env::temp_dir().join(format!("fcc-export-test-{}", std::process::id()));
+        let _ = fs::remove_dir_all(&dir);
+        fs::create_dir_all(&dir).unwrap();
+        assert_eq!(unique_path(&dir, "result.csv"), dir.join("result.csv"));
+        fs::write(dir.join("result.csv"), "1").unwrap();
+        assert_eq!(unique_path(&dir, "result.csv"), dir.join("result (2).csv"));
+        fs::write(dir.join("result (2).csv"), "2").unwrap();
+        assert_eq!(unique_path(&dir, "result.csv"), dir.join("result (3).csv"));
+    }
 }

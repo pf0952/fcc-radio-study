@@ -231,3 +231,54 @@ dialog h2 {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0.05rem 0.4rem;
+  font-family: inherit;
+  font-size: 0.85em;
+  text-align: center;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+}
+
+/* Printing (the fact sheets): black on white, no navigation or buttons. */
+@media print {
+  :root,
+  :root[data-theme],
+  :root:not([data-theme='light']) {
+    --bg: #fff;
+    --surface: #fff;
+    --surface-2: #f1f3f5;
+    --text: #000;
+    --muted: #444;
+    --border: #bbb;
+    --accent: #000;
+    --warn: #000;
+    color-scheme: light;
+  }
+
+  html,
+  body,
+  #app {
+    height: auto;
+  }
+
+  .layout {
+    display: block !important;
+  }
+
+  .sidebar,
+  .banner,
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+}

@@ -1,6 +1,9 @@
 <script lang="ts">
+  import { exportFile, showInFolder } from '../lib/backend';
+  import { examCsv } from '../lib/csv.ts';
   import { isCorrect, subelementStats } from '../lib/exam.ts';
   import { formatDate, formatDuration } from '../lib/keys';
+  import { localDate } from '../lib/leitner.ts';
   import { lessons } from '../lib/lessons';
   import { go } from '../lib/nav.svelte';
   import { elementInfo, questionById } from '../lib/pools';
@@ -18,12 +21,38 @@
   const weakest = $derived(stats.filter((s) => s.correct < s.total).slice(0, 3));
   const missed = $derived(exam.items.map((item, n) => ({ item, n })).filter(({ item }) => !isCorrect(item, questionById.get(item.q)!)));
   const history = $derived(progress.exams.filter((e) => e.element === exam.element && e.finishedAt));
+
+  let exported = $state<{ text: string; path?: string } | null>(null);
+
+  async function exportCsv() {
+    try {
+      const name = `fcc-element-${exam.element}-exam-${localDate(new Date(exam.finishedAt!))}.csv`;
+      const path = await exportFile(name, examCsv(exam, questionById, info.exam.passMark));
+      exported = { text: `Saved to ${path}.`, path };
+    } catch (e) {
+      exported = { text: `Export failed: ${e}` };
+    }
+  }
 </script>
 
 <div class="results">
   <button class="link back" onclick={onback}>← Practice exams</button>
-  <h1>Element {exam.element} exam results</h1>
-  <p class="muted">{formatDate(exam.finishedAt!)} · {exam.mode === 'study' ? 'Study mode' : 'Exam mode'}</p>
+  <div class="title-row">
+    <div>
+      <h1>Element {exam.element} exam results</h1>
+      <p class="muted">{formatDate(exam.finishedAt!)} · {exam.mode === 'study' ? 'Study mode' : 'Exam mode'}</p>
+    </div>
+    <div class="export">
+      <button class="secondary" onclick={exportCsv}>Export to CSV</button>
+      {#if exported}
+        {@const path = exported.path}
+        <p class="muted" role="status">
+          {exported.text}
+          {#if path}<button class="link" onclick={() => showInFolder(path)}>Show in folder</button>{/if}
+        </p>
+      {/if}
+    </div>
+  </div>
 
   <section class="card summary" class:pass={exam.passed} aria-label="Score">
     <div>
@@ -95,6 +124,28 @@
 <style>
   .back {
     margin-bottom: 0.75rem;
+  }
+
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .title-row p {
+    margin: 0;
+  }
+
+  .export {
+    display: grid;
+    justify-items: end;
+    gap: 0.3rem;
+    max-width: 26rem;
+    font-size: 0.875rem;
+    text-align: right;
+    overflow-wrap: anywhere;
   }
 
   .results > .card,

@@ -4,13 +4,14 @@
   import { generateExam } from '../lib/exam.ts';
   import { elements } from '../lib/elements';
   import { formatDate } from '../lib/keys';
-  import { nav } from '../lib/nav.svelte';
-  import { pools } from '../lib/pools';
+  import { go, nav } from '../lib/nav.svelte';
+  import { pools, subelementsOf } from '../lib/pools';
   import { progress, saveProgress } from '../lib/progress.svelte';
+  import { unlockStatus } from '../lib/unlock.ts';
   import type { ExamMode } from '../lib/types.ts';
 
   let resultsId = $state<string | null>(nav.params.results ?? null);
-  let view = $state<'list' | 'run' | 'results'>(nav.params.results ? 'results' : 'list');
+  let view = $state<'list' | 'run' | 'results'>(nav.params.results ? 'results' : nav.params.resume && progress.activeExam ? 'run' : 'list');
 
   let confirmDiscard = $state(false);
   const options = $state(Object.fromEntries(elements.map((e) => [e.element, { mode: 'exam' as ExamMode, timer: false, minutes: e.exam.questions }])));
@@ -56,7 +57,7 @@
   <h1>Practice Exams</h1>
   <p class="lead">
     Each exam is built like the real one: one question from every key topic, in random order. Exam mode holds all feedback until you submit;
-    study mode checks each answer as you go.
+    study mode checks each answer as you go. An element's exams open once you've finished its lessons and passed its section quizzes.
   </p>
 
   {#if progress.activeExam}
@@ -82,25 +83,51 @@
     {#each elements as el (el.element)}
       {@const o = options[el.element]}
       {@const past = progress.exams.filter((e) => e.element === el.element).toReversed()}
+      {@const lock = unlockStatus(el.element, subelementsOf(el.element), progress, progress.prefs.unlockAll)}
       <section class="card" aria-labelledby="exam-el-{el.element}">
         <h2 id="exam-el-{el.element}">Element {el.element}: {el.name}</h2>
         <p class="muted">{el.exam.questions} questions, pass with {el.exam.passMark} correct.</p>
 
-        <fieldset>
-          <legend>Mode</legend>
-          <label><input type="radio" bind:group={o.mode} value="exam" /> Exam mode</label>
-          <label><input type="radio" bind:group={o.mode} value="study" /> Study mode</label>
-        </fieldset>
-        <div class="timer">
-          <label><input type="checkbox" bind:checked={o.timer} /> Use a timer</label>
-          {#if o.timer}
-            <label class="minutes">
-              <input type="number" min="1" max="300" bind:value={o.minutes} aria-label="Timer length in minutes" /> minutes
-            </label>
-          {/if}
-        </div>
-        <button class="primary" disabled={!!progress.activeExam} onclick={() => start(el.element)}>Start exam</button>
-        {#if progress.activeExam}<p class="muted note">Finish or discard the unfinished exam first.</p>{/if}
+        {#if !lock.unlocked}
+          <div class="locked">
+            <p>
+              <strong>Locked.</strong> These exams open once every Element {el.element} lesson is played to the end and every section quiz is passed:
+              {lock.done} of {lock.total} done.
+            </p>
+            <ul class="checklist" aria-label="What's left for Element {el.element}">
+              {#each lock.steps.filter((s) => !s.lessonDone || !s.quizPassed) as s (s.lesson)}
+                <li>
+                  <span class="what"><strong>{s.lesson}</strong> {s.title}</span>
+                  <span class="marks">
+                    <span class:ok={s.lessonDone}><span aria-hidden="true">{s.lessonDone ? '✓' : '○'}</span> Lesson<span class="sr-only">{s.lessonDone ? ' done' : ' not done'}</span></span>
+                    <span class:ok={s.quizPassed}><span aria-hidden="true">{s.quizPassed ? '✓' : '○'}</span> Quiz<span class="sr-only">{s.quizPassed ? ' passed' : ' not passed'}</span></span>
+                  </span>
+                  {#if !s.lessonDone}
+                    <button class="secondary small" onclick={() => go('study', { lesson: s.lesson })} aria-label="Play lesson {s.lesson}">Play</button>
+                  {:else}
+                    <button class="secondary small" onclick={() => go('study', { quiz: s.lesson })} aria-label="Take the {s.lesson} section quiz">Quiz</button>
+                  {/if}
+                </li>
+              {/each}
+            </ul>
+          </div>
+        {:else}
+          <fieldset>
+            <legend>Mode</legend>
+            <label><input type="radio" bind:group={o.mode} value="exam" /> Exam mode</label>
+            <label><input type="radio" bind:group={o.mode} value="study" /> Study mode</label>
+          </fieldset>
+          <div class="timer">
+            <label><input type="checkbox" bind:checked={o.timer} /> Use a timer</label>
+            {#if o.timer}
+              <label class="minutes">
+                <input type="number" min="1" max="300" bind:value={o.minutes} aria-label="Timer length in minutes" /> minutes
+              </label>
+            {/if}
+          </div>
+          <button class="primary" disabled={!!progress.activeExam} onclick={() => start(el.element)}>Start exam</button>
+          {#if progress.activeExam}<p class="muted note">Finish or discard the unfinished exam first.</p>{/if}
+        {/if}
 
         {#if past.length}
           <table>
@@ -186,6 +213,50 @@
   .note {
     margin: 0.4rem 0 0;
     font-size: 0.85rem;
+  }
+
+  .locked {
+    margin-top: 0.75rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+
+  .locked > p {
+    margin: 0 0 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .checklist li {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+  }
+
+  .what {
+    min-width: 0;
+  }
+
+  .marks {
+    display: flex;
+    gap: 0.6rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .marks .ok {
+    color: var(--good);
+    font-weight: 600;
   }
 
   table {

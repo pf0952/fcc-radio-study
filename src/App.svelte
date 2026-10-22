@@ -1,7 +1,8 @@
 <script lang="ts">
   import icon from '../src-tauri/app-icon.svg';
+  import { ignoreShortcut } from './lib/keys';
   import { go, nav } from './lib/nav.svelte';
-  import { loadProgress, status } from './lib/progress.svelte';
+  import { loadProgress, progress, status } from './lib/progress.svelte';
   import { screens } from './lib/screens';
   import Home from './screens/Home.svelte';
   import Study from './screens/Study.svelte';
@@ -12,6 +13,7 @@
   import About from './screens/About.svelte';
 
   let main: HTMLElement;
+  let shortcuts: HTMLDialogElement;
   const loading = loadProgress();
 
   // Move focus to each new screen so keyboard and screen-reader users land on it.
@@ -19,7 +21,51 @@
     void nav.screen;
     main?.focus();
   });
+
+  // Theme and text size from Settings ("system" follows Windows through prefers-color-scheme).
+  $effect(() => {
+    const root = document.documentElement;
+    if (progress.prefs.theme === 'system') delete root.dataset.theme;
+    else root.dataset.theme = progress.prefs.theme;
+    root.style.setProperty('--text-scale', `${progress.prefs.textSize}%`);
+  });
+
+  function onkeydown(e: KeyboardEvent) {
+    if (e.key === '?' && !ignoreShortcut(e)) {
+      e.preventDefault();
+      shortcuts.showModal();
+    }
+  }
+
+  const KEYS: [string, [string, string][]][] = [
+    [
+      'Questions',
+      [
+        ['1–4 or A–D', 'Choose an answer'],
+        ['Enter', 'Next question, or continue after a checkpoint'],
+        ['F', 'Flag the question for review (practice exams)'],
+        ['← →', 'Previous or next question (practice exams)'],
+      ],
+    ],
+    [
+      'Lessons',
+      [
+        ['Space', 'Play or pause the narration'],
+        ['← →', 'Previous or next scene'],
+      ],
+    ],
+    [
+      'Anywhere',
+      [
+        ['?', 'Show this list'],
+        ['Esc', 'Close a dialog'],
+        ['Tab, Shift+Tab', 'Move between buttons and fields'],
+      ],
+    ],
+  ];
 </script>
+
+<svelte:window {onkeydown} />
 
 <div class="layout">
   <aside class="sidebar">
@@ -34,6 +80,7 @@
         </button>
       {/each}
     </nav>
+    <button class="nav-item keys-button" onclick={() => shortcuts.showModal()} aria-keyshortcuts="Shift+?">Keyboard shortcuts <kbd>?</kbd></button>
   </aside>
 
   <main bind:this={main} tabindex="-1">
@@ -72,6 +119,23 @@
     {/await}
   </main>
 </div>
+
+<dialog bind:this={shortcuts} class="shortcuts" aria-labelledby="shortcuts-title">
+  <h2 id="shortcuts-title">Keyboard shortcuts</h2>
+  {#each KEYS as [group, rows] (group)}
+    <table>
+      <caption>{group}</caption>
+      <tbody>
+        {#each rows as [key, what] (key + what)}
+          <tr><th scope="row"><kbd>{key}</kbd></th><td>{what}</td></tr>
+        {/each}
+      </tbody>
+    </table>
+  {/each}
+  <div class="dialog-actions">
+    <button class="primary" onclick={() => shortcuts.close()}>Close</button>
+  </div>
+</dialog>
 
 <style>
   .layout {
@@ -128,6 +192,54 @@
 
   .sidebar :global(:focus-visible) {
     outline-color: #f4b942;
+  }
+
+  .keys-button {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+  }
+
+  .keys-button kbd {
+    color: inherit;
+    background: rgb(255 255 255 / 0.12);
+    border-color: rgb(255 255 255 / 0.25);
+  }
+
+  .shortcuts {
+    width: min(34rem, 92vw);
+  }
+
+  .shortcuts table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.75rem;
+  }
+
+  .shortcuts caption {
+    text-align: left;
+    font-weight: 600;
+    color: var(--muted);
+    padding-bottom: 0.25rem;
+  }
+
+  .shortcuts th {
+    width: 9rem;
+    text-align: left;
+    font-weight: 400;
+    padding: 0.25rem 0;
+    vertical-align: top;
+  }
+
+  .shortcuts td {
+    padding: 0.25rem 0;
+  }
+
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
   }
 
   main {

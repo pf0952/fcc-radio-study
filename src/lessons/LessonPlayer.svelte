@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import QuestionCard from '../components/QuestionCard.svelte';
   import { newItem } from '../lib/exam.ts';
-  import { choiceKey, ignoreShortcut } from '../lib/keys';
+  import { choiceKey, fromInside, ignoreShortcut } from '../lib/keys';
   import { firstSceneOf, videoUrl } from '../lib/lessons';
   import { Narration, speech } from '../lib/narrator.svelte';
   import { pools } from '../lib/pools';
@@ -131,6 +131,10 @@
     if (overlay?.kind === 'checkpoint') {
       const pos = choiceKey(e);
       if (pos !== null && pos < overlay.item.order.length) answerCheckpoint(overlay.item.order[pos]);
+      else if (e.key === 'Enter' && overlay.item.chosen !== null && !fromInside(e, 'button')) {
+        e.preventDefault();
+        leaveCheckpoint(false);
+      }
       return;
     }
     if (ignoreShortcut(e) || showVideo) return;
@@ -146,6 +150,7 @@
 
   // Open on the saved scene and start playing; stop speaking when the player closes.
   onMount(() => {
+    progress.lastLesson = lesson.id;
     startScene(index, true);
     return () => {
       clearTimeout(advance);

@@ -134,6 +134,43 @@ mod tests {
     }
 
     #[test]
+    fn crash_while_writing_keeps_the_last_good_save() {
+        let dir = temp_dir("crash");
+        save(&dir, r#"{"schema":1,"n":1}"#).unwrap();
+        save(&dir, r#"{"schema":1,"n":2}"#).unwrap();
+        fs::write(dir.join(TEMP), "{\"schema\":1,\"n\":").unwrap(); // the app died mid-write, before the rename
+        assert_eq!(load(&dir).unwrap(), Loaded { data: Some(r#"{"schema":1,"n":2}"#.into()), notice: None });
+        // The next save simply overwrites the leftover temporary file.
+        save(&dir, r#"{"schema":1,"n":3}"#).unwrap();
+        assert_eq!(fs::read_to_string(dir.join(FILE)).unwrap(), r#"{"schema":1,"n":3}"#);
+        assert_eq!(fs::read_to_string(dir.join(BACKUP)).unwrap(), r#"{"schema":1,"n":2}"#);
+    }
+
+    #[test]
+    fn saving_after_a_restore_continues_from_the_backup() {
+        let dir = temp_dir("after-restore");
+        save(&dir, r#"{"schema":1,"n":1}"#).unwrap();
+        save(&dir, r#"{"schema":1,"n":2}"#).unwrap();
+        fs::write(dir.join(FILE), "").unwrap(); // emptied
+        assert_eq!(load(&dir).unwrap().data.as_deref(), Some(r#"{"schema":1,"n":1}"#));
+        save(&dir, r#"{"schema":1,"n":4}"#).unwrap();
+        assert_eq!(fs::read_to_string(dir.join(FILE)).unwrap(), r#"{"schema":1,"n":4}"#);
+        assert_eq!(fs::read_to_string(dir.join(BACKUP)).unwrap(), r#"{"schema":1,"n":1}"#);
+        // A second launch reads the new save with no notice.
+        assert_eq!(load(&dir).unwrap(), Loaded { data: Some(r#"{"schema":1,"n":4}"#.into()), notice: None });
+    }
+
+    #[test]
+    fn a_json_value_that_is_not_an_object_counts_as_unreadable() {
+        let dir = temp_dir("not-object");
+        fs::write(dir.join(BACKUP), r#"{"schema":1,"n":5}"#).unwrap();
+        fs::write(dir.join(FILE), "null").unwrap();
+        let loaded = load(&dir).unwrap();
+        assert_eq!(loaded.data.as_deref(), Some(r#"{"schema":1,"n":5}"#));
+        assert!(loaded.notice.is_some());
+    }
+
+    #[test]
     fn invalid_json_is_never_written() {
         let dir = temp_dir("invalid");
         save(&dir, r#"{"schema":1}"#).unwrap();

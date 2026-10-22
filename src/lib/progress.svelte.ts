@@ -1,31 +1,17 @@
 import { loadProgressFile, saveProgressFile } from './backend';
 import { localDate, nextCard } from './leitner.ts';
+import { emptyProgress, parseProgress } from './progress-data.ts';
 import type { Progress, Source } from './types.ts';
 
-const empty = (): Progress => ({
-  schema: 1,
-  answers: [],
-  exams: [],
-  activeExam: null,
-  deck: {},
-  lessons: {},
-  quizzes: {},
-  prefs: { voice: null, rate: 1, captions: true },
-});
-
 /** Everything the user has done, saved to progress.json. */
-export const progress = $state<Progress>(empty());
+export const progress = $state<Progress>(emptyProgress());
 
 /** Shown once at startup, e.g. when progress was restored from the backup. */
 export const status = $state<{ notice: string | null; saveError: string | null }>({ notice: null, saveError: null });
 
 export async function loadProgress() {
   const { data, notice } = await loadProgressFile();
-  if (data) {
-    const saved = JSON.parse(data) as Partial<Progress>;
-    if (saved.schema !== 1) throw new Error(`progress.json has schema ${saved.schema}; this version of the app reads schema 1.`);
-    Object.assign(progress, empty(), saved);
-  }
+  if (data) Object.assign(progress, parseProgress(data));
   status.notice = notice;
 }
 
@@ -43,6 +29,12 @@ export function saveProgress(): Promise<void> {
       status.saveError = String(e);
     });
   return queue;
+}
+
+/** Replaces all progress (after an import or a reset) and saves it. */
+export function replaceProgress(next: Progress): Promise<void> {
+  Object.assign(progress, next);
+  return saveProgress();
 }
 
 /** Adds an answer to the history and updates the missed-questions deck. Call saveProgress() after. */

@@ -92,8 +92,10 @@ export type LessonProgress = { scene: number; completed: boolean; completedAt: s
 
 export type QuizResult = { passed: boolean; best: number; last: number; attempts: number; at: string };
 
-/** Lesson player settings. */
-export type Prefs = { voice: string | null; rate: number; captions: boolean };
+export type Theme = 'system' | 'light' | 'dark';
+
+/** Settings: lesson player, appearance, and the developer switch that opens every practice exam. */
+export type Prefs = { voice: string | null; rate: number; captions: boolean; theme: Theme; textSize: number; unlockAll: boolean };
 
 export type Progress = {
   schema: 1;
@@ -103,6 +105,8 @@ export type Progress = {
   deck: Record<string, DeckCard>;
   lessons: Record<string, LessonProgress>;
   quizzes: Record<string, QuizResult>;
+  /** Lesson most recently opened, for "Continue where you left off". */
+  lastLesson: string | null;
   prefs: Prefs;
 };
 

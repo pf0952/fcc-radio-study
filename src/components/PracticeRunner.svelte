@@ -5,6 +5,7 @@
   import { recordAnswer, saveProgress } from '../lib/progress.svelte';
   import type { Snippet } from 'svelte';
   import type { Item, Question, Source } from '../lib/types.ts';
+  import Calculator from './Calculator.svelte';
   import QuestionCard from './QuestionCard.svelte';
 
   type Result = { right: number; missed: Question[] };
@@ -32,6 +33,7 @@
   const items = $state<Item[]>(questions.map((q) => newItem(q, Math.random)));
   let index = $state(0);
   let done = $state(false);
+  let showCalc = $state(false);
 
   const item = $derived(items[index]);
   const question = $derived(questions[index]);
@@ -88,15 +90,21 @@
     <button class="primary" onclick={onclose}>Done</button>
   </section>
 {:else}
-  <section class="card" aria-label="Question {index + 1} of {items.length}">
-    <p class="muted progress-line">Question {index + 1} of {items.length} · {right} correct so far</p>
-    {#key question.id}
-      <QuestionCard {question} {item} reveal={item.chosen !== null} locked={item.chosen !== null} onchoose={choose} />
-    {/key}
-    <div class="next">
-      <button class="primary" disabled={item.chosen === null} onclick={next}>{index < items.length - 1 ? 'Next' : 'Finish'}</button>
-    </div>
-  </section>
+  <div class="work" class:with-calc={showCalc}>
+    <section class="card" aria-label="Question {index + 1} of {items.length}">
+      <div class="progress-line">
+        <p class="muted">Question {index + 1} of {items.length} · {right} correct so far</p>
+        <button class="secondary small" aria-expanded={showCalc} onclick={() => (showCalc = !showCalc)}>Calculator</button>
+      </div>
+      {#key question.id}
+        <QuestionCard {question} {item} reveal={item.chosen !== null} locked={item.chosen !== null} onchoose={choose} />
+      {/key}
+      <div class="next">
+        <button class="primary" disabled={item.chosen === null} onclick={next}>{index < items.length - 1 ? 'Next' : 'Finish'}</button>
+      </div>
+    </section>
+    {#if showCalc}<Calculator onclose={() => (showCalc = false)} />{/if}
+  </div>
 {/if}
 
 <style>
@@ -105,7 +113,22 @@
   }
 
   .progress-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
     margin: 0 0 0.75rem;
+  }
+
+  .progress-line p {
+    margin: 0;
+  }
+
+  .work.with-calc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    gap: 1rem;
+    align-items: start;
   }
 
   .next {

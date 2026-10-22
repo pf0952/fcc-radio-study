@@ -8,7 +8,7 @@ A free, offline study program for the FCC commercial radio operator license exam
 
 It runs as a single portable `.exe` on Windows 10 and 11. Nothing to install, no account, no internet connection needed.
 
-> **Status:** in development. Practice exams, results, the missed-questions deck and drills work, with all 1,200 questions explained. Lessons are coming next.
+> **Status:** in development. All 30 narrated lessons, practice exams, the missed-questions deck, drills, the question browser, formula and fact sheets and the study calculator work. The first release (v1.0.0) is next.
 
 ## What it does
 

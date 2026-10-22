@@ -4,6 +4,7 @@
   import { elementInfo, questionById } from '../lib/pools';
   import { progress, recordAnswer, saveProgress } from '../lib/progress.svelte';
   import type { Exam } from '../lib/types.ts';
+  import Calculator from './Calculator.svelte';
   import QuestionCard from './QuestionCard.svelte';
 
   let { exam, onfinish, onleave }: { exam: Exam; onfinish: (id: string) => void; onleave: () => void } = $props();
@@ -18,6 +19,7 @@
   const remaining = $derived(exam.timerMinutes ? exam.timerMinutes * 60 - exam.seconds : null);
 
   let confirm: HTMLDialogElement;
+  let showCalc = $state(false);
 
   // Count active time; save it now and then so it survives the app closing.
   $effect(() => {
@@ -106,6 +108,9 @@
           {remaining > 0 ? `${formatDuration(remaining)} left` : 'Time is up. Submit when ready.'}
         </p>
       {/if}
+      {#if study}
+        <button class="secondary" aria-expanded={showCalc} onclick={() => (showCalc = !showCalc)}>Calculator</button>
+      {/if}
       <button class="secondary" onclick={onleave}>Save and exit</button>
       <button class="primary" onclick={() => confirm.showModal()}>Submit exam</button>
     </div>
@@ -132,24 +137,28 @@
       </div>
     </section>
 
-    <nav class="card grid-panel" aria-label="Question navigator">
-      <h2>Questions</h2>
-      <div class="grid">
-        {#each exam.items as i, n (i.q)}
-          <button
-            class="cell"
-            class:answered={i.chosen !== null}
-            class:right={study && i.chosen !== null && i.chosen === questionById.get(i.q)!.answer}
-            class:wrong={study && i.chosen !== null && i.chosen !== questionById.get(i.q)!.answer}
-            class:flagged={i.flagged}
-            aria-current={n === exam.current ? 'step' : undefined}
-            aria-label={label(n)}
-            onclick={() => goTo(n)}>{n + 1}</button
-          >
-        {/each}
-      </div>
-      <p class="legend muted"><span class="swatch answered"></span> Answered <span class="swatch flag"></span> Flagged</p>
-    </nav>
+    <div class="side">
+      <!-- The calculator is offered in study mode only, never in exam mode. -->
+      {#if study && showCalc}<Calculator onclose={() => (showCalc = false)} />{/if}
+      <nav class="card grid-panel" aria-label="Question navigator">
+        <h2>Questions</h2>
+        <div class="grid">
+          {#each exam.items as i, n (i.q)}
+            <button
+              class="cell"
+              class:answered={i.chosen !== null}
+              class:right={study && i.chosen !== null && i.chosen === questionById.get(i.q)!.answer}
+              class:wrong={study && i.chosen !== null && i.chosen !== questionById.get(i.q)!.answer}
+              class:flagged={i.flagged}
+              aria-current={n === exam.current ? 'step' : undefined}
+              aria-label={label(n)}
+              onclick={() => goTo(n)}>{n + 1}</button
+            >
+          {/each}
+        </div>
+        <p class="legend muted"><span class="swatch answered"></span> Answered <span class="swatch flag"></span> Flagged</p>
+      </nav>
+    </div>
   </div>
 </div>
 
@@ -231,9 +240,16 @@
     margin-top: 1.25rem;
   }
 
-  .grid-panel {
+  .side {
     position: sticky;
     top: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .side > :global(.card) {
+    margin: 0;
   }
 
   .grid-panel h2 {

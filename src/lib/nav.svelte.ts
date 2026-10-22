@@ -9,6 +9,8 @@ export type NavParams = {
   topic?: number;
   /** Study: open this lesson's section quiz. */
   quiz?: string;
+  /** Practice Exams: go straight back into the unfinished exam. */
+  resume?: boolean;
 };
 
 export const nav = $state<{ screen: ScreenId; params: NavParams }>({ screen: 'home', params: {} });
