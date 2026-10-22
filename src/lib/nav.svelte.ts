@@ -13,9 +13,14 @@ export type NavParams = {
   resume?: boolean;
 };
 
-export const nav = $state<{ screen: ScreenId; params: NavParams }>({ screen: 'home', params: {} });
+/** `visit` counts navigations, so going to the screen already shown still opens it afresh. */
+export const nav = $state<{ screen: ScreenId; params: NavParams; visit: number }>({ screen: 'home', params: {}, visit: 0 });
+
+/** Scrolls the main area back to the top, e.g. when a screen switches from a list to a lesson. */
+export const toTop = () => document.querySelector('main')?.scrollTo(0, 0);
 
 export function go(screen: ScreenId, params: NavParams = {}) {
   nav.screen = screen;
   nav.params = params;
+  nav.visit++;
 }

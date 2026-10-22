@@ -4,7 +4,7 @@
   import { generateExam } from '../lib/exam.ts';
   import { elements } from '../lib/elements';
   import { formatDate } from '../lib/keys';
-  import { go, nav } from '../lib/nav.svelte';
+  import { go, nav, toTop } from '../lib/nav.svelte';
   import { pools, subelementsOf } from '../lib/pools';
   import { progress, saveProgress } from '../lib/progress.svelte';
   import { unlockStatus } from '../lib/unlock.ts';
@@ -12,6 +12,10 @@
 
   let resultsId = $state<string | null>(nav.params.results ?? null);
   let view = $state<'list' | 'run' | 'results'>(nav.params.results ? 'results' : nav.params.resume && progress.activeExam ? 'run' : 'list');
+  $effect(() => {
+    void view;
+    toTop();
+  });
 
   let confirmDiscard = $state(false);
   const options = $state(Object.fromEntries(elements.map((e) => [e.element, { mode: 'exam' as ExamMode, timer: false, minutes: e.exam.questions }])));

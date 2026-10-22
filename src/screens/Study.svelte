@@ -4,7 +4,7 @@
   import SectionQuiz from '../lessons/SectionQuiz.svelte';
   import { elements } from '../lib/elements';
   import { firstSceneOf, lessons, videoUrl } from '../lib/lessons';
-  import { nav } from '../lib/nav.svelte';
+  import { nav, toTop } from '../lib/nav.svelte';
   import { subelementsOf } from '../lib/pools';
   import { progress } from '../lib/progress.svelte';
 
@@ -20,6 +20,10 @@
     return { kind: 'list' };
   }
   let view = $state<View>(initial());
+  $effect(() => {
+    void view;
+    toTop();
+  });
 
   const list = () => (view = { kind: 'list' });
   const play = (id: string, start: number | null = null) => (view = { kind: 'play', id, start });

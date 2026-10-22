@@ -3,12 +3,16 @@
   import { drillFrom, weakestDrill } from '../lib/drill.ts';
   import { elements } from '../lib/elements';
   import { dueIds, localDate } from '../lib/leitner.ts';
-  import { nav } from '../lib/nav.svelte';
+  import { nav, toTop } from '../lib/nav.svelte';
   import { pools, questionById, subelementsOf } from '../lib/pools';
   import { progress } from '../lib/progress.svelte';
   import type { Question, Source } from '../lib/types.ts';
 
   let session = $state<{ title: string; questions: Question[]; source: Source } | null>(null);
+  $effect(() => {
+    void session;
+    toTop();
+  });
   const chosenSub = $state(Object.fromEntries(elements.map((e) => [e.element, e.subelements[0]])));
   const today = localDate();
 

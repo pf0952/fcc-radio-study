@@ -16,10 +16,12 @@
   let shortcuts: HTMLDialogElement;
   const loading = loadProgress();
 
-  // Move focus to each new screen so keyboard and screen-reader users land on it.
+  // Each new screen starts at the top, with focus on it so keyboard and screen-reader users land there.
   $effect(() => {
-    void nav.screen;
-    main?.focus();
+    void nav.visit;
+    if (!main) return;
+    main.scrollTop = 0;
+    main.focus();
   });
 
   // Theme and text size from Settings ("system" follows Windows through prefers-color-scheme).
@@ -97,7 +99,7 @@
     {#await loading}
       <p class="muted">Loading your progress…</p>
     {:then}
-      {#key nav.screen + JSON.stringify(nav.params)}
+      {#key nav.visit}
         {#if nav.screen === 'home'}
           <Home />
         {:else if nav.screen === 'study'}

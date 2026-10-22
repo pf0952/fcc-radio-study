@@ -8,7 +8,7 @@ A free, offline study program for the FCC commercial radio operator license exam
 
 It runs as a single portable `.exe` on Windows 10 and 11. Nothing to install, no account, no internet connection needed.
 
-> **Status:** in development. All 30 narrated lessons, practice exams, the missed-questions deck, drills, the question browser, formula and fact sheets and the study calculator work. The first release (v1.0.0) is next.
+![Home: continue where you left off, and a readiness meter for each element](docs/screenshots/home.png)
 
 ## What it does
 
@@ -16,6 +16,17 @@ It runs as a single portable `.exe` on Windows 10 and 11. Nothing to install, no
 - Practice exams built like the real ones (one question from each key topic), in exam mode or study mode
 - Results with weak-spot feedback by subelement, a missed-questions deck with spaced repetition, and quick drills
 - A searchable browser for all 1,200 pool questions, formula and fact sheets, light and dark themes, full keyboard use
+
+Each element's practice exams open once you've played its lessons to the end and passed their section quizzes; the locked card lists what's left.
+
+| | |
+| --- | --- |
+| ![A lesson scene: a SART on the radar display, with captions](docs/screenshots/lesson.png) | ![A practice exam in exam mode, with the question navigator](docs/screenshots/exam.png) |
+| Lessons: animated scenes, narration and captions | Practice exams: exam mode or study mode |
+| ![Exam results with accuracy by subelement](docs/screenshots/results.png) | ![The question browser showing a figure question and its answer](docs/screenshots/browser.png) |
+| Results with your weakest subelements | Every pool question, with answers on request |
+
+![The Element 8 formula and fact sheet](docs/screenshots/factsheet.png)
 
 ## Download and run
 
@@ -72,7 +83,7 @@ To type-check the app and the build scripts:
 npm run check
 ```
 
-To run the tests (exam generation, answer shuffling, scoring, the missed-questions schedule, and saving progress):
+To run the tests (exam generation, answer shuffling, scoring, the missed-questions schedule, unlocking, the calculator, import and reset, and saving and restoring progress):
 
 ```powershell
 npm test
@@ -115,6 +126,7 @@ git push origin v1.0.0
 | `content/figures/` | Figure images the Element 3 and 8 questions refer to |
 | `content/source/` | The official pool files, flagged-answer notes, and how the pools are checked |
 | `scripts/` | `build-pools.ts`, which parses and validates the pools |
+| `docs/screenshots/` | The screenshots in this README |
 | `.github/workflows/` | The build that produces the portable `.exe` |
 
 ## License and sources
