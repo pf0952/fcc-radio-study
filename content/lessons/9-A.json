@@ -11,86 +11,339 @@
       "params": {
         "kicker": "Element 9 · Subelement A",
         "title": "VHF-DSC Equipment & Operation",
-        "subtitle": "Channels and tolerances, front-panel controls, FM receivers and transmitters, DSC signals, antennas, and diagnosing common faults."
+        "subtitle": "The ship's short-range distress and safety radio: channels, controls, FM transmitter and receiver, DSC signals, antennas and fault finding."
       },
-      "onScreen": ["VHF-DSC Equipment & Operation", "Channels, controls, receivers, transmitters, DSC and antennas"],
-      "narration": "This lesson is all about the marine VHF-DSC radio: VHF for very high frequency, and DSC for digital selective calling. We'll cover its channels and frequency tolerances, its front-panel controls, and how its FM, or frequency modulation, receiver and transmitter work. Then the digital selective calling signal itself, and good antenna practice. Along the way, we'll diagnose common receiver and transmitter faults from their symptoms and test readings. Let's start with the channels."
+      "onScreen": ["VHF-DSC Equipment & Operation", "Channels, controls, transmitter, receiver, DSC, antennas and faults"],
+      "narration": "Welcome to Element 9, the exam for the GMDSS maintainer license. GMDSS is the Global Maritime Distress and Safety System, and this first lesson is about one radio in it: the marine VHF-DSC radio. VHF stands for very high frequency, and DSC for digital selective calling; we'll unpack both. It's the ship's short-range radio for safety and everyday contact, and as its maintainer, you keep it working. No electronics background is assumed. By the end, you'll know the channels and their limits, the controls, how the transmitter and receiver work, the digital calling signal and the antenna. And when the radio fails, you'll be able to reason from the symptom to the faulty part."
     },
     {
       "id": "s2",
       "keyTopic": 1,
-      "template": "band-strip",
+      "template": "block-diagram",
       "params": {
-        "title": "Key marine VHF channels",
-        "min": 156.45,
-        "max": 156.85,
-        "scale": "linear",
-        "marks": [
-          { "at": 156.8, "label": "Channel 16 · 156.800 MHz", "note": "Voice calling and distress", "tone": "key" },
-          { "at": 156.525, "label": "Channel 70 · 156.525 MHz", "note": "Reserved for DSC", "tone": "key" },
-          { "at": 156.65, "label": "Channel 13 · 156.650 MHz", "note": "Bridge-to-bridge" },
-          { "at": 156.5, "label": "Channel 10 · 156.500 MHz", "note": "25 kHz below Channel 70", "tone": "muted" },
-          { "at": 156.55, "label": "Channel 11 · 156.550 MHz", "note": "25 kHz above Channel 70", "tone": "muted" }
+        "title": "GMDSS: the safety net at sea",
+        "columns": 2,
+        "blocks": [
+          { "id": "ship", "label": "Ship in trouble", "note": "Raises the alarm at the push of a button" },
+          { "id": "radio", "label": "GMDSS radios", "note": "VHF-DSC for short range" },
+          { "id": "shore", "label": "Coast stations", "note": "Radio stations on shore, and rescue centers" },
+          { "id": "ships", "label": "Nearby ships", "note": "Hear the alert and can help" }
+        ],
+        "links": [
+          { "from": "ship", "to": "radio" },
+          { "from": "radio", "to": "shore" },
+          { "from": "radio", "to": "ships" }
         ]
       },
-      "onScreen": ["Channel 16, 156.800 MHz: voice calling and distress", "Channel 70, 156.525 MHz: reserved for DSC", "Channel 13, 156.650 MHz: bridge-to-bridge", "Channels 10 and 11: 25 kHz either side of Channel 70"],
-      "narration": "Three channels matter most. Channel 16, 156.800 megahertz, is the voice calling and distress channel. Channel 70, 156.525 megahertz, is reserved for digital selective calling. And Channel 13, 156.650 megahertz, is the bridge-to-bridge channel. Marine VHF channels are spaced 25 kilohertz apart. So Channel 70 sits exactly halfway between Channel 10, at 156.500 megahertz, and Channel 11, at 156.550 megahertz, 25 kilohertz from each."
+      "onScreen": ["Ship in trouble raises the alarm", "GMDSS radios: VHF-DSC for short range", "Coast stations and rescue centers", "Nearby ships"],
+      "narration": "So what is GMDSS for? Before it, a ship in trouble needed a radio operator to call for help, and someone had to be listening at the right moment. GMDSS replaced that with an international system of radios and satellites. A ship's equipment can raise the alarm automatically, often at the push of a button, and the alert reaches coast stations, the radio stations on shore, and the ships nearby. Each ship carries several GMDSS radios for different distances. The VHF-DSC radio is the short-range one. Because lives depend on it, it has to work every time it's needed."
     },
     {
       "id": "s3",
       "keyTopic": 1,
-      "template": "key-facts",
+      "template": "waveform",
       "params": {
-        "title": "Duplex split and DSC tolerance",
-        "items": [
-          "Duplex channels: transmit and receive frequencies are 4.6 MHz apart",
-          "Channel 26: ship transmits on 157.300 MHz, coast station on 161.900 MHz",
-          "161.900 − 157.300 = 4.6 MHz",
-          "DSC carrier frequency tolerance: 10 ppm (parts per million)",
-          "At 156.525 MHz: 156.525 MHz × 10×10⁻⁶ ≈ 1565 Hz either way"
+        "title": "Frequency: how fast a wave repeats",
+        "kind": "sine",
+        "cycles": 6,
+        "xAxis": "time",
+        "yAxis": "signal",
+        "labels": [
+          "One cycle: one complete swing up and down",
+          "Frequency: cycles per second, in hertz (Hz)",
+          "1 kHz = 1000 Hz · 1 MHz = 1000 kHz",
+          "Marine VHF channels start just above 156 MHz"
         ]
       },
-      "onScreen": ["Duplex: 4.6 MHz apart", "Channel 26: ship 157.300 MHz, coast 161.900 MHz", "DSC tolerance: 10 ppm", "≈ 1565 Hz either way at 156.525 MHz"],
-      "narration": "Some channels are duplex: the ship and the coast station transmit on different frequencies, 4.6 megahertz apart. On Channel 26, ships transmit on 157.300 megahertz and the coast station on 161.900 megahertz. 161.900 minus 157.300 is 4.6 megahertz. Next, accuracy. The allowed frequency tolerance for the DSC carrier frequencies is 10 parts per million. At 156.525 megahertz, that's 156.525 megahertz times 10 parts per million, or about 1565 hertz either way."
+      "onScreen": ["One cycle: one complete swing", "Frequency in hertz: cycles per second", "Kilohertz and megahertz", "Marine VHF channels start just above 156 MHz"],
+      "narration": "To see how the radio does that job, start with frequency. A radio signal is a wave that swings back and forth, a little like a vibrating guitar string. One complete swing is a cycle, and the number of cycles each second is the frequency, measured in hertz. Radio frequencies are huge numbers, so we use bigger units. A kilohertz is 1000 hertz. A megahertz is 1000 kilohertz: a million cycles every second. VHF is the band counted in tens and hundreds of megahertz, and the marine VHF channels start just above 156 megahertz. Waves this high travel in nearly straight lines, so they reach about as far as the horizon: right for nearby ships, not for crossing an ocean."
     },
     {
       "id": "s4",
       "keyTopic": 1,
-      "template": "formula",
+      "template": "band-strip",
       "params": {
-        "title": "Checking with a frequency counter",
-        "formula": "Window = 10 ppm − counter accuracy",
-        "steps": [
-          "2 ppm counter: 8 ppm of 156.800 MHz ≈ 1254 Hz",
-          "156,798.758 kHz is 1242 Hz low: legal",
-          "5 ppm counter: 5 ppm of 157.200 MHz = 786 Hz",
-          "157,199.321 kHz is 679 Hz low: legal"
-        ],
-        "answer": "All four readings are within legal tolerance"
+        "title": "Channels: lanes 25 kHz apart",
+        "min": 156.76,
+        "max": 156.84,
+        "scale": "linear",
+        "marks": [
+          { "at": 156.8, "label": "Channel 16 · 156.800 MHz", "note": "A channel number names one frequency", "tone": "key" },
+          { "at": 156.775, "label": "Next channel down", "note": "25 kHz lower", "tone": "muted" },
+          { "at": 156.825, "label": "Next channel up", "note": "25 kHz higher", "tone": "muted" }
+        ]
       },
-      "onScreen": ["Window = 10 ppm − counter accuracy", "2 ppm counter: 8 ppm; 1242 Hz low and 1243 Hz high are legal", "5 ppm counter: 5 ppm; 774 Hz high and 679 Hz low are legal", "All four readings legal"],
-      "narration": "When you check with a frequency counter, the counter's own error counts against you. Subtract its accuracy from the 10 parts per million limit, and a reading is certainly legal only if its offset fits inside what remains. With a 2 parts per million counter, 10 minus 2 leaves 8 parts per million: about 1254 hertz at 156.800 megahertz, and 1252 hertz at 156.525 megahertz. So 156,798.758 kilohertz, 1242 hertz low, and 156,526.243 kilohertz, 1243 hertz high, are legal. With a 5 parts per million counter, 10 minus 5 leaves 5 parts per million: about 784 hertz at 156.875 megahertz, and 786 hertz at 157.200 megahertz. So 156,875.774 kilohertz, 774 hertz high, and 157,199.321 kilohertz, 679 hertz low, are legal too. The exam prints two of these with a stray point where the comma belongs."
+      "onScreen": ["A channel number names one frequency", "Channel 16 = 156.800 MHz", "Channels are spaced 25 kHz apart"],
+      "narration": "Within that band, radios pick a frequency by channel. Think of the VHF band as a highway, and each channel as one lane. A channel number is simply a short name for one exact frequency: Channel 16, for example, is 156.800 megahertz. A signal isn't a thin line on the dial. It takes up some width, so the lanes need space between them, or neighbors would scrape. Marine VHF channels are spaced 25 kilohertz apart. The exam's wrong answers are 10, 15 and 50 kilohertz."
     },
     {
       "id": "s5",
-      "keyTopic": 2,
-      "template": "equipment-card",
+      "keyTopic": 1,
+      "template": "band-strip",
       "params": {
-        "title": "VHF-DSC front panel controls",
-        "device": "transceiver",
-        "callouts": [
-          { "label": "USA-INT switch: changes designated channels from duplex to simplex", "at": "keypad" },
-          { "label": "Dual Watch: one receiver switching rapidly between Channel 16 and another", "at": "display" },
-          { "label": "Squelch: standard on every VHF-DSC set", "at": "squelch" },
-          { "label": "Power: 1 W on Low for short range, 25 W on High", "at": "panel" },
-          { "label": "Distress button under a red cover, plus Cancel: both standard", "at": "distress" }
+        "title": "Channels 16 and 13: voice",
+        "min": 156.6,
+        "max": 156.85,
+        "scale": "linear",
+        "marks": [
+          { "at": 156.8, "label": "Channel 16 · 156.800 MHz", "note": "Voice calling and distress", "tone": "key" },
+          { "at": 156.65, "label": "Channel 13 · 156.650 MHz", "note": "Bridge-to-bridge", "tone": "key" }
         ]
       },
-      "onScreen": ["USA-INT switch: duplex to simplex", "Dual Watch: one receiver, switching between two channels", "Squelch: standard", "1 W Low, 25 W High", "Distress and Cancel: standard"],
-      "narration": "Here's the front panel of a VHF-DSC transceiver. The USA-INT switch, short for U.S.A. or International, changes designated channels from duplex to simplex operation in U.S. waters; more on that in a moment. Dual Watch rapidly switches the radio's single receiver between two channels, usually Channel 16 and one other. It does not receive both at the same time. The squelch control is standard on VHF-DSC sets. FCC, or Federal Communications Commission, rules permit two power levels: 1 watt on Low Power and 25 watts on High Power. Use low power for short-range calls, such as harbor and bridge-to-bridge traffic. Finally, the Distress button, under its red cover, and the Cancel control are standard too."
+      "onScreen": ["Channel 16, 156.800 MHz: voice calling and distress", "Channel 13, 156.650 MHz: bridge-to-bridge"],
+      "narration": "Some lanes have special jobs, and the exam asks about 3 of them. The first is Channel 16, 156.800 megahertz, the voice calling and distress channel. Distress means a vessel in serious danger, calling for help. Calling means making first contact: you call another station on 16, then you both move to a working channel, an ordinary channel for conversation, so 16 stays clear. Ships keep a listening watch on 16, like a town square where anyone can hear a shout. The second special channel is Channel 13, 156.650 megahertz, the bridge-to-bridge channel. The bridge is where a ship is steered from, and on 13, ships' officers talk directly to agree how they'll pass each other safely."
     },
     {
       "id": "s6",
+      "keyTopic": 1,
+      "template": "band-strip",
+      "params": {
+        "title": "Channel 70: reserved for DSC",
+        "min": 156.49,
+        "max": 156.56,
+        "scale": "linear",
+        "marks": [
+          { "at": 156.525, "label": "Channel 70 · 156.525 MHz", "note": "Digital selective calling only", "tone": "key" },
+          { "at": 156.5, "label": "Channel 10 · 156.500 MHz", "note": "25 kHz below Channel 70", "tone": "muted" },
+          { "at": 156.55, "label": "Channel 11 · 156.550 MHz", "note": "25 kHz above Channel 70", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Channel 70, 156.525 MHz: reserved for DSC", "Channel 10, 156.500 MHz", "Channel 11, 156.550 MHz", "25 kHz either side"],
+      "narration": "The third special channel carries no voice at all. Modern marine radios have DSC, digital selective calling. Instead of speaking, the radio sends a short burst of digital data: information coded as numbers. The data calls one particular station, a bit like dialing a phone number, and makes that radio ring. Press the distress button, and the same system sends an automatic alert carrying the ship's identity. All of this happens on Channel 70, 156.525 megahertz, reserved for digital selective calling. It sits exactly halfway between Channel 10, at 156.500, and Channel 11, at 156.550: 25 kilohertz from each. So the trio to remember is 16, 70 and 13. The exam's traps swap in Channels 6, 8 or 12."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 1,
+      "template": "comparison-table",
+      "params": {
+        "title": "Simplex and duplex channels",
+        "columns": ["", "Simplex", "Duplex"],
+        "rows": [
+          ["Frequencies", "One, shared by both sides", "Two: one for each direction"],
+          ["Talking", "Take turns", "Both at once, like a phone"],
+          ["Used for", "Ship-to-ship talk", "Calls through coast stations"]
+        ]
+      },
+      "onScreen": ["Simplex: one frequency, take turns", "Duplex: two frequencies, both talk at once", "Simplex ship to ship; duplex through coast stations"],
+      "narration": "Those 3 channels each use a single frequency, but not every channel does. Channels come in 2 kinds, simplex and duplex. A simplex channel uses 1 frequency for both directions; a duplex channel uses 2, one for each direction. On simplex, you take turns: press a button to talk, then let go and listen, like a walkie-talkie. On duplex, both sides can talk at once, like a telephone. Ship-to-ship talk, on channels like 16 and 13, is simplex. Duplex is used for calls through coast stations, such as telephone calls from a ship."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 1,
+      "template": "band-strip",
+      "params": {
+        "title": "Channel 26: two frequencies 4.6 MHz apart",
+        "min": 156.8,
+        "max": 162.4,
+        "scale": "linear",
+        "marks": [
+          { "at": 157.3, "label": "Ship · 157.300 MHz", "note": "Ships transmit here", "tone": "key" },
+          { "at": 161.9, "label": "Coast · 161.900 MHz", "note": "Coast station transmits: 4.6 MHz higher", "tone": "key" }
+        ]
+      },
+      "onScreen": ["Ships transmit on 157.300 MHz", "The coast station transmits on 161.900 MHz", "161.900 − 157.300 = 4.6 MHz"],
+      "narration": "So how far apart are the 2 frequencies of a duplex channel? On marine VHF, the transmit and receive frequencies are 4.6 megahertz apart. Take Channel 26. Ships transmit on 157.300 megahertz, and the coast station transmits on 161.900 megahertz. So the ship's radio sends on the lower frequency and listens on the upper one, while the coast station does the reverse. 161.900 minus 157.300 is 4.6 megahertz. Remember that 4.6; it comes back when we reach the radio's controls. On the exam, it's 4.6, not 2.8, 6.4 or 10.7."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 1,
+      "template": "formula",
+      "params": {
+        "title": "DSC frequency tolerance: 10 ppm",
+        "formula": "Tolerance = f × 10 ppm",
+        "steps": [
+          "ppm: parts per million, millionths of f",
+          "Channel 70: 1 ppm of 156.525 MHz = 156.525 Hz",
+          "10 ppm = 10 × 156.525 Hz ≈ 1565 Hz"
+        ],
+        "answer": "Legal: within about ±1565 Hz of 156.525 MHz"
+      },
+      "onScreen": ["Tolerance = frequency × 10 ppm", "ppm: parts per million", "1 ppm of 156.525 MHz = 156.525 Hz", "10 ppm ≈ 1565 Hz either way"],
+      "narration": "Each radio must also land right on its channel. The steady wave a transmitter sends there is called the carrier, because it carries the message. The circuit that makes it can drift with age and temperature, so the rules set a tolerance: how far the carrier may stray. For DSC carrier frequencies, the tolerance is 10 parts per million, ppm for short: 10 millionths of the frequency. A megahertz is a million hertz, so 1 millionth of 156.525 megahertz is 156.525 hertz. 10 of them make about 1565 hertz: a Channel 70 carrier may be that far off either way and still be legal. The exam's traps are 5 parts per million, or a fixed 10 or 20 hertz."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 1,
+      "template": "key-facts",
+      "params": {
+        "title": "Checking with a frequency counter",
+        "items": [
+          "Frequency counter: counts the carrier's cycles and shows the frequency",
+          "Its own accuracy is also given in ppm",
+          "Usable window = 10 ppm − the counter's accuracy",
+          "A reading is certainly legal only if its offset fits the window"
+        ]
+      },
+      "onScreen": ["Frequency counter: shows the frequency", "Its accuracy is in ppm too", "Window = 10 ppm − counter accuracy", "Offset must fit the window"],
+      "narration": "How do you check that tolerance? With a frequency counter, an instrument that counts the carrier's cycles and shows the frequency as a number. But the counter isn't perfect either. Its accuracy is also given in parts per million, and its error adds to the transmitter's. Suppose the counter could be off by 2 parts per million. A carrier that reads 9 parts per million off might really be 11 off, outside the limit. So play it safe: subtract the counter's accuracy from the 10 parts per million limit. What remains is the window you can trust. A reading is certainly legal only if its offset, the difference between the reading and the channel frequency, fits inside that window."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 1,
+      "template": "formula",
+      "params": {
+        "title": "With a 2 ppm counter",
+        "formula": "Window = 10 ppm − 2 ppm = 8 ppm",
+        "steps": [
+          "156.800 MHz: 8 × 156.8 Hz ≈ 1254 Hz",
+          "156,798.758 kHz: 1242 Hz low → legal",
+          "156.525 MHz: 8 × 156.525 Hz ≈ 1252 Hz",
+          "156,526.243 kHz: 1243 Hz high → legal"
+        ],
+        "answer": "Both readings fit inside the 8 ppm window"
+      },
+      "onScreen": ["Window: 10 − 2 = 8 ppm", "156.800 MHz: ≈ 1254 Hz; 1242 Hz low is legal", "156.525 MHz: ≈ 1252 Hz; 1243 Hz high is legal", "Both readings legal"],
+      "narration": "The exam's first case: a counter accurate to 2 parts per million, checking 156.800 and 156.525 megahertz. 10 minus 2 leaves a window of 8 parts per million. At 156.800 megahertz, 1 part per million is 156.8 hertz, so 8 of them is about 1254 hertz. The counter reads in kilohertz, so the 3 digits after the point are hertz. The reading 156,798.758 kilohertz is 1242 hertz below the channel: less than 1254, so legal. At 156.525 megahertz, the window is about 1252 hertz, and the reading 156,526.243 kilohertz is 1243 hertz high: legal too. Every other answer choice has a reading outside its window. The exam prints that second reading with a stray point where the comma belongs: 156.526.243."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 1,
+      "template": "formula",
+      "params": {
+        "title": "With a 5 ppm counter",
+        "formula": "Window = 10 ppm − 5 ppm = 5 ppm",
+        "steps": [
+          "156.875 MHz: 5 ppm ≈ 784 Hz",
+          "156,875.774 kHz: 774 Hz high → legal",
+          "157.200 MHz: 5 ppm = 786 Hz",
+          "157,199.321 kHz: 679 Hz low → legal"
+        ],
+        "answer": "Both readings fit inside the 5 ppm window"
+      },
+      "onScreen": ["Window: 10 − 5 = 5 ppm", "156.875 MHz: ≈ 784 Hz; 774 Hz high is legal", "157.200 MHz: 786 Hz; 679 Hz low is legal", "Both readings legal"],
+      "narration": "The second case uses a less accurate counter, good to 5 parts per million, checking 156.875 and 157.200 megahertz. Now 10 minus 5 leaves only 5 parts per million. At 156.875 megahertz, 5 parts per million is about 784 hertz. The reading 156,875.774 kilohertz is 774 hertz high: just inside the window, so legal. At 157.200 megahertz, 5 parts per million is 786 hertz. The reading 157,199.321 kilohertz is 679 hertz low: legal too. Again, the exam prints that one with a point for the comma, as 157.199.321. The lesson of both cases: the less accurate your counter, the smaller the window you can trust."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 2,
+      "template": "block-diagram",
+      "params": {
+        "title": "The transceiver: two radios in one box",
+        "columns": 3,
+        "blocks": [
+          { "id": "mic", "label": "Microphone", "note": "Your voice in" },
+          { "id": "tx", "label": "Transmitter", "note": "Puts the voice on the carrier" },
+          { "id": "ant", "label": "Antenna", "note": "Shared by both" },
+          { "id": "ptt", "label": "Push-To-Talk (PTT)", "note": "Pressed: transmit. Released: receive" },
+          { "id": "rx", "label": "Receiver", "note": "Muted while you transmit" },
+          { "id": "spk", "label": "Speaker", "note": "Their voice out" }
+        ],
+        "links": [
+          { "from": "mic", "to": "tx" },
+          { "from": "tx", "to": "ant" },
+          { "from": "ant", "to": "rx" },
+          { "from": "rx", "to": "spk" },
+          { "from": "ptt", "to": "tx" }
+        ]
+      },
+      "onScreen": ["Microphone into the transmitter", "Transmitter and receiver share the antenna", "Receiver drives the speaker", "PTT pressed: transmit; released: receive"],
+      "narration": "That's the channels. Now the radio that uses them. A marine VHF set is a transceiver: a transmitter and a receiver in one box, sharing one antenna. The transmitter takes your voice from the microphone, puts it on the carrier, and sends it out through the antenna. What decides which half is working? The Push-To-Talk button, PTT for short, on the microphone. Press it, and the radio transmits, with the receiver muted so it isn't swamped by your own powerful signal. Release it, and the receiver takes over: it picks the wanted signal out of everything the antenna hears and turns it back into sound at the speaker. Keep that switch in mind; it explains several faults later."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 2,
+      "template": "equipment-card",
+      "params": {
+        "title": "The VHF-DSC front panel",
+        "device": "transceiver",
+        "callouts": [
+          { "label": "Display: channel number and settings", "at": "display" },
+          { "label": "Keypad: channels, menus, USA-INT and Dual Watch", "at": "keypad" },
+          { "label": "Volume: how loud the speaker plays", "at": "volume" },
+          { "label": "Squelch: silences the background hiss", "at": "squelch" },
+          { "label": "Distress button under a red cover, plus Cancel", "at": "distress" },
+          { "label": "Microphone with the Push-To-Talk button", "at": "mic" }
+        ]
+      },
+      "onScreen": ["Display", "Keypad: channels, USA-INT, Dual Watch", "Volume", "Squelch", "Distress under a red cover, and Cancel", "Microphone with PTT"],
+      "narration": "You control all of this from the front panel. The display shows the channel and settings. The keypad selects channels and menus, including 2 functions we'll meet shortly, USA-INT and Dual Watch. The volume knob sets how loud the speaker plays, and the squelch control silences the background hiss when no one is talking. Behind a red cover sits the Distress button, which sends a DSC distress alert; the cover stops it being pressed by accident. Next to it is a Cancel control, which stops a call or action you've started. Distress, Cancel and Squelch are standard on VHF-DSC sets: every one has them. And the microphone carries the Push-To-Talk button."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 2,
+      "template": "key-facts",
+      "params": {
+        "title": "Voltage, current and power",
+        "items": [
+          "Voltage (volts, V): the electrical push, like water pressure",
+          "Current (amperes, A): the flow, like water moving through a pipe",
+          "Power (watts, W): the energy delivered each second",
+          "Power = voltage × current"
+        ]
+      },
+      "onScreen": ["Voltage: the push, in volts", "Current: the flow, in amperes", "Power: energy per second, in watts", "Power = voltage × current"],
+      "narration": "One more setting chooses how much power the transmitter sends. To make sense of it, you need 3 words every maintainer uses. Picture water in a pipe. Voltage is the push, like water pressure, measured in volts. Current is the flow itself, like the water moving through the pipe, measured in amperes, or amps. And power is how much energy that flow delivers every second, measured in watts. More push or more flow means more power: power equals voltage times current. A ship's radio runs from a supply of about 12 volts, and the transmitter turns some of that into radio power sent out of the antenna."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 2,
+      "template": "key-facts",
+      "params": {
+        "title": "Two power levels: 1 W and 25 W",
+        "items": [
+          "Low Power: 1 W",
+          "High Power: 25 W",
+          "Low for short range: harbor and bridge-to-bridge calls",
+          "High only when the other station is far away"
+        ]
+      },
+      "onScreen": ["Low Power: 1 W", "High Power: 25 W", "Low for harbor and bridge-to-bridge", "High for distant stations"],
+      "narration": "So how much power may a marine radio send? FCC rules, the rules of the Federal Communications Commission, permit 2 transmitter power levels on marine VHF: 1 watt on Low Power, and 25 watts on High Power. Why have a low setting at all? A stronger signal carries farther, so 25 watts reaches stations far beyond the one you're calling, and ties up the channel for all of them. For short-range calls, such as harbor traffic and bridge-to-bridge talk with a ship nearby, 1 watt is plenty, and the channel stays free elsewhere. Save 25 watts for when the other station is far away. On the exam, the pair is 1 and 25: not 0.5, not 5, not 50."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 2,
+      "template": "key-facts",
+      "params": {
+        "title": "Squelch: silencing the hiss",
+        "items": [
+          "No signal: the receiver plays noise, a steady hiss",
+          "Squelch: a gate that mutes the speaker until a signal arrives",
+          "For maximum sensitivity: just below where the noise breaks through",
+          "Advance it only until the background noise is just silenced",
+          "Turning it further blocks weak stations"
+        ]
+      },
+      "onScreen": ["No signal: steady hiss", "Squelch mutes the speaker", "Just below where noise breaks through", "Advance only until noise is just silenced", "Further blocks weak stations"],
+      "narration": "Back to the receiver, and the squelch control. When no station is talking, a receiver doesn't stay silent. It plays noise, a steady hiss from the atmosphere and the radio's own parts. Squelch is a gate that keeps the speaker muted until a signal stronger than the noise arrives. For maximum sensitivity, the ability to hear weak stations, set the squelch just below the point where the noise breaks through: advance it only until the background noise is just silenced. Turning it further blocks weak stations: they're only a little stronger than the noise, so a tighter gate never opens for them. The trap answers turn it fully clockwise or fully counterclockwise, or claim squelch has no effect on sensitivity."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 2,
+      "template": "block-diagram",
+      "params": {
+        "title": "Dual Watch: one receiver, two channels",
+        "columns": 3,
+        "blocks": [
+          { "id": "ch16", "label": "Channel 16", "note": "Checked again and again" },
+          { "id": "rx", "label": "One receiver", "note": "Switches rapidly between the two" },
+          { "id": "other", "label": "Another channel", "note": "Your working channel" }
+        ],
+        "links": [
+          { "from": "ch16", "to": "rx" },
+          { "from": "other", "to": "rx" }
+        ]
+      },
+      "onScreen": ["Channel 16", "One receiver, switching rapidly", "Another channel", "Not both at the same time"],
+      "narration": "Next, a keypad function: Dual Watch. It lets you keep an ear on Channel 16 while you use another channel. But there's only one receiver inside. So Dual Watch rapidly switches the radio's single receiver back and forth between 2 channels, usually Channel 16 and one other, checking each in turn. It does not receive both at the same time. The trap answer is simultaneous reception on 2 channels; that would need 2 receivers. And Dual Watch doesn't let you transmit and receive at once, or listen to both sides of a coast station's duplex call."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 2,
+      "template": "comparison-table",
+      "params": {
+        "title": "USA-INT: two channel plans",
+        "columns": ["Setting", "Where", "Designated channels"],
+        "rows": [
+          ["INT", "International waters", "Duplex: two frequencies"],
+          ["USA", "U.S. waters", "Simplex: one frequency"]
+        ]
+      },
+      "onScreen": ["INT: international plan, duplex", "USA: U.S. waters, simplex", "Changes designated channels from duplex to simplex"],
+      "narration": "Remember simplex and duplex? Here's where they matter. Most of the world follows an international channel plan, and in it some channels are duplex, with the ship and the coast station 4.6 megahertz apart. But in U.S. waters, some of those same channels are used simplex, on just 1 frequency. So the radio has a USA-INT switch, short for U.S.A. or International. Its purpose is to change those designated channels from duplex to simplex operation in U.S. waters. On USA, they transmit and receive on 1 frequency; on INT, they go back to the international duplex pair. On the exam, watch the details: it's U.S. waters, not European, and it changes duplex to simplex, not the reverse."
+    },
+    {
+      "id": "s20",
       "keyTopic": 2,
       "template": "band-strip",
       "params": {
@@ -104,269 +357,72 @@
         ]
       },
       "onScreen": ["You transmit on the simplex frequency, and replies come back there", "INT mode listens 4.6 MHz higher: replies missed"],
-      "narration": "Why does USA-INT matter? Some channels that are duplex under the international plan are used simplex in U.S. waters. That's why the switch changes them from duplex to simplex. Now suppose it's left on INT in U.S. waters. You transmit on the simplex frequency, and U.S. stations reply on that same frequency. But your radio is listening 4.6 megahertz higher, on the international duplex frequency. So on certain channels, your signals will be heard, but other stations' replies will not be heard."
-    },
-    {
-      "id": "s7",
-      "keyTopic": 2,
-      "template": "key-facts",
-      "params": {
-        "title": "Setting squelch, and the missing R.I.T.",
-        "items": [
-          "For maximum sensitivity: just below the point where noise breaks through",
-          "Advance squelch only until background noise is just silenced",
-          "Turning it further blocks weak stations",
-          "R.I.T. (receiver incremental tuning) fine-tunes MF/HF single-sideband receivers",
-          "No R.I.T. on a VHF-DSC set; Distress, Cancel and Squelch are standard"
-        ]
-      },
-      "onScreen": ["Squelch just below where noise breaks through", "Advance only until noise is just silenced", "Further blocks weak stations", "R.I.T. is for MF/HF single-sideband", "Not on VHF-DSC sets"],
-      "narration": "For maximum sensitivity, set the squelch just below the point where the noise breaks through. In practice, advance it only until the background noise is just silenced. Turning it any further blocks weak stations. Now a control you will not find on a VHF-DSC transceiver: R.I.T., or receiver incremental tuning. It fine-tunes MF and HF, medium and high frequency, single-sideband receivers. Distress, Cancel and Squelch, on the other hand, are standard on VHF-DSC sets."
-    },
-    {
-      "id": "s8",
-      "keyTopic": 3,
-      "template": "block-diagram",
-      "params": {
-        "title": "Capture effect in an FM receiver",
-        "columns": 2,
-        "blocks": [
-          { "id": "strong", "label": "Strong signal", "note": "On the channel" },
-          { "id": "weak", "label": "Weak signal", "note": "Same channel" },
-          { "id": "if", "label": "IF amplifier" },
-          { "id": "lim", "label": "Limiter", "note": "Locks onto the stronger signal" },
-          { "id": "det", "label": "Ratio detector", "note": "Ratio arm balance: best signal-to-noise" },
-          { "id": "out", "label": "Audio out", "note": "Only the stronger signal" }
-        ],
-        "links": [
-          { "from": "strong", "to": "if" },
-          { "from": "weak", "to": "if" },
-          { "from": "if", "to": "lim" },
-          { "from": "lim", "to": "det" },
-          { "from": "det", "to": "out" }
-        ]
-      },
-      "onScreen": ["Strong and weak signals on one channel", "IF amplifier", "Limiter locks onto the stronger signal", "Ratio detector: balance for best signal-to-noise", "Audio: only the stronger signal"],
-      "narration": "Suppose two signals arrive on the same channel, one strong and one weak. Both pass through the IF, or intermediate frequency, amplifier to the limiter. The limiter and detector lock onto the stronger signal and suppress the weaker one, so only the stronger one reaches the audio. This is the capture effect: an FM receiver rejects all but the strongest signal on a channel. The detector here is a ratio detector. Its ratio arm balance control bridge is adjusted for improved signal-to-noise, because equalizing the two diode arms maximizes rejection of AM, or amplitude modulation, noise."
-    },
-    {
-      "id": "s9",
-      "keyTopic": 3,
-      "template": "waveform",
-      "params": {
-        "title": "What a limiter does",
-        "kind": "fm",
-        "cycles": 16,
-        "yAxis": "amplitude",
-        "xAxis": "time",
-        "labels": [
-          "Input: amplitude varies with noise and fading",
-          "Limiter output: constant amplitude",
-          "The frequency swings, which carry the information, pass through",
-          "A clean signal goes on to the detector"
-        ]
-      },
-      "onScreen": ["Input amplitude varies", "Output: constant amplitude", "Frequency information kept", "Clean signal to the detector"],
-      "narration": "A properly adjusted limiter maintains a constant output amplitude with a varying input amplitude. The signal coming in rises and falls with noise and fading. The limiter holds it to one steady level, like the trace you see here. The frequency swings, which carry the information in FM, pass straight through. So amplitude noise and fading are stripped off before the signal reaches the detector."
-    },
-    {
-      "id": "s10",
-      "keyTopic": 3,
-      "template": "formula",
-      "params": {
-        "title": "SINAD: measuring receiver sensitivity",
-        "formula": "SINAD = (S + N + D) ÷ (N + D)",
-        "steps": ["S = signal, N = noise, D = distortion", "Usually expressed in decibels"],
-        "answer": "12 dB SINAD: the common FM sensitivity reference"
-      },
-      "onScreen": ["SINAD = (signal + noise + distortion) ÷ (noise + distortion)", "Usually in decibels", "12 dB SINAD: common FM sensitivity reference"],
-      "narration": "Receiver sensitivity is often measured with SINAD, short for signal plus noise and distortion. SINAD is the sum of the signal, noise and distortion, divided by the sum of the noise and distortion. It's usually expressed in decibels. And 12 decibels SINAD is the common reference for FM receiver sensitivity."
-    },
-    {
-      "id": "s11",
-      "keyTopic": 3,
-      "template": "key-facts",
-      "params": {
-        "title": "Quieting: how much signal it takes",
-        "items": [
-          "Normal VHF marine receiver: 10 dB of quieting with about 1 µV at the antenna input",
-          "Needing 5 or 10 µV for that means poor sensitivity",
-          "Full quieting: the signal is strong enough to completely quiet the background noise",
-          "Full quieting describes signal strength, not a squelch setting"
-        ]
-      },
-      "onScreen": ["10 dB quieting with about 1 µV: normal", "5 or 10 µV: poor sensitivity", "Full quieting: background noise completely quieted", "Signal strength, not squelch"],
-      "narration": "Another sensitivity check is quieting: how far a signal pushes down the receiver's background noise. A normal VHF marine receiver reaches 10 decibels of quieting with about 1 microvolt at the antenna input. If it needs 5 or 10 microvolts to get there, its sensitivity is poor. Full quieting means the received signal is strong enough to completely quiet the receiver background noise. That describes the signal's strength. It is not a squelch setting."
-    },
-    {
-      "id": "s12",
-      "keyTopic": 4,
-      "template": "block-diagram",
-      "params": {
-        "title": "Receiver faults: PLL and limiter",
-        "columns": 4,
-        "blocks": [
-          { "id": "rf", "label": "RF amplifier" },
-          { "id": "mixer", "label": "Mixer", "note": "Local oscillator beat makes the IF: normal" },
-          { "id": "if", "label": "IF amplifier" },
-          { "id": "lim", "label": "Limiter", "note": "A stronger signal can capture a weak one" },
-          { "id": "pll", "label": "PLL synthesizer", "note": "Unlocked: can't stay on channel" },
-          { "id": "spk", "label": "Speaker" },
-          { "id": "af", "label": "AF amplifier" },
-          { "id": "det", "label": "Detector and squelch" }
-        ],
-        "links": [
-          { "from": "rf", "to": "mixer" },
-          { "from": "mixer", "to": "if" },
-          { "from": "if", "to": "lim" },
-          { "from": "pll", "to": "mixer" },
-          { "from": "lim", "to": "det" },
-          { "from": "det", "to": "af" },
-          { "from": "af", "to": "spk" }
-        ]
-      },
-      "onScreen": ["RF amplifier, mixer, IF amplifier, limiter", "Mixer: local oscillator beat is normal", "Limiter: capture effect", "PLL synthesizer unlocked: won't stay on channel", "Detector, AF amplifier, speaker"],
-      "narration": "Here's the receiver chain: the RF, or radio frequency, amplifier, the mixer, the IF amplifier and the limiter, with the synthesizer feeding the mixer, and at the end the speaker, driven by the audio amplifier after the detector and squelch. First fault: the receiver cannot stay tuned to the desired channel. The frequency synthesizer's phase-locked loop, or PLL, output has become unlocked. Don't blame the local oscillator beating with the incoming signal to make an IF; that's normal operation. Second: a weak signal is lost while a stronger one is on the channel. The receiver is working. The stronger signal suppresses the weak one at the limiter stage, by capture effect."
-    },
-    {
-      "id": "s13",
-      "keyTopic": 4,
-      "template": "equipment-card",
-      "params": {
-        "title": "Fails to receive: zero volts, good fuse",
-        "device": "multimeter",
-        "callouts": [
-          { "label": "Radio fails to receive nearby stations", "at": "body" },
-          { "label": "DC line to ground: zero volts", "at": "display" },
-          { "label": "Fuse on the ohmmeter: zero ohms, so it's intact", "at": "probes" },
-          { "label": "A crowbar circuit shut off the supply to prevent an over current condition", "at": "selector" }
-        ]
-      },
-      "onScreen": ["Fails to receive", "DC line: zero volts", "Fuse: zero ohms, intact", "Crowbar circuit prevented an over current condition"],
-      "narration": "A radio fails to receive nearby stations. A voltmeter between the positive side of its DC, or direct current, line and ground reads zero volts. But the fuse reads zero ohms on an ohmmeter, so the fuse is intact. That rules out a blown fuse as the reason for the missing voltage. Instead, a crowbar circuit has shut off the supply, preventing an over current condition that might damage the radio."
-    },
-    {
-      "id": "s14",
-      "keyTopic": 4,
-      "template": "key-facts",
-      "params": {
-        "title": "No audio, and the squelch does nothing",
-        "items": [
-          "Symptom: no audible speaker output, and the squelch control has no effect",
-          "So not even noise is reaching the speaker",
-          "RF, mixer or local oscillator faults would still leave noise audible",
-          "Suspect a defective AF amplifier…",
-          "…or an activated Push-To-Talk circuit: keying mutes the receiver"
-        ]
-      },
-      "onScreen": ["No audio, squelch has no effect", "Not even noise reaches the speaker", "Front-end faults would still leave noise", "Defective AF amplifier", "Or Push-To-Talk activated"],
-      "narration": "Here's one to reason through. The speaker gives no audible output, and the squelch control has no effect. Opening the squelch should at least let noise through, so not even noise is reaching the speaker. That rules out the front end: if the RF amplifier, the mixer or the local oscillator had failed, you'd still hear noise from the stages after them. So look near the end of the chain. The AF, or audio frequency, amplifier may be defective. Or the transmitter's Push-To-Talk, or PTT, circuit may be activated, because keying the transmitter mutes the receiver."
-    },
-    {
-      "id": "s15",
-      "keyTopic": 4,
-      "template": "equipment-card",
-      "params": {
-        "title": "Tracking down audio distortion",
-        "device": "oscilloscope",
-        "callouts": [
-          { "label": "Probe the output of each AF amplifier stage in turn", "at": "probe" },
-          { "label": "The scope displays the AC audio signal", "at": "input" },
-          { "label": "Clean audio: that stage is fine, move on", "at": "trace" },
-          { "label": "The stage where clean audio first turns distorted is the fault", "at": "screen" }
-        ]
-      },
-      "onScreen": ["Probe each AF stage output", "Display the AC signal", "Clean: move on", "First distorted stage is the fault"],
-      "narration": "To isolate distortion in the audio output, use an oscilloscope. Probe the output of each AF amplifier stage in turn, and display the AC, or alternating current, signal there. While the trace stays clean, those stages are fine, so move on to the next one. The stage where clean audio first turns distorted is the faulty one."
-    },
-    {
-      "id": "s16",
-      "keyTopic": 5,
-      "template": "comparison-table",
-      "params": {
-        "title": "Readings and what they cause",
-        "columns": ["Finding", "Result"],
-        "rows": [
-          ["DC line reads 9.6, not 12.8 to 13.8 V", "Starved stages: significant sensitivity loss"],
-          ["75 Ω RG-59/U → 50 Ω RG-8/U or LMR-400", "Better match, less loss: no sensitivity loss"],
-          ["Worn volume control (AF potentiometer)", "Noisy, crackling operation"],
-          ["Open coupling transformer winding", "No audio at all"]
-        ]
-      },
-      "onScreen": ["9.6 on the DC line: significant sensitivity loss", "RG-59/U to RG-8/U or LMR-400: no loss", "Defective AF potentiometer: noisy, crackling", "Open coupling transformer: no audio"],
-      "narration": "Now some readings and their results. A voltmeter between the positive side of the DC line and ground reads 9.6, instead of the normal 12.8 to 13.8 volts. That starves the receiver stages and may cause a significant loss in sensitivity. Replacing 75-ohm RG-59/U coax with 50-ohm RG-8/U or LMR-400 Ultraflex cable does not cause a loss. It improves the match and cuts line loss. Noisy, crackling operation points to a defective potentiometer in the audio frequency amplifier stage, such as a worn volume control. An open coupling transformer winding would not crackle; it would kill the audio instead."
-    },
-    {
-      "id": "s17",
-      "keyTopic": 5,
-      "template": "key-facts",
-      "params": {
-        "title": "Finding the minimum discernible signal",
-        "items": [
-          "Set a signal generator to the receiver frequency",
-          "Start near zero output",
-          "Watch an audio voltmeter at the AF output",
-          "Increase the output until the audio voltmeter shows a 3-dB increase",
-          "There, signal plus noise is twice the noise"
-        ]
-      },
-      "onScreen": ["Signal generator on the receiver frequency", "Start near zero", "Audio voltmeter at the AF output", "Increase until a 3-dB rise", "Signal plus noise is twice the noise"],
-      "narration": "To find a receiver's minimum discernible signal, set a signal generator to the receiver frequency. Start near zero output. Connect an audio voltmeter at the AF output. Then increase the generator output until the audio voltmeter shows a 3-decibel increase. At that point, signal plus noise is twice the noise, and that generator level is the minimum discernible signal."
-    },
-    {
-      "id": "s18",
-      "keyTopic": 5,
-      "template": "band-strip",
-      "params": {
-        "title": "Quick field test: NOAA weather broadcasts",
-        "min": 162.35,
-        "max": 162.6,
-        "scale": "linear",
-        "marks": [
-          { "at": 162.55, "label": "162.550 MHz", "note": "NOAA broadcast", "tone": "key" },
-          { "at": 162.4, "label": "162.400 MHz", "note": "NOAA broadcast", "tone": "key" },
-          { "at": 162.475, "label": "162.475 MHz", "note": "NOAA broadcast", "tone": "key" }
-        ]
-      },
-      "onScreen": ["162.550 MHz", "162.400 MHz", "162.475 MHz", "Listen for NOAA broadcasts"],
-      "narration": "Here's a quick field test that works in many U.S. ports. Tune the receiver to 162.550, 162.400 or 162.475 megahertz, and listen for National Oceanic and Atmospheric Administration, or NOAA, broadcasts. If you hear them, the receiver is working. Why not just transmit and listen to yourself? Because a radio cannot monitor its own transmission."
-    },
-    {
-      "id": "s19",
-      "keyTopic": 5,
-      "template": "equipment-card",
-      "params": {
-        "title": "Component checks with a multimeter",
-        "device": "multimeter",
-        "callouts": [
-          { "label": "Transistor emitter-base low both ways: shorted junction, faulty", "at": "probes" },
-          { "label": "Diode: low one way, high reversed: normal", "at": "display" },
-          { "label": "Good fuse: zero ohms: normal", "at": "selector" },
-          { "label": "Ceramic bypass capacitor: infinite ohms: normal", "at": "com" },
-          { "label": "100K-ohm bias resistor: same voltage at both leads = fault", "at": "volts" }
-        ]
-      },
-      "onScreen": ["Transistor low both ways: faulty", "Diode low one way, high reversed: normal", "Fuse zero ohms: normal", "Ceramic bypass capacitor infinite ohms: normal", "100K-ohm bias resistor, same voltage both ends: fault"],
-      "narration": "Ohmmeter checks first. A transistor that shows low resistance between emitter and base, even with the test leads reversed, is faulty: the junction is shorted. Compare the normal readings. A diode reads low one way and high when reversed. A good fuse reads zero ohms. A ceramic bypass capacitor reads infinite ohms. Now a voltage check. In a bias circuit, a working 100 kilohm resistor carries current, so there's a voltage drop across it. If you read the same voltage between each lead and ground, that indicates a fault."
-    },
-    {
-      "id": "s20",
-      "keyTopic": 6,
-      "template": "key-facts",
-      "params": {
-        "title": "Deviation and emission type",
-        "items": [
-          "Maximum allowable deviation: 5 kHz (±5 kHz for 16K0G3E voice)",
-          "More deviation spreads the signal toward adjacent channels",
-          "G3E: the most common emission for shipboard VHF-DSC transceivers",
-          "G = phase modulation · 3 = one channel of analog information · E = telephony"
-        ]
-      },
-      "onScreen": ["Maximum deviation 5 kHz", "More spreads toward adjacent channels", "G3E: most common emission", "Phase modulation, one analog channel, telephony"],
-      "narration": "The maximum allowable deviation of a marine VHF transmitter is 5 kilohertz: plus or minus 5 kilohertz for 16K0G3E voice. More deviation spreads the signal toward the adjacent channels. That designator ends in G3E, the most common emission for shipboard VHF-DSC transceivers. G means phase modulation. 3 means a single channel of analog information. And E means telephony, which is voice."
+      "narration": "Now suppose the switch is left on INT in U.S. waters. On one of the designated channels, you transmit on the simplex frequency, and U.S. stations reply on that same frequency. But your radio, following the international plan, listens 4.6 megahertz higher, on the duplex frequency. So on certain channels, your signals will be heard, but other stations' replies will not be heard. They hear you fine; you just can't hear them. On every other channel the 2 plans agree, so the radio seems perfectly normal, which makes this fault easy to miss."
     },
     {
       "id": "s21",
+      "keyTopic": 2,
+      "template": "key-facts",
+      "params": {
+        "title": "The control you won't find: R.I.T.",
+        "items": [
+          "R.I.T.: receiver incremental tuning",
+          "Fine-tunes MF/HF single-sideband receivers",
+          "Marine VHF channels are fixed: no fine-tuning needed",
+          "Standard on VHF-DSC: Distress, Cancel and Squelch"
+        ]
+      },
+      "onScreen": ["R.I.T.: receiver incremental tuning", "For MF/HF single-sideband receivers", "Not on VHF-DSC sets", "Distress, Cancel and Squelch are standard"],
+      "narration": "One last control is one you won't find on a VHF-DSC transceiver: R.I.T., receiver incremental tuning. It's a fine-tuning knob for a different radio. Ships also carry MF and HF radios, medium and high frequency, for long distances, and their voice signals use single sideband, a signal that sounds garbled unless the receiver is tuned almost exactly. R.I.T. nudges the tuning to fix that. Marine VHF channels sit on fixed, accurate frequencies, and the VHF voice signal isn't that fussy, so it needs none. Distress, Cancel and Squelch, on the other hand, are standard. So for the controls, remember: 1 and 25 watts, squelch set just at the hiss, Dual Watch switches between channels, and USA in U.S. waters."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 6,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the transmitter",
+        "columns": 2,
+        "blocks": [
+          { "id": "mic", "label": "Microphone", "note": "Sound becomes an audio signal" },
+          { "id": "audio", "label": "Audio amplifier", "note": "Strengthens and shapes the voice" },
+          { "id": "synth", "label": "Synthesizer", "note": "Makes the carrier on the exact channel" },
+          { "id": "mod", "label": "Modulator", "note": "The voice changes the carrier" },
+          { "id": "pa", "label": "Power amplifier (PA)", "note": "Boosts it to 1 W or 25 W" },
+          { "id": "ant", "label": "Antenna" }
+        ],
+        "links": [
+          { "from": "mic", "to": "audio" },
+          { "from": "audio", "to": "mod" },
+          { "from": "synth", "to": "mod" },
+          { "from": "mod", "to": "pa" },
+          { "from": "pa", "to": "ant" }
+        ]
+      },
+      "onScreen": ["Microphone: sound to audio signal", "Audio amplifier", "Synthesizer makes the carrier", "Modulator: voice changes the carrier", "Power amplifier: 1 W or 25 W", "Antenna"],
+      "narration": "The controls are the outside of the radio; a maintainer needs the inside. So let's open the transmitter and follow your voice. Each block in the chain is called a stage. The microphone turns sound into an electrical copy of it, the audio signal. An audio amplifier, a stage that makes a signal stronger, builds it up. The synthesizer generates the carrier. It's an oscillator, a circuit that makes a steady wave, held on the exact channel frequency. The modulator is where the voice meets the carrier: it changes the carrier in step with the sound. Finally, the power amplifier, PA for short, boosts the result to 1 or 25 watts and sends it up the cable to the antenna."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 6,
+      "template": "waveform",
+      "params": {
+        "title": "FM: the voice swings the frequency",
+        "kind": "fm",
+        "cycles": 16,
+        "xAxis": "time",
+        "yAxis": "signal",
+        "labels": [
+          "Carrier: a steady wave on the channel frequency",
+          "The voice pushes its frequency up and down",
+          "Deviation: how far it swings from the center",
+          "Maximum allowable deviation: 5 kHz"
+        ]
+      },
+      "onScreen": ["Carrier on the channel frequency", "Voice swings the frequency", "Deviation: the size of the swing", "Maximum 5 kHz"],
+      "narration": "So how does the voice change the carrier? Changing a wave so it carries information is called modulation, and marine VHF uses FM, frequency modulation. When you speak, your voice nudges the carrier's frequency above and below the channel center. You can see the waves bunch up and spread out. The amount the frequency swings away from center is called the deviation, and a louder voice swings it farther. The maximum allowable deviation of a marine VHF transmitter is 5 kilohertz: plus or minus 5 kilohertz for voice. Why a limit? More deviation spreads the signal wider, toward the adjacent channels, the neighboring lanes. On the exam, it's 5 kilohertz, not 7.5, 10 or 12."
+    },
+    {
+      "id": "s24",
       "keyTopic": 6,
       "template": "formula",
       "params": {
@@ -377,13 +433,28 @@
           "f<sub>m</sub> = maximum modulation frequency = 2.5 kHz",
           "m = 5 ÷ 2.5"
         ],
-        "answer": "m = 2; below 1 to 1 means undermodulated"
+        "answer": "m = 2"
       },
-      "onScreen": ["m = Δf ÷ fm", "Δf = 5 kHz", "fm = 2.5 kHz", "m = 2", "Below 1 to 1: undermodulated, low audio"],
-      "narration": "The modulation index is the maximum carrier deviation divided by the maximum modulation frequency: m equals delta f over f sub m. With 5 kilohertz of deviation and a 2.5 kilohertz tone, m equals 5 divided by 2.5, which is 2. If the modulation index is set to less than 1 to 1, the transmitter is undermodulated, and the result is unusually low level transmit audio."
+      "onScreen": ["m = Δf ÷ fm", "Δf = 5 kHz", "fm = 2.5 kHz", "m = 2"],
+      "narration": "Deviation is only half the picture. Engineers sum up FM with one number, the modulation index. It compares how far the carrier swings with how fast it's being swung. The modulation index is the maximum carrier deviation divided by the maximum modulation frequency: m equals delta f over f sub m. Delta f is the deviation. F sub m is the modulation frequency, the highest audio tone doing the swinging. Say the deviation is 5 kilohertz and the tone is 2.5 kilohertz. Then m equals 5 divided by 2.5, which is 2. Both are in kilohertz, so the units cancel, and the index is just a number. Answers built on the carrier frequency or on pre-emphasis are traps."
     },
     {
-      "id": "s22",
+      "id": "s25",
+      "keyTopic": 6,
+      "template": "key-facts",
+      "params": {
+        "title": "Too little swing: undermodulation",
+        "items": [
+          "Modulation index below 1 to 1: undermodulated",
+          "The voice barely swings the carrier",
+          "Result: unusually low level transmit audio"
+        ]
+      },
+      "onScreen": ["Index below 1 to 1: undermodulated", "Carrier barely swings", "Unusually low transmit audio"],
+      "narration": "So what if the index is set too low? A modulation index set to less than 1 to 1, an index below 1, means the deviation is smaller than the audio frequency: the voice barely swings the carrier. That's an undermodulated transmitter. An FM receiver turns the size of the swing into loudness, so a small swing comes out quiet. The result is unusually low level transmit audio: the other station hears you faintly, even though your signal is strong. It doesn't cause excessive deviation; that's the opposite problem. And it doesn't raise the pitch of your voice, because pitch comes from how fast the carrier swings, not how far."
+    },
+    {
+      "id": "s26",
       "keyTopic": 6,
       "template": "band-strip",
       "params": {
@@ -392,18 +463,51 @@
         "max": 2.6,
         "scale": "linear",
         "marks": [
-          { "at": 0, "label": "Carrier", "note": "Sideband amplitudes follow Bessel functions", "tone": "key" },
+          { "at": 0, "label": "Carrier", "note": "Center: the channel frequency", "tone": "key" },
           { "at": -1, "label": "Carrier − f<sub>m</sub>", "note": "Pair 1" },
           { "at": 1, "label": "Carrier + f<sub>m</sub>", "note": "Pair 1" },
           { "at": -2, "label": "Carrier − 2f<sub>m</sub>", "note": "Pair 2, and more beyond" },
-          { "at": 2, "label": "Carrier + 2f<sub>m</sub>", "note": "Pair 2, and more beyond" }
+          { "at": 2, "label": "Carrier + 2f<sub>m</sub>", "note": "Strengths follow Bessel functions" }
         ]
       },
-      "onScreen": ["Carrier", "Sideband pairs at multiples of the modulating frequency", "Amplitudes follow Bessel functions", "Many sidebands, not one or two"],
-      "narration": "A VHF FM transmitter does not make just one or two sidebands. It makes many. Around the carrier, the sidebands come in pairs at multiples of the modulating frequency: one pair at plus and minus f sub m, another at plus and minus 2 f sub m, and more beyond. Their amplitudes follow Bessel functions of the modulation index. The significant ones fit within the 16 kilohertz necessary bandwidth."
+      "onScreen": ["Carrier at the center", "Sideband pairs at multiples of the modulation frequency", "Many sidebands, not one or two", "Strengths follow Bessel functions"],
+      "narration": "Modulation has a side effect you can see only by frequency. This picture runs from low frequency on the left to high on the right. Changing the carrier creates new frequencies on either side of it, called sidebands. A VHF FM transmitter makes not 1 or 2 sidebands, but many. They come in pairs, spaced at multiples of the modulation frequency: 1 pair at plus and minus f sub m, another at plus and minus 2 f sub m, and more beyond, fading farther out. Their strengths follow a mathematical pattern, Bessel functions of the modulation index. The significant ones fit within 16 kilohertz, the necessary bandwidth: the width the signal really needs, inside the 25 kilohertz channel."
     },
     {
-      "id": "s23",
+      "id": "s27",
+      "keyTopic": 6,
+      "template": "key-facts",
+      "params": {
+        "title": "Reading the emission code: 16K0G3E",
+        "items": [
+          "16K0: 16 kHz necessary bandwidth",
+          "G: phase modulation",
+          "3: a single channel of analog information",
+          "E: telephony, which is voice",
+          "G3E: the most common emission for shipboard VHF-DSC"
+        ]
+      },
+      "onScreen": ["16K0: 16 kHz bandwidth", "G: phase modulation", "3: one analog channel", "E: telephony", "G3E: most common for VHF-DSC"],
+      "narration": "That 16 kilohertz even appears in the signal's official name. Every type of radio signal has a short code called an emission designator, and marine VHF voice is 16K0G3E. The first part, 16K0, is the bandwidth: 16 kilohertz. Then 3 characters describe the signal. G means phase modulation, a close cousin of FM: shifting the timing of the wave also shifts its frequency, which is how many marine radios make their FM. 3 means a single channel of analog information, a smoothly varying signal like a voice. And E means telephony, which is voice. So G3E is the most common emission for shipboard VHF-DSC transceivers. The trap codes, F1B, J3B and H3E, describe data and single-sideband signals instead."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 6,
+      "template": "key-facts",
+      "params": {
+        "title": "Decibels and octaves",
+        "items": [
+          "Decibel (dB): how many times bigger one level is than another",
+          "3 dB ≈ double the power; 6 dB ≈ 4 times",
+          "10 dB = 10 times the power",
+          "Octave: a doubling of frequency"
+        ]
+      },
+      "onScreen": ["Decibel: a ratio of 2 levels", "3 dB ≈ double; 6 dB ≈ 4 times", "10 dB = 10 times", "Octave: frequency doubled"],
+      "narration": "The transmitter has one more trick, and to describe it we need 2 units the rest of the lesson uses too. Radio work compares levels all the time: how much stronger, how much quieter. The decibel, dB for short, says how many times bigger one level is than another. Decibels add while the power multiplies. 3 decibels is about double the power. Add 3 more, making 6 decibels, and it doubles again, to about 4 times. And 10 decibels is 10 times. So a huge range of levels fits into small, handy numbers. The second unit comes from music. An octave is a doubling of frequency: a tone twice as high as another is one octave above it."
+    },
+    {
+      "id": "s29",
       "keyTopic": 6,
       "template": "block-diagram",
       "params": {
@@ -422,82 +526,504 @@
         ]
       },
       "onScreen": ["Pre-emphasis: high audio up 6 dB per octave", "Transmitter", "Noise picked up on the way", "Receiver", "De-emphasis: same cut, flat audio"],
-      "narration": "Pre-emphasis boosts the higher modulation frequencies by 6 decibels per octave before transmitting. On the way to the receiver, the signal picks up noise, and the high-frequency noise is the most noticeable. The receiver's de-emphasis reduces those higher frequencies by the same amount. That cuts the high-frequency noise while keeping the audio flat."
+      "narration": "Here's the trick, called pre-emphasis. Before transmitting, the radio boosts the higher modulation frequencies by 6 decibels per octave: each time the tone doubles, the boost grows by another 6 decibels. Why? On its way, an FM signal picks up noise, and that noise is worst at the high audio frequencies, just where a voice's tones are weakest. So the receiver's de-emphasis reduces those higher frequencies by the same amount. That leaves the voice sounding natural and turns the noise down with it. On the exam: the higher frequencies, by 6 decibels per octave; not the lower ones, and not 3. The transmitter in short: FM with up to 5 kilohertz of deviation, many sidebands, and pre-emphasis on the treble."
     },
     {
-      "id": "s24",
+      "id": "s30",
+      "keyTopic": 3,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the receiver: the front end",
+        "columns": 2,
+        "blocks": [
+          { "id": "rf", "label": "RF amplifier", "note": "Strengthens the faint antenna signal" },
+          { "id": "mixer", "label": "Mixer", "note": "Shifts the signal to the IF" },
+          { "id": "lo", "label": "Local oscillator", "note": "Set by the synthesizer" },
+          { "id": "if", "label": "IF amplifier", "note": "Most of the gain, at one fixed frequency" }
+        ],
+        "links": [
+          { "from": "rf", "to": "mixer" },
+          { "from": "mixer", "to": "if" },
+          { "from": "lo", "to": "mixer" }
+        ]
+      },
+      "onScreen": ["RF amplifier", "Mixer", "Local oscillator", "IF amplifier: one fixed frequency"],
+      "narration": "That's the sending side. Now follow the signal into the receiver. Its job is the transmitter's in reverse: pick out one faint signal and recover the voice. First, an RF, or radio frequency, amplifier strengthens the faint signal from the antenna. Next comes the clever part. A mixer combines the signal with a second wave from a local oscillator, set by the synthesizer. Mixing 2 frequencies produces new ones, including their difference, and the local oscillator is set so that difference always lands on one fixed frequency, whatever channel you pick. That's the IF, or intermediate frequency. So the IF amplifier can be built for just that one frequency, and it provides most of the gain, the amplification."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 3,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the receiver: the back end",
+        "columns": 2,
+        "blocks": [
+          { "id": "if", "label": "IF amplifier" },
+          { "id": "lim", "label": "Limiter", "note": "Evens out the strength" },
+          { "id": "det", "label": "Detector", "note": "Frequency swings back into audio" },
+          { "id": "sq", "label": "Squelch", "note": "Gate: mutes the hiss" },
+          { "id": "af", "label": "AF amplifier", "note": "Makes the audio loud enough" },
+          { "id": "spk", "label": "Speaker" }
+        ],
+        "links": [
+          { "from": "if", "to": "lim" },
+          { "from": "lim", "to": "det" },
+          { "from": "det", "to": "sq" },
+          { "from": "sq", "to": "af" },
+          { "from": "af", "to": "spk" }
+        ]
+      },
+      "onScreen": ["IF amplifier", "Limiter", "Detector: frequency swings to audio", "Squelch gate", "AF amplifier", "Speaker"],
+      "narration": "From the IF amplifier, the signal moves to the back end. A limiter evens out its strength; more on that in a moment. Then comes the detector, the stage that turns the frequency swings back into the audio they carry. Next, the squelch gate from the front panel decides whether the speaker hears it. And an AF, or audio frequency, amplifier makes the audio strong enough to drive the speaker. So the whole chain runs: RF amplifier, mixer, IF amplifier, limiter, detector, squelch, AF amplifier, speaker. Keep this chain in mind. When we diagnose faults, we'll walk along it, stage by stage."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 3,
+      "template": "waveform",
+      "params": {
+        "title": "What a limiter does",
+        "kind": "fm",
+        "cycles": 16,
+        "yAxis": "amplitude",
+        "xAxis": "time",
+        "labels": [
+          "In: strength rises and falls with noise and fading",
+          "Out, as drawn: every wave the same height",
+          "The frequency swings, which carry the information, pass through",
+          "A clean signal goes on to the detector"
+        ]
+      },
+      "onScreen": ["Input strength varies", "Output: constant amplitude, as drawn", "Frequency information kept", "Clean signal to the detector"],
+      "narration": "Why have a limiter? In FM, the information is in the frequency swings, not in the amplitude, the height or strength of the wave. But the amplitude coming in rises and falls, with noise such as electrical crackle, and with fading as the ship moves. A properly adjusted limiter maintains a constant output amplitude with a varying input amplitude. It clips every wave to the same height, as in the output drawn here, while the frequency swings pass straight through. So amplitude noise and fading are stripped off before the signal reaches the detector. And the limiter is a receiver circuit: despite the trap answers, it doesn't limit transmitter power, modulation or supply voltage."
+    },
+    {
+      "id": "s33",
+      "keyTopic": 3,
+      "template": "block-diagram",
+      "params": {
+        "title": "The capture effect",
+        "columns": 2,
+        "blocks": [
+          { "id": "strong", "label": "Strong signal", "note": "On the channel" },
+          { "id": "weak", "label": "Weak signal", "note": "Same channel" },
+          { "id": "if", "label": "IF amplifier" },
+          { "id": "lim", "label": "Limiter", "note": "Locks onto the stronger signal" },
+          { "id": "det", "label": "Detector", "note": "Follows the stronger signal" },
+          { "id": "out", "label": "Audio out", "note": "Only the stronger signal" }
+        ],
+        "links": [
+          { "from": "strong", "to": "if" },
+          { "from": "weak", "to": "if" },
+          { "from": "if", "to": "lim" },
+          { "from": "lim", "to": "det" },
+          { "from": "det", "to": "out" }
+        ]
+      },
+      "onScreen": ["Strong and weak signals on one channel", "IF amplifier", "Limiter locks onto the stronger signal", "Detector follows it", "Audio: only the stronger signal"],
+      "narration": "The limiter has a side effect worth knowing. Suppose 2 signals arrive on the same channel, one strong and one weak. Both pass through the IF amplifier to the limiter. The limiter holds its output at one level, and the stronger signal dominates that level. So the limiter and detector lock onto the stronger signal and suppress the weaker one, and only the stronger reaches the audio. This is the capture effect: an FM receiver rejects all but the strongest signal on a channel. You hear one clear station, not a jumble. The exam's answer is the strongest, not the weakest, and the receiver doesn't accept every signal nearby."
+    },
+    {
+      "id": "s34",
+      "keyTopic": 3,
+      "template": "key-facts",
+      "params": {
+        "title": "The ratio detector",
+        "items": [
+          "Ratio detector: a common FM detector",
+          "Two diode arms compare the frequency swings",
+          "AM noise affects both arms equally",
+          "Adjust the ratio arm balance control bridge for better signal-to-noise"
+        ]
+      },
+      "onScreen": ["Ratio detector", "Two diode arms", "AM noise cancels when balanced", "Ratio arm balance control: best signal-to-noise"],
+      "narration": "Now the detector itself. A common FM detector is the ratio detector. It uses 2 diodes, parts that let current flow only one way, like one-way valves, in 2 matching arms. As the frequency swings up, one arm's output grows; as it swings down, the other's does. The ratio between the 2 arms recovers the audio. Noise that changes the signal's strength, called AM noise after amplitude modulation, affects both arms equally, so it cancels out, but only if the arms are balanced. That's why, in an FM ratio detector, the ratio arm balance control bridge is adjusted for improved signal-to-noise: how far the wanted signal stands above the noise. Equalizing the 2 diode arms maximizes AM noise rejection."
+    },
+    {
+      "id": "s35",
+      "keyTopic": 3,
+      "template": "key-facts",
+      "params": {
+        "title": "Quieting: how much signal it takes",
+        "items": [
+          "Normal VHF marine receiver: 10 dB of quieting with about 1 µV at the antenna input",
+          "Needing 5 or 10 µV for that means poor sensitivity",
+          "Full quieting: the signal is strong enough to completely quiet the background noise",
+          "Full quieting describes signal strength, not a squelch setting"
+        ]
+      },
+      "onScreen": ["10 dB quieting with about 1 µV: normal", "5 or 10 µV: poor sensitivity", "Full quieting: background noise completely quieted", "Signal strength, not squelch"],
+      "narration": "How well does the whole receiver work? One test of its sensitivity, its ability to use weak signals, is quieting. With no signal, an FM receiver hisses. As a signal arrives, the hiss drops, because the limiter locks onto the signal instead of the noise. Quieting is how far the noise drops, in decibels. A normal VHF marine receiver reaches 10 decibels of quieting with about 1 microvolt at the antenna input, a millionth of a volt: a tiny signal. If it needs 5 or 10 microvolts to get there, its sensitivity is poor. Full quieting means the received signal is strong enough to completely quiet the receiver background noise. That describes the signal's strength, not a squelch setting."
+    },
+    {
+      "id": "s36",
+      "keyTopic": 3,
+      "template": "formula",
+      "params": {
+        "title": "SINAD: measuring receiver sensitivity",
+        "formula": "SINAD = (S + N + D) ÷ (N + D)",
+        "steps": ["S = signal, N = noise, D = distortion", "Usually expressed in decibels"],
+        "answer": "12 dB SINAD: the common FM sensitivity reference"
+      },
+      "onScreen": ["SINAD = (signal + noise + distortion) ÷ (noise + distortion)", "Usually in decibels", "12 dB SINAD: common FM sensitivity reference"],
+      "narration": "Quieting is one check; the standard one is SINAD, short for signal plus noise and distortion. Distortion is any unwanted change in the shape of the audio, and every receiver's output holds all 3: the signal you want, plus noise, plus distortion. SINAD compares that whole output with the unwanted part alone: the sum of the signal, noise and distortion, divided by the sum of the noise and distortion. It's usually given in decibels, and 12 decibels SINAD is the common reference for FM receiver sensitivity. On the exam, reject answers that multiply, or that flip the fraction. To sum up the receiver: the limiter steadies the signal, the strongest station captures it, and quieting and SINAD measure sensitivity."
+    },
+    {
+      "id": "s37",
+      "keyTopic": 4,
+      "template": "key-facts",
+      "params": {
+        "title": "Finding a fault: follow the clues",
+        "items": [
+          "Start with the symptom",
+          "Ask what still works: that clears every stage it needs",
+          "Suspect what's left, then test it",
+          "Beware trap answers that describe normal operation"
+        ]
+      },
+      "onScreen": ["Start with the symptom", "What still works?", "Suspect what's left", "Normal operation is never the fault"],
+      "narration": "That's how a healthy receiver works. Now the maintainer's real job: finding what's wrong when it doesn't. Every fault question on this exam yields to the same method. Start with the symptom. Then ask what still works, because anything that works proves the stages it depends on are fine. That narrows the suspects to what's left. Then test them with the right instrument. And watch for trap answers that describe something normal as if it were the fault. We'll start where every channel starts: with how the radio stays on frequency."
+    },
+    {
+      "id": "s38",
+      "keyTopic": 4,
+      "template": "block-diagram",
+      "params": {
+        "title": "The synthesizer: staying on channel",
+        "columns": 2,
+        "blocks": [
+          { "id": "vco", "label": "VCO", "note": "Voltage controlled oscillator" },
+          { "id": "out", "label": "To mixer or modulator", "note": "Locked: exactly on channel" },
+          { "id": "pll", "label": "Phase-locked loop (PLL)", "note": "Compares the VCO with the reference" },
+          { "id": "ref", "label": "Crystal reference", "note": "One very steady frequency" }
+        ],
+        "links": [
+          { "from": "ref", "to": "pll" },
+          { "from": "pll", "to": "vco", "label": "Correction voltage" },
+          { "from": "vco", "to": "out" }
+        ]
+      },
+      "onScreen": ["VCO: voltage controlled oscillator", "Output to the mixer or modulator", "PLL compares and corrects", "Crystal reference", "Locked: on channel"],
+      "narration": "That's the synthesizer's job. At its heart is a VCO, a voltage controlled oscillator: an oscillator whose frequency changes with the voltage fed to it. Its output sets the channel frequency for both the transmitter and the receiver's local oscillator. Voltage control makes the VCO easy to tune, but on its own it drifts. So a phase-locked loop, or PLL, keeps watching it. The PLL compares the VCO's output with a crystal reference, a small quartz crystal that vibrates at one very steady frequency. Whenever the VCO wanders, the PLL sends a correction voltage that pulls it back. When the VCO is held exactly on frequency, the loop is said to be locked. Locked means on channel; unlocked means wandering."
+    },
+    {
+      "id": "s39",
+      "keyTopic": 4,
+      "template": "block-diagram",
+      "params": {
+        "title": "Fault: can't stay on channel",
+        "columns": 2,
+        "blocks": [
+          { "id": "rf", "label": "RF amplifier" },
+          { "id": "pll", "label": "PLL synthesizer", "note": "Unlocked: the receiver drifts off channel" },
+          { "id": "mixer", "label": "Mixer", "note": "Local oscillator beat makes the IF: normal" },
+          { "id": "if", "label": "IF amplifier" }
+        ],
+        "links": [
+          { "from": "rf", "to": "mixer" },
+          { "from": "mixer", "to": "if" },
+          { "from": "pll", "to": "mixer" }
+        ]
+      },
+      "onScreen": ["Receiver won't stay on channel", "PLL output unlocked: the fault", "Mixer: local oscillator beat is normal"],
+      "narration": "First fault. A VHF receiver cannot stay tuned to the desired channel: it keeps drifting off. What sets the channel? The synthesizer. So the likely cause is that the output of the phase-locked loop in the frequency synthesizer has become unlocked, and the local oscillator wanders with it. Now the traps. One says the local oscillator is beating against the incoming signal to produce an IF. Beating means mixing to make the difference frequency, and that's simply the mixer doing its normal job. Others describe the detector producing its normal audio output. Normal operation is never the fault."
+    },
+    {
+      "id": "s40",
+      "keyTopic": 4,
+      "template": "key-facts",
+      "params": {
+        "title": "Fault: a weak signal disappears",
+        "items": [
+          "Symptom: a weak station can't be heard",
+          "A stronger signal is on the same channel",
+          "The receiver is working",
+          "Cause: capture effect at the limiter stage"
+        ]
+      },
+      "onScreen": ["Weak station lost", "Stronger signal on the channel", "Receiver is working", "Capture effect at the limiter"],
+      "narration": "Second fault, or is it? A receiver can't pick up a weak signal while a stronger signal is on the same channel. What still works? Everything: the strong station comes through clearly. So nothing is broken. The weak RF signal has been suppressed at the limiter stage by the capture effect, exactly as the limiter is designed to behave. The other answers don't fit. An unlocked PLL would lose the strong station too, the local oscillator beat is normal, and an audio stage with more output than input is just an amplifier doing its job."
+    },
+    {
+      "id": "s41",
+      "keyTopic": 4,
+      "template": "key-facts",
+      "params": {
+        "title": "No audio, and the squelch does nothing",
+        "items": [
+          "Symptom: no audible speaker output, and the squelch control has no effect",
+          "So not even noise is reaching the speaker",
+          "RF, mixer or local oscillator faults would still leave noise audible",
+          "Suspect a defective AF amplifier…",
+          "…or an activated Push-To-Talk circuit: keying mutes the receiver"
+        ]
+      },
+      "onScreen": ["No audio, squelch has no effect", "Not even noise reaches the speaker", "Front-end faults would still leave noise", "Defective AF amplifier", "Or Push-To-Talk activated"],
+      "narration": "Third, one to reason through, stage by stage. The speaker gives no audible output, and the squelch control has no effect. Opening the squelch should at least let noise through, so not even noise is reaching the speaker. That rules out the front end: if the RF amplifier, the mixer or the local oscillator had failed, you'd still hear noise from the stages after them. So look near the end of the chain. The AF amplifier may be defective. Or the Push-To-Talk circuit may be activated, stuck on: keying the transmitter, switching it on, mutes the receiver, as we saw at the start."
+    },
+    {
+      "id": "s42",
+      "keyTopic": 4,
+      "template": "equipment-card",
+      "params": {
+        "title": "The multimeter: volts and ohms",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Selector: volts, amps or ohms", "at": "selector" },
+          { "label": "Display: the reading", "at": "display" },
+          { "label": "Probes touch the 2 points being measured", "at": "probes" },
+          { "label": "Zero ohms: an unbroken path. Infinite ohms: no path", "at": "body" }
+        ]
+      },
+      "onScreen": ["Selector: volts, amps, ohms", "Display", "Probes on 2 points", "Zero ohms: unbroken; infinite: open"],
+      "narration": "To go further, you need test instruments. The most basic is the multimeter, which measures voltage, current and resistance. Resistance is how hard a part makes it for current to flow, like a narrow section of pipe, and it's measured in ohms. As a voltmeter, you touch the probes to 2 points and read the voltage between them, often from a circuit point to ground, the radio's common return, counted as zero volts. As an ohmmeter, with the power off, it reads resistance. Zero ohms means an unbroken path, like a good wire or fuse, the thin link that melts to cut the power if too much current flows. Infinite ohms means no path at all: an open circuit."
+    },
+    {
+      "id": "s43",
+      "keyTopic": 4,
+      "template": "equipment-card",
+      "params": {
+        "title": "Fails to receive: zero volts, good fuse",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Radio fails to receive nearby stations", "at": "body" },
+          { "label": "DC line to ground: zero volts", "at": "display" },
+          { "label": "Fuse on the ohmmeter: zero ohms, so it's intact", "at": "probes" },
+          { "label": "Crowbar circuit cut the supply to prevent an over current condition", "at": "selector" }
+        ]
+      },
+      "onScreen": ["Fails to receive", "DC line: zero volts", "Fuse: zero ohms, intact", "Crowbar circuit prevented an over current condition"],
+      "narration": "Let's put the multimeter to work. A radio fails to receive nearby stations. A voltmeter between the positive side of its DC line and ground reads zero volts. DC is direct current, the one-way current from the ship's supply. So no power is reaching the radio. The obvious suspect is a blown fuse, but the fuse reads zero ohms, so it's intact. What's left? A crowbar circuit: a protection circuit that slams the supply off when it senses trouble, as suddenly as a crowbar dropped across the terminals. It has prevented an over current condition, too much current, that might damage the radio. The antenna, coax and detector answers are traps: none of them can make the supply read zero."
+    },
+    {
+      "id": "s44",
+      "keyTopic": 4,
+      "template": "equipment-card",
+      "params": {
+        "title": "Tracking down audio distortion",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "Probe the output of each AF amplifier stage in turn", "at": "probe" },
+          { "label": "The scope displays the AC audio signal", "at": "input" },
+          { "label": "Clean audio: that stage is fine, move on", "at": "trace" },
+          { "label": "The stage where clean audio first turns distorted is the fault", "at": "screen" }
+        ]
+      },
+      "onScreen": ["Probe each AF stage output", "Display the AC signal", "Clean: move on", "First distorted stage is the fault"],
+      "narration": "Next, the audio comes out distorted. To isolate the source, use an oscilloscope, an instrument that draws a signal's voltage over time, so you can see its shape. Audio is AC, alternating current, which swings back and forth like the sound wave it copies. Probe the output of each AF amplifier stage in turn and display the AC signal there. While the trace stays clean, move on to the next stage. The stage where clean audio first turns distorted is the faulty one. A test tone injected at the first stage only tells you distortion exists, and voltmeter readings can't show the wave's shape. The rule for all these faults: follow the signal along the chain until it goes wrong."
+    },
+    {
+      "id": "s45",
+      "keyTopic": 5,
+      "template": "key-facts",
+      "params": {
+        "title": "When the supply sags: 9.6 volts",
+        "items": [
+          "Normal DC line: 12.8 to 13.8 V",
+          "Reading 9.6: the supply is sagging",
+          "Every stage is starved",
+          "Result: a significant loss of sensitivity"
+        ]
+      },
+      "onScreen": ["Normal: 12.8 to 13.8 V", "Reading 9.6", "Stages starved", "Significant sensitivity loss"],
+      "narration": "Now faults that make the receiver weaker rather than dead. A voltmeter between the positive side of the radio's DC line and ground should read 12.8 to 13.8 volts, the normal range for a ship's 12 volt supply when it's charged and running. Suppose it reads 9.6 instead. The radio still powers up, so it may seem fine. But every amplifier stage needs its full voltage to give its full gain. At 9.6 volts, the receiver stages are starved, and the result may be a significant loss in sensitivity: weak stations simply fade away. The other answers describe IF signal levels, which aren't faults."
+    },
+    {
+      "id": "s46",
+      "keyTopic": 5,
+      "template": "comparison-table",
+      "params": {
+        "title": "Changing the coax: not a fault",
+        "columns": ["Cable", "Impedance", "Effect"],
+        "rows": [
+          ["RG-59/U (old)", "75 Ω", "Mismatches the radio"],
+          ["RG-8/U or LMR-400 (new)", "50 Ω", "Better match, less line loss"]
+        ]
+      },
+      "onScreen": ["RG-59/U: 75 ohms, mismatch", "RG-8/U or LMR-400: 50 ohms, better match", "No loss of sensitivity"],
+      "narration": "Here's a change that sounds risky but isn't. The antenna connects to the radio by coax, short for coaxial cable: a center wire inside a tube of braided shield. Each type of coax has a characteristic impedance, in ohms: roughly, the resistance a radio signal feels traveling along it. Marine radios and antennas are built for 50 ohms. When the impedances match, the signal flows smoothly; when they don't, some of it bounces back and is lost. So replacing 75 ohm RG-59/U with 50 ohm RG-8/U or LMR-400 Ultraflex cable does not cause a loss of sensitivity. It improves the match and cuts line loss. That's a trap answer; the 9.6 volt reading is the real cause."
+    },
+    {
+      "id": "s47",
+      "keyTopic": 5,
+      "template": "key-facts",
+      "params": {
+        "title": "Crackling: a worn volume control",
+        "items": [
+          "Symptom: noisy, crackling operation",
+          "Cause: a defective potentiometer in the AF amplifier stage",
+          "Example: a worn volume control",
+          "Open coupling transformer winding: no audio at all, not crackling"
+        ]
+      },
+      "onScreen": ["Noisy, crackling sound", "Defective AF potentiometer", "Worn volume control", "Open coupling transformer: silence"],
+      "narration": "A different complaint: the receiver works, but its sound is noisy and crackly. Think of the volume knob, a potentiometer: a resistor, a part built to resist current, with a contact that slides along it as you turn the knob. As the track wears and gets dirty, the contact skips, and the audio crackles. So a defective potentiometer in the audio frequency amplifier stage, such as a worn volume control, causes noisy operation. Compare a coupling transformer, a part that passes audio from one stage to the next. If its winding is open, broken, the audio can't get through at all: silence, not crackle. An audio stage with more output than input is just amplifying, as it should."
+    },
+    {
+      "id": "s48",
+      "keyTopic": 5,
+      "template": "equipment-card",
+      "params": {
+        "title": "Ohmmeter checks on components",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Diode: low one way, high reversed: normal", "at": "display" },
+          { "label": "Transistor emitter-base low both ways: shorted junction, faulty", "at": "probes" },
+          { "label": "Good fuse: zero ohms: normal", "at": "selector" },
+          { "label": "Ceramic bypass capacitor: infinite ohms: normal", "at": "com" }
+        ]
+      },
+      "onScreen": ["Diode low one way, high reversed: normal", "Transistor low both ways: faulty", "Fuse zero ohms: normal", "Ceramic bypass capacitor infinite ohms: normal"],
+      "narration": "The ohmmeter can also check single parts, if you know what normal looks like. A diode, remember, is a one-way valve, so reading low one way and high with the test leads reversed is normal. A transistor is the small part that does the amplifying in each stage. Between 2 of its 3 leads, the emitter and the base, it behaves like a diode. So a transistor that shows low resistance between emitter and base even with the test leads reversed is faulty: that junction is shorted. 2 more readings are normal: zero ohms across a good fuse, and infinite ohms across a ceramic bypass capacitor, a part that passes AC but blocks DC."
+    },
+    {
+      "id": "s49",
+      "keyTopic": 5,
+      "template": "key-facts",
+      "params": {
+        "title": "A bias resistor with no voltage drop",
+        "items": [
+          "Bias: the steady DC that readies a transistor to amplify",
+          "A working 100K-ohm bias resistor carries current",
+          "Current through a resistor makes a voltage drop",
+          "Same voltage between each lead and ground: a fault"
+        ]
+      },
+      "onScreen": ["Bias readies a transistor", "100K-ohm bias resistor carries current", "Current makes a voltage drop", "Same voltage at both leads: fault"],
+      "narration": "Now a voltage check. A transistor needs bias: a small, steady DC voltage that sets it up to amplify. Bias is often fed through a resistor, say a 100K-ohm one: 100 kilohms, where a kilohm is 1000 ohms. When current flows through a resistor, some voltage is used up across it, called a voltage drop, like pressure lost through a narrow pipe. So a working bias resistor carries current and shows a different voltage at each end. If you read the same voltage between each lead and ground, no current is flowing through it, which indicates a fault. A voltage drop across a 47K ohm resistor is normal, and so is an AC signal at an audio stage's output."
+    },
+    {
+      "id": "s50",
+      "keyTopic": 5,
+      "template": "key-facts",
+      "params": {
+        "title": "Finding the minimum discernible signal",
+        "items": [
+          "Set a signal generator to the receiver frequency",
+          "Start near zero output",
+          "Watch an audio voltmeter at the AF output",
+          "Increase the output until the audio voltmeter shows a 3-dB increase",
+          "There, signal plus noise is twice the noise"
+        ]
+      },
+      "onScreen": ["Signal generator on the receiver frequency", "Start near zero", "Audio voltmeter at the AF output", "Increase until a 3-dB rise", "Signal plus noise is twice the noise"],
+      "narration": "Back from single parts to the whole receiver. How weak a signal can it just detect? That level is its minimum discernible signal. To find it, you need a signal generator, an instrument that makes a clean test signal at any frequency and strength you choose. Set it to the receiver frequency and start near zero output. Connect an audio voltmeter at the AF output, where at first it reads only the receiver's noise. Then increase the generator output slowly until the audio voltmeter shows a 3-decibel increase. Remember, 3 decibels is double the power. So at that point, signal plus noise is twice the noise alone, and that generator level is the minimum discernible signal."
+    },
+    {
+      "id": "s51",
+      "keyTopic": 5,
+      "template": "band-strip",
+      "params": {
+        "title": "Quick field test: NOAA weather broadcasts",
+        "min": 162.35,
+        "max": 162.6,
+        "scale": "linear",
+        "marks": [
+          { "at": 162.55, "label": "162.550 MHz", "note": "NOAA broadcast", "tone": "key" },
+          { "at": 162.4, "label": "162.400 MHz", "note": "NOAA broadcast", "tone": "key" },
+          { "at": 162.475, "label": "162.475 MHz", "note": "NOAA broadcast", "tone": "key" }
+        ]
+      },
+      "onScreen": ["162.550 MHz", "162.400 MHz", "162.475 MHz", "Listen for NOAA broadcasts"],
+      "narration": "Here's a quick field test that works in many U.S. ports. Tune the receiver to 162.550, 162.400 or 162.475 megahertz, and listen for National Oceanic and Atmospheric Administration, or NOAA, broadcasts. NOAA weather stations broadcast continuously, so there's always something to hear. If you hear them clearly, the receiver is working. Why not just transmit and listen to yourself? Because a radio cannot monitor its own transmission: pressing PTT mutes the receiver. Measuring inside the radio would work too, but it's no quick field test. In short, for receiver faults: a sagging supply costs sensitivity, a worn control crackles, better coax doesn't hurt, and the meters show which part has failed."
+    },
+    {
+      "id": "s52",
+      "keyTopic": 7,
+      "template": "key-facts",
+      "params": {
+        "title": "Reading transmitter power",
+        "items": [
+          "In-line wattmeter: reads the RF power going to the antenna",
+          "Reading: 1 W on LOW, 8.5 W on HIGH, at +12.8 vdc",
+          "FCC range on HIGH: at least 8 W, no more than 25 W",
+          "Low, but within FCC specifications: the problem lies elsewhere"
+        ]
+      },
+      "onScreen": ["In-line wattmeter", "1 W LOW, 8.5 W HIGH at +12.8 vdc", "At least 8 W, no more than 25 W", "Low but within specifications"],
+      "narration": "That covers the receiver. Now the transmitter side, where most clues come from power readings. The basic tool is an in-line wattmeter: a meter connected in the cable between the radio and the antenna, which reads the RF power going out. Say a radio can't contact nearby stations. The wattmeter shows 1 watt on Low and 8.5 watts on High, with plus 12.8 volts DC applied. Is 8.5 watts the problem? It's well below 25, so the high power output is low. But it's still within FCC specifications, which allow at least 8 watts and no more than 25 on High. That's plenty to reach nearby stations. So the transmitter is legal, and the contact problem lies elsewhere."
+    },
+    {
+      "id": "s53",
+      "keyTopic": 7,
+      "template": "key-facts",
+      "params": {
+        "title": "SWR: when power bounces back",
+        "items": [
+          "Forward power: travels from the radio up to the antenna",
+          "Reflected power: bounces back from a mismatch",
+          "Together they form standing waves on the line",
+          "SWR (standing wave ratio): 1 to 1 is a perfect match",
+          "An SWR of 1.5 to 1.0 is normal"
+        ]
+      },
+      "onScreen": ["Forward power: to the antenna", "Reflected power: bounced back", "Standing waves on the line", "SWR 1 to 1: perfect", "1.5 to 1.0: normal"],
+      "narration": "Output power is only half the story: it still has to get into the antenna. Power heading up the coax is called forward power. If the antenna and the cable don't match, part of it bounces back toward the radio, like a wave hitting a seawall. That's reflected power. The forward and reflected waves overlap on the line and form a fixed pattern of high and low spots, called standing waves. The standing wave ratio, SWR, compares the highest spot with the lowest. A perfect match, with nothing reflected, is 1 to 1. A little reflection is fine: an SWR of 1.5 to 1.0 is normal for a working antenna system. High SWR wastes power and can harm the transmitter."
+    },
+    {
+      "id": "s54",
       "keyTopic": 7,
       "template": "block-diagram",
       "params": {
-        "title": "Measuring antenna system SWR",
+        "title": "Measuring SWR with an SWR meter",
         "columns": 4,
         "blocks": [
           { "id": "radio", "label": "VHF radio", "note": "Unused channel, PTT activated" },
-          { "id": "meter", "label": "SWR meter or wattmeter", "note": "Directional: forward and reflected power" },
+          { "id": "meter", "label": "SWR meter" },
           { "id": "coax", "label": "Coax" },
-          { "id": "ant", "label": "Antenna" },
-          { "id": "ch16", "label": "Radio check on Channel 16", "note": "Not a measurement" },
-          { "id": "dummy", "label": "Artificial antenna", "note": "Tests only the radio" }
+          { "id": "ant", "label": "Antenna", "note": "Connected: the real system" },
+          { "id": "ch16", "label": "Radio check on Channel 16", "note": "Not a measurement" }
         ],
         "links": [
           { "from": "radio", "to": "meter" },
           { "from": "meter", "to": "coax" },
           { "from": "coax", "to": "ant" },
-          { "from": "radio", "to": "ch16", "struck": true },
-          { "from": "meter", "to": "dummy", "struck": true }
+          { "from": "radio", "to": "ch16", "struck": true }
         ]
       },
-      "onScreen": ["Meter between the radio and the antenna coax", "Unused channel, PTT activated", "Forward and reflected power", "Not a Channel 16 radio check", "Not an artificial antenna"],
-      "narration": "To measure the antenna system's SWR, or standing wave ratio, insert an SWR meter between the VHF radio and the coax connected to the antenna. Set an unused channel, activate the Push-To-Talk circuit, and read the value. A directional wattmeter goes in the same place, between the transmitter and the coax. Activate PTT and observe the forward and reflected power. Don't settle for a radio check on Channel 16. And don't measure into an artificial antenna, which tests only the radio, or a disconnected line, which reflects everything."
+      "onScreen": ["SWR meter between the radio and the antenna coax", "Unused channel, PTT activated", "Read the value", "Not a radio check on Channel 16"],
+      "narration": "To measure the antenna system's SWR, insert an SWR meter between the VHF radio and the coax connected to the antenna. That way, the meter sees the whole antenna system, cable and all. Set the radio to an unused channel, so the test doesn't interfere with anyone. Activate the Push-To-Talk circuit, so there's power to measure, and read the value. Don't settle for a radio check on Channel 16: a voice reply only tells you someone heard you, not how well the antenna matches, and a test on 16 ties up the distress channel."
     },
     {
-      "id": "s25",
+      "id": "s55",
+      "keyTopic": 7,
+      "template": "block-diagram",
+      "params": {
+        "title": "SWR with a directional wattmeter",
+        "columns": 4,
+        "blocks": [
+          { "id": "radio", "label": "VHF transmitter", "note": "PTT activated" },
+          { "id": "meter", "label": "Directional wattmeter", "note": "Forward and reflected power" },
+          { "id": "coax", "label": "Coax" },
+          { "id": "ant", "label": "Antenna", "note": "Must be connected" },
+          { "id": "dummy", "label": "Artificial antenna", "note": "Tests only the radio" },
+          { "id": "open", "label": "Disconnected line", "note": "Reflects everything" }
+        ],
+        "links": [
+          { "from": "radio", "to": "meter" },
+          { "from": "meter", "to": "coax" },
+          { "from": "coax", "to": "ant" },
+          { "from": "meter", "to": "dummy", "struck": true },
+          { "from": "meter", "to": "open", "struck": true }
+        ]
+      },
+      "onScreen": ["Directional wattmeter between transmitter and antenna coax", "PTT activated", "Forward and reflected power", "Not an artificial antenna", "Not a disconnected line"],
+      "narration": "A directional wattmeter does the same job another way. It's a wattmeter that can read power traveling in either direction, forward or reflected. It goes in the same place: insert it between the transmitter and the coax connected to the antenna, activate PTT, and observe the forward and reflected power. Where you connect it matters. Into an artificial antenna, a test load that stands in for the antenna, it tests only the radio, not the antenna system. Into a line disconnected from the antenna, it reads almost total reflection, because the power has nowhere to go. A 50 ohm load in place of the antenna has the same problem as the artificial antenna."
+    },
+    {
+      "id": "s56",
       "keyTopic": 7,
       "template": "formula",
       "params": {
         "title": "SWR from forward and reflected power",
         "formula": "SWR = (1 + √(P<sub>r</sub>/P<sub>f</sub>)) ÷ (1 − √(P<sub>r</sub>/P<sub>f</sub>))",
         "steps": ["P<sub>f</sub> = forward power", "P<sub>r</sub> = reflected power"],
-        "answer": "An SWR of 1.5 to 1.0 is normal"
+        "answer": "Nothing reflected: SWR = 1 to 1"
       },
-      "onScreen": ["SWR = (1 + √(Pr/Pf)) ÷ (1 − √(Pr/Pf))", "Pf: forward power", "Pr: reflected power", "1.5 to 1.0 is normal"],
-      "narration": "From the wattmeter's two readings, you can work out the SWR. It equals 1 plus the square root of P sub r over P sub f, divided by 1 minus the square root of P sub r over P sub f. P sub f is the forward power, and P sub r is the reflected power. An SWR of 1.5 to 1.0 is normal for a working antenna system."
+      "onScreen": ["SWR = (1 + √(Pr/Pf)) ÷ (1 − √(Pr/Pf))", "Pf: forward power", "Pr: reflected power", "Nothing reflected: 1 to 1"],
+      "narration": "From the wattmeter's 2 readings, you can work out the SWR. It equals 1 plus the square root of P sub r over P sub f, divided by 1 minus the square root of P sub r over P sub f. P sub f is the forward power, and P sub r is the reflected power. Here's how to read it. If nothing is reflected, P sub r is zero, the square roots vanish, and the SWR is 1 over 1: a perfect 1 to 1. The more power comes back, the bigger the top and the smaller the bottom, so the SWR climbs."
     },
     {
-      "id": "s26",
-      "keyTopic": 7,
-      "template": "comparison-table",
-      "params": {
-        "title": "Reading the power meter",
-        "columns": ["Symptom", "What it means"],
-        "rows": [
-          ["1 W on LOW, 8.5 W on HIGH at +12.8 vdc", "Low, but within FCC specs: 8 W to 25 W"],
-          ["Nearly zero RF output on HIGH, all channels", "SWR protection engaged to protect the PA"],
-          ["SWR of 1.5 to 1.0, or a 50-ohm load", "Normal"]
-        ]
-      },
-      "onScreen": ["8.5 W on High: low but within FCC specifications", "Nearly zero output on High: SWR protection engaged", "1.5 to 1.0 SWR or 50-ohm load: normal"],
-      "narration": "Now read the symptoms. A radio can't contact nearby stations. The wattmeter shows 1 watt on Low and 8.5 watts on High, with plus 12.8 volts DC applied. The high power output is low, but it's still within FCC specifications: at least 8 watts and no more than 25. So the problem lies elsewhere. Next, the radio otherwise works normally, but it produces nearly zero RF output in high power mode on all channels. The SWR protection circuit has engaged to prevent damage to the Power Amplifier, or PA. A 1.5 to 1.0 SWR or a 50-ohm load is normal and would not cause this."
-    },
-    {
-      "id": "s27",
-      "keyTopic": 7,
-      "template": "key-facts",
-      "params": {
-        "title": "When the radio won't transmit",
-        "items": [
-          "VCO (voltage controlled oscillator) failure in the synthesizer…",
-          "…shows up as an out-of-lock condition in the Phase Locked Loop",
-          "Many radios then inhibit transmit",
-          "Receives but can't transmit: a failed component in the PTT circuit",
-          "The radio enters transmit only when the PTT line is activated"
-        ]
-      },
-      "onScreen": ["VCO failure: PLL out of lock", "Transmit inhibited", "Receive works, no transmit: PTT circuit", "Transmit only when the PTT line is activated"],
-      "narration": "Two reasons a radio won't transmit. First, voltage controlled oscillator, or VCO, failure in the synthesizer. It shows up as an out-of-lock condition in the phase-locked loop, and many radios then inhibit transmit. Second, a radio that works in receive mode but cannot transmit. Receive works, so power and the receiver are fine; the trouble is in getting into transmit. The radio enters transmit only when the PTT line is activated, so the most likely cause is a failed component in the Push-To-Talk circuit."
-    },
-    {
-      "id": "s28",
+      "id": "s57",
       "keyTopic": 8,
       "template": "formula",
       "params": {
@@ -507,17 +1033,134 @@
         "answer": "SWR ≈ 1.65:1 → proper operation"
       },
       "onScreen": ["Γ = √(Pr/Pf)", "Γ = √(1.5 ÷ 25) ≈ 0.245", "SWR ≈ 1.65:1", "Proper operation"],
-      "narration": "A wattmeter reads 25 watts forward and 1.5 watts reflected. Is that OK? First find gamma, the reflection coefficient: the square root of P sub r over P sub f. The square root of 1.5 over 25 is about 0.245. Then SWR equals 1 plus 0.245, divided by 1 minus 0.245, or about 1.65 to 1. That shows proper operation. Compare two bad readings: 27.5 watts forward exceeds the legal limit, and 25 watts reflected means nothing reaches the antenna."
+      "narration": "Let's try it. A wattmeter reads 25 watts forward and 1.5 watts reflected. Is that proper operation? Step 1: divide reflected by forward, 1.5 over 25, and take the square root. That gives about 0.245. This number is called gamma, the reflection coefficient: the share of the wave that bounces back. Step 2: SWR equals 1 plus 0.245, divided by 1 minus 0.245, which works out to about 1.65 to 1. That's close to the normal 1.5, so this reading shows proper operation. Compare the trap readings. 27.5 watts forward exceeds the 25 watt legal limit. 25 watts reflected means nothing reaches the antenna. And 2.5 watts forward with 1.5 reflected is weak and badly mismatched."
     },
     {
-      "id": "s29",
+      "id": "s58",
+      "keyTopic": 7,
+      "template": "key-facts",
+      "params": {
+        "title": "Nearly zero output: SWR protection",
+        "items": [
+          "Symptom: nearly zero RF output on HIGH, all channels",
+          "The rest of the radio works normally",
+          "Cause: the SWR protection circuit has engaged",
+          "It prevents damage to the power amplifier",
+          "A 1.5 to 1.0 SWR or a 50 Ω load is normal, not the cause"
+        ]
+      },
+      "onScreen": ["Nearly zero output on HIGH, all channels", "Radio otherwise normal", "SWR protection engaged", "Protects the power amplifier", "1.5 to 1.0 SWR or 50 Ω load: normal"],
+      "narration": "Reflected power also explains a puzzling symptom. The transmitter produces nearly zero RF output in high power mode, on all channels, yet the rest of the radio works normally. So the supply and the receiver are fine; only the transmit power has gone. Why? Reflected power flows back into the transmitter's power amplifier and can overheat it, so radios have an SWR protection circuit that cuts the power when it senses too much reflection. The likely cause: the SWR protection circuit has engaged to prevent damage to the power amplifier. The traps: an SWR of 1.5 to 1.0, or a 50-ohm load, is normal, and a crowbar circuit would shut down the whole radio, not just the transmit power."
+    },
+    {
+      "id": "s59",
+      "keyTopic": 7,
+      "template": "key-facts",
+      "params": {
+        "title": "VCO failure: out of lock",
+        "items": [
+          "The carrier comes from the synthesizer's VCO",
+          "VCO failure: the PLL can't hold the channel",
+          "Sign: an out-of-lock condition in the phase-locked loop",
+          "Many radios then inhibit transmit"
+        ]
+      },
+      "onScreen": ["Carrier from the VCO", "VCO fails: PLL can't hold the channel", "Out-of-lock condition", "Transmit inhibited"],
+      "narration": "Back to the synthesizer, this time on the transmit side. The transmitter's carrier comes from the synthesizer's voltage controlled oscillator, the VCO. If the VCO fails, the phase-locked loop can't pull it onto the channel frequency, however hard it corrects. So VCO failure in the synthesizer shows up as an out-of-lock condition in the phase-locked loop. And many radios then inhibit transmit: they refuse to send at all, rather than transmit on the wrong frequency. Low power, excessive deviation, or steady power at all modulation levels are the trap answers here."
+    },
+    {
+      "id": "s60",
+      "keyTopic": 7,
+      "template": "key-facts",
+      "params": {
+        "title": "Receives, but won't transmit",
+        "items": [
+          "Receive works: power, receiver and antenna are fine",
+          "The radio enters transmit only when the PTT line is activated",
+          "Most likely: a failed component in the PTT circuit"
+        ]
+      },
+      "onScreen": ["Receive works", "Transmit only when the PTT line is activated", "Failed component in the PTT circuit"],
+      "narration": "Next, a radio that works in receive mode but cannot transmit at all. What still works? Receive, so the power supply, the receiver and the shared antenna are fine. The trouble is in getting into transmit. And what decides when the radio switches to transmit? The Push-To-Talk line, as we saw at the start. The radio enters transmit only when the PTT line is activated, so the most likely cause is a failed component in the Push-To-Talk circuit. The SWR protection trap doesn't fit: it cuts the power after the radio has switched to transmit; it doesn't stop the switch."
+    },
+    {
+      "id": "s61",
+      "keyTopic": 8,
+      "template": "key-facts",
+      "params": {
+        "title": "Full power, but no voice",
+        "items": [
+          "Wattmeter: a full 25 W on HIGH",
+          "External receiver: no modulation heard",
+          "The carrier works, so PTT is fine",
+          "Suspect an open microphone cable or connector"
+        ]
+      },
+      "onScreen": ["25 W on HIGH", "No modulation heard", "PTT is fine", "Open microphone cable or connector"],
+      "narration": "Now some faults where the transmitter does send. A radio can't contact nearby stations on any channel. The wattmeter shows a full 25 watts on High, but an external receiver monitoring the signal hears no modulation, no voice at all. What still works? The carrier: the radio switches to transmit and makes full power. So the PTT circuit is fine, because a PTT fault would prevent any output at all. The voice is getting lost between your mouth and the modulator. The most likely cause is an open connection, a break, in the microphone cable or connector."
+    },
+    {
+      "id": "s62",
+      "keyTopic": 8,
+      "template": "key-facts",
+      "params": {
+        "title": "Under 1 W on HIGH: PA bias",
+        "items": [
+          "Wattmeter: under 1 W on HIGH",
+          "Supply: a nominal 12.8 vdc, so power is arriving",
+          "Bias voltage to the PA stage may be insufficient",
+          "The PA transistor barely conducts"
+        ]
+      },
+      "onScreen": ["Under 1 W on HIGH", "Nominal 12.8 vdc applied", "Insufficient PA bias", "PA transistor barely conducts"],
+      "narration": "Another case: the wattmeter shows less than 1 watt in High power mode, with a nominal 12.8 volts DC applied to the radio. Nominal means the normal, expected value. So the supply is fine, and power is reaching the radio. The last stage, the power amplifier, isn't doing its job. Remember bias, the steady voltage that sets a transistor up to amplify? If the bias voltage applied to the PA stage is insufficient, the PA transistor barely conducts, and little power comes out. That's the most likely cause. Too much drive into the PA would not reduce the output."
+    },
+    {
+      "id": "s63",
+      "keyTopic": 8,
+      "template": "key-facts",
+      "params": {
+        "title": "Over 150 percent: modulator distortion",
+        "items": [
+          "100% modulation = the 5 kHz maximum deviation",
+          "150% swings the carrier about 7.5 kHz",
+          "Result: distortion in the modulator stage"
+        ]
+      },
+      "onScreen": ["100% = 5 kHz deviation", "150% ≈ 7.5 kHz", "Distortion in the modulator stage"],
+      "narration": "The last of these faults comes from too much modulation rather than too little. Modulation can also be measured as a percentage of the maximum. 100 percent modulation means the full 5 kilohertz maximum deviation. So 150 percent swings the carrier about 7.5 kilohertz, half as far again as the modulator is meant to push it. Transmitter modulation in excess of 150 percent causes distortion in the modulator stage: the voice comes out harsh and broken, because the audio driving the modulator pushes it far past the range it was built for."
+    },
+    {
+      "id": "s64",
+      "keyTopic": 8,
+      "template": "block-diagram",
+      "params": {
+        "title": "Testing off the air: the dummy load",
+        "columns": 4,
+        "blocks": [
+          { "id": "radio", "label": "VHF transmitter" },
+          { "id": "meter", "label": "Wattmeter" },
+          { "id": "load", "label": "Dummy load", "note": "Non-inductive 50 Ω resistor" },
+          { "id": "heat", "label": "Heat", "note": "Power absorbed, not radiated" }
+        ],
+        "links": [
+          { "from": "radio", "to": "meter" },
+          { "from": "meter", "to": "load" },
+          { "from": "load", "to": "heat" }
+        ]
+      },
+      "onScreen": ["Transmitter", "Wattmeter", "Dummy load, or artificial antenna: 50 Ω resistor", "Power becomes heat, not a signal"],
+      "narration": "Many transmitter tests mean keying up at full power and reading a wattmeter. You don't want to send that power out on the air, where it would interfere with other stations. So to test the RF power output without emitting a signal on the air, connect a dummy load, also called an artificial antenna, the test load we met with the wattmeter. It's a non-inductive 50-ohm resistor. To the transmitter it looks just like a perfectly matched antenna, but instead of radiating the power, it absorbs it as heat. Non-inductive means it's built with no coil-like winding, so it stays a pure 50 ohms at radio frequencies. Remember, though: it tests only the radio, not the antenna system."
+    },
+    {
+      "id": "s65",
       "keyTopic": 8,
       "template": "block-diagram",
       "params": {
         "title": "Checking transmitter stages with a SPECAN",
         "columns": 4,
         "blocks": [
-          { "id": "radio", "label": "VHF radio", "note": "Switched to LOW power" },
+          { "id": "radio", "label": "VHF radio", "note": "Switched to Low power" },
           { "id": "att", "label": "In-line attenuator", "note": "Set to maximum attenuation" },
           { "id": "spec", "label": "Spectrum analyzer (SPECAN)" },
           { "id": "probe", "label": "Inductive probe", "note": "Input and output of RF transmitter stages" }
@@ -528,42 +1171,11 @@
           { "from": "probe", "to": "spec" }
         ]
       },
-      "onScreen": ["Radio on LOW power", "In-line attenuator at maximum", "Spectrum analyzer", "Inductive probe on the RF transmitter stages"],
-      "narration": "To evaluate transmitter stages with a spectrum analyzer, or SPECAN, protect the analyzer. Switch the radio to LOW power. Connect it through an in-line attenuator set to maximum attenuation, and then to the SPECAN. Use an inductive probe to evaluate the signals at the input and output of the RF transmitter stages."
+      "onScreen": ["Radio on Low power", "In-line attenuator at maximum", "Spectrum analyzer", "Inductive probe on the RF transmitter stages"],
+      "narration": "A dummy load shows how much power comes out, not which stage is at fault. That takes a delicate instrument, so switch the radio to Low power. Then connect it through an in-line attenuator, which cuts the signal by a set amount, set to maximum attenuation. Both steps protect the instrument. It's a spectrum analyzer, or SPECAN: it shows signals by frequency, each as a spike whose height is its strength. Use an inductive probe, a small loop that picks up the signal without touching the circuit, at the input and output of the RF transmitter stages. The traps: High power, minimum attenuation, AF stages. For every transmitter fault, ask whether the power, the carrier or the voice is missing."
     },
     {
-      "id": "s30",
-      "keyTopic": 8,
-      "template": "comparison-table",
-      "params": {
-        "title": "More transmitter faults",
-        "columns": ["Symptom", "Likely cause"],
-        "rows": [
-          ["25 W output, but no modulation heard", "Open microphone cable or connector"],
-          ["Under 1 W on HIGH with 12.8 vdc applied", "Insufficient bias voltage to the PA stage"],
-          ["Modulation over 150%", "Distortion in the modulator stage"]
-        ]
-      },
-      "onScreen": ["25 W, no modulation: open microphone cable or connector", "Under 1 W on High: insufficient PA bias", "Over 150% modulation: modulator distortion"],
-      "narration": "Three more fault patterns. The wattmeter shows a full 25 watts on High, but an external receiver hears no modulation. What still works? The carrier, so the PTT circuit is fine: a PTT fault would prevent any output at all. Suspect an open connection in the microphone cable or connector. Next, less than 1 watt on High with a nominal 12.8 volts DC applied. The supply is fine, so the bias voltage to the PA stage may be insufficient, and the PA transistor barely conducts. Finally, modulation in excess of 150 percent causes distortion in the modulator stage. 100 percent is the 5 kilohertz maximum deviation, so 150 percent swings the carrier about 7.5 kilohertz."
-    },
-    {
-      "id": "s31",
-      "keyTopic": 8,
-      "template": "key-facts",
-      "params": {
-        "title": "Dummy load, or artificial antenna",
-        "items": [
-          "Tests RF power output without emitting a signal on the air",
-          "A non-inductive 50 Ω resistor",
-          "Absorbs the transmitter's power as heat"
-        ]
-      },
-      "onScreen": ["Tests RF output off the air", "Non-inductive 50 Ω resistor", "Absorbs the power as heat"],
-      "narration": "To test the RF power output without emitting a signal on the air, connect a dummy load, also called an artificial antenna. It's a non-inductive 50-ohm resistor that absorbs the transmitter's power as heat. Remember, though: it tests only the radio, not the antenna system."
-    },
-    {
-      "id": "s32",
+      "id": "s66",
       "keyTopic": 9,
       "template": "band-strip",
       "params": {
@@ -577,45 +1189,96 @@
           { "at": 1700, "label": "1700 Hz sub-carrier", "note": "Modulates the transmitter on Channel 70", "tone": "key" }
         ]
       },
-      "onScreen": ["1300 Hz and 2100 Hz shift", "1700 Hz sub-carrier, ±400 Hz", "Channel 70", "1200 baud, index 2.0 ± 10%; MF/HF DSC 100 baud"],
-      "narration": "VHF-DSC uses a frequency shift between 1300 and 2100 hertz, on a 1700 hertz sub-carrier: that's 1700, plus or minus 400 hertz. These tones modulate the transmitter on Channel 70. The modulation rate is 1200 baud, with an index of modulation of 2.0, plus or minus 10 percent. MF and HF DSC, by contrast, run at only 100 baud."
+      "onScreen": ["1300 Hz and 2100 Hz", "1700 Hz sub-carrier, ±400 Hz", "Modulates the transmitter on Channel 70"],
+      "narration": "Now back to digital selective calling, the DSC in the radio's name, and how its data actually travels. Digital data is made of bits, each one a 1 or a 0. To send bits through a voice radio, DSC turns them into 2 audio tones: one tone for a 1, the other for a 0. Switching between 2 frequencies like this is called frequency shift keying. VHF-DSC uses a frequency shift between 1300 and 2100 hertz, on a 1700 hertz sub-carrier, a tone that itself rides on the main carrier. The 2 tones sit either side of it: 1700, plus or minus 400 hertz. They modulate the transmitter on Channel 70, just as your voice would."
     },
     {
-      "id": "s33",
+      "id": "s67",
+      "keyTopic": 9,
+      "template": "key-facts",
+      "params": {
+        "title": "DSC speed: 1200 baud",
+        "items": [
+          "Baud: symbols sent per second",
+          "VHF-DSC: 1200 baud",
+          "Index of modulation: 2.0 ± 10%",
+          "MF/HF DSC: only 100 baud"
+        ]
+      },
+      "onScreen": ["Baud: symbols per second", "VHF-DSC: 1200 baud", "Index 2.0 ± 10%", "MF/HF DSC: 100 baud"],
+      "narration": "How fast does DSC send? Speed is measured in baud, the number of symbols sent each second. For DSC, each symbol is one bit, one tone. VHF-DSC runs at a modulation rate of 1200 baud, with an index of modulation of 2.0, plus or minus 10 percent. MF and HF DSC, on the long-range bands, run at only 100 baud, a much slower signal. On the exam, keep the pair together: 1200 baud and 2.0, plus or minus 10 percent. The other choices mix wrong speeds, like 800 or 1500 baud, with wrong indexes or tolerances."
+    },
+    {
+      "id": "s68",
+      "keyTopic": 9,
+      "template": "waveform",
+      "params": {
+        "title": "Time diversity: every character twice",
+        "kind": "repeat",
+        "chars": ["D", "S", "C"],
+        "noiseAt": 1,
+        "xAxis": "time",
+        "labels": [
+          "Each character is sent once (DX)",
+          "…and repeated later (RX)",
+          "A noise burst wipes out one copy",
+          "The other copy still gets through"
+        ]
+      },
+      "onScreen": ["First transmission: DX", "Repeat: RX", "Noise wipes out one copy", "The other copy gets through"],
+      "narration": "Speed isn't everything; the data also has to survive the trip. A signal at sea can be hit by a burst of noise or a moment of fading, and a single lost character could garble a distress alert. So VHF-DSC sends every character twice, at 2 different times. This is called time diversity. The first transmission of a character is called DX, and the repeat is called RX. If noise wipes out one copy, the receiver uses the other. It's like saying something important twice on a bad phone line, with a pause in between, so one burst of static can't take out both."
+    },
+    {
+      "id": "s69",
       "keyTopic": 9,
       "template": "formula",
       "params": {
         "title": "Time diversity: why 33⅓ ms",
         "formula": "t = 4 × 10 bits ÷ 1200 bits/s",
         "steps": [
-          "Each character is sent (DX), then repeated (RX)",
-          "4 other characters come between the two copies",
-          "Each character is 10 bits, sent at 1200 baud"
+          "4 other characters come between the 2 copies",
+          "Each character is 10 bits",
+          "Bits are sent at 1200 per second"
         ],
         "answer": "t = 33⅓ ms"
       },
-      "onScreen": ["t = 4 × 10 bits ÷ 1200 bits per second", "DX, then RX repeat", "4 characters between copies", "33⅓ ms"],
-      "narration": "VHF-DSC sends every character twice, a technique called time diversity, and the reception interval is 4 times 10 bits, divided by 1200 bits per second. Here's where that comes from. Each character is first sent as DX, then repeated as RX. Between the two copies come 4 other characters. Each character is 10 bits long, sent at 1200 bits per second. So the time diversity reception interval is 33 and a third milliseconds."
+      "onScreen": ["t = 4 × 10 bits ÷ 1200 bits per second", "4 characters between copies", "10 bits each", "33⅓ ms"],
+      "narration": "How far apart are the 2 copies? Between a character and its repeat come 4 other characters. Each character is 10 bits long, and bits go out at 1200 per second. So the gap is 4 times 10 bits, divided by 1200 bits per second. That's one thirtieth of a second: 33 and a third milliseconds, where a millisecond is a thousandth of a second. So the VHF-DSC time diversity reception interval is 33 and a third milliseconds. That's far enough apart that a short burst of noise rarely hits both copies."
     },
     {
-      "id": "s34",
+      "id": "s70",
       "keyTopic": 9,
       "template": "equipment-card",
       "params": {
         "title": "DSC radio check and the MMSI",
         "device": "transceiver",
         "callouts": [
+          { "label": "MMSI: the ship's 9-digit identity", "at": "panel" },
           { "label": "DSC menu: select TEST", "at": "display" },
           { "label": "Enter the coast station's MMSI, not its call letters, then send", "at": "keypad" },
-          { "label": "Red cover: the distress alert button, never for a test", "at": "distress" },
-          { "label": "MMSI locked after one entry: the manufacturer must clear it", "at": "panel" }
+          { "label": "Red cover: the distress alert button, never for a test", "at": "distress" }
         ]
       },
-      "onScreen": ["DSC menu: TEST", "Enter the coast station's MMSI and send", "Red cover: distress alert", "MMSI locked: contact the manufacturer"],
-      "narration": "To make a DSC radio check with a coast station, select the DSC menu item TEST. Enter the coast station's MMSI, or Maritime Mobile Service Identity, number, and send the test. DSC addresses stations by MMSI, not by call letters. And don't touch the button under the red cover: it sends a distress alert. What if the radio already has an MMSI and won't accept a new one? Most DSC radios lock the MMSI after one entry and have no user reset. Contact the manufacturer to clear the MMSI memory."
+      "onScreen": ["MMSI: 9-digit identity", "DSC menu: TEST", "Enter the coast station's MMSI and send", "Red cover: distress alert"],
+      "narration": "That's how DSC sends; now how you use it. Every DSC radio has an identity, its MMSI, short for Maritime Mobile Service Identity: a 9-digit number, a bit like a phone number for the ship. DSC addresses stations by MMSI, not by call letters. So to make a DSC radio check with a coast station, select the DSC menu item TEST, enter the coast station's MMSI number, and send the test. Never use the button under the red cover for a test: it sends a distress alert. And an ALL SHIPS call isn't a test; it goes to every ship in range."
     },
     {
-      "id": "s35",
+      "id": "s71",
+      "keyTopic": 9,
+      "template": "key-facts",
+      "params": {
+        "title": "An MMSI that won't change",
+        "items": [
+          "Most DSC radios lock the MMSI after one entry",
+          "There is no user reset",
+          "Contact the manufacturer to clear the MMSI memory"
+        ]
+      },
+      "onScreen": ["MMSI locked after one entry", "No user reset", "Contact the manufacturer"],
+      "narration": "What if a radio already has an MMSI, say from a previous owner, and won't accept a new one? That's by design. Most DSC radios lock the MMSI after one entry, so a ship's identity can't be changed by accident, and they have no user reset. The best course of action is to contact the manufacturer, who can clear the MMSI memory so the radio accepts the new number. So holding down 2 buttons won't do it, and it's not true that the number can never change; it just can't be changed by the user."
+    },
+    {
+      "id": "s72",
       "keyTopic": 9,
       "template": "waveform",
       "params": {
@@ -631,10 +1294,30 @@
         ]
       },
       "onScreen": ["Fast-switching data stream", "Fluctuating 0 to 2 volts DC", "Faster than the meter can follow"],
-      "narration": "One more DSC test. Put a voltmeter on a DSC circuit while it sends an outgoing message data stream. The voltmeter shows a fluctuating reading, from 0 to 2 volts DC. Why fluctuating? The data switches faster than the meter can follow. So you won't see a steady voltage, and you won't see an absence of voltage."
+      "narration": "One more DSC test. Put a voltmeter on a DSC circuit while it sends an outgoing message data stream. The voltmeter shows a fluctuating reading, from 0 to 2 volts DC. Why fluctuating? The data line flips between a low and a high voltage for each bit, far faster than the meter can follow, so the needle or digits jitter somewhere in between. You won't see a steady 12 volts, no voltage at all, or a swing from minus 12 to plus 12 volts. So, for DSC: 1300 and 2100 hertz tones at 1200 baud, every character sent twice, and every station known by its MMSI."
     },
     {
-      "id": "s36",
+      "id": "s73",
+      "keyTopic": 10,
+      "template": "waveform",
+      "params": {
+        "title": "Antennas and wavelength",
+        "kind": "sine",
+        "cycles": 3,
+        "xAxis": "distance",
+        "yAxis": "signal",
+        "labels": [
+          "Wavelength: the distance one cycle covers",
+          "Higher frequency: shorter wavelength",
+          "An antenna works best cut to suit the wavelength",
+          "Quarter-wave: one quarter of a wavelength long"
+        ]
+      },
+      "onScreen": ["Wavelength: distance of one cycle", "Higher frequency, shorter wavelength", "Antenna cut to the wavelength", "Quarter-wave antenna"],
+      "narration": "Last topic: the antenna, where the radio meets the air. An antenna turns the transmitter's electrical signal into a radio wave, and turns arriving waves back into a signal for the receiver. As a radio wave travels, each cycle stretches over a certain distance, called the wavelength. The higher the frequency, the shorter the wavelength, just as a fast-vibrating string makes short, tightly packed ripples. At marine VHF, a full wavelength is roughly the height of a tall person. An antenna works best when its length suits the wavelength. A simple, common one is a quarter wave: one quarter of a wavelength long."
+    },
+    {
+      "id": "s74",
       "keyTopic": 10,
       "template": "formula",
       "params": {
@@ -644,55 +1327,129 @@
         "answer": "L ≈ 18 inches: a quarter wave"
       },
       "onScreen": ["L = 234 ÷ f", "234 ÷ 156.8 ≈ 1.49 ft", "About 18 inches, a quarter wave"],
-      "narration": "Need a temporary VHF marine antenna? Make it about 18 inches long: a quarter wave. The quarter-wave formula is L, in feet, equals 234 divided by the frequency in megahertz. At 156.8 megahertz, L equals 234 divided by 156.8, or about 1.49 feet. That's about 18 inches."
+      "narration": "Suppose the antenna is lost in a storm, and you need to build a temporary one. How long should it be? About 18 inches: a quarter wave. Here's the check. The quarter-wave formula says length L, in feet, equals 234 divided by the frequency in megahertz. The 234 already includes the quarter, and a small correction for real wire. At Channel 16, 156.8 megahertz, L equals 234 divided by 156.8, about 1.49 feet. There are 12 inches in a foot, so 1.49 feet is about 18 inches. The trap answers, 10, 12 and 15 inches, are all too short for a quarter wave."
     },
     {
-      "id": "s37",
+      "id": "s75",
       "keyTopic": 10,
       "template": "equipment-card",
       "params": {
-        "title": "Collinear array and loading coil",
+        "title": "The collinear array",
         "device": "antenna",
         "callouts": [
-          { "label": "Collinear array: phased elements, omnidirectional pattern", "at": "whip" },
-          { "label": "Half-wave elements stacked end to end: up to 9 dB gain", "at": "tip" },
-          { "label": "High gain: the flat beam tilts as a small boat rolls, so signals drop out", "at": "mast" },
-          { "label": "Base loading coil reads shorted on an ohmmeter", "at": "coupler" },
-          { "label": "May be normal if shunt fed: the coil grounds the radiator at DC", "at": "ground" }
+          { "label": "Half-wave elements stacked end to end, fed in step: phased elements", "at": "whip" },
+          { "label": "Omnidirectional: the same all around, flattened toward the horizon", "at": "mast" },
+          { "label": "Up to 9 dB gain", "at": "tip" }
         ]
       },
-      "onScreen": ["Collinear array: phased elements, omnidirectional", "Up to 9 dB gain", "High gain: dropout in severe weather on small craft", "Loading coil reads shorted", "Normal for a shunt fed antenna"],
-      "narration": "A VHF collinear array is an antenna with phased elements and an omnidirectional radiation pattern. Stacking half-wave elements end to end gives it up to 9 decibels of gain. High gain has a disadvantage, though. On small craft in severe weather, the narrow, flattened beam tilts toward the sky or the water as the boat rolls, and the signal drops out. Now an ohmmeter check: the base loading coil of a masthead antenna appears shorted. That may be normal for a well working shunt fed antenna system, because the coil connects the radiator to ground at DC."
+      "onScreen": ["Collinear array: phased half-wave elements", "Omnidirectional, flattened toward the horizon", "Up to 9 dB gain"],
+      "narration": "A quarter wave is the simplest antenna. A popular step up is the collinear array. Collinear means in a line: it's several half-wave elements, each half a wavelength long, stacked end to end inside one tall tube. They're fed so their signals add up in step, which is what phased elements means. The radiation pattern is omnidirectional, the same in every direction around the ship, but squashed flat toward the horizon instead of wasted on the sky. Squeezing the signal into a useful direction like that is called gain, and a collinear array offers up to 9 decibels of it. It is not a directional shore antenna, a filter inside the radio, or a depth sounder's transducer."
     },
     {
-      "id": "s38",
+      "id": "s76",
+      "keyTopic": 10,
+      "template": "key-facts",
+      "params": {
+        "title": "The catch with high gain",
+        "items": [
+          "High gain: a narrow, flattened beam",
+          "Small craft in severe weather: the boat rolls",
+          "The beam tilts toward the sky or the water",
+          "Result: signal dropout"
+        ]
+      },
+      "onScreen": ["Narrow, flat beam", "Small boat rolls", "Beam tilts to sky or water", "Signal dropout"],
+      "narration": "High gain sounds like pure benefit, but there's a catch. That flattened beam is thin, like a disc around the mast. On a big, steady ship, it stays level with the horizon. On small craft in severe weather, the boat rolls, and the beam tilts toward the sky on one side and toward the water on the other. The distant station falls out of the beam, and the signal drops out. So a disadvantage of high gain VHF antennas is signal dropout in severe weather on small craft. The trap answers blame the radiation pattern itself, which is fine on a level boat."
+    },
+    {
+      "id": "s77",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Loading coil reads shorted",
+        "device": "antenna",
+        "callouts": [
+          { "label": "Ohmmeter: the base loading coil appears shorted", "at": "coupler" },
+          { "label": "The coil connects the radiator to ground at DC", "at": "ground" },
+          { "label": "May be normal for a shunt fed antenna", "at": "whip" }
+        ]
+      },
+      "onScreen": ["Loading coil reads shorted", "Coil grounds the radiator at DC", "May be normal if shunt fed"],
+      "narration": "Now a reading that alarms new technicians. You check a masthead antenna with an ohmmeter, and its base loading coil appears shorted: zero ohms. A loading coil is a coil of wire at the antenna's base that helps tune it. Some antennas are shunt fed: the coil connects the radiator, the part that sends out the wave, straight to ground at DC. A coil lets steady DC straight through, but it resists fast-changing radio signals. So the ohmmeter, which tests with DC, sees a short, while radio signals still see a working antenna. This may be normal for a well working shunt fed antenna system. It isn't proof of shorted plugs, and the connectors don't need replacing."
+    },
+    {
+      "id": "s78",
       "keyTopic": 10,
       "template": "comparison-table",
       "params": {
-        "title": "Coax cable and connectors",
-        "columns": ["Cable or connector", "Verdict"],
+        "title": "Coax for a long run",
+        "columns": ["Cable", "Size and impedance", "Verdict"],
         "rows": [
-          ["RG-8/U: large, 50 Ω", "Much lower loss: best for a long run"],
-          ["RG-58/U and RG-174/U", "Thin, much higher loss"],
-          ["RG-59/U: 75 Ω", "Mismatches the radio"],
-          ["PL-259 plug into an SO-239 socket", "The common UHF connector"]
+          ["RG-8/U", "Large, 50 Ω", "Much lower loss: best for a long run"],
+          ["RG-58/U", "Thin, 50 Ω", "Much higher loss"],
+          ["RG-174/U", "Very thin, 50 Ω", "Higher loss still"],
+          ["RG-59/U", "75 Ω", "Mismatches the radio"]
         ]
       },
-      "onScreen": ["RG-8/U: best for a long run", "RG-58/U and RG-174/U: lossy", "RG-59/U, 75 ohms: mismatch", "UHF connector: PL-259 plug, SO-239 socket"],
-      "narration": "For a long transmission line run, RG-8/U is the most appropriate coax. It's a large 50-ohm cable, with much lower loss than RG-58/U or RG-174/U. RG-59/U is a 75-ohm cable, so it mismatches the radio. And the most common coax connector on VHF transceivers is the UHF, or ultra high frequency, type: an SO-239 socket on the radio mates with a PL-259 plug on the coax."
+      "onScreen": ["RG-8/U: best for a long run", "RG-58/U and RG-174/U: thin, lossy", "RG-59/U: 75 ohms, mismatch"],
+      "narration": "From the antenna, follow the coax down to the radio. Coax loses a little signal in every foot of cable, turning it into heat, so on a long run the choice of cable matters. A thicker cable loses less. For a long transmission line run, the cable from the radio up to the antenna, RG-8/U is the most appropriate coax. It's a large 50-ohm cable, with much lower loss than the thin RG-58/U or RG-174/U. RG-59/U is out for a different reason: it's a 75-ohm cable, so it mismatches the 50 ohm radio, as we saw earlier."
+    },
+    {
+      "id": "s79",
+      "keyTopic": 10,
+      "template": "key-facts",
+      "params": {
+        "title": "The UHF connector",
+        "items": [
+          "Most common coax connector on VHF transceivers: the UHF type",
+          "SO-239: the socket on the radio",
+          "PL-259: the plug on the coax"
+        ]
+      },
+      "onScreen": ["UHF connector: the most common", "SO-239 socket on the radio", "PL-259 plug on the coax"],
+      "narration": "Finally, how the coax plugs in. The most common coax connector on VHF transceivers is called the UHF type, after ultra high frequency, even though it's used at VHF; the name stuck from long ago. The radio has an SO-239 socket, and the coax ends in a PL-259 plug that screws onto it. N, BNC and TNC connectors exist too, but they're not the common choice on marine VHF radios."
+    },
+    {
+      "id": "s80",
+      "keyTopic": 10,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": [
+          "Channels 25 kHz apart: 16 distress and calling, 70 DSC, 13 bridge-to-bridge; duplex 4.6 MHz",
+          "1 W and 25 W; FM deviation up to 5 kHz; DSC carriers within 10 ppm",
+          "Receiver: limiter and capture effect; 10 dB quieting at about 1 µV; 12 dB SINAD",
+          "Faults: say what still works, then what that rules out",
+          "DSC 1200 baud, repeats 33⅓ ms apart; temporary antenna: 18-inch quarter wave"
+        ]
+      },
+      "onScreen": ["Channels 16, 70, 13; 25 kHz; 4.6 MHz", "1 W, 25 W, 5 kHz, 10 ppm", "Limiter, capture, quieting, SINAD", "What still works, what it rules out", "DSC 1200 baud, 33⅓ ms; 18-inch antenna"],
+      "narration": "Let's pull it together. Marine VHF channels are 25 kilohertz apart: 16 for voice calling and distress, 70 for digital selective calling, 13 for bridge-to-bridge, and duplex pairs 4.6 megahertz apart. The radio sends 1 or 25 watts of FM with up to 5 kilohertz of deviation, and DSC carriers stay within 10 parts per million. In the receiver, the limiter gives the capture effect; a good receiver reaches 10 decibels of quieting with about 1 microvolt, and 12 decibels SINAD is the sensitivity reference. For any fault, say what still works, then what that rules out. DSC sends at 1200 baud, each character twice, 33 and a third milliseconds apart. And a temporary antenna is an 18-inch quarter wave."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [1] },
-    { "after": "s7", "keyTopics": [2] },
-    { "after": "s11", "keyTopics": [3] },
-    { "after": "s15", "keyTopics": [4] },
-    { "after": "s19", "keyTopics": [5] },
-    { "after": "s23", "keyTopics": [6] },
-    { "after": "s27", "keyTopics": [7] },
-    { "after": "s31", "keyTopics": [8] },
-    { "after": "s35", "keyTopics": [9] },
-    { "after": "s38", "keyTopics": [10] }
+    { "after": "s4", "keyTopics": [1], "questions": ["9-1A3"] },
+    { "after": "s8", "keyTopics": [1], "questions": ["9-1A1", "9-1A2", "9-1A3"] },
+    { "after": "s12", "keyTopics": [1], "questions": ["9-1A4", "9-1A5", "9-1A6"] },
+    { "after": "s16", "keyTopics": [2], "questions": ["9-2A5"] },
+    { "after": "s20", "keyTopics": [2], "questions": ["9-2A4", "9-2A3", "9-2A1", "9-2A2"] },
+    { "after": "s23", "keyTopics": [2, 6], "questions": ["9-2A6", "9-6A1"] },
+    { "after": "s26", "keyTopics": [6], "questions": ["9-6A2", "9-6A4", "9-6A6"] },
+    { "after": "s29", "keyTopics": [6], "questions": ["9-6A5", "9-6A3"] },
+    { "after": "s32", "keyTopics": [3], "questions": ["9-3A3"] },
+    { "after": "s36", "keyTopics": [3], "questions": ["9-3A1", "9-3A2", "9-3A5", "9-3A6", "9-3A4"] },
+    { "after": "s40", "keyTopics": [4], "questions": ["9-4A1", "9-4A5"] },
+    { "after": "s44", "keyTopics": [4], "questions": ["9-4A2", "9-4A4", "9-4A3", "9-4A6"] },
+    { "after": "s48", "keyTopics": [5], "questions": ["9-5A1", "9-5A6", "9-5A4"] },
+    { "after": "s51", "keyTopics": [5], "questions": ["9-5A5", "9-5A2", "9-5A3"] },
+    { "after": "s55", "keyTopics": [7], "questions": ["9-7A1", "9-7A2", "9-7A3"] },
+    { "after": "s58", "keyTopics": [7, 8], "questions": ["9-7A3", "9-8A4", "9-7A4"] },
+    { "after": "s62", "keyTopics": [7, 8], "questions": ["9-7A5", "9-7A6", "9-8A1", "9-8A2"] },
+    { "after": "s65", "keyTopics": [8], "questions": ["9-8A5", "9-8A6", "9-8A3"] },
+    { "after": "s69", "keyTopics": [9], "questions": ["9-9A1", "9-9A2", "9-9A5"] },
+    { "after": "s72", "keyTopics": [9], "questions": ["9-9A3", "9-9A4", "9-9A6"] },
+    { "after": "s76", "keyTopics": [10], "questions": ["9-10A1", "9-10A2", "9-10A6"] },
+    { "after": "s80", "keyTopics": [10], "questions": ["9-10A3", "9-10A5", "9-10A4"] }
   ],
   "video": null
 }

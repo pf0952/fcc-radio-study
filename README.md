@@ -4,7 +4,7 @@ Offline study app for the FCC commercial radio exams: Element 3 (GROL), Element 
 
 ## Get it
 
-Download **[FCC-Radio-Study.exe](https://github.com/pf0952/fcc-radio-study/raw/main/FCC-Radio-Study.exe)** and run it. Nothing to install.
+Download **[FCC-Radio-Study.exe](https://github.com/pf0952/fcc-radio-study/releases/latest/download/FCC-Radio-Study.exe)** from the [latest release](https://github.com/pf0952/fcc-radio-study/releases/latest) and run it. Nothing to install. It's a big file (about 230 MB) because all 20 hours of lesson narration are built in.
 
 Your progress lives in a `FCC-Radio-Study-Data` folder next to the exe, so you can keep the whole thing on a USB stick. The exe isn't signed, so SmartScreen might complain: hit **More info → Run anyway**.
 

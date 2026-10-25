@@ -11,164 +11,469 @@
       "params": {
         "kicker": "Element 3 · Subelement B",
         "title": "Electrical Math",
-        "subtitle": "Ohm's law, power, frequency error, sine waves, time constants, impedance and power supplies: every calculation worked step by step."
+        "subtitle": "Ohm's law, power, AC waves, frequency error, time constants, impedance and power supplies, each worked one step at a time."
       },
-      "onScreen": ["Electrical Math", "Ohm's law, power, frequency error, sine waves, time constants, impedance and power supplies"],
-      "narration": "This lesson is all about the math on the Element 3 exam. We'll work Ohm's law, power, frequency error, sine waves, time constants, impedance and power supply problems, one step at a time, and land on the exam answer every time. Get a pencil ready. We'll start with the most important formula in electronics: Ohm's law."
+      "onScreen": ["Electrical Math", "Ohm's law, power, AC waves, frequency error, time constants, impedance and power supplies"],
+      "narration": "Welcome to Electrical Math. A radio technician calculates all the time: what resistor a meter needs, how far off a transmitter's frequency could be, how much voltage a transmitter puts on its output. The Element 3 exam tests these calculations, and this lesson walks through every one. You don't need a math background. If you can multiply and divide with a calculator, you can do this. We'll refresh each basic idea before we use it, say what every symbol means, and work each problem one step at a time. By the end, you'll be able to solve every problem in this subelement and know why the answer is right. Let's start with the 3 quantities behind almost every problem."
     },
     {
       "id": "s2",
       "keyTopic": 9,
-      "template": "formula",
+      "template": "comparison-table",
       "params": {
-        "title": "Ohm's law: three forms of one law",
-        "formula": "I = E ÷ R",
-        "steps": ["Multiply both sides by R: E = I × R", "Divide both sides by I: R = E ÷ I", "Not I = R ÷ E: that form is upside down"],
-        "answer": "E in volts, I in amperes, R in ohms"
+        "title": "Voltage, current and resistance",
+        "columns": ["Quantity", "Symbol", "Unit", "In a water pipe"],
+        "rows": [
+          ["Voltage: the push", "E", "volts (V)", "Water pressure"],
+          ["Current: the flow", "I", "amperes (A)", "Water flowing past"],
+          ["Resistance: the holding back", "R", "ohms (Ω)", "A narrow section of pipe"]
+        ]
       },
-      "onScreen": ["I = E ÷ R", "E = I × R", "R = E ÷ I", "I = R ÷ E is wrong: upside down"],
-      "narration": "Ohm's law says current equals voltage divided by resistance: I equals E over R. Multiply both sides by R, and you get E equals I times R. Divide both sides by I, and you get R equals E over I. Watch out for I equals R over E. That one is incorrect, because it is upside down. In every form, E is in volts, I is in amperes, and R is in ohms."
+      "onScreen": ["Voltage E, in volts: the push", "Current I, in amperes: the flow", "Resistance R, in ohms: the holding back", "Like pressure, flow and a narrow pipe"],
+      "narration": "First, what is electricity? It's the flow of tiny charged particles called electrons around a complete loop, called a circuit. 3 quantities describe it, and water in a pipe makes a good picture of each. Voltage is the push that drives the electrons around, like water pressure. In formulas its symbol is E, for electromotive force, and it's measured in volts. Current is the flow itself, like the water flowing past: how much charge moves past a point each second. Its symbol is I, and it's measured in amperes, or amps. Resistance is how strongly a part holds the current back, like a narrow section of pipe. Its symbol is R, and it's measured in ohms."
     },
     {
       "id": "s3",
       "keyTopic": 9,
-      "template": "comparison-table",
+      "template": "formula",
       "params": {
-        "title": "Three quick Ohm's law problems",
-        "columns": ["Given", "Use", "Answer"],
-        "rows": [
-          ["2 A through 50 Ω", "E = I × R = 2 × 50", "100 volts"],
-          ["100 Ω across 200 V", "I = E ÷ R = 200 ÷ 100", "2 amperes"],
-          ["3 A from 90 V", "R = E ÷ I = 90 ÷ 3", "30 ohms (90 × 3 = 270 is watts)"]
-        ]
+        "title": "Ohm's law: current = voltage ÷ resistance",
+        "formula": "I = E ÷ R",
+        "steps": ["I: current, in amperes", "E: voltage, in volts", "R: resistance, in ohms", "Double E: double I · double R: half I"],
+        "answer": "More push, more flow; more resistance, less flow"
       },
-      "onScreen": ["2 A through 50 Ω: 100 volts", "100 Ω across 200 V: 2 amperes", "3 A from 90 V: 30 ohms", "90 × 3 = 270 is the power in watts"],
-      "narration": "Let's use all three forms. 2 amperes flow through a 50 ohm resistor. What's the voltage? E equals I times R: 2 times 50 is 100 volts. Next, a 100 ohm resistor sits across 200 volts. I equals E over R: 200 over 100 is 2 amperes. Last, a resistor carries 3 amperes from 90 volts. R equals E over I: 90 over 3 is 30 ohms. If you multiply instead, you get 270. That's not ohms. That's the power, in watts."
+      "onScreen": ["I = E ÷ R", "I in amperes, E in volts, R in ohms", "Double the voltage, double the current", "Double the resistance, half the current"],
+      "narration": "These 3 quantities are tied together by Ohm's law, the most used formula in electronics. It says the current equals the voltage divided by the resistance: I equals E over R. Here I is the current in amperes, E is the voltage in volts, and R is the resistance in ohms. It matches the water picture. Push harder, and more water flows: double the voltage, and the current doubles. Narrow the pipe, and less flows: double the resistance, and the current is cut in half. E on top and R underneath capture both at once."
     },
     {
       "id": "s4",
       "keyTopic": 9,
       "template": "formula",
       "params": {
-        "title": "Sizing a series resistor",
-        "formula": "R = E ÷ I",
-        "steps": ["Meter: 200 V ÷ 50 µA = 4 MΩ", "Relay: 110 V ÷ 125 mA = 880 Ω total", "Series resistor = 880 Ω − 500 Ω coil"],
-        "answer": "Meter: 4 megohms · Relay: 380 ohms"
+        "title": "1 law, 3 forms",
+        "formula": "I = E ÷ R",
+        "steps": ["Multiply both sides by R: E = I × R", "Then divide both sides by I: R = E ÷ I", "I = R ÷ E is upside down: incorrect"],
+        "answer": "Know any 2 of E, I and R, find the third"
       },
-      "onScreen": ["R = E ÷ I", "200 V ÷ 50 µA = 4 megohms", "110 V ÷ 125 mA = 880 Ω total", "880 Ω − 500 Ω coil = 380 ohms"],
-      "narration": "Ohm's law also sizes series resistors. A 50 microamp DC, or direct current, meter must read full scale at 200 volts DC. The series resistor is R equals E over I: 200 volts divided by 50 microamps, which is 4 megohms. Now a relay. Its 500 ohm coil operates on 125 milliamps, and the supply is 110 volts DC. The total resistance needed is 110 volts over 125 milliamps, or 880 ohms. The coil already supplies 500 of those ohms. So the series resistor is 880 minus 500, which is 380 ohms."
+      "onScreen": ["E = I × R", "R = E ÷ I", "I = R ÷ E is incorrect"],
+      "narration": "Ohm's law as written gives you the current. What if you need the voltage or the resistance instead? Rearrange it. The rule of algebra: do the same thing to both sides of the equals sign, and it stays true. Multiply both sides of I equals E over R by R, and you get E equals I times R. Divide both sides of that by I, and you get R equals E over I. So 1 law has 3 correct forms. On the exam, the incorrect formula is I equals R over E. It's upside down: it says more voltage gives less current, which is backwards."
     },
     {
       "id": "s5",
-      "keyTopic": 10,
-      "template": "formula",
+      "keyTopic": 9,
+      "template": "key-facts",
       "params": {
-        "title": "Transmitter voltage: RMS, peak, peak-to-peak",
-        "formula": "E<sub>RMS</sub> = √(P × R)",
-        "steps": ["E<sub>RMS</sub> = √(100 W × 50 Ω) ≈ 70.7 V", "Peak = 70.7 V × 1.414 ≈ 100 V", "Peak-to-peak = 2 × peak"],
-        "answer": "200 volts peak-to-peak"
+        "title": "A memory aid: the Ohm's law triangle",
+        "items": ["E on top, I and R side by side below", "Cover the letter you want to find", "Cover E: I and R side by side mean multiply, E = I × R", "Cover I or R: one above the other means divide, I = E ÷ R or R = E ÷ I"]
       },
-      "onScreen": ["E RMS = √(P × R)", "√(100 × 50) ≈ 70.7 V RMS", "70.7 × 1.414 ≈ 100 V peak", "200 volts peak-to-peak"],
-      "narration": "Power and resistance give you voltage too. Since P equals E squared over R, E equals the square root of P times R. A 100 watt transmitter feeds a 50 ohm load. The RMS, or root mean square, voltage is the square root of 100 times 50, about 70.7 volts. To get the peak, multiply by 1.414. 70.7 times 1.414 is about 100 volts. Peak-to-peak is twice the peak. So the answer is 200 volts peak-to-peak."
+      "onScreen": ["Triangle: E on top, I and R below", "Cover the letter you want", "Side by side: multiply", "One above the other: divide"],
+      "narration": "If the algebra feels slippery, here's a memory aid. Picture a triangle with E at the top, and I and R side by side along the bottom. Cover the letter you want to find, and the other 2 show you how to get it. Cover E, and I and R sit side by side, which means multiply: E equals I times R. Cover I, and E sits above R, which means divide: I equals E over R. Cover R, and you get E over I. Notice the triangle never puts R above E, so it can't give you the upside-down trap."
     },
     {
       "id": "s6",
-      "keyTopic": 10,
+      "keyTopic": 9,
       "template": "comparison-table",
       "params": {
-        "title": "A resistor's rating sets its limits",
-        "columns": ["Resistor", "Formula", "Limit"],
+        "title": "3 quick Ohm's law problems",
+        "columns": ["Known", "Find", "Work", "Answer"],
         "rows": [
-          ["2000 Ω, 20 W", "E = √(20 × 2000) = √40,000", "200 volts"],
-          ["500 Ω, 2 W, in parallel with…", "E = √(2 × 500)", "≈ 31.6 V: the lower limit governs"],
-          ["1500 Ω, 1 W", "E = √(1 × 1500)", "≈ 38.7 V"],
-          ["2000 Ω, 200 W", "I = √(P ÷ R) = √(200 ÷ 2000) = √0.1", "≈ 0.316 amps"]
+          ["2 A through 50 Ω", "Voltage", "E = I × R = 2 × 50", "100 volts"],
+          ["200 V across 100 Ω", "Current", "I = E ÷ R = 200 ÷ 100", "2 amperes"],
+          ["3 A from 90 V", "Resistance", "R = E ÷ I = 90 ÷ 3", "30 ohms"],
+          ["Trap", "Resistance", "90 × 3 = 270", "Watts, not ohms"]
         ]
       },
-      "onScreen": ["2000 Ω, 20 W: 200 volts", "500 Ω, 2 W: 31.6 V", "1500 Ω, 1 W: 38.7 V", "In parallel, 31.6 volts governs", "2000 Ω, 200 W: 0.316 amps"],
-      "narration": "A resistor's wattage rating limits its voltage and current. What's the most DC or RMS voltage across a 20 watt, 2000 ohm resistor? E equals the square root of 20 times 2000. That's the square root of 40,000, which is 200 volts. Next, a 500 ohm, 2 watt resistor in parallel with a 1500 ohm, 1 watt resistor. The first is limited to about 31.6 volts, the second to about 38.7 volts. Parallel resistors share one voltage, so the lower limit governs: 31.6 volts. Finally, current. For a resistor marked 2000 ohms, 200 watts, I equals the square root of P over R. That's the square root of 0.1, about 0.316 amps."
+      "onScreen": ["2 A through 50 Ω: 100 volts", "200 V across 100 Ω: 2 amperes", "3 A from 90 V: 30 ohms", "90 × 3 = 270 is not ohms"],
+      "narration": "Let's use each form once. First, 2 amperes flow through a 50 ohm resistor. What's the voltage across it? We know I and R and want E, so E equals I times R: 2 times 50 is 100 volts. Second, a 100 ohm resistor is connected across 200 volts. We want the current: I equals E over R, 200 over 100, which is 2 amperes. Third, 3 amperes flow through a resistor on 90 volts. We want the resistance: R equals E over I, 90 over 3, which is 30 ohms. Watch the traps. Multiplying 90 by 3 gives 270, but that's not ohms; it's the power in watts, which we'll meet soon. And multiplying 200 by 100 gives a meaningless 20,000."
     },
     {
       "id": "s7",
-      "keyTopic": 10,
-      "template": "equipment-card",
+      "keyTopic": 9,
+      "template": "comparison-table",
       "params": {
-        "title": "Figure 3B1: the drop across R1",
-        "figure": "3B1",
-        "callouts": [
-          { "label": "D<sub>1</sub> is reverse biased: it conducts no current" },
-          { "label": "R<sub>1</sub>, R<sub>2</sub> and R<sub>3</sub> form one series string" },
-          { "label": "Total: 300 + 200 + 100 = 600 Ω" },
-          { "label": "Drop across R<sub>1</sub> = 10 V × 300 ÷ 600 = 5 volts" }
+        "title": "Prefixes for big and small values",
+        "columns": ["Prefix", "Means", "Example"],
+        "rows": [
+          ["kilo (k)", "× 1000", "470 kΩ = 470,000 Ω"],
+          ["mega (M)", "× 1,000,000", "1 MΩ = 1,000,000 Ω"],
+          ["milli (m)", "thousandths", "125 mA = 125 thousandths of an ampere"],
+          ["micro (µ)", "millionths", "50 µA = 50 millionths of an ampere"]
         ]
       },
-      "onScreen": ["D1 reverse biased: no current", "R1, R2 and R3 in series", "300 + 200 + 100 = 600 Ω", "5 volts across R1"],
-      "narration": "Here's Figure 3B1. A 10 volt battery feeds R1, R2 and R3, with diode D1 connected where R1 meets R2. D1 is reverse biased, so it conducts no current, and you can ignore it. That leaves R1, R2 and R3 as one series string: 300 plus 200 plus 100, or 600 ohms. R1's share of the voltage is its share of the resistance. 10 volts times 300 over 600 gives 5 volts across R1."
+      "onScreen": ["kilo: × 1000", "mega: × 1,000,000", "milli: thousandths", "micro: millionths"],
+      "narration": "Those problems used plain volts, amps and ohms. Real circuits use tiny currents and huge resistances, so units get prefixes. Kilo, written small k, means times 1000: 470 kilohms is 470,000 ohms. Mega, capital M, means times 1,000,000: 1 megohm is 1,000,000 ohms. Going smaller, milli, small m, means thousandths: 125 milliamps is 125 thousandths of an ampere. Micro, written with the Greek letter mu, means millionths: 50 microamps is 50 millionths of an ampere. The safe habit: when a problem mixes prefixes, think about what each one means before you multiply or divide, and keep the right prefix on your answer."
     },
     {
       "id": "s8",
+      "keyTopic": 9,
+      "template": "comparison-table",
+      "params": {
+        "title": "Series and parallel",
+        "columns": ["Connection", "Series", "Parallel"],
+        "rows": [
+          ["Layout", "One after another: 1 path", "Side by side: separate branches"],
+          ["Shared by every part", "The same current", "The same voltage"],
+          ["Total resistance", "Add them up", "Less than the smallest"],
+          ["2 equal resistors", "Double", "Half"]
+        ]
+      },
+      "onScreen": ["Series: one path · parallel: side by side", "Series: the same current · parallel: the same voltage", "Series: resistances add · parallel: less than the smallest", "2 equal resistors: double in series, half in parallel"],
+      "narration": "Before we tackle real circuits, we need to know how parts connect. There are 2 basic ways. In series, parts sit one after another, so the current has only 1 path. In parallel, they sit side by side, each on its own branch between the same 2 points. So in series, the same current flows through every part, while in parallel, every branch has the same voltage across it. Series resistances simply add, like several narrow sections in a single pipe. Parallel branches give the current more paths, so the total resistance is less than the smallest one. Put 2 equal resistors in series, and you get double the resistance of 1; put them in parallel, and you get half."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 9,
+      "template": "block-diagram",
+      "params": {
+        "title": "Turning a current meter into a voltmeter",
+        "columns": 3,
+        "blocks": [
+          { "id": "supply", "label": "200 V DC to measure", "note": "Direct current: steady, one way" },
+          { "id": "resistor", "label": "Series resistor", "note": "Sets the current for each volt" },
+          { "id": "meter", "label": "Meter movement", "note": "Full scale at 50 µA" }
+        ],
+        "links": [
+          { "from": "supply", "to": "resistor", "label": "Current" },
+          { "from": "resistor", "to": "meter", "label": "50 µA at 200 V" }
+        ]
+      },
+      "onScreen": ["200 V DC to measure", "Series resistor sets the current", "Meter movement: full scale at 50 µA"],
+      "narration": "Now a real job for Ohm's law: turning a current meter into a voltmeter. Say we want to measure up to 200 volts of DC, direct current, the steady one-way kind. That voltage pushes current through a resistor in series with a meter movement, the sensitive current meter behind a needle dial. Its needle swings all the way across the scale, called full-scale deflection, at just 50 microamps. Why the resistor? With it, the current, and so the needle, follow the voltage, and the scale can be marked in volts. For full scale to mean 200 volts, the pair must pass exactly 50 microamps at 200 volts."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 9,
+      "template": "formula",
+      "params": {
+        "title": "A meter's series resistor",
+        "formula": "R = E ÷ I",
+        "steps": ["Full scale: 50 µA must flow at 200 V", "R = 200 V ÷ 50 µA", "200 ÷ 50 = 4; ÷ millionths makes it millions", "R = 4,000,000 Ω"],
+        "answer": "4 megohms"
+      },
+      "onScreen": ["Full scale: 50 µA at 200 V", "R = 200 V ÷ 50 µA", "4,000,000 ohms", "4 megohms"],
+      "narration": "So what resistance lets exactly 50 microamps flow at 200 volts? R equals E over I: 200 volts divided by 50 microamps. 200 divided by 50 is 4. But those 50 are millionths of an ampere, and dividing by a millionth is the same as multiplying by a million. So the answer is 4,000,000 ohms: 4 megohms. The meter's own small resistance hardly matters next to that. Does it make sense? A tiny current from a big voltage takes a huge resistance, so yes. Choices like 400 kilohms come from losing track of the prefix."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 9,
+      "template": "key-facts",
+      "params": {
+        "title": "A relay needs a series resistor too",
+        "items": ["Relay: a switch worked by an electromagnet", "This coil: 500 Ω, operates on 125 mA", "Alone on 110 V: 110 ÷ 500 = 0.22 A, or 220 mA: too much", "A series resistor brings the current down to 125 mA"]
+      },
+      "onScreen": ["Relay: a switch worked by an electromagnet", "Coil: 500 Ω, operates on 125 mA", "Alone on 110 V: 220 mA, too much", "A series resistor brings it down to 125 mA"],
+      "narration": "Another series resistor, this time for a relay: a switch worked by an electromagnet, a coil that becomes a magnet when current flows through it and pulls the switch over. This relay's coil has 500 ohms of resistance and operates on 125 milliamps. We want to run it from 110 volts DC. On its own, the coil would take 110 over 500, which is 0.22 amps, or 220 milliamps: far more than it needs. So we add a resistor in series to bring the current down to 125 milliamps."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 9,
+      "template": "formula",
+      "params": {
+        "title": "A relay's series resistor",
+        "formula": "R<sub>total</sub> = E ÷ I",
+        "steps": ["R<sub>total</sub> = 110 V ÷ 125 mA", "110 ÷ 125 thousandths = 880 Ω", "The coil already supplies 500 Ω", "Series resistor = 880 − 500 = 380 Ω"],
+        "answer": "380 ohms"
+      },
+      "onScreen": ["Total: 110 V ÷ 125 mA = 880 Ω", "Coil supplies 500 Ω", "Add 380 ohms in series"],
+      "narration": "How big a resistor? First, find the total resistance that lets 125 milliamps flow from 110 volts: R equals E over I, 110 divided by 125 thousandths of an ampere. Dividing by thousandths multiplies by 1000, so that's 110 times 1000, over 125: 880 ohms. Resistances in series add, and the coil already provides 500 of those 880 ohms. So the series resistor must supply the rest: 880 minus 500, which is 380 ohms. Check: 380 plus 500 is 880."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 10,
+      "template": "formula",
+      "params": {
+        "title": "Power: how fast energy is used",
+        "formula": "P = E × I",
+        "steps": ["P: power, in watts", "90 V × 3 A = 270 W", "270 is the power: watts, not ohms"],
+        "answer": "Power = voltage × current"
+      },
+      "onScreen": ["P = E × I, in watts", "90 V × 3 A = 270 watts", "270 is watts, not ohms"],
+      "narration": "That's Ohm's law. Its partner in almost every problem is power. Current pushed through a resistance turns electrical energy into heat. Power is how fast that happens, measured in watts, and it's simply voltage times current: P equals E times I. Remember the resistor on 90 volts carrying 3 amperes? 90 times 3 is 270 watts. That's why 270 was the trap for its resistance: it's the power the resistor turns into heat, not its ohms."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 10,
+      "template": "formula",
+      "params": {
+        "title": "Power, 2 more ways",
+        "formula": "P = E × I",
+        "steps": ["E = I × R, so P = I × R × I = I² × R", "I = E ÷ R, so P = E × E ÷ R = E² ÷ R", "Check: 3² × 30 = 9 × 30 = 270 W"],
+        "answer": "P = E × I = I² × R = E² ÷ R"
+      },
+      "onScreen": ["P = I² × R", "P = E² ÷ R", "3² × 30 = 270 watts"],
+      "narration": "Ohm's law lets you write power 2 more ways, which saves a step when you don't know both E and I. Since E equals I times R, put I times R in place of E, and P equals I squared times R. Squared just means a number times itself. Since I equals E over R, put E over R in place of I, and P equals E squared over R. Check with the same resistor: 3 amperes squared is 9, and 9 times 30 ohms is 270 watts again."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 10,
+      "template": "formula",
+      "params": {
+        "title": "A resistor's wattage rating",
+        "formula": "E<sub>max</sub> = √(P × R)",
+        "steps": ["Rating: the most power it can turn into heat", "P = E² ÷ R, so E² = P × R", "√ undoes squaring: E = √(P × R)", "Likewise P = I² × R gives I = √(P ÷ R)"],
+        "answer": "Max voltage √(P × R) · max current √(P ÷ R)"
+      },
+      "onScreen": ["Wattage rating: the most heat it can shed", "E max = √(P × R)", "I max = √(P ÷ R)", "√: the square root, which undoes squaring"],
+      "narration": "That heat is why every resistor has a wattage rating: the most power it can turn into heat without overheating. So every resistor has a highest safe voltage and a highest safe current. To find them, run the power formulas backward. P equals E squared over R; multiply both sides by R, and E squared equals P times R. To undo a square, take the square root: the number that, multiplied by itself, gives what you started with. The square root of 9 is 3, because 3 times 3 is 9. So the maximum voltage is the square root of P times R. In the same way, P equals I squared times R gives the maximum current: the square root of P over R."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 10,
+      "template": "formula",
+      "params": {
+        "title": "Most voltage for 20 watts, 2000 ohms",
+        "formula": "E = √(P × R)",
+        "steps": ["P × R = 20 × 2000 = 40,000", "√40,000 = 200, because 200 × 200 = 40,000", "Check: 200² ÷ 2000 = 40,000 ÷ 2000 = 20 W"],
+        "answer": "200 volts, DC or RMS"
+      },
+      "onScreen": ["20 × 2000 = 40,000", "√40,000 = 200", "200 volts maximum"],
+      "narration": "What's the maximum DC or RMS voltage that may be connected across a 20 watt, 2000 ohm resistor? RMS, short for root mean square, is the usual way to state the voltage of AC, alternating current, which keeps reversing direction. For heating, an RMS voltage counts the same as DC; we'll see why later. Use the voltage formula: E equals the square root of P times R. P times R is 20 times 2000, which is 40,000. The square root of 40,000 is 200, because 200 times 200 is 40,000. So the answer is 200 volts. Check it with the power formula: 200 squared is 40,000, and divided by 2000 ohms that's 20 watts, exactly the rating. Any more voltage, and the resistor would run hotter than it's built for."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 10,
+      "template": "formula",
+      "params": {
+        "title": "Most current for 2000 ohms, 200 watts",
+        "formula": "I = √(P ÷ R)",
+        "steps": ["P ÷ R = 200 ÷ 2000 = 0.1", "√0.1 ≈ 0.316, because 0.316 × 0.316 ≈ 0.1", "Not 3.16: that's √10, a decimal slip"],
+        "answer": "0.316 amps"
+      },
+      "onScreen": ["200 ÷ 2000 = 0.1", "√0.1 ≈ 0.316", "0.316 amps maximum"],
+      "narration": "Now the current version. A resistor is marked 2000 ohms, 200 watts. What's the most current it can carry? Use I equals the square root of P over R. 200 divided by 2000 is 0.1. The square root of 0.1 is about 0.316, because 0.316 times 0.316 is very close to 0.1. So the maximum current is 0.316 amps. Notice that the square root of a number smaller than 1 is bigger than the number itself. A trap answer is 3.16 amps: that's the square root of 10, not of 0.1, so watch the decimal point."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 10,
+      "template": "comparison-table",
+      "params": {
+        "title": "Parallel resistors: the lower limit wins",
+        "columns": ["Resistor", "E = √(P × R)", "Safe up to"],
+        "rows": [
+          ["500 Ω, 2 W", "√(2 × 500) = √1000", "≈ 31.6 volts"],
+          ["1500 Ω, 1 W", "√(1 × 1500) = √1500", "≈ 38.7 volts"],
+          ["Both in parallel", "The same voltage across both", "31.6 volts: the lower limit"]
+        ]
+      },
+      "onScreen": ["500 Ω, 2 W: about 31.6 V", "1500 Ω, 1 W: about 38.7 V", "Parallel: both get the same voltage", "31.6 volts maximum"],
+      "narration": "What if 2 resistors with different ratings share a circuit? A 500 ohm, 2 watt resistor and a 1500 ohm, 1 watt resistor are connected in parallel. What's the most voltage you can apply without exceeding either rating? Find each resistor's own limit first. For the 500 ohm one, 2 times 500 is 1000, and the square root of 1000 is about 31.6 volts. For the 1500 ohm one, 1 times 1500 is 1500, and its square root is about 38.7 volts. Now remember: parallel parts share the same voltage. Whatever you apply, both resistors get it. So the lower limit, 31.6 volts, governs. At 38.7 volts, the 500 ohm resistor would make about 3 watts of heat, beyond its 2 watt rating."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 10,
+      "template": "block-diagram",
+      "params": {
+        "title": "The diode: a one-way valve for current",
+        "columns": 2,
+        "blocks": [
+          { "id": "fwd", "label": "Pushed with its arrow", "note": "Forward biased" },
+          { "id": "on", "label": "Conducts" },
+          { "id": "rev", "label": "Pushed against its arrow", "note": "Reverse biased" },
+          { "id": "off", "label": "Blocks: no current" }
+        ],
+        "links": [
+          { "from": "fwd", "to": "on" },
+          { "from": "rev", "to": "off", "struck": true }
+        ]
+      },
+      "onScreen": ["Pushed with its arrow: forward biased, conducts", "Pushed against its arrow: reverse biased, blocks"],
+      "narration": "The exam also hands you circuit diagrams to work out, and the first one contains a diode, so let's meet it. A diode is a one-way valve for current. Its symbol is a triangle, like an arrowhead, pointing at a bar, and the arrow points the way it lets current through. Pushed the easy way, with the arrow, called forward biased, it conducts. Pushed the wrong way, against the arrow, called reverse biased, it blocks, and no current flows."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3B1: first, the diode",
+        "figure": "3B1",
+        "callouts": [
+          { "label": "10 V battery, R<sub>1</sub>, R<sub>2</sub>, R<sub>3</sub>, and diode D<sub>1</sub> down to the bottom wire" },
+          { "label": "The battery pushes against D<sub>1</sub>'s arrow: reverse biased" },
+          { "label": "Reverse biased: D<sub>1</sub> conducts no current, so ignore it" },
+          { "label": "That leaves R<sub>1</sub>, R<sub>2</sub> and R<sub>3</sub> as a single series string" }
+        ]
+      },
+      "onScreen": ["10 V battery, R1, R2, R3 and diode D1", "D1 is reverse biased", "No current through D1: ignore it", "R1, R2 and R3 in series"],
+      "narration": "Here's Figure 3B1. A 10 volt battery feeds 3 resistors, R1, R2 and R3, and the diode, D1, runs from the point between R1 and R2 down to the bottom wire. The exam asks for the voltage across R1. Start with the diode. D1 is connected so the battery pushes against its arrow. That makes it reverse biased, and it conducts no current. A part that carries no current changes nothing, so we can ignore it. That leaves R1, R2 and R3 as a single series string."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3B1: sharing the 10 volts",
+        "figure": "3B1",
+        "callouts": [
+          { "label": "Total: 300 + 200 + 100 = 600 Ω" },
+          { "label": "The same current flows through all 3 resistors" },
+          { "label": "Each resistor's share of the voltage = its share of the resistance" },
+          { "label": "Drop across R<sub>1</sub> = 10 V × 300 ÷ 600 = 5 volts" }
+        ]
+      },
+      "onScreen": ["300 + 200 + 100 = 600 Ω", "Same current through each", "Voltage shared like resistance", "5 volts across R1"],
+      "narration": "Now the series string. Its total resistance is 300 plus 200 plus 100, which is 600 ohms. In series, the same current flows through every resistor, and the voltage across each one, called its voltage drop, is that current times its own resistance. So the battery's voltage is shared out in the same proportions as the resistance. R1 is 300 of the 600 ohms, which is half. So R1 drops half of the 10 volts: 10 times 300, over 600, which is 5 volts. That's the answer: 5 volts across R1."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 10,
+      "template": "key-facts",
+      "params": {
+        "title": "The Zener diode: a voltage limiter",
+        "items": ["A Zener diode is built to conduct in reverse at a set voltage, its Zener voltage", "Below that voltage it blocks, like any reverse-biased diode", "At that voltage it conducts, and holds the voltage there", "Like a pressure-relief valve that opens at its set pressure"]
+      },
+      "onScreen": ["Zener: conducts in reverse at its Zener voltage", "Below it: blocks", "At it: conducts and holds that voltage", "Like a pressure-relief valve"],
+      "narration": "Figure 3B2 uses a special diode called a Zener diode, so let's meet it first. An ordinary diode simply blocks when it's reverse biased. A Zener diode is built to conduct in reverse once the voltage reaches a particular value, called its Zener voltage. Below that voltage, it blocks like any reverse-biased diode. Once the voltage reaches it, the Zener conducts just enough current to hold the voltage at that level. Think of a pressure-relief valve on a water tank: it stays shut until the pressure reaches its setting, then opens and stops the pressure rising any further. Circuits use Zeners to hold a voltage steady."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3B2: first, ignore the Zener",
+        "figure": "3B2",
+        "callouts": [
+          { "label": "R<sub>2</sub> + R<sub>3</sub> = 10k + 5k = 15k" },
+          { "label": "With R<sub>1</sub>, the whole string is 25k" },
+          { "label": "R<sub>2</sub> and R<sub>3</sub> would get 12 V × 15k ÷ 25k = 7.2 V" },
+          { "label": "7.2 V is more than the Zener's 3 V" }
+        ]
+      },
+      "onScreen": ["R2 + R3 = 15 kilohms", "Whole string: 25 kilohms", "12 × 15 ÷ 25 = 7.2 V", "7.2 V is more than 3 V"],
+      "narration": "Here's Figure 3B2: a 12 volt battery, R1 of 10 kilohms, then R2 of 10 kilohms and R3 of 5 kilohms, with a 3 volt Zener across R2 and R3. K on the diagram means kilohms. Will the Zener conduct? To find out, pretend it isn't there and see what voltage it would face. R2 and R3 in series make 15 kilohms, and with R1 the whole string is 25 kilohms. R2 and R3 would get their share, just as R1 did in Figure 3B1: 12 volts times 15, over 25, which is 7.2 volts. That's more than the Zener's 3 volts."
+    },
+    {
+      "id": "s24",
       "keyTopic": 10,
       "template": "equipment-card",
       "params": {
         "title": "Figure 3B2: the Zener clamps at 3 V",
         "figure": "3B2",
         "callouts": [
-          { "label": "Without the Zener: 12 V × 15k ÷ 25k = 7.2 V across R<sub>2</sub> and R<sub>3</sub>" },
-          { "label": "7.2 V is more than 3 V, so the 3 V Zener conducts" },
-          { "label": "The Zener clamps that node at 3 V" },
-          { "label": "Across R<sub>1</sub>: 12 − 3 = 9 volts" }
+          { "label": "7.2 V would be more than 3 V, so the Zener conducts" },
+          { "label": "It holds the top of R<sub>2</sub> at 3 V" },
+          { "label": "R<sub>1</sub> drops the rest: 12 − 3 = 9 volts" }
         ]
       },
-      "onScreen": ["Without the Zener: 7.2 V", "The 3 V Zener conducts", "Node clamped at 3 V", "9 volts across R1"],
-      "narration": "Figure 3B2 adds a 3 volt Zener diode. First, ignore the Zener. R2 and R3 total 15 kilohms, and with R1 the whole string is 25 kilohms. So R2 and R3 alone would sit at 12 volts times 15 over 25, which is 7.2 volts. That's more than 3 volts, so the Zener conducts and clamps that node at 3 volts. R1 drops the rest: 12 minus 3, or 9 volts."
+      "onScreen": ["The Zener conducts", "That point is held at 3 V", "R1: 12 − 3 = 9 volts"],
+      "narration": "Because 7.2 volts is more than 3, the Zener conducts. It clamps, or holds, the point where R1 meets R2 at 3 volts. The battery's 12 volts must still be shared around the loop, so R1 drops whatever is left: 12 minus 3, which is 9 volts. That's the answer: 9 volts across R1. The method works for any Zener problem. First ignore the Zener and find the voltage it would face. If that's below the Zener voltage, the Zener stays off. If it's above, the Zener holds that voltage, and the rest falls across the series resistor."
     },
     {
-      "id": "s9",
+      "id": "s25",
       "keyTopic": 11,
-      "template": "formula",
+      "template": "waveform",
       "params": {
-        "title": "Frequency counter error",
-        "formula": "Max error = reading × ppm ÷ 1,000,000",
-        "steps": ["462,100,000 Hz × 0.1 ÷ 1,000,000 = 46.21 Hz", "462,100,000 Hz × 1.0 ÷ 1,000,000 = 462.1 Hz"],
-        "answer": "At 1 ppm: 462.1 MHz reading → 462.1 Hz"
+        "title": "AC: current that keeps reversing",
+        "kind": "sine",
+        "cycles": 3,
+        "xAxis": "time",
+        "yAxis": "voltage",
+        "labels": ["DC: steady, in one direction", "AC: rises, falls and reverses, over and over", "1 cycle: one complete wave", "Frequency: cycles per second, in hertz (Hz)"]
       },
-      "onScreen": ["Max error = reading × ppm ÷ 1,000,000", "± 0.1 ppm: 46.21 Hz", "± 1.0 ppm: 462.1 Hz", "At 1 ppm, MHz reading = Hz error"],
-      "narration": "A frequency counter is only as accurate as its time base, and that accuracy is given in ppm, parts per million. The most the real frequency can differ from the reading is the reading times the ppm, divided by 1,000,000. Take a reading of 462,100,000 hertz with a time base of plus or minus 0.1 parts per million. 462,100,000 times 0.1, over 1,000,000, is 46.21 hertz. With a 1.0 part per million time base, it's 462.1 hertz. Here's a shortcut. At 1 part per million, a frequency in megahertz gives the same number in hertz: 462.1 megahertz, 462.1 hertz."
+      "onScreen": ["DC: steady, one direction", "AC: keeps reversing", "1 cycle: one complete wave", "Frequency: cycles per second, in hertz"],
+      "narration": "So far our circuits have all run on DC: a steady push in one direction. But radio runs on AC, alternating current. Its voltage rises to a peak, its highest point, falls back through 0, reverses to a peak in the other direction, and returns, over and over. A single complete wave is called a cycle. How many cycles happen each second is the frequency, measured in hertz: 1 hertz is 1 cycle per second. Radio frequencies are high, so we use kilohertz, thousands of cycles per second, and megahertz, millions per second. A transmitter on 462.1 megahertz goes through 462,100,000 cycles every second."
     },
     {
-      "id": "s10",
-      "keyTopic": 11,
-      "template": "formula",
-      "params": {
-        "title": "The same formula at 156.52 MHz",
-        "formula": "Max error = reading × ppm ÷ 1,000,000",
-        "steps": ["156,520,000 Hz × 1.0 ÷ 1,000,000 = 156.52 Hz", "156,520,000 Hz × 10 ÷ 1,000,000 = 1565.20 Hz"],
-        "answer": "1.0 ppm: 156.52 Hz · 10 ppm: 1565.20 Hz"
-      },
-      "onScreen": ["± 1.0 ppm: 156.52 Hz", "± 10 ppm: 1565.20 Hz"],
-      "narration": "Now a reading of 156,520,000 hertz. With a plus or minus 1.0 part per million time base, the error can be 156,520,000 times 1.0, over 1,000,000. That's 156.52 hertz, just as the shortcut predicts. With a plus or minus 10 parts per million time base, the error is 10 times bigger: 156,520,000 times 10, over 1,000,000, or 1565.20 hertz."
-    },
-    {
-      "id": "s11",
+      "id": "s26",
       "keyTopic": 11,
       "template": "band-strip",
       "params": {
-        "title": "Second harmonics: twice the fundamental",
-        "min": 300,
-        "max": 10000,
+        "title": "Harmonics: whole-number multiples",
+        "min": 200,
+        "max": 20000,
         "scale": "log",
         "marks": [
           { "at": 380, "label": "380 kHz", "note": "Fundamental" },
           { "at": 760, "label": "760 kHz", "note": "Second harmonic: 2 × 380 kHz", "tone": "key" },
           { "at": 4146, "label": "4146 kHz", "note": "SSB fundamental" },
-          { "at": 8292, "label": "8292 kHz", "note": "Second harmonic: 2 × 4146 kHz", "tone": "key" }
+          { "at": 8292, "label": "8292 kHz", "note": "Second harmonic: 2 × 4146 kHz", "tone": "key" },
+          { "at": 12438, "label": "12438 kHz", "note": "Third harmonic: 3 × 4146 kHz", "tone": "muted" }
         ]
       },
-      "onScreen": ["380 kHz fundamental", "Second harmonic: 760 kHz", "4146 kHz SSB fundamental", "Second harmonic: 8292 kHz"],
-      "narration": "Harmonics are simpler. The second harmonic is twice the fundamental frequency. For a 380 kilohertz signal, the second harmonic is 2 times 380, or 760 kilohertz. For an SSB, or single sideband, transmitter on 4146 kilohertz, the second harmonic is 2 times 4146, or 8292 kilohertz."
+      "onScreen": ["Fundamental: the intended frequency", "2 × 380 kHz = 760 kHz", "2 × 4146 kHz = 8292 kHz", "Third harmonic: 3 × 4146 kHz"],
+      "narration": "Each transmitter is meant to send on its own frequency, but its wave is never perfectly pure. Along with that frequency, called the fundamental, it gives off weaker copies at whole-number multiples of it, called harmonics. Harmonics can cause interference, so technicians need to know where they fall. The second harmonic is twice the fundamental. For a 380 kilohertz signal, that's 2 times 380, or 760 kilohertz. For a transmitter on 4146 kilohertz using SSB, single sideband, a common way of sending voice, it's 2 times 4146, or 8292 kilohertz. Traps: half the frequency, such as 190 kilohertz, is not a harmonic at all, and 3 times, 12438 kilohertz, is the third harmonic."
     },
     {
-      "id": "s12",
+      "id": "s27",
+      "keyTopic": 11,
+      "template": "formula",
+      "params": {
+        "title": "How accurate is a frequency counter?",
+        "formula": "Max error = reading × ppm ÷ 1,000,000",
+        "steps": ["Time base: the counter's own clock", "Clock off by a fraction: reading off by the same", "ppm: parts per million; 1 ppm = 1 millionth"],
+        "answer": "Error = reading × ppm ÷ 1,000,000"
+      },
+      "onScreen": ["Time base: the counter's clock", "Clock off by a fraction: reading off by the same", "ppm: parts per million", "Max error = reading × ppm ÷ 1,000,000"],
+      "narration": "Harmonics are frequencies a transmitter isn't meant to send. The one it is meant to send must be accurate, so technicians check it with a frequency counter. It counts the cycles that arrive during an exact slice of time, measured by its own built-in clock, called the time base. If that clock's second is a millionth too long, the counter counts a millionth too many cycles: the reading is off by the same fraction as the clock. The time base's accuracy is given in ppm, parts per million: 1 ppm is an error of 1 millionth. So the most the real frequency can differ from the reading is the reading times the ppm figure, divided by 1,000,000."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 11,
+      "template": "formula",
+      "params": {
+        "title": "Counter error at 462.1 MHz",
+        "formula": "Max error = reading × ppm ÷ 1,000,000",
+        "steps": ["1 ppm: 462,100,000 ÷ 1,000,000 = 462.1 Hz", "± 1.0 ppm: 462.1 × 1.0 = 462.1 Hz", "± 0.1 ppm: 462.1 × 0.1 = 46.21 Hz"],
+        "answer": "1.0 ppm: 462.1 Hz · 0.1 ppm: 46.21 Hz"
+      },
+      "onScreen": ["1 ppm of 462,100,000 Hz = 462.1 Hz", "± 1.0 ppm: 462.1 Hz", "± 0.1 ppm: 46.21 Hz"],
+      "narration": "A counter reads 462,100,000 hertz. First, what is 1 part per million of that? Divide by 1,000,000: 462.1 hertz. Notice something neat. The reading is 462.1 megahertz, and 1 ppm of it is 462.1 hertz, the same digits. That's always true: 1 ppm of a frequency in megahertz is the same number in hertz, because a millionth of a million hertz is exactly 1 hertz. Now the 2 exam questions. With a time base accurate to plus or minus 1.0 ppm, the most the frequency can be off is 462.1 times 1.0, which is 462.1 hertz. With plus or minus 0.1 ppm, a 10 times better clock, it's 462.1 times 0.1, which is 46.21 hertz. Answers in megahertz are far too big."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 11,
+      "template": "formula",
+      "params": {
+        "title": "Counter error at 156.52 MHz",
+        "formula": "Max error = reading × ppm ÷ 1,000,000",
+        "steps": ["156,520,000 Hz is 156.52 MHz", "± 1.0 ppm: 156.52 Hz, by the megahertz shortcut", "± 10 ppm: 156.52 × 10 = 1565.20 Hz"],
+        "answer": "1.0 ppm: 156.52 Hz · 10 ppm: 1565.20 Hz"
+      },
+      "onScreen": ["156,520,000 Hz = 156.52 MHz", "± 1.0 ppm: 156.52 Hz", "± 10 ppm: 1565.20 Hz"],
+      "narration": "Same method, another reading: 156,520,000 hertz, which is 156.52 megahertz. With a plus or minus 1.0 ppm time base, the shortcut gives the error at once: 156.52 hertz. Check it the long way: 156,520,000 times 1.0, divided by 1,000,000, is 156.52 hertz. With a plus or minus 10 ppm time base, the clock is 10 times less accurate, so the error is 10 times bigger: 156.52 times 10, which is 1565.20 hertz. Watch for 165.2 hertz among the choices: its digits are shuffled. And the kilohertz answers are 100 times too large."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 12,
+      "template": "waveform",
+      "params": {
+        "title": "Degrees: the position in the cycle",
+        "kind": "sine",
+        "cycles": 1,
+        "xAxis": "angle",
+        "yAxis": "volts",
+        "labels": ["1 cycle = 360°, once around the wheel", "0°: starts at 0 · 90°: positive peak · 180°: back to 0", "270°: negative peak · 360°: cycle complete", "0° to 180° positive · 180° to 360° negative"]
+      },
+      "onScreen": ["1 cycle = 360 degrees", "0°: 0 · 90°: positive peak · 180°: 0", "270°: negative peak · 360°: complete", "0° to 180° positive, 180° to 360° negative"],
+      "narration": "Now let's look closely at the shape of a single cycle. To describe a point partway through it, we use degrees, just like going once around a circle. Picture a wheel turning, with the wave tracing the height of a point on its rim. A full turn, 1 cycle, is 360 degrees. The wave starts at 0 volts at 0 degrees, climbs to its highest point, the positive peak, at 90 degrees, and comes back to 0 at 180 degrees. Then it goes negative: the negative peak at 270 degrees, and back to the start at 360. So from 0 to 180 degrees the voltage is positive, and from 180 to 360 degrees it's negative."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 12,
+      "template": "formula",
+      "params": {
+        "title": "The voltage at any angle",
+        "formula": "v = V<sub>peak</sub> × sin θ",
+        "steps": ["v: the instantaneous value, at that moment", "θ (theta): the angle through the cycle", "sin θ: a fraction from −1 to +1", "sin 90° = 1, so at 90° v is the full peak"],
+        "answer": "v = peak voltage × sine of the angle"
+      },
+      "onScreen": ["v = V peak × sin θ", "v: the instantaneous value", "sin θ: between −1 and +1", "90°: the full peak"],
+      "narration": "So how high is the wave at a given angle? Multiply the peak voltage by the sine of the angle. The answer, small v, is the voltage at that instant, called the instantaneous value. The angle's symbol is the Greek letter theta. The sine is a number from minus 1 to plus 1 that says how high the wave is at that angle, as a fraction of the peak. Your calculator's sine key gives it, set to degrees. At 90 degrees the sine is 1, so the voltage is the full peak. At 0 and 180 degrees the sine is 0, and so is the voltage. That matches the wave."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 12,
+      "template": "formula",
+      "params": {
+        "title": "Radians: π/3 is 60 degrees",
+        "formula": "π radians = 180°",
+        "steps": ["π (pi) ≈ 3.14, the number from circle math", "π/3 radians = 180° ÷ 3 = 60°", "v = 5 × sin 60° = 5 × 0.866", "≈ +4.3 V: positive, in the first half"],
+        "answer": "At π/3 radians: about +4.3 volts"
+      },
+      "onScreen": ["π radians = 180°", "π/3 radians = 60°", "5 × 0.866 ≈ +4.3 volts"],
+      "narration": "Some questions give the angle in radians instead, another way to measure angles. Pi radians is half a turn, 180 degrees, where pi is the number 3.14 from circle math. So what is the amplitude, the wave's height, at pi over 3 radians on a sine wave with a 5 volt peak? First convert: pi over 3 is 180 degrees divided by 3, which is 60 degrees. The sine of 60 degrees is 0.866, and 5 times 0.866 is about plus 4.3 volts. It must be positive, because 60 degrees is in the first half of the cycle."
+    },
+    {
+      "id": "s33",
       "keyTopic": 12,
       "template": "waveform",
       "params": {
@@ -177,150 +482,234 @@
         "cycles": 1,
         "xAxis": "angle",
         "yAxis": "volts",
-        "labels": [
-          "v = V<sub>peak</sub> × sin θ: positive 0° to 180°, negative 180° to 360°",
-          "60°, or π/3 radians: 5 × 0.866 ≈ +4.3 V",
-          "150°: 5 × 0.5 = +2.5 V",
-          "240°: 5 × (−0.866) ≈ −4.3 V"
-        ]
+        "labels": ["60°: 5 × 0.866 ≈ +4.3 V", "150°: 5 × 0.5 = +2.5 V", "240°: 5 × (−0.866) ≈ −4.3 V", "First half positive, second half negative"]
       },
-      "onScreen": ["v = V peak × sin θ", "60°: +4.3 V", "150°: +2.5 V", "240°: −4.3 V"],
-      "narration": "The instantaneous value of a sine wave is the peak voltage times the sine of the angle. From 0 to 180 degrees the values are positive. From 180 to 360 degrees they are negative. Take a sine wave with a 5 volt peak. At pi over 3 radians, which is 60 degrees, it's 5 times 0.866, about plus 4.3 volts. At 150 degrees, it's 5 times 0.5, or plus 2.5 volts. At 240 degrees, the sine is minus 0.866, so the wave is at about minus 4.3 volts."
+      "onScreen": ["60°: +4.3 V", "150°: +2.5 V", "240°: −4.3 V", "Check the sign by the half cycle"],
+      "narration": "At 60 degrees we found plus 4.3 volts. Now 2 more angles on the same wave. At 150 degrees we're still in the first half of the cycle, so the answer is positive. 150 degrees is 30 degrees short of 180, and the wave there is as high as it is 30 degrees after the start: the sine is 0.5. 5 times 0.5 is plus 2.5 volts. At 240 degrees we're in the second half, so the answer is negative. 240 is 60 degrees past 180, so the wave is as far below the line as it was above it at 60 degrees: the sine is minus 0.866. 5 times minus 0.866 is about minus 4.3 volts. The exam's choices mix 2.5 and 4.3 with both signs, so check the size and the sign."
     },
     {
-      "id": "s13",
+      "id": "s34",
+      "keyTopic": 12,
+      "template": "block-diagram",
+      "params": {
+        "title": "RMS: the heating value of AC",
+        "columns": 2,
+        "blocks": [
+          { "id": "dc", "label": "Steady DC voltage", "note": "Connected to a resistor" },
+          { "id": "heat1", "label": "The resistor warms up", "note": "A certain amount of heat" },
+          { "id": "ac", "label": "AC voltage", "note": "Rising, falling and reversing" },
+          { "id": "heat2", "label": "Exactly the same heat", "note": "Its RMS value equals that DC voltage" }
+        ],
+        "links": [
+          { "from": "dc", "to": "heat1" },
+          { "from": "ac", "to": "heat2" }
+        ]
+      },
+      "onScreen": ["DC voltage heats a resistor", "AC that heats it equally", "Its RMS value equals the DC voltage"],
+      "narration": "Instant values keep changing, so which single number describes an AC voltage? The answer is about heating. Connect a steady DC voltage to a resistor, and it warms up. Now find the AC voltage that warms the same resistor exactly as much. That AC voltage's RMS value, short for root mean square, equals the DC voltage. So on the exam, RMS is the DC voltage causing the same heating in a given resistor. 120 volts RMS of AC heats a resistor just like 120 volts of DC. That's why RMS counted the same as DC in the resistor ratings, and why power formulas use RMS. The trap answer compares DC with the peak AC voltage instead."
+    },
+    {
+      "id": "s35",
       "keyTopic": 12,
       "template": "formula",
       "params": {
-        "title": "RMS: the DC voltage that heats the same",
-        "formula": "RMS = 0.707 × peak",
-        "steps": ["Peak = 340 V peak-to-peak ÷ 2 = 170 V", "RMS = 0.707 × 170 V"],
-        "answer": "≈ 120 volts AC RMS; 170 V is the peak"
+        "title": "RMS and peak: 0.707 and 1.414",
+        "formula": "V<sub>RMS</sub> = 0.707 × V<sub>peak</sub>",
+        "steps": ["Root mean square: square, average, square root", "Sine wave: RMS = 0.707 × peak", "Peak = 1.414 × RMS", "1.414 = √2, and 0.707 = 1 ÷ 1.414"],
+        "answer": "× 0.707 for RMS · × 1.414 for peak"
       },
-      "onScreen": ["RMS = DC voltage giving the same heating", "340 V peak-to-peak ÷ 2 = 170 V peak", "0.707 × 170 ≈ 120 volts RMS"],
-      "narration": "What does RMS really mean? The root mean square value of an AC, or alternating current, voltage is equal to the DC voltage that causes the same heating in a given resistor. For a pure sine wave, multiply the peak by 0.707. Say you measure 340 volts peak-to-peak. The peak is half of that: 340 over 2 is 170 volts. Then 0.707 times 170 is about 120 volts AC. Don't stop at 170 volts. That's the peak, not the RMS value."
+      "onScreen": ["Square, average, square root", "RMS = 0.707 × peak", "Peak = 1.414 × RMS"],
+      "narration": "The name root mean square describes the math. Square the voltage at every instant, take the mean, or average, of those squares, then take the square root. Squaring makes the negative half of the cycle count as much as the positive half. For a sine wave, the result is always 0.707 times the peak. Going the other way, the peak is 1.414 times the RMS value. The 2 numbers are linked: 1.414 is the square root of 2, and 0.707 is 1 divided by 1.414. So from peak to RMS, multiply by 0.707; from RMS to peak, multiply by 1.414."
     },
     {
-      "id": "s14",
+      "id": "s36",
+      "keyTopic": 12,
+      "template": "formula",
+      "params": {
+        "title": "From peak-to-peak to RMS",
+        "formula": "V<sub>RMS</sub> = 0.707 × V<sub>peak</sub>",
+        "steps": ["Peak-to-peak: top to bottom, twice the peak", "Peak = 340 V ÷ 2 = 170 V", "RMS = 0.707 × 170 V ≈ 120 V"],
+        "answer": "≈ 120 volts AC RMS (170 V is the peak)"
+      },
+      "onScreen": ["Peak-to-peak = 2 × peak", "340 ÷ 2 = 170 V peak", "0.707 × 170 ≈ 120 V RMS"],
+      "narration": "There's a third way to state a wave's size: peak-to-peak, measured from the very top of the wave to the very bottom. The 2 halves are mirror images, so peak-to-peak is twice the peak. What's the RMS value of a 340 volt peak-to-peak pure sine wave? Step 1: the peak is half of 340, which is 170 volts. Step 2: RMS is 0.707 times the peak, 0.707 times 170, which is about 120 volts AC. Don't stop at 170 volts: that's the peak, not the RMS value. And 240 volts is just 120 doubled. 120 volts is about what a household outlet supplies, so the answer makes sense."
+    },
+    {
+      "id": "s37",
+      "keyTopic": 10,
+      "template": "formula",
+      "params": {
+        "title": "A transmitter's peak-to-peak voltage",
+        "formula": "E<sub>RMS</sub> = √(P × R)",
+        "steps": ["E<sub>RMS</sub> = √(100 W × 50 Ω) ≈ 70.7 V", "Peak = 70.7 V × 1.414 ≈ 100 V", "Peak-to-peak = 2 × 100 V = 200 V"],
+        "answer": "200 volts peak-to-peak"
+      },
+      "onScreen": ["√(100 × 50) ≈ 70.7 V RMS", "70.7 × 1.414 ≈ 100 V peak", "2 × 100 = 200 V peak-to-peak"],
+      "narration": "Now put power and AC together. What's the peak-to-peak RF voltage on the 50 ohm output of a 100 watt transmitter? RF means radio frequency, the AC a transmitter makes. The 100 watts flows into 50 ohms, just as if the output were a 50 ohm resistor. Step 1: power formulas use RMS values, so use E equals the square root of P times R, from the resistor ratings. 100 times 50, square-rooted, is about 70.7 volts RMS. Step 2: the peak is 1.414 times that: 70.7 times 1.414 is about 100 volts. Step 3: peak-to-peak is twice the peak, 200 volts. The trap answers stop early: 70 volts is the RMS value, 100 the peak, and 140 is roughly the RMS value doubled instead of the peak."
+    },
+    {
+      "id": "s38",
       "keyTopic": 12,
       "template": "equipment-card",
       "params": {
         "title": "Figure 3B3: which wave lags?",
         "figure": "3B3",
         "callouts": [
+          { "label": "Phase: where a wave is in its cycle at a given moment" },
           { "label": "Waveform A reaches its positive peak…" },
-          { "label": "…at the instant waveform B starts its cycle (the dashed line)" },
-          { "label": "B lags A by 90 degrees: a quarter cycle" }
+          { "label": "…just as waveform B starts its cycle (the dashed line)" },
+          { "label": "B is a quarter cycle behind: B lags A by 90 degrees" }
         ]
       },
-      "onScreen": ["A at its positive peak", "B starting its cycle", "B lags A by 90 degrees"],
-      "narration": "Figure 3B3 shows two sine waves, A and B. Follow the dashed line. Waveform A reaches its positive peak at the very instant waveform B starts its cycle. So B is running a quarter cycle behind A, and a quarter cycle is 90 degrees. Waveform B is lagging waveform A by 90 degrees."
+      "onScreen": ["Phase: where a wave is in its cycle", "A at its positive peak", "B just starting its cycle", "B lags A by 90 degrees"],
+      "narration": "So far we've looked at 1 wave at a time. Put 2 waves of the same frequency side by side, and they don't always move in step. Phase describes where a wave is in its cycle at a given moment. If one wave reaches each point first, it leads; the other lags behind. Figure 3B3 shows waveforms A and B. Follow the first dashed line. Waveform A is already at its positive peak, 90 degrees into its cycle, at the very instant waveform B is just starting. So B runs a quarter of a cycle behind A, and a quarter of 360 degrees is 90 degrees. The answer: B is lagging A by 90 degrees. Saying A lags B gets it backwards."
     },
     {
-      "id": "s15",
-      "keyTopic": 13,
-      "template": "formula",
-      "params": {
-        "title": "Power factor",
-        "formula": "PF = cos θ",
-        "steps": ["θ = 60°: PF = cos 60° = 0.5", "θ = 45°: PF = cos 45° ≈ 0.707", "θ = 30°: PF = cos 30° ≈ 0.866", "0.577 is tan 30°, not cos 30°"],
-        "answer": "PF = cosine of the phase angle"
-      },
-      "onScreen": ["PF = cos θ", "60°: 0.5", "45°: 0.707", "30°: 0.866", "0.577 is tan 30°"],
-      "narration": "Power factor, PF, is the cosine of the phase angle between voltage and current. Take an R L, or resistor-inductor, circuit with a 60 degree phase angle. The cosine of 60 degrees is 0.5, so the power factor is 0.5. At 45 degrees, it's about 0.707. At 30 degrees, it's about 0.866. Don't pick 0.577. That's the tangent of 30 degrees, not the cosine. Always use the cosine."
-    },
-    {
-      "id": "s16",
-      "keyTopic": 13,
-      "template": "formula",
-      "params": {
-        "title": "True power, and halving the resistance",
-        "formula": "True power = apparent power × PF",
-        "steps": ["Apparent power = RMS volts × RMS amps", "Constant voltage: P = E² ÷ R", "Halve R: P = E² ÷ (R ÷ 2) = 2 × E² ÷ R"],
-        "answer": "Half the resistance → double the power"
-      },
-      "onScreen": ["True power = apparent power × power factor", "RMS volts × RMS amps = apparent power only", "P = E² ÷ R", "Halve R, double the power"],
-      "narration": "When AC voltage and current are out of phase, find the true power by multiplying the apparent power times the power factor. RMS voltage times RMS current gives you only the apparent power. Now a resistor question. With a constant voltage, power is E squared over R. If you cut the resistance in half, you divide by half as much, so the power dissipation doubles."
-    },
-    {
-      "id": "s17",
-      "keyTopic": 13,
+      "id": "s39",
+      "keyTopic": 14,
       "template": "key-facts",
       "params": {
-        "title": "Power relationships to remember",
-        "items": [
-          "746 watts = 1 horsepower",
-          "1 horsepower = lifting 550 pounds at the rate of 1 foot per second",
-          "Power factor = cos θ: 0.5 at 60°, 0.707 at 45°, 0.866 at 30°",
-          "True power = apparent power × power factor",
-          "Constant voltage: halve R and the power doubles"
+        "title": "The capacitor: a store of charge",
+        "items": ["2 metal plates separated by an insulator", "Current can't cross the gap, but charge piles up on the plates", "As charge builds, the voltage across it rises, like a tank filling", "Capacitance, C: charge held per volt, in farads (usually microfarads)"]
+      },
+      "onScreen": ["Capacitor: 2 plates and an insulator", "Charge piles up on the plates", "Its voltage rises as it fills", "Capacitance C, in farads"],
+      "narration": "Now a new part, and a new kind of problem: timing. Circuits that create a delay are built from a resistor and a capacitor. A capacitor is 2 metal plates separated by an insulator, a material current can't cross. So no current passes between the plates, but charge can pile up on them. As it does, the voltage across the capacitor rises, like a tank filling with water. Capacitance, C, says how much charge it holds per volt, measured in farads. A farad is huge, so real values are in microfarads."
+    },
+    {
+      "id": "s40",
+      "keyTopic": 14,
+      "template": "block-diagram",
+      "params": {
+        "title": "The RC circuit: charging through a resistor",
+        "columns": 3,
+        "blocks": [
+          { "id": "supply", "label": "DC supply", "note": "The push" },
+          { "id": "resistor", "label": "Resistor R", "note": "Limits the charging current" },
+          { "id": "cap", "label": "Capacitor C", "note": "Voltage rises fast, then slower" }
+        ],
+        "links": [
+          { "from": "supply", "to": "resistor", "label": "Current" },
+          { "from": "resistor", "to": "cap", "label": "Charge flows in" }
         ]
       },
-      "onScreen": ["746 watts = 1 horsepower", "550 pounds at 1 foot per second", "PF = cos θ", "True power = apparent × PF", "Halve R, double P"],
-      "narration": "One more number. 746 watts is 1 horsepower. A horsepower is the power needed to lift 550 pounds at the rate of 1 foot per second, and that works out to 746 watts. Let's collect this topic. Power factor is the cosine of the phase angle: 0.5 at 60 degrees, 0.707 at 45 degrees, and 0.866 at 30 degrees. True power is apparent power times power factor. And at constant voltage, half the resistance means double the power."
+      "onScreen": ["DC supply: the push", "Resistor R limits the charging current", "Capacitor C: voltage rises fast, then slower"],
+      "narration": "Connect a capacitor through a resistor to a DC supply, and you have an RC, resistor-capacitor, circuit. The supply pushes, and the resistor limits how fast current can flow into the capacitor. At first the empty capacitor has no voltage to push back with, so current rushes in. As it fills, its voltage rises toward the supply's, the push left over shrinks, and charging slows down. So the capacitor charges quickly at first, then more and more slowly. Remember that shape: fast, then slower."
     },
     {
-      "id": "s18",
+      "id": "s41",
       "keyTopic": 14,
       "template": "formula",
       "params": {
-        "title": "RC time constant: the 63.2% point",
-        "formula": "τ = R × C (in seconds)",
-        "steps": ["1 time constant: charged to 63.2% of the supply", "Not 36.8%: that's what's left when discharging"],
-        "answer": "τ = RC: the time to charge to 63.2%"
+        "title": "The RC time constant: 63.2%",
+        "formula": "τ = R × C",
+        "steps": ["τ (tau): the time constant, in seconds", "Bigger R: less current · bigger C: more to fill", "After 1 time constant: charged to 63.2%"],
+        "answer": "1 time constant: 63.2% of the supply voltage"
       },
-      "onScreen": ["τ = R × C", "1 time constant: 63.2% charged", "36.8% is what's left when discharging"],
-      "narration": "Now time constants. In an RC, or resistor-capacitor, circuit, one time constant is tau equals R times C, in seconds. It's the time required for the capacitor to charge to 63.2 percent of the supply voltage. Don't confuse that with 36.8 percent. That's the voltage left on a discharging capacitor after one time constant, not the charge reached. So remember: one RC time constant, 63.2 percent charged."
+      "onScreen": ["τ = R × C", "Bigger R or C: slower charging", "1 time constant: 63.2% of the supply voltage"],
+      "narration": "How fast does an RC circuit charge? That's set by its time constant, written with the Greek letter tau: tau equals R times C, in seconds. A bigger resistor lets less current through, and a bigger capacitor has more to fill, so either one makes charging slower. The time required for the capacitor to be charged to 63.2 percent of the supply voltage is called 1 time constant. On the exam, the term is simply 1 time constant, not an exponential rate, an exponential period or a time factor. Why such an odd number? If the capacitor kept charging at its starting rate, it would be full in exactly 1 time constant. But the current shrinks as it fills, so in that time it gets only 63.2 percent of the way."
     },
     {
-      "id": "s19",
+      "id": "s42",
       "keyTopic": 14,
       "template": "formula",
       "params": {
-        "title": "RL time constant: the current builds",
-        "formula": "τ = L ÷ R (in seconds)",
-        "steps": ["1 time constant: current reaches 63.2% of maximum", "The current builds up, not the voltage", "The inductor opposes changes in current"],
-        "answer": "τ = L ÷ R: current at 63.2%"
+        "title": "Discharging: 36.8% left",
+        "formula": "Left after 1 τ = 36.8%",
+        "steps": ["A charged capacitor empties through a resistor", "Fast at first, then slower", "1 time constant: loses 63.2%, keeps 36.8%", "36.8% is not the charge reached in 1 τ"],
+        "answer": "Charging: 63.2% reached · discharging: 36.8% left"
       },
-      "onScreen": ["τ = L ÷ R", "1 time constant: current at 63.2% of maximum", "Current, not voltage", "Inductor opposes changes in current"],
-      "narration": "An RL, or resistor-inductor, circuit has a time constant too: tau equals L over R. One time constant is the time required for the current to build up to 63.2 percent of its maximum value. Notice it's the current, not the voltage, that builds up. That's because the inductor opposes changes in current, so the current can only rise gradually."
+      "onScreen": ["Discharging through a resistor", "1 time constant: 36.8% left", "63.2% + 36.8% = 100%", "36.8% is not the charge reached"],
+      "narration": "Now run it backward. Disconnect the supply, and let a charged capacitor empty through the resistor. Its voltage falls quickly at first, then more and more slowly. After 1 time constant it has lost 63.2 percent of its voltage, so 36.8 percent is left, because 63.2 plus 36.8 makes 100. The exam uses this as a trap. If a question asks what 1 time constant charges the capacitor to, 36.8 percent is wrong. That's the voltage left on a discharging capacitor after 1 time constant, not the charge reached. Charging: 63.2 percent reached. Discharging: 36.8 percent left."
     },
     {
-      "id": "s20",
+      "id": "s43",
       "keyTopic": 14,
       "template": "timeline",
       "params": {
-        "title": "One and two time constants",
+        "title": "1 and 2 time constants",
         "badges": [
           { "label": "1 time constant, charging", "value": "63.2% charged" },
           { "label": "1 time constant, discharging", "value": "36.8% left" },
-          { "label": "2 time constants, charging", "value": "86.5% charged", "note": "1 − e<sup>−2</sup>" },
-          { "label": "2 time constants, discharging", "value": "13.5% left", "note": "e<sup>−2</sup>" }
+          { "label": "2 time constants, discharging", "value": "13.5% left", "note": "36.8% of 36.8%: e<sup>−2</sup>" },
+          { "label": "2 time constants, charging", "value": "86.5% charged", "note": "100% − 13.5%: 1 − e<sup>−2</sup>" }
         ]
       },
-      "onScreen": ["1 time constant: 63.2% charged", "1 time constant: 36.8% left", "2 time constants: 86.5% charged", "2 time constants: 13.5% left"],
-      "narration": "Here are the four numbers to know. After one time constant, a charging capacitor reaches 63.2 percent, and a discharging capacitor is down to 36.8 percent. After two time constants, the capacitor in an RC circuit is charged to 1 minus e to the minus 2, or 86.5 percent of the supply voltage. A discharging capacitor is down to e to the minus 2, or 13.5 percent of its starting voltage."
+      "onScreen": ["1 time constant: 63.2% charged", "1 time constant: 36.8% left", "2 time constants: 13.5% left", "2 time constants: 86.5% charged"],
+      "narration": "So after 1 time constant, it's 63.2 percent charged, or 36.8 percent left. What about 2 time constants? Here's the pattern that makes it easy. In every time constant, whatever gap remains shrinks to 36.8 percent of what it was. Discharging, after 2 time constants, it's 36.8 percent of 36.8 percent: about 13.5 percent of the starting voltage. In formula form that's e to the minus 2, where e is a natural constant your calculator knows. Charging, the gap is the part still missing. After 2 time constants only 13.5 percent is missing, so the capacitor is charged to 100 minus 13.5: 86.5 percent of the supply voltage. That's 1 minus e to the minus 2."
     },
     {
-      "id": "s21",
+      "id": "s44",
+      "keyTopic": 14,
+      "template": "key-facts",
+      "params": {
+        "title": "The inductor: a coil that resists change",
+        "items": ["An inductor is a coil of wire", "Current through it builds a magnetic field, which stores energy", "It opposes any change in current, so current can only rise gradually", "Inductance, L, is measured in henrys (often microhenrys or millihenrys)"]
+      },
+      "onScreen": ["Inductor: a coil of wire", "Current builds a magnetic field", "Opposes changes in current", "Inductance L, in henrys"],
+      "narration": "Time constants aren't only for capacitors. The other part that has one is the inductor, which is simply a coil of wire. Current flowing through a coil builds a magnetic field around it, and building that field takes energy. So a coil opposes any change in its current. Switch it on, and the current can't jump straight to full; it rises gradually, like a heavy flywheel getting up to speed. Its inductance, L, measures how strongly it does this, in henrys. Real coils are often a few microhenrys or millihenrys. Put a coil in series with a resistor, and you have an RL, resistor-inductor, circuit."
+    },
+    {
+      "id": "s45",
+      "keyTopic": 14,
+      "template": "formula",
+      "params": {
+        "title": "The RL time constant: the current builds",
+        "formula": "τ = L ÷ R",
+        "steps": ["L in henrys ÷ R in ohms = seconds", "1 time constant: current at 63.2% of maximum", "It's the current that builds, not the voltage"],
+        "answer": "1 time constant: current at 63.2% of maximum"
+      },
+      "onScreen": ["τ = L ÷ R", "Current reaches 63.2% of maximum", "Current builds, not voltage"],
+      "narration": "An RL circuit has a time constant too, but it's L divided by R, in seconds. The time required for the current in an RL circuit to build up to 63.2 percent of its maximum value is 1 time constant. The maximum is the current Ohm's law gives once things settle: the supply voltage over R. Notice what builds up: the current, not the voltage, because the inductor opposes changes in current. Why L over R? A bigger coil fights harder, so it takes longer. A bigger resistor means a smaller maximum current, so there's less to build up, and it gets there sooner. The trap choices swap in voltage, or 36.8 percent. It's the same 63.2 percent as the RC circuit, but for an inductor, think current."
+    },
+    {
+      "id": "s46",
       "keyTopic": 15,
       "template": "formula",
       "params": {
-        "title": "Working τ = RC in seconds",
+        "title": "Putting numbers into τ = RC",
         "formula": "τ = R × C",
-        "steps": ["Ω × F = seconds; MΩ × µF = seconds too", "Series: 470,000 Ω × 0.0001 F = 47 seconds", "Parallel: 1,000,000 Ω × 0.00022 F = 220 seconds"],
-        "answer": "47 seconds and 220 seconds"
+        "steps": ["Ohms × farads = seconds", "470 kΩ = 470,000 Ω; 100 µF = 0.0001 F", "τ = 470,000 × 0.0001 = 47 seconds", "Shortcut: 0.47 MΩ × 100 µF = 47 seconds"],
+        "answer": "47 seconds"
       },
-      "onScreen": ["Ohms × farads, or megohms × microfarads, gives seconds", "100 µF with 470 kΩ: 47 seconds", "220 µF with 1 MΩ: 220 seconds"],
-      "narration": "Let's put numbers in. Tau equals R times C gives seconds when R is in ohms and C is in farads. It also gives seconds with megohms and microfarads. A 100 microfarad capacitor in series with a 470 kilohm resistor: 470,000 ohms times 0.0001 farads is 47 seconds. A 220 microfarad capacitor in parallel with a 1 megohm resistor: 1,000,000 ohms times 0.00022 farads is 220 seconds. In both cases, it's simply R times C."
+      "onScreen": ["Ohms × farads = seconds", "470,000 Ω × 0.0001 F", "47 seconds", "Megohms × microfarads = seconds too"],
+      "narration": "Back to the RC circuit, now with real numbers. Tau equals R times C gives seconds when R is in ohms and C is in farads, so convert first. A 100 microfarad capacitor is in series with a 470 kilohm resistor. 470 kilohms is 470,000 ohms. 100 microfarads is 100 millionths of a farad, which is 0.0001 farads. 470,000 times 0.0001 is 47 seconds. There's a shortcut: megohms times microfarads also gives seconds, because mega and micro cancel out: a million times a millionth is 1. 470 kilohms is 0.47 megohms, and 0.47 times 100 is 47. The traps, 4700, 470 and 0.47 seconds, are the same digits with the decimal point slipped."
     },
     {
-      "id": "s22",
+      "id": "s47",
+      "keyTopic": 15,
+      "template": "formula",
+      "params": {
+        "title": "A capacitor in parallel with 1 megohm",
+        "formula": "τ = R × C",
+        "steps": ["1 MΩ = 1,000,000 Ω; 220 µF = 0.00022 F", "τ = 1,000,000 × 0.00022 = 220 seconds", "Shortcut: 1 MΩ × 220 µF = 220 seconds"],
+        "answer": "220 seconds"
+      },
+      "onScreen": ["1,000,000 Ω × 0.00022 F", "220 seconds", "1 megohm × 220 microfarads"],
+      "narration": "Next, a 220 microfarad capacitor in parallel with a 1 megohm resistor. In parallel? With just 1 resistor and 1 capacitor, the capacitor empties through that resistor, so the time constant is still R times C. In base units, 1 megohm is 1,000,000 ohms, and 220 microfarads is 0.00022 farads. 1,000,000 times 0.00022 is 220 seconds. The shortcut agrees: 1 megohm times 220 microfarads is 220. That's almost 4 minutes. Big capacitors and big resistors make slow circuits."
+    },
+    {
+      "id": "s48",
+      "keyTopic": 15,
+      "template": "comparison-table",
+      "params": {
+        "title": "Pairs of resistors and capacitors",
+        "columns": ["2 equal parts", "Resistors", "Capacitors"],
+        "rows": [
+          ["In series", "Double: 2 × R", "Half: C ÷ 2"],
+          ["In parallel", "Half: R ÷ 2", "Double: 2 × C"],
+          ["Effect on R × C", "Series: double × half", "Parallel: half × double"]
+        ]
+      },
+      "onScreen": ["In series: R doubles, C halves", "In parallel: R halves, C doubles", "Either way, R × C stays the same"],
+      "narration": "What if there are 2 resistors and 2 capacitors? Capacitors combine the opposite way to resistors. In series, 2 equal resistors give double, as you know, but 2 equal capacitors give half: it's like moving the plates farther apart. In parallel, resistors give half, but capacitors double: it's like making the plates bigger. Now see what happens to the time constant. All in series, R doubles and C halves, and doubling then halving leaves it unchanged. All in parallel, R halves and C doubles: unchanged again. So a matched pair of resistors and a matched pair of capacitors, both in series or both in parallel, have the same time constant as 1 resistor with 1 capacitor."
+    },
+    {
+      "id": "s49",
       "keyTopic": 15,
       "template": "comparison-table",
       "params": {
         "title": "Matched pairs: τ stays the same",
-        "columns": ["Two of each", "Total R", "Total C", "τ = R × C"],
+        "columns": ["Pairs of", "Total R", "Total C", "τ = R × C"],
         "rows": [
           ["100 µF and 470 kΩ, all in series", "940 kΩ", "50 µF", "47 seconds"],
           ["100 µF and 470 kΩ, all in parallel", "235 kΩ", "200 µF", "47 seconds"],
@@ -329,211 +718,431 @@
         ]
       },
       "onScreen": ["Series: 940 kΩ × 50 µF = 47 seconds", "Parallel: 235 kΩ × 200 µF = 47 seconds", "Parallel: 0.5 MΩ × 440 µF = 220 seconds", "Series: 2 MΩ × 110 µF = 220 seconds"],
-      "narration": "Now two capacitors and two resistors. Take two 100 microfarad capacitors and two 470 kilohm resistors, all in series. The resistance doubles to 940 kilohms, and the capacitance halves to 50 microfarads. 940 kilohms times 50 microfarads is still 47 seconds. All in parallel, it's 235 kilohms times 200 microfarads: 47 seconds again. Two 220 microfarad capacitors and two 1 megohm resistors all in parallel give 0.5 megohms times 440 microfarads, or 220 seconds. All in series, it's 2 megohms times 110 microfarads: 220 seconds."
+      "narration": "Here are the exam's 4 matched-pair questions. A pair of 100 microfarad capacitors and a pair of 470 kilohm resistors, all in series: 940 kilohms and 50 microfarads. 940,000 ohms times 0.00005 farads is 47 seconds, the same as 1 of each. All in parallel: 235 kilohms and 200 microfarads, and 235,000 times 0.0002 is 47 seconds again. A pair of 220 microfarad capacitors and a pair of 1 megohm resistors, all in parallel: 0.5 megohms and 440 microfarads. Megohms times microfarads: 0.5 times 440 is 220 seconds. All in series: 2 megohms and 110 microfarads, 220 seconds. Every time, the answer is just 1 resistor times 1 capacitor."
     },
     {
-      "id": "s23",
-      "keyTopic": 15,
-      "template": "key-facts",
-      "params": {
-        "title": "Why matched pairs don't change τ",
-        "items": [
-          "All in series: R doubles and C halves",
-          "All in parallel: R halves and C doubles",
-          "The doubling and halving cancel",
-          "τ equals that of 1 resistor with 1 capacitor: 47 or 220 seconds"
-        ]
-      },
-      "onScreen": ["Series: R doubles, C halves", "Parallel: R halves, C doubles", "They cancel", "Same τ as 1 resistor with 1 capacitor"],
-      "narration": "Here's the shortcut behind that table. When a matched pair of resistors and a matched pair of capacitors are both in series, the resistance doubles and the capacitance halves. When they're both in parallel, the resistance halves and the capacitance doubles. Either way, the doubling and halving cancel. The time constant equals that of one resistor with one capacitor. So the answer stays at 47 seconds, or 220 seconds."
-    },
-    {
-      "id": "s24",
-      "keyTopic": 16,
-      "template": "formula",
-      "params": {
-        "title": "Rectangular form: an inductor in series",
-        "formula": "Z = R + jX<sub>L</sub>, X<sub>L</sub> = 2πfL",
-        "steps": ["X<sub>L</sub> = 2π × 30×10⁶ Hz × 0.1×10⁻⁶ H", "X<sub>L</sub> ≈ 18.8 Ω: inductive, so plus j", "R = 20 Ω is the real part"],
-        "answer": "Z = 20 + j19"
-      },
-      "onScreen": ["Z = R + jX", "Resistance is the real part", "Inductive: plus j; capacitive: minus j", "X L ≈ 18.8 Ω", "Z = 20 + j19"],
-      "narration": "Impedance in rectangular coordinates is written R plus j X. The resistance is the real part. Inductive reactance takes a plus j, and capacitive reactance takes a minus j. Let's try one. A 0.1 microhenry inductor is in series with 20 ohms at 30 megahertz. X sub L equals 2 pi f L: 2 pi times 30 megahertz times 0.1 microhenry is about 18.8 ohms. It's inductive, so it gets a plus j. The 20 ohms is the real part. Rounded, Z equals 20 plus j 19."
-    },
-    {
-      "id": "s25",
-      "keyTopic": 16,
-      "template": "formula",
-      "params": {
-        "title": "A capacitor in series: minus j",
-        "formula": "Z = R − jX<sub>C</sub>, X<sub>C</sub> = 1 ÷ (2πfC)",
-        "steps": ["X<sub>C</sub> = 1 ÷ (2π × 500×10³ Hz × 0.001×10⁻⁶ F)", "X<sub>C</sub> ≈ 318 Ω: capacitive, so minus j", "R = 400 Ω is the real part"],
-        "answer": "Z = 400 − j318"
-      },
-      "onScreen": ["X C = 1 ÷ (2πfC)", "X C ≈ 318 Ω, minus j", "Z = 400 − j318"],
-      "narration": "Now a capacitor. A 0.001 microfarad capacitor is in series with 400 ohms at 500 kilohertz. X sub C equals 1 over 2 pi f C. That's 1 over 2 pi times 500 kilohertz times 0.001 microfarads, about 318 ohms. Capacitive reactance takes a minus j. The 400 ohms is the real part. So Z equals 400 minus j 318."
-    },
-    {
-      "id": "s26",
+      "id": "s50",
       "keyTopic": 16,
       "template": "comparison-table",
       "params": {
-        "title": "Series networks in rectangular form",
-        "columns": ["Series network", "Frequency", "Reactance", "Z"],
+        "title": "Reactance: how coils and capacitors oppose AC",
+        "columns": ["Feature", "Inductor (coil)", "Capacitor"],
         "rows": [
-          ["0.1 µH + 20 Ω", "30 MHz", "X<sub>L</sub> ≈ 18.8 Ω", "20 + j19"],
-          ["0.1 µH + 30 Ω", "5 MHz", "X<sub>L</sub> ≈ 3.14 Ω", "30 + j3"],
-          ["10 µH + 40 Ω", "500 MHz", "X<sub>L</sub> ≈ 31,400 Ω", "40 + j31400"],
-          ["1.0 mH + 200 Ω", "30 kHz", "X<sub>L</sub> ≈ 188 Ω", "200 + j188"],
-          ["0.001 µF + 400 Ω", "500 kHz", "X<sub>C</sub> ≈ 318 Ω", "400 − j318"]
+          ["As frequency rises", "Opposes more", "Opposes less"],
+          ["Why", "Faster change to fight", "Less time to fill up"],
+          ["Reactance, in ohms", "X<sub>L</sub> = 2πfL", "X<sub>C</sub> = 1 ÷ (2πfC)"],
+          ["Units", "f in hertz, L in henrys", "f in hertz, C in farads"]
         ]
       },
-      "onScreen": ["20 + j19", "30 + j3", "40 + j31400", "200 + j188", "400 − j318"],
-      "narration": "Same method, more networks. Here's the first one again: 20 plus j 19. The same 0.1 microhenry inductor with 30 ohms at 5 megahertz has X sub L of about 3.14 ohms, so Z equals 30 plus j 3. A 10 microhenry inductor with 40 ohms at 500 megahertz has about 31,400 ohms of reactance: 40 plus j 31400. A 1.0 millihenry inductor with 200 ohms at 30 kilohertz gives about 188 ohms: 200 plus j 188. And the capacitor network is 400 minus j 318. Resistance first, then plus j for an inductor, minus j for a capacitor."
+      "onScreen": ["Reactance: opposition to AC, in ohms", "Higher frequency: a coil opposes more, a capacitor less", "X sub L = 2πfL · X sub C = 1 ÷ 2πfC"],
+      "narration": "So far, our capacitors and coils have been connected to DC. Feed them AC instead, and they oppose it in a way that depends on frequency. That opposition is called reactance, measured in ohms, like resistance. As the frequency rises, a coil opposes more, and a capacitor opposes less. Why? A coil fights changes in current, and the higher the frequency, the faster the current changes. A capacitor's plates have less time to fill up and push back before the current reverses. In formulas, X sub L, the coil's reactance, equals 2 pi f L, and X sub C, the capacitor's, equals 1 over 2 pi f C. Here f is the frequency in hertz, L is in henrys, C is in farads, and pi is 3.14 again."
     },
     {
-      "id": "s27",
+      "id": "s51",
+      "keyTopic": 16,
+      "template": "comparison-table",
+      "params": {
+        "title": "Impedance: why R and X don't simply add",
+        "columns": ["Part", "Opposition", "Current against voltage"],
+        "rows": [
+          ["Resistor", "Resistance, R", "In step"],
+          ["Coil", "Reactance, X<sub>L</sub>", "Lags a quarter cycle: 90°"],
+          ["Capacitor", "Reactance, X<sub>C</sub>", "Leads a quarter cycle: 90°"]
+        ]
+      },
+      "onScreen": ["Impedance Z: total opposition to AC", "Resistor: current in step", "Coil: current lags 90°", "Capacitor: current leads 90°"],
+      "narration": "Most circuits mix resistance and reactance. Their total opposition to AC is called impedance, Z, also measured in ohms. But you can't simply add the resistance and the reactance, because they're out of step. In a resistor, the current moves in step with the voltage. In a coil, the current lags a quarter cycle, 90 degrees, behind the voltage, because the coil fights each change. In a capacitor, the current runs a quarter cycle ahead. Like 2 pushes at right angles to each other, they combine, but not by simple addition."
+    },
+    {
+      "id": "s52",
+      "keyTopic": 16,
+      "template": "formula",
+      "params": {
+        "title": "Impedance in rectangular form",
+        "formula": "Z = R ± jX",
+        "steps": ["R: resistance, the real part, written first", "j marks reactance: a quarter cycle out of step", "+j for an inductor · −j for a capacitor", "Like a map: R east, X north or south"],
+        "answer": "Inductive: R + jX · capacitive: R − jX"
+      },
+      "onScreen": ["Z = R ± jX", "R: the real part", "j marks the reactance", "+j inductor, −j capacitor"],
+      "narration": "So impedance is written in 2 parts, as R plus j X. The resistance is called the real part, and it's written first. The j marks the reactance as the part that's 90 degrees out of step. Inductive reactance, from a coil, takes a plus j, and capacitive reactance, from a capacitor, takes a minus j. Think of a map: R is how far east, and X is how far north or south, at right angles to it. This way of writing impedance is called rectangular form."
+    },
+    {
+      "id": "s53",
+      "keyTopic": 16,
+      "template": "formula",
+      "params": {
+        "title": "An inductor in series: 20 + j19",
+        "formula": "X<sub>L</sub> = 2πfL",
+        "steps": ["X<sub>L</sub> = 2π × 30 MHz × 0.1 µH", "Million × millionth cancel: 30 × 0.1 = 3", "X<sub>L</sub> = 2 × 3.14 × 3 ≈ 18.8 Ω", "Inductive, so plus j: 20 + j18.8"],
+        "answer": "Z = 20 + j19"
+      },
+      "onScreen": ["0.1 µH with 20 Ω at 30 MHz", "30 × 0.1 = 3", "X L ≈ 18.8 Ω", "Z = 20 + j19"],
+      "narration": "Let's try one. A 0.1 microhenry inductor is in series with a 20 ohm resistor, at 30 megahertz. What's the impedance in rectangular form? First the reactance: X sub L equals 2 pi f L. f is 30 megahertz, 30 million hertz, and L is 0.1 microhenry, 0.1 millionths of a henry. The million and the millionth cancel, leaving 30 times 0.1, which is 3. Then 2 times 3.14 times 3 is about 18.8 ohms. It's an inductor, so it takes a plus j, and the 20 ohm resistor is the real part. Rounded, Z equals 20 plus j 19. The traps swap the numbers, 19 plus j 20, or use a minus j."
+    },
+    {
+      "id": "s54",
+      "keyTopic": 16,
+      "template": "comparison-table",
+      "params": {
+        "title": "3 more inductors in series",
+        "columns": ["Network", "f × L", "X<sub>L</sub> = 2π × f × L", "Z"],
+        "rows": [
+          ["0.1 µH + 30 Ω at 5 MHz", "5 × 0.1 = 0.5", "π ≈ 3.14 Ω", "30 + j3"],
+          ["10 µH + 40 Ω at 500 MHz", "500 × 10", "≈ 31,400 Ω", "40 + j31400"],
+          ["1.0 mH + 200 Ω at 30 kHz", "30 × 1.0 = 30", "≈ 188 Ω", "200 + j188"]
+        ]
+      },
+      "onScreen": ["5 MHz: X L ≈ 3.14 Ω, Z = 30 + j3", "500 MHz: X L ≈ 31,400 Ω, Z = 40 + j31400", "30 kHz: X L ≈ 188 Ω, Z = 200 + j188"],
+      "narration": "Same method, 3 more networks. The same 0.1 microhenry inductor with 30 ohms at 5 megahertz: 5 times 0.1 is 0.5, and 2 pi times 0.5 is just pi, about 3.14 ohms. So Z equals 30 plus j 3. A 10 microhenry inductor with 40 ohms at 500 megahertz: the million and millionth cancel again, 2 times 500 times 10 is 10,000, and 10,000 times pi is about 31,400 ohms. Z equals 40 plus j 31400. A 1.0 millihenry inductor with 200 ohms at 30 kilohertz: kilo and milli cancel too, leaving 30 times 1.0, or 30. 2 pi times 30 is about 188 ohms, so Z equals 200 plus j 188. Every time: resistance first, then plus j and the reactance."
+    },
+    {
+      "id": "s55",
+      "keyTopic": 16,
+      "template": "formula",
+      "params": {
+        "title": "A capacitor in series: 400 − j318",
+        "formula": "X<sub>C</sub> = 1 ÷ (2πfC)",
+        "steps": ["kHz × µF leaves thousandths: X<sub>C</sub> = 1000 ÷ (2πfC)", "f × C = 500 × 0.001 = 0.5", "X<sub>C</sub> = 1000 ÷ (2π × 0.5) = 1000 ÷ 3.14 ≈ 318 Ω", "Capacitive, so minus j"],
+        "answer": "Z = 400 − j318"
+      },
+      "onScreen": ["0.001 µF with 400 Ω at 500 kHz", "500 × 0.001 = 0.5", "1000 ÷ 3.14 ≈ 318 Ω", "Z = 400 − j318"],
+      "narration": "Next, a capacitor: 0.001 microfarads in series with 400 ohms, at 500 kilohertz. X sub C is 1 over 2 pi f C. Here's a trick for these units. Kilohertz times microfarads, 1000 times a millionth, leaves a thousandth, and 1 over a thousandth is 1000. So with f in kilohertz and C in microfarads, X sub C equals 1000 over 2 pi f C. f times C is 500 times 0.001, which is 0.5. 2 pi times 0.5 is pi, 3.14. And 1000 divided by 3.14 is about 318 ohms. A capacitor takes a minus j, and the 400 ohms is the real part: Z equals 400 minus j 318."
+    },
+    {
+      "id": "s56",
       "keyTopic": 16,
       "template": "formula",
       "params": {
         "title": "A capacitor in parallel: product over sum",
         "formula": "Z = (R × −jX<sub>C</sub>) ÷ (R − jX<sub>C</sub>)",
-        "steps": ["0.01 µF at 50 kHz: X<sub>C</sub> ≈ 318 Ω", "Z = (300 × −j318) ÷ (300 − j318)"],
-        "answer": "Z = 159 − j150: minus j, capacitive"
+        "steps": ["50 kHz × 0.01 µF = 0.5 again: X<sub>C</sub> ≈ 318 Ω", "Parallel: product over sum, as for resistors", "(300 × −j318) ÷ (300 − j318) = 159 − j150", "Minus j: capacitive"],
+        "answer": "Z = 159 − j150"
       },
-      "onScreen": ["Product over sum", "X C ≈ 318 Ω", "(300 × −j318) ÷ (300 − j318)", "Z = 159 − j150, capacitive"],
-      "narration": "Parallel networks use product over sum. A 0.01 microfarad capacitor is in parallel with 300 ohms at 50 kilohertz. X sub C works out to about 318 ohms. Multiply 300 by minus j 318, then divide by 300 minus j 318. The result is Z equals 159 minus j 150. The minus j tells you the network is capacitive."
+      "onScreen": ["X C ≈ 318 Ω again", "Parallel: product over sum", "Z = 159 − j150", "Minus j: capacitive"],
+      "narration": "What about a parallel network? Take 0.01 microfarads in parallel with 300 ohms, at 50 kilohertz. f times C is 50 times 0.01, which is 0.5 again, so X sub C is about 318 ohms again. For 2 resistors in parallel, the total is their product divided by their sum: 100 and 100 ohms give 10,000 over 200, or 50 ohms. Impedances in parallel follow the same rule: 300 times minus j 318, divided by 300 minus j 318. Dividing with j takes a calculator that handles it, and gives 159 minus j 150. You can still check the choices. Minus j means capacitive. And the resistor, at 300 ohms against 318, is slightly the easier path, so it carries more of the current, and the real part, 159, is the bigger one."
     },
     {
-      "id": "s28",
+      "id": "s57",
       "keyTopic": 17,
       "template": "key-facts",
       "params": {
-        "title": "Polar form: magnitude and angle",
-        "items": [
-          "A polar plot shows a sine-wave voltage's magnitude and phase angle",
-          "Phasor length = magnitude; angle from the reference axis = phase",
-          "Polar impedance: ohms and an angle, such as 141 ohms, /45 degrees",
-          "The slash stands for the angle sign",
-          "Inductive angles are positive; capacitive angles are negative"
-        ]
+        "title": "Polar form: a phasor's length and angle",
+        "items": ["Picture the turning wheel behind a sine wave", "An arrow from the hub to the rim is a phasor", "Its length is the magnitude; its angle from the reference axis is the phase", "So a polar plot shows a sine-wave voltage's magnitude and phase angle"]
       },
-      "onScreen": ["Polar plot: magnitude and phase angle", "Phasor length and angle", "141 ohms, /45 degrees", "Slash = angle sign", "Inductive positive, capacitive negative"],
-      "narration": "Polar coordinates describe the same networks another way. A polar plot of a sine-wave voltage shows its magnitude and its phase angle. It's drawn as a phasor: the arrow's length is the magnitude, and its angle from the reference axis is the phase. In polar form, impedance is written as a magnitude in ohms and a phase angle, such as 141 ohms at 45 degrees. On the exam, the slash stands for the angle sign. Inductive angles are positive, and capacitive angles are negative."
+      "onScreen": ["Phasor: an arrow from the hub to the rim", "Length: magnitude", "Angle: phase", "Polar plot: magnitude and phase angle"],
+      "narration": "The exam also writes impedance a second way, called polar form. Rectangular form says how far east and how far north. Polar form gives a position the other way: how far, and in what direction. Remember the turning wheel behind a sine wave. Draw an arrow from the hub to the point on the rim. That arrow is called a phasor. Its length is the wave's size, called the magnitude, and its angle from a starting line, the reference axis, is the wave's phase. So a polar plot of a voltage in a sine-wave circuit shows its magnitude and its phase angle. Waveforms A and B from Figure 3B3 would be 2 equal arrows, 90 degrees apart."
     },
     {
-      "id": "s29",
+      "id": "s58",
       "keyTopic": 17,
       "template": "comparison-table",
       "params": {
-        "title": "Series: |Z| = √(R² + X²), θ = arctan(X ÷ R)",
-        "columns": ["Series network", "Magnitude", "Angle", "Polar Z"],
+        "title": "The same impedance, written 2 ways",
+        "columns": ["Form", "Rectangular", "Polar"],
         "rows": [
-          ["100 Ω X<sub>L</sub>, 100 Ω R", "√(100² + 100²) ≈ 141 Ω", "arctan(1) = 45°", "141 ohms, /45 degrees"],
-          ["400 Ω X<sub>C</sub>, 300 Ω R", "√(300² + 400²) = 500 Ω", "−arctan(1.333) ≈ −53.1°", "500 ohms, /-53.1 degrees"],
-          ["600 Ω X<sub>L</sub> − 300 Ω X<sub>C</sub> = 300 Ω, 400 Ω R", "√(400² + 300²) = 500 Ω", "arctan(300 ÷ 400) ≈ 37°", "500 ohms, /37 degrees"]
+          ["Impedance", "R + jX", "Ohms, /angle"],
+          ["Example", "100 + j100", "141 ohms, /45 degrees"],
+          ["As directions", "100 east, 100 north", "141 away, at 45 degrees"],
+          ["Inductive or capacitive", "+j or −j", "Positive or negative angle"]
         ]
       },
-      "onScreen": ["Series: magnitude √(R² + X²), angle arctan(X ÷ R)", "141 ohms, /45 degrees", "500 ohms, /-53.1 degrees", "Reactances cancel to 300 Ω inductive", "500 ohms, /37 degrees"],
-      "narration": "For R and X in series, the magnitude is the square root of R squared plus X squared, and the angle is the arc tangent of X over R. A 100 ohm reactance inductor with a 100 ohm resistor gives about 141 ohms, at the arc tangent of 1, which is 45 degrees. A 400 ohm reactance capacitor with a 300 ohm resistor gives 500 ohms, at minus the arc tangent of 1.333, about minus 53.1 degrees. Last, a capacitor with 300 ohms of reactance, an inductor with 600 ohms, and a 400 ohm resistor. The reactances cancel to 600 minus 300, or 300 ohms inductive. That gives 500 ohms at about 37 degrees."
+      "onScreen": ["Rectangular: R + jX", "Polar: ohms and an angle", "141 ohms, /45 degrees", "Inductive positive, capacitive negative"],
+      "narration": "The same idea works for impedance. In polar form, it's written as a magnitude in ohms and a phase angle, such as 141 ohms at 45 degrees. On the exam it's printed as 141 ohms, slash 45 degrees, where the slash stands for the angle sign. It's the same impedance as 100 plus j 100: going 100 east and 100 north puts you 141 from where you started, at 45 degrees. The sign carries over too. Inductive impedances have positive angles, like a plus j, and capacitive impedances have negative angles, like a minus j. Next, how to convert."
     },
     {
-      "id": "s30",
+      "id": "s59",
+      "keyTopic": 17,
+      "template": "formula",
+      "params": {
+        "title": "Series: the impedance triangle",
+        "formula": "|Z| = √(R² + X²), θ = arctan(X ÷ R)",
+        "steps": ["|Z| = √(100² + 100²) = √20,000 ≈ 141 Ω", "θ = arctan(100 ÷ 100) = arctan(1) = 45°", "Inductive, so the angle is positive"],
+        "answer": "141 ohms, /45 degrees"
+      },
+      "onScreen": ["R along, X up, Z the slanted side", "√(100² + 100²) ≈ 141 Ω", "arctan(1) = 45°", "141 ohms, /45 degrees"],
+      "narration": "To convert, draw a right triangle, called the impedance triangle: R along the bottom, and X straight up, because they're 90 degrees apart. The impedance is the slanted side. Its length, the magnitude, is the square root of R squared plus X squared, the Pythagorean theorem from school. For the angle, take X over R, the triangle's height over its base, a ratio called the tangent. The arc tangent key, tan to the minus 1, turns that ratio back into an angle. A 100 ohm reactance inductor in series with a 100 ohm resistor: 100 squared is 10,000, twice that is 20,000, and its square root is about 141 ohms. X over R is 1, and the arc tangent of 1 is 45 degrees: 141 ohms at 45 degrees."
+    },
+    {
+      "id": "s60",
+      "keyTopic": 17,
+      "template": "formula",
+      "params": {
+        "title": "Series capacitor: 500 ohms, /-53.1 degrees",
+        "formula": "|Z| = √(R² + X²), θ = −arctan(X ÷ R)",
+        "steps": ["Divide by 100: √(3² + 4²) = √(9 + 16) = √25 = 5", "Multiply back by 100: |Z| = 500 Ω", "arctan(400 ÷ 300) = arctan(1.333) ≈ 53.1°", "Capacitive, so negative: −53.1°"],
+        "answer": "500 ohms, /-53.1 degrees"
+      },
+      "onScreen": ["√(3² + 4²) = 5, so 500 Ω", "arctan(1.333) ≈ 53.1°", "Capacitive: negative angle", "500 ohms, /-53.1 degrees"],
+      "narration": "Next, a 400 ohm reactance capacitor in series with a 300 ohm resistor. These numbers hide a shortcut. Divide them by 100, and you get 3 and 4. 3 squared plus 4 squared is 9 plus 16, which is 25, and the square root of 25 is 5. Multiply back by 100: the magnitude is 500 ohms. For the angle, X over R is 400 over 300, about 1.333, and its arc tangent is about 53.1 degrees. It's a capacitor, so the angle is negative: 500 ohms at minus 53.1 degrees. The trap choices flip the sign, or give 240 ohms, the answer for a parallel network you'll meet shortly."
+    },
+    {
+      "id": "s61",
+      "keyTopic": 17,
+      "template": "formula",
+      "params": {
+        "title": "Opposite reactances cancel",
+        "formula": "X = X<sub>L</sub> − X<sub>C</sub>",
+        "steps": ["+j600 and −j300 leave +j300: inductive", "|Z| = √(400² + 300²) = 500 Ω: 3, 4, 5 again", "θ = arctan(300 ÷ 400) = arctan(0.75) ≈ 37°"],
+        "answer": "500 ohms, /37 degrees"
+      },
+      "onScreen": ["600 − 300 = 300 Ω inductive", "√(400² + 300²) = 500 Ω", "arctan(0.75) ≈ 37°", "500 ohms, /37 degrees"],
+      "narration": "What if a series network has both a coil and a capacitor? Take a 300 ohm reactance capacitor, a 600 ohm reactance inductor and a 400 ohm resistor. Reactances in series pull in opposite directions, plus j and minus j, so they partly cancel. 600 minus 300 leaves 300 ohms, and since the inductor's is bigger, what's left is inductive. Now it's just 400 ohms of resistance with 300 ohms of reactance: the 3, 4, 5 triangle again, so the magnitude is 500 ohms. The angle is the arc tangent of 300 over 400, which is 0.75, about 37 degrees, positive because it's inductive. 500 ohms at 37 degrees."
+    },
+    {
+      "id": "s62",
       "keyTopic": 17,
       "template": "formula",
       "params": {
         "title": "Parallel: an inductor and a resistor",
         "formula": "|Z| = R × X ÷ √(R² + X²), θ = arctan(R ÷ X)",
-        "steps": ["|Z| = 300 × 400 ÷ √(300² + 400²)", "|Z| = 300 × 400 ÷ 500 = 240 Ω", "θ = arctan(300 ÷ 400) = arctan(0.75) ≈ 36.9°"],
-        "answer": "Z = 240 ohms, /36.9 degrees"
+        "steps": ["|Z| = 300 × 400 ÷ √(300² + 400²) = 300 × 400 ÷ 500", "Divide by 100: 3 × 4 ÷ 5 = 2.4, so |Z| = 240 Ω", "θ = arctan(300 ÷ 400) = arctan(0.75) ≈ 36.9°", "Inductive branch: positive angle"],
+        "answer": "240 ohms, /36.9 degrees"
       },
       "onScreen": ["Parallel: R × X ÷ √(R² + X²)", "Angle: arctan(R ÷ X)", "300 × 400 ÷ 500 = 240 Ω", "240 ohms, /36.9 degrees"],
-      "narration": "Parallel networks use a different formula. The magnitude is R times X, over the square root of R squared plus X squared. The angle is the arc tangent of R over X. A 400 ohm reactance inductor is in parallel with a 300 ohm resistor. The magnitude is 300 times 400, divided by the square root of 300 squared plus 400 squared. That's 300 times 400 over 500, or 240 ohms. The angle is the arc tangent of 0.75, about 36.9 degrees, positive because it's inductive. Z equals 240 ohms at 36.9 degrees."
+      "narration": "Parallel networks need different formulas. The magnitude is like product over sum: R times X, divided by the triangle sum, the square root of R squared plus X squared. And the angle flips: it's the arc tangent of R over X. Why? In parallel, the current favors the easier path, so a big reactance means the network acts mostly like the resistor, with a small angle. A 400 ohm reactance inductor in parallel with a 300 ohm resistor: 300 times 400, over 500. Divide each by 100 to make it easy: 3 times 4 is 12, over 5 is 2.4, and multiplying back by 100 gives 240 ohms. The angle is the arc tangent of 0.75, about 36.9 degrees, positive for an inductor."
     },
     {
-      "id": "s31",
+      "id": "s63",
       "keyTopic": 17,
       "template": "formula",
       "params": {
-        "title": "Parallel: a capacitor and a resistor",
-        "formula": "|Z| = R × X<sub>C</sub> ÷ √(R² + X<sub>C</sub>²)",
-        "steps": ["100 pF at 500 kHz: X<sub>C</sub> ≈ 3183 Ω", "|Z| = 4000 × 3183 ÷ 5112 ≈ 2490 Ω", "θ = −arctan(1.257) ≈ −51.5°"],
-        "answer": "Z = 2490 ohms, /-51.5 degrees"
+        "title": "Reactance of 100 picofarads at 500 kHz",
+        "formula": "X<sub>C</sub> = 1 ÷ (2πfC)",
+        "steps": ["100 pF = 0.0001 µF", "A tenth of the earlier 0.001 µF, at the same 500 kHz", "A tenth of the capacitance: 10 times the reactance"],
+        "answer": "X<sub>C</sub> ≈ 3183 ohms"
       },
-      "onScreen": ["X C ≈ 3183 Ω", "4000 × 3183 ÷ 5112 ≈ 2490 Ω", "−arctan(1.257) ≈ −51.5°", "2490 ohms, /-51.5 degrees"],
-      "narration": "One more. A 100 picofarad capacitor is in parallel with a 4000 ohm resistor at 500 kilohertz. X sub C is about 3183 ohms. The square root of 4000 squared plus 3183 squared is about 5112. So the magnitude is 4000 times 3183 over 5112, about 2490 ohms. The angle is minus the arc tangent of 1.257, about minus 51.5 degrees. It's negative because the network is capacitive. Z equals 2490 ohms at minus 51.5 degrees."
+      "onScreen": ["100 pF = 0.0001 µF", "A tenth of 0.001 µF", "10 times the reactance", "X C ≈ 3183 ohms"],
+      "narration": "The last polar problem has a capacitor of 100 picofarads, so let's get its reactance first. Pico, small p, means a millionth of a millionth, a million times smaller than micro, so 100 picofarads is 0.0001 microfarads. That's a tenth of the 0.001 microfarad capacitor we worked earlier, at the same 500 kilohertz. Because C is on the bottom of the reactance formula, a tenth of the capacitance gives 10 times the reactance. So instead of about 318 ohms, it's about 10 times that: 3183 ohms. A small capacitor has a large reactance."
     },
     {
-      "id": "s32",
+      "id": "s64",
+      "keyTopic": 17,
+      "template": "formula",
+      "params": {
+        "title": "Parallel capacitor: 2490 ohms, /-51.5 degrees",
+        "formula": "|Z| = R × X ÷ √(R² + X²), θ = −arctan(R ÷ X)",
+        "steps": ["√(4000² + 3183²) ≈ 5112", "|Z| = 4000 × 3183 ÷ 5112 ≈ 2490 Ω", "R ÷ X = 4000 ÷ 3183 ≈ 1.257", "θ = −arctan(1.257) ≈ −51.5°: capacitive"],
+        "answer": "2490 ohms, /-51.5 degrees"
+      },
+      "onScreen": ["√(4000² + 3183²) ≈ 5112", "4000 × 3183 ÷ 5112 ≈ 2490 Ω", "−arctan(1.257) ≈ −51.5°", "2490 ohms, /-51.5 degrees"],
+      "narration": "Back to the network: that 100 picofarad capacitor in parallel with a 4000 ohm resistor, at 500 kilohertz. Use the parallel formulas. The triangle sum, the square root of 4000 squared plus 3183 squared, is about 5112. The magnitude is 4000 times 3183, divided by 5112: about 2490 ohms. That's less than either branch alone, as a parallel combination always is. For the angle, R over X is 4000 over 3183, about 1.257, and its arc tangent is about 51.5 degrees. A capacitor makes it negative: 2490 ohms at minus 51.5 degrees. The trap 5112 ohms stops at the triangle sum, and a positive angle would mean an inductor."
+    },
+    {
+      "id": "s65",
+      "keyTopic": 13,
+      "template": "formula",
+      "params": {
+        "title": "Power at constant voltage: halve R",
+        "formula": "P = E² ÷ R",
+        "steps": ["Constant voltage: E stays fixed", "100 V across 100 Ω: 10,000 ÷ 100 = 100 W", "Halve R to 50 Ω: 10,000 ÷ 50 = 200 W", "Half the resistance: double the power"],
+        "answer": "Halve R and the power doubles"
+      },
+      "onScreen": ["P = E² ÷ R", "100 V, 100 Ω: 100 W", "100 V, 50 Ω: 200 W", "Halve R, double the power"],
+      "narration": "With phase angles and the impedance triangle in hand, we can finish the story of power. Start with DC. If the resistance across a constant voltage is cut in half, what happens to the power? Use P equals E squared over R, since E stays fixed. Try numbers: 100 volts across 100 ohms. 100 squared is 10,000, and over 100 that's 100 watts. Halve the resistance to 50 ohms: 10,000 over 50 is 200 watts. The power doubles. It makes sense: half the resistance lets twice the current through at the same voltage, and power is voltage times current. The trap, quadruple, is what you'd get by doubling the voltage, because E is squared."
+    },
+    {
+      "id": "s66",
+      "keyTopic": 13,
+      "template": "key-facts",
+      "params": {
+        "title": "Watts and horsepower",
+        "items": ["Horsepower: an older unit of power, still used for motors and engines", "1 horsepower: lifting 550 pounds at the rate of 1 foot per second", "In electrical units, that's 746 watts", "So 746 watts = 1 horsepower"]
+      },
+      "onScreen": ["Horsepower: a unit of power", "550 pounds lifted 1 foot per second", "746 watts", "746 watts = 1 horsepower"],
+      "narration": "The exam also asks about another unit of power. Power is the rate of doing work, and an older unit for it is still used for motors and engines: the horsepower. It was defined as lifting 550 pounds at the rate of 1 foot every second. In electrical units, that same rate of work is 746 watts. So the exam's 746 watts, corresponding to lifting 550 pounds at 1 foot per second, is the equivalent of 1 horsepower. Not a fraction of a horsepower: exactly 1. A motor rated at 1 horsepower delivers about 746 watts of mechanical power."
+    },
+    {
+      "id": "s67",
+      "keyTopic": 13,
+      "template": "formula",
+      "params": {
+        "title": "AC power: apparent and true",
+        "formula": "True power = apparent power × PF",
+        "steps": ["Out of phase: some energy goes back to the source", "Apparent power = RMS volts × RMS amps", "True power = apparent power × PF", "Power factor, PF = cos θ, from 0 to 1"],
+        "answer": "Multiply the apparent power by the power factor"
+      },
+      "onScreen": ["Out of phase: energy returned", "Apparent power = RMS volts × RMS amps", "True power = apparent power × PF", "PF = cos θ"],
+      "narration": "With AC there's a twist. In a circuit with a coil or capacitor, the current is out of phase with the voltage by the impedance angle, theta. For part of each cycle, the current flows against the voltage, and energy is handed back to the source instead of being used. So RMS volts times RMS amps gives only the apparent power: what the power appears to be from the meters. The true power, the power actually turned into heat or radio waves, is the apparent power times the power factor. The power factor, PF, is the cosine of theta, a number from 0 to 1. Dividing by the power factor, or subtracting it, are traps."
+    },
+    {
+      "id": "s68",
+      "keyTopic": 13,
+      "template": "formula",
+      "params": {
+        "title": "Power factor: the cosine of the angle",
+        "formula": "PF = cos θ",
+        "steps": ["60°: cos 60° = 0.5", "45°: cos 45° ≈ 0.707", "30°: cos 30° ≈ 0.866", "0.577 is tan 30°, not cos 30°"],
+        "answer": "PF: 0.5 at 60°, 0.707 at 45°, 0.866 at 30°"
+      },
+      "onScreen": ["PF = cos θ", "60°: 0.5", "45°: 0.707", "30°: 0.866", "0.577 is tan 30°"],
+      "narration": "What is the cosine? In the impedance triangle, it's the bottom side over the slanted side: R over Z, the share of the impedance that's resistance, the part that does real work. Your calculator's cos key gives it. An RL circuit, a resistor and an inductor, with a 60 degree phase angle between voltage and current: cos 60 degrees is 0.5, so the power factor is 0.5. At 45 degrees, it's about 0.707. Check with our 141 ohm network at 45 degrees: 100 ohms over 141 is about 0.707. At 30 degrees, it's about 0.866: a smaller angle, closer to pure resistance, closer to 1. Don't pick 0.577; that's the tangent of 30 degrees, the height-over-base ratio, not the cosine. And 1.73 is the tangent of 60."
+    },
+    {
+      "id": "s69",
       "keyTopic": 18,
       "template": "formula",
       "params": {
         "title": "Impedance magnitude: don't just add",
         "formula": "|Z| = √(R² + X<sub>L</sub>²)",
-        "steps": ["|Z| = √(6² + 17²)", "|Z| = √325", "Not 6 + 17: R and X<sub>L</sub> are 90° apart"],
-        "answer": "|Z| ≈ 18 ohms"
+        "steps": ["|Z| = √(6² + 17²)", "6² + 17² = 325", "√325 ≈ 18 Ω", "Not 6 + 17 = 23: they're 90° apart"],
+        "answer": "≈ 18 ohms"
       },
-      "onScreen": ["√(6² + 17²) = √325", "≈ 18 ohms", "Don't add: 90° phase difference"],
-      "narration": "A series circuit has 6 ohms of resistance, 17 ohms of inductive reactance, and no capacitive reactance. What's the magnitude of its impedance? Use the square root of R squared plus X sub L squared. That's the square root of 6 squared plus 17 squared, which is the square root of 325. That's about 18 ohms. Don't just add 6 and 17. That ignores the 90 degree phase difference between resistance and reactance."
+      "onScreen": ["√(6² + 17²) = √325", "≈ 18 ohms", "Don't add: 90° apart"],
+      "narration": "The last group of calculations mixes topics, starting with that triangle once more. A series AC circuit has 6 ohms of resistance, 17 ohms of inductive reactance and no capacitive reactance. What's the magnitude of its impedance? Square both, add, and take the square root: 6 squared plus 17 squared is 325, and the square root of 325 is about 18 ohms. Does it make sense? The slanted side of a triangle is longer than either other side, so more than 17, but shorter than the 2 added together. Adding 6 and 17 to get 23 ignores the 90 degree difference between resistance and reactance."
     },
     {
-      "id": "s33",
+      "id": "s70",
       "keyTopic": 18,
       "template": "block-diagram",
       "params": {
-        "title": "Biasing a Zener at its midpoint",
+        "title": "Transformers: turns and voltage",
         "columns": 3,
         "blocks": [
-          { "id": "zener", "label": "10 V Zener, 20 V supply", "note": "I min. 5 mA, I max. 95 mA" },
-          { "id": "current", "label": "Midpoint current", "note": "(5 + 95) ÷ 2 = 50 mA" },
-          { "id": "resistor", "label": "Series resistor", "note": "R = 10 V ÷ 50 mA = 200 ohms" }
+          { "id": "primary", "label": "Primary coil: N<sub>p</sub> turns", "note": "Source side" },
+          { "id": "core", "label": "Shared magnetic core", "note": "Carries the changing field" },
+          { "id": "secondary", "label": "Secondary coil: N<sub>s</sub> turns", "note": "Load side" }
         ],
         "links": [
-          { "from": "zener", "to": "current" },
-          { "from": "current", "to": "resistor", "label": "Drops 20 − 10 = 10 V" }
+          { "from": "primary", "to": "core", "label": "AC in" },
+          { "from": "core", "to": "secondary", "label": "AC out" }
         ]
       },
-      "onScreen": ["10 V Zener: 5 to 95 mA, on a 20 V supply", "Midpoint current: 50 mA", "Resistor drops 20 − 10 = 10 V", "R = 10 V ÷ 50 mA = 200 ohms"],
-      "narration": "Now a Zener diode bias problem. A 10 volt Zener has a minimum current of 5 milliamps and a maximum of 95 milliamps. We want to bias it at its midpoint from a 20 volt supply. The midpoint current is 5 plus 95, over 2, which is 50 milliamps. The resistor drops the difference between the supply and the Zener: 20 minus 10, or 10 volts. So R equals 10 volts over 50 milliamps, which is 200 ohms."
+      "onScreen": ["Primary coil: the source side", "Shared magnetic core", "Secondary coil: the load side", "Voltage ratio = turns ratio"],
+      "narration": "Impedance also matters when you connect one circuit to another, and that's a job for a transformer: 2 coils wound on a shared magnetic core. AC in the first coil, the primary, makes a changing magnetic field in the core. That field makes a voltage in the second coil, the secondary, which feeds the load, the device receiving the power. The voltage changes by the turns ratio: the primary's turns over the secondary's. With 10 times as many turns on the primary, the voltage steps down 10 times. The current steps up 10 times, because in an ideal transformer the power coming out equals the power going in."
     },
     {
-      "id": "s34",
+      "id": "s71",
+      "keyTopic": 18,
+      "template": "formula",
+      "params": {
+        "title": "Impedance ratio = turns ratio squared",
+        "formula": "Z<sub>p</sub> ÷ Z<sub>s</sub> = (N<sub>p</sub> ÷ N<sub>s</sub>)²",
+        "steps": ["Impedance = voltage ÷ current", "10 to 1 turns: voltage ÷ 10, current × 10", "So impedance changes by 10 × 10 = 100"],
+        "answer": "Impedance ratio = turns ratio squared"
+      },
+      "onScreen": ["Impedance = voltage ÷ current", "10 to 1 turns: voltage ÷ 10, current × 10", "Impedance ratio: 10 × 10 = 100", "Impedance ratio = turns ratio squared"],
+      "narration": "What does that do to impedance? Impedance is voltage over current, just as resistance is in Ohm's law. With a 10 to 1 turns ratio, the voltage goes down 10 times and the current goes up 10 times, so their ratio changes by 10 times 10, which is 100. That's the rule: the impedance ratio is the turns ratio squared. It lets a transformer match a source to a load of a different impedance, so the most power gets across. To find the turns ratio from 2 impedances, run the rule backward with a square root."
+    },
+    {
+      "id": "s72",
+      "keyTopic": 18,
+      "template": "formula",
+      "params": {
+        "title": "Matching 500 ohms to 10 ohms",
+        "formula": "N<sub>p</sub> ÷ N<sub>s</sub> = √(Z<sub>p</sub> ÷ Z<sub>s</sub>)",
+        "steps": ["Impedance ratio: 500 ÷ 10 = 50", "Turns ratio = √50 ≈ 7.1", "Check: 7.1 × 7.1 ≈ 50"],
+        "answer": "7.1 to 1 (50 to 1 is the impedance ratio)"
+      },
+      "onScreen": ["500 ÷ 10 = 50", "√50 ≈ 7.1", "7.1 to 1 turns ratio", "50 to 1 is the impedance ratio"],
+      "narration": "What turns ratio does a transformer need to match a source impedance of 500 ohms to a load of 10 ohms? The impedance ratio is 500 over 10, which is 50. Undo the squaring with a square root: the turns ratio is the square root of 50, about 7.1. Check: 7.1 times 7.1 is about 50. So the transformer needs a 7.1 to 1 turns ratio. The trap is 50 to 1: that's the impedance ratio, not the turns ratio. And 14.2 to 1 is just 7.1 doubled."
+    },
+    {
+      "id": "s73",
+      "keyTopic": 18,
+      "template": "block-diagram",
+      "params": {
+        "title": "A Zener voltage regulator",
+        "columns": 3,
+        "blocks": [
+          { "id": "supply", "label": "20 V supply", "note": "More voltage than needed" },
+          { "id": "resistor", "label": "Series resistor", "note": "Drops the extra 10 V" },
+          { "id": "zener", "label": "10 V Zener", "note": "Holds 10 V across the load" }
+        ],
+        "links": [
+          { "from": "supply", "to": "resistor", "label": "Current" },
+          { "from": "resistor", "to": "zener", "label": "5 to 95 mA" }
+        ]
+      },
+      "onScreen": ["20 V supply", "Series resistor drops the extra 10 V", "10 V Zener holds the output steady", "Zener current: 5 mA minimum, 95 mA maximum"],
+      "narration": "Now, power supplies. Remember the Zener diode, which conducts at its Zener voltage and holds it there? Feed one through a series resistor, connect the load across the Zener, and you have a simple voltage regulator: a circuit that keeps a voltage steady. Here a 10 volt Zener runs from a 20 volt supply. The Zener holds 10 volts across the load, so the resistor must drop the other 10 volts. The Zener needs some current to work: at least 5 milliamps, or it stops regulating, and no more than 95 milliamps, or it overheats. Setting its bias, its working current, at the midpoint of that range leaves the most room either way."
+    },
+    {
+      "id": "s74",
+      "keyTopic": 18,
+      "template": "formula",
+      "params": {
+        "title": "Sizing the Zener's resistor",
+        "formula": "R = (E<sub>supply</sub> − E<sub>Zener</sub>) ÷ I",
+        "steps": ["Midpoint current: (5 + 95) ÷ 2 = 50 mA", "Resistor's drop: 20 V − 10 V = 10 V", "R = 10 V ÷ 50 mA = 10 ÷ 50 thousandths"],
+        "answer": "200 ohms"
+      },
+      "onScreen": ["(5 + 95) ÷ 2 = 50 mA", "20 − 10 = 10 V", "10 V ÷ 50 mA = 200 ohms"],
+      "narration": "Time to size the current-limiting resistor. Step 1, the midpoint current: halfway between 5 and 95 milliamps is 5 plus 95, over 2, which is 50 milliamps. Step 2, the resistor's voltage: the supply's 20 volts minus the Zener's 10 volts leaves 10 volts. Step 3, Ohm's law: R equals E over I, 10 volts divided by 50 milliamps. 50 milliamps is 50 thousandths of an ampere, and dividing by thousandths multiplies by 1000: 10,000 over 50 is 200 ohms. Check: 200 ohms times 50 thousandths of an amp is 10 volts. Exactly right."
+    },
+    {
+      "id": "s75",
       "keyTopic": 18,
       "template": "formula",
       "params": {
         "title": "Percentage voltage regulation",
         "formula": "Regulation = (E<sub>NL</sub> − E<sub>FL</sub>) ÷ E<sub>FL</sub> × 100%",
-        "steps": ["(12 V − 10 V) ÷ 10 V × 100% = 20%", "Based on full load: E<sub>NL</sub> = E<sub>FL</sub> × (1 + 0.25)", "E<sub>NL</sub> = 200 V × 1.25"],
-        "answer": "20% regulation · 250 volts no load"
+        "steps": ["No load: 12 V · full load: 10 V", "12 − 10 = 2 V of sag", "2 ÷ 10 × 100% = 20%", "Not 2 ÷ 12 ≈ 17%: divide by the full load"],
+        "answer": "20% regulation"
       },
-      "onScreen": ["(no load − full load) ÷ full load × 100%", "12 V and 10 V: 20%", "200 V full load, 25%: 200 × 1.25", "250 volts no load"],
-      "narration": "Power supply regulation compares the no-load voltage with the full-load voltage. Percentage regulation is the no-load voltage minus the full-load voltage, divided by the full-load voltage, times 100 percent. A supply gives 12 volts with no load and 10 volts at full load. 12 minus 10, over 10, times 100 percent, is 20 percent. Because regulation is based on the full-load voltage, you can work backward. A 200 volt full-load voltage with 25 percent regulation gives a no-load voltage of 200 times 1.25, or 250 volts."
+      "onScreen": ["(no load − full load) ÷ full load × 100%", "12 − 10 = 2 V", "2 ÷ 10 × 100% = 20%"],
+      "narration": "Every power supply has a weakness: its output voltage sags as you draw more current from it, because some of its voltage is used up inside the supply itself. Voltage regulation measures how much. No load means nothing connected; full load means the most current it's rated for. Percentage regulation is the no-load voltage minus the full-load voltage, divided by the full-load voltage, times 100 percent. Smaller is better. A supply gives 12 volts with no load and 10 volts at full load. It sags 12 minus 10, which is 2 volts. 2 over 10 is 0.2, and times 100 percent that's 20 percent. The trap, 17 percent, divides by 12 instead of the full-load 10."
     },
     {
-      "id": "s35",
+      "id": "s76",
       "keyTopic": 18,
       "template": "formula",
       "params": {
-        "title": "Turns ratio and conductance",
-        "formula": "N<sub>p</sub> ÷ N<sub>s</sub> = √(Z<sub>p</sub> ÷ Z<sub>s</sub>)",
-        "steps": ["√(500 Ω ÷ 10 Ω) = √50 ≈ 7.1", "50 to 1 is the impedance ratio, not the turns ratio", "Conductance: R = 12 V ÷ 6 A = 2 Ω, G = 1 ÷ R"],
-        "answer": "7.1 to 1 turns ratio · G = 0.50 siemens"
+        "title": "Working backward: the no-load voltage",
+        "formula": "E<sub>NL</sub> = E<sub>FL</sub> × (1 + regulation)",
+        "steps": ["Regulation is a share of the full-load voltage", "25% of 200 V = 50 V of sag", "E<sub>NL</sub> = 200 + 50 = 250 V", "Same as 200 × 1.25"],
+        "answer": "250 volts no load"
       },
-      "onScreen": ["Turns ratio = √(impedance ratio)", "√50 ≈ 7.1 to 1", "50 to 1 is the impedance ratio", "G = 1 ÷ R = 0.50 siemens (mhos)"],
-      "narration": "A transformer's impedance ratio is the square of its turns ratio. So to match 500 ohms to 10 ohms, the turns ratio is the square root of 500 over 10. That's the square root of 50, about 7.1, a 7.1 to 1 turns ratio. 50 to 1 is the impedance ratio, not the turns ratio. Last, conductance, G, is the reciprocal of resistance. 6 amperes flow at 12 volts DC, so R is 2 ohms. G equals 1 over 2, or 0.50 siemens, also called mhos. That's the same as I over E: 6 over 12."
+      "onScreen": ["25% of 200 V = 50 V", "200 + 50 = 250 V", "200 × 1.25 = 250 volts"],
+      "narration": "You can also run it backward. A supply has a full-load voltage of 200 volts and 25 percent regulation. What's its no-load voltage? Regulation is based on the full-load voltage, so the sag is 25 percent of 200 volts, which is 50 volts. With no load, the voltage is higher by that much: 200 plus 50 is 250 volts. In a single step, multiply by 1 plus 0.25: 200 times 1.25 is 250. The trap, 150 volts, subtracts instead of adding, but the no-load voltage is always the higher one."
+    },
+    {
+      "id": "s77",
+      "keyTopic": 18,
+      "template": "formula",
+      "params": {
+        "title": "Conductance: the flip side of resistance",
+        "formula": "G = 1 ÷ R",
+        "steps": ["R = E ÷ I = 12 V ÷ 6 A = 2 Ω", "G = 1 ÷ 2 = 0.50 siemens", "Same as I ÷ E = 6 ÷ 12"],
+        "answer": "0.50 siemens (mhos)"
+      },
+      "onScreen": ["G = 1 ÷ R", "12 V ÷ 6 A = 2 Ω", "G = 0.50 siemens (mhos)"],
+      "narration": "Let's finish where we began, with Ohm's law. Resistance says how hard a circuit holds current back. Conductance, G, says how easily it lets current through: it's the reciprocal of resistance, 1 over R. Its unit is the siemens, also called the mho, which is ohm spelled backward. 6 amperes flow when 12 volts DC is applied. What's the conductance? First the resistance: 12 volts over 6 amps is 2 ohms. Then 1 over 2 is 0.50 siemens. You could skip a step: G equals I over E, 6 over 12, the same 0.5."
+    },
+    {
+      "id": "s78",
+      "keyTopic": 18,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": ["Ohm's law: I = E ÷ R; power: P = E × I = I² × R = E² ÷ R", "Sine waves: RMS = 0.707 × peak; peak = 1.414 × RMS; peak-to-peak = 2 × peak", "RC: τ = R × C, 63.2% after 1, 86.5% after 2 (13.5% left); RL: τ = L ÷ R, current 63.2%", "Impedance: R + jX (+j coil, −j capacitor), or √(R² + X²) at arctan(X ÷ R)", "Power factor = cos θ; true power = apparent power × power factor"]
+      },
+      "onScreen": ["Ohm's law and power", "RMS, peak and peak-to-peak", "Time constants: 63.2%, 86.5%, 13.5%", "Impedance: rectangular and polar", "Power factor and true power"],
+      "narration": "Let's gather the essentials. First, Ohm's law, I equals E over R, and power, P equals E times I, which also gives I squared R and E squared over R. Second, for sine waves, RMS is 0.707 times the peak, the peak is 1.414 times RMS, and peak-to-peak is twice the peak. Third, time constants. 1 RC time constant, R times C, charges a capacitor to 63.2 percent, and 2 of them to 86.5 percent, leaving 13.5 percent when discharging. In an RL circuit, L over R brings the current to 63.2 percent. Fourth, impedance is R plus or minus j X, or a magnitude and angle from the triangle. Fifth, power factor is the cosine of the phase angle, and true power is apparent power times power factor. Work slowly, keep your units, and check that each answer makes sense."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [9] },
-    { "after": "s8", "keyTopics": [10] },
-    { "after": "s11", "keyTopics": [11] },
-    { "after": "s14", "keyTopics": [12] },
-    { "after": "s17", "keyTopics": [13] },
-    { "after": "s20", "keyTopics": [14] },
-    { "after": "s23", "keyTopics": [15] },
-    { "after": "s27", "keyTopics": [16] },
-    { "after": "s31", "keyTopics": [17] },
-    { "after": "s35", "keyTopics": [18] }
+    { "after": "s4", "keyTopics": [9], "questions": ["3-9B2"] },
+    { "after": "s7", "keyTopics": [9], "questions": ["3-9B3", "3-9B4", "3-9B5"] },
+    { "after": "s10", "keyTopics": [9], "questions": ["3-9B1"] },
+    { "after": "s13", "keyTopics": [9], "questions": ["3-9B6", "3-9B5"] },
+    { "after": "s17", "keyTopics": [10], "questions": ["3-10B2", "3-10B6"] },
+    { "after": "s21", "keyTopics": [10], "questions": ["3-10B3", "3-10B4"] },
+    { "after": "s24", "keyTopics": [10], "questions": ["3-10B5"] },
+    { "after": "s28", "keyTopics": [11], "questions": ["3-11B2", "3-11B3", "3-11B1", "3-11B6"] },
+    { "after": "s32", "keyTopics": [11, 12], "questions": ["3-11B4", "3-11B5", "3-12B1"] },
+    { "after": "s35", "keyTopics": [12], "questions": ["3-12B2", "3-12B3", "3-12B4"] },
+    { "after": "s38", "keyTopics": [10, 12], "questions": ["3-12B5", "3-10B1", "3-12B6"] },
+    { "after": "s41", "keyTopics": [14], "questions": ["3-14B1", "3-14B2"] },
+    { "after": "s45", "keyTopics": [14], "questions": ["3-14B2", "3-14B5", "3-14B6", "3-14B3", "3-14B4"] },
+    { "after": "s49", "keyTopics": [15], "questions": ["3-15B3", "3-15B4", "3-15B1", "3-15B2", "3-15B5", "3-15B6"] },
+    { "after": "s53", "keyTopics": [16], "questions": ["3-16B1"] },
+    { "after": "s56", "keyTopics": [16], "questions": ["3-16B2", "3-16B3", "3-16B4", "3-16B6", "3-16B5"] },
+    { "after": "s60", "keyTopics": [17], "questions": ["3-17B6", "3-17B2", "3-17B3"] },
+    { "after": "s64", "keyTopics": [17], "questions": ["3-17B4", "3-17B5", "3-17B1"] },
+    { "after": "s68", "keyTopics": [13], "questions": ["3-13B2", "3-13B3", "3-13B4", "3-13B1", "3-13B5", "3-13B6"] },
+    { "after": "s72", "keyTopics": [18], "questions": ["3-18B1", "3-18B4"] },
+    { "after": "s75", "keyTopics": [18], "questions": ["3-18B2", "3-18B3"] },
+    { "after": "s78", "keyTopics": [18], "questions": ["3-18B5", "3-18B6"] }
   ],
   "video": null
 }

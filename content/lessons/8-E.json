@@ -2,7 +2,13 @@
   "id": "8-E",
   "element": 8,
   "title": "Antenna Systems",
-  "keyTopics": [39, 40, 41, 42, 43],
+  "keyTopics": [
+    39,
+    40,
+    41,
+    42,
+    43
+  ],
   "scenes": [
     {
       "id": "s1",
@@ -11,88 +17,394 @@
       "params": {
         "kicker": "Element 8 · Subelement E",
         "title": "Antenna Systems",
-        "subtitle": "The slotted waveguide array, transmission lines, sending the antenna's bearing to the display, and waveguides."
+        "subtitle": "What the antenna must do, then the pulse up the mast through feed lines, waveguide and rotary joint, and the antenna's bearing back down."
       },
-      "onScreen": ["Antenna Systems", "Slotted array, transmission lines, bearing to the display, waveguides"],
-      "narration": "This lesson follows the radar signal from the transmitter up to the antenna. You'll learn how the slotted waveguide array forms its beam, how transmission lines and waveguides carry microwave energy with low loss, and how the antenna's position, its bearing, gets to the display. We'll begin with the antenna itself."
+      "onScreen": [
+        "Antenna Systems",
+        "The beam, feed lines, waveguide, rotary joint, slotted array, bearing to the display"
+      ],
+      "narration": "This lesson covers everything between the radar's transmitter and the open sky. First, what the antenna has to do: form a narrow beam. Then we'll follow a radar pulse up the mast, through the feed line and the waveguide, and across the rotary joint to the antenna. Last, we'll follow the antenna's direction back down to the display. A technician needs this, because the mast and its plumbing are where much of a radar's energy can be lost, and where many faults begin. By the end, you'll be able to explain how the antenna shapes its beam, work out a feed line's impedance, say why radar uses waveguide instead of coaxial cable, and name the devices that tell the display where the antenna points. No electronics background is needed."
     },
     {
       "id": "s2",
       "keyTopic": 39,
-      "template": "equipment-card",
+      "template": "radar-ppi",
       "params": {
-        "title": "The slotted waveguide array",
-        "device": "radar-antenna",
-        "callouts": [
-          { "label": "Slotted waveguide array: the most common type on commercial vessels", "at": "array" },
-          { "label": "Precisely spaced slots cut in one wall of the waveguide", "at": "slots" },
-          { "label": "Each slot radiates a small share, forming a narrow horizontal beam", "at": "rotation" },
-          { "label": "Compact and rugged: no separate feed horn needed" },
-          { "label": "Has largely replaced the truncated parabolic reflectors of older sets" }
+        "title": "Radar in one picture",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          {
+            "bearing": 50,
+            "range": 7
+          },
+          {
+            "bearing": 300,
+            "range": 4
+          }
+        ],
+        "labels": [
+          "The longer an echo takes to return, the farther away the target",
+          "The pulse goes out from a turning antenna; the echo goes to the receiver",
+          "PPI: distance from the center is range, direction is bearing",
+          "The display needs the echo's timing and the antenna's direction"
         ]
       },
-      "onScreen": ["Slotted waveguide array: most common on commercial vessels", "Precisely spaced slots in one wall", "Narrow horizontal beam", "Compact, rugged, no separate feed horn", "Replaced older truncated parabolic reflectors"],
-      "narration": "The typical shipboard radar antenna, and the most common type aboard commercial maritime vessels, is the slotted waveguide array. It's a length of waveguide with precisely spaced slots cut in one wall. Each slot radiates a small share of the energy, and together they form a narrow horizontal beam. The array is compact and rugged, and it needs no separate feed horn. Truncated parabolic reflectors were common on older sets, but the slotted waveguide array has largely replaced them."
+      "onScreen": [
+        "Echo time: the longer, the farther",
+        "Pulse out from a turning antenna, echo back to the receiver",
+        "PPI: distance is range, direction is bearing",
+        "Display needs echo timing and antenna direction"
+      ],
+      "narration": "First, the big picture. Radar works like shouting at a cliff: the longer the echo takes to return, the farther away the cliff is. A radar's transmitter makes a short burst of radio energy, called a pulse, and a turning antenna sends it out. When the pulse hits a ship or a coastline, a little of it bounces back as an echo. The same antenna catches it for the receiver. The screen, the PPI, or plan position indicator, is a map with your ship at the center. An echo's distance from the center shows its range, and its direction shows its bearing: which way it lies. So the display needs 2 things: when each echo came back, and which way the antenna was pointing."
     },
     {
       "id": "s3",
       "keyTopic": 39,
-      "template": "key-facts",
+      "template": "radar-ppi",
       "params": {
-        "title": "Why the beam points a little off",
-        "items": [
-          "End-fed array: each slot's phase is set by the guide wavelength",
-          "Change the transmitter frequency and the beam swings slightly: frequency scan",
-          "Frequency scan is also called beam squint",
-          "Main lobe center: several degrees off a line perpendicular to the antenna",
-          "Slots sit slightly off a half guide wavelength, so reflections don't build a high VSWR"
+        "title": "Bearing resolution: 1 echo or 2?",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          {
+            "bearing": 38,
+            "range": 8
+          },
+          {
+            "bearing": 44,
+            "range": 8
+          }
+        ],
+        "labels": [
+          "The antenna squeezes its energy into a beam; its width is the beamwidth",
+          "2 ships at the same range, on close bearings: can we tell them apart?",
+          "Each echo is smeared across the beam's width: a wide beam merges them",
+          "A narrow horizontal beam shows 2 echoes: good bearing resolution"
         ]
       },
-      "onScreen": ["End-fed: slot phase set by guide wavelength", "Frequency change swings the beam: frequency scan", "Also called beam squint", "Lobe center several degrees off perpendicular", "Slot spacing keeps VSWR low"],
-      "narration": "The slotted array has a couple of quirks the exam asks about. First, an end-fed slotted waveguide array exhibits frequency scan. Each slot's phase is set by the guide wavelength, so changing the transmitter frequency swings the beam direction slightly. This is also called beam squint. Second, the center of the transmitted lobe is several degrees offset from a line perpendicular to the antenna. That's because the slots are spaced slightly off a half guide wavelength, so their small reflections don't add up to a high VSWR, or voltage standing wave ratio."
+      "onScreen": [
+        "A beam and its beamwidth",
+        "2 ships, same range, close bearings",
+        "Wide beam: 1 merged echo",
+        "Narrow horizontal beam: 2 echoes"
+      ],
+      "narration": "That direction matters, because an antenna doesn't spray energy everywhere. It squeezes it into a beam, like a flashlight. The beam's width, measured in degrees, is the beamwidth. Look at these 2 ships, at the same range, on slightly different bearings. Telling them apart is called bearing resolution. The radar draws each echo in whatever direction the beam points as the echo returns. So a target shows up for as long as the beam touches it, smeared across the beam's width. If the beam is wider than the gap between the ships, their smears merge into one long echo. A narrow beam passes one, then the other, and shows 2. So good bearing resolution largely depends on a narrow antenna beam in the horizontal plane, side to side."
     },
     {
       "id": "s4",
       "keyTopic": 39,
-      "template": "radar-ppi",
+      "template": "comparison-table",
       "params": {
-        "title": "Bearing resolution and antenna length",
-        "rangeNm": 12,
-        "rings": 4,
-        "echoes": [
-          { "bearing": 38, "range": 8 },
-          { "bearing": 44, "range": 8 }
+        "title": "A radar beam has 2 widths",
+        "columns": [
+          "Beam or setting",
+          "Effect",
+          "For bearing resolution"
         ],
-        "labels": [
-          "2 targets at the same range, on slightly different bearings",
-          "Good bearing resolution depends on a narrow horizontal beam",
-          "Longer antenna, narrower beam: θ ≈ 70λ/L degrees; double L, halve θ",
-          "Vertical beam kept fairly wide, so targets stay in view as the ship rolls"
+        "rows": [
+          [
+            "Narrow horizontal beam",
+            "Separates targets on close bearings",
+            "The answer"
+          ],
+          [
+            "Fairly wide vertical beam",
+            "Targets stay in view as the ship rolls",
+            "Kept wide on purpose"
+          ],
+          [
+            "Narrow vertical beam",
+            "Targets flicker in and out",
+            "Trap: wrong plane"
+          ],
+          [
+            "High output or duty cycle",
+            "Stronger echoes, beam no narrower",
+            "Trap: no help"
+          ]
         ]
       },
-      "onScreen": ["2 targets at the same range, slightly different bearings", "Narrow horizontal beam: good bearing resolution", "θ ≈ 70λ/L degrees: double the length, halve the beamwidth", "Vertical beam fairly wide for rolling"],
-      "narration": "Bearing resolution is the ability to separate 2 targets at the same range on slightly different bearings, like these. Good bearing resolution largely depends on a narrow antenna beam in the horizontal plane; a wide beam would paint both as one echo. The longer the antenna, the narrower the horizontal beamwidth. Beamwidth is inversely proportional to the antenna's length in wavelengths: roughly, theta equals 70 lambda over L, in degrees. So doubling the length roughly halves the beamwidth. The vertical beam is kept fairly wide, so targets stay in view as the ship rolls."
+      "onScreen": [
+        "Horizontal beam: narrow, for bearing resolution",
+        "Vertical beam: fairly wide, for a rolling ship",
+        "Trap: narrow vertical beam",
+        "Trap: high output or duty cycle"
+      ],
+      "narration": "A beam has 2 widths: side to side, in the horizontal plane, and up and down, in the vertical plane. The radar wants them very different. Horizontally, narrow, for bearing resolution. Vertically, fairly wide. Why? A ship rolls and pitches, tilting the antenna up and down. A thin vertical beam would swing over the targets, or down into the sea, and they'd flicker in and out of view. On the exam, a narrow beam in the vertical plane is a trap: wrong plane. So are a high transmitter output and a high duty cycle, meaning the transmitter is on for more of the time. Both make echoes stronger, but neither narrows the beam, so 2 ships inside it still merge."
     },
     {
       "id": "s5",
-      "keyTopic": 40,
-      "template": "formula",
+      "keyTopic": 39,
+      "template": "waveform",
       "params": {
-        "title": "Impedance of a transmission line",
-        "formula": "Z<sub>O</sub> = √(L ÷ C)",
-        "steps": [
-          "L = 250 µH = 250 × 10⁻⁶ H",
-          "C = 1000 pF = 1 × 10⁻⁹ F",
-          "Z<sub>O</sub> = √((250 × 10⁻⁶) ÷ (1 × 10⁻⁹))",
-          "Z<sub>O</sub> = √250,000"
-        ],
-        "answer": "Z<sub>O</sub> = 500 Ω"
+        "title": "Frequency and wavelength",
+        "kind": "sine",
+        "cycles": 3,
+        "xAxis": "distance",
+        "yAxis": "field strength",
+        "labels": [
+          "A radio wave: a ripple of electric and magnetic energy",
+          "Frequency: how many waves pass each second, in hertz",
+          "Wavelength: the distance from 1 crest to the next",
+          "Same speed for all: higher frequency, shorter wavelength"
+        ]
       },
-      "onScreen": ["Z sub O = √(L ÷ C)", "250 µH = 250 × 10⁻⁶ H", "1000 pF = 1 × 10⁻⁹ F", "√250,000", "500 Ω"],
-      "narration": "The impedance of a transmission line, Z sub O, is the square root of L over C: the ratio of inductance L to capacitance C. Convert both to base units, henries and farads, first. Worked example: a section of line has 250 microhenries of L and 1000 picofarads of C. 250 microhenries is 250 millionths of a henry. 1000 picofarads is 1 billionth of a farad. Divide, and you get 250,000. The square root of 250,000 is 500. So Z sub O is 500 ohms."
+      "onScreen": [
+        "A radio wave: a repeating ripple",
+        "Frequency: waves per second, in hertz",
+        "Wavelength: crest to crest",
+        "Higher frequency, shorter wavelength"
+      ],
+      "narration": "So the goal is a narrow horizontal beam. What decides how narrow it can be? The answer starts with wavelength, an idea we'll use all through this lesson. A radio wave is a ripple of electric and magnetic energy that repeats over and over as it travels. Frequency is how many of those ripples pass each second. It's counted in hertz: 1 hertz is 1 cycle, or 1 complete ripple, per second. Wavelength is the length of one ripple: the distance from one crest, or peak, to the next. All radio waves travel at the same speed, the speed of light. So the more of them that pass each second, the shorter each one must be. Higher frequency, shorter wavelength."
     },
     {
       "id": "s6",
+      "keyTopic": 39,
+      "template": "key-facts",
+      "params": {
+        "title": "X-band radar works with microwaves",
+        "items": [
+          "Radio frequencies are grouped into bands",
+          "A typical ship's radar: X-band, about 9.4 GHz",
+          "9.4 billion cycles every second: microwaves",
+          "Each wave about 3.2 cm long, roughly 1.25 inches",
+          "That size sets how long the antenna must be"
+        ]
+      },
+      "onScreen": [
+        "Frequencies grouped into bands",
+        "Ship's radar: X-band, about 9.4 GHz",
+        "Microwaves",
+        "Wavelength about 3.2 cm, 1.25 inches",
+        "Size sets the antenna's length"
+      ],
+      "narration": "Radar takes this to an extreme. Radio frequencies are grouped into bands, and a typical ship's radar works in the one called X-band, at about 9.4 gigahertz. Giga means a billion, so that's 9.4 billion cycles every second. Waves that high are called microwaves. With so many passing each second, each one is very short: only about 3.2 centimeters long, roughly 1.25 inches. Keep that size in mind. It decides how long an antenna must be to make a narrow beam, and it will matter again further up the mast."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 39,
+      "template": "key-facts",
+      "params": {
+        "title": "Why a longer antenna makes a narrower beam",
+        "items": [
+          "Every part of the antenna sends out its own small wave",
+          "Straight ahead, the waves arrive in step and add up",
+          "Off to the side, waves from the 2 ends fall out of step and cancel",
+          "Longer antenna: they cancel at a smaller angle, so the beam is narrower"
+        ]
+      },
+      "onScreen": [
+        "Each part sends its own wave",
+        "Straight ahead: in step, they add",
+        "Off to the side: out of step, they cancel",
+        "Longer antenna: narrower beam"
+      ],
+      "narration": "So how does an antenna squeeze those tiny waves into a narrow beam? Every part of it sends out its own small wave. Straight out in front, all those waves travel the same distance, so they arrive in step, crest with crest, and add up. Being in step like this is called being in phase. Now turn a little to one side. The waves from the 2 ends travel different distances, so they fall out of step, crest meeting trough, the low point, and start to cancel. The longer the antenna, the bigger that difference becomes for the same small turn, so the cancelling starts at a smaller angle. The result: a longer antenna makes a narrower beam."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 39,
+      "template": "formula",
+      "params": {
+        "title": "Beamwidth and antenna length",
+        "formula": "θ ≈ 70λ ÷ L degrees",
+        "steps": [
+          "θ = beamwidth; λ = wavelength; L = antenna length",
+          "L = 10 wavelengths: θ ≈ 70 ÷ 10 = 7°",
+          "Double L: θ is cut roughly in half"
+        ],
+        "answer": "Longer antenna → narrower horizontal beam"
+      },
+      "onScreen": [
+        "θ ≈ 70λ ÷ L degrees",
+        "10 wavelengths long: about 7°",
+        "Double the length: half the beamwidth",
+        "Longer antenna, narrower beam"
+      ],
+      "narration": "There's a handy rule of thumb for it. Beamwidth, written with the Greek letter theta, is roughly 70 times lambda, divided by L, in degrees. Lambda, also Greek, is the wavelength, and L is the antenna's length. Together they come down to one thing: how many wavelengths long the antenna is. Try an antenna 10 wavelengths long: 70 divided by 10 gives a beam about 7 degrees wide. Double the length, and you divide 70 by twice as much, so the beam is roughly half as wide. Beamwidth is inversely proportional to the antenna's length in wavelengths: as one goes up, the other goes down. On the exam, the longer the antenna, the narrower the horizontal beamwidth. Not wider, and not unaffected."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 40,
+      "template": "block-diagram",
+      "params": {
+        "title": "The feed line: from transmitter to antenna",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "tx",
+            "label": "Transmitter",
+            "note": "Makes the RF energy"
+          },
+          {
+            "id": "line",
+            "label": "Transmission line",
+            "note": "2-wire line or coax: 2 conductors"
+          },
+          {
+            "id": "ant",
+            "label": "Antenna",
+            "note": "The load: sends it into space"
+          }
+        ],
+        "links": [
+          {
+            "from": "tx",
+            "to": "line"
+          },
+          {
+            "from": "line",
+            "to": "ant"
+          }
+        ]
+      },
+      "onScreen": [
+        "Transmitter makes RF energy",
+        "Transmission line: 2-wire line or coax",
+        "Antenna: the load"
+      ],
+      "narration": "That's what the antenna must do. Before we see how a ship's antenna does it, the energy has to get up the mast. It travels through a transmission line, also called a feed line. That's 2 conductors that guide RF, or radio frequency, energy from the transmitter to the antenna, the way a hose carries water from a tap to a sprinkler. The simplest is a 2-wire line: 2 parallel wires held a fixed distance apart. Coaxial cable, or coax, puts one conductor inside the other: a center wire, surrounded by insulation called the dielectric, inside a tube-shaped metal shield. The load is whatever sits at the far end and takes in the energy: here, the antenna."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 40,
+      "template": "comparison-table",
+      "params": {
+        "title": "Electricity as water in a pipe",
+        "columns": [
+          "Electricity",
+          "Water in a pipe"
+        ],
+        "rows": [
+          [
+            "Current: the flow",
+            "How much water flows"
+          ],
+          [
+            "Voltage: the push",
+            "The water pressure"
+          ],
+          [
+            "AC: flow that keeps reversing",
+            "Water sloshing back and forth"
+          ],
+          [
+            "Impedance: opposition to AC, in ohms",
+            "How hard the pipe resists the flow"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Current: the flow",
+        "Voltage: the push",
+        "AC: keeps reversing",
+        "Impedance: opposition to AC, in ohms"
+      ],
+      "narration": "Feed lines come in many kinds, and one number describes each of them: its characteristic impedance. To see what that means, we need a few basic words, and water in a pipe helps. Current is the flow of electricity, like how much water flows. Voltage is the push behind it, like the water pressure. Alternating current, or AC, keeps reversing direction, like water sloshing back and forth, and radio energy is AC that reverses billions of times a second. Impedance is how strongly something opposes AC, like a narrow pipe resisting the flow. It's measured in ohms. The higher the impedance, the more voltage it takes to push a given current through."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 40,
+      "template": "key-facts",
+      "params": {
+        "title": "What sets a line's impedance",
+        "items": [
+          "Inductance, L: the line resists any change in current",
+          "Capacitance, C: its 2 conductors store charge between them",
+          "Every inch of line has a little of each",
+          "The balance of L and C sets Z<sub>O</sub>, the characteristic impedance"
+        ]
+      },
+      "onScreen": [
+        "Inductance L: resists changes in current",
+        "Capacitance C: stores charge",
+        "A little of each in every inch",
+        "L and C together set Z sub O"
+      ],
+      "narration": "Along a feed line, 2 effects set the impedance. Inductance, written L, is the line's tendency to resist any change in current, and AC is changing all the time. Capacitance, written C, is the line's ability to store electric charge between its 2 conductors, which sit close together. Every inch of line has a little of each. The balance between them, L compared with C, decides how much voltage goes with how much current as a wave travels along the line. That is the line's characteristic impedance, written Z sub O, and it's measured in ohms too."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 40,
+      "template": "comparison-table",
+      "params": {
+        "title": "Cutting a line doesn't change Z<sub>O</sub>",
+        "columns": [
+          "Piece",
+          "Total L",
+          "Total C",
+          "Z<sub>O</sub>"
+        ],
+        "rows": [
+          [
+            "Whole line",
+            "L",
+            "C",
+            "72 Ω"
+          ],
+          [
+            "Each half",
+            "Half the L",
+            "Half the C",
+            "Still 72 Ω"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Whole line: 72 Ω",
+        "Each half: half the L, half the C",
+        "Each half still 72 Ω"
+      ],
+      "narration": "So every inch of line has its own L and C. Does cutting a line change its Z sub O? The exam asks: a 72 ohm line is cut at its center. What is each half's Z sub O? Z sub O depends only on how the line is built: the size of its conductors, their spacing and the dielectric between them. Each half has less L in total, but also less C, in the same proportion. So the balance between them, and Z sub O, stays the same, like a price per pound when you buy half as much. Each half is still 72 ohms. The traps: 36 ohms, from halving it, 144 ohms, from doubling it, and needing the exact length."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 40,
+      "template": "formula",
+      "params": {
+        "title": "Working out Z<sub>O</sub>: units first",
+        "formula": "Z<sub>O</sub> = √(L ÷ C)",
+        "steps": [
+          "Base units: henries (H) and farads (F)",
+          "L = 250 µH = 250 × 10⁻⁶ H",
+          "C = 1000 pF = 1 × 10⁻⁹ F"
+        ],
+        "answer": "Ready to divide L by C"
+      },
+      "onScreen": [
+        "Z sub O = √(L ÷ C)",
+        "Base units: henries and farads",
+        "250 µH = 250 × 10⁻⁶ H",
+        "1000 pF = 1 × 10⁻⁹ F",
+        "Ready to divide"
+      ],
+      "narration": "So how do you work out Z sub O? Divide L by C, then take the square root. The exam's example: a section of line has 250 microhenries of L and 1000 picofarads of C. What is its Z sub O? Step 1: put both in base units, henries for inductance and farads for capacitance. Mix sizes, and the answer comes out wrong. Micro means a millionth, so L is 250 millionths of a henry. Pico means a millionth of a millionth, which is a trillionth. 1000 trillionths make 1 billionth, so C is 1 billionth of a farad. Both are now in base units, ready to divide."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 40,
+      "template": "formula",
+      "params": {
+        "title": "Working out Z<sub>O</sub>: divide, then square root",
+        "formula": "Z<sub>O</sub> = √(250 × 10⁻⁶ ÷ 1 × 10⁻⁹)",
+        "steps": [
+          "Dividing by a billionth = multiplying by a billion",
+          "L ÷ C = 250 × 1000 = 250,000",
+          "√250,000 = 500, since 500 × 500 = 250,000"
+        ],
+        "answer": "Z<sub>O</sub> = 500 Ω"
+      },
+      "onScreen": [
+        "Divide L by C",
+        "L ÷ C = 250,000",
+        "√250,000 = 500",
+        "Z sub O = 500 Ω"
+      ],
+      "narration": "Step 2: divide L by C. Dividing by a billionth is the same as multiplying by a billion, and a billion millionths is 1000. So 250 millionths of a henry, divided by 1 billionth of a farad, gives 250 times 1000: 250,000. Step 3: take its square root, the number which, multiplied by itself, gives 250,000. That's 500, because 500 times 500 is 250,000. So Z sub O is 500 ohms. On the exam, the wrong choices are 250 and 1,000 ohms, copied straight from the question, and 50 ohms, from a slip in the powers of 10."
+    },
+    {
+      "id": "s15",
       "keyTopic": 40,
       "template": "waveform",
       "params": {
@@ -103,231 +415,1261 @@
         "yAxis": "voltage",
         "labels": [
           "The forward wave travels toward the load",
-          "A load that doesn't match Z<sub>O</sub> reflects part of it",
-          "Forward and reflected waves form standing waves",
-          "Load equal to Z<sub>O</sub>: no standing waves"
+          "Load equal to Z<sub>O</sub>: all the energy absorbed, no standing waves",
+          "Mismatched load: part reflects, and standing waves form",
+          "Standing waves: some energy is not absorbed by the load"
         ]
       },
-      "onScreen": ["Forward wave toward the load", "Mismatched load reflects part of it", "Standing waves: energy not absorbed by the load", "Load equal to Z sub O: no standing waves"],
-      "narration": "What do standing waves on a transmission line tell you? That some of the energy is not absorbed by the load. The forward wave travels toward the load. If the load doesn't match Z sub O, part of the forward wave reflects back. The forward and reflected waves combine into standing waves along the line. Terminate the line in an impedance equal to Z sub O, and the load absorbs the energy: there are no standing waves."
+      "onScreen": [
+        "Forward wave toward the load",
+        "Matched load: all energy absorbed",
+        "Mismatched load: reflection, standing waves",
+        "Standing waves: energy not absorbed by the load"
+      ],
+      "narration": "Why does Z sub O matter? Because of what happens at the far end. The forward wave travels toward the load with voltage and current in the proportion Z sub O sets. If the load's impedance equals Z sub O, it accepts exactly that and absorbs all the energy, like a beach soaking up a wave. If not, part of the wave reflects back, like a wave hitting a sea wall. The 2 waves overlap into a fixed pattern of highs and lows along the line: standing waves. So standing waves indicate that some of the energy is not absorbed by the load. The traps, all energy delivered, or a line terminated, meaning ended, in Z sub O, both describe a matched line with no standing waves."
     },
     {
-      "id": "s7",
+      "id": "s16",
+      "keyTopic": 40,
+      "template": "key-facts",
+      "params": {
+        "title": "VSWR: putting a number on standing waves",
+        "items": [
+          "VSWR: voltage standing wave ratio",
+          "Highest voltage on the line ÷ lowest voltage",
+          "Perfect match: no standing waves, VSWR 1 to 1",
+          "Bigger VSWR: more energy reflected back"
+        ]
+      },
+      "onScreen": [
+        "VSWR: voltage standing wave ratio",
+        "Highest voltage ÷ lowest voltage",
+        "Perfect match: 1 to 1",
+        "Bigger VSWR: more reflection"
+      ],
+      "narration": "Technicians put a number on standing waves: the VSWR, or voltage standing wave ratio. Measure the highest voltage along the line, at the peaks of the pattern, and divide it by the lowest, at the dips. With a perfect match there are no peaks or dips, so the ratio is 1 to 1. The bigger the reflection, the deeper the dips and the bigger the VSWR. A high VSWR means energy is bouncing back toward the transmitter instead of leaving through the antenna. Keep VSWR in mind: it explains a quirk of the radar antenna later on."
+    },
+    {
+      "id": "s17",
       "keyTopic": 40,
       "template": "block-diagram",
       "params": {
         "title": "Measuring VSWR at microwave frequencies",
         "columns": 3,
         "blocks": [
-          { "id": "tx", "label": "Transmitter" },
-          { "id": "coupler", "label": "Dual directional coupler", "note": "Samples forward and reflected power" },
-          { "id": "dut", "label": "Transmission line device", "note": "Its VSWR is being measured" },
-          { "id": "meter", "label": "Power meter", "note": "Reads the forward and reflected samples" },
-          { "id": "vna", "label": "Network analyzer", "note": "Measures the reflection directly" },
-          { "id": "spec", "label": "Spectrum analyzer", "note": "Alone: only frequencies and levels" }
+          {
+            "id": "tx",
+            "label": "Transmitter"
+          },
+          {
+            "id": "coupler",
+            "label": "Dual directional coupler",
+            "note": "Samples forward and reflected power"
+          },
+          {
+            "id": "dut",
+            "label": "Transmission line device",
+            "note": "Its VSWR is being measured"
+          },
+          {
+            "id": "meter",
+            "label": "Power meter",
+            "note": "Reads the forward and reflected samples"
+          },
+          {
+            "id": "vna",
+            "label": "Network analyzer",
+            "note": "Measures the reflection directly"
+          },
+          {
+            "id": "spec",
+            "label": "Spectrum analyzer",
+            "note": "Alone: only frequencies and levels"
+          }
         ],
         "links": [
-          { "from": "tx", "to": "coupler" },
-          { "from": "coupler", "to": "dut" },
-          { "from": "coupler", "to": "meter" },
-          { "from": "vna", "to": "dut" },
-          { "from": "spec", "to": "dut", "struck": true }
+          {
+            "from": "tx",
+            "to": "coupler"
+          },
+          {
+            "from": "coupler",
+            "to": "dut"
+          },
+          {
+            "from": "coupler",
+            "to": "meter"
+          },
+          {
+            "from": "vna",
+            "to": "dut"
+          },
+          {
+            "from": "spec",
+            "to": "dut",
+            "struck": true
+          }
         ]
       },
-      "onScreen": ["Dual directional coupler samples forward and reflected power", "Power meter reads the samples", "Network analyzer measures the reflection", "Spectrum analyzer alone: only frequencies and levels"],
-      "narration": "How might you measure the VSWR of a microwave transmission line device? With a dual directional coupler, a power meter and a network analyzer. The transmitter's signal passes through the dual directional coupler to the device. The coupler samples both the forward and the reflected power, and the power meter reads those samples. A network analyzer measures the reflection directly. A spectrum analyzer alone won't do the job: it shows only frequencies and signal levels."
+      "onScreen": [
+        "Dual directional coupler samples forward and reflected power",
+        "Power meter reads the samples",
+        "Network analyzer measures the reflection",
+        "Spectrum analyzer alone: only frequencies and levels"
+      ],
+      "narration": "How would you measure the VSWR of a microwave transmission line device? The exam's answer uses 3 instruments together: a dual directional coupler, a power meter and a network analyzer. A directional coupler is a short section of line that bleeds off a small sample of the energy moving one way. A dual one samples both the forward and the reflected power. The power meter reads those 2 samples, and comparing them gives the VSWR. A network analyzer is a test set that sends its own signal into the device and measures the reflection directly. A spectrum analyzer alone won't do it: it shows only which frequencies are present and how strong they are, not what is reflected."
     },
     {
-      "id": "s8",
+      "id": "s18",
       "keyTopic": 40,
-      "template": "key-facts",
-      "params": {
-        "title": "Line and waveguide good practice",
-        "items": [
-          "Z<sub>O</sub> is set by construction: conductor size, spacing and dielectric",
-          "Not by length: cut a 72 Ω line at its center and each half is still 72 Ω",
-          "Long lines not properly shielded and terminated can cause receiver interference",
-          "Horizontal waveguide runs: slope slightly downward at the elbow",
-          "Drill a small drain hole in the elbow so condensed moisture drains out"
-        ]
-      },
-      "onScreen": ["Z sub O set by construction", "72 Ω line cut in half: each half still 72 Ω", "Unshielded, unterminated long lines: receiver interference", "Slope waveguide runs down at the elbow", "Drain hole in the elbow"],
-      "narration": "Characteristic impedance depends only on how the line is built: conductor size, spacing and dielectric, which set L and C per unit length. It does not depend on length. Cut a 72 ohm line at its center, and each half still has a Z sub O of 72 ohms. If long transmission lines are not properly shielded and terminated, communications receiver interference might result: the line radiates and picks up stray RF, or radio frequency, energy, letting radar pulses leak into nearby receivers. Horizontal waveguide runs should slope slightly downward at the elbow, with a small drain hole drilled in the elbow, so condensed moisture drains out instead of pooling and causing loss, reflections and corrosion."
-    },
-    {
-      "id": "s9",
-      "keyTopic": 41,
       "template": "block-diagram",
       "params": {
-        "title": "Keeping the PPI sweep in step",
-        "columns": 4,
+        "title": "Leaky lines cause interference",
+        "columns": 3,
         "blocks": [
-          { "id": "ant", "label": "Radar antenna", "note": "Its position must reach the display" },
-          { "id": "stx", "label": "Synchro transmitter", "note": "Geared to the antenna" },
-          { "id": "srx", "label": "Synchro receiver", "note": "Angle arrives on stator lines S1, S2, S3" },
-          { "id": "ppi", "label": "PPI sweep", "note": "Rotates in step with the antenna" },
-          { "id": "ac", "label": "AC reference", "note": "Shared by both rotors" }
+          {
+            "id": "line",
+            "label": "Long feed line",
+            "note": "Not properly shielded and terminated"
+          },
+          {
+            "id": "leak",
+            "label": "Radiates, picks up stray RF",
+            "note": "It acts like an antenna"
+          },
+          {
+            "id": "rx",
+            "label": "Nearby receivers",
+            "note": "Radar pulses leak in: interference"
+          }
         ],
         "links": [
-          { "from": "ant", "to": "stx" },
-          { "from": "stx", "to": "srx" },
-          { "from": "srx", "to": "ppi" },
-          { "from": "ac", "to": "stx" },
-          { "from": "ac", "to": "srx" }
+          {
+            "from": "line",
+            "to": "leak"
+          },
+          {
+            "from": "leak",
+            "to": "rx"
+          }
         ]
       },
-      "onScreen": ["Antenna position must reach the display", "Synchro transmitter geared to the antenna", "Angle carried on stator lines S1, S2, S3", "PPI sweep rotates in step", "Both rotors share the AC reference"],
-      "narration": "The PPI, or plan position indicator, sweep must indicate the antenna position, and the two are frequently kept in synchronization by synchro systems. A synchro transmitter is geared to the antenna, and it drives a synchro receiver at the display. On a basic synchro system, the angular information is carried on the stator lines: the 3 leads, S1, S2 and S3, wired between the 2 units. The receiver turns the PPI sweep in step with the antenna. Meanwhile, both rotors share the same AC, or alternating current, reference."
+      "onScreen": [
+        "Long line, poorly shielded or terminated",
+        "Radiates and picks up stray RF",
+        "Interference in nearby receivers"
+      ],
+      "narration": "A transmission line has one more job: to keep its energy inside. Shielded means wrapped in metal that keeps the radio energy in. Properly terminated means ending in a load that matches the line, so nothing reflects. If long transmission lines are not properly shielded and terminated, communications receiver interference might result. The line radiates energy like an antenna, and picks up stray RF too. Then radar pulses leak into nearby receivers, such as the ship's other radios. On the exam, the wrong answers name other problems. Damaged silicon crystals are a receiver fault with other causes. Overmodulation is a transmitter fault. And minimal RF loss is the opposite of what happens."
     },
     {
-      "id": "s10",
-      "keyTopic": 41,
+      "id": "s19",
+      "keyTopic": 43,
       "template": "comparison-table",
       "params": {
-        "title": "Synchro transmitter vs. resolver",
-        "columns": ["Device", "Rotor", "Stator", "Output"],
+        "title": "Skin effect: current hugs the surface",
+        "columns": [
+          "Frequency",
+          "Where current flows",
+          "Result"
+        ],
         "rows": [
-          ["Synchro transmitter", "For the exam: 2 windings (leads R1, R2)", "3 windings, S1, S2, S3, 120° apart", "Angle voltages on the stator lines"],
-          ["Resolver", "1 winding", "2 windings, 90° apart", "Sine and cosine of the antenna angle"]
+          [
+            "Low",
+            "Through the whole conductor",
+            "All the metal carries current"
+          ],
+          [
+            "Microwave",
+            "Only in a thin outer skin",
+            "Less metal used: more resistance"
+          ],
+          [
+            "Microwave, coax center wire",
+            "A thin skin on a small wire",
+            "Very little metal: high I²R loss"
+          ]
         ]
       },
-      "onScreen": ["Synchro transmitter, for the exam: 2 rotor and 3 stator windings", "Rotor leads R1, R2; stators S1, S2, S3 at 120°", "Resolver: 1 rotor, 2 stator windings 90° apart", "Resolver outputs sine and cosine"],
-      "narration": "For the exam, an antenna synchro transmitter is keyed as having 2 rotor and 3 stator windings. AC excitation enters the rotor through 2 leads, R1 and R2, and 3 stator windings, S1, S2 and S3, spaced 120 degrees apart, pick up the angle voltages. Strictly, a standard synchro's rotor is 1 winding with those 2 leads, but on the exam, choose 2 rotor and 3 stator windings. The basic resolver contains a rotor winding and 2 stator windings that are 90 degrees apart. As the rotor turns, the stator voltages vary as the sine and cosine of the antenna angle."
+      "onScreen": [
+        "Low frequency: current uses the whole conductor",
+        "Microwave: only a thin outer skin",
+        "Coax's small center wire: high I²R loss"
+      ],
+      "narration": "That covers feed lines in general. Now for the radar's own feed line, and why it isn't coax. An X-band radar works at about 9.4 gigahertz, and there coax runs into trouble. The first reason is skin effect. At low frequencies, current flows through the whole of a wire. The higher the frequency, the more it crowds into a thin skin at the surface, leaving the inside unused. Coax's center conductor is a small wire, so at microwave frequencies the current is squeezed into a tiny skin of metal. That means high resistance: opposition that turns power into heat. This heat loss is called I squared R, because it's the current, I, times itself, times the resistance, R."
     },
     {
-      "id": "s11",
-      "keyTopic": 41,
+      "id": "s20",
+      "keyTopic": 43,
       "template": "key-facts",
       "params": {
-        "title": "Sending antenna direction to the display",
+        "title": "Coax's second loss, and the way out",
         "items": [
-          "All ARPAs and radar systems must send the antenna direction to the display",
-          "3-phase synchros can do it",
-          "2-phase resolvers can do it",
-          "Optical encoders can do it",
-          "Resolvers are the most common in modern radars: easy to convert to digital"
+          "Dielectric: the insulation between coax's conductors",
+          "At microwave frequencies it soaks up energy as heat",
+          "Coax loses power 2 ways: I²R and the dielectric",
+          "Waveguide: considerably less loss, so it replaces coax"
         ]
       },
-      "onScreen": ["Every ARPA and radar sends antenna direction to the display", "3-phase synchros", "2-phase resolvers", "Optical encoders", "Resolvers: most common in modern radars"],
-      "narration": "Radar antenna direction must be sent to the display in all ARPAs, or automatic radar plotting aids, and in all radar systems. Any of these can do it: 3-phase synchros, 2-phase resolvers, or optical encoders. Resolvers are the most common type of antenna position indicating device in modern radars, because their sine and cosine outputs convert easily to digital bearing data."
+      "onScreen": [
+        "Dielectric soaks up energy",
+        "Coax: I²R and dielectric loss",
+        "Waveguide: considerably less loss"
+      ],
+      "narration": "The second reason is the dielectric, the insulation that fills the space between coax's center wire and its shield. At microwave frequencies, the dielectric soaks up some of the energy and turns it into heat, much as food warms in a microwave oven. So coax loses power 2 ways at once: I squared R heat in its small center conductor, and heat in its dielectric. That's why radar uses something else: the waveguide, a hollow metal pipe we'll look at next. At microwave frequencies, waveguides are used instead of conventional coaxial lines because they have considerably less loss."
     },
     {
-      "id": "s12",
+      "id": "s21",
+      "keyTopic": 42,
+      "template": "comparison-table",
+      "params": {
+        "title": "What a waveguide is",
+        "columns": [
+          "Feature",
+          "Wire or coax",
+          "Waveguide"
+        ],
+        "rows": [
+          [
+            "Shape",
+            "Solid wires, or a center wire in a shield",
+            "A hollow metal pipe, usually rectangular"
+          ],
+          [
+            "What carries the energy",
+            "Current flowing along the wires",
+            "An electromagnetic field moving inside"
+          ],
+          [
+            "Job of the metal",
+            "Carries the current",
+            "Confines and guides the field"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Waveguide: a hollow metal pipe",
+        "Energy: an electromagnetic field moving inside",
+        "The walls confine and guide the field"
+      ],
+      "narration": "So what exactly is a waveguide? A hollow metal pipe, as we said, usually rectangular, with nothing inside but air. There's no center wire at all. How, then, does energy get through? Remember that a radio wave is a ripple of electric and magnetic energy. Together, the 2 are called an electromagnetic field. Inside the waveguide, that field travels as a wave, reflecting back and forth between the walls as it goes, a bit like light zigzagging down a mirror-lined tube. The metal walls confine and guide the field. That's why waveguide theory is based upon the movement of an electromagnetic field. It's not current flow through conductive wires, and the other choices, inductance and resonant charging, are circuit ideas that don't describe it."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 42,
+      "template": "key-facts",
+      "params": {
+        "title": "The quarter-wave stub: a metal insulator",
+        "items": [
+          "Stub: a short piece of 2-wire line, shorted at its far end",
+          "Length: ¼ wavelength",
+          "At the short: voltage zero, current greatest",
+          "¼ wave back: voltage greatest, almost no current",
+          "So the stub looks like an open circuit: it can hold up a line"
+        ]
+      },
+      "onScreen": [
+        "Shorted stub, ¼ wavelength long",
+        "At the short: no voltage, most current",
+        "At the open end: most voltage, no current",
+        "Looks like an open circuit"
+      ],
+      "narration": "To picture where a waveguide comes from, start with a quarter-wave shorted stub: a piece of 2-wire line a quarter of a wavelength long, with its 2 wires joined at the far end. That join is a short circuit, a direct metal path, so no voltage can build up across it. A wave runs down the stub, hits the short and reflects, so standing waves form. At the short, voltage is zero and current is greatest. A quarter wavelength back, at the open end, it's the reverse: voltage greatest, almost no current. To the signal, the stub looks like an open circuit, as if nothing were there. So a solid metal stub can hold up a line, like an insulator, without draining the signal."
+    },
+    {
+      "id": "s23",
       "keyTopic": 42,
       "template": "block-diagram",
       "params": {
         "title": "From 2-wire line to waveguide",
         "columns": 4,
         "blocks": [
-          { "id": "line", "label": "2-wire line", "note": "Where the picture starts" },
-          { "id": "stubs", "label": "Add ¼-wave shorted stubs", "note": "They support the line" },
-          { "id": "merge", "label": "Countless stubs merge", "note": "They form a closed box" },
-          { "id": "guide", "label": "Waveguide", "note": "Skin effect: currents on the inner walls" }
+          {
+            "id": "line",
+            "label": "2-wire line",
+            "note": "Where the picture starts"
+          },
+          {
+            "id": "stubs",
+            "label": "Add ¼-wave shorted stubs",
+            "note": "They support the line"
+          },
+          {
+            "id": "merge",
+            "label": "Countless stubs merge",
+            "note": "They form a closed box"
+          },
+          {
+            "id": "guide",
+            "label": "Waveguide",
+            "note": "Skin effect: currents on the inner walls"
+          }
         ],
         "links": [
-          { "from": "line", "to": "stubs" },
-          { "from": "stubs", "to": "merge" },
-          { "from": "merge", "to": "guide" }
+          {
+            "from": "line",
+            "to": "stubs"
+          },
+          {
+            "from": "stubs",
+            "to": "merge"
+          },
+          {
+            "from": "merge",
+            "to": "guide"
+          }
         ]
       },
-      "onScreen": ["2-wire line", "Supported by ¼-wave shorted stubs", "Countless stubs merge into a closed box", "Waveguide: skin effect keeps currents on the inner walls"],
-      "narration": "Where does waveguide theory come from? Picture a 2-wire line. Support it with quarter-wave shorted stubs. Add countless stubs, and they merge into a closed box: a waveguide. Skin effect keeps the currents on its inner walls. So waveguide theory is based on the principles of skin effect and the use of quarter-wave stubs. It is also based upon the movement of an electromagnetic field. The energy travels as a wave reflecting between the walls, which confine and guide the field. It is not current flow through conductive wires."
+      "onScreen": [
+        "2-wire line",
+        "Supported by ¼-wave shorted stubs",
+        "Countless stubs merge into a closed box",
+        "Waveguide: skin effect keeps currents on the inner walls"
+      ],
+      "narration": "Now hold up a 2-wire line with quarter-wave shorted stubs, above and below it. Each stub is invisible to the signal, so it does no harm. Add more stubs, and more, until there are countless of them side by side. They merge into solid metal walls, and the line has become a closed rectangular box: a waveguide. And skin effect keeps the currents on its inner walls, so only the inside surface does the work. That's why waveguide theory is based on the principles of skin effect and the use of quarter-wave stubs. Ohm's law and high standing waves are the trap answers."
     },
     {
-      "id": "s13",
+      "id": "s24",
+      "keyTopic": 42,
+      "template": "comparison-table",
+      "params": {
+        "title": "What waveguides are made of",
+        "columns": [
+          "Metal",
+          "Strong point"
+        ],
+        "rows": [
+          [
+            "All 3",
+            "Good conductors: little wall resistance"
+          ],
+          [
+            "Brass",
+            "Easy to machine"
+          ],
+          [
+            "Aluminum",
+            "Light"
+          ],
+          [
+            "Copper",
+            "Lowest loss of the 3"
+          ]
+        ]
+      },
+      "onScreen": [
+        "All good conductors",
+        "Brass: easy to machine",
+        "Aluminum: light",
+        "Copper: lowest loss"
+      ],
+      "narration": "Since the current runs on those inner walls, the walls must be good conductors, so the wall currents meet little resistance. Waveguides can be constructed from brass, aluminum or copper. Each has a strong point: brass is easy to machine, aluminum is light, and copper has the lowest loss of the 3. All of them work, so on the exam, the answer is all of the above."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 43,
+      "template": "comparison-table",
+      "params": {
+        "title": "Why waveguide beats coax at microwave",
+        "columns": [
+          "Feature",
+          "Coax",
+          "Waveguide"
+        ],
+        "rows": [
+          [
+            "Where the current flows",
+            "Skin of a small center conductor",
+            "The large inner surface of the walls"
+          ],
+          [
+            "Resistive (I²R) loss",
+            "Current crowded: higher loss",
+            "Current spread out: very small"
+          ],
+          [
+            "Dielectric loss",
+            "Solid insulation soaks up energy",
+            "Air inside: almost none"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Coax: current crowded on a small conductor",
+        "Waveguide: large inner surface, very small I²R loss",
+        "Waveguide: air inside, little dielectric loss"
+      ],
+      "narration": "Now we can see why a waveguide has so little loss. In coax, skin effect squeezes the current into the thin skin of a small center conductor. In a waveguide, the current flows over the whole inner surface of the walls. Resistive losses in a waveguide are very small because the inner surface of the waveguide is large. Spreading the current over a big area is like opening more lanes on a crowded road: the same traffic flows with less struggle. Less resistance means less I squared R heat. And with only air inside, there's almost no dielectric loss. The trap says the inner surface is small, which is backwards. Ground connections and trapped heat have nothing to do with it."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 42,
+      "template": "key-facts",
+      "params": {
+        "title": "The price of a waveguide",
+        "items": [
+          "Used at radar frequencies for one reason: lower transmission losses",
+          "It costs more and is harder to install",
+          "Not cheaper, easier, more rugged, smaller or lighter; moisture still matters",
+          "Low loss is worth it, for the pulse out and the echo back"
+        ]
+      },
+      "onScreen": [
+        "Reason: lower transmission losses",
+        "Costs more, harder to install",
+        "Not cheaper, easier, more rugged, smaller or lighter",
+        "Low loss worth it, out and back"
+      ],
+      "narration": "So low loss is the waveguide's great strength. Is there a catch? Yes. The exam asks why a waveguide is used at radar microwave frequencies. The answer: it has lower transmission losses than other feed line types, even though it costs more and is harder to install, since every bend and joint must be made with care. So it isn't chosen for being cheaper, easier to install or more rugged. Nor is it smaller, easier to handle, or lighter because it's hollow, and moisture can still be a problem inside it, as we'll see. At microwave frequencies, low loss is worth the price, both for the strong pulse going out and for the weak echo coming back."
+    },
+    {
+      "id": "s27",
       "keyTopic": 42,
       "template": "comparison-table",
       "params": {
         "title": "Microwave transmission lines",
-        "columns": ["Line", "Built from", "Key point"],
+        "columns": [
+          "Line",
+          "Built from",
+          "Key point"
+        ],
         "rows": [
-          ["Coax", "Center conductor inside a shield", "More loss at microwave frequencies"],
-          ["Stripline", "Center conductor between parallel ground planes", "2 ground planes"],
-          ["Microstrip", "Conductor over a single ground plane", "Only 1 ground plane"],
-          ["Waveguide", "Brass, aluminum or copper walls", "Lower loss; costs more, harder to install"]
+          [
+            "Coax",
+            "Center conductor inside a shield",
+            "More loss at microwave frequencies"
+          ],
+          [
+            "Stripline",
+            "Center conductor between parallel ground planes",
+            "2 ground planes"
+          ],
+          [
+            "Microstrip",
+            "Conductor over a single ground plane",
+            "Only 1 ground plane"
+          ],
+          [
+            "Waveguide",
+            "Hollow brass, aluminum or copper pipe",
+            "Lowest loss; costs more, harder to install"
+          ]
         ]
       },
-      "onScreen": ["Coax: more loss at microwave", "Stripline: center conductor between 2 ground planes", "Microstrip: only 1 ground plane", "Waveguide: brass, aluminum or copper; lowest loss"],
-      "narration": "Here's how microwave lines compare. Ordinary coax has more loss at microwave frequencies. Stripline is a center conductor suspended between parallel conductive ground planes: 2 ground planes. Microstrip, by contrast, has only 1 ground plane. Waveguides can be constructed from brass, aluminum or copper, all good conductors that keep wall resistance low. At radar microwave frequencies, a waveguide is used because it has lower transmission losses than the other feedline types, even though it costs more and is harder to install."
+      "onScreen": [
+        "Coax: more loss at microwave",
+        "Stripline: center conductor between 2 ground planes",
+        "Microstrip: only 1 ground plane",
+        "Waveguide: lowest loss"
+      ],
+      "narration": "Waveguide isn't the only line for microwaves. On the radar's circuit boards, you'll find 2 flat cousins of coax. First, a ground plane: a flat sheet of metal connected to the circuit's ground, its common return path. Stripline is the microwave transmission line built from a center conductor suspended between parallel conductive ground planes: a flat strip sandwiched between 2 ground planes, like a flattened coax. Microstrip, by contrast, has only 1 ground plane, with the strip on the surface above it. So on the exam, a center conductor between 2 ground planes means stripline. These lines suit short runs on a board. For the long run up the mast, it's waveguide."
     },
     {
-      "id": "s14",
+      "id": "s28",
+      "keyTopic": 43,
+      "template": "waveform",
+      "params": {
+        "title": "Inside the waveguide: where the fields are",
+        "kind": "sine",
+        "cycles": 0.5,
+        "xAxis": "across the wide wall",
+        "yAxis": "electric field strength",
+        "labels": [
+          "Dominant TE<sub>10</sub> mode: 1 hump of electric field across the guide",
+          "Electric field: strongest at the center, zero at the side walls",
+          "Magnetic field: strongest at the edges, where wall currents flow"
+        ]
+      },
+      "onScreen": [
+        "TE sub 10 mode",
+        "Electric field: strongest at the center",
+        "Magnetic field: strongest at the edges"
+      ],
+      "narration": "Back to the waveguide, and the field inside it. The pattern the field forms is its mode, and the usual one, called the dominant mode, is T E sub one zero. T E stands for transverse electric: the electric field points straight across the guide, never along it. The 1 and 0 mean 1 hump of field across the wide wall, and none across the narrow one. Metal walls short out an electric field running along them, so the field is zero at the side walls and peaks at the center, like a jump rope held at both ends. The magnetic field is the opposite: it's strongest at the edges, where the wall currents flow. So on the exam: strongest at the edges, not the center."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 43,
+      "template": "key-facts",
+      "params": {
+        "title": "Getting energy in and out of a waveguide",
+        "items": [
+          "Voltage probe: a short rod where the electric field peaks",
+          "Current loop: a small wire loop where the magnetic field is strong",
+          "Aperture window: a hole or slot that lets the field through",
+          "Coupling capacitance: not used"
+        ]
+      },
+      "onScreen": [
+        "Voltage probe",
+        "Current loop",
+        "Aperture window",
+        "Not coupling capacitance"
+      ],
+      "narration": "Where the fields are strongest tells you how to get energy in or out. There are 3 ways. A voltage probe is a short rod poked in where the electric field peaks, at the center, like a tiny antenna. A current loop is a small loop of wire placed where the magnetic field is strong, so the field passes through it. An aperture window is a hole or slot that lets the field pass from one waveguide into another. What's missing? Coupling capacitance: linking 2 circuits through a capacitor, a pair of metal plates that passes AC across a small gap. A waveguide has no pair of wires to link that way. So on the exam, coupling capacitance is the one that would not be used."
+    },
+    {
+      "id": "s30",
       "keyTopic": 42,
       "template": "equipment-card",
       "params": {
         "title": "The J-hook pickup",
         "device": "magnetron",
         "callouts": [
-          { "label": "J-hook: a thin wire bent into a small J-shaped loop", "at": "output" },
-          { "label": "The loop links the magnetic field", "at": "cavities" },
-          { "label": "Removes the signal from a magnetron or a waveguide" },
-          { "label": "It's a J-hook, not a T-hook" }
+          {
+            "label": "Magnetron: the tube that generates the microwave pulse",
+            "at": "anode"
+          },
+          {
+            "label": "How is the signal removed from a magnetron or waveguide?"
+          },
+          {
+            "label": "With a J-hook: a thin wire bent into a small J-shaped loop",
+            "at": "output"
+          },
+          {
+            "label": "The magnetic field in the cavities passes through the loop",
+            "at": "cavities"
+          },
+          {
+            "label": "J-hook, not T-hook; connectors and flange joints only join lines"
+          }
         ]
       },
-      "onScreen": ["J-hook: thin wire bent into a J", "Links the magnetic field", "Removes the signal from a magnetron or waveguide", "J-hook, not T-hook"],
-      "narration": "How is the signal taken out? With a thin wire called a J-hook: a small loop bent into the shape of a J. The loop links the magnetic field, so energy couples into it. A J-hook removes the signal from a magnetron, or from a waveguide. On the exam, it's a J-hook, not a T-hook."
+      "onScreen": [
+        "Magnetron makes the pulse",
+        "How is the signal removed?",
+        "J-hook: thin wire bent into a J",
+        "Links the magnetic field",
+        "J-hook, not T-hook"
+      ],
+      "narration": "Here's a current loop at work, right where the pulse is made. The magnetron is the tube that generates the radar's microwave pulse, which rings inside small hollow chambers, called cavities, around its center. How is the signal removed from a magnetron, or from a waveguide? With a thin wire called a J-hook: a small loop of wire bent into the shape of a J. The magnetic field passes through it, and that changing magnetism drives a current around the loop, carrying the RF out. On the exam, it's a J-hook, not a T-hook. A coaxial connector or a waveguide flange joint only joins lines together. Neither one picks the signal up."
     },
     {
-      "id": "s15",
+      "id": "s31",
+      "keyTopic": 43,
+      "template": "formula",
+      "params": {
+        "title": "Bends in X-band waveguide",
+        "formula": "Bend radius ≥ 2 wavelengths",
+        "steps": [
+          "Sharp bends reflect energy and raise the VSWR",
+          "X-band: 1 wavelength ≈ 3.2 cm ≈ 1.25 in",
+          "2 wavelengths: a little over 2 in"
+        ],
+        "answer": "Right-angle bend radius greater than 2 inches"
+      },
+      "onScreen": [
+        "Bend radius at least 2 wavelengths",
+        "Sharp bends reflect energy",
+        "X-band wavelength about 1.25 inches",
+        "Radius greater than 2 inches"
+      ],
+      "narration": "The pulse leaves the magnetron through the J-hook and enters the waveguide. Now run that waveguide up the mast from the transceiver, the unit that holds the transmitter and receiver. The run needs bends, and they must be gentle. A sharp corner reflects part of the wave back, raising the VSWR, and distorts the field. The rule of thumb: a bend's radius, how wide the curve is measured from its center, should be at least 2 wavelengths. At X-band, a wavelength is about 3.2 centimeters, roughly 1.25 inches, so 2 of them come to a little over 2 inches. That's why a right-angle bend in an X-band waveguide must have a radius greater than 2 inches. The traps are 1, 3 and 6 inches."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 40,
+      "template": "key-facts",
+      "params": {
+        "title": "Horizontal runs: let the water out",
+        "items": [
+          "Moist air inside the waveguide condenses into water",
+          "Water pools in a level run: loss, reflections, corrosion",
+          "Slope horizontal runs slightly downward at the elbow",
+          "Drill a small drain hole in the elbow"
+        ]
+      },
+      "onScreen": [
+        "Condensed water inside",
+        "Pooling causes loss, reflections, corrosion",
+        "Slope down at the elbow",
+        "Drain hole in the elbow"
+      ],
+      "narration": "Long horizontal runs bring another problem: water. Air inside the waveguide carries moisture. When the mast cools, say at night, that moisture condenses on the inner walls, like dew on a cold glass. In a perfectly level run, the water has nowhere to go. It pools, and pooled water causes loss, reflections and corrosion. So horizontal waveguide runs should be sloped slightly downwards at the elbow, the bend at the end of the run, with a small drain hole drilled in the elbow. The water runs downhill and out. Absolutely level is the trap answer, and there's no 10 foot length limit."
+    },
+    {
+      "id": "s33",
       "keyTopic": 43,
       "template": "block-diagram",
       "params": {
         "title": "Up to the antenna: the rotary joint",
         "columns": 4,
         "blocks": [
-          { "id": "xcvr", "label": "Transceiver", "note": "Sends the microwave pulse" },
-          { "id": "run", "label": "Fixed waveguide run", "note": "Right-angle bends: radius over 2 inches" },
-          { "id": "joint", "label": "Rotary joint", "note": "One half turns against the other" },
-          { "id": "array", "label": "Rotating slotted array", "note": "Radiates the beam as it turns" }
+          {
+            "id": "xcvr",
+            "label": "Transceiver",
+            "note": "Sends the microwave pulse"
+          },
+          {
+            "id": "run",
+            "label": "Fixed waveguide run",
+            "note": "Gentle bends, drain hole at the elbow"
+          },
+          {
+            "id": "joint",
+            "label": "Rotary joint",
+            "note": "One half turns against the other"
+          },
+          {
+            "id": "array",
+            "label": "Rotating antenna array",
+            "note": "Radiates the beam as it turns"
+          }
         ],
         "links": [
-          { "from": "xcvr", "to": "run" },
-          { "from": "run", "to": "joint" },
-          { "from": "joint", "to": "array" }
+          {
+            "from": "xcvr",
+            "to": "run"
+          },
+          {
+            "from": "run",
+            "to": "joint"
+          },
+          {
+            "from": "joint",
+            "to": "array"
+          }
         ]
       },
-      "onScreen": ["Transceiver", "Fixed waveguide run: bend radius over 2 inches", "Rotary joint: stationary guide to rotating array", "Rotating slotted array"],
-      "narration": "Let's follow the pulse up to the antenna. It leaves the transceiver and travels through the fixed waveguide run. Any right-angle bend in an X-band waveguide must have a radius greater than 2 inches, following the rule of thumb of at least 2 wavelengths, so the bend doesn't cause reflections. Then comes the rotary joint. It connects the stationary waveguide to the rotating antenna array. One half turns against the other, while the microwave energy passes through with little loss or leakage."
+      "onScreen": [
+        "Transceiver",
+        "Fixed waveguide run",
+        "Rotary joint: stationary guide to rotating array",
+        "Rotating antenna array"
+      ],
+      "narration": "The waveguide now reaches the top of the mast, but there's one more problem. The antenna turns round and round, all day, while the waveguide is fixed to the ship. You can't simply bolt a turning part to a fixed one. The answer is the rotary joint. It connects the stationary waveguide to the rotating antenna array. One half turns against the other, while the microwave energy passes through with little loss or leakage. It doesn't join 2 waveguides at a right angle, switch between 2 runs, or keep the guide pressurized. Its job is the rotating connection. Through it, the pulse finally reaches the antenna itself."
     },
     {
-      "id": "s16",
-      "keyTopic": 43,
+      "id": "s34",
+      "keyTopic": 39,
+      "template": "equipment-card",
+      "params": {
+        "title": "The slotted waveguide array",
+        "device": "radar-antenna",
+        "callouts": [
+          {
+            "label": "Slotted waveguide array: the most common type on commercial vessels",
+            "at": "array"
+          },
+          {
+            "label": "A length of waveguide with precisely spaced slots cut in one wall",
+            "at": "slots"
+          },
+          {
+            "label": "Each slot radiates a small share; together, a narrow horizontal beam",
+            "at": "rotation"
+          },
+          {
+            "label": "Not a parabolic transducer, phased planar array, dipole or Yagi"
+          }
+        ]
+      },
+      "onScreen": [
+        "Slotted waveguide array: most common on commercial vessels",
+        "Precisely spaced slots in one wall",
+        "Narrow horizontal beam",
+        "Not parabolic, phased planar, dipole or Yagi"
+      ],
+      "narration": "So what is this antenna? The typical shipboard radar antenna, and the most common type aboard commercial maritime vessels, is the slotted waveguide array. It's simply a length of waveguide, mounted horizontally, with precisely spaced slots cut in one wall. Think of a garden soaker hose with small holes along its length: each hole lets out a little water. Here, each slot lets out a small share of the microwave energy. Together, along the whole length, the slots act like one long antenna, and as we saw, a long antenna forms a narrow horizontal beam. The trap answers name other antenna types: a parabolic transducer, a phased planar array, a dipole and a Yagi."
+    },
+    {
+      "id": "s35",
+      "keyTopic": 39,
       "template": "comparison-table",
       "params": {
-        "title": "Why waveguide beats coax at microwave",
-        "columns": ["Feature", "Coax", "Waveguide"],
+        "title": "Older reflector vs. slotted array",
+        "columns": [
+          "Feature",
+          "Truncated parabolic",
+          "Slotted waveguide array"
+        ],
         "rows": [
-          ["Where energy is lost", "Small center conductor and its dielectric", "The inner surface of the walls"],
-          ["Resistive (I²R) loss", "Current crowded: higher loss", "Large surface spreads current: very small"],
-          ["At microwave frequencies", "Considerably more loss", "Considerably less loss: used instead"]
+          [
+            "Shape",
+            "A dish with its top and bottom cut off",
+            "A slotted length of waveguide"
+          ],
+          [
+            "Feed",
+            "Separate feed horn",
+            "No separate feed horn"
+          ],
+          [
+            "Build",
+            "Bulkier",
+            "Compact and rugged"
+          ],
+          [
+            "Today",
+            "Common on older sets",
+            "Has largely replaced it"
+          ]
         ]
       },
-      "onScreen": ["Coax loses energy in its center conductor and dielectric", "Waveguide: large inner surface, very small I²R loss", "Waveguide: considerably less loss at microwave"],
-      "narration": "Why are waveguides used instead of conventional coaxial transmission lines at microwave frequencies? Coax loses energy in its small center conductor and in its dielectric. A waveguide's resistive losses are very small, because its inner surface is large. The current spreads out over that surface, so the I squared R loss stays small. The result: at microwave frequencies, waveguides have considerably less loss than coax, so they're used instead."
+      "onScreen": [
+        "Truncated parabolic: dish fed by a horn",
+        "Slotted array: no separate feed horn",
+        "Compact and rugged",
+        "Slotted array has largely replaced the dish"
+      ],
+      "narration": "The slotted array has largely replaced an older design: the truncated parabolic reflector. Parabolic means a curved dish, like a satellite dish, that focuses energy into a beam. Truncated means its top and bottom are cut off, leaving it wide but short: wide for a narrow horizontal beam, short for a wider vertical one, just as a radar wants. But the dish needs a separate feed horn, a flared waveguide opening in front of it, to spray energy onto it. The slotted waveguide array needs no separate feed horn: the waveguide itself is the antenna. It's also compact and rugged. So truncated parabolic reflectors were common on older sets, but the slotted array has largely replaced them."
     },
     {
-      "id": "s17",
-      "keyTopic": 43,
-      "template": "key-facts",
+      "id": "s36",
+      "keyTopic": 39,
+      "template": "waveform",
       "params": {
-        "title": "Fields and coupling in a waveguide",
-        "items": [
-          "Magnetic field: strongest at the edges, where the wall currents flow",
-          "Dominant TE<sub>10</sub> mode: the electric field peaks at the center",
-          "Insert or extract RF with a voltage probe, a current loop or an aperture window",
-          "Coupling capacitance is not used"
+        "title": "End-fed: the wave runs past the slots",
+        "kind": "sine",
+        "cycles": 4,
+        "xAxis": "along the array",
+        "yAxis": "wave inside the guide",
+        "labels": [
+          "End-fed: energy enters at one end and travels along",
+          "Each slot catches the wave a little later than the last",
+          "Guide wavelength: the wave's length inside the guide",
+          "Slots tilt alternately, so ½-wave spacing radiates in step"
         ]
       },
-      "onScreen": ["Magnetic field strongest at the edges", "TE sub 10 mode: electric field peaks at the center", "Voltage probe, current loop or aperture window", "Not coupling capacitance"],
-      "narration": "Inside a waveguide, the magnetic field is strongest at the edges, where the wall currents flow. In the dominant T E sub one zero mode, the electric field peaks at the center. To insert RF energy into a waveguide, or extract it, you can use a voltage probe, a current loop or an aperture window. Coupling capacitance is not used, so on the exam, that's the one that would not be used."
+      "onScreen": [
+        "End-fed: energy enters at one end",
+        "Each slot a little later",
+        "Guide wavelength",
+        "Alternate tilt: slots radiate in step"
+      ],
+      "narration": "2 more ideas explain how the slots aim the beam. First, this array is end-fed: the energy enters at one end and travels along the guide, so each slot catches the wave a little later than the one before. Second, inside a waveguide the wave zigzags between the walls, so its crests sit a little farther apart than in open air. That spacing is the guide wavelength, and it changes with frequency. Slots half a guide wavelength apart would each catch the wave upside down compared with their neighbors. So the slots are tilted alternately one way, then the other, which flips every second one back. At that spacing, all the slots radiate in phase, and the beam points straight out."
+    },
+    {
+      "id": "s37",
+      "keyTopic": 39,
+      "template": "key-facts",
+      "params": {
+        "title": "Why the beam points a little off",
+        "items": [
+          "Exactly ½ guide wavelength: beam straight out, perpendicular",
+          "But the slots' small reflections add up: high VSWR",
+          "So the slots sit slightly off ½ guide wavelength: VSWR stays low",
+          "The slots no longer radiate exactly in step",
+          "Main lobe: several degrees off a line perpendicular to the antenna"
+        ]
+      },
+      "onScreen": [
+        "Exact ½ guide wavelength: beam straight out",
+        "Reflections add up: high VSWR",
+        "Slots slightly off ½ guide wavelength",
+        "Slots not quite in step",
+        "Lobe several degrees off perpendicular"
+      ],
+      "narration": "In a real array, the beam points a little off, and that's a design trade. At exactly half a guide wavelength, the beam is perpendicular to the antenna: at a right angle to it. But every slot also reflects a little energy back down the guide. At that exact spacing, those small reflections arrive back in step and add up to a high VSWR. So designers space the slots slightly off half a guide wavelength. The reflections no longer add up, and the VSWR stays low. The cost: the slots no longer radiate exactly in step, so the beam tilts. The center of the transmitted lobe, the main, strongest part of the beam, is several degrees offset from a line perpendicular to the antenna. Not perpendicular, and not strongest at either end."
+    },
+    {
+      "id": "s38",
+      "keyTopic": 39,
+      "template": "comparison-table",
+      "params": {
+        "title": "Frequency scan, or beam squint",
+        "columns": [
+          "Transmitter frequency",
+          "Guide wavelength",
+          "Beam direction"
+        ],
+        "rows": [
+          [
+            "Goes up",
+            "Gets shorter",
+            "Swings slightly one way"
+          ],
+          [
+            "Goes down",
+            "Gets longer",
+            "Swings slightly the other way"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Frequency change shifts the guide wavelength",
+        "Beam swings slightly",
+        "Frequency scan, also called beam squint"
+      ],
+      "narration": "That tilt has a side effect, and the exam asks about it. The amount of tilt depends on each slot's phase, its place in the wave's cycle as it radiates. The phase is set by the guide wavelength, and the guide wavelength changes with frequency. So an end-fed slotted waveguide array exhibits frequency scan: change the transmitter frequency, and the beam direction swings slightly. This is also called beam squint. It isn't a high VSWR, which the slot spacing avoids, or a narrow elevation beam, since the vertical beam is kept wide. Rain affects any X-band radar, not this antenna in particular. Just remember: raise the frequency, and the beam swings one way; lower it, and it swings the other."
+    },
+    {
+      "id": "s39",
+      "keyTopic": 41,
+      "template": "radar-ppi",
+      "params": {
+        "title": "The sweep must follow the antenna",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          {
+            "bearing": 60,
+            "range": 6
+          }
+        ],
+        "labels": [
+          "The sweep line must point where the antenna points",
+          "Out of step: every echo is drawn on the wrong bearing",
+          "Required in all radar systems and every ARPA",
+          "Classic method: a synchro system"
+        ]
+      },
+      "onScreen": [
+        "Sweep must point where the antenna points",
+        "Out of step: wrong bearings",
+        "Required in all radars and ARPAs",
+        "Classic method: synchros"
+      ],
+      "narration": "We've followed the pulse out of the antenna. Now follow the other half of the story back down: the antenna's direction. On the PPI, the sweep is the bright line that turns round the screen, drawing echoes as they arrive. Its position must indicate the antenna's position. If the 2 drift apart, every echo is drawn on the wrong bearing. So antenna direction must be sent to the display in all radar systems, and in all ARPAs: automatic radar plotting aids, computers that track targets. The sweep and antenna are frequently kept in synchronization, in step, by synchro systems. On the exam, that's the answer, not servo systems, differential amplifiers, or DC motors, which run on direct current."
+    },
+    {
+      "id": "s40",
+      "keyTopic": 41,
+      "template": "comparison-table",
+      "params": {
+        "title": "Coils, AC and angle",
+        "columns": [
+          "2 windings",
+          "Voltage picked up"
+        ],
+        "rows": [
+          [
+            "Facing each other",
+            "Greatest"
+          ],
+          [
+            "Tilted",
+            "Less"
+          ],
+          [
+            "At 90° to each other",
+            "None"
+          ]
+        ]
+      },
+      "onScreen": [
+        "AC in one winding induces voltage in another",
+        "Rotor turns; stator stays still",
+        "Facing: greatest",
+        "Tilted: less",
+        "At 90°: none"
+      ],
+      "narration": "Synchros, and the resolvers we'll meet after them, both work on one simple effect. Feed AC, the current that keeps reversing, into a coil of wire, called a winding. It makes a magnetic field that keeps reversing too. Put a second winding nearby, and that changing field induces a voltage in it, with no wire between them. That's how a transformer works. In these devices, the winding that turns on a shaft is the rotor, and the windings that stay still around it make up the stator. How much voltage the rotor induces in a stator winding depends on the angle between them: facing each other, the most; tilted, less; at 90 degrees, none. So the voltage tells you the angle."
+    },
+    {
+      "id": "s41",
+      "keyTopic": 41,
+      "template": "block-diagram",
+      "params": {
+        "title": "Keeping the PPI sweep in step",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "ant",
+            "label": "Radar antenna",
+            "note": "Its position must reach the display"
+          },
+          {
+            "id": "stx",
+            "label": "Synchro transmitter",
+            "note": "Geared to the antenna"
+          },
+          {
+            "id": "srx",
+            "label": "Synchro receiver",
+            "note": "Angle arrives on stator lines S1, S2, S3"
+          },
+          {
+            "id": "ppi",
+            "label": "PPI sweep",
+            "note": "Rotates in step with the antenna"
+          },
+          {
+            "id": "ac",
+            "label": "AC reference",
+            "note": "Shared by both rotors"
+          }
+        ],
+        "links": [
+          {
+            "from": "ant",
+            "to": "stx"
+          },
+          {
+            "from": "stx",
+            "to": "srx"
+          },
+          {
+            "from": "srx",
+            "to": "ppi"
+          },
+          {
+            "from": "ac",
+            "to": "stx"
+          },
+          {
+            "from": "ac",
+            "to": "srx"
+          }
+        ]
+      },
+      "onScreen": [
+        "Synchro transmitter geared to the antenna",
+        "Angle carried on stator lines S1, S2, S3",
+        "PPI sweep rotates in step",
+        "Both rotors share the AC reference"
+      ],
+      "narration": "A synchro system is a matched pair. The synchro transmitter is geared to the antenna, so its rotor turns with it. The synchro receiver sits at the display, and 3 stator leads, the wires S1, S2 and S3, join the 2. As the transmitter's rotor turns, the voltages on those lines change. In the receiver, they set up a magnetic field at the same angle, and its rotor swings round to line up, like a compass needle, turning the PPI sweep in step. So on a basic synchro system, the angular information is carried on the stator lines. Both rotors share one AC reference, so the rotor lines carry only that AC. DC feedback and deflection coils are traps too."
+    },
+    {
+      "id": "s42",
+      "keyTopic": 41,
+      "template": "comparison-table",
+      "params": {
+        "title": "Inside a synchro transmitter",
+        "columns": [
+          "Part",
+          "Windings",
+          "Leads and job"
+        ],
+        "rows": [
+          [
+            "Rotor (turns with the antenna)",
+            "For the exam: 2",
+            "R1, R2: AC excitation goes in"
+          ],
+          [
+            "Stator (fixed)",
+            "3, set 120° apart",
+            "S1, S2, S3: angle voltages come out"
+          ],
+          [
+            "Strictly, a standard rotor",
+            "1 winding, 2 leads",
+            "Exam answer is still 2: choose 2"
+          ]
+        ]
+      },
+      "onScreen": [
+        "For the exam: 2 rotor and 3 stator windings",
+        "Rotor leads R1, R2",
+        "Stators S1, S2, S3, 120° apart",
+        "Strictly 1 rotor winding; the exam's answer is 2"
+      ],
+      "narration": "Now look inside the synchro transmitter. The answer the exam expects: an antenna synchro transmitter has 2 rotor and 3 stator windings. The AC excitation, the reference current that energizes it, enters the rotor through 2 leads, R1 and R2. The 3 stator windings, S1, S2 and S3, are spaced 120 degrees apart, evenly round the circle, and pick up the angle voltages. Here's the catch. Strictly, a standard synchro's rotor is 1 winding with those 2 leads, so the choice of a single rotor and 3 stator windings is closer to the truth. But the exam's answer is 2 rotor and 3 stator windings, so choose that. 3 rotor windings is wrong either way."
+    },
+    {
+      "id": "s43",
+      "keyTopic": 41,
+      "template": "comparison-table",
+      "params": {
+        "title": "Sine and cosine: an angle in 2 numbers",
+        "columns": [
+          "Antenna points",
+          "Cosine (ahead part)",
+          "Sine (sideways part)"
+        ],
+        "rows": [
+          [
+            "Dead ahead, 0°",
+            "Full",
+            "Zero"
+          ],
+          [
+            "In between",
+            "Part",
+            "Part"
+          ],
+          [
+            "Abeam, 90°",
+            "Zero",
+            "Full"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Cosine: the ahead part",
+        "Sine: the sideways part",
+        "0°: cosine full, sine zero",
+        "90°: sine full, cosine zero"
+      ],
+      "narration": "Synchros use 3 stator windings. Resolvers use just 2, and their voltages follow 2 quantities called sine and cosine. What do they mean? Picture the antenna pointing in some direction, measured from dead ahead. The cosine tells how much of that direction lies straight ahead. The sine tells how much lies off to the side. Dead ahead, at 0 degrees, the cosine is full and the sine is zero. Turn partway, and each is partly full. At 90 degrees, abeam, meaning straight out to the side, it's the reverse: sine full, cosine zero. Like the north and east readings on a map, the 2 numbers together pin down the direction exactly."
+    },
+    {
+      "id": "s44",
+      "keyTopic": 41,
+      "template": "waveform",
+      "params": {
+        "title": "The resolver",
+        "kind": "sine",
+        "cycles": 1,
+        "xAxis": "antenna angle, 1 full turn",
+        "yAxis": "stator voltage",
+        "labels": [
+          "1 rotor winding, fed with AC, turns with the antenna",
+          "2 stator windings, 90° apart",
+          "Stator voltages follow the sine and cosine of the angle",
+          "Not 2 rotor windings, or delta or Y: 1 rotor, 2 stators"
+        ]
+      },
+      "onScreen": [
+        "1 rotor winding",
+        "2 stator windings 90° apart",
+        "Sine and cosine outputs",
+        "Not 2 rotors, delta or Y"
+      ],
+      "narration": "Now the resolver itself. The basic resolver contains a rotor winding and 2 stator windings that are 90 degrees apart. The rotor is fed with AC and turns with the antenna. Because the 2 stator windings sit at right angles, when the rotor faces one, it's side-on to the other. So as the rotor turns, one stator voltage varies as the sine of the antenna angle, and the other as the cosine. This curve shows one of them over a full turn of the antenna. The trap answers add a second rotor winding, or a delta or Y connection, which are ways of wiring 3 windings together. A basic resolver has 1 rotor winding and 2 stators."
+    },
+    {
+      "id": "s45",
+      "keyTopic": 41,
+      "template": "comparison-table",
+      "params": {
+        "title": "3 ways to send the antenna direction",
+        "columns": [
+          "Device",
+          "How it sends the angle"
+        ],
+        "rows": [
+          [
+            "3-phase synchro",
+            "3 voltages on stator lines S1, S2, S3"
+          ],
+          [
+            "2-phase resolver",
+            "2 voltages: sine and cosine"
+          ],
+          [
+            "Optical encoder",
+            "Digital pulses or codes from a slotted disk"
+          ]
+        ]
+      },
+      "onScreen": [
+        "3-phase synchros",
+        "2-phase resolvers",
+        "Optical encoders",
+        "Any of them can do it"
+      ],
+      "narration": "So there are several ways to do the job. Radar antenna direction must be sent to the display in all ARPAs and radar systems, and any of these can do it. 3-phase synchros send it as 3 voltages on the stator lines. 2-phase resolvers send it as 2 voltages, the sine and the cosine. Optical encoders work with light: a disk on the antenna shaft, with a pattern of slots, turns between a lamp and a light sensor, which sends digital pulses or codes for the angle. Different makers and generations of radar use each of them, so on the exam, the answer is any of the above."
+    },
+    {
+      "id": "s46",
+      "keyTopic": 41,
+      "template": "block-diagram",
+      "params": {
+        "title": "Most common today: the resolver",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "ant",
+            "label": "Antenna",
+            "note": "Turning on the mast"
+          },
+          {
+            "id": "res",
+            "label": "Resolver",
+            "note": "Sine and cosine voltages"
+          },
+          {
+            "id": "conv",
+            "label": "Converter",
+            "note": "Turns them into digital bearing data"
+          },
+          {
+            "id": "disp",
+            "label": "Display and ARPA",
+            "note": "Sweep and tracking use the bearing"
+          }
+        ],
+        "links": [
+          {
+            "from": "ant",
+            "to": "res"
+          },
+          {
+            "from": "res",
+            "to": "conv"
+          },
+          {
+            "from": "conv",
+            "to": "disp"
+          }
+        ]
+      },
+      "onScreen": [
+        "Antenna turns the resolver",
+        "Sine and cosine voltages",
+        "Converted to digital bearing data",
+        "Used by the display and ARPA"
+      ],
+      "narration": "Which is most common today? Resolvers are the most common type of antenna position indicating device in modern radars. The reason is digital. A resolver's sine and cosine outputs convert easily to digital bearing data. A modern display and its ARPA are computers that work in numbers, so that bearing goes straight in. On the exam, it's resolvers, not servo systems, synchro transmitters or step motors."
+    },
+    {
+      "id": "s47",
+      "keyTopic": 41,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": [
+          "Slotted waveguide array: narrow horizontal beam; longer antenna, narrower beam",
+          "Z<sub>O</sub> = √(L ÷ C), set by construction: 250 µH and 1000 pF give 500 Ω",
+          "Standing waves: some energy not absorbed by the load; VSWR measures them",
+          "Waveguide: far less loss than coax; bends over 2 in, drain hole, rotary joint",
+          "Antenna direction: synchros, resolvers (most common) or optical encoders"
+        ]
+      },
+      "onScreen": [
+        "Slotted array: narrow horizontal beam",
+        "Z sub O = √(L ÷ C): 500 Ω",
+        "Standing waves: energy not absorbed",
+        "Waveguide: far less loss than coax",
+        "Synchros, resolvers, optical encoders"
+      ],
+      "narration": "To wrap up, 5 things to remember. First, a ship's antenna is usually a slotted waveguide array, with a narrow horizontal beam for bearing resolution; the longer the antenna, the narrower the beam. Second, Z sub O is the square root of L divided by C, set by how the line is built, not its length: 250 microhenries and 1000 picofarads give 500 ohms. Third, standing waves mean some energy isn't absorbed by the load, and VSWR measures them. Fourth, waveguide has far less loss than coax. At X-band its bends need a radius over 2 inches, its elbows a drain hole, and it reaches the turning antenna through a rotary joint. Fifth, synchros, resolvers or optical encoders send the antenna's direction to the display, and resolvers are most common."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [39] },
-    { "after": "s8", "keyTopics": [40] },
-    { "after": "s11", "keyTopics": [41] },
-    { "after": "s14", "keyTopics": [42] },
-    { "after": "s17", "keyTopics": [43] }
+    {
+      "after": "s4",
+      "keyTopics": [
+        39
+      ],
+      "questions": [
+        "8-39E3"
+      ]
+    },
+    {
+      "after": "s8",
+      "keyTopics": [
+        39
+      ],
+      "questions": [
+        "8-39E5"
+      ]
+    },
+    {
+      "after": "s12",
+      "keyTopics": [
+        40
+      ],
+      "questions": [
+        "8-40E4"
+      ]
+    },
+    {
+      "after": "s15",
+      "keyTopics": [
+        40
+      ],
+      "questions": [
+        "8-40E2",
+        "8-40E5"
+      ]
+    },
+    {
+      "after": "s18",
+      "keyTopics": [
+        40
+      ],
+      "questions": [
+        "8-40E1",
+        "8-40E3"
+      ]
+    },
+    {
+      "after": "s21",
+      "keyTopics": [
+        43,
+        42
+      ],
+      "questions": [
+        "8-43E6",
+        "8-42E3"
+      ]
+    },
+    {
+      "after": "s25",
+      "keyTopics": [
+        42,
+        43
+      ],
+      "questions": [
+        "8-42E5",
+        "8-42E1",
+        "8-43E2"
+      ]
+    },
+    {
+      "after": "s29",
+      "keyTopics": [
+        42,
+        43
+      ],
+      "questions": [
+        "8-42E4",
+        "8-42E2",
+        "8-43E5",
+        "8-43E4"
+      ]
+    },
+    {
+      "after": "s33",
+      "keyTopics": [
+        42,
+        43,
+        40
+      ],
+      "questions": [
+        "8-42E6",
+        "8-43E3",
+        "8-40E6",
+        "8-43E1"
+      ]
+    },
+    {
+      "after": "s37",
+      "keyTopics": [
+        39
+      ],
+      "questions": [
+        "8-39E2",
+        "8-39E6",
+        "8-39E4"
+      ]
+    },
+    {
+      "after": "s41",
+      "keyTopics": [
+        39,
+        41
+      ],
+      "questions": [
+        "8-39E1",
+        "8-41E1",
+        "8-41E2"
+      ]
+    },
+    {
+      "after": "s44",
+      "keyTopics": [
+        41
+      ],
+      "questions": [
+        "8-41E5",
+        "8-41E4"
+      ]
+    },
+    {
+      "after": "s47",
+      "keyTopics": [
+        41
+      ],
+      "questions": [
+        "8-41E6",
+        "8-41E3"
+      ]
+    }
   ],
   "video": null
 }

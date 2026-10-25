@@ -3,7 +3,7 @@
   import QuestionCard from '../components/QuestionCard.svelte';
   import { newItem } from '../lib/exam.ts';
   import { choiceKey, fromInside, ignoreShortcut } from '../lib/keys';
-  import { firstSceneOf, narrationOf, videoUrl } from '../lib/lessons';
+  import { firstSceneOf, narrationOf, replaySceneOf, videoUrl } from '../lib/lessons';
   import { Narration } from '../lib/narrator.svelte';
   import { pools } from '../lib/pools';
   import { progress, recordAnswer, saveProgress } from '../lib/progress.svelte';
@@ -80,7 +80,7 @@
   }
 
   function openCheckpoint(c: Checkpoint, after: number) {
-    const question = drawCheckpoint(pools[lesson.element], c.keyTopics, Math.random);
+    const question = drawCheckpoint(pools[lesson.element], c.keyTopics, Math.random, c.questions);
     overlay = { kind: 'checkpoint', after, question, item: newItem(question, Math.random) };
   }
 
@@ -101,7 +101,7 @@
     const { after, question } = overlay;
     dialog?.close();
     overlay = null;
-    if (replay) startScene(firstSceneOf(lesson, question.keyTopic), true);
+    if (replay) startScene(replaySceneOf(lesson, after, question.keyTopic), true);
     else continueAfter(after);
   }
 

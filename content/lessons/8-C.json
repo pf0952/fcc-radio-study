@@ -11,13 +11,110 @@
       "params": {
         "kicker": "Element 8 · Subelement C",
         "title": "Receiving Systems",
-        "subtitle": "Follow an echo from the crystal mixer and klystron through the AFC loop, IF strip and video amplifier, then sea clutter, power supplies and noise."
+        "subtitle": "Follow a faint echo through the radar receiver: mixer, local oscillator and AFC, IF and video amplifiers, clutter, noise and power."
       },
-      "onScreen": ["Receiving Systems", "Mixer, klystron, AFC loop, IF strip, video amplifier, clutter, power and noise"],
-      "narration": "This lesson follows a radar echo through the receiver. We'll start at the crystal mixer and the klystron local oscillator, then the automatic frequency control, or AFC, loop that keeps them in step. Next come the intermediate frequency, or IF, amplifier, the detector and the video amplifier. After that: sea clutter control, the receiver's power supplies, noise and interference, and a few special circuits. Let's begin at the front end."
+      "onScreen": ["Receiving Systems", "Follow an echo from the antenna to the display"],
+      "narration": "Welcome to Receiving Systems. A radar receiver has one big job: take an echo so faint it's barely there and turn it into a clear spot on the screen. We'll follow that echo from the antenna to the display. Along the way you'll meet the circuit that keeps the receiver tuned, the controls that clean up echoes from the waves, the noise that hides small targets, and the power supplies behind it all. When a radar picture goes blank, fuzzy or cluttered, a technician who understands these stages knows where to look. You need no electronics background: we'll build from the basics, and by the end you'll be able to trace an echo through the receiver and answer every exam question on it."
     },
     {
       "id": "s2",
+      "keyTopic": 19,
+      "template": "radar-ppi",
+      "params": {
+        "title": "How a radar sees",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 40, "range": 6 },
+          { "bearing": 160, "range": 4 },
+          { "bearing": 300, "range": 9 }
+        ],
+        "labels": [
+          "The magnetron sends out a short, powerful burst of microwaves: a pulse",
+          "A target returns a tiny echo, like a shout echoing off a cliff",
+          "The echo's delay gives range; the antenna's direction gives bearing",
+          "Each echo becomes a spot on the display"
+        ]
+      },
+      "onScreen": ["Short microwave pulse from the magnetron", "A tiny echo comes back", "Delay gives range, direction gives bearing", "Each echo becomes a spot"],
+      "narration": "Let's start with how radar works. The heart of the transmitter is the magnetron, a special vacuum tube: a sealed container with the air pumped out. It fires a very short, powerful burst of microwaves, the same kind of energy a microwave oven uses. That burst is called a pulse, and it goes out from a turning antenna. When the pulse hits a ship or a coastline, a tiny part of it bounces back, like a shout echoing off a cliff. The longer the echo takes to return, the farther away the target is: that distance is its range. The direction the antenna is pointing gives the target's bearing. Each echo becomes a spot on the display, at its range and bearing."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 19,
+      "template": "key-facts",
+      "params": {
+        "title": "One antenna, and a very weak echo",
+        "items": [
+          "The same antenna sends the pulse and hears the echo",
+          "The duplexer switches it: to the transmitter during each pulse, to the receiver after",
+          "The echo that returns is fantastically weak: a few millionths of a volt",
+          "The receiver's job: turn that whisper into a bright spot"
+        ]
+      },
+      "onScreen": ["One antenna sends and listens", "The duplexer switches it", "The echo is fantastically weak", "The receiver turns it into a bright spot"],
+      "narration": "The same antenna both sends and listens, so something has to switch it. That's the duplexer: it connects the antenna to the transmitter during each pulse, and to the receiver the rest of the time. Now think about what comes back. The pulse leaves with enormous power, but only a sliver of it hits the target, and only a sliver of that returns. So the echo is fantastically weak, often just a few millionths of a volt. A volt is the unit of electrical push, the pressure that drives electricity through a circuit. The receiver's job is to turn that whisper into a bright spot on the display."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 19,
+      "template": "band-strip",
+      "params": {
+        "title": "Radar works at microwave frequencies",
+        "min": 1,
+        "max": 20000,
+        "scale": "log",
+        "ends": ["Lower", "Higher"],
+        "marks": [
+          { "at": 10, "label": "HF: 3 to 30 MHz", "note": "HF receivers", "tone": "muted" },
+          { "at": 100, "label": "FM radio: about 100 MHz", "note": "FM receivers", "tone": "muted" },
+          { "at": 3000, "label": "S-band: near 3 GHz", "note": "Radar", "tone": "key" },
+          { "at": 9400, "label": "X-band: near 9.4 GHz", "note": "Radar", "tone": "key" }
+        ]
+      },
+      "onScreen": ["HF: 3 to 30 MHz", "FM radio: about 100 MHz", "S-band radar near 3 GHz", "X-band radar near 9.4 GHz", "A radar receiver is a microwave receiver"],
+      "narration": "What kind of signal is that echo? Every radio wave vibrates back and forth, and the number of vibrations each second is its frequency, measured in hertz. A megahertz is a million vibrations a second. Shortwave radio, called HF for high frequency, works at 3 to 30 megahertz. FM broadcast radio, FM for frequency modulation, sits around 100 megahertz. Radar goes far higher, into microwaves, counted in gigahertz: a gigahertz is 1000 megahertz. Ship radars use S-band, near 3 gigahertz, or X-band, near 9.4 gigahertz. So when the exam asks what radar receivers are similar to, the answer is microwave receivers. Not FM, HF or television receivers: they all work at far lower frequencies."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 20,
+      "template": "key-facts",
+      "params": {
+        "title": "Why the receiver changes the echo's frequency",
+        "items": [
+          "Microwaves are awkward: ordinary wires waste them, so radar uses waveguide",
+          "Amplifiers that work directly at microwave frequencies were hard to build",
+          "So the receiver first converts the echo to a much lower frequency",
+          "That's the RF mixer: it converts a low-level signal to a different frequency"
+        ]
+      },
+      "onScreen": ["Waveguide carries the microwaves", "Microwave amplifiers were hard to build", "Convert the echo to a lower frequency", "RF mixer: converts a low-level signal to a different frequency"],
+      "narration": "So the echo is a weak microwave signal, and microwaves are awkward to handle. In ordinary wires, much of their energy is wasted, so radar carries them in waveguide: hollow metal tubing that channels microwaves the way a pipe channels water. Making them stronger takes an amplifier, a circuit that makes a signal bigger, and microwave amplifiers were hard to build. So the classic radar receiver doesn't try: it first converts the echo to a much lower frequency, where amplifying is easy. That's the job of the RF, or radio frequency, mixer. On the exam, an RF mixer converts a low-level signal, meaning a weak one, to a different frequency. It doesn't form the transmitted pulses or add audio tones."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 20,
+      "template": "block-diagram",
+      "params": {
+        "title": "Mixing makes the IF",
+        "columns": 2,
+        "blocks": [
+          { "id": "echo", "label": "Echo", "note": "Weak microwave signal" },
+          { "id": "lo", "label": "Local oscillator", "note": "A steady signal, made in the receiver" },
+          { "id": "mixer", "label": "Mixer", "note": "Combines the 2 signals" },
+          { "id": "if", "label": "IF: the difference", "note": "Typically 30 or 60 MHz, easy to amplify" }
+        ],
+        "links": [
+          { "from": "echo", "to": "mixer" },
+          { "from": "lo", "to": "mixer" },
+          { "from": "mixer", "to": "if" }
+        ]
+      },
+      "onScreen": ["The echo, a weak microwave signal", "Local oscillator: a steady signal", "Mixer combines the 2 signals", "The difference: the IF, typically 30 or 60 MHz"],
+      "narration": "How does the mixer change the frequency? It combines the echo with a second, steady signal from the local oscillator. An oscillator is a circuit that generates a steady wave, and local means it's right here in the receiver. When 2 frequencies are mixed, a new one appears at their difference, a bit like 2 slightly out-of-tune guitar strings making a slow wobble. That difference is called the intermediate frequency, or IF: intermediate because it sits between the microwave echo and the final picture signal. A radar's IF is typically 30 or 60 megahertz, low enough to amplify easily."
+    },
+    {
+      "id": "s7",
       "keyTopic": 19,
       "template": "block-diagram",
       "params": {
@@ -25,12 +122,12 @@
         "columns": 4,
         "blocks": [
           { "id": "dup", "label": "Duplexer", "note": "The weak echo comes in" },
-          { "id": "mixer", "label": "Crystal mixer", "note": "Conversion loss, not gain" },
-          { "id": "if", "label": "IF amplifier", "note": "Nearly all the gain; wide or narrow" },
-          { "id": "det", "label": "Second detector" },
-          { "id": "rf", "label": "RF amplifier", "note": "Does not exist in a radar receiver" },
-          { "id": "lo", "label": "Local oscillator" },
-          { "id": "disp", "label": "Display" },
+          { "id": "mixer", "label": "Crystal mixer", "note": "Converts the echo down to the IF" },
+          { "id": "if", "label": "IF amplifier", "note": "Boosts the IF signal" },
+          { "id": "det", "label": "Second detector", "note": "Keeps just the pulse shape" },
+          { "id": "rf", "label": "RF amplifier", "note": "Not in a radar receiver" },
+          { "id": "lo", "label": "Local oscillator", "note": "Feeds the mixer" },
+          { "id": "disp", "label": "Display", "note": "Draws the picture" },
           { "id": "video", "label": "Video amplifier", "note": "Sends signals to the display" }
         ],
         "links": [
@@ -43,60 +140,98 @@
           { "from": "video", "to": "disp" }
         ]
       },
-      "onScreen": ["Duplexer straight to the crystal mixer", "Crystal mixer: conversion loss", "IF amplifier: nearly all the gain", "Second detector", "No RF amplifier at all", "Video amplifier feeds the display"],
-      "narration": "Here's the receiver chain. The weak echo leaves the duplexer and goes straight to the crystal mixer. The crystal mixer actually has a conversion loss, not a gain. So nearly all amplification happens after conversion, in the IF amplifier, whose bandwidth is switched wide or narrow with range rather than always being narrow. The IF amplifier feeds the second detector. Now notice what's missing. The front end of a radar receiver does not provide any amplification to the radar signal. There is no RF, or radio frequency, amplifier at all, let alone an RF power amplifier. The local oscillator feeds the mixer. And the display gets its signals from the video amplifier: that's the section that sends signals to the display system. A radar receiver has no audio stage."
+      "onScreen": ["Duplexer straight to the crystal mixer", "IF amplifier", "Second detector", "No RF amplifier", "Local oscillator feeds the mixer", "Video amplifier sends signals to the display"],
+      "narration": "Here's the whole receiver chain, in the order the echo travels. The echo leaves the duplexer and goes straight to the crystal mixer, which converts it down to the IF. The IF amplifier boosts it. Next, the second detector strips away the IF and keeps just the shape of each echo pulse. That pulse signal is called video, because it's what draws the picture. Notice the crossed-out box: there's no RF amplifier ahead of the mixer. The local oscillator feeds the mixer. And the display gets its signals from the video amplifier, the section of the receiving system that sends signals to the display system. The IF amplifier feeds the detector, not the display, and there's no audio stage, because there's no sound."
     },
     {
-      "id": "s3",
-      "keyTopic": 19,
-      "template": "key-facts",
-      "params": {
-        "title": "A radar receiver is a microwave receiver",
-        "items": [
-          "Works at X-band near 9.4 GHz or S-band near 3 GHz",
-          "Built with waveguide, a crystal mixer and a microwave local oscillator",
-          "Quite unlike FM, HF or TV receivers"
-        ]
-      },
-      "onScreen": ["X-band near 9.4 GHz or S-band near 3 GHz", "Waveguide, crystal mixer, microwave local oscillator", "Unlike FM, HF or TV receivers"],
-      "narration": "What kind of receiver is a radar receiver most like? A microwave receiver. It works at X-band, near 9.4 gigahertz, or at S-band, near 3 gigahertz. It's built with waveguide, a crystal mixer and a microwave local oscillator. That makes it quite unlike a frequency modulation, or FM, receiver, a high frequency receiver, or a television receiver."
-    },
-    {
-      "id": "s4",
+      "id": "s8",
       "keyTopic": 19,
       "template": "comparison-table",
       "params": {
-        "title": "Linear or logarithmic, analog or digital",
-        "columns": ["Receiver", "How it responds", "Result"],
+        "title": "Where the gain comes from",
+        "columns": ["Stage", "Gain", "Why"],
         "rows": [
-          ["Linear", "Output follows the input", "Clips on very strong echoes"],
-          ["Logarithmic", "Output rises with the log of the input", "Can't be saturated: suits radar"],
-          ["Analog", "Passes a varying signal level", "No on or off decision"],
-          ["Digital", "Decision circuitry vs a threshold", "On or off: 1 or 0"]
+          ["RF amplifier", "Does not exist", "The echo goes straight to the mixer"],
+          ["Crystal mixer", "A small loss", "Converting the echo costs some strength"],
+          ["IF amplifier", "Nearly all the gain", "Easy to amplify at the IF"]
         ]
       },
-      "onScreen": ["Linear: clips on strong echoes", "Logarithmic: can't be saturated", "Analog: varying level", "Digital: decision circuitry, on or off, 1 or 0"],
-      "narration": "Two comparisons the exam likes. First, linear versus logarithmic. A linear receiver's output follows its input, so a very strong echo clips. A logarithmic receiver's output rises with the logarithm of the input. That means logarithmic receivers can't be saturated: even very strong echoes still give distinct, unclipped responses, which suits radar well. Second, analog versus digital. An analog receiver passes a varying signal level. The main difference in a digital receiver is its decision circuitry. It compares the signal against a threshold to distinguish between on and off signal levels, a 1 or a 0."
+      "onScreen": ["No RF amplifier at all", "Mixer: conversion loss, not gain", "IF amplifier: nearly all the gain", "IF amplifier: not always narrow"],
+      "narration": "Now that crossed-out box. Gain is how many times bigger an amplifier makes a signal. So where does a radar receiver get its gain? Not at the front end, the part the echo meets first: the front end does not provide any amplification to the radar signal. There's no RF amplifier at all, so a radar receiver's RF power amplifier does not exist. The crystal mixer doesn't help either: it has a conversion loss, so a little less signal comes out than goes in. Nearly all the amplification happens after conversion, in the IF amplifier. One more trap: the IF amplifier is not always narrow, passing only a thin slice of frequencies. How wide it is changes with the range shown, as we'll see."
     },
     {
-      "id": "s5",
+      "id": "s9",
+      "keyTopic": 28,
+      "template": "block-diagram",
+      "params": {
+        "title": "The TR cell guards the mixer",
+        "columns": 3,
+        "blocks": [
+          { "id": "mag", "label": "Magnetron", "note": "Enormous power in each pulse" },
+          { "id": "dup", "label": "Duplexer", "note": "Shared by the pulse and the echoes" },
+          { "id": "ant", "label": "Antenna" },
+          { "id": "mixer", "label": "Crystal mixer", "note": "Delicate" },
+          { "id": "tr", "label": "TR cell", "note": "A gas-filled tube guarding the mixer" }
+        ],
+        "links": [
+          { "from": "mag", "to": "dup", "label": "Pulse out" },
+          { "from": "dup", "to": "ant" },
+          { "from": "dup", "to": "tr", "label": "Echoes in" },
+          { "from": "tr", "to": "mixer" }
+        ]
+      },
+      "onScreen": ["Magnetron pulse", "Through the duplexer", "Out to the antenna", "Delicate crystal mixer", "TR cell: the guard"],
+      "narration": "With no amplifier in front of it, the crystal mixer is the first thing the echo meets, and that crystal is delicate. Follow the paths. The magnetron's pulse goes through the duplexer and out to the antenna. The echoes come back the same way and turn off toward the mixer. So what stops the pulse from turning toward the mixer too? Its power is enormous, and it would burn the crystal out in an instant. The guard is an ion discharge TR, or transmit-receive, cell: a small gas-filled tube in the receiver's path, inside the duplexer."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 28,
+      "template": "comparison-table",
+      "params": {
+        "title": "The TR cell protects the mixer",
+        "columns": ["When", "TR cell", "Receiver mixer"],
+        "rows": [
+          ["During the transmit pulse", "Ionizes and shorts the receiver path", "Protected"],
+          ["After the pulse", "Deionizes", "Gets the weak echoes"]
+        ]
+      },
+      "onScreen": ["During the pulse: the TR cell ionizes and shorts the receiver path", "After the pulse: it deionizes and passes the echoes"],
+      "narration": "Here's how the TR cell works. During the transmit pulse, the strong energy ionizes the gas: electrons, the tiny charged particles in every atom, are knocked loose, so the gas conducts, letting electricity flow through it, much like a neon sign lighting up. That short-circuits the receiver path, so the pulse is turned away before it reaches the mixer. After the pulse, the gas deionizes and stops conducting, and the weak echoes pass through. So a TR cell is used to protect the receiver mixer during the transmit pulse. It doesn't protect the transmitter, lower the noise or tune anything."
+    },
+    {
+      "id": "s11",
       "keyTopic": 20,
       "template": "key-facts",
       "params": {
-        "title": "What the radar mixer does",
+        "title": "A diode is nonlinear",
         "items": [
-          "Converts a low-level signal to a different frequency",
-          "Weak echo + local oscillator → a lower IF, typically 30 or 60 MHz",
-          "Done by a crystal diode: its nonlinear conduction mixes the signals",
-          "Pentagrid converter tubes can't work at microwave frequencies",
-          "Waveguide sections and ferrite devices don't mix signals"
+          "Current: the flow of electrons through a circuit",
+          "A diode lets current through one way only, like a one-way valve",
+          "Nonlinear: its current doesn't rise in step with the voltage",
+          "Feed it 2 frequencies, and their difference appears"
         ]
       },
-      "onScreen": ["Converts a low-level signal to a different frequency", "Echo + local oscillator → IF of 30 or 60 MHz", "Crystal diode does the mixing", "Not pentagrid tubes", "Not waveguide or ferrite devices"],
-      "narration": "What does the RF mixer in a radar do? It converts a low-level signal to a different frequency. It combines the weak echo with the local oscillator signal to make a lower intermediate frequency, typically 30 or 60 megahertz, that is easy to amplify. In the receive mode, this frequency conversion is generally done by a crystal diode. Its nonlinear conduction mixes the echo with the local oscillator. The other choices don't work. Pentagrid converter tubes can't work at microwave frequencies, and waveguide sections and ferrite devices don't mix signals."
+      "onScreen": ["Current: the flow of electrons", "Diode: current one way only", "Nonlinear response", "2 frequencies in, their difference out"],
+      "narration": "So the TR cell guards the mixer. Now let's look inside the mixer itself. What actually does the mixing? A diode. First, current is the flow of electrons through a circuit. A diode is a part that lets current pass one way but not the other, like a one-way valve in a water pipe. The key is that a diode is nonlinear: its current doesn't rise in step with the voltage. A small push gives almost nothing, and a little more gives a lot. Feed it the echo and the local oscillator signal together, and that uneven response distorts their combined wave. The distortion contains new frequencies, including the difference between the two. That's mixing."
     },
     {
-      "id": "s6",
+      "id": "s12",
+      "keyTopic": 20,
+      "template": "key-facts",
+      "params": {
+        "title": "The crystal diode does the conversion",
+        "items": [
+          "In the receive mode, a crystal diode does the frequency conversion",
+          "Traditionally a tiny silicon crystal touched by a fine wire",
+          "Not a pentagrid converter: it can't work at microwave frequencies",
+          "Not waveguide sections or ferrite devices: they don't mix signals"
+        ]
+      },
+      "onScreen": ["Crystal diode does the conversion", "Silicon crystal and a fine wire", "Not a pentagrid converter", "Not waveguide or ferrite devices"],
+      "narration": "In the receive mode, then, frequency conversion is generally done by a crystal diode. Its name comes from its makeup: traditionally a tiny piece of silicon crystal touched by a fine wire. Silicon is a semiconductor, a material whose ability to carry current can be controlled, which is what makes this kind of diode possible. The exam's other choices fail. A pentagrid converter is a vacuum tube named for its 5 grids, wire screens inside it. It mixed signals in old broadcast radios, but it can't work at microwave frequencies. Tunable waveguide sections only carry microwaves, and ferrite devices, magnetic parts, only steer them. Neither one mixes signals."
+    },
+    {
+      "id": "s13",
       "keyTopic": 20,
       "template": "comparison-table",
       "params": {
@@ -109,39 +244,224 @@
           ["Only PIN diodes, or only silicon crystals", "Incomplete: not the answer"]
         ]
       },
-      "onScreen": ["For the exam: silicon crystal or PIN diode", "Not a tube or transistor stage", "For the exam: PIN diodes and silicon crystals", "Only one type: incomplete", "In practice, PIN diodes are limiters and switches"],
-      "narration": "Two exam questions here have flagged answers. For the exam, the radar mixer uses a silicon crystal or PIN diode, a semiconductor diode device, rather than a tube or a transistor stage. A PIN diode is named for its P-type, intrinsic and N-type layers. A second question words it differently. For the exam, the mixer uses PIN diodes and silicon crystals together, so an answer naming only one of the two types is incomplete. In practice, PIN diodes serve as receiver limiters and switches, not mixers. But these are the answers the exam expects, so choose them."
+      "onScreen": ["For the exam: silicon crystal or PIN diode", "Not a tube or transistor stage", "For the exam: PIN diodes and silicon crystals", "Only one type: incomplete", "In practice, PIN diodes protect and switch receivers"],
+      "narration": "The exam asks what the mixer uses in 2 more questions, and both keyed answers are questionable. First, for the exam, the radar mixer uses a silicon crystal or PIN diode. A PIN diode is a diode with 3 layers: P-type and N-type silicon, treated to carry current in different ways, with pure, or intrinsic, silicon between them. Either way, it's a semiconductor diode device, not a vacuum tube or a transistor, the part that amplifies in most electronics. The second question lists the types separately. For the exam, the mixer uses PIN diodes and silicon crystals together; an answer naming only one is incomplete. In practice, PIN diodes mostly protect and switch receivers rather than mix, but these are the answers the exam expects."
     },
     {
-      "id": "s7",
+      "id": "s14",
       "keyTopic": 20,
       "template": "equipment-card",
       "params": {
         "title": "Figure 8C9: a crystal mixer",
         "figure": "8C9",
         "callouts": [
-          { "label": "RF echoes at 4095 MHz" },
-          { "label": "Local oscillator: 4155 MHz CW, continuous wave" },
+          { "label": "RF echoes at 4095 MHz come in at the top" },
+          { "label": "Local oscillator: 4155 MHz CW, a steady continuous wave" },
           { "label": "They meet at the crystal diode" },
-          { "label": "The tuned transformer passes the difference: 4155 − 4095 = 60 MHz" },
-          { "label": "No echoes? No output: the diode only rectifies the local oscillator to DC" }
+          { "label": "The tuned transformer passes the difference: 4155 − 4095 = 60 MHz" }
         ]
       },
-      "onScreen": ["RF echoes at 4095 MHz", "Local oscillator 4155 MHz CW", "Crystal diode", "Tuned transformer passes 60 MHz", "No echoes: no output"],
-      "narration": "Here's Figure 8C9, a crystal mixer. RF echoes at 4095 megahertz come in at the top. The local oscillator's CW, or continuous wave, signal at 4155 megahertz comes in below. They meet at the crystal diode, and the tuned transformer passes their difference: 4155 minus 4095 is 60 megahertz. Now, what does this circuit develop when no echoes are being received? No output at all. The diode only rectifies the steady local oscillator to DC, or direct current, and with nothing at 60 megahertz, the tuned transformer has nothing to pass."
+      "onScreen": ["RF echoes at 4095 MHz", "Local oscillator 4155 MHz CW", "Crystal diode", "Tuned transformer passes 60 MHz"],
+      "narration": "Now let's see a mixer circuit: the exam's Figure 8C9. RF echoes at 4095 megahertz come in at the top. The local oscillator's signal comes in below, at 4155 megahertz. It's marked CW, continuous wave, meaning a steady, unbroken signal. Both meet at the crystal diode, which mixes them. On the right is a tuned transformer: 2 coils sharing a magnetic field, tuned so they pass only one frequency, here 60 megahertz. Why 60? It's the difference: 4155 minus 4095 is 60 megahertz. So the local oscillator sits exactly one IF above the echoes, and every echo comes out as a 60 megahertz burst, ready for the IF amplifier."
     },
     {
-      "id": "s8",
+      "id": "s15",
+      "keyTopic": 20,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8C9 with no echoes",
+        "figure": "8C9",
+        "callouts": [
+          { "label": "No echoes: only the 4155 MHz local oscillator reaches the diode" },
+          { "label": "The diode just rectifies it to steady DC" },
+          { "label": "No 60 MHz difference to pass: no output is developed" }
+        ]
+      },
+      "onScreen": ["No echoes: only the local oscillator reaches the diode", "The diode rectifies it to DC", "No output is developed"],
+      "narration": "Here's the exam's question: what does the circuit in Figure 8C9 put out when no echoes are being received? Take the echoes away, and only the steady local oscillator reaches the diode. With nothing to mix it with, the diode simply rectifies it. Rectifying means letting the current through in one direction only, which turns the back-and-forth signal into DC, direct current, flowing one way. There's no difference frequency, so nothing at 60 megahertz exists for the tuned transformer to pass. The answer: no output is developed. The trap answers name 60, 4095 or 4155 megahertz CW. The echoes and their 60 megahertz difference simply aren't there, and the tuned transformer won't pass the 4155 megahertz local oscillator."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 21,
+      "template": "key-facts",
+      "params": {
+        "title": "What the local oscillator must do",
+        "items": [
+          "Make a steady, low-power microwave signal",
+          "Sit exactly one IF away from the echoes",
+          "Tune easily, so it can follow the transmitter",
+          "In a radar unit, the local oscillator is a klystron"
+        ]
+      },
+      "onScreen": ["Steady, low-power microwave signal", "One IF away from the echoes", "Easy to tune", "In a radar unit: a klystron"],
+      "narration": "That's the mixer. Its partner, the local oscillator, has so far just been a box that feeds it. What does it need to do? First, make a steady, low-power microwave signal. It only has to drive a diode, so a small signal is plenty. Second, sit exactly one IF away from the echoes, like 4155 megahertz against echoes at 4095. Third, be easy to tune, because the transmitter's frequency wanders a little, and the local oscillator has to follow it. In a radar unit, the device that does all this is a klystron. Let's see how it works."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 21,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside a reflex klystron",
+        "columns": 3,
+        "blocks": [
+          { "id": "cathode", "label": "Hot cathode", "note": "Shoots out a stream of electrons" },
+          { "id": "cavity", "label": "Resonant cavity", "note": "A metal chamber that rings at one frequency" },
+          { "id": "repeller", "label": "Repeller (reflector)", "note": "Negative: turns the electrons back" },
+          { "id": "out", "label": "Microwave output", "note": "Low power" }
+        ],
+        "links": [
+          { "from": "cathode", "to": "cavity" },
+          { "from": "repeller", "to": "cavity", "label": "Turned back" },
+          { "from": "cavity", "to": "out" }
+        ]
+      },
+      "onScreen": ["Hot cathode shoots out electrons", "Resonant cavity rings at one frequency", "Repeller turns the electrons back", "Low-power microwave output"],
+      "narration": "A reflex klystron is another small vacuum tube. With the air pumped out, electrons can fly freely inside. At one end, a hot cathode, a heated metal part, boils off a stream of electrons. They fly through a resonant cavity: a hollow metal chamber that rings at one frequency, the way a bottle hums one note when you blow across it. Beyond the cavity sits the repeller, also called the reflector. Electrons are negative, and like charges repel, so the negative repeller turns them around and sends them back through the cavity. Reflex means reflected. Out of the cavity comes low-power microwave energy."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 21,
+      "template": "key-facts",
+      "params": {
+        "title": "How the klystron keeps ringing",
+        "items": [
+          "Passing the cavity, some electrons are sped up and others slowed",
+          "Turned back by the repeller, they return in bunches",
+          "Each bunch pushes the cavity in time with its ringing, like pushes on a swing",
+          "The repeller voltage sets the timing, so the klystron tunes electronically"
+        ]
+      },
+      "onScreen": ["Some electrons sped up, others slowed", "They return in bunches", "Each bunch pushes the cavity in time", "Repeller voltage: electronic tuning"],
+      "narration": "But how does it keep ringing? As the electrons pass through the cavity, its ringing speeds some of them up and slows others down. Out at the repeller, the fast ones travel farther before they're turned back, and the slow ones turn back sooner, so they return together in bunches. Each bunch arrives just in time to give the cavity a push, like pushing a swing at the right moment, and that keeps the ringing going. The timing depends on the repeller voltage. Change that voltage, and the bunches arrive a little earlier or later. That's why a klystron can be tuned electronically."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 21,
+      "template": "comparison-table",
+      "params": {
+        "title": "The local oscillator: klystron or Gunn diode",
+        "columns": ["Device", "Where it's used", "What it is"],
+        "rows": [
+          ["Gunn diode oscillator", "Solid-state sets", "Semiconductor slab that oscillates on DC"],
+          ["Reflex klystron", "Older sets", "Tube: low-power microwaves, tuned electronically"],
+          ["Hydrogen thyratron", "The modulator", "A switch, not an oscillator"]
+        ]
+      },
+      "onScreen": ["Gunn diode: solid-state sets", "Reflex klystron: older sets", "Answer: a klystron and a Gunn diode", "Hydrogen thyratron: a modulator switch"],
+      "narration": "The klystron isn't the only choice. Newer radars are solid-state, meaning built from semiconductors, with no vacuum tubes. Their local oscillator is often a Gunn diode: a tiny slab of semiconductor that oscillates at microwave frequencies when DC is applied. So when the exam asks what devices could be used as the local oscillator in a radar receiver, choose both, a klystron and a Gunn diode: the reflex klystron in older sets, the Gunn diode oscillator in solid-state sets. An answer naming only one is incomplete. But when it asks what the local oscillator in a radar unit is, the answer is simply a klystron. Don't pick the hydrogen thyratron: it's a fast switching tube in the modulator, the circuit that fires the magnetron."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 21,
+      "template": "comparison-table",
+      "params": {
+        "title": "Tuning the reflex klystron",
+        "columns": ["Change", "Adjust", "How it works"],
+        "rows": [
+          ["Small", "Repeller voltage", "Changes the electrons' transit time"],
+          ["Large", "Size of the resonant cavity", "Changes the cavity's ringing frequency"]
+        ]
+      },
+      "onScreen": ["Small changes: repeller voltage", "It changes the electrons' transit time", "Not anode voltage or buncher grids", "Large changes: size of the resonant cavity"],
+      "narration": "Back to the klystron, and how it's tuned. How is its frequency varied? 2 ways, one fine and one coarse. Small changes are made by adjusting the repeller voltage. That changes the electrons' transit time, how long they take to turn around and come back, and the cavity's ringing shifts slightly to stay in step with the bunches. Not the anode voltage, and not the phasing of buncher grids: those are trap answers. Large changes are made by adjusting the size of the resonant cavity, mechanically. A bigger chamber rings at a lower frequency, like a bigger bottle. A choice that just says adjust the frequency explains nothing. Remember: repeller voltage for small changes, cavity size for large ones."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 24,
+      "template": "key-facts",
+      "params": {
+        "title": "Why the receiver needs AFC",
+        "items": [
+          "The magnetron's frequency drifts as it warms up and ages",
+          "The IF amplifier stays tuned to one frequency, such as 60 MHz",
+          "If the difference moves, the echoes slide out of the IF window",
+          "AFC, automatic frequency control, retunes the klystron to follow"
+        ]
+      },
+      "onScreen": ["The magnetron drifts", "The IF amplifier stays on one frequency", "Echoes slide out of the IF window", "AFC retunes the klystron"],
+      "narration": "So a klystron can be tuned. But why must it follow the transmitter at all? The magnetron isn't perfectly steady: its frequency drifts as it warms up and as it ages. Meanwhile the IF amplifier stays tuned to one frequency, say 60 megahertz. If the magnetron moves and the local oscillator doesn't, the difference moves too, and the echoes slide out of the IF amplifier's window, like a radio drifting off its station. A magnetron can't practically be retuned while it's running. So instead, a circuit called AFC, automatic frequency control, retunes the klystron to keep the difference steady."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 24,
+      "template": "comparison-table",
+      "params": {
+        "title": "What AFC controls",
+        "columns": ["Does AFC control", "Answer"],
+        "rows": [
+          ["The klystron's frequency", "Yes: it tracks the magnetron"],
+          ["The magnetron's frequency", "No: the magnetron drifts freely"],
+          ["The receiver gain", "No"],
+          ["The incoming pulses' frequency", "No: the magnetron sets it"]
+        ]
+      },
+      "onScreen": ["AFC controls the klystron's frequency", "It varies the local oscillator", "Not the magnetron", "Not the receiver gain or the incoming pulses"],
+      "narration": "So on the exam, the AFC system is used to control the frequency of the klystron, not the magnetron. It keeps the receiver tuned to the transmitted signal by varying the frequency of the local oscillator, holding it one IF away from the magnetron. The magnetron is simply left to drift. AFC doesn't control the receiver gain, and it can't change the frequency of the incoming pulses: they come back on whatever frequency the magnetron sent. Nor does it retune the IF amplifier stage or the cavity duplexer. It moves the local oscillator, and only that."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 24,
+      "template": "formula",
+      "params": {
+        "title": "Klystron and magnetron: one IF apart",
+        "formula": "IF = f<sub>klystron</sub> − f<sub>magnetron</sub>",
+        "steps": ["f<sub>magnetron</sub> = 3.0 GHz", "f<sub>klystron</sub> = 3.060 GHz", "IF = 3.060 GHz − 3.000 GHz"],
+        "answer": "IF = 60 MHz"
+      },
+      "onScreen": ["IF = klystron frequency − magnetron frequency", "Magnetron 3.0 GHz", "Klystron 3.060 GHz", "IF = 60 MHz"],
+      "narration": "Let's put numbers on it, with an exam example. In the formula, f stands for frequency. A radar transmitter, the magnetron, is operating on 3.0 gigahertz. Its reflex klystron local oscillator runs at 3.060 gigahertz, a little above. The echoes come back on the magnetron's frequency, so the IF is the difference: the klystron frequency minus the magnetron frequency. 3.060 gigahertz minus 3.000 gigahertz leaves 60 thousandths of a gigahertz. Since a gigahertz is 1000 megahertz, that's 60 megahertz, a standard radar IF. Does it make sense? Yes: the local oscillator sits one IF above the transmitter, just as it sat one IF above the echoes in Figure 8C9."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 24,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A1: the exam's receiver diagram",
+        "figure": "8A1",
+        "callouts": [
+          { "label": "Top row: the echo path, from the waveguide to the display" },
+          { "label": "Crystal detector here means the main mixer" },
+          { "label": "Then the IF amplifier, detector and video amplifier, to the CRT display" },
+          { "label": "Block 48, between the rows, feeds both rows" },
+          { "label": "Bottom row: the AFC loop, starting from the magnetron" },
+          { "label": "The loop's output runs back up to block 48" }
+        ]
+      },
+      "onScreen": ["Top row: the echo path", "Crystal detector: the main mixer", "IF amplifier, detector, video amplifier, CRT", "Block 48 feeds both rows", "Bottom row: the AFC loop", "Output back to block 48"],
+      "narration": "So how does AFC actually do it? The exam answers with a block diagram, Figure 8A1, so let's find our way around it. Along the top runs the echo path you know: echoes arrive from the waveguide, pass the first box and reach a block labeled crystal detector, which here means the main mixer. Then come the IF amplifier, the detector, meaning our second detector, and the video amplifier, which drives the CRT, a cathode ray tube display. Block 48, between the rows, feeds both rows. The bottom row is the AFC loop. It starts with a sample from the magnetron and passes through blocks 47, 49 and 50 to an output circuit, whose line runs back up to block 48. Next, we'll name each numbered block."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 28,
+      "template": "block-diagram",
+      "params": {
+        "title": "Figure 8A1: block 47",
+        "columns": 3,
+        "blocks": [
+          { "id": "mag", "label": "Magnetron", "note": "Huge power in each pulse" },
+          { "id": "b47", "label": "Block 47: RF attenuator", "note": "Cuts the sample to a safe level" },
+          { "id": "b49", "label": "Block 49", "note": "A delicate crystal" }
+        ],
+        "links": [
+          { "from": "mag", "to": "b47", "label": "Sample" },
+          { "from": "b47", "to": "b49" }
+        ]
+      },
+      "onScreen": ["Magnetron sample", "Block 47: RF attenuator", "Between the magnetron and the AFC section", "Protects the crystal in block 49"],
+      "narration": "The AFC loop starts by taking a small sample of the magnetron's output. Even a small sample of such a powerful pulse would overload the delicate crystal that comes next. So it first passes through an RF attenuator: a part that deliberately weakens a signal by a set amount, like sunglasses for the crystal. When the exam asks where an RF attenuator is used in a radar unit, the answer is between the magnetron and the AFC section of the receiver. Not between the antenna and the receiver, where it would weaken the precious echoes, or between the magnetron and the antenna, where it would waste the transmitter's power. In Figure 8A1, it's block 47, guarding the crystal in block 49."
+    },
+    {
+      "id": "s26",
       "keyTopic": 20,
       "template": "block-diagram",
       "params": {
         "title": "Figure 8A1: block 49",
-        "columns": 3,
+        "columns": 2,
         "blocks": [
-          { "id": "b47", "label": "Block 47", "note": "Brings in a magnetron sample" },
+          { "id": "b47", "label": "Block 47", "note": "Magnetron sample, weakened" },
           { "id": "b49", "label": "Block 49: crystal detector", "note": "The mixer of the AFC section" },
           { "id": "b48", "label": "Block 48", "note": "Klystron signal" },
-          { "id": "afcif", "label": "AFC IF amplifier" }
+          { "id": "afcif", "label": "AFC IF amplifier", "note": "The difference, about 60 MHz" }
         ],
         "links": [
           { "from": "b47", "to": "b49" },
@@ -150,52 +470,53 @@
         ]
       },
       "onScreen": ["Block 47: magnetron sample", "Block 49: crystal detector, the AFC mixer", "Block 48: klystron signal", "On to the AFC IF amplifier"],
-      "narration": "Figure 8A1 is a radar receiver block diagram, and the exam asks about several of its numbered blocks. A sample of the magnetron signal comes in through block 47. It goes to block 49, the crystal detector, that is, the mixer, of the AFC section. There it mixes with the klystron signal from block 48, and the result goes on to the AFC IF amplifier. So remember: block 49 is the crystal detector, the mixer."
+      "narration": "The weakened magnetron sample goes on to block 49. When the exam asks what block 49 is, the answer is the crystal detector, the mixer. It's a crystal diode, just like the main mixer, serving the AFC section. It isn't the discriminator, the IF amplifier, or the klystron. The klystron is its other input, arriving from block 48. The main mixer takes the difference between the klystron and the echoes; this one takes the difference between the klystron and the magnetron. Since the echoes come back on the magnetron's frequency, that difference, called the AFC IF, should equal the IF, about 60 megahertz. It goes on to the AFC IF amplifier."
     },
     {
-      "id": "s9",
-      "keyTopic": 21,
+      "id": "s27",
+      "keyTopic": 24,
       "template": "comparison-table",
       "params": {
-        "title": "The local oscillator: klystron or Gunn diode",
-        "columns": ["Device", "Where it's used", "Notes"],
+        "title": "Figure 8A1: block 50, the discriminator",
+        "columns": ["AFC IF", "Discriminator output"],
         "rows": [
-          ["Reflex klystron", "Older sets", "Low-power microwave, electronically tuned"],
-          ["Gunn diode oscillator", "Solid-state sets", "Also a correct local oscillator"],
-          ["Hydrogen thyratron", "The modulator", "A switch, not an oscillator"]
+          ["Right on its center frequency", "0 volts: no correction"],
+          ["Too high", "DC of one polarity"],
+          ["Too low", "DC of the other polarity"],
+          ["Farther off", "A bigger voltage"]
         ]
       },
-      "onScreen": ["Reflex klystron: older sets", "Gunn diode: solid-state sets", "Hydrogen thyratron: modulator switch, not an oscillator"],
-      "narration": "In a radar unit, the local oscillator is a klystron: a reflex klystron that generates low-power microwave energy and can be tuned electronically for AFC. In fact, both a klystron and a Gunn diode could be used as the local oscillator in a radar receiver. You'll find the reflex klystron in older sets and the Gunn diode oscillator in solid-state sets. Don't pick the hydrogen thyratron. That's a switch in the modulator, not an oscillator."
+      "onScreen": ["Block 50: discriminator, between the AFC IF amplifier and the output circuit", "On frequency: 0 volts", "Too high or too low: DC of one polarity or the other", "Farther off: bigger voltage", "It develops the AFC voltage"],
+      "narration": "After the AFC IF amplifier comes block 50, the discriminator, which feeds the AFC output circuit. It turns a frequency error into a voltage, like a tuning meter whose needle sits in the center when a station is tuned exactly. If the AFC IF is right on its center frequency, out comes 0 volts: no correction. Too high, and out comes DC of one polarity, positive say. Too low, and it's the other polarity, negative. That sign tells the loop which way to steer the klystron. And the farther off it is, the bigger the voltage, so a big error gets a big correction. So the discriminator is the circuit that develops the AFC voltage, not the peak detector, crystal mixer or second detector."
     },
     {
-      "id": "s10",
-      "keyTopic": 21,
+      "id": "s28",
+      "keyTopic": 28,
       "template": "key-facts",
       "params": {
-        "title": "Tuning the reflex klystron",
+        "title": "What the discriminator is for",
         "items": [
-          "Small changes: adjust the repeller voltage, which changes the electrons' transit time",
-          "Large changes: adjust the size of the resonant cavity",
-          "The AFC circuit keeps it on frequency, with no constant manual adjustments",
-          "The discriminator's error voltage goes to the repeller, or reflector"
+          "It compares the frequencies of the magnetron and klystron",
+          "It generates a corrective voltage for controlling the klystron's frequency",
+          "It does not discriminate against nearby objects or similar bearings",
+          "In a radar set, it does not demodulate an FM signal"
         ]
       },
-      "onScreen": ["Small changes: repeller voltage", "Large changes: resonant cavity size", "AFC keeps it on frequency", "Error voltage to the repeller (reflector)"],
-      "narration": "How do you change a klystron's frequency? Two ways. Small changes are made by adjusting the repeller voltage, which changes the electrons' transit time. Large changes are made by adjusting the size of the resonant cavity. In operation, the klystron local oscillator is constantly kept on frequency by the Automatic Frequency Control circuit. It follows magnetron or klystron drift automatically, instead of needing constant manual adjustments. And where does the discriminator's error voltage go? To the repeller, also called the reflector, of the klystron, because changing the repeller voltage shifts the klystron's frequency electronically."
+      "onScreen": ["Compares magnetron and klystron", "Corrective voltage for the klystron local oscillator", "Not for nearby objects or similar bearings", "Not FM demodulation"],
+      "narration": "The exam asks about the discriminator 2 more ways. In the AFC system, the discriminator compares the frequencies of the magnetron and the klystron, checking whether their difference equals the nominal, or intended, IF. And the purpose of the discriminator circuit in a radar set is to generate a corrective voltage for controlling the frequency of the klystron local oscillator. Watch the tempting wrong answers. To discriminate means to tell things apart, so 2 choices claim it discriminates against nearby objects, or against 2 objects with very similar bearings. Not so. And in an FM broadcast radio, a discriminator does demodulate, pulling the sound out of the FM signal. But not in a radar set."
     },
     {
-      "id": "s11",
+      "id": "s29",
       "keyTopic": 21,
       "template": "block-diagram",
       "params": {
-        "title": "Figure 8A1: block 48",
+        "title": "Figure 8A1: block 48, the klystron",
         "columns": 2,
         "blocks": [
           { "id": "b48", "label": "Block 48: klystron", "note": "The local oscillator" },
           { "id": "det", "label": "Crystal detector", "note": "The main receiver mixer" },
           { "id": "b49", "label": "Block 49", "note": "The AFC mixer" },
-          { "id": "out", "label": "AFC output circuit" }
+          { "id": "out", "label": "AFC output circuit", "note": "Error voltage to the repeller" }
         ],
         "links": [
           { "from": "b48", "to": "det" },
@@ -203,11 +524,65 @@
           { "from": "out", "to": "b48", "label": "Correction voltage" }
         ]
       },
-      "onScreen": ["Block 48: klystron local oscillator", "Feeds the main crystal detector", "Feeds block 49, the AFC mixer", "Correction voltage from the AFC output circuit"],
-      "narration": "Back to Figure 8A1. Block 48 is the klystron, the local oscillator. It feeds both the main crystal detector, which mixes the echoes, and block 49, the AFC mixer. And it receives the correction voltage from the AFC output circuit. So if the exam asks what block 48 is, the answer is the klystron, the local oscillator."
+      "onScreen": ["Block 48: klystron local oscillator", "Feeds the main crystal detector", "Feeds block 49, the AFC mixer", "Correction voltage goes to the repeller"],
+      "narration": "That correction voltage, also called the error voltage, is amplified by the AFC output circuit and sent up to block 48. Block 48 is the klystron, the local oscillator. It feeds both the main crystal detector, which mixes the echoes, and block 49, the AFC mixer, and it receives the correction voltage from the AFC output circuit. Inside the klystron, the error voltage from the discriminator is applied to the repeller, also called the reflector, because changing the repeller voltage shifts the klystron's frequency electronically. It doesn't go to the magnetron, or to the IF or RF amplifiers."
     },
     {
-      "id": "s12",
+      "id": "s30",
+      "keyTopic": 24,
+      "template": "band-strip",
+      "params": {
+        "title": "When the magnetron drifts higher",
+        "min": 2.98,
+        "max": 3.1,
+        "scale": "linear",
+        "marks": [
+          { "at": 3.0, "label": "Magnetron: 3.0 GHz" },
+          { "at": 3.06, "label": "Klystron: 3.060 GHz", "note": "60 MHz above the magnetron" },
+          { "at": 3.02, "label": "Magnetron drifts higher", "note": "The IF shrinks", "tone": "muted" },
+          { "at": 3.08, "label": "Klystron moves higher too", "note": "Repeller plate made more negative", "tone": "key" }
+        ]
+      },
+      "onScreen": ["Magnetron 3.0 GHz", "Klystron 3.060 GHz, 60 MHz above", "Magnetron drifts higher: the IF shrinks", "Klystron follows: repeller more negative"],
+      "narration": "Back to our numbers. The magnetron transmits at 3.0 gigahertz. The klystron sits at 3.060 gigahertz, 60 megahertz above it, and that difference is the IF, right where the IF amplifier is tuned. Now suppose the magnetron drifts higher, as it does when it warms up. The gap between them shrinks, so the IF shrinks below 60 megahertz. To restore the gap, the klystron must move higher too. So should the AFC system make the klystron repeller plate more positive, more negative, less positive or less negative? More negative. A more negative repeller pushes back harder on the electrons, so they return sooner. The bunches arrive sooner, the cavity's ringing quickens to keep step, and the klystron's frequency rises. The IF is back to 60 megahertz."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 21,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A1: once around the AFC loop",
+        "figure": "8A1",
+        "callouts": [
+          { "label": "47: the RF attenuator weakens a magnetron sample" },
+          { "label": "49: the AFC mixer mixes it with the klystron signal" },
+          { "label": "The AFC IF amplifier boosts their difference" },
+          { "label": "50: the discriminator turns any error into a voltage" },
+          { "label": "The output circuit sends it to the repeller of 48, the klystron" },
+          { "label": "The klystron is kept on frequency automatically" }
+        ]
+      },
+      "onScreen": ["47: attenuator", "49: AFC mixer", "AFC IF amplifier", "50: discriminator", "Correction to the repeller of 48", "Kept on frequency automatically"],
+      "narration": "Let's go once around the loop. Block 47, the RF attenuator, weakens a sample of the magnetron's pulse. Block 49, the AFC mixer, mixes it with the klystron's signal, and the AFC IF amplifier boosts their difference. Block 50, the discriminator, turns any error in that difference into a voltage. The output circuit sends the voltage to the repeller of block 48, the klystron, which moves back on frequency. No one touches a knob. So the klystron local oscillator is constantly kept on frequency by the automatic frequency control circuit, which follows the drift whether the magnetron or the klystron itself wanders. Not by constant manual adjustments, or a feedback loop from the crystal detector or the TR box, which is the TR cell."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 22,
+      "template": "key-facts",
+      "params": {
+        "title": "Bandwidth: how wide a window",
+        "items": [
+          "Bandwidth: the range of frequencies a circuit lets through",
+          "A short, sharp pulse is made of a wide spread of frequencies",
+          "The shorter the pulse, the wider the bandwidth it needs",
+          "Radar pulses need a bandwidth of several megahertz"
+        ]
+      },
+      "onScreen": ["Bandwidth: the range of frequencies passed", "Sharp pulses: a wide spread of frequencies", "Shorter pulse, wider bandwidth", "Radar: several megahertz"],
+      "narration": "With the receiver held in tune, let's follow the echo into the IF amplifier. First, an idea we'll need: bandwidth. Bandwidth is the range of frequencies a circuit lets through, like the number of lanes on a highway. A smooth, steady tone fits in a single narrow lane. But a short pulse, with sudden on and off edges, is really built from a wide spread of frequencies. The shorter and sharper the pulse, the wider that spread. Squeeze it through too narrow a window and the sharp edges get rounded off, smearing the pulse. Radar pulses can last less than a millionth of a second, so they need a bandwidth of several megahertz."
+    },
+    {
+      "id": "s33",
       "keyTopic": 22,
       "template": "band-strip",
       "params": {
@@ -223,10 +598,25 @@
         ]
       },
       "onScreen": ["Radar IF: 30 or 60 MHz", "455 kHz: AM broadcast IF", "10.7 MHz: FM broadcast IF"],
-      "narration": "The usual intermediate frequency of a shipboard radar unit is 30 or 60 megahertz. That's high enough to pass the several-megahertz bandwidth that short radar pulses need. Don't confuse it with 455 kilohertz or 10.7 megahertz. Those are the IFs of amplitude modulation, or AM, and FM broadcast receivers."
+      "narration": "So which IF do radars use? The usual IF of a shipboard radar unit is 30 or 60 megahertz. Why so high? The IF signal has to carry the full several-megahertz bandwidth of the pulses, and that only fits comfortably on a frequency many times higher. You may notice that Figure 8A1 prints 30 or 40 megahertz on its IF amplifier, but for the exam question on the usual IF, the answer is 30 or 60 megahertz. Don't confuse it with 455 kilohertz or 10.7 megahertz. Those are the IFs of AM, amplitude modulation, and FM broadcast receivers, which only need room for voice and music."
     },
     {
-      "id": "s13",
+      "id": "s34",
+      "keyTopic": 22,
+      "template": "key-facts",
+      "params": {
+        "title": "Pulse length follows the range scale",
+        "items": [
+          "The range scale: how far out the picture reaches, chosen by the operator",
+          "Short ranges: short pulses, so close targets' echoes don't run together",
+          "Long ranges: longer pulses, putting more energy onto distant targets"
+        ]
+      },
+      "onScreen": ["Range scale: how far out the picture reaches", "Short ranges: short pulses", "Long ranges: longer pulses"],
+      "narration": "Remember the early trap, that the IF amplifier isn't always narrow? Here's why. First, what does the radar send? The operator picks a range scale: how far out the picture reaches, from a short range close around the ship to a long one far out. On short ranges, the radar sends short pulses. A short pulse lets it separate targets that are close together, because their echoes don't run into each other. On long ranges, it sends longer pulses. They put more energy onto distant targets, so their faint echoes come back stronger."
+    },
+    {
+      "id": "s35",
       "keyTopic": 22,
       "template": "comparison-table",
       "params": {
@@ -234,14 +624,30 @@
         "columns": ["Range", "Pulse", "IF bandwidth", "Why"],
         "rows": [
           ["Short range", "Short pulse", "Wide", "Keeps the sharp pulse edges"],
-          ["Long range", "Long pulse", "Narrow", "Cuts noise for weak distant echoes"]
+          ["Long range", "Long pulse", "Narrow", "Less noise for weak distant echoes"]
         ]
       },
-      "onScreen": ["Short range: short pulse, wide IF bandwidth", "Long range: long pulse, narrow IF bandwidth"],
-      "narration": "The IF amplifier's bandwidth is wide for short ranges and narrow for long ranges. On short ranges the radar sends short pulses, and short pulses need a wide bandwidth to keep their sharp edges. On long ranges the pulses are long, and long pulses need less bandwidth. The narrower bandwidth also cuts noise, which helps with weak, distant echoes."
+      "onScreen": ["Short range: short pulse, wide IF bandwidth", "Long range: long pulse, narrow IF bandwidth", "Narrow bandwidth lets in less noise"],
+      "narration": "So the IF bandwidth follows the pulse length. Short pulses need a wide bandwidth to keep their sharp edges; longer pulses need less. And there's a bonus. Noise, the random electrical hiss present in every receiver, is spread across all frequencies, so a narrower window lets in less of it. That helps weak, distant echoes stand out. On the exam, then, the IF amplifier bandwidth is wide for short ranges and narrow for long ranges. The wrong choices have it backward, call it constant for all ranges, or say it's adjustable from the control panel. It switches automatically with the range in use."
     },
     {
-      "id": "s14",
+      "id": "s36",
+      "keyTopic": 22,
+      "template": "comparison-table",
+      "params": {
+        "title": "Decibels: counting in powers of 10",
+        "columns": ["Voltage ratio", "Log of the ratio", "Gain"],
+        "rows": [
+          ["10 times", "1", "20 dB"],
+          ["100 times", "2", "40 dB"],
+          ["1000 times", "3", "60 dB"]
+        ]
+      },
+      "onScreen": ["10 times = 20 dB", "100 times = 40 dB", "1000 times = 60 dB", "Gain in dB = 20 × log of the voltage ratio"],
+      "narration": "How much gain does the IF amplifier give? Radar gains are so large that we count them in decibels. Here's the idea. The log, short for logarithm, of a number tells you how many 10s you multiply together to get it. The log of 10 is 1, the log of 100 is 2, and the log of 1000 is 3. For voltage, gain in decibels is 20 times the log of the voltage ratio: the output voltage divided by the input voltage. So an amplifier that makes the voltage 10 times bigger has a gain of 20 decibels, 100 times is 40 decibels, and 1000 times is 60 decibels. Each extra 20 decibels means another 10 times bigger."
+    },
+    {
+      "id": "s37",
       "keyTopic": 22,
       "template": "formula",
       "params": {
@@ -250,57 +656,131 @@
         "steps": ["G = 20 log(2 V ÷ 2 µV)", "G = 20 log(10⁶)", "G = 20 × 6"],
         "answer": "G = 120 dB"
       },
-      "onScreen": ["G = 20 log(Vout ÷ Vin)", "2 µV in, 2 V out", "20 × 6", "120 dB"],
-      "narration": "Let's work a gain problem. Voltage gain in decibels is 20 times the log of the voltage ratio: G equals 20 log of V sub out over V sub in. Suppose the IF amplifiers take a 2 microvolt input up to a 2 volt output. 2 volts divided by 2 microvolts is a ratio of 10 to the 6th power. The log of that is 6, and 20 times 6 is 120. So the gain is 120 decibels."
+      "onScreen": ["G = 20 log(Vout ÷ Vin)", "2 µV in, 2 V out", "Ratio 10⁶, log 6", "20 × 6", "120 dB"],
+      "narration": "The exam's version: high-gain IF amplifiers may take a 2 microvolt input up to a 2 volt output. What's the gain? A microvolt is a millionth of a volt. The formula: G, the gain, equals 20 log of V sub out over V sub in, the output and input voltages. Step 1, divide: 2 volts over 2 microvolts is a million, which is 10 to the 6th power, a 1 followed by 6 zeros. Step 2, the log of 10 to the 6th is 6. Step 3, 20 times 6 is 120. So the gain is 120 decibels. Does that make sense? Each 20 decibels is another 10 times, and 6 steps of 10 make a million. The other choices, 60, 100 and 1000 decibels, don't fit."
     },
     {
-      "id": "s15",
+      "id": "s38",
+      "keyTopic": 19,
+      "template": "key-facts",
+      "params": {
+        "title": "Every amplifier has a ceiling",
+        "items": [
+          "Every amplifier has a ceiling: an output it can't go above",
+          "Push past it and the signal's tops are clipped: the amplifier is saturated",
+          "Echoes range from faint to thousands of times stronger"
+        ]
+      },
+      "onScreen": ["Every amplifier has a ceiling", "Past it: clipped, saturated", "Echoes vary enormously"],
+      "narration": "All that gain brings a problem. Every amplifier has a ceiling, an output it can't go above. Push it harder and the tops of the signal are flattened, or clipped, and the amplifier is said to be saturated. Anything bigger than the ceiling comes out the same size. And radar echoes vary enormously: a big ship close by can be thousands of times stronger than a distant buoy. So how should a receiver handle such a spread?"
+    },
+    {
+      "id": "s39",
+      "keyTopic": 19,
+      "template": "comparison-table",
+      "params": {
+        "title": "Linear or logarithmic receiver",
+        "columns": ["Receiver", "Output", "Very strong echo"],
+        "rows": [
+          ["Linear", "Follows the input in step", "Hits the ceiling and clips"],
+          ["Logarithmic", "Rises with the log of the input", "Still a distinct response"]
+        ]
+      },
+      "onScreen": ["Linear: strong echoes clip", "Logarithmic: can't be saturated", "Suits radar well"],
+      "narration": "There are 2 ways to answer. In a linear receiver, the output follows the input in step: double in means double out. A very strong echo then slams into the ceiling and clips, and 2 strong echoes can look the same. A logarithmic receiver's output rises with the logarithm of the input instead: each 10 times more input adds just one more equal step of output. That's why logarithmic receivers can't be saturated: even very strong echoes still give distinct, unclipped responses. That suits radar well, so don't pick the choice saying they shouldn't be used in radar. And can't be saturated doesn't mean can't be damaged, nor do they have low sensitivity."
+    },
+    {
+      "id": "s40",
       "keyTopic": 22,
       "template": "key-facts",
       "params": {
-        "title": "More IF amplifier facts",
+        "title": "Why a logarithmic IF amplifier",
         "items": [
-          "Logarithmic IF amplifier: greater dynamic range, without saturating",
-          "Its gain and noise figure are not inherently better",
-          "AGC and IAGC can vary between 20 and 40 dB",
-          "For the exam: overcoupling causes oscillations"
+          "Dynamic range: the span from the weakest to the strongest signal handled",
+          "A logarithmic IF amplifier has a greater dynamic range, without saturating",
+          "Not higher gain, easier alignment or a lower noise figure"
         ]
       },
-      "onScreen": ["Logarithmic IF: greater dynamic range", "Gain and noise figure not inherently better", "AGC and IAGC: 20 to 40 dB", "For the exam: overcoupling causes oscillations"],
-      "narration": "Why is a logarithmic IF amplifier preferable to a linear one? It has a greater dynamic range, handling very weak and very strong echoes without saturating. Its gain and noise figure are not inherently better. Next, AGC, automatic gain control, and IAGC, instantaneous automatic gain control, can vary between 20 and 40 decibels in a radar receiver. That's enough to keep strong echoes and clutter from saturating the IF strip. Finally, a flagged question. For the exam, overcoupling in a radar receiver causes oscillations, because excess coupling between the tuned stages of a high-gain IF strip feeds energy back from output to input. In practice, overcoupling mainly broadens the response, but oscillations is the answer the exam expects."
+      "onScreen": ["Dynamic range: weakest to strongest signal", "Logarithmic IF: greater dynamic range", "Not higher gain or lower noise figure"],
+      "narration": "The same idea applies to the IF amplifier. The span from the weakest signal an amplifier can use to the strongest it can handle without saturating is called its dynamic range. A logarithmic IF amplifier is preferable to a linear one in a radar receiver because it has a greater dynamic range. It handles very weak and very strong echoes alike. The trap answers claim it has higher gain, is more easily aligned, meaning tuned up, or has a lower noise figure, a measure of how much noise an amplifier adds. None of those is inherently better in a logarithmic amplifier. Its advantage is dynamic range, not gain."
     },
     {
-      "id": "s16",
+      "id": "s41",
+      "keyTopic": 22,
+      "template": "key-facts",
+      "params": {
+        "title": "AGC and IAGC: 20 to 40 dB",
+        "items": [
+          "AGC, automatic gain control: turns the gain down for strong signals",
+          "IAGC, instantaneous AGC: does it fast, echo by echo",
+          "In a radar receiver, they can vary between 20 and 40 dB",
+          "Keeps strong echoes and clutter from saturating the IF strip"
+        ]
+      },
+      "onScreen": ["AGC: gain down for strong signals", "IAGC: instantaneous AGC", "20 to 40 dB", "Keeps the IF strip from saturating"],
+      "narration": "Another way to stop saturation is to turn the gain down when signals are strong. That's AGC, automatic gain control: a circuit that lowers the gain when the signal is strong, the way you squint in bright sunlight. IAGC, instantaneous automatic gain control, does the same thing very quickly, fast enough to act on individual echoes. In a radar receiver, AGC and IAGC can vary between 20 and 40 decibels. From our decibel table, that's a voltage change of 10 to 100 times. It's enough to keep strong echoes and clutter, the unwanted echoes from waves and rain, from saturating the IF strip, the chain of IF amplifier stages, while weak echoes keep full gain."
+    },
+    {
+      "id": "s42",
+      "keyTopic": 22,
+      "template": "key-facts",
+      "params": {
+        "title": "For the exam: overcoupling causes oscillations",
+        "items": [
+          "The IF strip: several tuned stages coupled together",
+          "Coupling: how much energy passes from one stage to the next",
+          "For the exam: overcoupling causes oscillations",
+          "In practice, overcoupling mainly broadens the response"
+        ]
+      },
+      "onScreen": ["IF strip: tuned stages coupled together", "Coupling: energy passed stage to stage", "For the exam: overcoupling causes oscillations", "In practice: a broader response"],
+      "narration": "One more IF question. Each stage in the IF strip is tuned to the IF and hands its signal to the next through a coupling, often a small transformer. Coupling is how much energy passes between stages; overcoupling means too much. This question is flagged: its keyed answer is doubtful. For the exam, overcoupling in a radar receiver causes oscillations. The reasoning: with so much gain, excess coupling feeds energy back from output to input, and the strip starts making a signal of its own, like a microphone howling near its speaker. In practice, overcoupling mainly widens the band of frequencies passed, but oscillations is the answer the exam expects. It doesn't improve target returns, increase the IAGC range or decrease noise."
+    },
+    {
+      "id": "s43",
       "keyTopic": 23,
       "template": "block-diagram",
       "params": {
         "title": "From the IF amplifier to the display",
-        "columns": 3,
+        "columns": 4,
         "blocks": [
-          { "id": "mixer", "label": "Mixer" },
-          { "id": "if", "label": "IF amplifier" },
-          { "id": "det", "label": "Second detector", "note": "A diode detector" },
-          { "id": "disp", "label": "Display" },
-          { "id": "video", "label": "Video amplifier", "note": "Detected pulses, not 60 to 120 MHz" },
-          { "id": "inputs", "label": "Range, brilliance, contrast", "note": "Usual video amplifier inputs" },
-          { "id": "res", "label": "Resolver", "note": "Antenna bearing information" },
-          { "id": "sweep", "label": "Sweep and deflection circuits" }
+          { "id": "if", "label": "IF amplifier", "note": "Bursts of IF energy" },
+          { "id": "det", "label": "Second detector", "note": "Keeps each burst's outline" },
+          { "id": "video", "label": "Video amplifier", "note": "Boosts the detected pulses" },
+          { "id": "disp", "label": "Display", "note": "Draws the picture" }
         ],
         "links": [
-          { "from": "mixer", "to": "if" },
           { "from": "if", "to": "det" },
           { "from": "det", "to": "video" },
-          { "from": "video", "to": "disp" },
-          { "from": "inputs", "to": "video" },
-          { "from": "res", "to": "video", "struck": true, "label": "Not a video input" },
-          { "from": "res", "to": "sweep" }
+          { "from": "video", "to": "disp" }
         ]
       },
-      "onScreen": ["Mixer, IF amplifier, second detector, video amplifier, display", "Second detector: a diode detector", "Video amplifier between IF amplifier and display", "Inputs: range markers, brilliance, contrast", "Resolver goes to the sweep circuits, not the video amplifier"],
-      "narration": "Now the back end of the receiver. The signal path runs mixer, IF amplifier, second detector, video amplifier, display. So the video amplifier is located between the IF amplifier and the display system. The second, or video, detector in a pulse radar most likely uses a diode detector, because the echoes are amplitude-modulated bursts of IF energy. Discriminators and ratio detectors are FM detectors. The video amplifier handles detected pulses, not 60 to 120 megahertz signals. Its usual inputs include the range markers and the brilliance and contrast settings. But the resolver is not usually an input to the video amplifier. It carries antenna bearing information to the sweep and deflection circuits."
+      "onScreen": ["IF amplifier", "Second detector", "Video amplifier: between the IF amplifier and the display", "Display", "Detected pulses, not 60 to 120 MHz"],
+      "narration": "That's the IF amplifier, but a boosted echo still isn't a picture. Each echo is a short burst of IF waves, at 30 or 60 megahertz. The second detector takes that burst and keeps only its outline: a simple pulse, the video, that's on while the echo lasts. The video amplifier then boosts it to drive the display. So the full path runs mixer, IF amplifier, second detector, video amplifier, display, and the video amplifier is located between the IF amplifier and the display system. Wrong choices place it between the mixer and the IF amplifier, or between the local oscillator and the mixer. And it handles the detected pulses, not signals of 60 to 120 megahertz, which belong back on the IF side."
     },
     {
-      "id": "s17",
+      "id": "s44",
+      "keyTopic": 23,
+      "template": "waveform",
+      "params": {
+        "title": "The second detector: a diode",
+        "kind": "am",
+        "cycles": 36,
+        "depth": 0.9,
+        "xAxis": "time",
+        "yAxis": "IF signal",
+        "labels": [
+          "Each echo is a burst of IF energy: amplitude modulated",
+          "A diode detector keeps the outline, called the envelope",
+          "That outline is the video pulse",
+          "Discriminators and ratio detectors are FM detectors"
+        ]
+      },
+      "onScreen": ["Echoes: amplitude-modulated bursts of IF", "A diode detector keeps the envelope", "The envelope is the video pulse", "Not a discriminator or ratio detector"],
+      "narration": "Why is it called the second detector? The mixer counts as the first detector; the exam's question on Figure 8C9 calls it exactly that. So which kind of circuit is this second one? Each echo is a burst of IF energy whose strength, or amplitude, rises and falls with the echo: an amplitude-modulated signal, like AM radio. A detector for that simply rectifies it with a diode, then smooths it, leaving just the outline, called the envelope. So the video, or second, detector in a pulse radar most likely uses a diode detector. The other choices, the discriminator and the ratio detector, are FM detectors. They respond to changes in frequency, not strength, so they'd miss the echo pulses."
+    },
+    {
+      "id": "s45",
       "keyTopic": 23,
       "template": "waveform",
       "params": {
@@ -317,10 +797,26 @@
         ]
       },
       "onScreen": ["Weak, very short echo pulses", "Broad bandwidth keeps sharp edges", "Narrow bandwidth smears and shrinks them"],
-      "narration": "Why must video amplifiers in pulse radar receivers have a broad bandwidth? Because weak pulses must be amplified. The detected echo pulses are weak and very short. A broad-bandwidth amplifier boosts them and keeps their sharp edges. A narrow amplifier would smear and shrink them."
+      "narration": "Next, the video amplifier itself. Why must video amplifiers in pulse radar receivers have a broad bandwidth? The exam's answer: because weak pulses must be amplified. Fresh from the detector, the echo pulses are both weak and very short. Remember bandwidth: a short pulse with sharp edges is made of a wide spread of frequencies. A broad-bandwidth amplifier boosts all of them, so the pulses come out big and still sharp. A narrow amplifier would smear and shrink them, and a small target's pulse could fade away. The other choices mention high frequency sine waves, or pulses that are too wide. The video amplifier handles pulses, and they're narrow, not wide."
     },
     {
-      "id": "s18",
+      "id": "s46",
+      "keyTopic": 23,
+      "template": "key-facts",
+      "params": {
+        "title": "What rounds off a pulse",
+        "items": [
+          "Capacitor: a part that stores electric charge",
+          "Every stage's input, output and wiring acts like a small capacitor",
+          "It must fill or empty before the voltage can change: corners round off",
+          "The cure: an inductor, a coil that keeps current moving"
+        ]
+      },
+      "onScreen": ["Capacitor: stores electric charge", "Every stage has some capacitance", "It rounds off pulse corners", "The cure: an inductor"],
+      "narration": "What threatens those sharp edges? Capacitance. A capacitor is a part that stores electric charge, and every amplifier stage's input and output, and even the wiring, acts like a small one. Before the voltage can change, that capacitance has to fill or empty, which rounds off the corners of each pulse, like a sponge soaking up the first rush of water. The cure is a coil of wire, called an inductor. An inductor resists changes in current, so once current is flowing it keeps it moving, which helps charge that capacitance faster."
+    },
+    {
+      "id": "s47",
       "keyTopic": 23,
       "template": "comparison-table",
       "params": {
@@ -331,74 +827,42 @@
           ["Output capacitance", "In parallel with it", "Shunt peaking"]
         ]
       },
-      "onScreen": ["Inductor in series with the input capacitance", "Inductor in parallel with the output capacitance"],
-      "narration": "Stage capacitances would round off those video pulses. The fix is a pair of peaking coils. An inductor is connected in series with the input capacitance: that's series peaking. And an inductor is connected in parallel with the output capacitance: that's shunt peaking. Together they keep the stage capacitances from distorting the video pulses. Remember the pattern: series at the input, parallel at the output."
+      "onScreen": ["Series: one after the other; parallel: side by side", "Inductor in series with the input capacitance", "Inductor in parallel with the output capacitance"],
+      "narration": "Where do the coils go? First, 2 words you'll need. In series means one after the other, in the same path, like links in a chain. In parallel means side by side, across each other, like 2 lanes of a road. In video amplifiers, an inductor is connected in series with the input capacitance, called series peaking, and an inductor in parallel with the output capacitance, called shunt peaking; shunt is another word for parallel. Remember: series at the input, parallel at the output. The traps swap them, put coils in parallel with both, or use resistors, which don't keep current moving."
     },
     {
-      "id": "s19",
-      "keyTopic": 24,
+      "id": "s48",
+      "keyTopic": 23,
       "template": "block-diagram",
       "params": {
-        "title": "The AFC loop in Figure 8A1",
+        "title": "What feeds the video amplifier",
         "columns": 3,
         "blocks": [
-          { "id": "b47", "label": "Block 47", "note": "Magnetron sample in" },
-          { "id": "b49", "label": "Block 49: AFC mixer" },
-          { "id": "b48", "label": "Block 48: klystron", "note": "Retuned to track the magnetron" },
-          { "id": "afcif", "label": "AFC IF amplifier" },
-          { "id": "b50", "label": "Block 50: discriminator", "note": "Compares magnetron and klystron" },
-          { "id": "out", "label": "AFC output circuit", "note": "Correction voltage to the klystron" }
+          { "id": "range", "label": "Range markers", "note": "Rings drawn at set distances" },
+          { "id": "video", "label": "Video amplifier" },
+          { "id": "disp", "label": "Display" },
+          { "id": "bc", "label": "Brilliance and contrast", "note": "The operator's settings" },
+          { "id": "res", "label": "Resolver", "note": "Reports the antenna's bearing" },
+          { "id": "sweep", "label": "Sweep and deflection circuits", "note": "Turn the trace with the antenna" }
         ],
         "links": [
-          { "from": "b47", "to": "b49" },
-          { "from": "b48", "to": "b49" },
-          { "from": "b49", "to": "afcif" },
-          { "from": "afcif", "to": "b50" },
-          { "from": "b50", "to": "out" },
-          { "from": "out", "to": "b48" }
+          { "from": "range", "to": "video" },
+          { "from": "video", "to": "disp" },
+          { "from": "bc", "to": "video" },
+          { "from": "res", "to": "video", "struck": true, "label": "Not an input" },
+          { "from": "res", "to": "sweep" },
+          { "from": "sweep", "to": "disp" }
         ]
       },
-      "onScreen": ["AFC controls the klystron, not the magnetron", "Block 47 to block 49, the AFC mixer", "Block 48: klystron", "AFC IF amplifier", "Block 50: discriminator compares magnetron and klystron", "Output circuit corrects the klystron"],
-      "narration": "Here's the whole AFC loop. Its job is to control the frequency of the klystron, not the magnetron. The magnetron drifts, and the klystron is retuned to track it. A magnetron sample comes in through block 47 to block 49, the AFC mixer, where it mixes with the klystron, block 48. The difference goes through the AFC IF amplifier to block 50, the discriminator, which sits between the AFC IF amplifier and the AFC output circuit. The discriminator compares the frequencies of the magnetron and the klystron, checking whether their difference equals the nominal IF. It's the circuit that develops the AFC voltage: a DC output whose polarity and size depend on how far the AFC IF is from its center frequency. The output circuit sends that correction back to the klystron."
+      "onScreen": ["Range markers: a video amplifier input", "Video amplifier drives the display", "Brilliance and contrast: inputs too", "Resolver: not a video input", "Resolver feeds the sweep circuits"],
+      "narration": "What else goes into the video amplifier besides the echoes? The exam asks both ways. Range markers are usual inputs: they're the electronic rings drawn on the screen at set distances, mixed right into the video. So are the brilliance and contrast settings, the operator's brightness and contrast controls, which set the level of the video sent to the display. So which are usual inputs? All of them: range, brilliance and contrast. But the resolver is not usually an input to the video amplifier. A resolver is a sensor at the antenna that reports which way it's pointing. It carries that bearing information to the sweep and deflection circuits, which swing the trace, the line that paints the picture, around in step with the antenna."
     },
     {
-      "id": "s20",
-      "keyTopic": 24,
-      "template": "formula",
-      "params": {
-        "title": "Klystron and magnetron: one IF apart",
-        "formula": "IF = f<sub>klystron</sub> − f<sub>magnetron</sub>",
-        "steps": ["IF = 3.060 GHz − 3.000 GHz"],
-        "answer": "IF = 60 MHz"
-      },
-      "onScreen": ["IF = klystron frequency − magnetron frequency", "3.060 GHz − 3.000 GHz", "60 MHz"],
-      "narration": "An AFC system keeps the receiver tuned to the transmitted signal by varying the frequency of the local oscillator, holding it one IF away from the magnetron. Let's put numbers on it. A transmitter on 3.0 gigahertz uses a reflex klystron local oscillator on 3.060 gigahertz. The IF is the difference: 3.060 gigahertz minus 3.000 gigahertz equals 60 megahertz."
-    },
-    {
-      "id": "s21",
-      "keyTopic": 24,
-      "template": "band-strip",
-      "params": {
-        "title": "When the magnetron drifts higher",
-        "min": 2.98,
-        "max": 3.1,
-        "scale": "linear",
-        "marks": [
-          { "at": 3.0, "label": "Magnetron: 3.0 GHz" },
-          { "at": 3.06, "label": "Klystron: 3.060 GHz", "note": "60 MHz above the magnetron" },
-          { "at": 3.02, "label": "Magnetron drifts higher", "note": "The IF shrinks", "tone": "muted" },
-          { "at": 3.08, "label": "Klystron moves higher too", "note": "Repeller plate made more negative", "tone": "key" }
-        ]
-      },
-      "onScreen": ["Magnetron 3.0 GHz", "Klystron 3.060 GHz, 60 MHz above", "Magnetron drifts higher: IF shrinks", "Klystron follows: repeller more negative"],
-      "narration": "On this strip, the magnetron sits at 3.0 gigahertz and the klystron at 3.060 gigahertz, 60 megahertz above it. Now suppose the magnetron drifts higher. The IF shrinks, so the klystron must move higher too. How does the AFC system do that? It makes the klystron repeller plate more negative. That returns the electrons sooner, which raises the klystron's frequency, and the IF is back to 60 megahertz."
-    },
-    {
-      "id": "s22",
+      "id": "s49",
       "keyTopic": 25,
       "template": "radar-ppi",
       "params": {
-        "title": "Sea return and STC",
+        "title": "Sea return",
         "rangeNm": 12,
         "rings": 4,
         "echoes": [
@@ -415,127 +879,117 @@
           { "bearing": 55, "range": 9 }
         ],
         "labels": [
-          "Sea return: reflections from nearby waves, cluttering the center",
+          "Sea return: reflections of radar signals from nearby waves",
+          "Clutter around the center of the display",
           "Strongest at short range and in rough seas",
-          "STC decreases the sea clutter around the center of the PPI",
-          "A distant echo still shows"
+          "A small boat close by can vanish inside it"
         ]
       },
-      "onScreen": ["Sea clutter around the center", "Strongest at short range and in rough seas", "STC decreases sea return on the PPI", "Distant echo still shows"],
-      "narration": "Sea return is the reflection of radar signals from nearby waves. It shows up as clutter around the center of the display, and it's strongest at short range and in rough seas. To fight it, the receiver has an STC, or sensitivity time control, circuit. STC is used to decrease sea return on a radar receiver, reducing the sea clutter around the center of the PPI, or plan position indicator, scope. A distant echo, like this ship out near the edge, still shows."
+      "onScreen": ["Sea return: reflections from nearby waves", "Clutter around the center", "Strongest at short range and in rough seas", "Can hide a small boat"],
+      "narration": "Now the picture is on the screen, along with things you don't want to see. The first is sea return, also called sea clutter. Sea return is the reflection of radar signals from nearby waves. Every wave face near the ship acts like a tiny target. On the PPI, or plan position indicator, the map-like display with your ship at the center, it shows up as speckle all around your ship. It's strongest at short range, where the waves are hit by the strongest energy, and in rough seas, where the waves are bigger and steeper. A small boat close by can vanish inside it. The trap answers call sea return sea water in the antenna, or the echo from a target at sea."
     },
     {
-      "id": "s23",
+      "id": "s50",
       "keyTopic": 25,
       "template": "comparison-table",
       "params": {
-        "title": "STC: close objects versus distant objects",
-        "columns": ["Echo", "Receiver gain", "Result"],
+        "title": "How STC works",
+        "columns": ["Echo", "Arrives", "Receiver gain", "Result"],
         "rows": [
-          ["Close objects", "Cut right after each pulse", "Sea clutter suppressed"],
-          ["Distant objects", "Rises with time to full gain", "Weaker echoes still show"]
+          ["Close objects and waves", "First", "Cut right after the pulse", "Sea clutter suppressed"],
+          ["Distant objects", "Later", "Risen back to full", "Weaker echoes still show"]
         ]
       },
-      "onScreen": ["Close objects: gain reduced", "Distant objects: full gain", "Acts on the receiver, not the transmitter", "No change to bearing resolution"],
-      "narration": "How does STC work? It decreases the sensitivity of the receiver for close objects. Right after each transmitted pulse, STC cuts the receiver gain, then lets the gain rise with time. Close echoes, including sea clutter, arrive early and meet low gain. Weaker distant echoes arrive later and still get full gain. Notice that STC acts on the receiver, never on the transmitter, and it does not change bearing resolution."
+      "onScreen": ["STC: sensitivity time control", "Close objects: gain cut right after each pulse", "Distant objects: full gain", "Acts on the receiver, not the transmitter", "No change to bearing resolution"],
+      "narration": "The fix is a circuit called STC, sensitivity time control. Sensitivity is how weak an echo the receiver can pick up, set by its gain. STC decreases the sensitivity of the receiver for close objects. Right after each pulse goes out, it cuts the receiver gain, then lets it rise with time. Why does that work? Echoes from close objects, including the waves, come back first, and they meet low gain. Echoes from distant objects arrive later, when the gain is back to full. It's like turning a microphone down for a nearby shout, then up for a faraway voice. STC acts on the receiver, never on the transmitter, and it does not change bearing resolution, how well the radar separates targets side by side."
     },
     {
-      "id": "s24",
+      "id": "s51",
+      "keyTopic": 25,
+      "template": "radar-ppi",
+      "params": {
+        "title": "STC turned up",
+        "rangeNm": 12,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 80, "range": 0.9 },
+          { "bearing": 235, "range": 1.5 },
+          { "bearing": 55, "range": 9 }
+        ],
+        "labels": [
+          "STC turned up: the clutter fades",
+          "Sea return decreases around the center of the PPI",
+          "The distant echo still shows at full strength"
+        ]
+      },
+      "onScreen": ["STC turned up: clutter fades", "Sea return decreases on the PPI", "The distant echo still shows"],
+      "narration": "Here's the result on the screen. With STC turned up, the clutter around the center fades. So the STC circuit is used to decrease sea return on a radar receiver, reducing the sea clutter around the center of the PPI scope. On the exam, watch for trap answers that say STC increases sensitivity for close targets, increases stability or selectivity, improves bearing resolution, or increases sea return. It does none of those. It decreases sensitivity only for close objects, so that distant echo near the edge still shows at full strength."
+    },
+    {
+      "id": "s52",
       "keyTopic": 25,
       "template": "key-facts",
       "params": {
         "title": "Setting and troubleshooting STC",
         "items": [
-          "The STC circuit controls the suppression of sea clutter",
           "The operator sets it with the front-panel sea clutter control",
+          "The STC circuit controls the suppression of sea clutter",
           "Sea clutter won't reduce with the front-panel controls? Suspect a faulty STC circuit",
-          "FTC, fast time constant, deals with rain clutter, not sea return"
+          "FTC, fast time constant, is the rain clutter control, not sea return"
         ]
       },
-      "onScreen": ["STC controls sea clutter suppression", "Front-panel sea clutter control", "Can't reduce sea clutter: faulty STC circuit", "FTC is for rain clutter"],
-      "narration": "The STC circuit controls the suppression of sea clutter, and the operator sets it with the front-panel sea clutter control. So here's a troubleshooting question. If sea clutter cannot be effectively reduced with the front panel controls, which circuit do you suspect? A faulty STC circuit. Don't be tempted by the FTC, or fast time constant, circuit. FTC deals with rain clutter, not sea return."
+      "onScreen": ["Front-panel sea clutter control", "STC controls sea clutter suppression", "Can't reduce sea clutter: faulty STC circuit", "FTC is for rain clutter"],
+      "narration": "Who sets the STC? The operator, with the front-panel sea clutter control. The STC circuit is what controls the suppression of sea clutter. The exam's wrong choices are the EBL circuit, which draws the electronic bearing line, the local oscillator and the audio amplifier. So here's a troubleshooting question. If sea clutter cannot be effectively reduced with the front panel controls, which circuit do you suspect? A faulty STC circuit. Don't be tempted by FTC, the fast time constant circuit. FTC is the rain clutter control: it trims the long smear that rain makes, and it has nothing to do with sea return."
     },
     {
-      "id": "s25",
-      "keyTopic": 26,
-      "template": "equipment-card",
-      "params": {
-        "title": "Figure 8C10: a switching power supply",
-        "figure": "8C10",
-        "callouts": [
-          { "label": "Before power-on tests: does it use a line isolation transformer?" },
-          { "label": "Q1, a power MOSFET: its gate changes by more than 2 volts, low to high" },
-          { "label": "Q1 drives T1 at the high switching rate" },
-          { "label": "CR6, CR7 and L1 junction: pulsating DC much higher than line frequency" },
-          { "label": "That point comes before the L1 and C6 filter" }
-        ]
-      },
-      "onScreen": ["No line isolation transformer: grounded test gear may destroy the supply", "Power MOSFET gate: more than 2 volts", "Q1 drives T1", "CR6, CR7, L1 junction: pulsating DC much higher than line frequency", "Before the L1 and C6 filter"],
-      "narration": "Figure 8C10 is a switching power supply. First, a safety point. Before making power-on measurements on a switching supply, know its design. If it does not use a line isolation transformer, its circuit common can sit at line potential, and grounded test equipment may destroy the supply. Q1 is a power MOSFET, a metal-oxide-semiconductor field-effect transistor. When a power MOSFET's gate voltage changes from low to high, it changes by greater than 2 volts, since the gate threshold is roughly 2 to 4 volts and about 10 volts is needed to switch fully on. Q1 drives T1 at the high switching rate. So measuring from the junction of CR6, CR7 and L1 to ground shows pulsating DC much higher than line frequency, because that point comes before the L1 and C6 filter."
-    },
-    {
-      "id": "s26",
-      "keyTopic": 26,
-      "template": "formula",
-      "params": {
-        "title": "Switching regulator output voltage",
-        "formula": "V<sub>out</sub> = V<sub>in</sub> × duty cycle",
-        "steps": ["T = 1 ÷ 20 kHz = 50 µs", "Duty cycle = 27 µs ÷ 50 µs = 0.54", "V<sub>out</sub> = 0.54 × 165 V"],
-        "answer": "V<sub>out</sub> = 89.1 V DC; the 1 A load isn't used"
-      },
-      "onScreen": ["Vout = Vin × duty cycle", "T = 1 ÷ 20 kHz = 50 µs", "Duty cycle 0.54", "89.1 volts DC"],
-      "narration": "In a constant frequency switching regulator, the output voltage is the input voltage times the duty cycle. The duty cycle is the on time divided by the period, and the period T is 1 over the switching frequency. Let's work it: 165 volts DC in, a 20 kilohertz switching frequency, and a 27 microsecond on time. T equals 1 over 20 kilohertz, or 50 microseconds. The duty cycle is 27 over 50, or 0.54. V sub out equals 0.54 times 165 volts, which is 89.1 volts DC. The question also gives a 1 ampere load current, but it does not enter the calculation."
-    },
-    {
-      "id": "s27",
-      "keyTopic": 26,
-      "template": "equipment-card",
-      "params": {
-        "title": "Figure 8C11: an inverting Schmitt trigger",
-        "figure": "8C11",
-        "callouts": [
-          { "label": "An inverting Schmitt trigger comparator" },
-          { "label": "The input goes to the inverting (−) input" },
-          { "label": "The 5 kΩ / 2 kΩ divider feeds part of the output back to the + input" },
-          { "label": "Nominal output high: 4.5 volts" },
-          { "label": "Sine in: output's leading edge 180° after the positive zero crossing" }
-        ]
-      },
-      "onScreen": ["Inverting Schmitt trigger comparator", "Input to the inverting input", "5 kΩ / 2 kΩ feedback to the noninverting input", "Output high 4.5 volts", "Leading edge 180° after positive zero crossing"],
-      "narration": "Figure 8C11 is an inverting Schmitt trigger comparator. The input signal goes to the inverting input. The 5 kilohm and 2 kilohm divider feeds part of the output back to the noninverting input. The output high is nominally 4.5 volts. Now, with a sinusoid at the input, when does the leading edge of the output occur? 180 degrees after the positive zero crossing of the input, when the falling input passes the lower trip point, which we'll calculate next. It does not trail a zero crossing or a peak by 45 degrees."
-    },
-    {
-      "id": "s28",
-      "keyTopic": 26,
-      "template": "formula",
-      "params": {
-        "title": "Figure 8C11 trip points",
-        "formula": "V<sub>trip</sub> = ±4.5 × 2k ÷ (5k + 2k)",
-        "steps": ["V<sub>trip</sub> = ±4.5 × 2k ÷ 7k", "V<sub>trip</sub> = ±1.2857 V"],
-        "answer": "Upper +1.285 V, lower −1.285 V"
-      },
-      "onScreen": ["Vtrip = ±4.5 × 2k ÷ (5k + 2k)", "±1.2857 V", "Upper +1.285 V, lower −1.285 V"],
-      "narration": "Let's find those trip points. The divider feeds back 2 kilohms over 5 kilohms plus 2 kilohms of the output. Multiply that by the nominal output high of 4.5 volts. V sub trip equals plus or minus 4.5 times 2 kilohms over 7 kilohms, which is plus or minus 1.2857 volts. The exam gives this as 1.285. So the upper trip point is plus 1.285 volts, and the lower trip point is minus 1.285 volts."
-    },
-    {
-      "id": "s29",
+      "id": "s53",
       "keyTopic": 27,
       "template": "key-facts",
       "params": {
-        "title": "Noise and interference",
+        "title": "The most common interference",
         "items": [
-          "Main cause of noise: thermal noise from the receiver's own components",
-          "Especially the mixer and the first IF stages",
-          "Best reducer: isolation, with shielding, separation and decoupling",
-          "Most common interference: weather and sea return",
+          "Weather: echoes from rain and snow",
+          "Sea return: echoes from nearby waves",
           "Countered by the FTC rain control and the STC sea control"
         ]
       },
-      "onScreen": ["Thermal noise from receiver components", "Mixer and first IF stages", "Isolation reduces noise", "Weather and sea return", "FTC rain control, STC sea control"],
-      "narration": "What's the primary cause of noise in a radar receiver? Thermal noise caused by the receiver's own components, especially the mixer and the first IF stages. One of the best methods of reducing noise is isolation: shielding, physical separation, and decoupling of power and signal leads. These keep noise from the modulator, the transmitter and other equipment out of the receiver. And in a radar receiver, the most common types of interference are weather and sea return. They're countered by the FTC rain control and the STC sea control."
+      "onScreen": ["Weather", "Sea return", "FTC rain control, STC sea control"],
+      "narration": "Step back for a moment. Rain and waves are the 2 big troublemakers. In a radar receiver, the most common types of interference are weather and sea return: echoes from rain or snow, and echoes from the waves near the ship. The exam's wrong choices pair them with thermal noise, electrical interference or jamming, which is deliberate interference. Those exist, but they aren't the most common. Weather and sea return are countered by the FTC rain control and the STC sea control. Thermal noise does deserve its own look, though, because it sets the limit on how weak an echo the receiver can ever detect."
     },
     {
-      "id": "s30",
+      "id": "s54",
+      "keyTopic": 27,
+      "template": "key-facts",
+      "params": {
+        "title": "Where receiver noise comes from",
+        "items": [
+          "Noise: random electrical jitter, heard as hiss and seen as speckle",
+          "Thermal noise: electrons jiggling with heat in every component",
+          "Primary cause: thermal noise from the receiver's own components",
+          "Worst in the mixer and the first IF stages"
+        ]
+      },
+      "onScreen": ["Noise: random electrical jitter", "Thermal noise: electrons jiggling with heat", "Primary cause: the receiver's own components", "Mixer and first IF stages"],
+      "narration": "We met noise back in the IF amplifier: random electrical jitter, like the hiss you hear between stations on a radio. Where does it come from in a radar receiver? Mostly from the receiver itself. Inside every component, such as a resistor, a part that limits current, the electrons are constantly jiggling with heat. That random motion makes tiny random voltages, called thermal noise. So the primary cause of noise in a radar receiver is thermal noise caused by the receiver's own components, especially the mixer and the first IF stages. Why those? That's where the echo is weakest, and any noise added there gets amplified by every stage after it. Electrical causes, atmospheric changes and poor grounding are the exam's wrong choices."
+    },
+    {
+      "id": "s55",
+      "keyTopic": 27,
+      "template": "key-facts",
+      "params": {
+        "title": "Isolation keeps noise out",
+        "items": [
+          "Shielding: metal enclosures around sensitive circuits",
+          "Physical separation from noisy equipment",
+          "Decoupling of power and signal leads",
+          "Keeps noise from the modulator, transmitter and other equipment out"
+        ]
+      },
+      "onScreen": ["Isolation: one of the best ways to reduce noise", "Shielding", "Physical separation", "Decoupling of power and signal leads"],
+      "narration": "Thermal noise is built in, but noise from outside can be kept out. One of the best methods of reducing noise in a radar receiver is isolation. That means 3 things. Shielding: metal enclosures around sensitive circuits, so outside noise can't reach them. Physical separation: keeping the receiver away from noisy equipment. And decoupling of power and signal leads, the wires that carry power and signals in: small filters on those wires block noise from riding in along them. Together they keep noise from the modulator, the transmitter and other equipment out of the receiver. The wrong choices, changing the frequency, replacing the resonant cavity or changing the IF strip, don't remove the source of the noise."
+    },
+    {
+      "id": "s56",
       "keyTopic": 27,
       "template": "radar-ppi",
       "params": {
@@ -557,11 +1011,11 @@
           "A large target's strong echo stands well above it"
         ]
       },
-      "onScreen": ["Erratic video, sharp intensity changes", "Not fixed black spots or bearing changes", "Small targets masked", "Large targets stand out"],
-      "narration": "How does noise appear on an LCD, a liquid crystal display? As erratic video and sharp changes in intensity. It does not show up as fixed black spots, or as changes in bearings. And what can noise do to targets? It can mask small targets: their weak echoes are lost in the noise. Large targets return strong echoes that stand well above the noise, so they stay clear."
+      "onScreen": ["Erratic video, sharp intensity changes", "Not black spots or bearing changes", "Small targets masked", "Large targets stand out"],
+      "narration": "What does noise look like on the screen? Modern radars use an LCD, a liquid crystal display, like a flat computer screen. Noise can appear on it as erratic video and sharp changes in intensity, meaning brightness: a restless speckle that flickers from moment to moment, because noise is random. It does not show up as fixed black spots, or as changes in bearings. And what can noise do to targets? It can mask small targets. Their weak echoes are no stronger than the noise, so they get lost in it. Large targets return strong echoes that stand well above the noise, so they stay clear. Noise masks small targets, not larger ones."
     },
     {
-      "id": "s31",
+      "id": "s57",
       "keyTopic": 27,
       "template": "waveform",
       "params": {
@@ -578,51 +1032,30 @@
         ]
       },
       "onScreen": ["Fixed pulse repetition frequency", "Heard as a steady tone", "Not random static or hiss"],
-      "narration": "What does radar interference sound like on a communications receiver? A steady tone. The radar transmits pulses at a fixed pulse repetition frequency, or PRF, so the interference repeats at a constant rate, and you hear that as a steady tone. That's quite unlike random static or hiss."
+      "narration": "Radar can also interfere with other equipment. What does radar interference sound like on a nearby communications receiver? A steady tone. Here's why. A radar transmits its pulses at a fixed pulse repetition frequency, or PRF, the number of pulses it sends each second, typically hundreds or thousands. A receiver that picks them up hears a click for every pulse, and clicks repeating that fast, at a constant rate, blend into a tone of steady pitch. That's quite unlike static or hiss, which are random, and unlike a varying tone, because the PRF doesn't change."
     },
     {
-      "id": "s32",
+      "id": "s58",
       "keyTopic": 28,
-      "template": "block-diagram",
+      "template": "key-facts",
       "params": {
-        "title": "Figure 8A1: block 47 and the discriminator",
-        "columns": 4,
-        "blocks": [
-          { "id": "mag", "label": "Magnetron" },
-          { "id": "b47", "label": "Block 47: RF attenuator", "note": "Cuts the sample to a safe level" },
-          { "id": "b49", "label": "Block 49: AFC crystal mixer" },
-          { "id": "b50", "label": "Block 50: discriminator", "note": "Corrective voltage for the klystron" }
-        ],
-        "links": [
-          { "from": "mag", "to": "b47" },
-          { "from": "b47", "to": "b49" },
-          { "from": "b49", "to": "b50", "label": "Via the AFC IF amplifier" }
+        "title": "MTI: moving target indication",
+        "items": [
+          "MTI: a filter that blocks out stationary targets, allowing only moving targets to be detected",
+          "It compares each echo with the one from the pulse before",
+          "Fixed objects and ground clutter return the same echo: they cancel",
+          "A moving target's echo changes through Doppler shift: it remains"
         ]
       },
-      "onScreen": ["Magnetron", "Block 47: RF attenuator", "Block 49: AFC crystal mixer", "Block 50: discriminator makes the klystron's corrective voltage"],
-      "narration": "Back to Figure 8A1 once more. An RF attenuator is used between the magnetron and the AFC section of the receiver: that's block 47. It cuts the magnetron sample to a level the crystal in block 49 can safely handle. Further along the AFC loop is the discriminator, block 50. The purpose of the discriminator circuit in a radar set is to generate a corrective voltage for controlling the frequency of the klystron local oscillator. It does not separate targets, and it does not demodulate an FM signal."
+      "onScreen": ["MTI blocks stationary targets", "Compares each echo with the one before", "Unchanged echoes cancel", "Moving targets change by Doppler shift"],
+      "narration": "Back to the radar's own picture. One more way to clean it up is MTI, moving target indication. The MTI circuit is a filter, a circuit that passes some signals and blocks others. This one blocks out stationary targets, allowing only moving targets to be detected. How can it tell? It compares each echo with the echo from the pulse before. Land, buildings and other fixed objects, along with ground clutter, return the same echo every time, so they cancel out. A moving target's echo changes from pulse to pulse through Doppler shift, a change in frequency caused by motion, like a siren's pitch dropping as an ambulance passes. So it survives."
     },
     {
-      "id": "s33",
-      "keyTopic": 28,
-      "template": "comparison-table",
-      "params": {
-        "title": "The TR cell protects the mixer",
-        "columns": ["When", "TR cell", "Receiver mixer"],
-        "rows": [
-          ["During the transmit pulse", "Ionizes and shorts the receiver path", "Protected"],
-          ["After the pulse", "Deionizes", "Gets the weak echoes"]
-        ]
-      },
-      "onScreen": ["During the pulse: TR cell ionizes, shorts the receiver path", "After the pulse: deionizes, passes the echoes"],
-      "narration": "Next, the ion discharge TR, or transmit-receive, cell. Its job is to protect the receiver mixer during the transmit pulse. During the pulse, the cell ionizes and shorts the receiver path, so the transmitter's pulse can't reach the mixer. After the pulse, it deionizes and passes the weak echoes through to the mixer."
-    },
-    {
-      "id": "s34",
+      "id": "s59",
       "keyTopic": 28,
       "template": "radar-ppi",
       "params": {
-        "title": "MTI: only moving targets",
+        "title": "MTI switched on",
         "rangeNm": 12,
         "rings": 4,
         "echoes": [
@@ -631,27 +1064,303 @@
           { "bearing": 220, "range": 8 }
         ],
         "labels": [
-          "MTI: a filter that blocks out stationary targets",
-          "Echoes unchanged from pulse to pulse cancel",
-          "Moving targets change by Doppler shift, so only they are displayed",
-          "Faulty MTI filter: clutter shifts with each pulse, called glint"
+          "MTI on: land and fixed clutter vanish",
+          "Ships under way remain",
+          "Only moving targets are displayed"
         ]
       },
-      "onScreen": ["MTI blocks stationary targets", "Unchanged echoes cancel", "Only moving targets displayed", "Faulty MTI filter: glint"],
-      "narration": "Finally, the MTI, or moving target indication, circuit. It's a filter which blocks out stationary targets, allowing only moving targets to be detected. It does this by cancelling echoes that are unchanged from pulse to pulse. So when the receiver employs an MTI circuit, only moving targets will be displayed. Their echoes change from pulse to pulse through Doppler shift, while fixed objects and ground clutter cancel. And if the MTI filter is functioning improperly, it no longer cancels the clutter identically from pulse to pulse. The clutter shifts with each radar pulse, a condition called glint."
+      "onScreen": ["Fixed echoes vanish", "Ships under way remain", "Only moving targets displayed"],
+      "narration": "Here's the result on the screen. Switch MTI on, and the coastline, moored buoys and ground clutter vanish, while ships under way remain. Watch the traps. Receiver gain that increases with time is STC, not MTI. MTI doesn't act as a mixer or monitor transmitter interference, and it won't pick up targets that aren't moving. So when the receiver employs an MTI circuit, only moving targets will be displayed."
+    },
+    {
+      "id": "s60",
+      "keyTopic": 28,
+      "template": "key-facts",
+      "params": {
+        "title": "Glint: a faulty MTI filter",
+        "items": [
+          "MTI cancels fixed clutter identically from pulse to pulse",
+          "A faulty MTI filter no longer cancels it identically",
+          "The clutter shifts with each pulse: that's glint",
+          "Not a memory failure, low AFC voltage or electrical interference"
+        ]
+      },
+      "onScreen": ["MTI cancels clutter identically each pulse", "Faulty MTI filter: it no longer does", "Clutter shifts each pulse: glint", "Not memory, AFC or electrical interference"],
+      "narration": "What happens when the MTI filter goes wrong? Its whole trick is cancelling fixed clutter in exactly the same way from one pulse to the next. If the MTI filter is functioning improperly, it no longer cancels the clutter identically, so leftover bits of clutter shift around with each radar pulse. That condition is called glint. So if the exam asks what can cause glint, a shifting of clutter with each radar pulse, the answer is an improperly functioning MTI filter. Not a memory failure, low AFC voltage, or interference from electrical equipment."
+    },
+    {
+      "id": "s61",
+      "keyTopic": 19,
+      "template": "comparison-table",
+      "params": {
+        "title": "Analog or digital receiver",
+        "columns": ["Receiver", "What it does", "Output"],
+        "rows": [
+          ["Analog", "Passes the varying signal level along", "Any level, smoothly varying"],
+          ["Digital", "Decision circuitry vs a threshold", "On or off: 1 or 0"]
+        ]
+      },
+      "onScreen": ["Analog: passes a varying level", "Digital: decision circuitry", "Compares against a threshold", "On or off: 1 or 0"],
+      "narration": "MTI works by comparing echoes, and many modern radars do that kind of processing digitally. That brings us to an exam question: what's the main difference between an analog and a digital receiver? An analog receiver simply passes the signal level along as it varies, smoothly, like a dimmer switch. A digital receiver adds decision circuitry. It compares the signal against a threshold, a set dividing line, and declares each moment either on or off, a 1 or a 0, like a light switch. So the main difference is the presence of decision circuitry to distinguish between on and off signal levels. The wrong choices, special amplification, no need for AGC, or no distortion, don't define the difference."
+    },
+    {
+      "id": "s62",
+      "keyTopic": 26,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8C11: a comparator",
+        "figure": "8C11",
+        "callouts": [
+          { "label": "A comparator: an amplifier comparing its 2 inputs" },
+          { "label": "Output: nominally high at 4.5 volts, low at −4.5 volts" },
+          { "label": "The input signal goes to the inverting (−) input" },
+          { "label": "2 resistors feed part of the output back to the + input" }
+        ]
+      },
+      "onScreen": ["A comparator", "Output high 4.5 volts, low −4.5 volts", "Input to the inverting input", "Resistors feed back to the + input"],
+      "narration": "The simplest decision circuit is a comparator, and the exam shows one in Figure 8C11. The triangle is an amplifier with 2 inputs, marked minus and plus, and enormous gain. It compares them: if the plus input is higher, the output swings all the way high; if the minus input is higher, it swings all the way low. Here the output's nominal, or intended, high is 4.5 volts, and its low is minus 4.5 volts. The input signal goes to the minus input, called the inverting input, because when the input goes up, the output goes down. The plus input is the noninverting input. On the right, 2 resistors feed part of the output back to the noninverting input."
+    },
+    {
+      "id": "s63",
+      "keyTopic": 26,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8C11: the resistors form a divider",
+        "figure": "8C11",
+        "callouts": [
+          { "label": "5K and 2K: 5 kilohms and 2 kilohms (1 kilohm = 1000 ohms)" },
+          { "label": "In series from the output to ground, they share the output voltage" },
+          { "label": "The + input, at their junction, gets the 2 kΩ resistor's share" },
+          { "label": "That share is the threshold the input must cross" }
+        ]
+      },
+      "onScreen": ["5 kilohms and 2 kilohms", "A divider from the output to ground", "The + input gets the 2 kΩ share", "That share is the threshold"],
+      "narration": "So what do those resistors do? They're marked 5K and 2K, meaning 5 kilohms and 2 kilohms. Resistance, how strongly a part limits current, is measured in ohms, and a kilohm is 1000 ohms. The 2 resistors sit in series between the output and ground, the circuit's 0 volt reference. That makes them a divider: the output voltage is shared between them in proportion to their size. The plus input connects at their junction, so it gets the 2 kilohm resistor's share. That share is the threshold, the level the input must cross to flip the output."
+    },
+    {
+      "id": "s64",
+      "keyTopic": 26,
+      "template": "key-facts",
+      "params": {
+        "title": "A Schmitt trigger has 2 trip points",
+        "items": [
+          "The threshold moves with the output",
+          "Output high, +4.5 V: the upper trip point; the input must rise above it",
+          "Output low, −4.5 V: the lower trip point; the input must fall below it",
+          "2 trip points stop chatter: an inverting Schmitt trigger comparator"
+        ]
+      },
+      "onScreen": ["The threshold moves with the output", "Output high: upper trip point", "Output low: lower trip point", "An inverting Schmitt trigger"],
+      "narration": "But the output itself changes, so the threshold moves with it. While the output is high, plus 4.5 volts, the threshold is positive: the upper trip point. The input must rise above it to flip the output low. Once the output is low, minus 4.5 volts, the threshold is negative: the lower trip point. Now the input must fall below that to flip it back. Why bother with 2? With a single threshold, a noisy input hovering near it would make the output chatter back and forth. 2 trip points stop that, like a thermostat that switches on at one temperature and off at another. This circuit is an inverting Schmitt trigger comparator."
+    },
+    {
+      "id": "s65",
+      "keyTopic": 26,
+      "template": "formula",
+      "params": {
+        "title": "Figure 8C11 trip points",
+        "formula": "V<sub>trip</sub> = ±4.5 × 2k ÷ (5k + 2k)",
+        "steps": ["V<sub>trip</sub> = ±4.5 × 2k ÷ 7k", "V<sub>trip</sub> = ±1.2857 V"],
+        "answer": "Upper +1.285 V, lower −1.285 V"
+      },
+      "onScreen": ["Vtrip = ±4.5 × 2k ÷ (5k + 2k)", "±1.2857 V", "Upper +1.285 V, lower −1.285 V"],
+      "narration": "Now the numbers. V sub trip is the trip point voltage. The fraction fed back is the 2 kilohm resistor's share: 2 kilohms over the total, 5 kilohms plus 2 kilohms. Multiply that by the output voltage, plus or minus 4.5 volts. Step 1: 5 plus 2 is 7, so the fraction is 2 over 7. Step 2: 4.5 times 2 over 7 is about 1.2857 volts, which the exam shortens to 1.285. So the upper trip point is plus 1.285 volts, and the lower is minus 1.285 volts. Does it make sense? 2 over 7 is a bit more than a quarter, and 1.285 is a bit more than a quarter of 4.5. That rules out traps like 4.5 and 0 volts, or 2.5 and 2 volts."
+    },
+    {
+      "id": "s66",
+      "keyTopic": 26,
+      "template": "waveform",
+      "params": {
+        "title": "Sine in: when the output goes high",
+        "kind": "sine",
+        "cycles": 2,
+        "xAxis": "time",
+        "yAxis": "input voltage",
+        "labels": [
+          "Halfway through each cycle, at 180°, the input falls through zero",
+          "Just past that, it crosses the lower trip point, −1.285 V",
+          "The output's leading edge: 180° after the positive zero crossing",
+          "Not 45° after a zero crossing or a peak"
+        ]
+      },
+      "onScreen": ["Input falls through zero at 180°", "It crosses the lower trip point", "Leading edge 180° after the positive zero crossing", "Not 45°"],
+      "narration": "Next, feed a sine wave, a smooth up-and-down signal, into Figure 8C11. Points along one cycle, one complete up and down, are counted in degrees, like positions around a circle. The wave crosses zero going up at the start, called the positive zero crossing, and halfway through the cycle, at 180 degrees, it crosses zero going down. When does the output's leading edge, its jump to high, come? Remember, the comparator inverts, so the output goes high only when the falling input passes the lower trip point, minus 1.285 volts, just past that downward zero crossing. That's why the leading edge of the output waveform occurs 180 degrees after the positive zero crossing of the input. It does not trail a zero crossing or a peak by 45 degrees."
+    },
+    {
+      "id": "s67",
+      "keyTopic": 26,
+      "template": "key-facts",
+      "params": {
+        "title": "How a switching power supply works",
+        "items": [
+          "A power supply turns the ship's AC into steady DC",
+          "A switching supply: a transistor switches the DC on and off very fast",
+          "A filter smooths the switched pulses into steady DC",
+          "The longer the switch stays on, the higher the output"
+        ]
+      },
+      "onScreen": ["Power supply: AC in, steady DC out", "A transistor switches on and off very fast", "A filter smooths the pulses", "Longer on time, higher output"],
+      "narration": "That's the comparator. Circuits like it also work inside power supplies, the last part of the receiver we'll cover. Every circuit we've met runs on steady DC, and the power supply makes it from the ship's AC, alternating current, which flows back and forth. A modern radar uses a switching power supply. It first rectifies the AC into rough DC. Then a transistor, acting as a fast electronic switch, turns that DC on and off many thousands of times a second. Finally, a filter smooths the pulses into steady DC. Picture a tap flicked on and off very fast: the longer it stays open each time, the more water flows on average. The switch works the same way."
+    },
+    {
+      "id": "s68",
+      "keyTopic": 26,
+      "template": "waveform",
+      "params": {
+        "title": "Duty cycle sets the output",
+        "kind": "pulse",
+        "cycles": 5,
+        "duty": 0.54,
+        "xAxis": "time",
+        "yAxis": "switch output",
+        "labels": [
+          "Period T: one complete on-off cycle, T = 1 ÷ switching frequency",
+          "Duty cycle = ON time ÷ period",
+          "V<sub>out</sub> = V<sub>in</sub> × duty cycle"
+        ]
+      },
+      "onScreen": ["Period T = 1 ÷ switching frequency", "Duty cycle = ON time ÷ period", "Vout = Vin × duty cycle"],
+      "narration": "So how long is the switch on, and what does that do to the output? Each complete on-off cycle takes a fixed time called the period, T. The period is 1 over the switching frequency, the number of on-off cycles each second. The fraction of each period that the switch spends on is called the duty cycle: the ON time divided by the period. A switching regulator, the circuit that holds a supply's output steady, often switches at a constant frequency and varies only the ON time. In a constant frequency switching regulator, the output voltage is the input voltage times the duty cycle. A switch that's on for half of every period gives half the input voltage; on for most of the period, most of it."
+    },
+    {
+      "id": "s69",
+      "keyTopic": 26,
+      "template": "formula",
+      "params": {
+        "title": "Switching regulator output voltage",
+        "formula": "V<sub>out</sub> = V<sub>in</sub> × duty cycle",
+        "steps": ["T = 1 ÷ 20 kHz = 50 µs", "Duty cycle = 27 µs ÷ 50 µs = 0.54", "V<sub>out</sub> = 0.54 × 165 V"],
+        "answer": "V<sub>out</sub> = 89.1 V DC; the 1 A load isn't used"
+      },
+      "onScreen": ["Vout = Vin × duty cycle", "T = 1 ÷ 20 kHz = 50 µs", "Duty cycle 0.54", "89.1 volts DC"],
+      "narration": "The exam's example: a constant frequency switching regulator has 165 volts DC in and switches at 20 kilohertz, 20 thousand times a second. Its ON time is 27 microseconds, millionths of a second, while it supplies 1 ampere of current to its load, the circuits it powers. What's the output voltage? Step 1, the period: T equals 1 over 20 kilohertz, so 1 second shared among 20 thousand cycles, 50 microseconds each. Step 2, the duty cycle: 27 over 50 is 0.54. Step 3: V sub out equals 0.54 times 165 volts, which is 89.1 volts DC. Sensible? The switch is on just over half the time, and 89.1 is just over half of 165. The 1 ampere doesn't enter the calculation, so don't answer that it can't be determined."
+    },
+    {
+      "id": "s70",
+      "keyTopic": 26,
+      "template": "block-diagram",
+      "params": {
+        "title": "No isolation transformer: a hidden danger",
+        "columns": 2,
+        "blocks": [
+          { "id": "line", "label": "AC line", "note": "The ship's live power wiring" },
+          { "id": "rect", "label": "Supply rectifier", "note": "No line isolation transformer" },
+          { "id": "common", "label": "Circuit common", "note": "Sits at line potential" },
+          { "id": "scope", "label": "Grounded oscilloscope", "note": "Its ground clip is at 0 volts" }
+        ],
+        "links": [
+          { "from": "line", "to": "rect" },
+          { "from": "rect", "to": "common" },
+          { "from": "scope", "to": "common", "label": "Short circuit" }
+        ]
+      },
+      "onScreen": ["AC line", "Rectified directly, no isolation transformer", "Circuit common at line potential", "Grounded oscilloscope: a short circuit"],
+      "narration": "Before you measure anything in a live switching supply, here's a safety point the exam tests. Ground, remember, is the 0 volt reference; on a ship, that's the metal hull and the earth wiring. Many switching supplies rectify the AC line, the ship's live power wiring, directly, with no line isolation transformer, a transformer that keeps the circuit separate from the line. Without one, the supply's circuit common, the point you'd normally treat as its 0 volt reference, can sit at line potential: it's connected to the live AC line. Now bring in an oscilloscope, an instrument that draws a voltage on a screen. Its ground clip is wired to ground through its power cord."
+    },
+    {
+      "id": "s71",
+      "keyTopic": 26,
+      "template": "key-facts",
+      "params": {
+        "title": "Before probing a switching supply",
+        "items": [
+          "A grounded clip on a common at line potential shorts the line to ground",
+          "The fault current can destroy the supply",
+          "So know the supply's design before power-on measurements",
+          "Not the reason: finding the filter capacitors to discharge them"
+        ]
+      },
+      "onScreen": ["Grounded clip on a live common: a short", "It can destroy the supply", "Know the design first", "Not about the filter capacitors"],
+      "narration": "Clip that grounded lead onto a circuit common at line potential, and you short the live line straight to ground. A huge current flows, which can destroy the supply. So before making power-on measurements, be familiar with the supply: if it does not use a line isolation transformer, you may destroy it with grounded test equipment. Knowing where the filter capacitors are, so they can be discharged, is good practice, but it's not the reason the exam wants. And don't believe that ungrounded test equipment can never cause a failure, or that knowing the supply means you can skip the schematic."
+    },
+    {
+      "id": "s72",
+      "keyTopic": 26,
+      "template": "key-facts",
+      "params": {
+        "title": "The power MOSFET switch",
+        "items": [
+          "Power MOSFET: the transistor that does the switching",
+          "The voltage on its gate turns it on and off",
+          "Gate threshold: roughly 2 to 4 V; fully on: about 10 V",
+          "So the gate changes by greater than 2 volts, low to high"
+        ]
+      },
+      "onScreen": ["Power MOSFET: the switch", "Gate voltage turns it on and off", "Threshold 2 to 4 V, fully on about 10 V", "Gate changes by greater than 2 volts"],
+      "narration": "Now the switch itself. In a modern radar's switching supply, it's usually a power MOSFET, a metal-oxide-semiconductor field-effect transistor. It's controlled by the voltage on its gate terminal: low means off, high means on. A MOSFET's gate threshold, where it just begins to conduct, is roughly 2 to 4 volts, and it needs about 10 volts to switch fully on with little resistance. So when you monitor the gate voltage of a power MOSFET, you'd expect it to change from low to high by greater than 2 volts. Swings of 1 to 2 volts, or a few hundred microvolts, wouldn't even reach the threshold."
+    },
+    {
+      "id": "s73",
+      "keyTopic": 26,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8C10: a switching supply's output",
+        "figure": "8C10",
+        "callouts": [
+          { "label": "Q1, a power MOSFET, switches T1 at the high switching rate" },
+          { "label": "T1, a transformer, passes the pulses to its secondary windings" },
+          { "label": "CR6 and CR7: diodes that rectify the pulses" },
+          { "label": "L1 and C6: a filter that smooths them into steady DC" }
+        ]
+      },
+      "onScreen": ["Q1 switches T1", "T1 passes the pulses on", "CR6 and CR7 rectify", "L1 and C6 filter"],
+      "narration": "Let's see that MOSFET at work in Figure 8C10, the output section of a switching supply. On the left, Q1, the power MOSFET, switches T1, a transformer, on and off at the high switching rate. The primary winding, the coil Q1 drives, passes the pulses through its magnetic field to the secondary windings on the right. In the upper output, CR6 and CR7 are diodes, which rectify the pulses so they flow one way only. Then L1, a coil, and C6, a capacitor, form a filter. The coil resists sudden changes in current and the capacitor holds the voltage steady, so together they smooth the pulses into steady DC for the 12 volt output."
+    },
+    {
+      "id": "s74",
+      "keyTopic": 26,
+      "template": "comparison-table",
+      "params": {
+        "title": "Probing Figure 8C10",
+        "columns": ["Where you probe", "What you see"],
+        "rows": [
+          ["Junction of CR6, CR7 and L1", "Pulsating DC much higher than line frequency"],
+          ["After the L1 and C6 filter", "Filtered DC"]
+        ]
+      },
+      "onScreen": ["CR6, CR7 and L1 junction: pulsating DC much higher than line frequency", "After the filter: filtered DC", "Not line frequency"],
+      "narration": "Time for the exam's question. With an oscilloscope, you measure from the junction of CR6, CR7 and L1 to ground. What waveform do you see? That point is after the diodes but before the L1 and C6 filter. The pulses have been rectified into one direction, which makes them pulsating DC, but they haven't been smoothed yet. And they pulse at Q1's switching rate, far above the line frequency, the 50 or 60 cycles a second of the ship's AC power. So the answer is pulsating DC much higher than line frequency. Filtered DC is what you'd see after the filter, and the line-frequency answers forget that Q1 switches far faster than the AC line alternates."
+    },
+    {
+      "id": "s75",
+      "keyTopic": 19,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts: Receiving Systems",
+        "items": [
+          "No RF amplifier: the crystal mixer and klystron make a 30 or 60 MHz IF",
+          "AFC: the discriminator compares magnetron and klystron, and corrects the repeller",
+          "Gain = 20 log(V<sub>out</sub> ÷ V<sub>in</sub>): 2 µV to 2 V is 120 dB; AGC 20 to 40 dB",
+          "STC cuts close-range gain for sea clutter; FTC is for rain; MTI shows only moving targets",
+          "Switching supply: 89.1 V DC; Figure 8C11 trips at ±1.285 V"
+        ]
+      },
+      "onScreen": ["No RF amplifier; IF of 30 or 60 MHz", "AFC corrects the klystron", "120 dB; AGC 20 to 40 dB", "STC, FTC, MTI", "89.1 V and ±1.285 V"],
+      "narration": "Let's wrap up with 5 things to remember. First, there's no RF amplifier: the crystal mixer and klystron local oscillator turn the echo into a 30 or 60 megahertz IF, where nearly all the gain happens. Second, AFC keeps the klystron one IF from the magnetron: the discriminator compares them and corrects the klystron's repeller voltage. Third, gain in decibels is 20 log of V sub out over V sub in, so 2 microvolts to 2 volts is 120 decibels, and AGC can vary it by 20 to 40 decibels. Fourth, STC tames sea clutter by cutting gain for close echoes, FTC handles rain, and MTI shows only moving targets. Fifth, the worked numbers: the switching regulator gives 89.1 volts, and Figure 8C11 trips at plus and minus 1.285 volts."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [19] },
-    { "after": "s8", "keyTopics": [20] },
-    { "after": "s11", "keyTopics": [21] },
-    { "after": "s15", "keyTopics": [22] },
-    { "after": "s18", "keyTopics": [23] },
-    { "after": "s21", "keyTopics": [24] },
-    { "after": "s24", "keyTopics": [25] },
-    { "after": "s28", "keyTopics": [26] },
-    { "after": "s31", "keyTopics": [27] },
-    { "after": "s34", "keyTopics": [28] }
+    { "after": "s4", "keyTopics": [19], "questions": ["8-19C3"] },
+    { "after": "s8", "keyTopics": [20, 19], "questions": ["8-20C3", "8-19C4", "8-19C1", "8-19C6"] },
+    { "after": "s12", "keyTopics": [28, 20], "questions": ["8-28C5", "8-20C2"] },
+    { "after": "s15", "keyTopics": [20], "questions": ["8-20C4", "8-20C6", "8-20C1"] },
+    { "after": "s19", "keyTopics": [21], "questions": ["8-21C2", "8-21C4"] },
+    { "after": "s22", "keyTopics": [21, 24], "questions": ["8-21C6", "8-24C1", "8-24C4"] },
+    { "after": "s26", "keyTopics": [28, 20], "questions": ["8-28C3", "8-20C5"] },
+    { "after": "s29", "keyTopics": [24, 28, 21], "questions": ["8-24C2", "8-24C3", "8-24C6", "8-28C1", "8-21C3", "8-21C1"] },
+    { "after": "s33", "keyTopics": [24, 21, 22], "questions": ["8-24C5", "8-21C5", "8-22C2"] },
+    { "after": "s37", "keyTopics": [22], "questions": ["8-22C3", "8-22C5"] },
+    { "after": "s40", "keyTopics": [19, 22], "questions": ["8-19C2", "8-22C4"] },
+    { "after": "s43", "keyTopics": [22, 23], "questions": ["8-22C6", "8-22C1", "8-23C1"] },
+    { "after": "s47", "keyTopics": [23], "questions": ["8-23C6", "8-23C2", "8-23C3"] },
+    { "after": "s50", "keyTopics": [23, 25], "questions": ["8-23C5", "8-23C4", "8-25C3", "8-25C6"] },
+    { "after": "s53", "keyTopics": [25, 27], "questions": ["8-25C1", "8-25C2", "8-25C5", "8-25C4", "8-27C5"] },
+    { "after": "s57", "keyTopics": [27], "questions": ["8-27C2", "8-27C1", "8-27C3", "8-27C6", "8-27C4"] },
+    { "after": "s61", "keyTopics": [28, 19], "questions": ["8-28C2", "8-28C6", "8-28C4", "8-19C5"] },
+    { "after": "s65", "keyTopics": [26], "questions": ["8-26C6"] },
+    { "after": "s69", "keyTopics": [26], "questions": ["8-26C4", "8-26C2"] },
+    { "after": "s72", "keyTopics": [26], "questions": ["8-26C1", "8-26C5"] },
+    { "after": "s75", "keyTopics": [26], "questions": ["8-26C3"] }
   ],
   "video": null
 }

@@ -21,8 +21,9 @@ export function drawQuiz(pool: readonly Question[], keyTopics: readonly number[]
   return picks;
 }
 
-/** One random question from the given key topics, for a mid-lesson checkpoint. */
-export function drawCheckpoint(pool: readonly Question[], keyTopics: readonly number[], rng: Rng): Question {
-  const candidates = pool.filter((q) => keyTopics.includes(q.keyTopic));
+/** One random question for a mid-lesson checkpoint: from `questions` when given, else from the key topics. */
+export function drawCheckpoint(pool: readonly Question[], keyTopics: readonly number[], rng: Rng, questions?: readonly string[]): Question {
+  const listed = questions?.length ? pool.filter((q) => questions.includes(q.id)) : [];
+  const candidates = listed.length ? listed : pool.filter((q) => keyTopics.includes(q.keyTopic));
   return candidates[Math.floor(rng() * candidates.length)];
 }

@@ -14,62 +14,341 @@
         "subtitle": "Installing GMDSS equipment correctly, the annual ship station inspection, and the test instruments a maintainer sets up and reads."
       },
       "onScreen": ["Inspections, Installations and Instruments", "Installation, the annual inspection and test instruments"],
-      "narration": "This lesson covers 3 parts of a GMDSS maintainer's job. GMDSS is the Global Maritime Distress and Safety System. First, installing equipment correctly. Second, carrying out and recording the annual GMDSS ship station inspection. Third, choosing, setting up and reading the test instruments you'll use. Let's start with installation, beginning with the Inmarsat-C terminal."
+      "narration": "Welcome to the last lesson on GMDSS maintenance. GMDSS, the Global Maritime Distress and Safety System, is the worldwide set of radios and satellite links a ship uses to call for help. A maintainer's job is to keep it ready. This lesson covers 3 parts of that job. First, installing the equipment so it works and doesn't upset anything nearby. Second, the annual inspection that proves, once a year, that the station still works. Third, the test instruments you'll use: what each one measures, how to set it up and how to read it. You don't need a background in electronics; each basic idea gets a short refresher before we use it. By the end, you'll know every exam answer in this subelement, and why it's right."
     },
     {
       "id": "s2",
       "keyTopic": 47,
-      "template": "equipment-card",
+      "template": "block-diagram",
       "params": {
-        "title": "Installing an Inmarsat-C system",
-        "device": "satcom-terminal",
-        "callouts": [
-          { "label": "Ground: copper strap brazed to the steel terminal and steel hull", "at": "terminal" },
-          { "label": "Wide strap: low impedance; brazing won't loosen; no aluminum on steel" },
-          { "label": "Antenna: at least 8 meters from other Inmarsat antennas", "at": "radome" },
-          { "label": "After installation: enter your Inmarsat Mobile Number", "at": "screen" },
-          { "label": "Never send a distress alert as a test", "at": "keyboard" }
-        ]
+        "title": "Where the installed equipment sits",
+        "columns": 3,
+        "blocks": [
+          { "id": "inmant", "label": "Inmarsat-C antenna", "note": "High on the mast, clear view of the sky" },
+          { "id": "vhftx", "label": "VHF transmitting antenna", "note": "Up high" },
+          { "id": "vhfrx", "label": "VHF receiving antenna", "note": "Up high too" },
+          { "id": "inmterm", "label": "Inmarsat-C terminal", "note": "On the bridge" },
+          { "id": "compass", "label": "Magnetic compass", "note": "On the bridge" },
+          { "id": "transducer", "label": "Depth finder transducer", "note": "In the bottom of the hull" }
+        ],
+        "links": [{ "from": "inmterm", "to": "inmant", "label": "cable" }]
       },
-      "onScreen": ["Copper strap brazed to the terminal and the steel hull", "Low impedance, won't loosen, no galvanic corrosion", "Antenna 8 meters from other Inmarsat antennas", "Enter the Inmarsat Mobile Number", "Never send a distress alert as a test"],
-      "narration": "The best method for grounding an Inmarsat-C terminal is a copper strap brazed to the steel terminal and the ship's steel hull. A wide strap has low impedance, a brazed joint won't loosen like a bolted one, and aluminum on steel invites galvanic corrosion. When installing the Inmarsat-C antenna, the minimum distance to other Inmarsat antennas is 8 meters. After the system is fully installed, your Inmarsat Mobile Number must be entered in the terminal. And a distress alert must never be sent as a test."
+      "onScreen": ["Inmarsat-C antenna high on the mast", "VHF transmitting and receiving antennas", "Inmarsat-C terminal and magnetic compass on the bridge", "Depth finder transducer in the hull"],
+      "narration": "Installation comes first, so picture a ship. High on the mast sits the Inmarsat-C antenna, which talks to satellites. Nearby are antennas for the VHF radio. VHF means very high frequency. Frequency is how many times a radio wave vibrates back and forth each second, counted in hertz, and VHF signals vibrate more than 100 million times a second. On the bridge, where the ship is steered, are the Inmarsat-C terminal and the magnetic compass. And down in the bottom of the hull is the depth finder's transducer, which sends sound into the water. Each of these has an installation rule the exam asks about. We'll take them one at a time, starting with Inmarsat-C."
     },
     {
       "id": "s3",
       "keyTopic": 47,
-      "template": "key-facts",
+      "template": "equipment-card",
       "params": {
-        "title": "Antennas, transducers and the compass",
-        "items": [
-          "Full-duplex VHF: maximum separation between the transmitting and duplex receiver antennas",
-          "So the transmitter does not desensitize the receiver",
-          "Depth finder transducers: in an area not subject to cavitation",
-          "Air bubbles absorb and scatter the acoustic pulse",
-          "Bridge equipment separation: refers to the magnetic compass (compass safe distance)"
+        "title": "What is Inmarsat-C?",
+        "device": "satcom-terminal",
+        "callouts": [
+          { "label": "Antenna under a radome: talks to the satellite", "at": "radome" },
+          { "label": "High on the mast: a clear view of the sky", "at": "mast" },
+          { "label": "Cable down to the terminal", "at": "cable" },
+          { "label": "Terminal: messages, safety information, distress alerts", "at": "terminal" }
         ]
       },
-      "onScreen": ["Duplex VHF: maximum antenna separation", "Keeps the receiver from being desensitized", "Transducer: away from cavitation", "Bubbles absorb and scatter the pulse", "Separation rules: the magnetic compass"],
-      "narration": "3 more installation rules. For a full-duplex VHF, or very high frequency, radiotelephone, the most important consideration is maximum separation between the transmitting antenna and the duplex receiver antenna, so the transmitter does not desensitize the receiver. For depth finder transducers, the most important factor is an area not subject to cavitation, because air bubbles absorb and scatter the acoustic pulse. And bridge equipment separation recommendations generally refer to the magnetic compass. That's the compass safe distance."
+      "onScreen": ["Antenna under a radome", "High on the mast", "Cable to the terminal", "Terminal: messages and distress alerts"],
+      "narration": "So what is Inmarsat-C? Inmarsat runs a network of satellites high above the equator, and Inmarsat-C is the ship's text service on that network. Its antenna sits under a radome, a small protective dome, high on the mast, because it needs a clear view of the sky to reach the satellite. A cable runs down to the terminal on the bridge. From there you can send and receive messages, receive safety information, and send a distress alert. Installing Inmarsat-C means getting both ends right. Start at the top: how far should the antenna be from its neighbors?"
     },
     {
       "id": "s4",
-      "keyTopic": 48,
-      "template": "key-facts",
+      "keyTopic": 47,
+      "template": "band-strip",
       "params": {
-        "title": "The annual GMDSS inspection",
-        "items": [
-          "Requires a GMDSS Maintainer's License, not an operator's license",
-          "Battery test: off charge, at the maximum required load",
-          "Measure and record the maximum discharge current and voltage",
-          "Inmarsat-C: send a brief test message to your own terminal",
-          "That 1 message proves both transmit and receive"
+        "title": "Inmarsat-C antenna: how far from the others?",
+        "min": 0,
+        "max": 12,
+        "scale": "linear",
+        "marks": [
+          { "at": 8, "label": "8 meters", "note": "The minimum to other Inmarsat antennas", "tone": "key" },
+          { "at": 4, "label": "4 meters", "note": "Too close", "tone": "muted" },
+          { "at": 10, "label": "10 meters", "note": "Fine, but not the minimum", "tone": "muted" },
+          { "at": 12, "label": "12 meters", "note": "Fine, but not the minimum", "tone": "muted" }
         ]
       },
-      "onScreen": ["GMDSS Maintainer's License", "Battery: off charge, maximum required load", "Record maximum discharge current and voltage", "Inmarsat-C: test message to your own terminal", "Proves transmit and receive"],
-      "narration": "Every year, a GMDSS ship station gets an annual inspection. Conducting it requires a GMDSS Maintainer's License, not an operator's license. The battery test is made with the battery off charge and at the maximum required load. You measure and record the maximum discharge current and voltage. And the easiest way to test the Inmarsat-C terminal for proper operation is to send a brief test message to your own terminal. Getting it back proves both transmit and receive."
+      "onScreen": ["8 meters: the minimum to other Inmarsat antennas", "4 meters: too close", "10 or 12 meters: not the minimum"],
+      "narration": "A ship may carry more than one Inmarsat terminal, each with its own antenna, and they all use the same band, or range, of frequencies. Up close, that's a problem. Another Inmarsat antenna transmitting from a few meters away is far stronger than the faint signal from the satellite, so it can overload the Inmarsat-C equipment and drown that signal out. Distance is the cure. When installing an Inmarsat-C antenna, the minimum distance to other Inmarsat antennas is 8 meters. Notice the word minimum. 4 meters is too close. 10 or 12 meters would be fine on a ship, but they aren't the minimum the exam asks for. Remember 8 meters."
     },
     {
       "id": "s5",
+      "keyTopic": 47,
+      "template": "block-diagram",
+      "params": {
+        "title": "What grounding does",
+        "columns": 4,
+        "blocks": [
+          { "id": "stray", "label": "Stray currents", "note": "From radio energy and electrical faults" },
+          { "id": "case", "label": "Terminal's metal case" },
+          { "id": "conn", "label": "Ground connection", "note": "An easy path away, like a drain" },
+          { "id": "hull", "label": "Steel hull", "note": "Sits in the sea: the ship's ground" }
+        ],
+        "links": [
+          { "from": "stray", "to": "case" },
+          { "from": "case", "to": "conn" },
+          { "from": "conn", "to": "hull" }
+        ]
+      },
+      "onScreen": ["Stray currents from radio energy and faults", "The terminal's metal case", "Ground connection: an easy path away", "Steel hull: the ship's ground"],
+      "narration": "Now down the cable to the terminal. Like any radio, it needs a good ground, and that takes one basic idea: current. Electric current is a flow of electricity, like water flowing through a pipe. Radio equipment picks up unwanted stray currents, from the radio energy around it and from electrical faults. Grounding gives those currents an easy path away, like a drain that carries off water before it floods the floor. That path runs from the terminal's metal case, through a ground connection, into the ship's steel hull. The hull sits in the sea and serves as the ship's ground, the common point all its equipment connects to. With a good ground, the equipment works properly and doesn't cause interference."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 47,
+      "template": "equipment-card",
+      "params": {
+        "title": "The best ground: a brazed copper strap",
+        "device": "satcom-terminal",
+        "callouts": [
+          { "label": "Copper strap brazed to the steel terminal and the steel hull", "at": "terminal" },
+          { "label": "RF current travels along a conductor's surface" },
+          { "label": "Wide, flat strap: lots of surface, low impedance" },
+          { "label": "Trap: round No. 10 copper wire" }
+        ]
+      },
+      "onScreen": ["Copper strap brazed to terminal and hull", "RF travels along the surface", "Wide strap: low impedance", "Trap: No. 10 copper wire"],
+      "narration": "So what makes the best ground? For an Inmarsat-C terminal, the best method is a copper strap brazed to the steel terminal and the ship's steel hull. Each part of that answer has a reason, starting with the strap's shape. The stray currents that matter most to a radio are radio frequency current, RF for short: current that switches direction millions, even billions, of times a second. At RF, current travels along the surface of a conductor, a metal it flows through easily. A wide, flat strap has lots of surface, so it has far lower impedance, its opposition to RF current, than a round wire. That rules out the trap answer of number 10 copper wire."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 47,
+      "template": "comparison-table",
+      "params": {
+        "title": "Why brazed copper, not bolted aluminum",
+        "columns": ["Choice", "What happens"],
+        "rows": [
+          ["Brazed joint", "Permanent: won't loosen"],
+          ["Bolted joint", "Can work loose as the ship vibrates"],
+          ["Aluminum on steel", "Galvanic corrosion eats the aluminum"],
+          ["Ground at the antenna only", "The terminal still has no ground path"]
+        ]
+      },
+      "onScreen": ["Brazed joint: permanent", "Bolted joint: can work loose", "Aluminum on steel: galvanic corrosion", "Antenna ground alone: not enough"],
+      "narration": "Next, the joint. Brazing joins metals with a melted filler metal such as brass, making a permanent joint. A bolted joint can work loose as the ship vibrates, and a loose joint is a poor ground. Then the metal. Aluminum against steel, wet with salt spray, invites galvanic corrosion: the 2 different metals act like a battery, and the aluminum slowly eats away. So the trap answer of a bolted aluminum strap fails twice. The last trap says a good ground at the antenna is enough. It isn't: the terminal is down on the bridge, and its own case needs its own short path to the hull."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 47,
+      "template": "key-facts",
+      "params": {
+        "title": "Once installed: the Inmarsat Mobile Number",
+        "items": [
+          "Every terminal has an Inmarsat Mobile Number: its identity on the network",
+          "After installation, the number must be entered in the terminal",
+          "Never send a distress alert as a test",
+          "Not needed: telling the rescue coordination center",
+          "A test message to your own terminal comes later, at the inspection"
+        ]
+      },
+      "onScreen": ["Inmarsat Mobile Number: the terminal's identity", "Enter it after installation", "Never send a distress alert as a test", "No need to tell the rescue center", "Test message: an inspection test"],
+      "narration": "With the antenna placed and the terminal grounded, one step remains. Every Inmarsat-C terminal has its own Inmarsat Mobile Number, its identity on the satellite network, much like a phone number. After an Inmarsat-C system is fully installed, your Inmarsat Mobile Number must be entered in the terminal. Until it is, the network can't properly identify the ship, for messages or for distress alerts. Now the tempting wrong steps. Never send a distress alert as a test, not even one you cancel straight away: it can set off a real search. There's no need to tell the nearest rescue coordination center, the shore center that organizes rescues. And a test message to your own terminal belongs to the annual inspection, not to finishing the installation."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 47,
+      "template": "comparison-table",
+      "params": {
+        "title": "Simplex or full duplex?",
+        "columns": ["Feature", "Simplex", "Full duplex"],
+        "rows": [
+          ["How you talk", "Take turns: press to talk", "Both talk at once, like a phone"],
+          ["Frequencies", "1 shared frequency", "2: send on one, listen on the other"],
+          ["Transmitter and receiver", "Never on together", "On at the same time"]
+        ]
+      },
+      "onScreen": ["Simplex: take turns on 1 frequency", "Full duplex: both talk at once on 2 frequencies", "Full duplex: transmitter and receiver on together"],
+      "narration": "That completes the Inmarsat-C installation. Next, the VHF radio, whose antennas we saw on the mast. A VHF radiotelephone is a radio you talk on, like a telephone. Most marine VHF calls are simplex: both stations share 1 frequency, so they take turns, pressing a button to talk and letting go to listen. A full-duplex radiotelephone works like an ordinary phone call. Both people can talk at once, because the radio sends on one frequency and listens on another, only a few megahertz away. A megahertz is 1 million hertz. So in full duplex, the transmitter and the receiver are switched on at the same time, each with its own antenna. And that creates a problem."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 47,
+      "template": "block-diagram",
+      "params": {
+        "title": "Full duplex: keep the antennas apart",
+        "columns": 2,
+        "blocks": [
+          { "id": "tx", "label": "Transmitter", "note": "Sending a strong signal" },
+          { "id": "txant", "label": "Transmitting antenna" },
+          { "id": "rx", "label": "Duplex receiver", "note": "Listening for a faint signal" },
+          { "id": "rxant", "label": "Duplex receiver antenna", "note": "As far as possible from the other" }
+        ],
+        "links": [
+          { "from": "tx", "to": "txant" },
+          { "from": "rxant", "to": "rx" },
+          { "from": "txant", "to": "rxant", "label": "signal leaping across", "struck": true }
+        ]
+      },
+      "onScreen": ["Transmitter sends a strong signal", "Duplex receiver listens for a faint one", "Maximum separation between the 2 antennas"],
+      "narration": "Picture someone shouting in one ear while you try to hear a whisper in the other. In full duplex, the transmitter's signal is far stronger than the faint station the receiver is trying to hear, and both are on at once. If the transmitting antenna sits close to the receiving one, that strong signal floods into the receiver and desensitizes it: it goes partly deaf. So the most important consideration for installing a full-duplex VHF radiotelephone is maximum separation between the transmitting antenna and the duplex receiver antenna. Watch the wording on the exam: the strong signal leaps from antenna to antenna through the air, so it's the antennas that must be far apart. The transmitter and receiver boxes can sit side by side, and spacing between transmitting antennas isn't the issue."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 47,
+      "template": "block-diagram",
+      "params": {
+        "title": "How a depth finder measures depth",
+        "columns": 4,
+        "blocks": [
+          { "id": "xd", "label": "Transducer in the hull", "note": "Turns an electrical pulse into sound" },
+          { "id": "down", "label": "Acoustic pulse", "note": "A burst of sound travels down" },
+          { "id": "bottom", "label": "Sea bottom", "note": "Echoes the sound back" },
+          { "id": "echo", "label": "Echo returns", "note": "The time taken gives the depth" }
+        ],
+        "links": [
+          { "from": "xd", "to": "down" },
+          { "from": "down", "to": "bottom" },
+          { "from": "bottom", "to": "echo" }
+        ]
+      },
+      "onScreen": ["Transducer sends a sound pulse", "Pulse travels down", "Sea bottom echoes it", "Echo time gives the depth"],
+      "narration": "From the mast, now down to the bottom of the hull. A depth finder measures how deep the water is under the ship, using sound. Its transducer, a device that turns electrical energy into sound and back again, is mounted in the hull. It sends a short burst of sound, called an acoustic pulse, down through the water. The pulse bounces off the sea bottom, and the echo comes back up to the transducer. Sound travels through water at a steady speed, so the time the echo takes tells the depth: a longer wait means deeper water. It's like timing an echo off a cliff. But that only works if the pulse gets through the water cleanly."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 47,
+      "template": "key-facts",
+      "params": {
+        "title": "Keep the transducer clear of cavitation",
+        "items": [
+          "Cavitation: bubbles where water rushes fast and roughly past the hull",
+          "Air bubbles absorb and scatter the acoustic pulse",
+          "Most important: an area not subject to cavitation",
+          "Traps: the centerline, near the bow, or halfway between bow and stern"
+        ]
+      },
+      "onScreen": ["Cavitation: bubbles in fast, rough water", "Bubbles absorb and scatter the pulse", "Locate it where there's no cavitation", "Not a fixed position"],
+      "narration": "What can stop the pulse? Bubbles. Where water rushes fast or roughly past the hull, near the propeller for example, the pressure drops so low that clouds of tiny bubbles form. That's called cavitation. Air bubbles absorb and scatter the acoustic pulse, like fog swallowing a flashlight beam, so the echoes come back weak or not at all. So the most important factor when locating depth finder transducers is an area not subject to cavitation, where water flows smoothly over the hull. The trap answers name fixed positions: on the centerline, down the middle of the ship; as close to the bow, the front, as possible; or equally far from the bow and the stern, the back. None of those helps if the water there is full of bubbles."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 47,
+      "template": "key-facts",
+      "params": {
+        "title": "Bridge equipment and the compass safe distance",
+        "items": [
+          "A magnetic compass points by the earth's weak magnetism",
+          "Speakers, motors and DC currents make their own magnetic fields",
+          "Each item has a compass safe distance",
+          "Separation recommendations refer to the magnetic compass",
+          "Not GPS, ECDIS or the autopilot"
+        ]
+      },
+      "onScreen": ["Compass: earth's weak magnetism", "Electronics make magnetic fields", "Compass safe distance", "Separation rules: the magnetic compass", "Not GPS, ECDIS or autopilot"],
+      "narration": "Back up to the bridge. A magnetic compass needs no power: a magnetized card lines itself up with the earth's magnetism. That magnetism is weak, so any magnetism nearby can pull the compass off. Bridge electronics contain magnets, in loudspeakers for example, plus motors and DC currents. DC, direct current, flows steadily in one direction, and any current creates a magnetic field around it. So each manufacturer states a compass safe distance: how far its equipment must stay from the compass. That's why bridge equipment separation recommendations generally refer to the magnetic compass. The wrong choices are GPS, the Global Positioning System receiver; ECDIS, the Electronic Chart Display and Information System; and the autopilot. None of them relies on a magnetized card, so they aren't what the separation rules protect."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 47,
+      "template": "key-facts",
+      "params": {
+        "title": "Installation: the rules to remember",
+        "items": [
+          "Inmarsat-C antenna: at least 8 meters from other Inmarsat antennas",
+          "Inmarsat-C ground: copper strap brazed to the steel terminal and the steel hull",
+          "After installing: enter the Inmarsat Mobile Number; never test with a distress alert",
+          "Full-duplex VHF: maximum separation of transmitting and receiving antennas",
+          "Transducer: clear of cavitation. Separation rules: the magnetic compass"
+        ]
+      },
+      "onScreen": ["Inmarsat-C antenna: 8 meters minimum", "Brazed copper strap to the hull", "Enter the Inmarsat Mobile Number", "Duplex VHF antennas far apart", "Transducer clear of cavitation; compass safe distance"],
+      "narration": "That's installation. Here's what to carry forward. Keep the Inmarsat-C antenna at least 8 meters from other Inmarsat antennas. Ground the terminal with a copper strap brazed to the steel terminal and the steel hull. Once it's installed, enter the Inmarsat Mobile Number, and never test with a distress alert. On a full-duplex VHF, separate the transmitting and receiving antennas as far as possible. Put the depth finder transducer where there's no cavitation. And bridge separation rules protect the magnetic compass. Most of these rules come down to one idea: keep each signal or instrument safe from something nearby."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 48,
+      "template": "key-facts",
+      "params": {
+        "title": "The annual inspection",
+        "items": [
+          "Every year, a GMDSS ship station is inspected: the survey",
+          "Each distress and safety system is tested and the results recorded",
+          "Who may conduct it: a GMDSS Maintainer's License holder",
+          "An operator's license is not enough"
+        ]
+      },
+      "onScreen": ["Inspected every year: the survey", "Every system tested and recorded", "Requires a GMDSS Maintainer's License", "Not an operator's license"],
+      "narration": "Installation happens once. Keeping the station ready is a yearly job. Every year, a ship that carries GMDSS equipment has its radio station inspected, a check also called the survey. Each piece of distress and safety equipment is tested, the results are recorded, and the ship is confirmed able to call for help. Because the job means testing, measuring and certifying equipment, conducting a GMDSS ship station annual inspection requires a GMDSS Maintainer's License. An operator's license, such as the GMDSS Radio Operator's License, covers using the station, not inspecting it. The other licenses the exam lists aren't the answer either: the First Class Radiotelegraph license, for Morse code stations, and the General Radiotelephone Operator's License."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 48,
+      "template": "block-diagram",
+      "params": {
+        "title": "The reserve battery and its load",
+        "columns": 3,
+        "blocks": [
+          { "id": "charger", "label": "Charger", "note": "Keeps the battery topped up" },
+          { "id": "battery", "label": "Reserve battery", "note": "Voltage: the push, in volts" },
+          { "id": "load", "label": "Load: the GMDSS radios", "note": "Draws current, in amps" }
+        ],
+        "links": [
+          { "from": "charger", "to": "battery", "label": "charging" },
+          { "from": "battery", "to": "load", "label": "current" }
+        ]
+      },
+      "onScreen": ["Charger keeps the battery topped up", "Battery voltage: the push, in volts", "Load: the radios draw current, in amps"],
+      "narration": "Now the tests themselves, starting with the battery. If the ship's power fails, a reserve battery keeps the GMDSS radios running. Normally a charger is connected to it, keeping it topped up. The battery's voltage is its electrical push, measured in volts. That push drives a current, the flow, measured in amperes, or amps. The current runs through the load: whatever draws power from the battery, here the radio equipment. Now the catch. While the charger is connected, it supplies much of the current itself, so a weak battery can look fine. A fair test has to make the battery do the work alone."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 48,
+      "template": "equipment-card",
+      "params": {
+        "title": "The annual battery test",
+        "device": "battery",
+        "callouts": [
+          { "label": "Charger disconnected: the battery is off charge", "at": "cables" },
+          { "label": "Maximum required load connected", "at": "positive" },
+          { "label": "Measure and record the maximum discharge current and voltage", "at": "case" },
+          { "label": "Traps: specific gravity, or voltage after a 6 hour discharge", "at": "caps" }
+        ]
+      },
+      "onScreen": ["Off charge", "Maximum required load", "Record maximum discharge current and voltage", "Not specific gravity or a 6 hour discharge"],
+      "narration": "So the annual battery test is made with the battery off charge, meaning the charger is disconnected, and at the maximum required load, the most current the radio installation needs. Then you measure and record the maximum discharge current and voltage. If the voltage holds up while the battery alone delivers all that current, the battery can really carry the station. The trap answers record specific gravity, the density of the acid in each cell, while the batteries are charging or discharging, or the voltage at the end of a 6 hour full load discharge. Those aren't the annual test."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 48,
+      "template": "block-diagram",
+      "params": {
+        "title": "Power out, and power bounced back",
+        "columns": 3,
+        "blocks": [
+          { "id": "tx", "label": "VHF transmitter", "note": "Power output: watts sent out" },
+          { "id": "cable", "label": "Cable", "note": "Carries the power up the mast" },
+          { "id": "ant", "label": "Antenna", "note": "Sends it off as radio waves" },
+          { "id": "back", "label": "Reflected power", "note": "Bounces back if they don't match" }
+        ],
+        "links": [
+          { "from": "tx", "to": "cable", "label": "power out" },
+          { "from": "cable", "to": "ant" },
+          { "from": "ant", "to": "back", "label": "mismatch" },
+          { "from": "back", "to": "tx" }
+        ]
+      },
+      "onScreen": ["Power output: watts sent out", "Cable up the mast", "Antenna sends it off", "Reflected power: measured by VSWR"],
+      "narration": "With the battery checked, the inspection moves on to the VHF radio. Its annual tests check 4 things, and the first 2 are about power. Power is how fast energy is delivered, measured in watts. Power output is how much power the transmitter delivers up the cable to the antenna, which sends it off as radio waves. VSWR, the voltage standing wave ratio, tells you how well the antenna and its cable match the radio. When they match, nearly all the power goes out. When they don't, part of it bounces back toward the radio, like a wave hitting a seawall, and VSWR measures how much. 1 to 1 is a perfect match; higher numbers mean more power bouncing back."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 48,
+      "template": "key-facts",
+      "params": {
+        "title": "Staying on channel, on every power source",
+        "items": [
+          "Each channel has an assigned frequency",
+          "Frequency tolerance: how far the transmitter may drift from it",
+          "Within tolerance, the signal lands on the right channel",
+          "The radio must work from every required power source"
+        ]
+      },
+      "onScreen": ["Each channel: an assigned frequency", "Frequency tolerance: the allowed drift", "Within tolerance: the right channel", "Works from every required power source"],
+      "narration": "The other 2 tests are about staying on channel and staying on the air. Each channel has an assigned frequency, and a transmitter can drift a little off it. Frequency tolerance is how far it's allowed to drift. Within tolerance, the signal lands on the right channel; drift too far, and it spills toward the next one. And the radio must work from each required power source, such as the ship's main supply and the reserve battery we just tested, because in an emergency it may have only one of them."
+    },
+    {
+      "id": "s20",
       "keyTopic": 48,
       "template": "comparison-table",
       "params": {
@@ -84,71 +363,277 @@
         ]
       },
       "onScreen": ["Power output on channels 6, 13 and 16", "VSWR on channels 6, 13 and 16", "Frequency tolerance", "All required power sources", "Carrier deviation: not required"],
-      "narration": "The VHF radio has its own list of required annual tests. Measure the power output and the VSWR, the voltage standing wave ratio, on channels 6, 13 and 16. Check that the equipment is within frequency tolerance, and that it operates from all required power sources. Carrier deviation measurement is not a required annual VHF test. Remember the channels: 6, 13 and 16."
+      "narration": "Here's the exam's list. Power output and VSWR are measured on channels 6, 13 and 16, the channels that matter most for safety: 16 for distress, safety and calling, 13 for bridge-to-bridge talk between ships' navigators, and 6 for safety talk between ships. Frequency tolerance is checked, and so is operation from all required power sources. What's not on the list? Carrier deviation measurement: how far the signal's frequency swings when you speak. We'll meet the meter for it near the end. It's not a required annual VHF test, so it's the answer when the exam asks which test is not required. Remember the channels: 6, 13 and 16."
     },
     {
-      "id": "s6",
+      "id": "s21",
       "keyTopic": 48,
       "template": "block-diagram",
       "params": {
-        "title": "After the station passes the survey",
-        "columns": 2,
+        "title": "Testing Inmarsat-C: a message to yourself",
+        "columns": 4,
         "blocks": [
-          { "id": "passed", "label": "Annual inspection passed" },
-          { "id": "log", "label": "Log entries", "note": "Technician and Master/owner both certify" },
-          { "id": "certificate", "label": "Cargo Ship Safety Certificate", "note": "Issued to the vessel" },
-          { "id": "license", "label": "Radio Station License", "note": "A separate document" }
+          { "id": "term", "label": "Your Inmarsat-C terminal", "note": "Sends a brief test message" },
+          { "id": "sat", "label": "Satellite" },
+          { "id": "les", "label": "Land earth station", "note": "Routes it back to your ship" },
+          { "id": "back", "label": "Your terminal again", "note": "Arrival proves transmit and receive" }
         ],
         "links": [
-          { "from": "passed", "to": "log" },
-          { "from": "passed", "to": "certificate" },
-          { "from": "passed", "to": "license", "struck": true }
+          { "from": "term", "to": "sat", "label": "up" },
+          { "from": "sat", "to": "les", "label": "down" },
+          { "from": "les", "to": "back", "label": "back via the satellite" }
         ]
       },
-      "onScreen": ["Inspection passed", "Log: technician and Master/owner both certify", "Cargo Ship Safety Certificate issued", "Separate from the Radio Station License"],
-      "narration": "After the station passes the annual inspection, or survey, 2 things follow. First, the log entries must include certification by both the inspecting technician and the vessel's Master or owner that the inspection was successful. Both of them sign, not just 1. Second, the vessel is issued a Cargo Ship Safety Certificate. That certificate is separate from the Radio Station License, which is not the document the survey issues."
+      "onScreen": ["Brief test message to your own terminal", "Up to the satellite", "Land earth station routes it back", "Arrival proves transmit and receive"],
+      "narration": "Now the Inmarsat-C terminal, and the test message promised earlier. During the inspection, the easiest way to test the terminal for proper operation is to send a brief test message to your own terminal. Follow the message. It leaves your terminal, goes up to the satellite, and comes down at a land earth station, a large shore station linking the satellites to the rest of the world. The land earth station sends it back through the satellite to your ship. When it arrives, the terminal has proved it can both transmit and receive. The traps ask a rescue coordination center or a nearby ship for a signal report, which needlessly ties up others, or run the internal POST, the power-on self test, which checks only the terminal's own circuits."
     },
     {
-      "id": "s7",
-      "keyTopic": 49,
-      "template": "formula",
+      "id": "s22",
+      "keyTopic": 48,
+      "template": "key-facts",
       "params": {
-        "title": "Meter tolerance: 5 V on the 6 volt scale",
-        "formula": "Error = (0.15% × reading) + 2 counts",
-        "steps": ["= 0.0015 × 5 V + 2 × 0.001 V", "= 0.0075 V + 0.002 V", "= 0.0095 V ≈ 0.01 V"],
-        "answer": "Expect 4.99 to 5.01 volts DC"
+        "title": "The log: 2 signatures",
+        "items": [
+          "After passing: entries in the station log",
+          "The inspecting technician certifies the inspection was successful",
+          "The vessel's Master or owner certifies it too",
+          "1 signature alone is not enough"
+        ]
       },
-      "onScreen": ["Error = 0.15% of reading + 2 counts", "0.0015 × 5 V + 2 × 0.001 V", "0.0095 V ≈ 0.01 V", "4.99 to 5.01 volts DC"],
-      "narration": "Now test instruments, starting with the multimeter. Its tolerance is a percentage of the reading plus a fixed number of counts of the last digit. Take a 4 digit meter with an accuracy of 0.15 percent and 2 counts, set on the 6 volt scale, measuring a 5 volt DC, or direct current, source. On the 6 volt scale it resolves 0.001 volts, so 2 counts add 0.002 volts. The error is 0.0015 times 5 volts, which is 0.0075, plus 0.002, for 0.0095 volts. That's about 0.01 volts. So expect 4.99 to 5.01 volts DC."
+      "onScreen": ["Log entries after passing", "Inspecting technician certifies", "Master or owner certifies", "Both, not just 1"],
+      "narration": "When every test has passed, it goes on record. The station log is the radio station's official record book. After passing the annual inspection, the log entries must include certification by both the inspecting technician and the vessel's Master or owner that the inspection was successful. The Master is the ship's captain. The technician vouches for the testing, and the Master or owner accepts the result for the ship. The exam's wrong answers each rest on 1 person: a radio operator certifying the technician, the technician alone listing passes and failures, or the Master alone. The rule is both."
     },
     {
-      "id": "s8",
+      "id": "s23",
+      "keyTopic": 48,
+      "template": "block-diagram",
+      "params": {
+        "title": "After the survey: the certificate",
+        "columns": 2,
+        "blocks": [
+          { "id": "passed", "label": "Survey passed" },
+          { "id": "certificate", "label": "Cargo Ship Safety Certificate", "note": "Issued to the vessel" },
+          { "id": "license", "label": "Radio Station License", "note": "A separate FCC document" },
+          { "id": "others", "label": "FCC 817 or SOLAS Annual", "note": "Not issued; the second doesn't exist" }
+        ],
+        "links": [
+          { "from": "passed", "to": "certificate" },
+          { "from": "passed", "to": "license", "struck": true },
+          { "from": "passed", "to": "others", "struck": true }
+        ]
+      },
+      "onScreen": ["Survey passed", "Cargo Ship Safety Certificate issued", "Not the Radio Station License", "Not an FCC 817 or a SOLAS Annual Certificate"],
+      "narration": "Passing the survey also leads to a certificate. Large cargo ships come under SOLAS, the international Safety of Life at Sea convention, which requires them to carry a safety certificate that covers their radio installation. After the station has successfully passed the survey, the vessel is issued a Cargo Ship Safety Certificate. Don't confuse it with the Radio Station License. That one comes from the FCC, the Federal Communications Commission, which licenses radio in the United States, and it's the ship's permission to transmit at all. It's a separate document that the survey doesn't issue. The other choices are wrong too: an FCC 817, and a SOLAS Annual Certificate, which doesn't exist."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 48,
+      "template": "key-facts",
+      "params": {
+        "title": "The annual inspection checklist",
+        "items": [
+          "Conducted by a GMDSS Maintainer's License holder",
+          "Battery: off charge at maximum required load; record current and voltage",
+          "VHF: power output and VSWR on channels 6, 13 and 16, tolerance, power sources",
+          "Inmarsat-C: a brief test message to your own terminal",
+          "Log signed by technician and Master/owner; Cargo Ship Safety Certificate"
+        ]
+      },
+      "onScreen": ["GMDSS Maintainer's License", "Battery off charge, maximum load", "VHF on channels 6, 13 and 16", "Test message to your own terminal", "Both sign; Cargo Ship Safety Certificate"],
+      "narration": "Here's the annual inspection as a checklist. It's conducted by someone holding a GMDSS Maintainer's License. The battery is tested off charge at the maximum required load, recording the maximum discharge current and voltage. The VHF radio's power output and VSWR are measured on channels 6, 13 and 16, along with frequency tolerance and operation from all required power sources. The Inmarsat-C terminal sends a brief test message to itself. And when it all passes, both the technician and the Master or owner certify it in the log, and the vessel is issued its Cargo Ship Safety Certificate."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 49,
+      "template": "equipment-card",
+      "params": {
+        "title": "The multimeter",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Voltage: the pressure, in volts", "at": "volts" },
+          { "label": "Current: the flow, in amps", "at": "amps" },
+          { "label": "Resistance: what holds the flow back, in ohms" },
+          { "label": "Selector: what to measure, and the scale", "at": "selector" },
+          { "label": "2 probes touch the circuit", "at": "probes" },
+          { "label": "Digital display: the reading as digits", "at": "display" }
+        ]
+      },
+      "onScreen": ["Voltage, in volts", "Current, in amps", "Resistance, in ohms", "Selector: what to measure and the scale", "2 probes touch the circuit", "Display shows the reading as digits"],
+      "narration": "Every test on that checklist is a measurement, and measurements need instruments. The rest of this lesson covers the ones a maintainer uses, starting with the most common: the multimeter. It measures voltage and current, which you met in the battery test, plus resistance, the opposition to current, measured in ohms. Picture water in a pipe: voltage is the pressure, current is the flow, and resistance is a narrow section that holds the flow back. You turn the selector to choose what to measure and the scale, the largest value the meter will show on that setting. Then you touch its 2 probes to the circuit, and a digital multimeter shows the reading as digits. How far can you trust those digits? That's what the exam asks."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 49,
+      "template": "comparison-table",
+      "params": {
+        "title": "Counts: steps of the last digit",
+        "columns": ["Scale", "Display shows", "1 count"],
+        "rows": [
+          ["6 volt scale", "Volts to 3 decimal places", "0.001 V"],
+          ["60 volt scale", "Volts to 2 decimal places", "0.01 V"]
+        ]
+      },
+      "onScreen": ["6 volt scale: 1 count = 0.001 volts", "60 volt scale: 1 count = 0.01 volts", "2 counts: 0.002 or 0.02 volts"],
+      "narration": "The meter in the exam's questions is a 4 digit meter: its display shows 4 digits, and where the decimal point falls depends on the scale. On the 6 volt scale, there's 1 digit before the point and 3 after, so 5 volts shows as 5 point 0 0 0. A single step of that last digit is called a count, because the display counts up and down in those steps. So here 1 count is 0.001 volts, a thousandth of a volt. On the 60 volt scale, there are 2 digits before the point and 2 after, so 24 volts shows as 24 point 0 0, and 1 count is 0.01 volts, 10 times bigger. That makes 2 counts worth 0.002 volts on the 6 volt scale, or 0.02 volts on the 60 volt scale."
+    },
+    {
+      "id": "s27",
       "keyTopic": 49,
       "template": "key-facts",
       "params": {
-        "title": "For the exam: 24 volts on the 60 volt scale",
+        "title": "How a digital meter's accuracy is stated",
         "items": [
-          "On the 60 volt scale the meter resolves 0.01 V, so 2 counts add 0.02 V",
-          "For the exam, a 24 volt DC source reads 23.62 to 24.38 volts DC",
-          "That keyed window is 24 V ± 0.38 V",
-          "It matches 1.5% plus 2 counts (0.36 V + 0.02 V), not the 0.15% in the question"
+          "Tolerance: a percentage of the reading plus a number of counts",
+          "The percentage part grows with the reading",
+          "The counts part is a fixed amount in the last digit",
+          "The exam's meter: 0.15% and 2 counts",
+          "Error = (0.15% × reading) + 2 counts"
         ]
       },
-      "onScreen": ["60 volt scale: 2 counts = 0.02 V", "For the exam: 23.62 to 24.38 volts DC", "24 V ± 0.38 V", "Matches 1.5%, not 0.15%"],
-      "narration": "Now the same meter, 0.15 percent and 2 counts, set on the 60 volt scale and measuring a 24 volt DC source. On the 60 volt scale the meter resolves 0.01 volts, so 2 counts add 0.02 volts. For the exam, the keyed answer is 23.62 to 24.38 volts DC. That's 24 volts, plus or minus 0.38 volts. Be aware that this window really matches 1.5 percent plus 2 counts, 0.36 plus 0.02 volts, not the 0.15 percent in the question. Choose 23.62 to 24.38 volts DC on the exam anyway."
+      "onScreen": ["Percentage of reading + counts", "Percentage part grows with the reading", "Counts part is fixed", "0.15% and 2 counts"],
+      "narration": "No meter is perfect, so the maker states how far off it may be. Multimeter tolerance is a percentage of the reading plus a fixed number of counts of the last digit. The percentage part covers small errors in the meter's measuring circuits, so it grows with the reading: the bigger the voltage, the bigger the error. The counts part covers the last digit: the meter has to round to it, so it can be off by a step or so however big the reading is. The exam's meter is rated 0.15 percent and 2 counts. Written out, the meter error equals 0.15 percent of the reading, plus 2 counts. The error can go either way, so the reading may be that much high or that much low."
     },
     {
-      "id": "s9",
+      "id": "s28",
+      "keyTopic": 49,
+      "template": "formula",
+      "params": {
+        "title": "Worked example: 5 volts on the 6 volt scale",
+        "formula": "Error = (0.15% × reading) + 2 counts",
+        "steps": [
+          "0.15% = 0.0015, so 0.0015 × 5 V = 0.0075 V",
+          "2 counts = 2 × 0.001 V = 0.002 V",
+          "0.0075 V + 0.002 V = 0.0095 V ≈ 0.01 V",
+          "5 V − 0.01 V up to 5 V + 0.01 V"
+        ],
+        "answer": "Expect 4.99 to 5.01 volts DC"
+      },
+      "onScreen": ["0.0015 × 5 V = 0.0075 V", "2 × 0.001 V = 0.002 V", "0.0095 V ≈ 0.01 V", "4.99 to 5.01 volts DC"],
+      "narration": "Here's the exam question. A 4 digit meter, rated 0.15 percent and 2 counts, is set on the 6 volt scale. What readings can you expect when measuring a 5 volt DC source, a steady supply like a battery? Step 1, the percentage part. Percent means per 100, so 0.15 percent is 0.15 divided by 100: 0.0015. Times the 5 volt reading, that's 0.0075 volts. Step 2, the counts part. On the 6 volt scale, 1 count is 0.001 volts, so 2 counts is 0.002 volts. Step 3, add them: 0.0075 plus 0.002 is 0.0095 volts, which rounds to about 0.01 volts. Step 4, the error can go either way: 5 volts minus 0.01 is 4.99, and 5 volts plus 0.01 is 5.01. So expect 4.99 to 5.01 volts DC."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 49,
+      "template": "band-strip",
+      "params": {
+        "title": "Does 4.99 to 5.01 volts make sense?",
+        "min": 4.94,
+        "max": 5.06,
+        "scale": "linear",
+        "marks": [
+          { "at": 5, "label": "5 V", "note": "The true voltage" },
+          { "at": 4.99, "label": "4.99 V", "note": "Lowest expected reading", "tone": "key" },
+          { "at": 5.01, "label": "5.01 V", "note": "Highest expected reading", "tone": "key" },
+          { "at": 4.98, "label": "4.98 V", "note": "Trap 4.98 to 5.02: error twice ours", "tone": "muted" },
+          { "at": 4.95, "label": "4.95 V", "note": "Trap 4.95 to 5.05: error 5 times ours", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["5 volts: the true voltage", "4.99 to 5.01 volts: the expected window", "4.98 to 5.02 volts: trap, error twice ours", "4.95 to 5.05 volts: trap, error 5 times ours"],
+      "narration": "Does that answer make sense? The true voltage is 5 volts, and the window runs just 0.01 volts either side of it, from 4.99 up to 5.01. Our error came to 0.0095 volts, a hair under that. A tiny error fits the meter, too: 0.15 percent is a very accurate rating. The trap answers are all wider. 4.98 to 5.02 volts would need an error of 0.02 volts, twice ours. 4.95 to 5.05 would need an error 5 times as big. And 4.97 to 5.02 isn't even centered on 5 volts, though a meter's error goes equally high or low. So 4.99 to 5.01 volts DC it is."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 49,
+      "template": "formula",
+      "params": {
+        "title": "For the exam: 24 volts on the 60 volt scale",
+        "formula": "Keyed window: 24 V ± 0.38 V",
+        "steps": [
+          "Counts part: 2 × 0.01 V = 0.02 V",
+          "0.38 V − 0.02 V leaves 0.36 V",
+          "0.36 V is 1.5% of 24 V, not 0.15%"
+        ],
+        "answer": "For the exam: 23.62 to 24.38 volts DC"
+      },
+      "onScreen": ["Keyed window: 24 volts ± 0.38 volts", "2 counts on the 60 volt scale: 0.02 volts", "That leaves 0.36 volts: 1.5%, not 0.15%", "For the exam: 23.62 to 24.38 volts DC"],
+      "narration": "Now the same meter on the 60 volt scale, measuring a 24 volt DC source. For the exam, the keyed answer, the one marked correct, is 23.62 to 24.38 volts DC: that's 24 volts, plus or minus 0.38 volts. Where does 0.38 come from? Start with the counts: here 2 counts of 0.01 volts add 0.02 volts. Take those away, and 0.36 volts is left for the percentage part. But 0.36 volts is 1.5 percent of 24 volts, not the 0.15 percent in the question. Worked with 0.15 percent, the error would be only a few hundredths of a volt, and no choice matches that. So on the exam, choose 23.62 to 24.38 volts DC anyway. It's also the only choice centered on 24 volts."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 50,
+      "template": "formula",
+      "params": {
+        "title": "An analog RF wattmeter's accuracy",
+        "formula": "Error = ±5% of full scale",
+        "steps": ["Full scale here: 100 W", "5% of 100 W = 5 W"],
+        "answer": "±5 W wherever the needle points"
+      },
+      "onScreen": ["Accuracy: ±5% of full scale", "Full scale: 100 watts", "5% of 100 watts = 5 watts", "±5 watts anywhere on the dial"],
+      "narration": "That's the digital meter, whose error grows with the reading. An analog meter, with a needle swinging across a printed dial, often states its accuracy differently, and the exam asks about one: the analog RF wattmeter. It measures the RF power a transmitter sends out, in watts. Its accuracy is stated as a percentage of full scale, the top of the dial on the scale you've chosen. Take a meter rated plus or minus 5 percent on its 100 watt scale. 5 percent of 100 watts is 5 watts. And here's the key point: that 5 watts is a fixed amount. The needle can be off by up to 5 watts either way, wherever it points on the dial."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 50,
+      "template": "band-strip",
+      "params": {
+        "title": "Read the wattmeter in the upper third",
+        "min": 0,
+        "max": 100,
+        "scale": "linear",
+        "ends": ["0 watts", "100 watts"],
+        "marks": [
+          { "at": 20, "label": "20 W reading", "note": "±5 W is 25% of the reading", "tone": "muted" },
+          { "at": 90, "label": "90 W reading", "note": "±5 W is about 6% of the reading", "tone": "key" },
+          { "at": 67, "label": "Upper one third", "note": "The most accurate part of the dial", "tone": "key" },
+          { "at": 45, "label": "Middle or lower third", "note": "Traps: 5 W is a bigger share there", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["20 watts: ±5 watts is 25%", "90 watts: ±5 watts is about 6%", "Upper one third: most accurate", "Middle or lower third: traps"],
+      "narration": "So what does a fixed 5 watts do at different readings? At a 20 watt reading, 5 watts divided by 20 is a quarter: 25 percent of what you're reading, far too rough to trust. At a 90 watt reading, 5 watts divided by 90 is only about 6 percent. The higher the needle, the smaller the error compared with the reading. So an analog RF wattmeter gives its most accurate reading at the upper one third of the dial, because its accuracy is a percentage of full scale. Choose a scale that puts the needle up there. The traps say the middle third, the lower third, or that the accuracy is uniform over the whole scale. The error in watts is uniform; the accuracy of the reading isn't."
+    },
+    {
+      "id": "s33",
       "keyTopic": 49,
       "template": "block-diagram",
       "params": {
-        "title": "A VHF signal generator: what matters most",
+        "title": "The RF signal generator",
+        "columns": 3,
+        "blocks": [
+          { "id": "gen", "label": "RF signal generator", "note": "A radio signal at the frequency you set" },
+          { "id": "att", "label": "Output attenuator", "note": "Turns it down in known steps" },
+          { "id": "rx", "label": "VHF receiver under test", "note": "Gets a signal of known strength" }
+        ],
+        "links": [
+          { "from": "gen", "to": "att" },
+          { "from": "att", "to": "rx" }
+        ]
+      },
+      "onScreen": ["Signal generator: a known radio signal", "Attenuator: calibrated steps", "Receiver gets a signal of known strength"],
+      "narration": "Meters check voltage and power. Testing a receiver needs 2 more instruments: one to give it a signal to hear, and one to judge what comes out. The first is the RF signal generator, a small, adjustable transmitter for the bench. You set the frequency, and it produces a steady radio signal there. Its output attenuator turns that signal down in known, calibrated steps, so you always know exactly how strong a signal the receiver is getting. Why turn it down? To find the weakest signal the receiver can still use."
+    },
+    {
+      "id": "s34",
+      "keyTopic": 49,
+      "template": "band-strip",
+      "params": {
+        "title": "How low must the generator go?",
+        "min": 0.05,
+        "max": 10,
+        "scale": "log",
+        "ends": ["Weaker", "Stronger"],
+        "marks": [
+          { "at": 0.3, "label": "A good VHF receiver", "note": "Works on a few tenths of a µV" },
+          { "at": 0.1, "label": "0.1 µV", "note": "Low enough: the answer", "tone": "key" },
+          { "at": 5, "label": "5 µV", "note": "Not low enough", "tone": "muted" },
+          { "at": 1, "label": "1 µV", "note": "Not low enough", "tone": "muted" },
+          { "at": 0.5, "label": "0.5 µV", "note": "Not low enough", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["A good VHF receiver: a few tenths of a microvolt", "0.1 microvolt: low enough", "5, 1 and 0.5 microvolts: not low enough"],
+      "narration": "That weakest signal a receiver can turn into clear, usable audio is its sensitivity, and a good VHF receiver's is just a few tenths of a microvolt. A microvolt is a millionth of a volt. To find that limit, the generator must go lower still. So a good lab type signal generator for VHF measurements should be able to reduce its output to 0.1 microvolt. The other choices are 5, 1 and 0.5 microvolts. 5 and 1 microvolts are many times stronger than what a good receiver already hears. And 0.5 is no weaker than its limit. None of them goes low enough to find it."
+    },
+    {
+      "id": "s35",
+      "keyTopic": 49,
+      "template": "block-diagram",
+      "params": {
+        "title": "Most important: low signal leakage",
         "columns": 2,
         "blocks": [
-          { "id": "generator", "label": "RF signal generator", "note": "Most important spec: low signal leakage" },
-          { "id": "attenuator", "label": "Output attenuator", "note": "Good lab type: down to 0.1 µV" },
-          { "id": "leakage", "label": "Leaked signal", "note": "Low leakage keeps it out" },
-          { "id": "receiver", "label": "VHF receiver under test", "note": "Sees only what the attenuator indicates" }
+          { "id": "generator", "label": "RF signal generator", "note": "Makes the signal strong inside" },
+          { "id": "attenuator", "label": "Output attenuator", "note": "Sets the level the receiver should get" },
+          { "id": "leakage", "label": "Leaked signal", "note": "Escapes through the case or a cable" },
+          { "id": "receiver", "label": "VHF receiver under test", "note": "Must get only the attenuated signal" }
         ],
         "links": [
           { "from": "generator", "to": "attenuator" },
@@ -156,45 +641,28 @@
           { "from": "leakage", "to": "receiver", "struck": true }
         ]
       },
-      "onScreen": ["RF signal generator: low signal leakage", "Output down to 0.1 microvolt", "No leaked signal reaching the receiver", "Receiver sees only the indicated signal"],
-      "narration": "For VHF measurements, the most important specification for an RF, or radio frequency, signal generator is low signal leakage. You set its output level with the attenuator, and a good lab type signal generator for VHF should be able to reduce its output to 0.1 microvolt. If signal leaked out around the attenuator, the receiver under test would pick up more than the setting shows. With low leakage, the receiver sees only the signal the attenuator setting indicates."
+      "onScreen": ["Generator makes the signal strong inside", "Attenuator sets the level", "Leaked signal must not reach the receiver", "Most important: low signal leakage"],
+      "narration": "At such tiny levels, one thing matters most. Inside, the generator makes its signal much stronger, and the attenuator then cuts it down. If any of that strong inside signal leaks out, through gaps in the case or a poorly shielded cable, it can reach the receiver directly. Then the receiver gets more signal than the attenuator setting says, and the sensitivity reading is meaningless. That's why the most important specification for an RF signal generator used at VHF frequencies is low signal leakage. It takes good shielding: a solid metal case and cables that keep the signal in. Frequency accuracy matters too, but a leaky generator gives worthless results, however accurate. The other wrong choices, modulation percentage and frequency modulation, are settings for how the signal carries a test tone."
     },
     {
-      "id": "s10",
-      "keyTopic": 49,
-      "template": "equipment-card",
-      "params": {
-        "title": "Oscilloscope probe and Mode control",
-        "device": "oscilloscope",
-        "callouts": [
-          { "label": "10:1 attenuation probe: a load of about 10 MΩ shunted by 12 pF", "at": "probe" },
-          { "label": "A 9 MΩ probe resistor in series with the scope's 1 MΩ input", "at": "input" },
-          { "label": "Dual-trace Mode control: either channel alone, or both channels combined" },
-          { "label": "Input coupling and time base have their own separate controls", "at": "timebase" }
-        ]
-      },
-      "onScreen": ["10:1 probe: about 10 megohms shunted by 12 pF", "9 megohms in the probe plus the 1 megohm input", "Mode: either channel alone or both combined", "Coupling and time base: separate controls"],
-      "narration": "On the oscilloscope, a 10 to 1 attenuation probe presents a load of about 10 megohms shunted by 12 picofarads. That's a 9 megohm resistor in the probe, in series with the scope's 1 megohm input. On a dual-trace oscilloscope, the Mode control selects either channel alone, or a combination of both channels. Input coupling and the time base are set with their own controls, not with the Mode control."
-    },
-    {
-      "id": "s11",
+      "id": "s36",
       "keyTopic": 50,
-      "template": "key-facts",
+      "template": "comparison-table",
       "params": {
-        "title": "Function generator and logic probe",
-        "items": [
-          "Simple function generator: sine, square and triangular waves",
-          "Logic probe red LED: a high state",
-          "Green LED: a low state",
-          "Amber LED: a pulse",
-          "It can't identify a short: red and green LEDs on together don't indicate one"
+        "title": "What SINAD means",
+        "columns": ["Reading", "Contains"],
+        "rows": [
+          ["Receiver audio with the tone", "Signal + noise + distortion"],
+          ["Tone filtered out", "Noise + distortion only"],
+          ["SINAD", "The first ÷ the second, in decibels"],
+          ["Sensitivity reference", "12 dB SINAD"]
         ]
       },
-      "onScreen": ["Function generator: sine, square, triangular", "Red LED: high", "Green LED: low", "Amber LED: pulse", "A logic probe can't identify a short"],
-      "narration": "A simple function generator usually provides 3 kinds of signal: sine waves, square waves and triangular waves. Now the logic probe and its LEDs, or light emitting diodes. The red LED indicates a high state. The green LED indicates a low state. The amber LED indicates a pulse. A logic probe cannot identify a short, so the statement that both red and green LEDs on indicate a short is false."
+      "onScreen": ["Audio: signal + noise + distortion", "Tone removed: noise + distortion", "SINAD: the ratio, in decibels", "12 dB SINAD: the usual reference"],
+      "narration": "So the generator feeds the receiver a known, weak signal. How do you judge whether the audio that comes out is clear? With a measurement called SINAD, short for signal plus noise and distortion. The test signal carries a steady 1000 hertz tone, and the receiver's audio holds 3 things: the tone, the wanted signal; noise, the background hiss; and distortion, unwanted changes the receiver makes to the tone. Take the tone away, and only noise and distortion are left. SINAD compares the 2: signal plus noise plus distortion, divided by noise plus distortion. It's measured in decibels, a scale for comparing 2 levels: more decibels, a cleaner signal. 12 decibels SINAD is the usual sensitivity reference, where the full audio is about 4 times the voltage of the noise and distortion alone."
     },
     {
-      "id": "s12",
+      "id": "s37",
       "keyTopic": 50,
       "template": "block-diagram",
       "params": {
@@ -212,47 +680,233 @@
           { "from": "residue", "to": "meter" }
         ]
       },
-      "onScreen": ["Total audio: signal + noise + distortion", "Sharp 1000 Hz bandstop filter removes the tone", "Noise + distortion left", "SINAD in decibels; 12 dB is the usual reference"],
-      "narration": "SINAD is short for signal plus noise and distortion. A SINAD meter is a multi-range audio frequency voltmeter, calibrated in decibels, with a sharp internal 1000 hertz bandstop, or notch, filter. It first measures the total audio: signal plus noise plus distortion. Then the bandstop filter removes the 1000 hertz test tone, leaving only noise and distortion. SINAD is the ratio of the 2: signal plus noise plus distortion, divided by noise plus distortion. 12 decibels SINAD is the usual sensitivity reference."
+      "onScreen": ["Total audio: signal + noise + distortion", "Sharp 1000 hertz bandstop filter removes the tone", "Noise + distortion left", "Audio voltmeter calibrated in decibels"],
+      "narration": "A SINAD meter makes that comparison. The receiver's audio goes in, and the meter first measures all of it: signal plus noise plus distortion. Then a sharp bandstop, or notch, filter removes the 1000 hertz test tone. A bandstop filter blocks one narrow band of frequencies and lets everything else through, so only noise and distortion are left. The meter measures those too, and shows the ratio straight off in decibels. So a SINAD meter is a multi-range audio frequency voltmeter, a meter for frequencies we can hear, calibrated in decibels, with a sharp internal 1000 hertz bandstop filter. The traps fail because a bandpass filter keeps the tone instead, highpass and lowpass filters remove whole ranges of frequencies, and a scale in millivolts can't show the ratio."
     },
     {
-      "id": "s13",
-      "keyTopic": 50,
+      "id": "s38",
+      "keyTopic": 49,
+      "template": "equipment-card",
+      "params": {
+        "title": "The oscilloscope",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "The screen is a graph: voltage up and down, time across", "at": "screen" },
+          { "label": "The trace draws the signal's shape", "at": "trace" },
+          { "label": "Volts per division: the up-and-down scale", "at": "vertical" },
+          { "label": "Time base: how fast the trace sweeps across", "at": "timebase" },
+          { "label": "The probe connects an input to the circuit", "at": "probe" }
+        ]
+      },
+      "onScreen": ["Screen: voltage against time", "Trace: the waveform", "Volts per division", "Time base: sweep speed", "Probe to the circuit"],
+      "narration": "The SINAD meter gives a number. To see a signal's shape, you need an oscilloscope, or scope, which draws a picture. Its screen is a graph: up and down is voltage, left to right is time, and a grid divides it into squares called divisions. A bright line, the trace, sweeps across the screen at a steady speed and rises and falls with the signal's voltage, drawing its shape, called the waveform. The volts per division control sets the up-and-down scale. The time per division control, called the time base, sets how fast the trace sweeps across. The signal arrives through a probe plugged into an input. A dual-trace scope has 2 inputs, called channels, so it can draw 2 signals at once."
+    },
+    {
+      "id": "s39",
+      "keyTopic": 49,
+      "template": "comparison-table",
+      "params": {
+        "title": "Which control does what?",
+        "columns": ["Control", "What it selects"],
+        "rows": [
+          ["Mode", "Either channel alone, or both combined"],
+          ["Input coupling", "AC or DC input, on each channel"],
+          ["Time base", "The sweep speed: time per division"],
+          ["Frequency compensation", "Adjusted on the probe itself"]
+        ]
+      },
+      "onScreen": ["Mode: either channel alone or both combined", "Input coupling: AC or DC", "Time base: sweep speed", "Frequency compensation: on the probe"],
+      "narration": "With 2 channels comes a choice: which signals to show. On a dual-trace oscilloscope, the Mode control selects either channel alone, or a combination of both channels: both drawn together, or added into 1 trace. Other jobs have their own controls. Input coupling chooses AC or DC for each channel. AC, alternating current, swings back and forth; AC coupling shows only that swing, while DC coupling shows the whole voltage. The time base, as we saw, sets the sweep speed. So the exam's wrong answers describe other controls: choosing DC or AC input is input coupling, selecting the time base is the time base control, and frequency compensation is adjusted on the probe itself."
+    },
+    {
+      "id": "s40",
+      "keyTopic": 49,
       "template": "formula",
       "params": {
-        "title": "Reading an analog RF wattmeter",
-        "formula": "Error = ±5% of full scale (100 W) = ±5 W",
-        "steps": ["At 90 W: 5 W ÷ 90 W ≈ 6% of the reading", "At 20 W: 5 W ÷ 20 W = 25% of the reading"],
-        "answer": "Most accurate in the upper one third of the dial"
+        "title": "The 10:1 attenuation probe",
+        "formula": "9 MΩ + 1 MΩ = 10 MΩ",
+        "steps": [
+          "Scope input alone: 1 MΩ",
+          "The probe adds a 9 MΩ resistor in series",
+          "The circuit sees about 10 MΩ: less loading",
+          "Only 1/10 of the signal reaches the scope"
+        ],
+        "answer": "A load of about 10 megohms"
       },
-      "onScreen": ["±5% of a 100 W scale = ±5 W", "About 6% of a 90 W reading", "25% of a 20 W reading", "Most accurate: upper one third of the dial"],
-      "narration": "An analog RF wattmeter gives its most accurate reading at the upper one third of the dial. Here's why. Its accuracy is a percentage of full scale. On a 100 watt scale with plus or minus 5 percent accuracy, the error is plus or minus 5 watts anywhere on the dial. At a 90 watt reading, 5 watts is only about 6 percent of the reading. At a 20 watt reading, the same 5 watts is 25 percent. So choose a scale that puts the needle in the upper one third."
+      "onScreen": ["9 megohms + 1 megohm = 10 megohms", "Scope input: 1 megohm", "Probe adds 9 megohms in series", "Circuit sees about 10 megohms", "A tenth of the signal reaches the scope"],
+      "narration": "Now the probe, the scope's link to the circuit. Any instrument you connect draws a little current from the circuit, and that changes it slightly. That's called loading, like a tire gauge letting out a puff of air each time you check the pressure. A scope's input has a resistance of 1 megohm, 1 million ohms. To load the circuit less, technicians use a 10 to 1 attenuation probe. Inside it, a 9 megohm resistor sits in series with the scope's input: one after the other, in the same path. 9 plus 1 makes 10 megohms, and more resistance lets less current through. The price: only a tenth of the signal reaches the scope. That reduction, or attenuation, is the 10 to 1 in the probe's name. So the circuit sees a load of about 10 megohms."
     },
     {
-      "id": "s14",
+      "id": "s41",
+      "keyTopic": 49,
+      "template": "equipment-card",
+      "params": {
+        "title": "The probe's capacitance",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "Capacitor: 2 conductors separated by an insulator" },
+          { "label": "Probe cable: a wire and its shield, insulation between", "at": "probe" },
+          { "label": "Shunted: connected across the circuit, side by side", "at": "input" },
+          { "label": "Picofarad: a millionth of a millionth of a farad" }
+        ]
+      },
+      "onScreen": ["Capacitor: 2 conductors and an insulator", "Probe cable: a small capacitor", "Shunted: connected across", "Picofarads: tiny"],
+      "narration": "There's a second part to the probe's load. A capacitor is 2 conductors separated by an insulator, a material that blocks current, such as plastic or air. It stores a little electric charge, and it passes fast-changing signals more easily than slow ones. A probe and its cable act as a small capacitor too: a wire and its shield, with insulation between. That capacitance sits across the circuit, side by side with the resistance, and connected across like that is called shunted. Capacitance is measured in farads, and a picofarad is a millionth of a millionth of a farad, so a probe's capacitance, counted in picofarads, is tiny."
+    },
+    {
+      "id": "s42",
+      "keyTopic": 49,
+      "template": "comparison-table",
+      "params": {
+        "title": "The 10:1 probe's load",
+        "columns": ["Choice", "Resistance", "Shunted by"],
+        "rows": [
+          ["The answer", "About 10 MΩ", "12 pF"],
+          ["Trap", "About 20 MΩ", "A 12 mH coil"],
+          ["Trap", "About 5 MΩ", "A 6 mH coil"],
+          ["Trap", "About 5 MΩ", "6 pF"]
+        ]
+      },
+      "onScreen": ["The answer: about 10 megohms shunted by 12 picofarads", "Trap: 20 megohms with a 12 millihenry coil", "Trap: 5 megohms with a 6 millihenry coil", "Trap: 5 megohms with 6 picofarads"],
+      "narration": "Put the 2 parts together. A 10 to 1 attenuation probe presents a load of about 10 megohms shunted by 12 picofarads: the 9 plus 1 megohms of resistance, with a small capacitance across it. The trap answers change the part or the numbers. About 20 megohms with a 12 millihenry coil, and about 5 megohms with a 6 millihenry coil, swap the capacitance for a coil. A coil is an inductor, a different part altogether. And about 5 megohms with 6 picofarads has half the right resistance. Remember: 10 megohms, shunted by 12 picofarads."
+    },
+    {
+      "id": "s43",
+      "keyTopic": 50,
+      "template": "comparison-table",
+      "params": {
+        "title": "A function generator's 3 waves",
+        "columns": ["Wave", "Shape"],
+        "rows": [
+          ["Sine", "A smooth, rolling rise and fall"],
+          ["Square", "Jumps between 2 levels and holds"],
+          ["Triangular", "Straight ramps up and down"]
+        ]
+      },
+      "onScreen": ["Sine: smooth rise and fall", "Square: jumps between 2 levels", "Triangular: straight ramps"],
+      "narration": "The scope shows signals. A function generator makes them. It's a bench instrument that produces simple test signals at the frequency and strength you set, to feed into a circuit and watch on the scope. A simple function generator usually provides 3 kinds of signal. Sine waves, the smooth, rolling shape of a pure tone. Square waves, which jump between 2 levels and hold at each. And triangular waves, which ramp up and down in straight lines. So the exam answer is all 3: sine, square and triangular. Choices with only 2 of them are incomplete, and sine waves with pulse modulation is a specialized signal. Fancier generators add more shapes, but those 3 are the standard set."
+    },
+    {
+      "id": "s44",
       "keyTopic": 50,
       "template": "waveform",
       "params": {
-        "title": "Deviation meter and spectrum analyzer",
+        "title": "Digital signals: high and low",
+        "kind": "pulse",
+        "cycles": 4,
+        "duty": 0.3,
+        "xAxis": "time",
+        "yAxis": "voltage",
+        "labels": ["High: near the supply voltage", "Low: near 0 volts", "A pulse: a quick change of state and back"]
+      },
+      "onScreen": ["High: near the supply voltage", "Low: near 0 volts", "Pulse: a quick change and back"],
+      "narration": "Square waves lead us into digital circuits, the kind inside computers and the control boards of modern radios. A point in a digital circuit has only 2 states. High means its voltage is near the circuit's supply voltage, the voltage that powers it; low means it's near 0 volts. A digital circuit does everything by switching points between high and low, like light switches that are either on or off. A pulse is a quick switch to the other state and back, like the blips in this trace. When a digital circuit misbehaves, a technician wants to know, point by point: is it high, low, or pulsing? That's what a logic probe tells you."
+    },
+    {
+      "id": "s45",
+      "keyTopic": 50,
+      "template": "comparison-table",
+      "params": {
+        "title": "Reading a logic probe",
+        "columns": ["LED", "Indicates"],
+        "rows": [
+          ["Red", "A high state"],
+          ["Green", "A low state"],
+          ["Amber", "A pulse"],
+          ["Red and green together", "Not a short: a probe can't identify one"]
+        ]
+      },
+      "onScreen": ["Red: high", "Green: low", "Amber: pulse", "A logic probe can't identify a short"],
+      "narration": "A logic probe is a pen-shaped tester. You touch its tip to a point in a digital circuit, and small lights show the state there. Those lights are LEDs, light emitting diodes. The red LED indicates a high state. The green LED indicates a low state. The amber LED indicates a pulse. The exam asks which statement about a logic probe is false, and the false one is: both red and green LEDs on indicate a short. A short circuit is an unwanted direct connection, such as 2 points touching that shouldn't. The probe only reads the level at the 1 point it touches, so it has no way to identify a short."
+    },
+    {
+      "id": "s46",
+      "keyTopic": 50,
+      "template": "waveform",
+      "params": {
+        "title": "FM and deviation",
         "kind": "fm",
         "cycles": 16,
         "xAxis": "time",
-        "yAxis": "FM transmitter output",
+        "yAxis": "transmitter output",
         "labels": [
-          "Deviation meter: measures carrier deviation in an FM transmitter",
-          "Spectrum analyzer: most likely used to measure spurious signals",
-          "Spurious signals show as separate spikes beside the carrier"
+          "FM: the carrier's frequency swings with your voice",
+          "Deviation: how far it swings from the center frequency",
+          "Marine VHF: no more than ±5 kHz"
         ]
       },
-      "onScreen": ["Deviation meter: FM carrier deviation", "Spectrum analyzer: spurious signals", "Spurious signals: spikes beside the carrier"],
-      "narration": "Last, 2 transmitter instruments. The purpose of a deviation meter is to measure the carrier deviation in an FM, or frequency modulation, transmitter: how far the carrier frequency swings as it is modulated, like the bunching and spreading in this FM signal. And the most likely reason to observe a transmitter's output with a spectrum analyzer is to measure spurious signals. On the analyzer, spurious signals show up as separate spikes beside the carrier."
+      "onScreen": ["FM: frequency swings with the voice", "Deviation: how far it swings", "Marine VHF: ±5 kilohertz at most"],
+      "narration": "We've tested receivers and looked inside circuits. Last come 2 instruments for checking a transmitter, and both have to do with how a radio carries sound. A transmitter sends a carrier, a steady radio wave on its channel's frequency. Modulation means changing that carrier so it carries your voice. Marine VHF uses FM, frequency modulation: as you speak, the carrier's frequency swings a little above and below its center, like the bunching and spreading in this wave. How far it swings is called the deviation, the carrier deviation that the annual VHF list leaves out. The louder you speak, the bigger the deviation. Too much, and the signal spills into neighboring channels. Marine VHF is limited to plus or minus 5 kilohertz, 5 thousand hertz either way."
+    },
+    {
+      "id": "s47",
+      "keyTopic": 50,
+      "template": "key-facts",
+      "params": {
+        "title": "The deviation meter",
+        "items": [
+          "Essentially a calibrated FM receiver with a meter",
+          "Shows how far the carrier swings, in kilohertz",
+          "Measures the carrier deviation in an FM transmitter",
+          "Not the number of sidebands, the modulation index or the carrier frequency"
+        ]
+      },
+      "onScreen": ["A calibrated FM receiver", "Reads in kilohertz", "Measures FM carrier deviation", "Not sidebands, modulation index or frequency"],
+      "narration": "So how do you measure deviation? With a deviation meter. It's essentially a calibrated FM receiver: it picks up the transmitter's signal, and its meter shows how far the carrier swings from its center frequency, in kilohertz. So the purpose of a deviation meter is to measure the carrier deviation in an FM transmitter. Speak into the microphone, watch the reading, and you'll see whether the transmitter swings too far. The trap answers are close relatives: the number of sidebands, the extra frequencies modulation creates on each side of the carrier; the modulation index, a ratio worked out from the deviation; and the carrier frequency itself. The deviation meter measures how far the frequency moves, not where it sits."
+    },
+    {
+      "id": "s48",
+      "keyTopic": 50,
+      "template": "band-strip",
+      "params": {
+        "title": "A transmitter on a spectrum analyzer",
+        "min": 0,
+        "max": 4,
+        "scale": "even",
+        "ends": ["Low frequency", "High frequency"],
+        "marks": [
+          { "at": 2, "label": "Carrier", "note": "The wanted signal: the tall spike", "tone": "key" },
+          { "at": 1, "label": "Spurious signal", "note": "An unwanted, separate spike", "tone": "muted" },
+          { "at": 3, "label": "Spurious signal", "note": "Another unwanted spike", "tone": "muted" },
+          { "at": 4, "label": "Harmonic", "note": "Spurious, at a multiple of the carrier", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Carrier: the wanted signal", "Spurious signal: an unwanted spike", "More spurious spikes beside the carrier", "Harmonic: at a multiple of the carrier frequency"],
+      "narration": "The other transmitter instrument is the spectrum analyzer. A scope draws voltage against time; a spectrum analyzer draws strength against frequency. Each signal appears as a spike at its own frequency, and the taller the spike, the stronger the signal. A healthy transmitter shows its carrier as the main spike. A faulty one shows more: spurious signals, unwanted emissions at other frequencies, such as harmonics at multiples of the carrier frequency. They show up as separate spikes beside the carrier, and they can interfere with other stations. So the most likely reason to observe a transmitter's output with a spectrum analyzer is to measure spurious signals. The traps: FM deviation, which has its own meter; the carrier frequency; and the percentage of amplitude modulation, AM, where the carrier's strength varies instead of its frequency."
+    },
+    {
+      "id": "s49",
+      "keyTopic": 50,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts from this lesson",
+        "items": [
+          "Inmarsat-C: antenna at least 8 m from others; brazed copper strap; enter the Mobile Number",
+          "Inspection: Maintainer's License; VHF tests on channels 6, 13 and 16; both sign the log",
+          "Meter error = % of reading + counts: 4.99 to 5.01 V; for the exam, 23.62 to 24.38 V",
+          "Generator: low leakage, down to 0.1 µV. 10:1 probe: about 10 MΩ shunted by 12 pF",
+          "SINAD meter: sharp 1000 Hz bandstop. Spectrum analyzer: spurious signals"
+        ]
+      },
+      "onScreen": ["Inmarsat-C installation", "Annual inspection", "Meter tolerance", "Signal generator and probe", "SINAD meter and spectrum analyzer"],
+      "narration": "To wrap up, here's what to carry into the exam. Keep the Inmarsat-C antenna at least 8 meters from other Inmarsat antennas, ground the terminal with a brazed copper strap, and enter its Inmarsat Mobile Number. The annual inspection needs a Maintainer's License, tests VHF power output and VSWR on channels 6, 13 and 16, and ends with the technician and the Master or owner both signing the log. Meter error is a percentage of the reading plus counts: 4.99 to 5.01 volts in the 5 volt example, and, for the exam, 23.62 to 24.38 volts for 24 volts. A VHF signal generator needs low leakage and 0.1 microvolt. The 10 to 1 probe is about 10 megohms shunted by 12 picofarads. The SINAD meter has a sharp 1000 hertz bandstop filter, and a spectrum analyzer finds spurious signals."
     }
   ],
   "checkpoints": [
-    { "after": "s3", "keyTopics": [47] },
-    { "after": "s6", "keyTopics": [48] },
-    { "after": "s10", "keyTopics": [49] },
-    { "after": "s14", "keyTopics": [50] }
+    { "after": "s4", "keyTopics": [47], "questions": ["9-47G5"] },
+    { "after": "s7", "keyTopics": [47], "questions": ["9-47G1"] },
+    { "after": "s10", "keyTopics": [47], "questions": ["9-47G6", "9-47G2"] },
+    { "after": "s14", "keyTopics": [47], "questions": ["9-47G3", "9-47G4", "9-47G5", "9-47G1", "9-47G6", "9-47G2"] },
+    { "after": "s17", "keyTopics": [48], "questions": ["9-48G1", "9-48G3"] },
+    { "after": "s20", "keyTopics": [48], "questions": ["9-48G6"] },
+    { "after": "s24", "keyTopics": [48], "questions": ["9-48G4", "9-48G2", "9-48G5", "9-48G1", "9-48G3"] },
+    { "after": "s28", "keyTopics": [49], "questions": ["9-49G1"] },
+    { "after": "s32", "keyTopics": [49, 50], "questions": ["9-49G1", "9-49G2", "9-50G4"] },
+    { "after": "s35", "keyTopics": [49], "questions": ["9-49G4", "9-49G3"] },
+    { "after": "s39", "keyTopics": [49, 50], "questions": ["9-50G2", "9-49G6"] },
+    { "after": "s42", "keyTopics": [49], "questions": ["9-49G5"] },
+    { "after": "s45", "keyTopics": [50], "questions": ["9-50G1", "9-50G3"] },
+    { "after": "s49", "keyTopics": [50], "questions": ["9-50G5", "9-50G6"] }
   ],
   "video": null
 }

@@ -2,7 +2,12 @@
   "id": "3-D",
   "element": 3,
   "title": "Circuits",
-  "keyTopics": [29, 30, 31, 32],
+  "keyTopics": [
+    29,
+    30,
+    31,
+    32
+  ],
   "scenes": [
     {
       "id": "s1",
@@ -11,172 +16,1243 @@
       "params": {
         "kicker": "Element 3 · Subelement D",
         "title": "Circuits",
-        "subtitle": "Resonant R-L-C circuits, op-amps, phase-locked loops, synthesizers and mixers, and the exam's schematic figures."
+        "subtitle": "Tuned circuits, op-amps, phase-locked loops, synthesizers and mixers, then the exam's schematic figures, step by step."
       },
-      "onScreen": ["Circuits", "R-L-C resonance, op-amps, PLLs, synthesizers, mixers and schematics"],
-      "narration": "This lesson is about circuits. We'll start with resonant R-L-C circuits, that's resistor-inductor-capacitor circuits, in series and in parallel. Then come op-amps, or operational amplifiers, followed by phase-locked loops, frequency synthesizers and mixers. Finally, we'll read the exam's schematic figures to find an output voltage, the lit lamps, a fault or an output waveform. Let's begin with resonance."
+      "onScreen": [
+        "Circuits",
+        "Tuned circuits, op-amps, PLLs, synthesizers and mixers, then the exam's schematics"
+      ],
+      "narration": "Welcome to Circuits. This lesson is about what happens when you connect a radio's simple parts. A tuned circuit picks out one frequency, like one station on a dial. An operational amplifier, or op-amp, makes a weak signal stronger. A phase-locked loop holds a radio exactly on its frequency, a synthesizer builds many exact frequencies from one, and a mixer moves a signal from one frequency to another. Then you'll learn to read the exam's schematic drawings and work out what each circuit does. No background is needed: we'll refresh each basic idea as we go. By the end, you'll be able to answer every question in this subelement, and say why the answer is right. Let's start with the basics."
     },
     {
       "id": "s2",
       "keyTopic": 29,
-      "template": "comparison-table",
+      "template": "formula",
       "params": {
-        "title": "Series and parallel resonance",
-        "columns": ["At resonance", "Series R-L-C", "Parallel R-L-C"],
-        "rows": [
-          ["Impedance", "About equal to R: its minimum", "About equal to R: its maximum"],
-          ["Why", "X<sub>L</sub> = X<sub>C</sub>, 180° out of phase: cancel", "Equal, opposite branch currents cancel"],
-          ["Line current", "Maximum: I = E/R", "Minimum"],
-          ["Current within L and C", "The same maximum current", "Circulating current ≈ Q × line: maximum"]
-        ]
+        "title": "Voltage, current and resistance",
+        "formula": "I = E / R",
+        "steps": [
+          "E: voltage, the push, in volts",
+          "I: current, the flow, in amperes",
+          "R: resistance, the opposition, in ohms",
+          "10 volts ÷ 5 ohms = 2 amperes"
+        ],
+        "answer": "Less opposition, more current"
       },
-      "onScreen": ["Impedance about equal to R: series minimum, parallel maximum", "Series: X sub L equals X sub C, 180° apart, cancel", "Parallel: branch currents cancel in the line", "Series current maximum, I = E/R; parallel line current minimum", "Parallel circulating current about Q times line current: maximum"],
-      "narration": "Here are series and parallel R-L-C circuits side by side, at resonance. In both, the impedance is approximately equal to the circuit resistance. In the series circuit that is its minimum value; in the parallel circuit it is its maximum value. Why? In the series circuit, X sub L equals X sub C, and the two are 180 degrees out of phase, so they cancel. In the parallel circuit, the equal and opposite inductor and capacitor branch currents cancel in the line. With only resistance left, the series current is maximum: I equals E over R. The parallel line current is at a minimum. But within the parallel elements, the current is maximum. The inductor and capacitor trade energy back and forth as a large circulating current, about Q times the line current."
+      "onScreen": [
+        "I = E / R",
+        "E: voltage, the push, in volts",
+        "I: current, the flow, in amperes",
+        "R: resistance, in ohms",
+        "10 volts over 5 ohms = 2 amperes",
+        "Less opposition, more current"
+      ],
+      "narration": "Everything in this lesson rests on 3 ideas, and water in a pipe makes them easy to picture. Voltage is the push, like water pressure. It's measured in volts, and in formulas it often gets the letter E. Current is the flow, like the amount of water moving through the pipe each second. Its unit is the ampere, letter I. Resistance is whatever holds the flow back, like a narrow section of pipe. It's measured in ohms, letter R. Ohm's law ties all 3 together: I equals E over R, current equals voltage divided by resistance. So 10 volts pushing through 5 ohms drives 2 amperes. For the same push, less opposition means more current. One more word: a battery's current flows steadily one way. That's DC, direct current."
     },
     {
       "id": "s3",
       "keyTopic": 29,
-      "template": "block-diagram",
+      "template": "key-facts",
       "params": {
-        "title": "Series resonance steps up the voltage",
-        "columns": 4,
-        "blocks": [
-          { "id": "source", "label": "Applied voltage", "note": "Drives the series circuit" },
-          { "id": "res", "label": "Resistance R", "note": "Alone limits the current" },
-          { "id": "ind", "label": "Inductor L", "note": "Voltage ≈ Q × applied voltage" },
-          { "id": "cap", "label": "Capacitor C", "note": "Voltage ≈ Q × applied voltage" }
-        ],
-        "links": [
-          { "from": "source", "to": "res" },
-          { "from": "res", "to": "ind", "label": "Large resonant current" },
-          { "from": "ind", "to": "cap" }
+        "title": "AC, coils and capacitors",
+        "items": [
+          "AC: current that flows back and forth. Cycles per second: the frequency, in hertz",
+          "Reactance: how a coil or capacitor opposes AC, in ohms",
+          "Coil (inductor): its reactance, X<sub>L</sub>, rises with frequency",
+          "Capacitor: blocks DC; its reactance, X<sub>C</sub>, falls as frequency rises",
+          "Impedance: resistance and reactance together, in ohms"
         ]
       },
-      "onScreen": ["Applied voltage", "Only R limits the current", "Across L: about Q times the applied voltage", "Across C: about Q times the applied voltage"],
-      "narration": "How can the voltage across reactances in series be greater than the applied voltage? The answer is resonance. Follow the current around the series circuit. At resonance, only the resistance limits it, so the current is large. That large resonant current develops about Q times the applied voltage across the inductor, and about Q times the applied voltage across the capacitor. Each is bigger than the applied voltage itself. Because those two voltages are 180 degrees out of phase, they cancel each other around the loop."
+      "onScreen": [
+        "AC: back and forth; frequency in hertz",
+        "Reactance: a coil's or capacitor's opposition to AC",
+        "Coil: X sub L rises with frequency",
+        "Capacitor: blocks DC; X sub C falls with frequency",
+        "Impedance: resistance and reactance together"
+      ],
+      "narration": "Radio circuits, though, mostly carry the other kind: AC, alternating current, which flows forward, then back, over and over. Each back-and-forth is a cycle, and the number of cycles per second is the frequency, in hertz. Coils and capacitors oppose AC by an amount that changes with frequency: that's reactance, also in ohms. A coil of wire, called an inductor, fights any change in its current. The faster the current reverses, the harder it pushes back, so its reactance, X sub L, rises with frequency. A capacitor is 2 metal plates with an insulator between. DC just fills the plates and stops: a capacitor blocks DC. But the faster AC reverses, the less the plates fill and push back, so X sub C falls. Resistance and reactance together make up the total opposition, called impedance."
     },
     {
       "id": "s4",
+      "keyTopic": 29,
+      "template": "band-strip",
+      "params": {
+        "title": "Resonance: where X<sub>L</sub> equals X<sub>C</sub>",
+        "min": 0,
+        "max": 10,
+        "scale": "linear",
+        "ends": [
+          "Low frequency",
+          "High frequency"
+        ],
+        "marks": [
+          {
+            "at": 1,
+            "label": "X<sub>C</sub> large, X<sub>L</sub> small",
+            "tone": "muted"
+          },
+          {
+            "at": 9,
+            "label": "X<sub>L</sub> large, X<sub>C</sub> small",
+            "tone": "muted"
+          },
+          {
+            "at": 5,
+            "label": "Resonance: X<sub>L</sub> = X<sub>C</sub>",
+            "note": "In series they cancel: impedance ≈ R",
+            "tone": "key"
+          }
+        ]
+      },
+      "onScreen": [
+        "Low frequency: X sub C large",
+        "High frequency: X sub L large",
+        "Resonance: X sub L equals X sub C; in series they cancel, impedance about R"
+      ],
+      "narration": "Put a coil and a capacitor in one circuit, and sweep the frequency upward. At low frequencies, the capacitor's reactance is large; at high frequencies, the coil's is. In between is one frequency where X sub L exactly equals X sub C. That's resonance, and it's how a tuned circuit picks out one frequency. Now connect a resistor, coil and capacitor one after another in a single loop: a series R-L-C circuit, short for resistor, inductor, capacitor. The coil's and capacitor's voltages always push in opposite directions, half a cycle apart: 180 degrees out of phase. We'll see why shortly. At resonance they're equal as well, so they cancel, leaving only the resistance. So the impedance of a series R-L-C circuit at resonance is approximately equal to the circuit resistance: its minimum."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 29,
+      "template": "formula",
+      "params": {
+        "title": "Series resonance: maximum current",
+        "formula": "I = E / R",
+        "steps": [
+          "X<sub>L</sub> and X<sub>C</sub> cancel",
+          "Impedance ≈ R: its minimum",
+          "Least opposition → most current",
+          "10 volts ÷ 5 ohms = 2 amperes"
+        ],
+        "answer": "Series current at resonance: maximum"
+      },
+      "onScreen": [
+        "I = E / R",
+        "X sub L and X sub C cancel",
+        "Impedance about R: minimum",
+        "Least opposition, most current",
+        "10 volts over 5 ohms = 2 amperes",
+        "Series current at resonance: maximum"
+      ],
+      "narration": "So the coil and capacitor drop out, and the exam's choices of approximately X sub L or X sub C are wrong: those cancelled. Now apply Ohm's law: current equals the push divided by the opposition. With the impedance at its minimum, the current is at its maximum. Say 10 volts is applied across 5 ohms of resistance: 2 amperes flow, just as if the coil and capacitor weren't there. So the current flow in a series R-L-C circuit at resonance is maximum, and it's simply I equals E over R. Don't pick minimum: that's the opposite. And it isn't zero or DC: the current is still AC, flowing back and forth at the resonant frequency."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 29,
+      "template": "block-diagram",
+      "params": {
+        "title": "Resonance steps up the voltage",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "source",
+            "label": "Applied voltage",
+            "note": "Small"
+          },
+          {
+            "id": "res",
+            "label": "Resistance R",
+            "note": "Alone limits the current"
+          },
+          {
+            "id": "ind",
+            "label": "Coil L",
+            "note": "Large current × X<sub>L</sub>: a big voltage"
+          },
+          {
+            "id": "cap",
+            "label": "Capacitor C",
+            "note": "Just as big, in opposite phase"
+          }
+        ],
+        "links": [
+          {
+            "from": "source",
+            "to": "res"
+          },
+          {
+            "from": "res",
+            "to": "ind",
+            "label": "Large resonant current"
+          },
+          {
+            "from": "ind",
+            "to": "cap"
+          }
+        ]
+      },
+      "onScreen": [
+        "Applied voltage: small",
+        "Only R limits the current",
+        "Across the coil: a big voltage",
+        "Across the capacitor: just as big, opposite phase"
+      ],
+      "narration": "Resonance has another surprise: the voltage across the coil can be far bigger than the voltage you apply. Think of a swing. Small pushes, timed to its natural rhythm, build a big swing. In a series circuit at resonance, only the small resistance limits the current, so the current is large. By Ohm's law turned around, the voltage across any part is its current times its opposition. So that large current, flowing through the coil's reactance, develops a big voltage across the coil, and the same across the capacitor. The 2 big voltages are opposite, so they cancel around the loop, and the source only has to supply the small voltage the resistance needs."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 29,
+      "template": "formula",
+      "params": {
+        "title": "Q, the quality factor",
+        "formula": "V<sub>L</sub> ≈ Q × V<sub>applied</sub>",
+        "steps": [
+          "Q: how strong the resonance is",
+          "In series: Q = X<sub>L</sub> ÷ R",
+          "Q = 100, applied voltage = 1 volt",
+          "V<sub>L</sub> ≈ 100 × 1 volt = 100 volts"
+        ],
+        "answer": "Resonance: more than the applied voltage"
+      },
+      "onScreen": [
+        "V sub L about Q times the applied voltage",
+        "Q: how strong the resonance is",
+        "In series: Q = X sub L over R",
+        "Q of 100, 1 volt applied",
+        "About 100 volts across the coil",
+        "Resonance: more than the applied voltage"
+      ],
+      "narration": "How big does that voltage get? About Q times the applied voltage, across the coil and again across the capacitor. Q, the quality factor, rates how strong a resonance is. In a series circuit, it's how many times larger the reactance is than the resistance. With a Q of 100, just 1 volt applied gives about 100 volts across the coil. That's the exam's answer: resonance is how the voltage across reactances in series can be greater than the applied voltage. The other choices can't do it: not resistance, not conductance, which is just how easily current flows, and not capacitance alone. It takes a coil and capacitor at resonance."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 29,
+      "template": "comparison-table",
+      "params": {
+        "title": "Phase: are current and voltage in step?",
+        "columns": [
+          "Part",
+          "Current vs voltage"
+        ],
+        "rows": [
+          [
+            "Resistor",
+            "In phase: they rise and fall together"
+          ],
+          [
+            "Coil",
+            "Current lags by 90°: it builds up late"
+          ],
+          [
+            "Capacitor",
+            "Current leads by 90°: it flows while filling"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Resistor: in phase",
+        "Coil: current lags by 90°",
+        "Capacitor: current leads by 90°"
+      ],
+      "narration": "We've used the word phase a few times, so let's pin it down. Phase is about timing: does the current rise and fall at the same moments as the voltage? It's measured in degrees, where half a cycle is 180 degrees and a quarter cycle is 90. In a plain resistor, current and voltage rise and fall together: they're in phase. A coil fights each change, so its current builds up late: it lags the voltage by 90 degrees. A capacitor's current flows hardest while its plates are filling, before the voltage peaks, so it leads by 90 degrees. One is a quarter cycle late, the other a quarter cycle early, so a coil and capacitor always work half a cycle apart."
+    },
+    {
+      "id": "s9",
       "keyTopic": 29,
       "template": "waveform",
       "params": {
         "title": "At resonance: voltage and current in phase",
         "kind": "sine",
-        "cycles": 3,
+        "cycles": 2,
         "xAxis": "time",
+        "yAxis": "voltage and current",
         "labels": [
-          "Voltage and current rise and fall together: in phase",
-          "The reactances cancel: the circuit looks purely resistive",
-          "Power factor of 1"
+          "Coil and capacitor effects cancel",
+          "The circuit looks purely resistive",
+          "Voltage and current in phase",
+          "Power factor 1: all the power does real work"
         ]
       },
-      "onScreen": ["Voltage and current in phase", "Reactances cancel: purely resistive", "Power factor of 1"],
-      "narration": "One more resonance fact. In a resonant circuit, the voltage and current are in phase. They rise and fall together, so here they trace one single curve. Why? The reactances cancel, so the circuit looks purely resistive, with a power factor of 1."
+      "onScreen": [
+        "Coil and capacitor effects cancel",
+        "Looks purely resistive",
+        "Voltage and current in phase",
+        "Power factor 1"
+      ],
+      "narration": "So what happens at resonance, where the coil and capacitor are equally strong? Their opposite timing effects cancel, just as their reactances did. What's left behaves like a plain resistor: the circuit looks purely resistive. So in a resonant circuit, the voltage and current are in phase, rising and falling together. The power factor, the share of the power doing real work, is then 1: all of it. On the exam, the traps are current leading by 90 degrees, or voltage leading by 90 degrees: those describe a lone capacitor or a lone coil. And 180 degrees out of phase is wrong too."
     },
     {
-      "id": "s5",
+      "id": "s10",
+      "keyTopic": 29,
+      "template": "key-facts",
+      "params": {
+        "title": "Parallel resonance: the tank circuit",
+        "items": [
+          "Resistor, coil and capacitor side by side, each across the source",
+          "Coil and capacitor in parallel: a tank circuit",
+          "Line current: from the source, split into a branch through each part",
+          "At resonance, coil and capacitor branch currents are equal and 180° apart",
+          "They cancel in the line: the source only feeds the resistor"
+        ]
+      },
+      "onScreen": [
+        "Parts side by side, each across the source",
+        "Coil and capacitor: a tank circuit",
+        "Line current splits into the branches",
+        "Branch currents equal, 180° apart",
+        "They cancel in the line"
+      ],
+      "narration": "So far, our parts have been in series. Now arrange the same 3 parts side by side, each connected straight across the source. That's a parallel circuit, and a coil and capacitor in parallel are often called a tank circuit. The current from the source, called the line current, splits into a branch through each part. At resonance, the coil and capacitor have equal reactances and the same voltage across them, so their branch currents are equal. But they're 180 degrees out of phase: while one flows in, the other flows out. So in the line, they cancel. The coil and capacitor together act like an open switch, and the source only has to feed the resistor."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 29,
+      "template": "band-strip",
+      "params": {
+        "title": "Parallel resonance: impedance at its maximum",
+        "min": 0,
+        "max": 10,
+        "scale": "linear",
+        "ends": [
+          "Low frequency",
+          "High frequency"
+        ],
+        "marks": [
+          {
+            "at": 1,
+            "label": "X<sub>L</sub> small",
+            "note": "The coil lets extra current through",
+            "tone": "muted"
+          },
+          {
+            "at": 9,
+            "label": "X<sub>C</sub> small",
+            "note": "The capacitor lets extra current through",
+            "tone": "muted"
+          },
+          {
+            "at": 5,
+            "label": "Resonance: impedance ≈ R",
+            "note": "Branch currents cancel: its maximum",
+            "tone": "key"
+          }
+        ]
+      },
+      "onScreen": [
+        "Low frequency: the coil passes extra current",
+        "High frequency: the capacitor passes extra current",
+        "Resonance: impedance about R, its maximum"
+      ],
+      "narration": "Now sweep the frequency, as we did for the series circuit. Below resonance, the coil's reactance is small, so the coil lets extra current through. Above resonance, the capacitor's reactance is small, so it does the same. For the same voltage, more current means less impedance. That's the opposite of the series circuit, where moving away from resonance added opposition. Only at resonance do the branch currents cancel, leaving just the resistor. So the impedance of a parallel R-L-C circuit at resonance is approximately equal to the circuit resistance, and here that's its maximum. Low compared with the resistance is the trap, and so are X sub L and X sub C: their currents cancelled."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 29,
+      "template": "waveform",
+      "params": {
+        "title": "Inside the tank: a circulating current",
+        "kind": "sine",
+        "cycles": 3,
+        "xAxis": "time",
+        "yAxis": "current inside the tank",
+        "labels": [
+          "Capacitor discharges through the coil",
+          "The coil's field collapses and recharges the capacitor",
+          "Circulating current ≈ Q × line current: maximum",
+          "Line current: minimum"
+        ]
+      },
+      "onScreen": [
+        "Capacitor discharges through the coil",
+        "Coil recharges the capacitor",
+        "Circulating current about Q times line current: maximum",
+        "Line current: minimum"
+      ],
+      "narration": "The branch currents cancel in the line, but they haven't vanished: they're circulating inside the tank. Picture the capacitor charged up. It discharges through the coil, and that current builds the coil's magnetic field, which is where a coil stores its energy. When the capacitor is empty, the field collapses and keeps the current going, charging the capacitor back up the other way. Then it all repeats at the resonant frequency, like the swing from before trading height for speed. This circulating current is large: about Q times the line current. So the current flow within the parallel elements at resonance is maximum, while the line current is at its minimum. On the exam, minimum is the trap: that's the line current."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 29,
+      "template": "comparison-table",
+      "params": {
+        "title": "Series and parallel resonance side by side",
+        "columns": [
+          "At resonance",
+          "Series R-L-C",
+          "Parallel R-L-C"
+        ],
+        "rows": [
+          [
+            "Impedance",
+            "≈ R: its minimum",
+            "≈ R: its maximum"
+          ],
+          [
+            "Why",
+            "X<sub>L</sub> and X<sub>C</sub> cancel",
+            "Branch currents cancel in the line"
+          ],
+          [
+            "Line current",
+            "Maximum: I = E/R",
+            "Minimum"
+          ],
+          [
+            "Current in L and C",
+            "The same maximum current",
+            "Circulating, ≈ Q × line: maximum"
+          ],
+          [
+            "Voltage and current",
+            "In phase",
+            "In phase"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Impedance about R: series minimum, parallel maximum",
+        "Series: reactances cancel; parallel: branch currents cancel",
+        "Series current maximum; parallel line current minimum",
+        "Parallel circulating current maximum",
+        "Both: voltage and current in phase"
+      ],
+      "narration": "Here's the whole picture side by side. In both circuits at resonance, the impedance is approximately equal to the circuit resistance. In series, that's its minimum, because X sub L and X sub C cancel. In parallel, it's its maximum, because the branch currents cancel in the line. So the series current is maximum, I equals E over R, while the parallel line current is minimum. Inside the parts, the series circuit carries that same maximum current through everything, and the parallel tank circulates about Q times the line current. In both, voltage and current are in phase. The takeaway: at resonance the reactances cancel, leaving just the resistance."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 30,
+      "template": "key-facts",
+      "params": {
+        "title": "Meet the op-amp",
+        "items": [
+          "Amplifier: a small signal in, a bigger copy out. Gain: how many times bigger",
+          "Op-amp, operational amplifier: a chip with 2 inputs and 1 output",
+          "Inverting input (−) and non-inverting input (+)",
+          "Amplifies the difference between them: a huge open-loop gain",
+          "The output can't go past its supply voltages: the rails"
+        ]
+      },
+      "onScreen": [
+        "Amplifier and gain",
+        "Op-amp: 2 inputs, 1 output",
+        "Inverting input minus, non-inverting input plus",
+        "Huge open-loop gain on the difference",
+        "Output limited by the supply rails"
+      ],
+      "narration": "Tuned circuits can pick out a frequency, but they can't make a weak signal any stronger. That's the job of an amplifier: a small signal goes in, and a bigger copy comes out. How many times bigger is called the gain. The workhorse is the op-amp, short for operational amplifier: a complete amplifier on one small chip, with 2 inputs and 1 output. One input is marked minus: the inverting input. The other is marked plus: the non-inverting input. It amplifies the difference between their voltages. On its own, with nothing connected from the output back to the inputs, its gain is huge. That's called the open-loop gain. But the output can't swing past the supply voltages that power the chip. Those limits are the supply rails."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 30,
+      "template": "waveform",
+      "params": {
+        "title": "The comparator: an op-amp run open loop",
+        "kind": "square",
+        "cycles": 3,
+        "xAxis": "time",
+        "yAxis": "output",
+        "labels": [
+          "No feedback: the full open-loop gain",
+          "Plus input higher: output jumps to the top rail",
+          "Minus input higher: output drops to the bottom rail",
+          "Tells which input is higher: a comparator"
+        ]
+      },
+      "onScreen": [
+        "No feedback: open loop",
+        "Plus input higher: output to the top rail",
+        "Minus input higher: output to the bottom rail",
+        "A comparator: which input is higher"
+      ],
+      "narration": "Let's start with the simplest way to use an op-amp: just as it is, with nothing feeding the output back to the inputs. That's called open loop, or no feedback. With such a huge gain, even a tiny difference between the inputs drives the output all the way to one supply rail or the other. If the plus input is even slightly higher, the output jumps to the top rail. If the minus input is higher, it drops to the bottom rail. That tells you which input voltage is higher, so this circuit is called a comparator. On the exam, the op-amp circuit operated open-loop is the comparator. The other exam choices, amplifiers and an active filter, all use feedback, as you'll see next."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 30,
+      "template": "block-diagram",
+      "params": {
+        "title": "Negative feedback: output to the − input",
+        "columns": 2,
+        "blocks": [
+          {
+            "id": "in",
+            "label": "Input signal"
+          },
+          {
+            "id": "amp",
+            "label": "Op-amp",
+            "note": "Huge open-loop gain"
+          },
+          {
+            "id": "fb",
+            "label": "External feedback network",
+            "note": "Output back to the inverting input (−)"
+          },
+          {
+            "id": "out",
+            "label": "Output",
+            "note": "Pulled back if it swings too far"
+          }
+        ],
+        "links": [
+          {
+            "from": "in",
+            "to": "amp"
+          },
+          {
+            "from": "amp",
+            "to": "out"
+          },
+          {
+            "from": "out",
+            "to": "fb"
+          },
+          {
+            "from": "fb",
+            "to": "amp",
+            "label": "Negative feedback"
+          }
+        ]
+      },
+      "onScreen": [
+        "Input signal",
+        "Op-amp: huge open-loop gain",
+        "External feedback network: output to the inverting input",
+        "Output pulled back if it swings too far"
+      ],
+      "narration": "A comparator is all or nothing. To get a steady, predictable gain instead, we feed part of the output back. An external feedback network, parts outside the chip, often just a resistor or two, connects the output back to the inverting input. That's negative feedback. If the output swings too high, the feedback raises the minus input, and raising the minus input pulls the output back down. It's like cruise control in a car, constantly correcting. So the external feedback network that controls the gain connects from the output to the inverting input. From the output to the non-inverting input would be positive feedback, which reinforces itself instead of correcting. And a network between the inputs wouldn't feed the output back at all."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 30,
+      "template": "comparison-table",
+      "params": {
+        "title": "What sets a closed-loop gain?",
+        "columns": [
+          "Candidate",
+          "Sets the gain?",
+          "Why"
+        ],
+        "rows": [
+          [
+            "External feedback network",
+            "Yes",
+            "The op-amp balances feedback against input"
+          ],
+          [
+            "Internal feedback network",
+            "No",
+            "The chip's own gain is huge and varies"
+          ],
+          [
+            "Supply voltage, slew rate",
+            "No",
+            "They only limit how far and fast it swings"
+          ]
+        ]
+      },
+      "onScreen": [
+        "External feedback network: yes",
+        "Internal feedback network: no",
+        "Supply voltage and slew rate: no"
+      ],
+      "narration": "So who decides how much gain a closed-loop circuit, one with feedback, has? Not the chip. An op-amp's own open-loop gain is huge, and it varies from one chip to the next, so nobody relies on it. Negative feedback tames that huge gain: the op-amp simply settles wherever the feedback balances the input, and that balance point depends only on the feedback parts. So the gain of a closed-loop op-amp circuit is determined by the op-amp's external feedback network: the resistors you choose. Not an internal feedback network. And not the supply voltage or the slew rate, the op-amp's speed limit: those only limit how far and how fast the output can swing."
+    },
+    {
+      "id": "s18",
       "keyTopic": 30,
       "template": "block-diagram",
       "params": {
         "title": "The inverting amplifier",
         "columns": 3,
         "blocks": [
-          { "id": "input", "label": "Input signal", "note": "Goes in through R<sub>in</sub>" },
-          { "id": "rin", "label": "R<sub>in</sub>", "note": "Feeds the inverting input (−)" },
-          { "id": "amp", "label": "Op-amp", "note": "Huge open-loop gain" },
-          { "id": "output", "label": "Output", "note": "180° out of phase with the input" },
-          { "id": "rf", "label": "R<sub>f</sub>", "note": "External feedback to the inverting input" }
+          {
+            "id": "input",
+            "label": "Input signal",
+            "note": "Goes in through R<sub>in</sub>"
+          },
+          {
+            "id": "rin",
+            "label": "R<sub>in</sub>",
+            "note": "Feeds the inverting input (−)"
+          },
+          {
+            "id": "amp",
+            "label": "Op-amp",
+            "note": "Plus input grounded"
+          },
+          {
+            "id": "output",
+            "label": "Output",
+            "note": "180° out of phase with the input"
+          },
+          {
+            "id": "rf",
+            "label": "R<sub>f</sub>",
+            "note": "Feedback: output to the inverting input"
+          }
         ],
         "links": [
-          { "from": "input", "to": "rin" },
-          { "from": "rin", "to": "amp" },
-          { "from": "amp", "to": "output" },
-          { "from": "output", "to": "rf" },
-          { "from": "rf", "to": "amp", "label": "Negative feedback" }
+          {
+            "from": "input",
+            "to": "rin"
+          },
+          {
+            "from": "rin",
+            "to": "amp"
+          },
+          {
+            "from": "amp",
+            "to": "output"
+          },
+          {
+            "from": "output",
+            "to": "rf"
+          },
+          {
+            "from": "rf",
+            "to": "amp",
+            "label": "Negative feedback"
+          }
         ]
       },
-      "onScreen": ["Input through R sub in to the inverting input", "Op-amp: huge open-loop gain", "Output 180° out of phase", "R sub f: external feedback, output to inverting input", "Gain = −R sub f over R sub in"],
-      "narration": "Now the op-amp. In an inverting amplifier, the input signal goes in through R sub in, to the inverting input. The op-amp itself has a huge open-loop gain. Its output is 180 degrees out of phase with the input: inverted. R sub f, the feedback resistor, runs from the output back to the inverting input. That negative feedback tames the huge open-loop gain, so the gain of this closed-loop circuit is set by the external feedback network, not an internal one. The gain is minus R sub f over R sub in, where the minus sign marks the inversion. Connect the feedback from the output to the non-inverting input instead, and you'd have positive feedback."
+      "onScreen": [
+        "Input through R sub in to the inverting input",
+        "Op-amp, plus input grounded",
+        "Output 180° out of phase",
+        "R sub f: feedback, output to the inverting input"
+      ],
+      "narration": "Now the most common closed-loop circuit: the inverting amplifier. The input signal goes in through a resistor, R sub in, to the inverting input. The plus input is grounded: connected to 0 volts. Because the signal drives the minus input, the output moves the opposite way: when the input rises, the output falls. So the input and output signals are 180 degrees out of phase: the output is an upside-down copy. A feedback resistor, R sub f, runs from the output back to the inverting input, and sets the gain. On the exam, in phase and 90 degrees out of phase are the traps."
     },
     {
-      "id": "s6",
+      "id": "s19",
+      "keyTopic": 30,
+      "template": "formula",
+      "params": {
+        "title": "Inverting amplifier gain",
+        "formula": "Gain = −R<sub>f</sub> ÷ R<sub>in</sub>",
+        "steps": [
+          "Minus sign: the output is inverted",
+          "1 kilohm = 1000 ohms",
+          "R<sub>f</sub> = 100 kΩ, R<sub>in</sub> = 10 kΩ",
+          "100 kΩ ÷ 10 kΩ = 10"
+        ],
+        "answer": "Gain = −10: 10 times bigger, inverted"
+      },
+      "onScreen": [
+        "Gain = minus R sub f over R sub in",
+        "Minus sign: inverted",
+        "1 kilohm = 1000 ohms",
+        "R sub f 100 kilohms, R sub in 10 kilohms",
+        "100 over 10 = 10",
+        "Gain = minus 10: 10 times bigger, inverted"
+      ],
+      "narration": "How much gain? It's minus R sub f over R sub in: the feedback resistor divided by the input resistor. The minus sign doesn't mean the signal shrinks; it just marks the inversion. Let's try numbers. Resistor values are often given in kilohms, and a kilohm is 1000 ohms. Say R sub f is 100 kilohms and R sub in is 10 kilohms. 100 divided by 10 is 10, so the gain is minus 10: the output is 10 times bigger than the input, and upside down. Want more gain? Use a bigger feedback resistor. The op-amp itself doesn't change the answer: only the 2 resistors do."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 30,
+      "template": "comparison-table",
+      "params": {
+        "title": "Audio filters: passive LC or op-amp?",
+        "columns": [
+          "Filter",
+          "Passive LC filter",
+          "Op-amp active filter"
+        ],
+        "rows": [
+          [
+            "Built from",
+            "Coils and capacitors only",
+            "Op-amp, resistors and capacitors"
+          ],
+          [
+            "Signal through it",
+            "Insertion loss: a little is lost",
+            "Gain: it can come out stronger"
+          ],
+          [
+            "Bulky coils",
+            "Yes",
+            "None needed"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Passive: coils and capacitors; active: op-amp",
+        "Passive: insertion loss; op-amp: gain",
+        "Op-amp filter needs no bulky coils"
+      ],
+      "narration": "Op-amps also make better filters. A filter lets some frequencies through and holds others back, like a sieve for signals. An audio filter, for sound, might pass a voice and cut out a whine. A passive filter is built only from coils and capacitors, so it's called an LC filter, after their letters, L and C. With no power source of its own, it always loses a little of the signal: that's insertion loss. An active filter uses an op-amp with resistors and capacitors, so it can filter and amplify at once. That's the main advantage of an op-amp audio filter over a passive LC audio filter: op-amps exhibit gain rather than insertion loss. They need no bulky coils, either. Vibration, availability and retooling are the traps."
+    },
+    {
+      "id": "s21",
       "keyTopic": 30,
       "template": "comparison-table",
       "params": {
         "title": "Closed loop or open loop?",
-        "columns": ["Op-amp circuit", "Feedback", "Result"],
+        "columns": [
+          "Op-amp circuit",
+          "Feedback",
+          "Result"
+        ],
         "rows": [
-          ["Inverting amplifier", "External: output to inverting input", "Gain = −R<sub>f</sub>/R<sub>in</sub>"],
-          ["Non-inverting amplifier", "External network", "Gain set by the feedback network"],
-          ["Active filter", "External network", "Gain, not insertion loss"],
-          ["Comparator", "None: open loop", "Output driven to a supply rail"]
+          [
+            "Inverting amplifier",
+            "Output to inverting input",
+            "Gain = −R<sub>f</sub>/R<sub>in</sub>, inverted"
+          ],
+          [
+            "Non-inverting amplifier",
+            "Output to inverting input",
+            "Gain set by the network, in phase"
+          ],
+          [
+            "Active filter",
+            "External network",
+            "Gain, not insertion loss"
+          ],
+          [
+            "Comparator",
+            "None: open loop",
+            "Output driven to a supply rail"
+          ]
         ]
       },
-      "onScreen": ["Inverting amplifier: external feedback", "Non-inverting amplifier: external feedback", "Active filter: gain, not insertion loss", "Comparator: open loop, output to a supply rail"],
-      "narration": "Inverting and non-inverting amplifiers and active filters are all closed-loop circuits. Each has its gain set by an external feedback network. And the main advantage of an op-amp audio filter over a passive L-C audio filter, one built from inductors and capacitors, is that op-amps exhibit gain rather than insertion loss. The odd one out is the comparator. It's the op-amp circuit operated open-loop, with no feedback at all. Even a tiny difference between its inputs drives the output to one supply rail or the other."
+      "onScreen": [
+        "Inverting amplifier: closed loop",
+        "Non-inverting amplifier: closed loop",
+        "Active filter: closed loop",
+        "Comparator: open loop"
+      ],
+      "narration": "Let's sort the op-amp circuits the exam names. The inverting amplifier, the non-inverting amplifier, and the active filter are all closed-loop circuits. The non-inverting amplifier is the one that feeds the signal to the plus input, so its output stays in phase. Each has an external feedback network, from the output to the inverting input, and that network sets the gain. The odd one out is the comparator: operated open-loop, with no feedback, so its output slams to a supply rail. The takeaway: feedback to the minus input gives a steady gain, and no feedback gives a comparator."
     },
     {
-      "id": "s7",
+      "id": "s22",
+      "keyTopic": 30,
+      "template": "formula",
+      "params": {
+        "title": "Oscillators: timing with R and C",
+        "formula": "frequency = 1 ÷ period",
+        "steps": [
+          "Period: the time for 1 cycle",
+          "C fills through R, like a bucket through a hose",
+          "Bigger C or R: slower filling, longer period",
+          "Double the period → half the frequency"
+        ],
+        "answer": "Longer period, lower frequency"
+      },
+      "onScreen": [
+        "Frequency = 1 over period",
+        "Period: time for 1 cycle",
+        "C fills through R like a bucket through a hose",
+        "Bigger C or R: longer period",
+        "Double the period, half the frequency"
+      ],
+      "narration": "One more op-amp circuit is on the exam: the oscillator. It makes its own repeating wave, with no input signal, and every radio needs one to make its signals. The time for 1 complete cycle is the period, and the frequency is how many cycles fit into each second. So frequency equals 1 divided by the period. Many oscillators keep time with a capacitor charging through a resistor, like a bucket filling through a hose. A bigger bucket, more capacitance, meaning the capacitor holds more, or a narrower hose, more resistance, takes longer to fill. Longer filling means a longer period, and a lower frequency: double the period, and you halve the frequency. Keep that bucket in mind: you'll need it shortly."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 30,
+      "template": "equipment-card",
+      "params": {
+        "title": "Reading a schematic: Figure 3D6",
+        "figure": "3D6",
+        "callouts": [
+          {
+            "label": "Lines are wires; a dot joins wires"
+          },
+          {
+            "label": "Zigzag: a resistor. 100K means 100 kilohms"
+          },
+          {
+            "label": "2 short parallel lines: a capacitor, C"
+          },
+          {
+            "label": "Triangle: the op-amp, with its − and + inputs"
+          },
+          {
+            "label": "Stacked lines at the far left: ground, the 0-volt return"
+          }
+        ]
+      },
+      "onScreen": [
+        "Lines are wires; dots join them",
+        "Zigzag: resistor; 100K is 100 kilohms",
+        "2 parallel lines: capacitor",
+        "Triangle: op-amp",
+        "Ground: the 0-volt return"
+      ],
+      "narration": "The exam's oscillator question comes with a drawing, Figure 3D6, so first let's learn to read a schematic. A schematic is a map of the connections, not a picture of the parts. Lines are wires, and a dot means wires are joined. A zigzag is a resistor, and the label 100K means 100 kilohms. 2 short parallel lines are a capacitor, here labeled C. The big triangle is the op-amp, with its minus and plus inputs on the left and its output at the point. And the little stack of lines at the far left is ground: the common return, at 0 volts, that every voltage is measured from."
+    },
+    {
+      "id": "s24",
       "keyTopic": 30,
       "template": "equipment-card",
       "params": {
         "title": "Figure 3D6: op-amp oscillator",
         "figure": "3D6",
         "callouts": [
-          { "label": "C charges and discharges through R" },
-          { "label": "A resistor divider feeds the non-inverting input" },
-          { "label": "Output: a square wave" },
-          { "label": "Double C: twice the period, half the frequency" },
-          { "label": "Answer: the frequency would be lower; the circuit works as drawn" }
+          {
+            "label": "The output charges C through R, on the − input"
+          },
+          {
+            "label": "The 100K and 10K divider sets a switching point on the + input"
+          },
+          {
+            "label": "C passes that point: the output flips to the other rail"
+          },
+          {
+            "label": "Output: a square wave"
+          }
         ]
       },
-      "onScreen": ["C charges and discharges through R", "Resistor divider on the non-inverting input", "Square wave output", "Double C: period doubles, frequency halves", "Frequency would be lower; circuit works as drawn"],
-      "narration": "Figure 3D6 is an op-amp oscillator. Capacitor C charges and discharges through resistor R, and a resistor divider feeds part of the output back to the non-inverting input. The output is a square wave. What happens if the capacitance of C is suddenly doubled? C now takes twice as long to charge and discharge through R, so the period doubles and the frequency halves. The answer: the frequency would be lower. Don't be fooled by the choice saying the inputs are reversed: the circuit works as drawn."
+      "onScreen": [
+        "Output charges C through R",
+        "Divider sets the switching point on the plus input",
+        "Output flips rail to rail",
+        "Square wave output"
+      ],
+      "narration": "Now let's see how Figure 3D6 works. Start with the output sitting at one supply rail. Through resistor R, it slowly charges capacitor C, and C is wired to the minus input. Meanwhile, the 100 kilohm resistor and the 10 kilohm one below it form a divider: 2 resistors in series that split the output voltage, with the point between them feeding a small share to the plus input. That's the positive feedback we set aside earlier, and it sets a switching point. When the capacitor's voltage creeps past that point, the op-amp flips, like a comparator, to the other rail. Then C discharges and charges the other way until the op-amp flips back. Over and over: the output is a square wave, jumping between the 2 rails."
     },
     {
-      "id": "s8",
+      "id": "s25",
+      "keyTopic": 30,
+      "template": "formula",
+      "params": {
+        "title": "Figure 3D6: double the capacitance",
+        "formula": "frequency = 1 ÷ period",
+        "steps": [
+          "Double C: it takes twice as long to charge",
+          "Twice the charging time → twice the period",
+          "Twice the period → half the frequency",
+          "The inputs are not reversed: it works as drawn"
+        ],
+        "answer": "Frequency would be lower"
+      },
+      "onScreen": [
+        "Frequency = 1 over period",
+        "Double C: twice as long to charge",
+        "Twice the period",
+        "Half the frequency",
+        "Inputs not reversed: works as drawn",
+        "Frequency would be lower"
+      ],
+      "narration": "The exam asks: what if the capacitance of C were suddenly doubled? Go back to the bucket. A bucket twice the size takes twice as long to fill through the same hose, so C takes twice as long to charge through R before each flip. Each cycle then takes twice as long: the period doubles. And since frequency is 1 divided by the period, the frequency halves. Don't be thrown by the choice claiming no change because the inputs are reversed: the circuit works as drawn. So the answer: the frequency would be lower. Higher is backward."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 31,
+      "template": "comparison-table",
+      "params": {
+        "title": "A radio needs a steady, tunable frequency",
+        "columns": [
+          "Oscillator",
+          "Tunable?",
+          "Steady?"
+        ],
+        "rows": [
+          [
+            "Simple tunable oscillator",
+            "Yes",
+            "No: it drifts"
+          ],
+          [
+            "Crystal oscillator",
+            "No: one frequency",
+            "Yes"
+          ],
+          [
+            "Phase-locked loop",
+            "Yes",
+            "Yes: locked to a standard"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Tunable oscillator: drifts",
+        "Crystal oscillator: steady, one frequency",
+        "Phase-locked loop: tunable and steady"
+      ],
+      "narration": "That oscillator makes a frequency, but not a precise one, and radios need precision. A transmitter must sit exactly on its assigned frequency, and a receiver must tune exactly to it. A simple tunable oscillator can be set anywhere, but it drifts as it warms up. A crystal oscillator, built around a sliver of quartz that vibrates at one precise frequency, is rock steady, but it's fixed on that frequency. We want both: tunable and steady. The trick is to make a tunable oscillator follow a steady reference, called a frequency standard. The circuit that does this is the phase-locked loop. First, let's meet its tunable part."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 31,
+      "template": "block-diagram",
+      "params": {
+        "title": "The VCO: an oscillator tuned by a voltage",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "ctrl",
+            "label": "Control voltage"
+          },
+          {
+            "id": "var",
+            "label": "Varactor diode",
+            "note": "Its capacitance changes with voltage"
+          },
+          {
+            "id": "tank",
+            "label": "Coil and capacitance",
+            "note": "Set the resonant frequency"
+          },
+          {
+            "id": "out",
+            "label": "VCO output",
+            "note": "Frequency follows the voltage"
+          }
+        ],
+        "links": [
+          {
+            "from": "ctrl",
+            "to": "var"
+          },
+          {
+            "from": "var",
+            "to": "tank"
+          },
+          {
+            "from": "tank",
+            "to": "out"
+          }
+        ]
+      },
+      "onScreen": [
+        "Control voltage",
+        "Varactor diode: capacitance changes with voltage",
+        "Coil and capacitance set the frequency",
+        "VCO output follows the voltage"
+      ],
+      "narration": "Remember resonance: a coil and a capacitor have a natural frequency, and an oscillator built around them runs at that frequency. Change the capacitance, and the frequency changes. A diode is normally a one-way valve for current, but a varactor diode is used for its capacitance, which changes with the voltage across it. Put a varactor in the oscillator's tuned circuit, and now a control voltage sets the frequency. That's a voltage-controlled oscillator, or VCO. Raise or lower the control voltage, and the VCO's frequency follows. All we need now is a circuit that works out the right control voltage, and keeps adjusting it."
+    },
+    {
+      "id": "s28",
       "keyTopic": 31,
       "template": "block-diagram",
       "params": {
         "title": "Phase-locked loop",
         "columns": 3,
         "blocks": [
-          { "id": "standard", "label": "Frequency standard", "note": "The reference" },
-          { "id": "detector", "label": "Phase detector", "note": "Compares the VCO with the reference" },
-          { "id": "filter", "label": "Low-pass filter", "note": "Smooths the error into a DC voltage" },
-          { "id": "vco", "label": "VCO", "note": "Error voltage tunes its varactor diode" },
-          { "id": "output", "label": "Locked output", "note": "Locked to the reference" }
+          {
+            "id": "standard",
+            "label": "Frequency standard",
+            "note": "The steady reference"
+          },
+          {
+            "id": "detector",
+            "label": "Phase detector",
+            "note": "Compares the VCO with the reference"
+          },
+          {
+            "id": "filter",
+            "label": "Low-pass filter",
+            "note": "Smooths the error into a DC voltage"
+          },
+          {
+            "id": "vco",
+            "label": "VCO",
+            "note": "Steered by the control voltage"
+          },
+          {
+            "id": "output",
+            "label": "Locked output",
+            "note": "Locked to the reference"
+          }
         ],
         "links": [
-          { "from": "standard", "to": "detector" },
-          { "from": "detector", "to": "filter" },
-          { "from": "filter", "to": "vco", "label": "Control voltage" },
-          { "from": "vco", "to": "detector", "label": "Fed back" },
-          { "from": "vco", "to": "output" }
+          {
+            "from": "standard",
+            "to": "detector"
+          },
+          {
+            "from": "detector",
+            "to": "filter"
+          },
+          {
+            "from": "filter",
+            "to": "vco",
+            "label": "Control voltage"
+          },
+          {
+            "from": "vco",
+            "to": "detector",
+            "label": "Fed back"
+          },
+          {
+            "from": "vco",
+            "to": "output"
+          }
         ]
       },
-      "onScreen": ["Frequency standard", "Phase detector compares", "Low-pass filter makes a DC control voltage", "VCO tuned by a varactor diode", "Output locked to the reference"],
-      "narration": "A phase-locked loop, or PLL, locks an oscillator to a frequency standard, the reference. It's a servo loop made of 3 parts: a phase detector, a low-pass filter, and a voltage-controlled oscillator, or VCO. The phase detector compares the VCO's output with that standard and produces an error voltage. The low-pass filter smooths that error into a DC, or direct current, control voltage. That voltage adjusts the capacitance of a varactor diode controlling the same VCO, steering it until it locks to the reference. So a circuit that compares a VCO to a frequency standard, and uses the error voltage to tune that same VCO's varactor, is a phase-locked loop."
+      "onScreen": [
+        "Frequency standard",
+        "Phase detector compares",
+        "Low-pass filter makes a DC control voltage",
+        "VCO steered by the control voltage",
+        "Output locked to the reference"
+      ],
+      "narration": "Here's that circuit: the phase-locked loop, or PLL. It's a servo loop: a loop that measures its own error and corrects it, like a thermostat. It has 3 parts: a phase detector, a low-pass filter, and the VCO. The phase detector compares the VCO's output with the frequency standard. If the VCO runs even slightly ahead or behind, it produces an error voltage. The low-pass filter passes only slow changes, smoothing that error into a steady DC control voltage. That voltage steers the VCO until it keeps exact step with the reference, cycle for cycle: it's locked. In the exam's words, a PLL is a servo loop consisting of a phase detector, a low-pass filter and a voltage-controlled oscillator."
     },
     {
-      "id": "s9",
+      "id": "s29",
+      "keyTopic": 31,
+      "template": "key-facts",
+      "params": {
+        "title": "Spotting a PLL on the exam",
+        "items": [
+          "Compares a VCO's output with a frequency standard",
+          "Its error voltage adjusts a varactor diode's capacitance",
+          "That varactor tunes the same VCO: a phase-locked loop",
+          "Not a mixer, differential amplifier or plain variable-frequency oscillator",
+          "Its parts: phase detector, low-pass filter, VCO. Not a ratio detector"
+        ]
+      },
+      "onScreen": [
+        "Compares a VCO with a frequency standard",
+        "Error voltage adjusts the varactor",
+        "Same VCO: a phase-locked loop",
+        "Not a mixer, amplifier or plain oscillator",
+        "Parts: phase detector, low-pass filter, VCO"
+      ],
+      "narration": "The exam also describes the loop a second way. Picture a circuit that compares the output of a VCO to a frequency standard, and produces an error voltage. That voltage adjusts the capacitance of a varactor diode, the part whose capacitance changes with voltage, and that varactor controls the frequency of that same VCO. That circuit is a phase-locked loop. The other choices don't correct themselves: a mixer combines signals, a differential amplifier amplifies a difference, and a plain variable-frequency oscillator drifts. And for the definition question, the PLL's parts are the phase detector, low-pass filter and VCO: not a ratio detector, a multivibrator or a push-pull amplifier."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 31,
+      "template": "block-diagram",
+      "params": {
+        "title": "The PLL synthesizer: add a divider",
+        "columns": 2,
+        "blocks": [
+          {
+            "id": "standard",
+            "label": "Frequency standard",
+            "note": "The steady reference"
+          },
+          {
+            "id": "detector",
+            "label": "Phase detector",
+            "note": "Compares the reference with the divided VCO"
+          },
+          {
+            "id": "divider",
+            "label": "Frequency divider",
+            "note": "Divides by a chosen number"
+          },
+          {
+            "id": "filter",
+            "label": "Low-pass filter",
+            "note": "Smooths the error"
+          },
+          {
+            "id": "output",
+            "label": "Output",
+            "note": "A chosen multiple of the reference"
+          },
+          {
+            "id": "vco",
+            "label": "VCO",
+            "note": "Runs at that many times the reference"
+          }
+        ],
+        "links": [
+          {
+            "from": "standard",
+            "to": "detector"
+          },
+          {
+            "from": "detector",
+            "to": "filter"
+          },
+          {
+            "from": "filter",
+            "to": "vco"
+          },
+          {
+            "from": "vco",
+            "to": "divider"
+          },
+          {
+            "from": "divider",
+            "to": "detector"
+          },
+          {
+            "from": "vco",
+            "to": "output"
+          }
+        ]
+      },
+      "onScreen": [
+        "Frequency standard",
+        "Phase detector",
+        "Divider: a chosen number",
+        "Low-pass filter",
+        "Output: a multiple of the reference",
+        "VCO runs at that multiple"
+      ],
+      "narration": "A PLL can do more than hold one frequency. Here's the same loop, with one addition. The frequency standard still feeds the phase detector. But now the VCO's output reaches the detector through a frequency divider, a circuit that divides a frequency by a chosen number. The low-pass filter and VCO work as before, and the loop is satisfied only when the divided-down VCO matches the reference. So the output, the VCO itself, runs at that many times the reference frequency. Change the number, and the VCO steps to a new exact frequency, just as steady as the reference. That's a frequency synthesizer: one steady reference, many exact frequencies."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 31,
+      "template": "key-facts",
+      "params": {
+        "title": "The PLL synthesizer's impurity",
+        "items": [
+          "Spectrum: the spread of frequencies in a signal",
+          "Spectral impurities: unwanted extra signals in it",
+          "Exam answer: broadband noise, from the VCO's random phase jitter",
+          "Real PLLs also make spurs at discrete frequencies: still pick broadband noise"
+        ]
+      },
+      "onScreen": [
+        "Spectrum: the spread of frequencies",
+        "Spectral impurities: unwanted signals",
+        "Exam answer: broadband noise",
+        "Real PLLs also make spurs; pick broadband noise"
+      ],
+      "narration": "No synthesizer is perfectly clean, though. A signal's spectrum is the spread of frequencies it contains, and any unwanted extra signals in it are called spectral impurities. For the exam, the spectral impurity a phase-locked-loop synthesizer might generate is broadband noise: a hiss spread across a wide range of frequencies on both sides of the wanted signal. It comes from phase noise, the tiny random jitter in the VCO's timing that the loop can't fully correct. Real PLL synthesizers also produce spurs: single unwanted signals at discrete, separate frequencies. But on the exam, choose broadband noise. Digital conversion noise doesn't apply: the VCO makes the signal directly, with no conversion."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 31,
+      "template": "block-diagram",
+      "params": {
+        "title": "Direct digital synthesizer (DDS)",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "phase",
+            "label": "Phase comparator",
+            "note": "Steps through the wave, tick by tick"
+          },
+          {
+            "id": "table",
+            "label": "Look-up table",
+            "note": "Stored sine-wave values"
+          },
+          {
+            "id": "dac",
+            "label": "DAC",
+            "note": "Turns each number into a voltage"
+          },
+          {
+            "id": "filter",
+            "label": "Low-pass antialias filter",
+            "note": "Smooths the steps into a sine wave"
+          }
+        ],
+        "links": [
+          {
+            "from": "phase",
+            "to": "table"
+          },
+          {
+            "from": "table",
+            "to": "dac"
+          },
+          {
+            "from": "dac",
+            "to": "filter"
+          }
+        ]
+      },
+      "onScreen": [
+        "Phase comparator steps through the wave",
+        "Look-up table of sine values",
+        "DAC: numbers to voltages",
+        "Low-pass antialias filter smooths the steps"
+      ],
+      "narration": "A completely different kind of synthesizer builds the wave from numbers: the direct digital synthesizer, or DDS. Its first part steps through the wave's cycle, one step for every tick of a steady clock signal. The exam calls it a phase comparator. At each step, a look-up table gives the wave's height at that point, from a stored list of values for a sine wave, the smooth wave shape of pure AC. A DAC, a digital-to-analog converter, turns each number into a voltage, making a staircase that follows the sine wave. Finally, a low-pass antialias filter smooths the staircase into a clean wave, removing false copies of the signal, called aliases, that the steps create. So a phase comparator, look-up table, DAC and low-pass antialias filter make a direct digital synthesizer."
+    },
+    {
+      "id": "s33",
       "keyTopic": 31,
       "template": "comparison-table",
       "params": {
-        "title": "Two kinds of frequency synthesizer",
-        "columns": ["Synthesizer", "PLL", "Direct digital (DDS)"],
+        "title": "Random noise or regular spurs?",
+        "columns": [
+          "Source of error",
+          "Pattern",
+          "Shows up as"
+        ],
         "rows": [
-          ["Built from", "Phase detector, low-pass filter, VCO", "Phase comparator, look-up table, DAC"],
-          ["Smoothing", "Low-pass filter in the loop", "Low-pass antialias filter"],
-          ["Unwanted output", "Broadband noise (the exam answer)", "Spurs at discrete frequencies"],
-          ["Cause", "VCO phase noise: random jitter", "Phase truncation, DAC quantization"]
+          [
+            "PLL: VCO phase jitter",
+            "Random",
+            "Broadband noise (exam answer)"
+          ],
+          [
+            "DDS: phase truncation",
+            "Rounding: repeats regularly",
+            "A signal at a definite frequency"
+          ],
+          [
+            "DDS: DAC quantization",
+            "Rounding: repeats regularly",
+            "A signal at a definite frequency"
+          ],
+          [
+            "DDS output (exam answer)",
+            "Regular",
+            "Spurs at discrete frequencies"
+          ]
         ]
       },
-      "onScreen": ["PLL: phase detector, low-pass filter, VCO", "DDS: phase comparator, look-up table, DAC, antialias filter", "PLL impurity for the exam: broadband noise", "DDS: spurs at discrete frequencies"],
-      "narration": "Now two kinds of frequency synthesizer. A PLL synthesizer is built from that phase detector, low-pass filter and VCO. A direct digital synthesizer, or DDS, uses a phase comparator, a look-up table, a digital-to-analog converter, or DAC, and a low-pass antialias filter. It steps through a sine-wave look-up table, converts the values to analog with the DAC, and smooths them with the filter. For the exam, the spectral impurity a PLL synthesizer might generate is broadband noise: the phase noise of the VCO's random jitter. Real PLL synthesizers also produce spurs at discrete frequencies, but choose broadband noise on the exam. A DDS's unwanted output components are spurs at discrete frequencies, from regularly repeating errors such as phase truncation and DAC quantization, rather than broadband noise."
+      "onScreen": [
+        "PLL jitter: random, broadband noise",
+        "DDS phase truncation: repeats regularly",
+        "DDS DAC quantization: repeats regularly",
+        "DDS output: spurs at discrete frequencies"
+      ],
+      "narration": "Why do the 2 synthesizers have different impurities? It comes down to the pattern of their errors. The PLL's VCO jitters randomly, and random errors spread out into broadband noise. A DDS makes its errors by rounding. Phase truncation means its position in the wave gets rounded off, and DAC quantization means each voltage is rounded to the nearest step the DAC can make. Those rounding errors repeat in a regular pattern, every time the wave comes round, and a regularly repeating error is itself a signal at a definite frequency. That's why the unwanted components on the output of a direct digital synthesizer are spurs at discrete frequencies, rather than broadband noise."
     },
     {
-      "id": "s10",
+      "id": "s34",
+      "keyTopic": 31,
+      "template": "block-diagram",
+      "params": {
+        "title": "The mixer: shifting a signal's frequency",
+        "columns": 2,
+        "blocks": [
+          {
+            "id": "rf",
+            "label": "RF input",
+            "note": "The incoming signal"
+          },
+          {
+            "id": "lo",
+            "label": "Local oscillator",
+            "note": "The receiver's own oscillator"
+          },
+          {
+            "id": "mixer",
+            "label": "Mixer",
+            "note": "Combines the 2 signals"
+          },
+          {
+            "id": "if",
+            "label": "IF output",
+            "note": "New sum and difference frequencies"
+          }
+        ],
+        "links": [
+          {
+            "from": "rf",
+            "to": "mixer"
+          },
+          {
+            "from": "lo",
+            "to": "mixer"
+          },
+          {
+            "from": "mixer",
+            "to": "if"
+          }
+        ]
+      },
+      "onScreen": [
+        "RF input: the incoming signal",
+        "Local oscillator",
+        "Mixer combines them",
+        "IF output: sum and difference"
+      ],
+      "narration": "Our last circuit in this group is the mixer, and it puts an oscillator to work. It takes the incoming RF, or radio frequency, signal from the antenna, and combines it with a signal from the receiver's own oscillator, called the local oscillator. In effect it multiplies the 2 signals, and multiplying 2 waves creates new frequencies: their sum and their difference. Why do that? A receiver converts every station it tunes to one fixed frequency, called the intermediate frequency, or IF, where its filters and amplifiers are designed to work best. So the mixer's output is called the IF output, and later filtering keeps whichever new frequency is wanted."
+    },
+    {
+      "id": "s35",
       "keyTopic": 31,
       "template": "band-strip",
       "params": {
@@ -185,90 +1261,599 @@
         "max": 400,
         "scale": "linear",
         "marks": [
-          { "at": 50, "label": "50 MHz", "note": "Difference: 200 − 150", "tone": "key" },
-          { "at": 350, "label": "350 MHz", "note": "Sum: 200 + 150", "tone": "key" },
-          { "at": 200, "label": "200 MHz", "note": "RF input leaking through" },
-          { "at": 150, "label": "150 MHz", "note": "Local oscillator leaking through" }
+          {
+            "at": 50,
+            "label": "50 MHz",
+            "note": "Difference: 200 − 150",
+            "tone": "key"
+          },
+          {
+            "at": 350,
+            "label": "350 MHz",
+            "note": "Sum: 200 + 150",
+            "tone": "key"
+          },
+          {
+            "at": 200,
+            "label": "200 MHz",
+            "note": "RF input leaking through"
+          },
+          {
+            "at": 150,
+            "label": "150 MHz",
+            "note": "Local oscillator leaking through"
+          }
         ]
       },
-      "onScreen": ["50 MHz: difference", "350 MHz: sum", "200 MHz: RF input", "150 MHz: local oscillator"],
-      "narration": "Mixers next. Feed a mixer an RF, or radio frequency, input of 200 megahertz and a local oscillator of 150 megahertz. What appears at the IF, or intermediate frequency, output before any filtering? The difference: 200 minus 150 is 50 megahertz. The sum: 200 plus 150 is 350 megahertz. And the original 200 and 150 megahertz signals leak through as well. So the answer is all four: 50, 150, 200 and 350 megahertz."
+      "onScreen": [
+        "50 MHz: difference",
+        "350 MHz: sum",
+        "200 MHz: RF input",
+        "150 MHz: local oscillator"
+      ],
+      "narration": "Let's try the exam's example. A megahertz is a million cycles per second. Feed a mixer an RF input of 200 megahertz and a local oscillator of 150 megahertz. What appears at the IF output before any filtering? The difference: 200 minus 150 is 50 megahertz. The sum: 200 plus 150 is 350 megahertz. And no mixer is perfect, so the original 200 and 150 megahertz signals leak through as well. So the answer is all 4: 50, 150, 200 and 350 megahertz. Choosing only 50, only 350, or just those 2, forgets the signals leaking through."
     },
     {
-      "id": "s11",
+      "id": "s36",
+      "keyTopic": 32,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3D7: inverting summing amplifier",
+        "figure": "3D7",
+        "callouts": [
+          {
+            "label": "3 DC inputs: 100, 200 and 250 mV"
+          },
+          {
+            "label": "Each through its own 10K resistor"
+          },
+          {
+            "label": "All meet at the inverting input (−)"
+          },
+          {
+            "label": "100K feedback resistor, output to the − input; + input grounded"
+          },
+          {
+            "label": "Output: −(R<sub>f</sub>/R<sub>in</sub>) × the sum of the inputs"
+          }
+        ]
+      },
+      "onScreen": [
+        "3 DC inputs: 100, 200 and 250 mV",
+        "Each through 10K",
+        "All meet at the inverting input",
+        "100K feedback; plus input grounded",
+        "Output: minus R sub f over R sub in times the sum"
+      ],
+      "narration": "Now for the exam's schematic figures. For each one, name the circuit, then trace what it does. Figure 3D7 should look familiar: it's an inverting amplifier with 3 inputs instead of 1. 3 steady DC voltages, 100, 200 and 250 millivolts, thousandths of a volt, each feed through their own 10 kilohm resistor, and all 3 meet at the inverting input. A 100 kilohm feedback resistor runs from the output back to that same point, and the plus input is grounded. Each input is amplified just as in the inverting amplifier, and their effects add: it's an inverting summing amplifier. So the output is minus R sub f over R sub in, times the sum of the inputs: negative, because the inputs feed the inverting input."
+    },
+    {
+      "id": "s37",
       "keyTopic": 32,
       "template": "formula",
       "params": {
-        "title": "Figure 3D7: inverting summing amplifier",
+        "title": "Figure 3D7: the output voltage",
         "formula": "V<sub>out</sub> = −(R<sub>f</sub>/R<sub>in</sub>)(V<sub>1</sub> + V<sub>2</sub> + V<sub>3</sub>)",
         "steps": [
           "R<sub>f</sub>/R<sub>in</sub> = 100 kΩ/10 kΩ = 10",
           "V<sub>1</sub> + V<sub>2</sub> + V<sub>3</sub> = 100 + 200 + 250 mV = 550 mV",
-          "V<sub>out</sub> = −10 × 550 mV"
+          "V<sub>out</sub> = −10 × 550 mV",
+          "1000 mV make 1 V"
         ],
         "answer": "V<sub>out</sub> = −5.5 V"
       },
-      "onScreen": ["V out = −(R sub f over R sub in)(V1 + V2 + V3)", "100 kΩ over 10 kΩ = 10", "100 + 200 + 250 mV = 550 mV", "V out = −5.5 V"],
-      "narration": "Figure 3D7 is an inverting summing amplifier. DC inputs of 100, 200 and 250 millivolts each feed the inverting input through a 10 kilohm resistor, with a 100 kilohm feedback resistor. The output is minus R sub f over R sub in, times the sum of the inputs. It's negative because the inputs feed the inverting input. R sub f over R sub in is 100 kilohms over 10 kilohms, which is 10. The inputs add up to 550 millivolts. So V out is minus 10 times 550 millivolts: minus 5.5 volts."
+      "onScreen": [
+        "V out = minus R sub f over R sub in times the sum",
+        "100 kΩ over 10 kΩ = 10",
+        "100 + 200 + 250 mV = 550 mV",
+        "Minus 10 times 550 mV",
+        "1000 mV make 1 V",
+        "V out = −5.5 V"
+      ],
+      "narration": "Let's work out the output. The formula: V out equals minus R sub f over R sub in, times V 1 plus V 2 plus V 3. Step 1, the gain: R sub f over R sub in is 100 kilohms over 10 kilohms, which is 10. Step 2, add the inputs: 100 plus 200 plus 250 millivolts makes 550 millivolts. Step 3, multiply, and keep the minus sign: minus 10 times 550 millivolts. Since 1000 millivolts make 1 volt, that's minus 5.5 volts. Does that make sense? A gain of 10 on a little over half a volt gives a little over 5 volts, inverted, so yes. Plain 5.5 volts forgets the inversion, and 150 millivolts or minus 15 millivolts are far too small for a gain of 10."
     },
     {
-      "id": "s12",
+      "id": "s38",
+      "keyTopic": 32,
+      "template": "key-facts",
+      "params": {
+        "title": "A fault with no figure: the coupling capacitor",
+        "items": [
+          "Amplifier stage: a transistor held ready by steady DC bias voltages",
+          "Coupling capacitor: lets the AC signal in, blocks DC",
+          "Fails open: the signal can't get in, so no amplification",
+          "DC measures normal: the bias never depended on that capacitor"
+        ]
+      },
+      "onScreen": [
+        "Amplifier stage with DC bias",
+        "Coupling capacitor passes AC, blocks DC",
+        "Open: no amplification",
+        "DC still measures normal"
+      ],
+      "narration": "Not every exam fault comes with a figure: here's one in words. An amplifier stage is usually built around a transistor, a part in which a small current controls a bigger one. It needs steady DC voltages, called its bias, to sit ready, a bit like an engine idling. The AC signal comes in through a coupling capacitor, which passes AC but blocks DC, so the signal gets in without upsetting the bias. What if that capacitor fails open, broken inside like a cut wire? The signal can't reach the amplifier, so no amplification occurs. But the DC within the circuit still measures normal, because the bias never depended on that capacitor. So improper biasing is a trap, and nothing here would cause oscillation or hum."
+    },
+    {
+      "id": "s39",
+      "keyTopic": 32,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3D10: the integrator",
+        "figure": "3D10",
+        "callouts": [
+          {
+            "label": "A series resistor feeds a shunt capacitor"
+          },
+          {
+            "label": "Input jumps up: C charges through R, fast at first, then slower"
+          },
+          {
+            "label": "Input drops: C discharges along the same kind of curve"
+          },
+          {
+            "label": "Answer: output 3, the rounded shark-fin wave"
+          }
+        ]
+      },
+      "onScreen": [
+        "Series resistor, shunt capacitor",
+        "C charges along a curve",
+        "C discharges along a curve",
+        "Output 3: rounded shark fin"
+      ],
+      "narration": "Capacitors also shape waves. In Figure 3D10, a resistor sits in series, in line with the signal, and a capacitor is connected in shunt, across the output. This is called an integrator. Feed it a square wave, which jumps suddenly between 2 levels. When the input jumps up, the capacitor charges through the resistor: quickly at first, then more and more slowly, because as its voltage rises, less voltage is left across the resistor to push current in. So the output rises along a curve. When the input drops, the capacitor discharges along a similar curve. The result is output 3, the rounded shark-fin wave. Output 1 keeps sharp corners, which this circuit can't make: like the bucket, a capacitor takes time to fill."
+    },
+    {
+      "id": "s40",
+      "keyTopic": 32,
+      "template": "key-facts",
+      "params": {
+        "title": "Diodes: one-way valves",
+        "items": [
+          "A diode lets current flow one way only",
+          "Symbol: the triangle (anode) points toward the bar (cathode)",
+          "Forward biased: anode more positive, it conducts, with about 0.7 V across it",
+          "Reverse biased: cathode more positive, it blocks",
+          "Tracing + to −: current passes only where the triangle points along the path"
+        ]
+      },
+      "onScreen": [
+        "Diode: one-way valve",
+        "Triangle is the anode, bar is the cathode",
+        "Forward biased: conducts, about 0.7 V across it",
+        "Reverse biased: blocks",
+        "Trace from plus to minus, along the triangles"
+      ],
+      "narration": "The next figures use diodes, so here's a quick refresher. A diode is a one-way valve for current. Its symbol is a triangle pointing at a bar. The triangle side is the anode, the bar is the cathode, and the triangle points the way current can flow. When the anode is more positive than the cathode, the diode is forward biased, and it conducts, though a common silicon diode keeps about 0.7 volts across itself while it does. Turn it the other way, with the cathode more positive, and it's reverse biased: it blocks, like a closed valve. On a schematic, we trace current from the positive side of the supply to the negative side, so a diode passes it only if its triangle points along our path."
+    },
+    {
+      "id": "s41",
       "keyTopic": 32,
       "template": "equipment-card",
       "params": {
         "title": "Figure 3D8: which lamps light?",
         "figure": "3D8",
         "callouts": [
-          { "label": "Trace each path from the battery's positive (top) terminal to its negative" },
-          { "label": "A lamp lights only through forward-biased diodes" },
-          { "label": "Lit: lamps 2, 3, 4, 7 and 8" },
-          { "label": "Dark: lamps 1, 5, 6 and 9: a reverse-biased diode blocks every path" }
+          {
+            "label": "Trace each path from the battery's positive (top) terminal to its negative"
+          },
+          {
+            "label": "At each diode: does its triangle point along your path?"
+          },
+          {
+            "label": "A lamp lights only through forward-biased diodes"
+          },
+          {
+            "label": "Lit: lamps 2, 3, 4, 7 and 8"
+          },
+          {
+            "label": "Dark: lamps 1, 5, 6 and 9: a reverse-biased diode blocks every path"
+          }
         ]
       },
-      "onScreen": ["Paths from positive (top) terminal to negative", "Forward-biased diodes only", "Lit: lamps 2, 3, 4, 7 and 8", "Dark: lamps 1, 5, 6 and 9"],
-      "narration": "Figure 3D8 asks which lamps are lit. Trace each lamp's path from the battery's positive terminal, at the top, back around to its negative terminal. A lamp lights only if it has a path through forward-biased diodes only. Lamps 2, 3, 4, 7 and 8 each have such a path, so they are lit. Lamps 1, 5, 6 and 9 stay dark, because a reverse-biased diode blocks every path through each of them."
+      "onScreen": [
+        "Paths from positive (top) terminal to negative",
+        "Check each diode's direction",
+        "Forward-biased diodes only",
+        "Lit: lamps 2, 3, 4, 7 and 8",
+        "Dark: lamps 1, 5, 6 and 9"
+      ],
+      "narration": "Figure 3D8 asks which lamps are lit. A lamp lights only if current can make a complete trip through it, from the battery's positive terminal, at the top, back around to its negative terminal. So for each lamp, trace its paths. At each diode on the way, check that you're travelling the way its triangle points. If a diode points against you, it's reverse biased, and that path is blocked. A lamp is lit if it has at least one path through forward-biased diodes only. Lamps 2, 3, 4, 7 and 8 each have such a path, so they are lit. Lamps 1, 5, 6 and 9 stay dark, because a reverse-biased diode blocks every path through each of them."
     },
     {
-      "id": "s13",
+      "id": "s42",
+      "keyTopic": 32,
+      "template": "block-diagram",
+      "params": {
+        "title": "A power supply in 4 stages",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "xfmr",
+            "label": "Transformer",
+            "note": "Steps the AC voltage down"
+          },
+          {
+            "id": "rect",
+            "label": "Rectifier diodes",
+            "note": "AC into one-way pulses"
+          },
+          {
+            "id": "filter",
+            "label": "Filter capacitor",
+            "note": "Smooths the pulses"
+          },
+          {
+            "id": "reg",
+            "label": "Regulator",
+            "note": "Holds the output steady"
+          }
+        ],
+        "links": [
+          {
+            "from": "xfmr",
+            "to": "rect"
+          },
+          {
+            "from": "rect",
+            "to": "filter"
+          },
+          {
+            "from": "filter",
+            "to": "reg"
+          }
+        ]
+      },
+      "onScreen": [
+        "Transformer steps the voltage down",
+        "Rectifier: AC into one-way pulses",
+        "Filter capacitor smooths",
+        "Regulator holds the output steady"
+      ],
+      "narration": "Diodes are also at the heart of the next figure, a power supply: the circuit that turns the AC from the wall into the steady DC that electronics need. It works in 4 stages. A transformer, 2 coils sharing a magnetic core, steps the wall voltage down. Rectifier diodes then let current through only one way, turning AC into one-way pulses. With 2 diodes, each handling half of the cycle, both halves get used: that's a full-wave rectifier. A large filter capacitor fills up on each pulse and tops up the gaps between them, smoothing the pulses into fairly steady DC. Finally, a regulator holds the output at a fixed voltage."
+    },
+    {
+      "id": "s43",
+      "keyTopic": 32,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside the regulator: the Zener diode",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "supply",
+            "label": "Filtered DC",
+            "note": "Not quite steady"
+          },
+          {
+            "id": "r1",
+            "label": "Resistor",
+            "note": "Feeds the Zener a small current"
+          },
+          {
+            "id": "zener",
+            "label": "Zener diode",
+            "note": "Reverse biased: holds its rated voltage"
+          },
+          {
+            "id": "ref",
+            "label": "Steady voltage",
+            "note": "A reference for the output"
+          }
+        ],
+        "links": [
+          {
+            "from": "supply",
+            "to": "r1"
+          },
+          {
+            "from": "r1",
+            "to": "zener"
+          },
+          {
+            "from": "zener",
+            "to": "ref"
+          }
+        ]
+      },
+      "onScreen": [
+        "Filtered DC, not quite steady",
+        "Resistor feeds the Zener",
+        "Zener holds its rated voltage",
+        "A steady reference for the output"
+      ],
+      "narration": "Inside the regulator are 2 more parts. The filtered DC, still not quite steady, feeds a resistor, and the resistor feeds a small current into the first part: a Zener diode. A Zener is a diode made to be used backward, reverse biased. An ordinary diode just blocks in that direction. A Zener blocks too, until the voltage across it reaches its rated value; then it conducts just enough to hold that voltage steady. Think of an overflow drain that keeps a tank at one level: any extra simply runs away. So the Zener's voltage stays put, a steady reference for the output. But a Zener can't carry much current, so it can't power the equipment by itself."
+    },
+    {
+      "id": "s44",
+      "keyTopic": 32,
+      "template": "key-facts",
+      "params": {
+        "title": "Inside the regulator: the pass transistor",
+        "items": [
+          "Transistor: 3 connections, base, collector and emitter",
+          "A small base current controls a big collector-to-emitter current",
+          "2 types, NPN and PNP; in an NPN the collector goes toward the positive side",
+          "The Zener holds the base; the emitter follows about 0.7 V below",
+          "Pass transistor: the load current passes through it"
+        ]
+      },
+      "onScreen": [
+        "Base, collector, emitter",
+        "Small base current controls a big one",
+        "NPN: collector toward positive",
+        "Emitter about 0.7 V below the base",
+        "Pass transistor carries the load current"
+      ],
+      "narration": "That's the job of the second part: a transistor, which you met in the amplifier stage. It has 3 connections: base, collector and emitter. A small current into the base controls a big current from the collector to the emitter: here, the load current, the current the equipment draws. Transistors come in 2 types, NPN and PNP; in an NPN, the collector goes toward the positive side. The Zener holds the base at a steady voltage, and the emitter, which feeds the output, follows about 0.7 volts below it. That's because the base-to-emitter junction behaves like a diode, keeping about 0.7 volts across itself. Wired this way, it's called a pass transistor: the load current passes through it."
+    },
+    {
+      "id": "s45",
       "keyTopic": 32,
       "template": "equipment-card",
       "params": {
         "title": "Figure 3D9: regulated power supply",
         "figure": "3D9",
         "callouts": [
-          { "label": "D1 and D2: full-wave rectifier, cathodes toward the positive line" },
-          { "label": "C1: filter" },
-          { "label": "R1 feeds D3, the 9.1 V Zener, holding TR1's base steady" },
-          { "label": "TR1: NPN pass transistor, emitter about 0.7 V below its base" },
-          { "label": "Regulated output about 8.4 V: the nominal 9 V" },
-          { "label": "No problem: the diodes aren't reversed, and TR1 needn't be a PNP" }
+          {
+            "label": "D1 and D2: full-wave rectifier, cathodes toward the positive line"
+          },
+          {
+            "label": "C1: filter capacitor"
+          },
+          {
+            "label": "R1 feeds D3, the 9.1 V Zener"
+          },
+          {
+            "label": "D3 holds the base of TR1 steady"
+          },
+          {
+            "label": "TR1: NPN pass transistor, emitter to the output"
+          },
+          {
+            "label": "Answer: there is no problem with the circuit"
+          }
         ]
       },
-      "onScreen": ["D1 and D2: full-wave rectifier", "C1 filters", "R1 feeds the 9.1 V Zener D3", "TR1 emitter 0.7 V below its base", "Output about 8.4 V, nominal 9 V", "No problem with this supply"],
-      "narration": "Figure 3D9 is a regulated power supply, and the exam asks what's wrong with it. D1 and D2 form a full-wave rectifier, with their cathodes toward the positive line. C1 filters. R1 feeds D3, the 9.1 volt Zener diode, which holds the base of the NPN pass transistor, TR1, steady. TR1's emitter follows about 0.7 volts below its base, giving a regulated output of about 8.4 volts: the nominal 9 volts. So there is no problem with this supply, and nothing needs changing. The diodes are not reversed, and TR1 does not need to be a PNP."
+      "onScreen": [
+        "D1 and D2: full-wave rectifier",
+        "C1 filters",
+        "R1 feeds the 9.1 V Zener D3",
+        "D3 holds TR1's base steady",
+        "TR1: NPN pass transistor",
+        "No problem with the circuit"
+      ],
+      "narration": "Now Figure 3D9. The exam asks whether anything is wrong with this regulated power supply, so let's name the parts. The top wire is the positive line. D1 and D2 form the full-wave rectifier, with their cathodes toward the positive line. That's right for a positive supply, because current leaves a diode through its cathode. C1 is the filter capacitor. R1 feeds D3, the 9.1 volt Zener diode, and D3 holds the base of TR1 steady. TR1 is the NPN pass transistor, with its collector on the positive line and its emitter feeding the output. Every part is where it belongs, so the answer is: there is no problem with the circuit."
     },
     {
-      "id": "s14",
+      "id": "s46",
       "keyTopic": 32,
-      "template": "comparison-table",
+      "template": "formula",
       "params": {
-        "title": "A fault and two output waveforms",
-        "columns": ["Circuit", "Input", "What you get"],
-        "rows": [
-          ["Amplifier, input coupling capacitor open", "Signal", "No amplification; DC measures normal"],
-          ["Figure 3D10: series R into a shunt C", "Square wave", "Output 3: rounded shark-fin wave"],
-          ["Figure 3D11: shunt diode, anode to output", "Pure AC", "Output 2: clipped at +0.7 V, full negative swing"]
+        "title": "Figure 3D9: the output voltage",
+        "formula": "V<sub>out</sub> ≈ V<sub>Zener</sub> − 0.7 V",
+        "steps": [
+          "The Zener holds TR1's base at 9.1 V",
+          "The emitter sits about 0.7 V lower",
+          "9.1 V − 0.7 V = 8.4 V",
+          "About 8.4 V: the nominal 9 V"
+        ],
+        "answer": "Nothing needs changing: no problem"
+      },
+      "onScreen": [
+        "V out about V Zener minus 0.7 V",
+        "Base held at 9.1 V",
+        "Emitter about 0.7 V lower",
+        "9.1 minus 0.7 = 8.4 V",
+        "About 8.4 V: the nominal 9 V",
+        "Nothing needs changing"
+      ],
+      "narration": "Let's check the output voltage, to be sure the supply does its job. The Zener holds TR1's base at 9.1 volts. The emitter, which feeds the output, follows about 0.7 volts below the base. So the output is 9.1 minus 0.7: about 8.4 volts. That's the nominal 9 volts marked on the drawing; nominal means the round figure it's named for. So nothing needs changing. Don't believe the choices that find a fault: D1 and D2 are not reversed, R1 is not too low, and TR1 does not need to be a PNP, since an NPN with its collector on the positive line is exactly right."
+    },
+    {
+      "id": "s47",
+      "keyTopic": 32,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3D11: the shunt diode",
+        "figure": "3D11",
+        "callouts": [
+          {
+            "label": "Series resistor, then a shunt diode across the output"
+          },
+          {
+            "label": "The diode's anode faces the output line"
+          },
+          {
+            "label": "Positive half-cycles: the diode conducts, output clipped at about +0.7 V"
+          },
+          {
+            "label": "Negative half-cycles: the diode blocks, the full swing passes"
+          },
+          {
+            "label": "Answer: output waveform 2"
+          }
         ]
       },
-      "onScreen": ["Open input coupling capacitor: no amplification, DC normal", "Figure 3D10 integrator: output 3, shark fin", "Figure 3D11 shunt diode: output 2, clipped at +0.7 V"],
-      "narration": "First, a fault with no figure. If an amplifier's input signal coupling capacitor fails open, no amplification will occur, yet the DC within the circuit measures normal, because the stage's DC bias never depended on that capacitor. Figure 3D10 is an integrator: a series resistor feeding a shunt capacitor. Put a square wave in, and you get output 3, the rounded shark-fin wave, because the capacitor charges and discharges along curved slopes. Figure 3D11 has a shunt diode whose anode faces the output line. Feed it pure AC, or alternating current, and you get output waveform 2: each positive half-cycle is clipped at about plus 0.7 volts, while the full negative swing passes."
+      "onScreen": [
+        "Series resistor, shunt diode",
+        "Anode faces the output line",
+        "Positive half-cycles clipped at about +0.7 V",
+        "Full negative swing passes",
+        "Output waveform 2"
+      ],
+      "narration": "One last figure, and it uses that 0.7 volts again. Figure 3D11 has a series resistor feeding a shunt diode across the output, with the diode's anode facing the output line. Feed it pure AC, a plain sine wave. On each positive half-cycle, the output line goes positive, which forward biases the diode. It conducts, and holds the output at about plus 0.7 volts, clipping off the top, while the rest of the voltage appears across the series resistor. On each negative half-cycle, the diode is reverse biased and blocks, so the full negative swing passes. That's output waveform 2. Output 1 is the untouched sine wave, and output 3 is the mirror image you'd get with the diode turned around."
+    },
+    {
+      "id": "s48",
+      "keyTopic": 32,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": [
+          "Resonance: series impedance ≈ R, minimum, current maximum; parallel ≈ R, maximum",
+          "Op-amps: gain set by external feedback to the − input; inverting: 180°; comparator: open loop",
+          "PLL: phase detector, low-pass filter, VCO. Exam impurity: broadband noise; DDS: spurs",
+          "Mixer: sum, difference and both inputs: 50, 150, 200 and 350 MHz",
+          "Figures: 3D7 gives −5.5 V; 3D9 has no problem; a conducting diode drops about 0.7 V"
+        ]
+      },
+      "onScreen": [
+        "Resonance: series minimum, parallel maximum",
+        "Op-amp feedback; inverting 180°; comparator open loop",
+        "PLL parts; broadband noise; DDS spurs",
+        "Mixer: 50, 150, 200 and 350 MHz",
+        "Figures: −5.5 V; no problem; 0.7 V"
+      ],
+      "narration": "To wrap up, 5 things to remember. First, resonance: X sub L equals X sub C. In series, the impedance is about the resistance, its minimum, so the current is maximum; in parallel, it's about the resistance, its maximum. Second, op-amps: external feedback, from the output to the inverting input, sets the gain; an inverting amplifier's output is 180 degrees out of phase; and a comparator runs open-loop. Third, a PLL is a phase detector, low-pass filter and VCO; for the exam its impurity is broadband noise, while a DDS makes discrete spurs. Fourth, a mixer gives the sum, the difference and both originals: 50, 150, 200 and 350 megahertz. Last, the figures: minus 5.5 volts, no problem with the power supply, and about 0.7 volts across a conducting diode."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [29] },
-    { "after": "s7", "keyTopics": [30] },
-    { "after": "s10", "keyTopics": [31] },
-    { "after": "s14", "keyTopics": [32] }
+    {
+      "after": "s4",
+      "keyTopics": [
+        29
+      ],
+      "questions": [
+        "3-29D2"
+      ]
+    },
+    {
+      "after": "s7",
+      "keyTopics": [
+        29
+      ],
+      "questions": [
+        "3-29D4",
+        "3-29D3",
+        "3-29D2"
+      ]
+    },
+    {
+      "after": "s10",
+      "keyTopics": [
+        29
+      ],
+      "questions": [
+        "3-29D6"
+      ]
+    },
+    {
+      "after": "s13",
+      "keyTopics": [
+        29
+      ],
+      "questions": [
+        "3-29D1",
+        "3-29D5",
+        "3-29D2",
+        "3-29D4",
+        "3-29D6"
+      ]
+    },
+    {
+      "after": "s17",
+      "keyTopics": [
+        30
+      ],
+      "questions": [
+        "3-30D5",
+        "3-30D4",
+        "3-30D3"
+      ]
+    },
+    {
+      "after": "s21",
+      "keyTopics": [
+        30
+      ],
+      "questions": [
+        "3-30D2",
+        "3-30D1",
+        "3-30D3",
+        "3-30D4",
+        "3-30D5"
+      ]
+    },
+    {
+      "after": "s25",
+      "keyTopics": [
+        30
+      ],
+      "questions": [
+        "3-30D6"
+      ]
+    },
+    {
+      "after": "s29",
+      "keyTopics": [
+        31
+      ],
+      "questions": [
+        "3-31D6",
+        "3-31D2"
+      ]
+    },
+    {
+      "after": "s32",
+      "keyTopics": [
+        31
+      ],
+      "questions": [
+        "3-31D4",
+        "3-31D1"
+      ]
+    },
+    {
+      "after": "s35",
+      "keyTopics": [
+        31
+      ],
+      "questions": [
+        "3-31D5",
+        "3-31D4",
+        "3-31D3"
+      ]
+    },
+    {
+      "after": "s38",
+      "keyTopics": [
+        32
+      ],
+      "questions": [
+        "3-32D1",
+        "3-32D3"
+      ]
+    },
+    {
+      "after": "s41",
+      "keyTopics": [
+        32
+      ],
+      "questions": [
+        "3-32D5",
+        "3-32D2"
+      ]
+    },
+    {
+      "after": "s45",
+      "keyTopics": [
+        32
+      ],
+      "questions": [
+        "3-32D4"
+      ]
+    },
+    {
+      "after": "s48",
+      "keyTopics": [
+        32
+      ],
+      "questions": [
+        "3-32D4",
+        "3-32D6"
+      ]
+    }
   ],
   "video": null
 }

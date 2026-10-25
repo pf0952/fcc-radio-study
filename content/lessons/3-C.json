@@ -11,45 +11,241 @@
       "params": {
         "kicker": "Element 3 · Subelement C",
         "title": "Components",
-        "subtitle": "Photoconductors, capacitors, transformers, regulators, SCRs and TRIACs, special diodes, transistors and LEDs, plus the turns-ratio math."
+        "subtitle": "Semiconductors and light, LEDs, transistors, capacitors, transformers, regulators, special diodes, SCRs and TRIACs, crystals and relays."
       },
-      "onScreen": ["Components", "Photoconductors to LEDs, plus transformer turns-ratio math"],
-      "narration": "This lesson walks through the components the Element 3 exam asks about. We'll start with photoconductive devices, then capacitors, transformers, voltage regulators and Zener diodes, SCRs, or silicon-controlled rectifiers, and TRIACs, special diodes, transistors, light-emitting diodes, or LEDs, and a few other devices. For each one you'll learn what it does, and we'll work the transformer turns-ratio problems step by step. First up: what light does to a semiconductor."
+      "onScreen": ["Components", "The parts inside a radio: what each one does, and why"],
+      "narration": "Welcome to Components. Every radio is built from a handful of parts: diodes that let current through one way, transistors that make weak signals stronger, capacitors and transformers that steer signals and power, and switches that control big currents with small ones. A technician needs to know what each part does, so that a schematic, a circuit's wiring diagram, makes sense and a fault can be traced. We'll start with a quick refresher on voltage, current and resistance, then meet semiconductors, the material most of these parts are made from. By the end, you'll be able to name each component the exam asks about, say how it works, and work the transformer turns-ratio problems step by step."
     },
     {
       "id": "s2",
+      "keyTopic": 19,
+      "template": "comparison-table",
+      "params": {
+        "title": "Current, voltage and resistance",
+        "columns": ["Quantity", "Water picture", "Measured in"],
+        "rows": [
+          ["Current", "How much water flows", "Amperes (amps)"],
+          ["Voltage", "The pressure pushing it", "Volts"],
+          ["Resistance", "A narrow pipe holding it back", "Ohms; conductivity is the opposite"],
+          ["Power", "The work the flow does", "Watts: volts × amps"],
+          ["Ohm's law", "More push, more flow", "Volts = amps × ohms"]
+        ]
+      },
+      "onScreen": ["Current: the flow, in amps", "Voltage: the push, in volts", "Resistance: the opposition, in ohms", "Conductivity: the opposite of resistance", "Power: volts × amps, in watts", "Ohm's law: volts = amps × ohms"],
+      "narration": "First, the ideas everything else rests on. Picture water in a pipe. Current is the flow. In a wire, it's electric charge moving along, carried by tiny particles called electrons, and it's measured in amperes, or amps. Voltage is the push, like water pressure, measured in volts. Resistance is whatever holds the flow back, like a narrow pipe, measured in ohms. Its opposite is conductivity, how easily current flows: high conductivity means low resistance. Power is how much work the flow does each second: volts times amps, measured in watts. And Ohm's law ties the first 3 together: voltage equals current times resistance. Pushing 1 amp through 10 ohms takes 10 volts."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 19,
+      "template": "key-facts",
+      "params": {
+        "title": "Free electrons and semiconductors",
+        "items": [
+          "Charge carrier: anything that moves and carries current, such as a free electron",
+          "Conductors such as copper: many free electrons. Insulators such as glass: almost none",
+          "Semiconductors such as silicon: in between; heat or light can free more electrons",
+          "A freed electron leaves a hole, which acts as a positive carrier",
+          "Electron-hole pair: 2 new charge carriers at once"
+        ]
+      },
+      "onScreen": ["Charge carriers carry current", "Conductors: many free electrons; insulators: almost none", "Semiconductors: in between", "A freed electron leaves a hole", "Electron-hole pair: 2 carriers"],
+      "narration": "Some materials carry current easily, and others hardly at all. The difference is free electrons, ones loose enough to move when a voltage pushes them. Anything that moves and carries current is called a charge carrier. Copper has plenty of free electrons, so it's a conductor. Glass and plastic have almost none, so they're insulators. In between sit semiconductors, such as silicon. Their electrons are mostly held in place, but a little energy, from heat or light, can knock one free. The empty spot it leaves is called a hole. A hole acts like a positive charge, and it moves too, as neighboring electrons hop in to fill it. Every freed electron makes an electron-hole pair: 2 new charge carriers."
+    },
+    {
+      "id": "s4",
       "keyTopic": 19,
       "template": "equipment-card",
       "params": {
         "title": "A photoresistor under a lamp",
         "device": "multimeter",
         "callouts": [
-          { "label": "Probes on a photoresistor, a cell of photoconductive material", "at": "probes" },
-          { "label": "Meter set to read resistance in ohms", "at": "selector" },
-          { "label": "Light frees electrons as extra charge carriers: conductivity rises", "at": "body" },
+          { "label": "Probes across a photoresistor, a cell of photoconductive material", "at": "probes" },
+          { "label": "Meter set to read resistance, in ohms", "at": "selector" },
+          { "label": "Light frees electrons as extra charge carriers: conductivity increases", "at": "body" },
           { "label": "Bright light: low resistance. Darkness: high resistance", "at": "display" }
         ]
       },
       "onScreen": ["Photoresistor on a multimeter", "Reading resistance in ohms", "Light frees electrons: conductivity increases", "Bright light: low resistance; darkness: high resistance"],
-      "narration": "Here's a photoresistor, a small cell of photoconductive material, with a multimeter set to read its resistance in ohms. When light shines on photoconductive material, its conductivity increases, because the light frees electrons to act as extra charge carriers. In crystalline solids like this one, the photoconductive effect produces a noticeable change in the resistance of the solid. In bright light the reading falls to a low resistance. In darkness it climbs back to a high resistance."
+      "narration": "Now let's put light to work. Photo means light, and a photoconductive material is one that conducts better in light. Here's a photoresistor, a small cell of photoconductive material, wired to a multimeter, a test meter set here to read resistance in ohms. When light shines on photoconductive material, its conductivity increases, because the light frees electrons to act as extra charge carriers. The material is a crystalline solid, its atoms locked in a regular, repeating pattern, and in crystalline solids the photoconductive effect produces a noticeable change in the resistance of the solid. In bright light the meter shows a low resistance; in darkness it climbs back up. So when the exam asks what changes, the answer is resistance."
     },
     {
-      "id": "s3",
+      "id": "s5",
+      "keyTopic": 19,
+      "template": "key-facts",
+      "params": {
+        "title": "The PN junction",
+        "items": [
+          "Doping: adding tiny traces of other chemical elements to silicon",
+          "N-type: extra free electrons. P-type: extra holes",
+          "PN junction: where P-type meets N-type",
+          "Depletion layer: a thin zone with no free carriers, a barrier",
+          "Diode: a part built around one PN junction"
+        ]
+      },
+      "onScreen": ["Doping", "N-type: extra electrons; P-type: extra holes", "PN junction", "Depletion layer: a barrier", "Diode: one junction"],
+      "narration": "Light does something even more useful at a junction, so let's see what a junction is. Makers add tiny traces of other chemical elements to silicon, which is called doping. One recipe gives N-type silicon, N for negative, with extra free electrons. Another gives P-type silicon, P for positive, with extra holes. Where a P-type region meets an N-type region, you get a PN junction. Right at the boundary, electrons wander across and fill nearby holes, leaving a thin zone with no free carriers at all. It's called the depletion layer, and it acts as an insulating barrier. A part built around one PN junction is a diode, and that barrier is what makes it a one-way valve for current."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 28,
+      "template": "comparison-table",
+      "params": {
+        "title": "Forward and reverse bias",
+        "columns": ["Bias", "Depletion layer", "Current"],
+        "rows": [
+          ["Forward: P side positive", "Squeezed thin", "Flows easily"],
+          ["Reverse: P side negative", "Widened", "Almost none"]
+        ]
+      },
+      "onScreen": ["Bias: a steady voltage across a junction", "Forward bias: barrier squeezed thin, current flows", "Reverse bias: barrier widened, almost no current"],
+      "narration": "To see that valve at work, put a steady voltage across the junction. That's called a bias, and it can face 2 ways. Forward bias puts the P side positive and the N side negative. It pushes carriers toward the junction and squeezes the depletion layer thin, so current flows easily. Reverse bias turns the voltage around, with the P side negative. Now carriers are pulled away from the junction, the depletion layer widens, and almost no current flows. There's the one-way valve: current passes in the forward direction and is blocked in reverse."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 28,
+      "template": "key-facts",
+      "params": {
+        "title": "A forward-biased junction: low impedance",
+        "items": [
+          "Impedance: opposition to current, in ohms, like resistance",
+          "Forward biased: a low impedance",
+          "Conducts heavily, with only a small voltage drop",
+          "Reverse biased: high impedance, very little current, nearly open"
+        ]
+      },
+      "onScreen": ["Impedance: opposition to current, in ohms", "Forward biased: low impedance", "Conducts heavily, small voltage drop", "Reverse biased: high impedance"],
+      "narration": "The exam describes this with the word impedance. Impedance is a general word for opposition to current, measured in ohms, just like resistance. A forward-biased diode junction is a low impedance. It conducts heavily, with only a small voltage drop, meaning little voltage is used up across it. A reverse-biased junction is the opposite: a high impedance, passing very little current, almost an open circuit, like a broken wire. So on the exam, forward biased means low impedance. The other choices, high impedance, very little current and an open circuit, all describe reverse bias."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 19,
+      "template": "block-diagram",
+      "params": {
+        "title": "Light on a junction",
+        "columns": 4,
+        "blocks": [
+          { "id": "light", "label": "Light strikes the junction" },
+          { "id": "pairs", "label": "Extra electron-hole pairs" },
+          { "id": "carriers", "label": "More charge carriers", "note": "Current crosses the barrier" },
+          { "id": "result", "label": "Junction resistance decreases", "note": "Conductivity increases" }
+        ],
+        "links": [
+          { "from": "light", "to": "pairs" },
+          { "from": "pairs", "to": "carriers" },
+          { "from": "carriers", "to": "result" }
+        ]
+      },
+      "onScreen": ["Light strikes the junction", "Extra electron-hole pairs", "More carriers cross the barrier", "Junction resistance decreases"],
+      "narration": "Now shine light on a reverse-biased junction, which normally passes almost no current. Light reaching the junction knocks electrons loose, creating extra electron-hole pairs in the barrier, and those new carriers carry current across. A junction made to respond to light is called photosensitive. So when a photosensitive semiconductor junction is illuminated, the junction resistance decreases. A diode built to work this way is a photodiode. This is the photoconductive effect, which the exam defines as the increased conductivity of an illuminated semiconductor junction. Lower resistance and higher conductivity are the same thing said 2 ways. The traps say the resistance increases, stays unchanged or becomes temperature dependent, or that conductivity decreases. Light adds carriers, so none of those fit."
+    },
+    {
+      "id": "s9",
       "keyTopic": 19,
       "template": "comparison-table",
       "params": {
         "title": "Photoconductive or photovoltaic?",
-        "columns": ["Effect", "Light on the junction", "Why"],
+        "columns": ["Effect", "What light does", "Example"],
         "rows": [
-          ["Photoconductive", "Conductivity up, resistance down", "Light creates extra electron-hole pairs"],
-          ["Photovoltaic", "Turned directly into an EMF", "A different process"]
+          ["Photoconductive", "Lowers resistance; a supply drives the current", "Photoresistor, photodiode"],
+          ["Photovoltaic", "Turned directly into an EMF", "Solar cell"]
         ]
       },
-      "onScreen": ["Photoconductive: conductivity up, junction resistance down", "Light creates extra electron-hole pairs", "Photovoltaic: light turned directly into an EMF"],
-      "narration": "2 effects sound alike, so let's separate them. The photoconductive effect is the increased conductivity of an illuminated semiconductor junction. When a photosensitive semiconductor junction is illuminated, the junction resistance decreases, because the light creates extra electron-hole pairs that carry current. Turning light directly into an EMF, an electromotive force, is the photovoltaic effect. That's a different process, so don't mix the 2 up on the exam."
+      "onScreen": ["Photoconductive: light lowers resistance; a supply drives the current", "Examples: photoresistor, photodiode", "Photovoltaic: light turned directly into an EMF", "Example: solar cell"],
+      "narration": "The photoconductive effect has a sound-alike, so let's separate them. In the photoconductive effect, light only lowers the resistance; a battery or power supply still provides the push that drives the current. Turning light directly into an EMF is a different process, the photovoltaic effect. EMF stands for electromotive force, another name for the voltage a source produces. A solar cell works this way: light in, voltage out, no battery needed. Light arrives in tiny packets of energy called photons, so if an exam choice says converting photon energy to electromotive energy, that's photovoltaic, not photoconductive. And the opposite, electromotive energy turned into photon energy, is what our next part does."
     },
     {
-      "id": "s4",
+      "id": "s10",
+      "keyTopic": 27,
+      "template": "key-facts",
+      "params": {
+        "title": "The LED: a diode that makes light",
+        "items": [
+          "LED: light-emitting diode",
+          "Forward bias drives electrons across the junction into holes",
+          "Recombination: each electron filling a hole releases energy as light",
+          "Reverse bias: no current, so no light"
+        ]
+      },
+      "onScreen": ["LED: light-emitting diode", "Forward bias: electrons meet holes", "Recombination releases light", "Reverse bias: no light"],
+      "narration": "That part is the LED, the light-emitting diode. It's a PN junction built to turn electricity into light. An LED needs forward bias to produce luminescence, which simply means giving off light. Here's why. Forward bias drives electrons across the junction, where they meet holes and drop into them. That's called recombination, and each time an electron fills a hole, it releases a little burst of energy as light. Reverse bias stops the current, so there's no recombination and no light. So the bias an LED needs is forward bias. Reverse bias is the trap, and so are logic 0 and logic 1 bias, which are terms from digital circuits."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 27,
+      "template": "comparison-table",
+      "params": {
+        "title": "What sets an LED's color?",
+        "columns": ["Change", "Effect on the light"],
+        "rows": [
+          ["Materials used to build it", "Sets the color"],
+          ["More current", "Brighter, same color"],
+          ["More voltage", "More current: brighter, same color"],
+          ["A colored lens", "Not the source: the junction makes the color"]
+        ]
+      },
+      "onScreen": ["Materials set the color", "More current: brighter, same color", "More voltage: brighter, same color", "Not a colored lens"],
+      "narration": "So where does the color come from? Each burst of light carries a set amount of energy, and that amount depends on the semiconductor materials the junction is made from. Different materials release different energies, and our eyes see different energies as different colors. So the visible color radiated by an LED junction is determined by the materials used to construct the device. Turning up the current makes more recombinations each second, so the LED gets brighter, but each burst still carries the same energy, so the color stays the same. Raising the voltage just raises the current. And the exam's colored lens in an eyepiece is a distraction: the color comes from the junction itself."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 27,
+      "template": "band-strip",
+      "params": {
+        "title": "How much current for an LED?",
+        "min": 0.0005,
+        "max": 2000,
+        "scale": "log",
+        "ends": ["Less current", "More current"],
+        "marks": [
+          { "at": 0.001, "label": "1 microamp", "note": "Far too little to light it", "tone": "muted" },
+          { "at": 7, "label": "5 or 10 mA", "note": "A dimmer light", "tone": "muted" },
+          { "at": 20, "label": "20 mA", "note": "Normal operating current and safe maximum", "tone": "key" },
+          { "at": 450, "label": "400 or 500 mA", "note": "Overheats and destroys it", "tone": "muted" },
+          { "at": 1000, "label": "1 amp", "note": "Destroys it", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["1 microamp: far too little", "5 or 10 milliamps: dimmer", "20 milliamps: operating current and safe maximum", "400 or 500 milliamps, or 1 amp: destroyed"],
+      "narration": "Color is one LED question; current is another. Small currents are measured in milliamps, and 1 milliamp is a thousandth of an amp. Let's climb the scale. 1 microamp, a millionth of an amp, would hardly light an LED at all. 5 or 10 milliamps gives a dimmer light. The approximate operating current of a light-emitting diode is 20 milliamps, enough for a bright indicator light. And for the exam, 20 milliamps is also the maximum current to safely illuminate an LED. Far more, such as 400 or 500 milliamps, or a whole amp, would overheat the tiny junction and destroy it. So for any LED current question, think 20 milliamps."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 27,
+      "template": "block-diagram",
+      "params": {
+        "title": "Protect an LED with a series resistor",
+        "columns": 3,
+        "blocks": [
+          { "id": "sup", "label": "Supply", "note": "Pushes current around the loop" },
+          { "id": "res", "label": "Series resistor", "note": "Sets the current for both" },
+          { "id": "led", "label": "LED", "note": "Very low resistance once it conducts" }
+        ],
+        "links": [
+          { "from": "sup", "to": "res", "label": "Same current" },
+          { "from": "res", "to": "led", "label": "Same current" }
+        ]
+      },
+      "onScreen": ["Supply pushes current around the loop", "Series resistor: same current, and it sets it", "LED: very low resistance once it conducts", "A series resistor protects the LED"],
+      "narration": "So how do you hold an LED to 20 milliamps? Start with the supply, which pushes current around a loop. In that loop, put a resistor in series with the LED. Series means in the same path, one after the other, so the same current flows through both. Why is the resistor needed? Once an LED conducts, it's a forward-biased junction, a low impedance. Connected straight across the supply, it would let the current soar far past 20 milliamps and burn itself out. The resistor's resistance stays fixed, so it's the resistor that sets the current. That's why a series resistor must be connected to protect an LED."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 27,
+      "template": "formula",
+      "params": {
+        "title": "Sizing the LED's series resistor",
+        "formula": "R = (V<sub>supply</sub> − V<sub>LED</sub>)/I",
+        "steps": [
+          "Example: 12 V supply, red LED drops about 2 V",
+          "Resistor drops 12 V − 2 V = 10 V",
+          "R = 10 V ÷ 20 mA = 500 Ω"
+        ],
+        "answer": "R = 500 Ω holds the LED to about 20 mA"
+      },
+      "onScreen": ["R = (V supply − V LED) / I", "12 volts − 2 volts = 10 volts", "10 volts ÷ 20 milliamps = 500 ohms", "Holds the LED to about 20 milliamps"],
+      "narration": "How big a resistor? The resistor takes whatever voltage the LED doesn't, so R equals V sub supply minus V sub LED, all over I. While it conducts, an LED holds a fairly fixed voltage, about 2 volts for a red one. With a 12 volt supply, the resistor must drop 12 minus 2, or 10 volts. Ohm's law turned around says resistance equals voltage divided by current. So divide 10 volts by 20 milliamps, which is 20 thousandths of an amp, and you get 500 ohms. Does that make sense? A bigger resistor would let less current through and dim the LED; a smaller one would push it past 20 milliamps."
+    },
+    {
+      "id": "s15",
       "keyTopic": 19,
       "template": "block-diagram",
       "params": {
@@ -59,7 +255,7 @@
           { "id": "in", "label": "Input circuit" },
           { "id": "led", "label": "LED", "note": "Light-emitting diode" },
           { "id": "out", "label": "Output circuit" },
-          { "id": "photo", "label": "Photosensitive device", "note": "Same package as the LED" }
+          { "id": "photo", "label": "Photosensitive device", "note": "Such as a photodiode, in the same package" }
         ],
         "links": [
           { "from": "in", "to": "led" },
@@ -69,63 +265,370 @@
         ]
       },
       "onScreen": ["Input circuit drives the LED", "Output circuit driven by a photosensitive device", "Signal crosses the gap as light", "No electrical connection between input and output"],
-      "narration": "An optoisolator, also called an optocoupler, is an LED and a photosensitive device in one package. On the input side, the circuit drives the LED. On the output side, the circuit is driven by the photosensitive device. The LED's light shines across a small gap onto the photosensitive device. Because the signal crosses the gap as light, the input and output circuits have no electrical connection. So when you see an LED and a photosensitive device, think optoisolator, or optocoupler."
+      "narration": "Put an LED together with the photodiode from earlier, and you get a handy part. An optoisolator, also called an optocoupler, is an LED and a photosensitive device, such as a photodiode, in one package. The input circuit drives the LED. Its light shines across a small gap onto the photosensitive device, which drives the output circuit. Because the signal crosses the gap as light, the input and output circuits have no electrical connection. That lets a low-voltage control circuit safely send signals to a high-voltage one. So an LED and a photosensitive device means optoisolator, or optocoupler. The exam's other pairings, such as an LED with a battery, have no photosensitive device, so no signal could cross by light."
     },
     {
-      "id": "s5",
+      "id": "s16",
+      "keyTopic": 27,
+      "template": "block-diagram",
+      "params": {
+        "title": "Optoisolator or optointerrupter?",
+        "columns": 2,
+        "blocks": [
+          { "id": "led1", "label": "LED", "note": "Optoisolator" },
+          { "id": "pd1", "label": "Photodiode", "note": "Light-tight enclosure" },
+          { "id": "led2", "label": "LED", "note": "Optointerrupter" },
+          { "id": "ps2", "label": "Photosensitive device", "note": "Open slot: an object can break the beam" }
+        ],
+        "links": [
+          { "from": "led1", "to": "pd1", "label": "Light, sealed in" },
+          { "from": "led2", "to": "ps2", "label": "Beam across an open slot" }
+        ]
+      },
+      "onScreen": ["Optoisolator: LED facing a photodiode", "Light-tight enclosure", "Optointerrupter: open slot", "An object can break the beam"],
+      "narration": "The exam describes the same part a second way. An LED facing a photodiode in a light-tight enclosure is commonly known as an optoisolator. Light-tight means sealed, so no outside light gets in to disturb the signal. An optointerrupter is built differently. It has an open slot between the LED and the photosensitive device, so an object passing through the slot breaks the beam, and the output switches. Machines use them to sense a moving part, such as paper in a printer. Don't pick seven-segment LED, a number display made of LED bars, or infrared detector, a photosensitive device on its own. Sealed in is an optoisolator; an open slot is an optointerrupter."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 25,
+      "template": "waveform",
+      "params": {
+        "title": "DC, AC and signals",
+        "kind": "sine",
+        "cycles": 2,
+        "labels": [
+          "DC: a steady push in one direction",
+          "AC: rises, falls and reverses, over and over",
+          "1 cycle: one full back-and-forth",
+          "Frequency: cycles per second, in hertz"
+        ],
+        "xAxis": "Time",
+        "yAxis": "Voltage"
+      },
+      "onScreen": ["DC: steady, one direction", "AC: reverses back and forth", "1 cycle: one full back-and-forth", "Frequency: cycles per second, in hertz"],
+      "narration": "That covers the diodes that sense and make light. Next come transistors, which amplify signals, making them stronger. So first, what is a signal? A battery gives direct current, or DC: a steady push in one direction. Alternating current, or AC, rises, falls and reverses, like this wave. One full back-and-forth is a cycle, and the number of cycles each second is the frequency, measured in hertz. Household power is 60 hertz. Sound becomes an audio signal of hundreds to thousands of hertz, and radio signals run far faster, often millions of hertz: RF, for radio frequency. A signal is a voltage or current that changes to carry information, such as your voice, and it usually swings like AC."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 25,
+      "template": "key-facts",
+      "params": {
+        "title": "The bipolar transistor: 2 junctions",
+        "items": [
+          "A diode has 1 junction; a bipolar transistor has 2",
+          "NPN: a thin P-type base between 2 N-type layers",
+          "3 terminals: base, collector and emitter",
+          "Bipolar: both electrons and holes carry the current"
+        ]
+      },
+      "onScreen": ["2 junctions", "NPN: thin P-type base between N-type layers", "Terminals: base, collector, emitter", "Bipolar: electrons and holes"],
+      "narration": "Now the transistor itself. A diode is 1 PN junction. Stack 3 layers instead of 2, and you get 2 junctions: that's a bipolar transistor. In the common NPN type, a very thin P-type layer is sandwiched between 2 N-type layers. Each layer has its own terminal, a lead for connecting it to the circuit. The 3 terminals of a bipolar transistor are the base, the collector and the emitter. The base is the thin middle layer, and the emitter and collector are the outer ones. The name bipolar means both kinds of charge carrier, electrons and holes, carry its current."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 25,
+      "template": "block-diagram",
+      "params": {
+        "title": "How a transistor amplifies",
+        "columns": 3,
+        "blocks": [
+          { "id": "e", "label": "Emitter", "note": "Sends carriers in" },
+          { "id": "b", "label": "Base", "note": "Thin layer: the control" },
+          { "id": "c", "label": "Collector", "note": "Gathers the carriers" }
+        ],
+        "links": [
+          { "from": "e", "to": "b", "label": "Carriers enter" },
+          { "from": "b", "to": "c", "label": "Most pass straight through" }
+        ]
+      },
+      "onScreen": ["Emitter sends carriers in", "Thin base: most pass straight through", "Collector gathers them", "Small base current controls a large collector current", "Gain: output compared with input"],
+      "narration": "How does it amplify? Put a small current into the base, and it forward biases the base-emitter junction, so the emitter starts sending carriers into the base. The base is so thin that almost all of them shoot straight through to the collector, which gathers them. Only a few leave by the base. So a small base current unlocks a much larger current from emitter to collector. Feed a weak signal into the base, and a bigger copy appears at the collector. That's an amplifier, and how much bigger the output is than the input is called its gain."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 25,
+      "template": "comparison-table",
+      "params": {
+        "title": "Whose terminals are these?",
+        "columns": ["Device", "Terminals", "How it works"],
+        "rows": [
+          ["Bipolar transistor", "Base, collector, emitter", "Base current controls current"],
+          ["FET (field-effect)", "Gate, source, drain", "Gate voltage controls current"],
+          ["Vacuum tube", "Cathode, plate, grid", "Older glass amplifier"]
+        ]
+      },
+      "onScreen": ["Bipolar transistor: base, collector, emitter", "FET: gate, source, drain", "Vacuum tube: cathode, plate, grid", "Not gate, source and sink"],
+      "narration": "Before going on, a word on names. The exam uses other devices' terminals as traps, so learn them side by side. A bipolar transistor has base, collector and emitter. A FET, or field-effect transistor, is the other big transistor family: a voltage on its gate controls the current flowing between its source and its drain. So gate, source and drain belong to a FET. Beware the made-up choice gate, source and sink; the real word is drain. Cathode, plate and grid belong to the vacuum tube, the glass amplifier that came before transistors. For a bipolar transistor, the answer is always base, collector and emitter."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 25,
+      "template": "formula",
+      "params": {
+        "title": "Alpha: collector current vs emitter current",
+        "formula": "α = ΔI<sub>C</sub>/ΔI<sub>E</sub>",
+        "steps": [
+          "Δ (delta): the change in; I: current",
+          "Emitter current = base current + collector current",
+          "Almost all of it reaches the collector",
+          "α ≈ 0.95 to 0.995: just under 1"
+        ],
+        "answer": "Alpha: collector current vs emitter current"
+      },
+      "onScreen": ["Alpha = change in I sub C / change in I sub E", "Emitter current = base + collector current", "Alpha: just under 1, about 0.95 to 0.995"],
+      "narration": "Back to the bipolar transistor and its gain. The exam describes its current gain with 2 Greek letters. The first is alpha, the change of collector current with respect to emitter current: alpha equals delta I sub C over delta I sub E. Delta means the change in, and I means current. All the current entering at the emitter leaves by one of 2 doors: a little through the base, and nearly all through the collector. Because almost all of it reaches the collector, alpha is just under 1, typically about 0.95 to 0.995. If a choice compares collector current with base current, that's beta, not alpha."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 25,
+      "template": "formula",
+      "params": {
+        "title": "Beta: collector current vs base current",
+        "formula": "β = ΔI<sub>C</sub>/ΔI<sub>B</sub>",
+        "steps": [
+          "Base current changes by 1 mA",
+          "Collector current changes by 100 mA",
+          "β = 100 mA ÷ 1 mA = 100",
+          "Typical β: about 20 to several hundred"
+        ],
+        "answer": "Ratio to base current: beta"
+      },
+      "onScreen": ["Beta = change in I sub C / change in I sub B", "1 milliamp change at the base", "100 milliamp change at the collector", "Beta = 100", "Typical: 20 to several hundred"],
+      "narration": "The second letter, beta, shows the transistor's real strength. Beta is the change of collector current with respect to base current: beta equals delta I sub C over delta I sub B. Let's work one. Suppose the base current changes by 1 milliamp, and as a result the collector current changes by 100 milliamps. Divide 100 milliamps by 1 milliamp, and beta is 100. The units cancel, so beta is just a number: the collector current changes 100 times as much as the base current. Typical values run from about 20 to several hundred. So whenever the ratio is collector current to base current, the answer is beta."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 26,
+      "template": "equipment-card",
+      "params": {
+        "title": "Turning on an NPN silicon transistor",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Probes across the base-emitter junction", "at": "probes" },
+          { "label": "0.7 volts: the forward voltage a silicon junction needs to conduct", "at": "volts" },
+          { "label": "Base at least 0.7 volts positive with respect to the emitter", "at": "display" },
+          { "label": "Less, or a negative base: no emitter-collector current", "at": "body" }
+        ]
+      },
+      "onScreen": ["Measuring base to emitter", "Silicon junction forward voltage: 0.7 volts", "Base at least 0.7 volts positive", "Less, or negative: no current"],
+      "narration": "Beta tells you how much a transistor amplifies, but only once it's switched on. So how do you turn it on? Its base-emitter junction is just a diode, so it has to be forward biased, and a silicon junction won't conduct until the forward voltage reaches about 0.7 volts. In an NPN transistor, the base is the P layer, so forward bias means the base must be positive. That gives the exam fact: for current to flow in an NPN silicon transistor's emitter-collector junction, the base must be at least 0.7 volts positive with respect to the emitter. Not 0.4 volts, which is too little, and not negative, which is reverse bias and keeps the transistor off."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 26,
+      "template": "comparison-table",
+      "params": {
+        "title": "Off, amplifying, fully on",
+        "columns": ["State", "Collector current", "Acts like"],
+        "rows": [
+          ["Cutoff", "None", "An open switch"],
+          ["Active", "Follows the base current", "An amplifier"],
+          ["Saturation", "At its maximum value", "A closed switch"]
+        ]
+      },
+      "onScreen": ["Cutoff: no current between emitter and collector", "Cutoff: like an open switch", "Active: amplifies", "Saturation: collector current at its maximum", "Limited by supply voltage and load resistance"],
+      "narration": "Below 0.7 volts the transistor is off; above it, it's on. In fact it has 3 states. Cut off, it passes no current between emitter and collector, so it's like an open switch. The exam defines cutoff by that main path, not by the base current. Give the base some current, and it's active: the collector current follows the base current, and it amplifies. Add more and you reach saturation. A fully saturated transistor has its collector current at its maximum value. More base current can't raise it; only the supply voltage and the resistance of the load, the part being driven, limit it. It acts like a closed switch. Not minimum current, and not alpha or beta at maximum."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 26,
+      "template": "comparison-table",
+      "params": {
+        "title": "Junction bias: cutoff, Class A, saturation",
+        "columns": ["Operation", "Base-emitter", "Collector-base", "Result"],
+        "rows": [
+          ["Cutoff", "Reverse biased", "Reverse biased", "No current: an open switch"],
+          ["Class A", "Forward biased", "Reverse biased", "Linear for the whole cycle"],
+          ["Saturation", "Forward biased", "Forward biased", "Collector current can rise no further"]
+        ]
+      },
+      "onScreen": ["Cutoff: both junctions reverse biased", "Class A: base-emitter forward, collector-base reverse", "Saturation: both junctions forward biased"],
+      "narration": "Each state comes from the bias on the transistor's 2 junctions, base-emitter and collector-base. In cutoff, both junctions are reverse biased, so no current flows. A Class A amplifier is one where the transistor conducts for the whole of every cycle. When an NPN transistor is operating as a Class A amplifier, the base-emitter junction is forward biased and the collector-base junction is reverse biased. That keeps it in the active state, also called its linear region, where the output follows the input in proportion. Drive the base so hard that both junctions are forward biased, and you reach saturation: collector current can rise no further. Both reverse is cutoff, forward-reverse is Class A, both forward is saturation."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 26,
+      "template": "comparison-table",
+      "params": {
+        "title": "3 ways to connect a transistor",
+        "columns": ["Configuration", "Signal in at", "Signal out at"],
+        "rows": [
+          ["Common emitter", "Base", "Collector"],
+          ["Common base", "Emitter", "Collector"],
+          ["Common collector", "Base", "Emitter"]
+        ]
+      },
+      "onScreen": ["The common terminal is shared by input and output", "Common emitter: in at base, out at collector", "Common base: in at emitter, out at collector", "Common collector: in at base, out at emitter"],
+      "narration": "With the bias set, how is the signal connected? A signal needs 2 wires to come in and 2 to go out, but a transistor has only 3 terminals, so one terminal is shared by the input and the output. Each of the 3 wirings is named for that common terminal. In common emitter, the signal goes in at the base and out at the collector. It's the everyday workhorse, with good voltage and current gain. In common base, the signal goes in at the emitter and out at the collector. In common collector, it goes in at the base and out at the emitter. Each trades voltage gain against current gain differently, and the exam asks which wins."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 26,
+      "template": "key-facts",
+      "params": {
+        "title": "Common base: most voltage gain",
+        "items": [
+          "Current gain: alpha, just under 1",
+          "Input impedance: very low. Output impedance: high",
+          "Same current into a higher impedance makes a bigger voltage",
+          "Most voltage gain of the 3 configurations"
+        ]
+      },
+      "onScreen": ["Current gain just under 1", "Very low input impedance, high output impedance", "Same current, higher impedance: more voltage", "Most voltage gain of the 3"],
+      "narration": "Start with common base. Its current gain is alpha, just under 1, so its voltage gain must come from impedance. Every amplifier has an input impedance, the opposition a signal meets going in, and an output impedance, the same at the output. Common base takes the signal in at a very low input impedance and delivers nearly the same current into a high output impedance. By Ohm's law, the same current through a higher impedance makes a bigger voltage, so a common base amplifier has more voltage gain than common emitter or common collector. As for the traps, the most power gain belongs to common emitter, which boosts both, and common base has the lowest input impedance, not the highest."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 26,
+      "template": "key-facts",
+      "params": {
+        "title": "The emitter follower: most current gain",
+        "items": [
+          "Common collector, also called the emitter follower",
+          "Output at the emitter follows the input: voltage gain just under 1",
+          "Current gain: β + 1, the most of the 3",
+          "High input, low output impedance: a good buffer"
+        ]
+      },
+      "onScreen": ["Common collector: the emitter follower", "Voltage gain just under 1", "Current gain: beta plus 1, the most of the 3", "A good buffer"],
+      "narration": "Common collector is the opposite. Its output comes from the emitter, whose voltage follows the base voltage, staying about 0.7 volts below it. That's why it's called an emitter follower, and its voltage gain is just under 1. The emitter carries base current plus collector current, which is beta times bigger, so the current gain is beta plus 1. So an emitter-follower amplifier has more current gain than common emitter or common base. With a high input impedance and a low output impedance, it makes a good buffer, letting a weak source drive a load that draws a lot of current. It doesn't win on voltage gain or power gain, and its input impedance is the highest of the 3."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 25,
+      "template": "band-strip",
+      "params": {
+        "title": "The beta cutoff frequency",
+        "min": 0,
+        "max": 4,
+        "scale": "even",
+        "ends": ["Low frequency", "High frequency"],
+        "marks": [
+          { "at": 1, "label": "Low frequencies", "note": "Beta at its maximum" },
+          { "at": 2, "label": "Beta cutoff frequency", "note": "Gain down to 0.707 of maximum: −3 dB", "tone": "key" },
+          { "at": 3, "label": "Higher still", "note": "Gain keeps falling", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Low frequencies: beta at its maximum", "Beta cutoff: gain down to 0.707 of maximum", "0.707: the half-power, −3 dB point", "Higher still: gain keeps falling"],
+      "narration": "One more thing limits every configuration: speed. At low frequencies, a transistor's gain holds steady at its maximum, but as the frequency rises, it eventually falls. The beta cutoff frequency of a bipolar transistor is the frequency at which the emitter current gain has decreased to 0.707 of its maximum. The exam says emitter current gain because beta is the current gain of the common-emitter circuit. Why 0.707? Power goes with the current multiplied by itself, and 0.707 times 0.707 is about a half. That's the half-power point: minus 3 decibels, on the scale used to compare signal levels. Above it, the gain keeps falling. Watch the traps: decreased, not increased, and emitter current gain, not base, collector or gate."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 28,
+      "template": "key-facts",
+      "params": {
+        "title": "The MOSFET: an insulated gate",
+        "items": [
+          "Channel: the path the current flows through",
+          "Gate: a metal contact above the channel",
+          "A very thin oxide layer insulates the gate from the channel",
+          "N-channel and P-channel types switch on with opposite gate voltages"
+        ]
+      },
+      "onScreen": ["Channel: the current's path", "Metal gate", "Very thin oxide insulator", "N-channel and P-channel MOSFETs"],
+      "narration": "That's it for the bipolar transistor. Now back to the FET family from earlier, where a voltage on the gate controls the current. That current flows through a path called the channel. In the most common kind, the gate is a metal contact sitting above the channel, separated from it by a very thin layer of oxide, a glass-like insulator. So no current flows into the gate; its voltage alone does the controlling. That's a MOSFET: a metal-oxide semiconductor field-effect transistor, named for its layers of metal, oxide and semiconductor. Its channel can be N-type or P-type, giving N-channel and P-channel MOSFETs, which switch on with opposite gate voltages."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 28,
+      "template": "comparison-table",
+      "params": {
+        "title": "CMOS: what the letters mean",
+        "columns": ["Letters", "Stand for", "Meaning"],
+        "rows": [
+          ["C", "Complementary", "P-channel and N-channel MOSFETs paired"],
+          ["MOS", "Metal-oxide semiconductor", "Metal gate on a thin oxide insulator"]
+        ]
+      },
+      "onScreen": ["CMOS: complementary metal-oxide semiconductor", "P-channel and N-channel MOSFETs paired", "One of each pair is off", "Very little static power"],
+      "narration": "Pair the 2 types and you get CMOS, which stands for complementary metal-oxide semiconductor. Complementary means a matched pair that work in opposite ways. CMOS pairs P-channel and N-channel MOSFETs, wired so that whenever one of a pair is on, the other is off. Current never has a straight path through the pair, and it flows only for an instant while they switch. That's why CMOS logic, the on-off circuits inside digital chips, draws very little static power, the power used while standing still. On the exam, it's not mica, silicon or substrate: CMOS is complementary metal-oxide semiconductor."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 28,
+      "template": "key-facts",
+      "params": {
+        "title": "Handle FETs and CMOS with care",
+        "items": [
+          "The gate oxide is extremely thin",
+          "Static charge on your body can reach thousands of volts",
+          "A static spark can puncture the gate oxide",
+          "Protection: grounded wrist straps, antistatic mats, conductive packaging"
+        ]
+      },
+      "onScreen": ["Very thin gate oxide", "Static can reach thousands of volts", "A spark punctures the oxide", "Wrist straps, antistatic mats, conductive packaging"],
+      "narration": "That thin oxide is also the weak spot. FET and CMOS devices need special handling precautions, because they are susceptible to damage from static charges. Static is the charge that builds up on your body when you walk across a carpet, and it can reach thousands of volts. If it jumps to a gate, the spark can puncture the very thin gate oxide and ruin the device, sometimes without any visible sign. So technicians wear wrist straps wired to ground, the zero-volt reference point, work on antistatic mats, and store parts in conductive packaging, all to drain charge away harmlessly. The exam's other reasons, fragile leads, delicate welded junctions or sensitivity to light, are not it. The danger is static."
+    },
+    {
+      "id": "s33",
+      "keyTopic": 20,
+      "template": "key-facts",
+      "params": {
+        "title": "What a capacitor is",
+        "items": [
+          "2 metal plates separated by an insulator, the dielectric",
+          "A voltage piles charge onto one plate and pulls it off the other",
+          "Energy is stored in the electric field between the plates",
+          "Capacitance: how much charge it stores per volt, in farads",
+          "Microfarad (µF): a millionth of a farad"
+        ]
+      },
+      "onScreen": ["2 plates and a dielectric", "Charge builds up on the plates", "Energy stored in the electric field", "Capacitance: charge per volt, in farads", "Microfarad: a millionth of a farad"],
+      "narration": "In a real amplifier, transistors are surrounded by capacitors, so let's meet those next. A capacitor is 2 metal plates separated by an insulator called the dielectric. Connect a battery, and electrons pile onto one plate while the battery pulls the same number off the other. No current crosses the insulator, but charge builds up on the plates, and energy is stored in the electric field between them, the invisible push and pull between the charges. How much charge a capacitor stores for each volt is its capacitance, measured in farads. A farad is huge, so capacitors are often rated in microfarads, millionths of a farad. Types are named for what they're made of, such as ceramic, mica and electrolytic."
+    },
+    {
+      "id": "s34",
       "keyTopic": 20,
       "template": "formula",
       "params": {
         "title": "What sets a capacitor's capacitance",
         "formula": "C = εA/d",
         "steps": [
-          "ε: dielectric constant between the plates",
-          "A: plate area",
+          "A: area of the plates",
           "d: distance between the plates",
-          "Plate voltage and stored charge don't change C"
+          "ε (epsilon): dielectric constant of the material",
+          "Voltage and stored charge don't change C"
         ],
         "answer": "Plate spacing and dielectric constant set C"
       },
-      "onScreen": ["C = εA/d", "ε: dielectric constant", "A: plate area", "d: distance between the plates", "Voltage and charge don't change it"],
-      "narration": "What determines the capacitance of a capacitor? The formula is C equals epsilon A over d. Epsilon is the dielectric constant of the material between the plates, A is the plate area, and d is the distance between the plates. The voltage on the plates and the amount of charge stored do not change the capacitance. So for the exam, capacitance is determined by the distance between the plates and the dielectric constant of the material between them."
+      "onScreen": ["C = εA/d", "A: plate area", "d: distance between the plates", "ε: dielectric constant", "Voltage and charge don't change it"],
+      "narration": "What determines the capacitance? The formula is C equals epsilon A over d. A is the area of the plates: bigger plates hold more charge. d is the distance between them: move the plates closer, and their charges pull on each other more strongly, so more charge fits for each volt. Epsilon is the dielectric constant, a number for how much the insulating material boosts the capacitance compared with air or empty space. So for the exam, capacitance is determined by the distance between the plates and the dielectric constant of the material between them. The voltage on the plates and the amount of charge don't change it; more voltage simply stores more charge, in the same proportion."
     },
     {
-      "id": "s6",
+      "id": "s35",
       "keyTopic": 20,
-      "template": "equipment-card",
+      "template": "comparison-table",
       "params": {
-        "title": "Figure 3C4: neutralizing and signal ground",
-        "figure": "3C4",
-        "callouts": [
-          { "label": "Dashed line: a small variable capacitor decreases parasitic oscillations" },
-          { "label": "It neutralizes: opposite-phase feedback cancels unwanted feedback" },
-          { "label": "Component 2: a capacitor to ground, the signal ground" },
-          { "label": "Low reactance at RF shunts the signal away; it blocks DC, so bias is kept" }
+        "title": "A capacitor on DC and on AC",
+        "columns": ["Supply", "What the plates do", "Current"],
+        "rows": [
+          ["DC", "Fill up once, then stop", "Stops: DC is blocked"],
+          ["AC", "Charge one way, then the other", "Keeps flowing: AC passes"]
         ]
       },
-      "onScreen": ["Figure 3C4", "Dashed line: small variable capacitor decreases parasitic oscillations", "Neutralizing capacitor cancels unwanted feedback", "Component 2: signal ground", "Low reactance at RF, blocks DC"],
-      "narration": "Figure 3C4 shows radio frequency, or RF, stages between an oscillator and a power amplifier. If a small variable capacitor were installed in place of the dashed line, it would decrease parasitic oscillations. It acts as a neutralizing capacitor, feeding back an opposite-phase signal that cancels unwanted feedback through the transistor. Now find component 2. It provides a signal ground. It's a capacitor to ground whose low reactance at RF shunts the signal away, while it blocks direct current, or DC, so the bias is undisturbed."
+      "onScreen": ["DC: plates fill, then current stops", "AC: plates charge one way, then the other", "Blocks DC, passes AC"],
+      "narration": "So a capacitor stores charge. What happens when you try to push current through one? Connect DC, and current flows only until the plates fill up. Then it stops, so a capacitor blocks DC. Connect AC, and the voltage keeps reversing. The plates charge one way, then empty and charge the other way, over and over, so current keeps flowing back and forth in the circuit, even though nothing crosses the insulator. So a capacitor passes AC. Remember that pair: it blocks DC and passes AC."
     },
     {
-      "id": "s7",
+      "id": "s36",
       "keyTopic": 20,
-      "template": "equipment-card",
+      "template": "formula",
       "params": {
-        "title": "Figure 3C5: bypass and tone capacitors",
-        "figure": "3C5",
-        "callouts": [
-          { "label": "Capacitor 3: the bypass capacitor" },
-          { "label": "Emitter to ground, across the 100 Ω emitter resistor" },
-          { "label": "AC signal bypasses the resistor, so the stage keeps its gain" },
-          { "label": "1 µF capacitor with a potentiometer: used to adjust tone" },
-          { "label": "Reactance varies with frequency; the pot sets how much audio passes" }
-        ]
+        "title": "Capacitive reactance",
+        "formula": "X<sub>C</sub> = 1/(2πfC)",
+        "steps": [
+          "f: frequency in hertz; C: capacitance in farads",
+          "DC, f = 0: X<sub>C</sub> is infinite: DC blocked",
+          "Higher f: smaller X<sub>C</sub>: AC passes",
+          "X<sub>C</sub> is measured in ohms"
+        ],
+        "answer": "A capacitor blocks DC and passes AC"
       },
-      "onScreen": ["Figure 3C5", "Capacitor 3: bypass capacitor", "Across the 100 Ω emitter resistor", "Stage keeps its gain", "1 µF capacitor and potentiometer: adjust tone"],
-      "narration": "In Figure 3C5, which capacitor is the bypass capacitor? Capacitor 3. It connects a transistor's emitter to ground, across the 100 ohm emitter resistor. The alternating current, or AC, signal bypasses that resistor, so the stage keeps its gain. Now the 1 microfarad capacitor. It's connected to a potentiometer that is used to adjust tone. The capacitor's reactance changes with frequency, so the pot sets how much of part of the audio range passes."
+      "onScreen": ["X sub C = 1 / (2 pi f C)", "DC: reactance infinite, blocked", "Higher frequency: smaller reactance", "Measured in ohms"],
+      "narration": "How strongly does a capacitor oppose AC? That opposition is called capacitive reactance, written X sub C. X sub C equals 1 over 2 pi f C, where f is the frequency and C is the capacitance. Pi is the number from circles, a little over 3. At DC, f is 0, and dividing by a number that shrinks toward 0 gives an answer that grows without limit, so X sub C is infinite and DC is blocked. Because f sits on the bottom, a higher frequency gives a smaller reactance: the plates have less time to fill and push back before the voltage reverses. Like resistance, reactance is measured in ohms."
     },
     {
-      "id": "s8",
+      "id": "s37",
       "keyTopic": 20,
       "template": "block-diagram",
       "params": {
@@ -142,43 +645,192 @@
         ]
       },
       "onScreen": ["Stage 1 with its own DC bias", "Coupling capacitor: blocks DC, passes AC", "Stage 2 keeps its own bias"],
-      "narration": "What is the purpose of a coupling capacitor? It blocks direct current and passes alternating current. The reason is its reactance: X sub C equals 1 over 2 pi f C. At DC, X sub C is infinite, so no direct current gets through. At signal frequencies, X sub C is small, so the signal passes easily. That lets the capacitor carry the signal from one stage to the next while keeping their DC bias separate."
+      "narration": "Here's that idea at work. A radio passes its signal through a chain of stages, each an amplifier or other circuit that does one job. Each transistor stage needs its own steady DC voltages, called its bias, to sit in its active state, where it amplifies. So how do you pass the signal from one stage to the next without upsetting the next stage's bias? With a coupling capacitor. Its purpose is to block direct current and pass alternating current. At DC its reactance is infinite, so the first stage's DC stays put. At signal frequencies its reactance is small, so the signal passes easily. The trap has it backwards: blocking AC and passing DC."
     },
     {
-      "id": "s9",
+      "id": "s38",
+      "keyTopic": 20,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3C5: the bypass capacitor",
+        "figure": "3C5",
+        "callouts": [
+          { "label": "Capacitor 3: from a transistor's emitter to ground" },
+          { "label": "Connected across the 100 Ω emitter resistor" },
+          { "label": "The resistor steadies the DC bias, but alone it would cut the AC gain" },
+          { "label": "AC bypasses the resistor through capacitor 3: the stage keeps its gain" }
+        ]
+      },
+      "onScreen": ["Figure 3C5", "Capacitor 3: emitter to ground", "Across the 100 ohm emitter resistor", "The bypass capacitor: the stage keeps its gain"],
+      "narration": "Time for 2 exam figures. Figure 3C5 is an amplifier with several transistor stages. Find capacitor 3. It runs from a transistor's emitter to ground, across the 100 ohm emitter resistor, connected to both its ends. That resistor helps hold the DC bias steady, but it's also in the signal's path. The transistor amplifies the voltage between its base and its emitter, so if the signal makes the emitter swing along with the base, that difference shrinks, and so does the gain. Capacitor 3 gives the AC an easy, low-reactance path around the resistor, while DC still has to go through it. So capacitor 3 is the bypass capacitor: the signal bypasses the resistor, and the stage keeps its gain."
+    },
+    {
+      "id": "s39",
+      "keyTopic": 20,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3C5: the tone control",
+        "figure": "3C5",
+        "callouts": [
+          { "label": "1 µF capacitor connected to a potentiometer" },
+          { "label": "Potentiometer: a resistor with an adjustable sliding contact" },
+          { "label": "The capacitor's reactance changes with frequency" },
+          { "label": "Turning the pot changes how much of part of the audio range passes: tone" }
+        ]
+      },
+      "onScreen": ["Figure 3C5", "1 microfarad capacitor and a potentiometer", "Reactance changes with frequency", "Used to adjust tone"],
+      "narration": "Stay with Figure 3C5 and find the 1 microfarad capacitor. It's connected to a potentiometer, or pot, a resistor with a sliding contact that you turn to adjust, like a volume knob. Together they're used to adjust tone. Here's why. A capacitor's reactance changes with frequency: low for high-pitched treble, high for deep bass. Paired with the potentiometer, it forms a network that passes some frequencies more easily than others. Turning the pot changes how much of one part of the audio range, such as the treble, gets through, and that changes the tone. The other choices, increasing gain, neutralizing the amplifier, or coupling, are not what this pot does."
+    },
+    {
+      "id": "s40",
+      "keyTopic": 20,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3C4: the signal ground",
+        "figure": "3C4",
+        "callouts": [
+          { "label": "RF stages from an oscillator to a power amplifier" },
+          { "label": "Component 2: a capacitor to ground" },
+          { "label": "DC is fed in through a resistor at that point" },
+          { "label": "Low reactance at RF sends the signal to ground; blocks DC, bias kept" }
+        ]
+      },
+      "onScreen": ["Figure 3C4", "Component 2: a capacitor to ground", "DC fed in through a resistor", "Signal ground: low reactance at RF, blocks DC"],
+      "narration": "On to the second figure. Figure 3C4 is part of a transmitter: RF stages that take a signal in from an oscillator on the left, a circuit that makes its own steady AC signal, and pass it toward a power amplifier on the right. Find component 2, a capacitor from one point in the circuit to ground. At that point, DC is fed in through a resistor to supply the stage. Component 2 provides a signal ground. At RF its reactance is very low, so any signal there is shunted, or sent aside, straight to ground. At DC it blocks, so the supply voltage and bias are undisturbed. That point sits at ground for the signal, but not for DC."
+    },
+    {
+      "id": "s41",
+      "keyTopic": 20,
+      "template": "block-diagram",
+      "params": {
+        "title": "Unwanted feedback",
+        "columns": 4,
+        "blocks": [
+          { "id": "out", "label": "Output at the collector" },
+          { "id": "cap", "label": "Tiny internal capacitance", "note": "Between collector and base" },
+          { "id": "in", "label": "Back into the base", "note": "Amplified all over again" },
+          { "id": "osc", "label": "Parasitic oscillations", "note": "If the leak arrives in phase" }
+        ],
+        "links": [
+          { "from": "out", "to": "cap", "label": "Some output leaks" },
+          { "from": "cap", "to": "in", "label": "Feedback" },
+          { "from": "in", "to": "osc", "label": "In phase" }
+        ]
+      },
+      "onScreen": ["Output at the collector", "Tiny internal capacitance leaks it back", "Feedback into the base", "In phase: parasitic oscillations"],
+      "narration": "Still in Figure 3C4, look at the dashed line. First, the problem it solves. Inside every transistor, a tiny capacitance between the collector and the base lets some of the output leak back to the input. Sending output back to the input is called feedback. Phase means where a wave is in its cycle. If the leaked signal arrives in phase, in step with the input, it adds to the input, gets amplified again, comes back bigger, and so on, until the amplifier oscillates all by itself. These unwanted signals are called parasitic oscillations."
+    },
+    {
+      "id": "s42",
+      "keyTopic": 20,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 3C4: the neutralizing capacitor",
+        "figure": "3C4",
+        "callouts": [
+          { "label": "Dashed line: where a small variable capacitor would go" },
+          { "label": "It feeds back a signal of opposite phase" },
+          { "label": "Opposite phase cancels the leak through the transistor" },
+          { "label": "Neutralizing capacitor: parasitic oscillations decrease" }
+        ]
+      },
+      "onScreen": ["Figure 3C4", "Dashed line: a small variable capacitor", "Feeds back opposite phase, cancelling the leak", "Neutralizing capacitor decreases parasitic oscillations"],
+      "narration": "Here's the cure. Picture a small variable capacitor installed in place of the dashed line. It feeds back a second signal of opposite phase, rising while the leak falls, so the 2 cancel out. That makes it a neutralizing capacitor, and it would decrease parasitic oscillations. Because it's variable, it can be adjusted until the cancelling is just right. So the answer is decrease parasitic oscillations. Not increase them, and not increase gain. It doesn't decrease crosstalk either, which is a signal leaking into a neighboring circuit. It tames oscillation."
+    },
+    {
+      "id": "s43",
       "keyTopic": 21,
       "template": "key-facts",
       "params": {
-        "title": "A capacitor in series with the primary",
+        "title": "Magnetism and induction",
         "items": [
-          "A capacitor is sometimes placed in series with a power transformer's primary",
-          "Purpose: to improve the power factor",
-          "Its reactance offsets part of the primary's inductive reactance",
-          "The current comes closer to in phase with the voltage"
+          "Current in a wire makes a magnetic field around it",
+          "A coil, also called an inductor, concentrates the field",
+          "A changing field induces a voltage in a nearby coil",
+          "A steady field, from steady DC, induces nothing"
         ]
       },
-      "onScreen": ["Capacitor in series with the primary", "Improves the power factor", "Offsets inductive reactance", "Current closer to in phase with voltage"],
-      "narration": "Now transformers. A capacitor is sometimes placed in series with the primary of a power transformer. Why? To improve the power factor. The primary winding is a coil, so it has inductive reactance. The capacitor's reactance offsets part of that inductive reactance, bringing the current closer to in phase with the voltage. That's a better power factor."
+      "onScreen": ["Current makes a magnetic field", "A coil, or inductor, concentrates it", "A changing field induces a voltage", "A steady field induces nothing"],
+      "narration": "A capacitor stores energy in an electric field. Our next part, the transformer, works with a magnetic field instead, so here's one more basic idea: magnetism. Current flowing through a wire creates a magnetic field around it, the same kind of invisible force a magnet has. Wind the wire into a coil, and the field gets much stronger. A coil like this is also called an inductor. Now the key point: when a magnetic field changes, it induces, or creates, a voltage in any nearby coil. A steady field, from steady DC, induces nothing. Only change does."
     },
     {
-      "id": "s10",
+      "id": "s44",
+      "keyTopic": 21,
+      "template": "block-diagram",
+      "params": {
+        "title": "How a transformer works",
+        "columns": 4,
+        "blocks": [
+          { "id": "pri", "label": "Primary coil", "note": "AC flows in" },
+          { "id": "core", "label": "Iron core", "note": "Carries the changing magnetic field" },
+          { "id": "sec", "label": "Secondary coil", "note": "An AC voltage is induced" },
+          { "id": "load", "label": "Load", "note": "The equipment it powers" }
+        ],
+        "links": [
+          { "from": "pri", "to": "core", "label": "Current makes a field" },
+          { "from": "core", "to": "sec", "label": "Field induces a voltage" },
+          { "from": "sec", "to": "load" }
+        ]
+      },
+      "onScreen": ["Primary: the input coil", "Iron core carries the changing field", "Secondary: an AC voltage is induced", "Load: the equipment it powers", "Works on AC, not steady DC"],
+      "narration": "A transformer puts that to work. It's 2 coils wound on a shared iron core, because iron carries a magnetic field far better than air. AC flows into the first coil, called the primary. Because AC keeps reversing, the primary's magnetic field keeps changing. The core carries that changing field to the second coil, called the secondary, and induces an AC voltage there. The secondary feeds the load, the equipment being powered. Since only a changing field induces a voltage, a transformer works on AC, not on steady DC."
+    },
+    {
+      "id": "s45",
       "keyTopic": 21,
       "template": "formula",
       "params": {
         "title": "Turns ratio sets the voltage ratio",
-        "formula": "E<sub>S</sub> = E<sub>P</sub> × N<sub>S</sub>/N<sub>P</sub>",
+        "formula": "E<sub>S</sub>/E<sub>P</sub> = N<sub>S</sub>/N<sub>P</sub>",
         "steps": [
-          "120 V × 500/2250 = 26.7 V: a step-down",
-          "20 V × 500/200 = 50 V: a step-up",
-          "#24 wire size sets current, not the voltage ratio"
+          "E: voltage; N: number of turns",
+          "S: secondary; P: primary",
+          "More secondary turns: voltage steps up",
+          "Fewer secondary turns: voltage steps down"
         ],
         "answer": "Step-up: more turns on the secondary"
       },
-      "onScreen": ["E sub S = E sub P × N sub S / N sub P", "120 V × 500/2250 = 26.7 V", "20 V × 500/200 = 50 V", "Wire size sets current, not ratio", "Step-up: more secondary turns"],
-      "narration": "Voltage ratio equals turns ratio, so the secondary voltage, E sub S, equals E sub P times N sub S over N sub P. A primary of 2250 turns on 120 volts AC, with a 500-turn secondary: 120 times 500 over 2250 is 26.7 volts, a step-down. Next, 20 volts on a primary of 200 turns, with a secondary of 500 turns of the same size wire: 20 times 500 over 200 is 50 volts. The number 24 wire size affects how much current the windings carry, not the voltage ratio. And remember: a transformer used to step up its input voltage must have more turns of wire on its secondary than on its primary."
+      "onScreen": ["E sub S / E sub P = N sub S / N sub P", "Voltage ratio equals turns ratio", "More secondary turns: step-up", "Fewer secondary turns: step-down"],
+      "narration": "Every turn of wire on the core picks up the same share of voltage, so the voltage on each coil depends on how many turns it has. That's the transformer rule: voltage ratio equals turns ratio. E sub S over E sub P equals N sub S over N sub P. E stands for voltage, from electromotive force, N for the number of turns, S for secondary and P for primary. If the secondary has more turns than the primary, it gets more voltage: a step-up transformer. So a transformer used to step up its input voltage must have more turns of wire on its secondary than on its primary. More turns on the primary would step the voltage down."
     },
     {
-      "id": "s11",
+      "id": "s46",
+      "keyTopic": 21,
+      "template": "formula",
+      "params": {
+        "title": "Worked example: 120 volts in",
+        "formula": "E<sub>S</sub> = E<sub>P</sub> × N<sub>S</sub>/N<sub>P</sub>",
+        "steps": [
+          "Primary: 120 V on 2250 turns",
+          "Secondary: 500 turns",
+          "E<sub>S</sub> = 120 V × 500 ÷ 2250",
+          "Fewer secondary turns: expect less than 120 V"
+        ],
+        "answer": "E<sub>S</sub> = 26.7 V: a step-down"
+      },
+      "onScreen": ["E sub S = E sub P × N sub S / N sub P", "120 volts on 2250 turns", "500-turn secondary", "120 × 500 ÷ 2250 = 26.7 volts"],
+      "narration": "Let's work the first exam problem. To find the secondary voltage, multiply both sides of the rule by E sub P: E sub S equals E sub P times N sub S over N sub P. The question: a transformer primary of 2250 turns is connected to 120 volts AC. What voltage develops across a 500-turn secondary? E sub P is 120 volts, N sub S is 500 and N sub P is 2250. 120 times 500 is 60 thousand, and 60 thousand divided by 2250 is about 26.7 volts. Does that make sense? The secondary has fewer turns, so the voltage should go down, and it does: a step-down. That rules out the big choices, 2300 and 1500 volts."
+    },
+    {
+      "id": "s47",
+      "keyTopic": 21,
+      "template": "formula",
+      "params": {
+        "title": "Worked example: 20 volts in",
+        "formula": "E<sub>S</sub> = E<sub>P</sub> × N<sub>S</sub>/N<sub>P</sub>",
+        "steps": [
+          "Primary: 20 V on 200 turns of #24 wire",
+          "Secondary: 500 turns of the same wire",
+          "E<sub>S</sub> = 20 V × 500 ÷ 200",
+          "Wire size sets current, not the voltage ratio"
+        ],
+        "answer": "E<sub>S</sub> = 50 V: a step-up"
+      },
+      "onScreen": ["20 volts on 200 turns", "500-turn secondary", "20 × 500 ÷ 200 = 50 volts", "Wire size sets current, not ratio"],
+      "narration": "Now the second problem. A power transformer has a primary of 200 turns of number 24 wire, and a secondary of 500 turns of the same size wire. With 20 volts applied to the primary, what's the secondary voltage? Same rule: 20 volts times 500 over 200. 500 divided by 200 is 2 and a half, and 20 times 2 and a half is 50 volts. The secondary has more turns, so the voltage goes up: a step-up, which makes sense. What about the number 24 wire? Wire size decides how much current a winding can carry without overheating. It doesn't change the voltage ratio, so it's just a distraction here."
+    },
+    {
+      "id": "s48",
       "keyTopic": 21,
       "template": "band-strip",
       "params": {
@@ -193,10 +845,42 @@
         ]
       },
       "onScreen": ["5.0 volt winding: fewest turns", "12.6 volt winding: more turns", "150 volt winding: most turns, highest DC resistance"],
-      "narration": "Here's a power transformer with 1 primary and 3 secondaries, producing 5.0 volts, 12.6 volts and 150 volts, all with similar wire sizes. Which secondary has the highest measured DC resistance? The 150 volt winding. To develop the highest voltage it needs the most turns, and the most turns means the most wire, so it has the most resistance."
+      "narration": "Turns also decide a winding's resistance. Here's a power transformer with 1 primary and 3 secondaries, producing 5.0 volts, 12.6 volts and 150 volts, all wound with similar wire sizes. Which secondary has the highest measured DC resistance? Every turn carries the same number of volts, so the 150 volt winding needs by far the most turns. More turns means a longer total length of wire, and just as a longer pipe holds back more water, a longer wire has more resistance. So the 150 volt winding has the highest DC resistance. The windings could only have equal resistance if they had equal turns."
     },
     {
-      "id": "s12",
+      "id": "s49",
+      "keyTopic": 21,
+      "template": "comparison-table",
+      "params": {
+        "title": "In phase, out of phase, power factor",
+        "columns": ["Part", "Current versus voltage", "Power factor"],
+        "rows": [
+          ["Resistor", "In phase: rise and fall together", "1, the best"],
+          ["Coil", "Lags behind", "Below 1"],
+          ["Capacitor", "Leads ahead", "Below 1"]
+        ]
+      },
+      "onScreen": ["Resistor: current in phase with voltage", "Coil: current lags", "Capacitor: current leads", "Power factor: 1 when in phase"],
+      "narration": "Before the next transformer question, one idea about timing. Remember phase, where a wave is in its cycle? In a resistor, voltage and current rise and fall together: they're in phase. A coil resists any change in current, so its current lags the voltage. A capacitor does the opposite: current rushes in first to fill the plates, and the voltage follows, so its current leads. When current is out of step with voltage, part of it surges back and forth without doing useful work. The power factor measures how well they line up: 1 when in phase, and lower the further out of step they are. A low one means extra current in the wiring for the same work."
+    },
+    {
+      "id": "s50",
+      "keyTopic": 21,
+      "template": "key-facts",
+      "params": {
+        "title": "A capacitor in series with the primary",
+        "items": [
+          "A capacitor is sometimes placed in series with a power transformer's primary",
+          "Purpose: to improve the power factor",
+          "Its reactance offsets part of the primary's inductive reactance",
+          "The current comes closer to in phase with the voltage"
+        ]
+      },
+      "onScreen": ["Capacitor in series with the primary", "Improves the power factor", "Offsets inductive reactance", "Current closer to in phase with voltage"],
+      "narration": "Here's the exam question. A capacitor is sometimes placed in series with the primary of a power transformer. Why? To improve the power factor. The primary winding is a coil, so its current lags the voltage. A coil's opposition to AC is called inductive reactance. A capacitor pulls the other way, toward leading current, so its reactance offsets part of the primary's inductive reactance. The 2 partly cancel, bringing the current closer to in phase with the voltage, and that's a better power factor. It doesn't improve output voltage regulation, meaning how steady the output voltage stays, and it certainly doesn't rectify the windings, which would mean turning their AC into DC."
+    },
+    {
+      "id": "s51",
       "keyTopic": 21,
       "template": "equipment-card",
       "params": {
@@ -205,30 +889,116 @@
         "callouts": [
           { "label": "Single-phase AC input at 60 Hz", "at": "input" },
           { "label": "Full-wave output: 2 pulses for each input cycle", "at": "trace" },
-          { "label": "Same time base: the output repeats twice as often", "at": "timebase" },
+          { "label": "Same time scale: the output repeats twice as often", "at": "timebase" },
           { "label": "Output to input frequency is 2:1, so 120 Hz ripple", "at": "screen" }
         ]
       },
       "onScreen": ["Single-phase 60 Hz input", "2 output pulses per input cycle", "Output repeats twice as often", "2:1 ratio: 120 Hz ripple"],
-      "narration": "Now a single-phase full-wave rectifier, fed here with 60 hertz AC. A full-wave rectifier turns both halves of each AC cycle into output pulses, so it produces 2 output pulses for each input cycle. On the same time base, the output repeats twice as often as the input. So the ratio of output frequency to input frequency is 2 to 1. A 60 hertz input gives 120 hertz ripple."
+      "narration": "The last transformer question leads into the power supply. Most equipment needs DC, so the transformer's AC goes next to a rectifier: a circuit of diodes that turns AC into one-way current. A single-phase full-wave rectifier steers both halves, the positive and the negative half-cycle, the same way, so it produces 2 output pulses for each input cycle. On an oscilloscope, a screen that draws voltage over time, the output repeats twice as often as the input. So the ratio of output frequency to input frequency of a single-phase full-wave rectifier is 2 to 1. A 60 hertz input gives 120 hertz ripple, the bumps left on the DC. Not 1 to 1, and not 1 to 2."
     },
     {
-      "id": "s13",
+      "id": "s52",
       "keyTopic": 22,
-      "template": "comparison-table",
+      "template": "block-diagram",
       "params": {
-        "title": "Linear versus switching regulators",
-        "columns": ["Regulator", "Control element", "Result"],
-        "rows": [
-          ["Linear", "Conduction varied in proportion to line or load", "Excess voltage dropped as heat"],
-          ["Switching", "On or off; duty cycle set by line or load", "An inductor and capacitor smooth the pulses"]
+        "title": "Inside a power supply",
+        "columns": 3,
+        "blocks": [
+          { "id": "line", "label": "AC line", "note": "The incoming supply" },
+          { "id": "xfmr", "label": "Transformer", "note": "Steps the voltage down" },
+          { "id": "rect", "label": "Rectifier", "note": "AC to pulsing DC" },
+          { "id": "load", "label": "Load", "note": "The equipment" },
+          { "id": "reg", "label": "Voltage regulator", "note": "Holds the output steady" },
+          { "id": "filt", "label": "Filter capacitor", "note": "Smooths most of the ripple" }
+        ],
+        "links": [
+          { "from": "line", "to": "xfmr" },
+          { "from": "xfmr", "to": "rect" },
+          { "from": "rect", "to": "filt" },
+          { "from": "filt", "to": "reg" },
+          { "from": "reg", "to": "load" }
         ]
       },
-      "onScreen": ["Linear: conduction varied in proportion to line or load", "Excess dropped as heat", "Switching: on or off, duty cycle varied", "Inductor and capacitor smooth the pulses"],
-      "narration": "Voltage regulators come in 2 kinds. In a linear electronic voltage regulator, the conduction of a control element is varied in direct proportion to the line voltage or load current. The pass element acts as a smoothly variable resistance and drops the excess voltage as heat. A switching electronic voltage regulator instead switches the control device on or off, with the duty cycle proportional to the line or load conditions. An inductor and a capacitor then smooth the pulses."
+      "onScreen": ["AC line, transformer, rectifier", "Filter capacitor smooths the ripple", "Regulator holds the output steady", "Load: the equipment"],
+      "narration": "Here's where the rectifier fits in a whole power supply. The AC line brings in the supply, the transformer steps the voltage down, and the rectifier turns it into bumpy, one-way DC. A large capacitor, the filter, charges up on each bump and fills in the dips, smoothing out most of the ripple. But the output would still sag or rise when the incoming supply changes or the equipment draws more current. So a voltage regulator holds the output steady. It corrects for changes in line voltage, meaning the incoming supply, and in load current, meaning how much current the load draws. To do that, it needs a steady voltage to compare against, and that comes from a special diode."
     },
     {
-      "id": "s14",
+      "id": "s53",
+      "keyTopic": 22,
+      "template": "timeline",
+      "params": {
+        "title": "The Zener diode",
+        "badges": [
+          { "label": "Zener diode", "value": "Used in reverse breakdown", "note": "Holds a nearly constant voltage" },
+          { "label": "Current-limiting resistor", "value": "Keeps the current safe", "note": "Always in series with the Zener" },
+          { "label": "Zener voltage ratings", "value": "2.4 V to 200 V and above", "note": "Not 1.2 to 7 V, 3 to 2000 V, or 1.2 to 5.6 V" }
+        ]
+      },
+      "onScreen": ["Zener diode: works in reverse breakdown", "Holds a nearly constant voltage", "Fed through a current-limiting resistor", "Ratings: 2.4 volts to 200 volts and above"],
+      "narration": "Push an ordinary diode hard enough in reverse, and it suddenly breaks down and conducts, which can destroy it. A Zener diode is built to work in that breakdown region safely. In breakdown, a tiny rise in voltage lets much more current through, so the voltage across it barely moves. Reverse biased into breakdown through a current-limiting resistor, which keeps the current safe, a Zener holds a nearly constant voltage even when its current changes a lot. That makes it a steady reference. Each Zener is made for one breakdown voltage, and Zener diodes are available with voltage ratings from 2.4 volts to 200 volts and above. The other ranges on the exam stop too low or reach too high."
+    },
+    {
+      "id": "s54",
+      "keyTopic": 22,
+      "template": "key-facts",
+      "params": {
+        "title": "The linear regulator",
+        "items": [
+          "Pass element: a transistor in series between supply and load",
+          "Acts as a smoothly variable resistance, like a tap on a pipe",
+          "Conduction varied in direct proportion to line voltage or load current",
+          "Excess voltage dropped as heat"
+        ]
+      },
+      "onScreen": ["Pass element in series with the load", "A smoothly variable resistance", "Conduction varied with line voltage or load current", "Excess dropped as heat"],
+      "narration": "Back to the regulator. The simplest is the linear regulator. It puts a transistor, called the pass transistor or pass element, in series between the supply and the load, and uses it like a tap on a pipe. If the incoming voltage rises, the tap closes a little; if the load draws more current, it opens a little, step for step with the change. The exam calls it the control element: in a linear electronic voltage regulator, the conduction of a control element is varied in direct proportion to the line voltage or load current. The pass element acts as a smoothly variable resistance, and whatever voltage it drops becomes heat. On-off switching and ramps belong to other circuits."
+    },
+    {
+      "id": "s55",
+      "keyTopic": 22,
+      "template": "block-diagram",
+      "params": {
+        "title": "The Zener reference in a linear regulator",
+        "columns": 2,
+        "blocks": [
+          { "id": "zen", "label": "Zener diode", "note": "Stable reference voltage" },
+          { "id": "amp", "label": "Error amplifier", "note": "Compares output with reference" },
+          { "id": "load", "label": "Load", "note": "Gets the steady output" },
+          { "id": "pass", "label": "Pass transistor", "note": "Only carries the load current" }
+        ],
+        "links": [
+          { "from": "zen", "to": "amp", "label": "Reference" },
+          { "from": "amp", "to": "pass", "label": "Correction" },
+          { "from": "pass", "to": "load", "label": "Steady output" },
+          { "from": "load", "to": "amp", "label": "Output sample" }
+        ]
+      },
+      "onScreen": ["Zener diode: the stable reference", "Error amplifier compares output with reference", "Pass transistor only carries the load current", "Load gets the steady output"],
+      "narration": "So how does the pass element know what to do? A Zener diode provides the stable reference voltage. An error amplifier compares a sample of the output with the Zener's voltage and nudges the pass transistor to correct any difference. That's why the Zener diode is the device usually used as a stable reference voltage in a linear voltage regulator, and the component most likely used to establish a reference voltage in a regulated power supply. Notice the division of labor: the pass transistor only carries the load current, and the Zener only holds the reference. A battery would run down, and the tunnel diode, varactor and silicon-controlled rectifier on the exam do other jobs we'll meet shortly."
+    },
+    {
+      "id": "s56",
+      "keyTopic": 22,
+      "template": "waveform",
+      "params": {
+        "title": "The switching regulator",
+        "kind": "pulse",
+        "cycles": 4,
+        "duty": 0.3,
+        "labels": [
+          "Control device fully on or fully off",
+          "Duty cycle: the fraction of each cycle it's on",
+          "Duty cycle set by line and load conditions",
+          "An inductor and capacitor smooth the pulses"
+        ],
+        "xAxis": "Time",
+        "yAxis": "Voltage"
+      },
+      "onScreen": ["Switched fully on or off", "Duty cycle: fraction of time on", "Duty cycle follows line and load", "Inductor and capacitor smooth the pulses"],
+      "narration": "The other kind of regulator is the switching regulator. Instead of a tap held partly open, its control device is a transistor switched fully on or off, thousands of times a second. The fraction of each cycle it spends on is called the duty cycle. A switching electronic voltage regulator switches the control device on or off, with the duty cycle proportional to the line or load conditions: need more output, stay on longer. An inductor and a capacitor smooth the pulses into steady DC; the inductor resists changes in current, and the capacitor resists changes in voltage. Because the switch is never half on, it wastes far less power as heat. Multiple outputs or a ramp aren't the answer."
+    },
+    {
+      "id": "s57",
       "keyTopic": 22,
       "template": "block-diagram",
       "params": {
@@ -252,42 +1022,172 @@
           { "from": "amp", "to": "pass" }
         ]
       },
-      "onScreen": ["Input, output and ground or adjust terminals", "Pass element", "Voltage reference", "Error amplifier", "Sensing resistors and transistors", "All in one package"],
-      "narration": "A three-terminal regulator puts a complete regulator in one package. Current enters at the input terminal, flows through the pass element, and leaves at the output terminal. The third terminal is ground, or adjust on adjustable types. Inside, there's also a voltage reference, an error amplifier, and sensing resistors and transistors. The error amplifier compares the sensed output with the reference and controls the pass element. Remember: the 3 terminals are input, output and ground or adjust, not 3 different output voltages."
+      "onScreen": ["Input, pass element, output", "Ground or adjust terminal", "Voltage reference and error amplifier", "Sensing resistors and transistors", "All in one package"],
+      "narration": "You can also buy a whole linear regulator as one small part, the three-terminal regulator. Current enters at the input terminal, flows through the pass element and leaves at the output terminal. The third terminal is ground, or adjust on adjustable types. Inside, a voltage reference and an error amplifier do the steering, with sensing resistors and transistors sampling the output. So a three-terminal regulator contains a voltage reference, error amplifier, sensing resistors and transistors, and a pass element, all in one package. It doesn't supply 3 voltages, and it has 1 error amplifier, not 3. And when the bipolar transistor question offers input, output and ground, now you know whose terminals those are."
     },
     {
-      "id": "s15",
-      "keyTopic": 22,
-      "template": "timeline",
+      "id": "s58",
+      "keyTopic": 24,
+      "template": "block-diagram",
       "params": {
-        "title": "The Zener diode: a stable reference",
-        "badges": [
-          { "label": "Zener diode", "value": "Stable reference voltage", "note": "In breakdown, fed through a current-limiting resistor" },
-          { "label": "Pass transistor", "value": "Carries the load current", "note": "The Zener only holds the reference steady" },
-          { "label": "Zener voltage ratings", "value": "2.4 V to 200 V and above" }
+        "title": "2 main categories of semiconductor diode",
+        "columns": 3,
+        "blocks": [
+          { "id": "junction", "label": "Junction", "note": "P and N meet over a broad area" },
+          { "id": "root", "label": "Semiconductor diodes", "note": "Sorted by structure" },
+          { "id": "point", "label": "Point contact", "note": "A fine wire touches the semiconductor" },
+          { "id": "elec", "label": "Electrolytic", "note": "Describes capacitors" },
+          { "id": "vac", "label": "Vacuum", "note": "Describes tubes" }
+        ],
+        "links": [
+          { "from": "root", "to": "junction" },
+          { "from": "root", "to": "point" },
+          { "from": "root", "to": "elec", "struck": true },
+          { "from": "root", "to": "vac", "struck": true }
         ]
       },
-      "onScreen": ["Zener diode: stable reference voltage", "Reverse biased into breakdown", "Pass transistor carries the load current", "Ratings: 2.4 volts to 200 volts and above"],
-      "narration": "In a linear voltage regulator, and in a regulated power supply, the stable reference voltage comes from a Zener diode. It's reverse biased into breakdown through a current-limiting resistor, and in breakdown it holds a nearly constant voltage. The pass transistor only carries the load current; the Zener provides the reference. And Zener diodes are available with voltage ratings from 2.4 volts to 200 volts and above."
+      "onScreen": ["Junction", "Semiconductor diodes by structure", "Point contact", "Not electrolytic: capacitors", "Not vacuum: tubes"],
+      "narration": "The Zener is one diode with a special job. The exam asks about several more, so first, how diodes are built. Structurally, the 2 main categories of semiconductor diodes are junction and point contact. A junction diode has P-type and N-type regions meeting over a broad area, like every diode so far. A point-contact diode has just a fine metal wire touching a tiny spot on the semiconductor. That tiny contact has very little capacitance, so it suits high frequencies, though it can't carry much current. Watch out for the distractors. Electrolytic describes a type of capacitor, and vacuum describes tubes. Neither one is a category of semiconductor diode."
     },
     {
-      "id": "s16",
+      "id": "s59",
+      "keyTopic": 24,
+      "template": "comparison-table",
+      "params": {
+        "title": "The PIN diode: an RF switch",
+        "columns": ["Bias", "PIN diode acts like", "RF signal"],
+        "rows": [
+          ["Forward", "A low RF resistance", "Passes: switch on"],
+          ["Zero or reverse", "A tiny capacitor, nearly open", "Blocked: switch off"]
+        ]
+      },
+      "onScreen": ["PIN: P-type, intrinsic, N-type layers", "Intrinsic: pure, undoped silicon", "Forward: low RF resistance", "Zero or reverse bias: nearly an open circuit", "Common use: RF switch"],
+      "narration": "First, the PIN diode, named for its 3 layers: P-type, intrinsic and N-type. Intrinsic means pure, undoped silicon, so the wide middle layer has no extra carriers. Forward biased, that layer fills with carriers, and the diode presents a low resistance to an RF signal. At zero or reverse bias the layer is empty, and the diode looks like a tiny capacitance, nearly an open circuit. So a small DC bias can switch an RF signal on and off with no moving parts, for example to switch an antenna between transmitting and receiving. That's why one common use for PIN diodes is as an RF switch, not a constant current source, a constant voltage source or an RF rectifier."
+    },
+    {
+      "id": "s60",
+      "keyTopic": 24,
+      "template": "key-facts",
+      "params": {
+        "title": "The hot-carrier diode",
+        "items": [
+          "Also called a Schottky diode",
+          "A metal touches the semiconductor: no P-N junction",
+          "Stores very little charge, so it switches extremely fast",
+          "Low forward voltage and low noise"
+        ]
+      },
+      "onScreen": ["Hot-carrier, or Schottky, diode", "Metal-semiconductor junction", "Very little stored charge: very fast", "Low forward voltage, low noise"],
+      "narration": "Next, the hot-carrier diode, also called a Schottky diode. Instead of P-type meeting N-type, a metal touches the semiconductor directly. Why does that matter? An ordinary junction stores carriers that must be cleared out before it can switch off, and that takes time. This metal-to-semiconductor junction stores very little charge, so it switches extremely fast. It also has a low forward voltage, so little is used up across it, and low noise, the random hiss a part adds to a signal."
+    },
+    {
+      "id": "s61",
+      "keyTopic": 24,
+      "template": "block-diagram",
+      "params": {
+        "title": "Hot-carrier diodes at VHF and UHF",
+        "columns": 3,
+        "blocks": [
+          { "id": "sig", "label": "VHF or UHF signal", "note": "Very high or ultra high frequency" },
+          { "id": "mix", "label": "Mixer", "note": "Combines 2 signals into a new frequency" },
+          { "id": "det", "label": "Detector", "note": "Pulls the message out" }
+        ],
+        "links": [
+          { "from": "sig", "to": "mix" },
+          { "from": "mix", "to": "det" }
+        ]
+      },
+      "onScreen": ["VHF and UHF: very high and ultra high frequency", "Mixer: combines 2 signals", "Detector: recovers the message", "Hot-carrier diodes do both"],
+      "narration": "That speed matters most at high radio frequencies, such as VHF and UHF, very high and ultra high frequency, where signals reverse many millions of times a second. A receiver uses fast diodes there in 2 jobs: as mixers, which combine 2 signals to make a new frequency, and as detectors, which pull the message out of the radio signal. So a common use of a hot-carrier diode is in VHF and UHF mixers and detectors. A constant voltage reference is Zener work, and variable capacitance is the varactor's job, coming up shortly."
+    },
+    {
+      "id": "s62",
+      "keyTopic": 24,
+      "template": "comparison-table",
+      "params": {
+        "title": "The tunnel diode: negative resistance",
+        "columns": ["Device", "Raise the voltage and", "Resistance"],
+        "rows": [
+          ["Ordinary resistor", "Current rises", "Positive"],
+          ["Tunnel diode, in one region", "Current falls", "Negative"]
+        ]
+      },
+      "onScreen": ["Ordinary resistor: more voltage, more current", "Tunnel diode: current falls as voltage rises", "That region: negative resistance"],
+      "narration": "Here's a diode that breaks the usual rule. Normally, raise the voltage across something and more current flows: that's ordinary, or positive, resistance. A tunnel diode is so heavily doped, so packed with added elements, that over part of its forward range, while it's forward biased, its current decreases as its voltage increases. That backwards behavior is called negative resistance. So the principal characteristic of a tunnel diode is a negative resistance region. Not high forward resistance, not a very high peak inverse voltage, which is how much reverse voltage a diode can stand, and not a high forward current rating."
+    },
+    {
+      "id": "s63",
+      "keyTopic": 24,
+      "template": "key-facts",
+      "params": {
+        "title": "Negative resistance: amplify and oscillate",
+        "items": [
+          "Ordinary resistance loses a little energy every cycle",
+          "Negative resistance feeds energy back in",
+          "Cancel some of the loss: amplification",
+          "Cancel all of it: oscillation",
+          "Works even at microwave frequencies"
+        ]
+      },
+      "onScreen": ["Resistance loses energy", "Negative resistance cancels the loss", "Amplification", "Oscillation", "Even at microwave frequencies"],
+      "narration": "Why does negative resistance matter? Every real circuit has ordinary resistance that wastes a little energy each cycle, so signals die away. A negative resistance does the reverse and feeds energy in, cancelling those losses. Cancel some of the loss, and a weak signal comes out stronger: amplification. Cancel all of it, and the circuit keeps ringing by itself: oscillation. That's why the tunnel diode is the special type of diode capable of both amplification and oscillation, even at microwave frequencies, the very highest radio frequencies, used by radar. Zener, point-contact and ordinary junction diodes can't do either."
+    },
+    {
+      "id": "s64",
+      "keyTopic": 24,
+      "template": "formula",
+      "params": {
+        "title": "The varactor: a voltage-tuned capacitor",
+        "formula": "C = εA/d",
+        "steps": [
+          "Reverse-biased junction: a small capacitor",
+          "Depletion layer: the insulating gap, d",
+          "More reverse voltage: wider gap, less C",
+          "A control voltage tunes the circuit"
+        ],
+        "answer": "Varactor: capacitance varies with voltage"
+      },
+      "onScreen": ["Reverse-biased junction acts as a capacitor", "Depletion layer is the gap", "More reverse voltage: less capacitance", "A control voltage tunes a circuit"],
+      "narration": "One more special diode, and it ties back to capacitors and C equals epsilon A over d. Under reverse bias, the P and N regions act like 2 plates, and the depletion layer, the insulating zone at the junction, is the gap between them, d. So the junction is a small capacitor. More reverse voltage widens the depletion layer, which increases d and lowers the capacitance. Less voltage, more capacitance. A varactor diode is made to use this: it varies its internal capacitance as the voltage applied to its terminals varies, so a control voltage can tune a circuit. Not the tunnel diode, the Zener or the silicon-controlled rectifier."
+    },
+    {
+      "id": "s65",
       "keyTopic": 23,
       "template": "key-facts",
       "params": {
         "title": "The SCR: silicon-controlled rectifier",
         "items": [
+          "4 layers: P, N, P, N",
           "3 terminals: anode, cathode and gate",
-          "The gate triggers it into conduction",
-          "It stays on until the anode current falls below its holding current",
-          "Light dimmer: delaying the gate trigger in each half-cycle cuts the lamp's average power"
+          "A small gate pulse triggers it into conduction",
+          "Then it latches on until the anode current falls below its holding current"
         ]
       },
-      "onScreen": ["SCR terminals: anode, cathode, gate", "Gate triggers conduction", "Stays on until below holding current", "Light dimmer: phase control"],
-      "narration": "The SCR, or silicon-controlled rectifier, has 3 terminals: anode, cathode and gate. The gate triggers it into conduction. Once it's on, it stays on until the anode current falls below its holding current. That makes it useful for controlling power. A light-dimming circuit might contain an SCR: delaying its gate trigger within each half-cycle, which is called phase control, reduces the average power to the lamp."
+      "onScreen": ["4 layers: PNPN", "SCR terminals: anode, cathode, gate", "Gate triggers conduction", "Stays on until below holding current"],
+      "narration": "Now from small signals to big power. The SCR, or silicon-controlled rectifier, is a diode with a trigger. It has 4 layers, P, N, P, N, and 3 terminals: anode, cathode and gate. It passes current only one way, in at the anode and out at the cathode, but at first it doesn't conduct. A small pulse into the gate triggers it into conduction. Then it latches: it stays on, even after the pulse ends, until the anode current falls below a small level called its holding current. On AC that happens at the end of every half-cycle, so the SCR switches off each time. Any exam choice with a base, a source or a sink in it is wrong."
     },
     {
-      "id": "s17",
+      "id": "s66",
+      "keyTopic": 23,
+      "template": "waveform",
+      "params": {
+        "title": "SCR light dimmer: phase control",
+        "kind": "sine",
+        "cycles": 2,
+        "labels": [
+          "Each half-cycle, the SCR waits, blocking",
+          "The gate fires partway through the half-cycle",
+          "The lamp gets only the rest of each half-cycle",
+          "Later trigger: less average power, dimmer lamp"
+        ],
+        "xAxis": "Time",
+        "yAxis": "Voltage"
+      },
+      "onScreen": ["SCR blocks until the gate fires", "Gate fires partway through each half-cycle", "Lamp gets the rest of the half-cycle", "Later trigger: dimmer lamp"],
+      "narration": "That latch-on behavior makes the SCR perfect for a light-dimming circuit, the exam's answer for a circuit that might contain an SCR. Each half-cycle, the SCR waits, blocking, until its gate is fired. From that moment until the current falls to 0 at the end of the half-cycle, it conducts and the lamp gets power. Delay the trigger, and the lamp gets a smaller slice of each half-cycle, so the average power drops and the lamp dims. Timing the trigger like this is called phase control. It wastes very little power, because the SCR is either fully on or fully off. A tube radio's filament circuit, a shunt across a transformer and a bypass capacitor are not SCR circuits."
+    },
+    {
+      "id": "s67",
       "keyTopic": 23,
       "template": "block-diagram",
       "params": {
@@ -307,271 +1207,104 @@
         ]
       },
       "onScreen": ["2 similar SCRs", "In parallel, reverse polarity", "Each handles alternate half-cycles", "Power load safely shared"],
-      "narration": "How might 2 similar SCRs be connected to safely distribute the power load of a circuit? In parallel, reverse polarity, also called inverse parallel. The first SCR handles one half-cycle of the AC, and the second, facing the other way, handles the alternate half-cycle. Each one carries only alternate half-cycles, so the load is shared between them."
+      "narration": "1 SCR only handles half of each AC cycle, because it conducts in one direction. How might 2 similar SCRs be connected to safely distribute the power load of a circuit? In parallel, reverse polarity, also called inverse parallel. Parallel means side by side, both connected across the same 2 points. Reverse polarity means they face opposite ways. The first SCR handles the positive half-cycles, and the second handles the alternate, negative half-cycles. So each carries only half the work, the load is shared, and both halves of the AC can be controlled. Connected in series, or side by side facing the same way, they can't take turns on alternate half-cycles, so they don't share the load."
     },
     {
-      "id": "s18",
+      "id": "s68",
       "keyTopic": 23,
       "template": "comparison-table",
       "params": {
-        "title": "SCR, TRIAC, DIAC and unijunction",
-        "columns": ["Device", "Terminals", "Key fact"],
+        "title": "The TRIAC and the DIAC",
+        "columns": ["Device", "Conducts", "Gate"],
         "rows": [
-          ["SCR", "Anode, cathode, gate", "Conducts one way once triggered"],
-          ["TRIAC", "Gate, anode 1, anode 2 (MT1, MT2)", "2 complementary SCRs in parallel, common gate"],
-          ["DIAC", "No gate", "Conducts both ways"],
-          ["Unijunction transistor", "Base 1, base 2, emitter", "Base 1 and base 2 are not TRIAC terminals"]
+          ["SCR", "One way only", "Yes"],
+          ["TRIAC", "Either way on AC", "Yes: 1 gate shared by 2 SCRs"],
+          ["DIAC", "Either way", "None: fires at breakover voltage"]
         ]
       },
-      "onScreen": ["SCR: anode, cathode, gate", "TRIAC: gate, anode 1, anode 2", "TRIAC: 2 SCRs back to back, common gate", "DIAC: both ways, no gate", "Base 1 and base 2: unijunction transistor"],
-      "narration": "The SCR has anode, cathode and gate, and conducts one way. A TRIAC is fabricated as 2 complementary SCRs in parallel with a common gate terminal. It acts as 2 SCRs back to back, facing in opposite directions and sharing that gate, so it can conduct either way on AC. Its 3 terminals are gate, anode 1 and anode 2, also called main terminals 1 and 2, or MT1 and MT2. A DIAC also conducts both ways, but it has no gate. And base 1 and base 2? Those belong to the unijunction transistor, not the TRIAC."
+      "onScreen": ["SCR: one way", "TRIAC: 2 complementary SCRs in parallel, common gate", "TRIAC: conducts either way on AC", "DIAC: both ways, no gate"],
+      "narration": "Build that pair into a single device and you have a TRIAC, short for triode for alternating current. A TRIAC is fabricated as 2 complementary SCRs, a matched pair facing opposite ways, in parallel with a common gate terminal. It acts as 2 SCRs back to back, facing in opposite directions and sharing one gate, so it can be triggered to conduct either way on AC. Light dimmers often use one. Its look-alike, the DIAC, a diode for alternating current, also conducts both ways but has no gate: it switches on by itself once the voltage across it reaches its breakover voltage. The JFET, or junction FET, and the dual-gate MOSFET are kinds of FET, not SCR pairs."
     },
     {
-      "id": "s19",
-      "keyTopic": 24,
+      "id": "s69",
+      "keyTopic": 23,
       "template": "comparison-table",
       "params": {
-        "title": "Special diodes and their uses",
-        "columns": ["Diode", "Common use", "Why it works"],
+        "title": "Whose terminals: SCR, TRIAC, unijunction?",
+        "columns": ["Device", "Terminals"],
         "rows": [
-          ["PIN diode", "RF switch", "Forward: low RF resistance. Else nearly open"],
-          ["Hot-carrier (Schottky)", "VHF and UHF mixers and detectors", "Very fast, low forward voltage, low noise"],
-          ["Tunnel diode", "Amplifier and oscillator", "Negative resistance region"],
-          ["Varactor diode", "Voltage tuning", "Capacitance varies with applied voltage"]
+          ["SCR", "Anode, cathode, gate"],
+          ["TRIAC", "Gate, anode 1, anode 2 (MT1, MT2)"],
+          ["Unijunction transistor", "Emitter, base 1, base 2"],
+          ["Bipolar transistor", "Base, collector, emitter"]
         ]
       },
-      "onScreen": ["PIN diode: RF switch", "Hot-carrier diode: VHF and UHF mixers and detectors", "Tunnel diode: amplifies and oscillates", "Varactor: capacitance varies with voltage"],
-      "narration": "Each special diode has a job. One common use for PIN diodes, named for their P-type, intrinsic and N-type layers, is as an RF switch. Forward biased, they present a low RF resistance; with no bias or reverse bias, they're nearly an open circuit. A common use of a hot-carrier, or Schottky, diode is in VHF and UHF mixers and detectors, very high and ultra high frequency, because it switches extremely fast with a low forward voltage and low noise. The tunnel diode amplifies and oscillates. And the varactor diode's capacitance varies with the voltage applied to it."
+      "onScreen": ["SCR: anode, cathode, gate", "TRIAC: gate, anode 1, anode 2", "Also called MT1 and MT2", "Base 1 and base 2: unijunction transistor"],
+      "narration": "Here are the terminal sets side by side. The SCR, as we saw, has anode, cathode and gate. The TRIAC is different: current can flow either way through it, so neither main terminal is simply an anode or a cathode. Instead, the 3 terminals of a TRIAC are the gate, anode 1 and anode 2, also called main terminals 1 and 2, or MT1 and MT2. Now watch for a near miss: emitter, base 1 and base 2. Those belong to a different device, the unijunction transistor. Gate, source and sink, and base, emitter and collector, are wrong too. If the device switches AC both ways under the control of a gate, think gate, anode 1 and anode 2."
     },
     {
-      "id": "s20",
-      "keyTopic": 24,
-      "template": "key-facts",
-      "params": {
-        "title": "Tunnel and varactor diodes up close",
-        "items": [
-          "Tunnel diode: a negative resistance region, where current falls as voltage rises",
-          "That lets it both amplify and oscillate, even at microwave frequencies",
-          "Varactor: internal capacitance varies with the voltage on its terminals",
-          "More reverse voltage widens the depletion layer and lowers the capacitance",
-          "So a control voltage can tune a circuit"
-        ]
-      },
-      "onScreen": ["Tunnel diode: negative resistance region", "Amplifies and oscillates, even at microwave frequencies", "Varactor: capacitance varies with voltage", "More reverse voltage, less capacitance", "Tunes a circuit"],
-      "narration": "Let's look closer at 2 of them. The principal characteristic of a tunnel diode is a negative resistance region, where its current decreases as its voltage increases. That negative resistance makes the tunnel diode the special type of diode capable of both amplification and oscillation, even at microwave frequencies. A varactor diode varies its internal capacitance as the voltage applied to its terminals varies. More reverse voltage widens the depletion layer and lowers the capacitance, so a control voltage can tune a circuit."
-    },
-    {
-      "id": "s21",
-      "keyTopic": 24,
+      "id": "s70",
+      "keyTopic": 25,
       "template": "block-diagram",
       "params": {
-        "title": "2 main categories of semiconductor diode",
-        "columns": 3,
+        "title": "The unijunction transistor",
+        "columns": 4,
         "blocks": [
-          { "id": "junction", "label": "Junction", "note": "Main category" },
-          { "id": "root", "label": "Semiconductor diodes", "note": "Sorted by structure" },
-          { "id": "point", "label": "Point contact", "note": "Main category" },
-          { "id": "elec", "label": "Electrolytic", "note": "Describes capacitors" },
-          { "id": "vac", "label": "Vacuum", "note": "Describes tubes" }
+          { "id": "cap", "label": "Capacitor charges", "note": "Slowly, through a resistor" },
+          { "id": "ujt", "label": "Unijunction fires", "note": "Emitter reaches its peak-point voltage" },
+          { "id": "pulse", "label": "Sharp pulse", "note": "Capacitor empties, then recharges" },
+          { "id": "scr", "label": "SCR gate", "note": "Triggered into conduction" }
         ],
         "links": [
-          { "from": "root", "to": "junction" },
-          { "from": "root", "to": "point" },
-          { "from": "root", "to": "elec", "struck": true },
-          { "from": "root", "to": "vac", "struck": true }
+          { "from": "cap", "to": "ujt" },
+          { "from": "ujt", "to": "pulse" },
+          { "from": "pulse", "to": "scr" }
         ]
       },
-      "onScreen": ["Junction", "Semiconductor diodes by structure", "Point contact", "Not electrolytic: capacitors", "Not vacuum: tubes"],
-      "narration": "Structurally, the 2 main categories of semiconductor diodes are junction and point contact. Watch out for the distractors. Electrolytic describes a type of capacitor, and vacuum describes tubes. Neither one is a category of semiconductor diode."
+      "onScreen": ["Unijunction transistor: base 1, base 2, emitter", "Fires at its peak-point voltage", "Relaxation oscillator: charge, fire, repeat", "Used in SCR trigger circuits"],
+      "narration": "So what is the unijunction transistor? Its elements are base 1, base 2 and an emitter. It's a bar of N-type silicon with a base contact at each end and a single P-type emitter junction partway along, which is where the name unijunction, one junction, comes from. When the emitter voltage reaches a certain level, called the peak point, the path from emitter to base 1 suddenly conducts. Let a capacitor charge slowly through a resistor, and the unijunction fires, dumps the charge in a sharp pulse, and the cycle repeats. That's a relaxation oscillator, and its pulses are ideal for firing an SCR. So unijunctions are used in relaxation oscillators and SCR trigger circuits."
     },
     {
-      "id": "s22",
-      "keyTopic": 25,
-      "template": "comparison-table",
-      "params": {
-        "title": "Whose terminals are these?",
-        "columns": ["Device", "Terminals", "Notes"],
-        "rows": [
-          ["Bipolar transistor", "Base, collector, emitter", "Alpha and beta describe its gain"],
-          ["Unijunction transistor", "Base 1, base 2, emitter", "Relaxation oscillators, SCR triggers"],
-          ["FET", "Gate, source, drain", "Field-effect transistor"],
-          ["Vacuum tube", "Cathode, plate, grid", "Not a transistor"]
-        ]
-      },
-      "onScreen": ["Bipolar transistor: base, collector, emitter", "Unijunction: base 1, base 2, emitter", "FET: gate, source, drain", "Vacuum tube: cathode, plate, grid"],
-      "narration": "Transistors next. The 3 terminals of a bipolar transistor are base, collector and emitter. Don't confuse them with other devices' terminals. The unijunction transistor has base 1, base 2 and emitter, and it's used in relaxation oscillators and SCR trigger circuits. Gate, source and drain belong to a FET, a field-effect transistor. And cathode, plate and grid belong to a vacuum tube."
-    },
-    {
-      "id": "s23",
-      "keyTopic": 25,
-      "template": "formula",
-      "params": {
-        "title": "Alpha and beta: current ratios",
-        "formula": "α = ΔI<sub>C</sub>/ΔI<sub>E</sub>   β = ΔI<sub>C</sub>/ΔI<sub>B</sub>",
-        "steps": [
-          "α compares I<sub>C</sub> with I<sub>E</sub>: just under 1",
-          "β compares I<sub>C</sub> with I<sub>B</sub>: about 20 to several hundred"
-        ],
-        "answer": "Ratio to base current is beta, not alpha"
-      },
-      "onScreen": ["Alpha = change in I sub C / change in I sub E", "Beta = change in I sub C / change in I sub B", "Alpha: just under 1", "Beta: about 20 to several hundred"],
-      "narration": "2 current ratios describe a bipolar transistor. Alpha is the change of collector current with respect to emitter current: alpha equals delta I sub C over delta I sub E. Nearly all the emitter current reaches the collector, so alpha is just under 1. Beta is the change of collector current with respect to base current: beta equals delta I sub C over delta I sub B, typically from about 20 to several hundred. So if a question says the ratio to base current, that's beta, not alpha."
-    },
-    {
-      "id": "s24",
-      "keyTopic": 25,
+      "id": "s71",
+      "keyTopic": 28,
       "template": "key-facts",
       "params": {
-        "title": "Beta cutoff and saturation",
+        "title": "The piezoelectric effect",
         "items": [
-          "Beta cutoff frequency: where the emitter current gain has decreased to 0.707 of maximum",
-          "That gain is the common-emitter gain, beta; 0.707 is the −3 dB point",
-          "Fully saturated: collector current is at its maximum value",
-          "More base current no longer raises it; only supply voltage and load resistance limit it"
+          "Quartz: a natural crystal",
+          "Apply a voltage: the crystal flexes and vibrates",
+          "Squeeze it: it produces a voltage in return",
+          "It vibrates at one very steady natural frequency"
         ]
       },
-      "onScreen": ["Beta cutoff: emitter current gain down to 0.707 of maximum", "The −3 dB point", "Fully saturated: collector current at maximum", "Limited by supply voltage and load resistance"],
-      "narration": "As frequency rises, a transistor's gain falls. The beta cutoff frequency is the frequency at which the emitter current gain, meaning the common-emitter gain, beta, has decreased to 0.707 of its maximum. That's the minus 3 decibel point. At the other extreme, a fully saturated transistor has its collector current at its maximum value. More base current no longer raises it; only the supply voltage and the load resistance limit it."
+      "onScreen": ["Quartz crystal", "Voltage makes it vibrate", "Squeezing makes a voltage", "One very steady frequency"],
+      "narration": "From pulses to the steadiest signals in radio. Some crystals, quartz above all, link electricity and movement. The piezoelectric effect is the mechanical vibration of a crystal by the application of a voltage: put a voltage across a thin slice of quartz, and it flexes. It works the other way too: squeeze or bend the crystal, and it produces a voltage in return. A quartz slice also has a natural frequency it likes to vibrate at, set by its size and cut, like a bell that rings at one note. Because of that 2-way link, the vibration and the voltage keep each other going at that one very steady frequency. It's voltage and vibration, not magnetism or light."
     },
     {
-      "id": "s25",
-      "keyTopic": 26,
-      "template": "comparison-table",
-      "params": {
-        "title": "3 amplifier configurations",
-        "columns": ["Configuration", "Voltage gain", "Current gain"],
-        "rows": [
-          ["Common base", "Most of the 3", "Just under 1"],
-          ["Common emitter", "Less than common base", "Less than common collector"],
-          ["Common collector (emitter follower)", "Just under 1", "Most of the 3: β + 1"]
-        ]
-      },
-      "onScreen": ["Common base: most voltage gain", "Common emitter: in between", "Emitter follower: most current gain, beta plus 1"],
-      "narration": "Compare the 3 amplifier configurations. A common base amplifier has more voltage gain than common emitter or common collector. Its current gain is just under 1, but it takes the signal in at a very low input impedance and delivers it into a high output impedance. Common emitter falls in between on both counts. An emitter-follower, or common collector, amplifier is the opposite of common base: it has more current gain than common emitter or common base, beta plus 1, while its voltage gain is just under 1."
-    },
-    {
-      "id": "s26",
-      "keyTopic": 26,
-      "template": "equipment-card",
-      "params": {
-        "title": "Turning on an NPN silicon transistor",
-        "device": "multimeter",
-        "callouts": [
-          { "label": "Probes across the base-emitter junction", "at": "probes" },
-          { "label": "Base at least 0.7 volts positive with respect to the emitter", "at": "display" },
-          { "label": "0.7 volts: the forward voltage a silicon junction needs to conduct", "at": "volts" },
-          { "label": "No emitter-collector current: cut off, like an open switch", "at": "body" }
-        ]
-      },
-      "onScreen": ["Measuring base to emitter", "Base at least 0.7 volts positive", "Silicon junction forward voltage", "No current: cut off, an open switch"],
-      "narration": "Put the meter's probes across the base-emitter junction of an NPN silicon transistor, one with N-type, P-type and N-type layers. For current to flow in its emitter-collector junction, the base must be at least 0.7 volts positive with respect to the emitter. That's the forward voltage a silicon junction needs to conduct. Without it, there's no current between emitter and collector, and the transistor is cut off. A cut-off transistor acts like an open switch."
-    },
-    {
-      "id": "s27",
-      "keyTopic": 26,
-      "template": "comparison-table",
-      "params": {
-        "title": "Junction bias: cutoff, Class A, saturation",
-        "columns": ["Operation", "Base-emitter", "Collector-base", "Result"],
-        "rows": [
-          ["Cutoff", "Reverse biased", "Reverse biased", "No current: an open switch"],
-          ["Class A", "Forward biased", "Reverse biased", "Linear for the whole cycle"],
-          ["Saturation", "Forward biased", "Forward biased", "Collector current can rise no further"]
-        ]
-      },
-      "onScreen": ["Cutoff: both junctions reverse biased", "Class A: base-emitter forward, collector-base reverse", "Saturation: both junctions forward biased"],
-      "narration": "Each operating state has its own junction bias. In cutoff, both junctions are reverse biased, and no current flows. When an NPN transistor is operating as a Class A amplifier, the base-emitter junction is forward biased and the collector-base junction is reverse biased. That keeps it in its linear region for the whole cycle. In saturation, the base-emitter junction and the collector-base junction are both forward biased, and collector current can rise no further."
-    },
-    {
-      "id": "s28",
-      "keyTopic": 27,
-      "template": "key-facts",
-      "params": {
-        "title": "LEDs: light-emitting diodes",
-        "items": [
-          "Forward bias: electrons recombine with holes and release energy as light",
-          "Reverse bias stops the current, so no light",
-          "Color is set by the materials used; voltage and current change brightness only",
-          "Operating current about 20 mA, also the safe maximum",
-          "Hundreds of milliamps would destroy it"
-        ]
-      },
-      "onScreen": ["Forward bias makes light", "Reverse bias: no light", "Color set by the materials", "About 20 mA, also the safe maximum", "Hundreds of milliamps destroy it"],
-      "narration": "An LED needs forward bias to produce luminescence. Electrons crossing the junction recombine with holes and release energy as light. Reverse bias stops the current, so there's no light. The visible color radiated by an LED junction is determined by the materials used to construct the device. Voltage and current change its brightness, not its color. The approximate operating current of a light-emitting diode is 20 milliamps, and 20 milliamps is also the maximum current to safely illuminate it. Hundreds of milliamps would destroy it."
-    },
-    {
-      "id": "s29",
-      "keyTopic": 27,
-      "template": "formula",
-      "params": {
-        "title": "Protect the LED with a series resistor",
-        "formula": "R = (V<sub>supply</sub> − V<sub>LED</sub>)/I",
-        "steps": [
-          "Once it conducts, the LED's resistance is very low",
-          "The resistor drops the rest of the supply voltage",
-          "I: typically about 20 mA"
-        ],
-        "answer": "A series resistor must protect every LED"
-      },
-      "onScreen": ["R = (V supply − V LED) / I", "LED resistance very low once conducting", "Resistor drops the extra voltage", "Sized for about 20 mA"],
-      "narration": "To size the resistor that protects an LED, use R equals V sub supply minus V sub LED, all over I. Once the LED conducts, its resistance is very low, so something must limit the current. The resistor drops the rest of the supply voltage. I is the LED current, typically about 20 milliamps. So a series resistor must be connected to protect an LED."
-    },
-    {
-      "id": "s30",
-      "keyTopic": 27,
+      "id": "s72",
+      "keyTopic": 28,
       "template": "block-diagram",
       "params": {
-        "title": "Optoisolator or optointerrupter?",
+        "title": "The Pierce crystal oscillator",
         "columns": 2,
         "blocks": [
-          { "id": "led1", "label": "LED", "note": "Optoisolator" },
-          { "id": "pd1", "label": "Photodiode", "note": "Light-tight enclosure" },
-          { "id": "led2", "label": "LED", "note": "Optointerrupter" },
-          { "id": "ps2", "label": "Light sensor", "note": "Open slot: an object can break the beam" }
+          { "id": "out", "label": "Amplifier output" },
+          { "id": "xtal", "label": "Quartz crystal", "note": "Feedback path: sets the frequency" },
+          { "id": "amp", "label": "Transistor amplifier", "note": "Boosts what comes back" },
+          { "id": "in", "label": "Amplifier input" }
         ],
         "links": [
-          { "from": "led1", "to": "pd1", "label": "Light, sealed in" },
-          { "from": "led2", "to": "ps2", "label": "Beam across an open slot" }
+          { "from": "out", "to": "xtal", "label": "Part fed back" },
+          { "from": "xtal", "to": "in", "label": "Only its frequency" },
+          { "from": "in", "to": "amp" },
+          { "from": "amp", "to": "out" }
         ]
       },
-      "onScreen": ["Optoisolator: LED facing a photodiode", "Light-tight enclosure", "Optointerrupter: open slot", "An object can break the beam"],
-      "narration": "An LED facing a photodiode in a light-tight enclosure is commonly known as an optoisolator. It's the same idea you met at the start of this lesson: the signal crosses as light, and nothing else connects the 2 sides. An optointerrupter is different. It has an open slot between the LED and the light sensor, so an object passing through the slot can break the beam."
+      "onScreen": ["Oscillator: amplifier plus feedback", "Pierce oscillator: quartz crystal in the feedback path", "The crystal sets the frequency", "Hartley and Colpitts: an LC tank instead"],
+      "narration": "That makes quartz the heart of a crystal oscillator. Remember how feedback made an amplifier oscillate in Figure 3C4? An oscillator does that on purpose: an amplifier feeds part of its own output back to its input and keeps itself going. Whatever sits in that feedback path decides the frequency. In which oscillator circuit would you find a quartz crystal? The Pierce oscillator. The crystal sits in the feedback path and passes only its own natural frequency, so it sets the frequency precisely. Hartley and Colpitts oscillators use an LC tank instead: a coil, L, and a capacitor, C, which together resonate, or ring, at one frequency, like a swing. So the answer is Pierce, not all of the above."
     },
     {
-      "id": "s31",
-      "keyTopic": 28,
-      "template": "key-facts",
-      "params": {
-        "title": "Junctions, static and CMOS",
-        "items": [
-          "Forward-biased junction: low impedance, small voltage drop. Reverse bias: high impedance",
-          "CMOS: complementary metal-oxide semiconductor, P- and N-channel pairs, low static power",
-          "FET and CMOS: static charges can puncture the very thin gate oxide",
-          "Protection: grounded wrist straps, antistatic mats, conductive packaging"
-        ]
-      },
-      "onScreen": ["Forward-biased junction: low impedance", "CMOS: complementary metal-oxide semiconductor", "FET and CMOS: damaged by static", "Wrist straps, antistatic mats, conductive packaging"],
-      "narration": "A few more devices. A forward-biased diode junction is a low impedance: it conducts heavily with only a small voltage drop. Reverse bias makes it a high impedance. Next, CMOS, which stands for complementary metal-oxide semiconductor. It pairs P-channel and N-channel MOSFETs, metal-oxide semiconductor field-effect transistors, so CMOS logic draws very little static power. FET and CMOS devices need special handling precautions, because they are susceptible to damage from static charges, which can puncture their very thin gate oxide. Grounded wrist straps, antistatic mats and conductive packaging prevent this."
-    },
-    {
-      "id": "s32",
-      "keyTopic": 28,
-      "template": "comparison-table",
-      "params": {
-        "title": "Quartz crystals and the Pierce oscillator",
-        "columns": ["Effect or circuit", "What to know"],
-        "rows": [
-          ["Piezoelectric effect", "Applied voltage makes a crystal vibrate"],
-          ["Squeezing the crystal", "Produces a voltage in return"],
-          ["Pierce oscillator", "Quartz crystal in feedback path sets frequency"],
-          ["Hartley, Colpitts", "An LC tank sets the frequency instead"]
-        ]
-      },
-      "onScreen": ["Piezoelectric effect: voltage makes a crystal vibrate", "Squeezing it produces a voltage", "Pierce oscillator: quartz crystal in the feedback path", "Hartley and Colpitts: LC tank"],
-      "narration": "The piezoelectric effect is mechanical vibration of a crystal by the application of a voltage. It works the other way too: squeezing the crystal produces a voltage in return. You'll find a quartz crystal in the Pierce oscillator, where it sits in the feedback path and sets the frequency. Hartley and Colpitts oscillators set their frequency with an L C tank, a coil and a capacitor, instead."
-    },
-    {
-      "id": "s33",
+      "id": "s73",
       "keyTopic": 28,
       "template": "block-diagram",
       "params": {
@@ -590,20 +1323,48 @@
         ]
       },
       "onScreen": ["Small control current", "Electromagnet coil", "Separate set of contacts opens or closes", "Remotely controlled switching device"],
-      "narration": "Finally, the electrical relay. A relay is a remotely controlled switching device. A small current flows through its electromagnet coil. The coil's magnetic pull opens or closes a separate set of contacts, and those contacts switch a different circuit. So a small control signal in one place can switch a circuit somewhere else."
+      "narration": "Our last component is an old one: the relay. Remember that current through a coil makes a magnetic field. In a relay, a small control current flows through an electromagnet coil, and the coil's magnetic pull moves a metal arm that opens or closes a separate set of contacts. Those contacts switch a completely different circuit, which can carry far more current. So an electrical relay is a remotely controlled switching device: a small signal from a switch, a computer or a distant panel can switch a heavy circuit somewhere else. It isn't a current-limiting device, it doesn't supply voltages, and it's not mainly for audio amplifiers."
+    },
+    {
+      "id": "s74",
+      "keyTopic": 19,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": [
+          "Light frees carriers: conductivity up. LED: forward bias, about 20 mA, series resistor",
+          "Bipolar transistor: base, collector, emitter. Alpha under 1; beta 20 to several hundred",
+          "Capacitor: blocks DC, passes AC; set by plate spacing and dielectric constant",
+          "Voltage ratio = turns ratio; full-wave rectifier output frequency is 2:1",
+          "Zener: regulator reference, 2.4 V to 200 V and above. TRIAC: 2 SCRs, 1 shared gate"
+        ]
+      },
+      "onScreen": ["Light raises conductivity; LED needs 20 milliamps", "Base, collector, emitter; alpha and beta", "Capacitor blocks DC", "Voltage ratio = turns ratio", "Zener reference; TRIAC"],
+      "narration": "Let's wrap up with the key facts. Light frees charge carriers, so a photoconductor's conductivity rises and its resistance falls; an LED needs forward bias and about 20 milliamps, held there by a series resistor. A bipolar transistor has base, collector and emitter; alpha is just under 1, and beta runs from about 20 to several hundred. A capacitor blocks DC and passes AC, and its capacitance is set by the plate spacing and the dielectric constant. A transformer's voltage ratio equals its turns ratio, and a full-wave rectifier doubles the frequency, 2 to 1. And a Zener diode is the regulator's steady reference, while a TRIAC is 2 SCRs sharing one gate. Well done."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [19] },
-    { "after": "s8", "keyTopics": [20] },
-    { "after": "s12", "keyTopics": [21] },
-    { "after": "s15", "keyTopics": [22] },
-    { "after": "s18", "keyTopics": [23] },
-    { "after": "s21", "keyTopics": [24] },
-    { "after": "s24", "keyTopics": [25] },
-    { "after": "s27", "keyTopics": [26] },
-    { "after": "s30", "keyTopics": [27] },
-    { "after": "s33", "keyTopics": [28] }
+    { "after": "s4", "keyTopics": [19], "questions": ["3-19C1", "3-19C3"] },
+    { "after": "s7", "keyTopics": [28], "questions": ["3-28C1"] },
+    { "after": "s11", "keyTopics": [19, 27], "questions": ["3-19C5", "3-19C2", "3-27C1", "3-27C2"] },
+    { "after": "s14", "keyTopics": [27], "questions": ["3-27C3", "3-27C4", "3-27C6"] },
+    { "after": "s18", "keyTopics": [19, 27, 25], "questions": ["3-19C4", "3-19C6", "3-27C5", "3-25C2"] },
+    { "after": "s21", "keyTopics": [25], "questions": ["3-25C2", "3-25C1"] },
+    { "after": "s24", "keyTopics": [25, 26], "questions": ["3-25C3", "3-26C5", "3-26C2", "3-25C6"] },
+    { "after": "s27", "keyTopics": [26], "questions": ["3-26C4", "3-26C6", "3-26C1"] },
+    { "after": "s31", "keyTopics": [26, 25, 28], "questions": ["3-26C3", "3-25C5", "3-28C3"] },
+    { "after": "s34", "keyTopics": [28, 20], "questions": ["3-28C2", "3-20C1"] },
+    { "after": "s38", "keyTopics": [20], "questions": ["3-20C6", "3-20C4"] },
+    { "after": "s42", "keyTopics": [20], "questions": ["3-20C5", "3-20C3", "3-20C2"] },
+    { "after": "s45", "keyTopics": [21], "questions": ["3-21C2"] },
+    { "after": "s48", "keyTopics": [21], "questions": ["3-21C3", "3-21C6", "3-21C5"] },
+    { "after": "s51", "keyTopics": [21], "questions": ["3-21C1", "3-21C4"] },
+    { "after": "s55", "keyTopics": [22], "questions": ["3-22C6", "3-22C1", "3-22C3", "3-22C4"] },
+    { "after": "s58", "keyTopics": [22, 24], "questions": ["3-22C2", "3-22C5", "3-24C3"] },
+    { "after": "s62", "keyTopics": [24], "questions": ["3-24C1", "3-24C2", "3-24C6"] },
+    { "after": "s66", "keyTopics": [24, 23], "questions": ["3-24C4", "3-24C5", "3-23C2", "3-23C6"] },
+    { "after": "s70", "keyTopics": [23, 25], "questions": ["3-23C1", "3-23C3", "3-23C4", "3-23C5", "3-25C4"] },
+    { "after": "s74", "keyTopics": [28], "questions": ["3-28C4", "3-28C6", "3-28C5"] }
   ],
   "video": null
 }

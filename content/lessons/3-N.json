@@ -14,127 +14,563 @@
         "subtitle": "VHF channels, SSB and SITOR, survival craft beacons, weather fax and NAVTEX, and NMEA data networks."
       },
       "onScreen": ["Marine", "VHF, SSB and SITOR, survival craft beacons, weather fax, NAVTEX and NMEA data"],
-      "narration": "This lesson covers the marine electronics the exam asks about. We'll start with VHF, very high frequency, radio. Then comes medium and high frequency single sideband radio, or SSB, and SITOR, which stands for simplex teletype over radio. Next are survival craft beacons, weather fax and NAVTEX, and finally NMEA data networks, from the National Marine Electronics Association. Listen for the channels, frequencies, operating modes and wiring rules. Let's begin with VHF."
+      "narration": "Welcome to Marine, the lesson on the radio gear found aboard boats and ships. As a technician, you may be asked to install, check or repair this equipment, and the exam tests the channels, frequencies, modes and wiring rules behind it. We'll follow one boat as its radio installation grows. First comes a VHF, or very high frequency, radio for nearby contacts, then a single sideband radio for long distances. Next come the beacons packed in the life raft, then receivers for weather charts and safety messages, and finally the data network that links it all. No background is assumed. By the end, you'll know each exam answer, and why it's right."
     },
     {
       "id": "s2",
       "keyTopic": 85,
-      "template": "band-strip",
+      "template": "key-facts",
       "params": {
-        "title": "Marine VHF: channels 25 kHz apart",
-        "min": 156.4,
-        "max": 156.9,
-        "scale": "linear",
-        "marks": [
-          { "at": 156.8, "label": "Channel 16, 156.800 MHz", "note": "Distress and calling", "tone": "key" },
-          { "at": 156.525, "label": "Channel 70, 156.525 MHz", "note": "DSC and acknowledgement only: no voice", "tone": "key" }
+        "title": "Frequency: how fast a wave repeats",
+        "items": [
+          "A radio wave swings back and forth, cycle after cycle",
+          "Frequency: cycles per second, measured in hertz (Hz)",
+          "1 kilohertz (kHz) = 1000 Hz; 1 megahertz (MHz) = 1000 kHz",
+          "1 gigahertz (GHz) = 1000 MHz"
         ]
       },
-      "onScreen": ["Channel spacing: 25 kHz", "Channel 16, 156.800 MHz: distress and calling", "Channel 70, 156.525 MHz: DSC and acknowledgement only, no voice"],
-      "narration": "Marine VHF radio uses a channel spacing of 25 kilohertz. 2 channels matter most. Channel 16, 156.800 megahertz, is assigned for distress and calling. Channel 70, 156.525 megahertz, is used for digital selective calling, or DSC, and acknowledgement only. Voice is never allowed on channel 70. So when a question asks which channel is assigned for distress and calling, the answer is channel 16, not channel 70."
+      "onScreen": ["A radio wave repeats, cycle after cycle", "Frequency: cycles per second, in hertz", "kHz = 1000 Hz; MHz = 1000 kHz", "GHz = 1000 MHz"],
+      "narration": "Let's start with the idea every radio in this lesson depends on: frequency. Every radio signal is a wave of energy that swings back and forth, over and over, a little like a vibrating guitar string. One complete swing is called a cycle, and the number of cycles each second is the frequency, measured in hertz. Radio frequencies are huge numbers, so we use bigger units. A kilohertz is 1000 hertz. A megahertz is 1000 kilohertz. A gigahertz is 1000 megahertz. Each radio service is given its own frequencies, just as each station on a car radio has its own spot on the dial, so they don't talk over each other."
     },
     {
       "id": "s3",
       "keyTopic": 85,
-      "template": "formula",
+      "template": "band-strip",
       "params": {
-        "title": "Why ±5 kHz fits a 25 kHz channel",
-        "formula": "BW = 2(Δf + f<sub>m</sub>)",
-        "steps": ["Δf = ±5 kHz maximum deviation", "f<sub>m</sub> = 3 kHz audio", "BW = 2(5 + 3) kHz"],
-        "answer": "BW = 16 kHz, inside a 25 kHz channel"
+        "title": "Where this lesson's radios work",
+        "min": 300,
+        "max": 12000000,
+        "scale": "log",
+        "marks": [
+          { "at": 518, "label": "MF: 518 kHz", "note": "NAVTEX safety messages" },
+          { "at": 8000, "label": "HF: from 3 MHz up", "note": "Long-distance radio" },
+          { "at": 156800, "label": "VHF: about 156 MHz", "note": "Marine VHF radio, reaches the horizon", "tone": "key" },
+          { "at": 406000, "label": "406 MHz", "note": "Distress beacons heard by satellites" },
+          { "at": 9000000, "label": "9 GHz", "note": "Ship radar" }
+        ]
       },
-      "onScreen": ["Maximum deviation: ±5 kHz", "BW = 2(5 + 3) = 16 kHz", "Fits inside a 25 kHz channel"],
-      "narration": "The maximum allowable frequency deviation for VHF marine radios is plus or minus 5 kilohertz. Here's why that works. Carson's rule says the bandwidth equals 2 times the sum of delta f, the deviation, and f sub m, the audio frequency. With 5 kilohertz of deviation and 3 kilohertz of audio, that's 2 times the sum of 5 and 3, or 16 kilohertz. A 16 kilohertz signal fits inside a 25 kilohertz channel."
+      "onScreen": ["MF: NAVTEX at 518 kHz", "HF from 3 MHz: long-distance radio", "VHF about 156 MHz: marine radio", "406 MHz: distress beacons", "9 GHz: ship radar"],
+      "narration": "Those frequencies are grouped into bands, and this lesson visits several, so here's the map. Medium frequency, or MF, runs from 300 kilohertz to 3 megahertz; NAVTEX, a service sending safety messages to ships, works there at 518 kilohertz. High frequency, or HF, starts at 3 megahertz. MF waves hug the curve of the Earth, and HF waves bounce off the upper atmosphere, so both travel far beyond the horizon. That's why ships use them for long-distance radio. Marine VHF sits around 156 megahertz. Its waves travel in nearly straight lines, so they stop at about the horizon. Higher still, distress beacons use 406 megahertz, and ship radars work near 9 gigahertz. We'll visit each stop in turn."
     },
     {
       "id": "s4",
       "keyTopic": 85,
-      "template": "equipment-card",
+      "template": "band-strip",
       "params": {
-        "title": "DSC VHF installation checks",
-        "device": "transceiver",
-        "callouts": [
-          { "label": "Latitude and longitude, plus speed, on the display: GPS sentence correct", "at": "display" },
-          { "label": "Never press the red distress button to test: a false distress alert", "at": "distress" },
-          { "label": "USA: changes some normally duplex channels into simplex channels", "at": "keypad" },
-          { "label": "INT restores international duplex; neither setting increases range", "at": "keypad" }
+        "title": "Marine VHF channels: 25 kHz apart",
+        "min": 156.74,
+        "max": 156.86,
+        "scale": "linear",
+        "marks": [
+          { "at": 156.8, "label": "Channel 16: 156.800 MHz", "note": "A channel number names one frequency", "tone": "key" },
+          { "at": 156.775, "label": "Next channel down", "note": "25 kHz lower", "tone": "muted" },
+          { "at": 156.825, "label": "Next channel up", "note": "25 kHz higher", "tone": "muted" }
         ]
       },
-      "onScreen": ["Latitude, longitude and speed on the display", "Never test with the distress button", "USA: some duplex channels become simplex", "INT: international duplex; no extra range"],
-      "narration": "2 checks on a DSC VHF installation. First, to verify that the GPS, or Global Positioning System, receiver is sending the correct sentence to the radio, look for latitude and longitude, plus speed, on the VHF display. Never press the red distress button to test it: that would send a false distress alert. Second, the USA-INT control, short for USA and international. The USA setting changes some channels that are normally duplex channels into simplex channels for U.S. waters. INT restores international duplex operation. Neither setting increases range."
+      "onScreen": ["Channel 16 = 156.800 MHz", "Neighboring channels 25 kHz lower and higher", "Marine VHF channel spacing: 25 kHz"],
+      "narration": "Our first stop is marine VHF, the radio nearly every boat carries. You pick a VHF frequency by channel. So what is a channel? Think of the VHF band as a highway, and each channel as one lane. A channel number is simply a short name for one exact frequency: channel 16 is 156.800 megahertz. A radio signal isn't a thin line on the dial; it takes up some width, so lanes need space between them, or neighboring signals would overlap. Marine VHF channels, from 156 to 162 megahertz, use a channel spacing of 25 kilohertz: each channel sits 25 kilohertz from its neighbors. On the exam, pick 25 kilohertz; 10, 12.5 and 20 kilohertz are the wrong lane widths."
     },
     {
       "id": "s5",
+      "keyTopic": 85,
+      "template": "waveform",
+      "params": {
+        "title": "FM: the voice swings the frequency",
+        "kind": "fm",
+        "cycles": 16,
+        "xAxis": "time",
+        "yAxis": "signal",
+        "labels": [
+          "Carrier: a steady wave on the channel frequency",
+          "Your voice pushes its frequency up and down",
+          "Deviation: how far it swings from center",
+          "Marine VHF limit: ±5 kHz"
+        ]
+      },
+      "onScreen": ["Carrier: steady wave on the channel frequency", "Voice swings the frequency up and down", "Deviation: the size of the swing", "Maximum deviation: ±5 kHz"],
+      "narration": "To put your voice into its lane, a VHF radio uses FM, frequency modulation; modulation means changing a wave so it carries information. The radio makes a steady wave on the channel frequency, the carrier, which your voice rides on. As you speak, your voice nudges the carrier's frequency above and below center, in step with the sound. How far it swings is the deviation; a louder voice swings it farther. Too wide a swing would spill into the next lane. The maximum allowable deviation for VHF marine radios is plus or minus 5 kilohertz, meaning 5 kilohertz either side of center. Swings of 15 or 25 kilohertz would overrun the channel, and 2.5 kilohertz isn't the marine limit."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 85,
+      "template": "formula",
+      "params": {
+        "title": "Does ±5 kHz fit a 25 kHz channel?",
+        "formula": "BW = 2(Δf + f<sub>m</sub>)",
+        "steps": ["Δf = 5 kHz, the deviation", "f<sub>m</sub> = 3 kHz, the highest voice pitch", "BW = 2(5 + 3) kHz = 2 × 8 kHz"],
+        "answer": "BW = 16 kHz: fits inside 25 kHz"
+      },
+      "onScreen": ["Carson's rule: BW = 2(Δf + fm)", "Δf = 5 kHz, fm = 3 kHz", "BW = 2(5 + 3) = 16 kHz", "Fits inside a 25 kHz channel"],
+      "narration": "Does a signal swinging plus or minus 5 kilohertz really fit in a 25 kilohertz lane? Check its bandwidth, the total width of the band the signal occupies. Carson's rule estimates it: bandwidth equals 2 times the sum of delta f and f sub m. Delta f is the deviation, 5 kilohertz. F sub m is the highest audio frequency, the highest pitch in the voice, about 3 kilohertz; the voice's own tones spread the signal a little beyond the swing. Add them: 8 kilohertz, the signal's reach on each side of center. Double it for both sides: 16 kilohertz. That's less than 25, so the signal fits, with room to spare as a guard between lanes."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 85,
+      "template": "key-facts",
+      "params": {
+        "title": "Channel 16: distress and calling",
+        "items": [
+          "Channel 16 = 156.800 MHz",
+          "Distress: a vessel in serious danger calling for help",
+          "Calling: make contact here, then move to a working channel",
+          "Not channel 70, 21A or 68"
+        ]
+      },
+      "onScreen": ["Channel 16 = 156.800 MHz", "Distress: a call for help", "Calling: first contact, then a working channel", "Not 70, 21A or 68"],
+      "narration": "So every channel is a 25 kilohertz lane. Some lanes have special jobs, and 2 matter most on the exam. The first is channel 16, 156.800 megahertz. It's assigned for distress and calling. Distress means a vessel in serious danger calling for help. Calling means making first contact: you call another boat on channel 16, then you both switch to a working channel, an ordinary channel for conversation, so 16 stays clear. Because boats keep a listening watch on channel 16, it's like a town square where everyone can hear a shout for help. The trap answers, channels 70, 21A and 68, are not the distress and calling channel."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 85,
+      "template": "band-strip",
+      "params": {
+        "title": "Channel 16 for voice, channel 70 for DSC",
+        "min": 156.4,
+        "max": 156.9,
+        "scale": "linear",
+        "marks": [
+          { "at": 156.8, "label": "Channel 16: 156.800 MHz", "note": "Distress and calling by voice", "tone": "key" },
+          { "at": 156.525, "label": "Channel 70: 156.525 MHz", "note": "DSC and acknowledgement only: no voice", "tone": "key" }
+        ]
+      },
+      "onScreen": ["Channel 16, 156.800 MHz: distress and calling by voice", "Channel 70, 156.525 MHz: DSC and acknowledgement only", "No voice on channel 70"],
+      "narration": "Channel 16 carries voice. Its partner, channel 70, carries data. Modern marine radios have DSC, digital selective calling. Instead of speaking, the radio sends a short burst of digital code, numbers sent as data the way a computer sends them. The code calls one particular station, a bit like dialing a phone number, and makes the other radio ring. A distress button sends an automatic alert the same way, carrying the boat's identity. Channel 70, 156.525 megahertz, is used for DSC and acknowledgement only: the calls, and the replies confirming they arrived. Voice is never allowed on channel 70, because talking there would block the digital alerts. So: 16 for distress and calling by voice, 70 for DSC."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 85,
+      "template": "comparison-table",
+      "params": {
+        "title": "Simplex versus duplex",
+        "columns": ["Feature", "Simplex", "Duplex"],
+        "rows": [
+          ["Frequencies", "One, shared by both sides", "Two: one for each direction"],
+          ["Talking", "Take turns", "Both at once, like a phone"],
+          ["Typical marine use", "Boat to boat", "Calls through a coast station"]
+        ]
+      },
+      "onScreen": ["Simplex: one frequency, take turns", "Duplex: 2 frequencies, both talk at once", "Duplex: calls through a coast station"],
+      "narration": "Marine VHF radios also have a switch the exam asks about, the USA-INT control. To understand it, you need 2 words: simplex and duplex. A simplex channel uses one frequency for both directions. You talk, then you let go of the button and listen, taking turns like a walkie-talkie; most boat-to-boat talk works this way. A duplex channel uses 2 frequencies, one for each direction. The ship transmits on one, and the coast station, a radio station on shore, transmits on the other, so both can talk at once, like a telephone. The international marine channel plan makes some channels duplex, often for calls through coast stations. But in U.S. waters, several of those channels are used differently."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 85,
+      "template": "equipment-card",
+      "params": {
+        "title": "The USA-INT control",
+        "device": "transceiver",
+        "callouts": [
+          { "label": "USA: some normally duplex channels become simplex", "at": "keypad" },
+          { "label": "USA mode: those channels send and receive on the ship frequency", "at": "display" },
+          { "label": "INT: restores international duplex operation", "at": "keypad" },
+          { "label": "Neither setting increases range", "at": "panel" }
+        ]
+      },
+      "onScreen": ["USA: some duplex channels become simplex", "Sends and receives on the ship frequency", "INT: international duplex", "No change in range"],
+      "narration": "That's where the USA-INT control comes in; the name is short for USA and international. In U.S. waters, some channels that are normally duplex channels are used as simplex channels. The USA setting changes them into simplex: for those channels, the radio transmits and receives on the ship frequency, the one the ship normally transmits on. The INT setting restores international duplex operation, for use in other countries' waters. Notice what the control doesn't do. It doesn't turn simplex channels into duplex; that's backwards. And setting INT doesn't increase range. Range depends on transmitter power and antenna height, and the switch changes neither."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 85,
+      "template": "equipment-card",
+      "params": {
+        "title": "Checking the GPS feed to a DSC radio",
+        "device": "transceiver",
+        "callouts": [
+          { "label": "GPS receiver: works out the boat's position from satellites", "at": "panel" },
+          { "label": "Position sent to the radio as data sentences", "at": "panel" },
+          { "label": "Check: latitude and longitude, plus speed, on the display", "at": "display" }
+        ]
+      },
+      "onScreen": ["GPS works out the boat's position", "Position sent as data sentences", "Look for latitude, longitude and speed on the display"],
+      "narration": "One last VHF check, done on every DSC installation. A distress alert is far more useful when it says where the boat is, so installers connect a Global Positioning System receiver, or GPS, to the DSC radio. It uses signals from satellites to work out the boat's position. The GPS receiver sends that position over a data cable as short lines of text called sentences; more on that cable later in the lesson. So how might an installer verify the correct GPS sentence is reaching the radio? Look for latitude and longitude, the boat's position on the map, plus speed, on the VHF display. If they appear and look right, the data is arriving."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 85,
+      "template": "key-facts",
+      "params": {
+        "title": "Never test with the distress button",
+        "items": [
+          "Never press and hold the red distress button to test",
+          "It sends a false distress alert, and rescuers respond",
+          "No separate GPS confirmation readout: the position is the proof",
+          "Another station's radio check can't see your GPS data"
+        ]
+      },
+      "onScreen": ["Never test with the red distress button", "It sends a false distress alert", "The position on the display is the proof", "A radio check can't see your GPS data"],
+      "narration": "What you must never do is press and hold the red distress button to test the link. That sends an actual DSC distress alert: a false alarm that rescuers must treat as genuine, tying up the people who answer real emergencies. The exam's other traps miss the point too. There's no separate GPS confirmation readout to look for; the position on the display is the proof. And asking another station for a radio check won't help, because it can't see what your GPS sends your radio. That wraps up VHF: 25 kilohertz channels, plus or minus 5 kilohertz deviation, channel 16 for distress and calling by voice, and channel 70 for DSC."
+    },
+    {
+      "id": "s13",
       "keyTopic": 86,
       "template": "waveform",
       "params": {
-        "title": "Voice-testing an SSB radio",
+        "title": "AM: a carrier and 2 sidebands",
+        "kind": "ssb",
+        "sideband": "both",
+        "carrier": "full",
+        "xAxis": "frequency",
+        "yAxis": "strength",
+        "labels": [
+          "Carrier: steady, holds none of the voice",
+          "Lower and upper sidebands: the voice, mirrored"
+        ]
+      },
+      "onScreen": ["Carrier in the middle: no voice", "2 sidebands carry the same voice"],
+      "narration": "But VHF reaches only about as far as the horizon, and offshore our boat needs long range, so we add an MF and HF radio. Its voice mode is single sideband, or SSB. To understand it, start with plain AM, amplitude modulation. Amplitude is the strength of the wave, and in AM your voice changes that strength. This picture shows the signal by frequency, not time: low on the left, high on the right, with the steady carrier in the middle. Changing its strength with your voice creates new frequencies on either side: a band just below the carrier and a band just above, called sidebands. The voice lives entirely in those sidebands, 2 mirror images carrying the same speech."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 86,
+      "template": "waveform",
+      "params": {
+        "title": "SSB: one sideband, no carrier",
         "kind": "ssb",
         "sideband": "upper",
         "carrier": "suppressed",
         "xAxis": "frequency",
-        "yAxis": "output power",
+        "yAxis": "strength",
         "labels": [
-          "Single sideband: no carrier, so output only while you speak",
-          "Current surges come with each syllable",
+          "Carrier removed",
+          "One sideband removed",
+          "All the power goes into the voice",
+          "No speech, no output"
+        ]
+      },
+      "onScreen": ["Carrier removed", "One sideband removed", "All the power in the voice", "No speech, no output"],
+      "narration": "Single sideband trims away the waste. The carrier carries no information, so SSB removes it. The 2 sidebands carry the same speech, so SSB drops one of them too. What's left is a single sideband, which takes less room on the band and puts all the transmitter's power into your voice. There's a consequence the exam cares about. With no carrier, an SSB transmitter puts out nothing while you're silent. Its output rises and falls with your speech, syllable by syllable, and so does the power it draws."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 86,
+      "template": "block-diagram",
+      "params": {
+        "title": "Powering the SSB radio: a circuit",
+        "columns": 2,
+        "blocks": [
+          { "id": "battery", "label": "Battery", "note": "Voltage: the push" },
+          { "id": "red", "label": "Red positive lead", "note": "Current flows out" },
+          { "id": "black", "label": "Black negative lead", "note": "Current flows back" },
+          { "id": "radio", "label": "SSB radio", "note": "An ammeter shows its current" }
+        ],
+        "links": [
+          { "from": "battery", "to": "red" },
+          { "from": "red", "to": "radio" },
+          { "from": "radio", "to": "black" },
+          { "from": "black", "to": "battery" }
+        ]
+      },
+      "onScreen": ["Battery: voltage is the push", "Red positive lead: current flows out", "Black negative lead: current flows back", "Ammeter measures the radio's current"],
+      "narration": "Where does that power come from? The boat's batteries. Think of water in a pipe. Voltage is the battery's push, like water pressure, and current is the flow that push drives. Current leaves the battery's positive terminal along the red lead, and comes home to its negative terminal along the black lead. In between, it flows through the radio and powers it. It has to make that whole loop, called a circuit, to flow at all; break the loop anywhere, and the flow stops. An ammeter, a meter that measures current, shows how much the radio is drawing."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 86,
+      "template": "waveform",
+      "params": {
+        "title": "Voice-testing an SSB aboard a boat",
+        "kind": "pulse",
+        "cycles": 5,
+        "duty": 0.4,
+        "xAxis": "time",
+        "yAxis": "current drawn",
+        "labels": [
+          "Each syllable: a surge of output and current",
+          "The ammeter swings up with each word, not down",
           "Voltage panel indicator lamps may glow with each syllable",
-          "The ammeter swings up, not down"
+          "Battery voltage dips with each surge: a voltage drop"
         ]
       },
-      "onScreen": ["No carrier: output only while you speak", "Current surges with each syllable", "Panel lamps may glow with each syllable", "Ammeter swings up, not down"],
-      "narration": "Now medium and high frequency SSB radio. A single sideband signal has no carrier, so the transmitter draws current surges only as you speak, syllable by syllable. That explains a common occurrence when you voice-test an SSB aboard a boat: the voltage panel indicator lamps may glow with each syllable. And the ammeter swings up with each word, not down."
+      "onScreen": ["A current surge with each syllable", "Ammeter swings up, not down", "Panel lamps may glow with each syllable", "Battery voltage dips with each surge"],
+      "narration": "Now picture voice-testing the SSB aboard a boat. Each syllable you speak makes a burst of output, and with it a surge of current from the battery. Between words, the current falls back. So the ammeter swings up with each word, because speaking increases the current; it doesn't fluctuate down. Those surges, plus stray radio energy picked up by the boat's wiring, cause a common occurrence: the voltage panel indicator lamps, the little lights on the boat's electrical panel, may glow with each syllable. Each surge also pulls the battery's voltage down a little. That loss of push is called a voltage drop. So the trap answer, minimal voltage drop at the power source, is wrong."
     },
     {
-      "id": "s6",
+      "id": "s17",
+      "keyTopic": 86,
+      "template": "key-facts",
+      "params": {
+        "title": "From the radio to the tuner",
+        "items": [
+          "Transceiver: a transmitter and receiver in one box",
+          "Coax: a center wire inside a braided metal shield",
+          "Automatic tuner: matches the antenna to each frequency",
+          "Once matched, it holds: no retuning on each syllable"
+        ]
+      },
+      "onScreen": ["Transceiver: transmitter and receiver in one box", "Coax: center wire inside a braided shield", "Automatic tuner matches the antenna", "It holds its setting while you talk"],
+      "narration": "Next, follow the radio's output toward the antenna. The SSB radio is a transceiver, a transmitter and receiver in one box. Its signal leaves on coax, a cable with a center wire inside a braided metal shield. The coax runs to an automatic antenna tuner. An antenna works best at certain frequencies, but an SSB radio uses many. So the tuner adjusts itself to match the antenna to each frequency you use, letting the power flow into the antenna instead of bouncing back toward the radio. Once matched, it holds that setting while you talk, so it doesn't cycle on each syllable: that's another trap answer for the voice test."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 86,
+      "template": "block-diagram",
+      "params": {
+        "title": "The SSB antenna system",
+        "columns": 3,
+        "blocks": [
+          { "id": "radio", "label": "SSB transceiver" },
+          { "id": "tuner", "label": "Automatic antenna tuner", "note": "Matches the antenna to each frequency" },
+          { "id": "stay", "label": "Insulated backstay", "note": "Mast-bracing wire used as the antenna" },
+          { "id": "ground", "label": "RF ground", "note": "A connection to the seawater" }
+        ],
+        "links": [
+          { "from": "radio", "to": "tuner", "label": "Coax" },
+          { "from": "tuner", "to": "stay" },
+          { "from": "tuner", "to": "ground" }
+        ]
+      },
+      "onScreen": ["Transceiver to tuner: coax", "Automatic tuner matches the antenna", "Insulated backstay: the antenna", "RF ground: connection to the seawater"],
+      "narration": "Here's the whole antenna system. The transceiver feeds the tuner through coax. From the tuner, one wire runs to the antenna. On a sailboat, the antenna is often the backstay, the wire that braces the mast toward the stern, the back of the boat. Insulators at each end separate it electrically from the mast and hull, so it can serve as the antenna. The tuner's other connection goes to an RF, or radio frequency, ground: a connection to the seawater, which acts as the other half of the antenna."
+    },
+    {
+      "id": "s19",
       "keyTopic": 86,
       "template": "equipment-card",
       "params": {
-        "title": "SSB power: the red and black fuses",
-        "device": "battery",
-        "callouts": [
-          { "label": "Blown black negative fuse: apparent low voltage when transmitting", "at": "negative" },
-          { "label": "Return current must find another path: coax shield and RF ground", "at": "cables" },
-          { "label": "Blown red positive fuse: the radio simply shuts off", "at": "positive" }
-        ]
-      },
-      "onScreen": ["Black negative fuse blown: apparent low voltage", "Return current through coax shield and RF ground", "Red positive fuse blown: radio shuts off"],
-      "narration": "Here's a fault to recognize. Your marine SSB shows apparent low voltage when transmitting. A likely cause is a blown black negative fuse. With the negative lead open, the return current must find another path, such as the coax shield and the RF, or radio frequency, ground. A blown red positive fuse is different. It would simply shut the radio off, so it can't explain low voltage while transmitting."
-    },
-    {
-      "id": "s7",
-      "keyTopic": 86,
-      "template": "equipment-card",
-      "params": {
-        "title": "SSB tuner and backstay cabling",
+        "title": "Tuner to backstay: GTO-15 cable",
         "device": "antenna",
         "callouts": [
           { "label": "Automatic antenna tuner", "at": "coupler" },
-          { "label": "Insulated backstay antenna: the run carries very high RF voltage", "at": "whip" },
-          { "label": "GTO-15 high-voltage cable from the tuner to the insulated backstay", "at": "insulator" },
+          { "label": "Tuner to backstay: very high RF voltage", "at": "whip" },
+          { "label": "GTO-15 high-voltage cable: tuner to the insulated backstay", "at": "insulator" },
           { "label": "Coax such as RG-8U or RG-213: transceiver to tuner", "at": "coax" }
         ]
       },
-      "onScreen": ["Automatic tuner", "Insulated backstay: very high RF voltage", "GTO-15 high-voltage cable: tuner to backstay", "RG-8U or RG-213 coax: transceiver to tuner"],
-      "narration": "Next, the antenna wiring. An SSB automatic tuner often feeds an insulated backstay, which serves as the antenna. The run from the tuner to the backstay carries very high RF voltage, so it uses GTO-15 high-voltage cable. Coax, such as RG-8U or RG-213, belongs between the transceiver and the tuner, not on that high-voltage run to the backstay."
+      "onScreen": ["Automatic tuner", "Very high RF voltage from tuner to backstay", "GTO-15 high-voltage cable: tuner to backstay", "RG-8U or RG-213 coax: transceiver to tuner"],
+      "narration": "Which wire connects the tuner to the insulated backstay? Where the tuner feeds the end of a long wire like a backstay, the radio energy appears as very high RF voltage, enough to spark through ordinary insulation. So that run uses GTO-15 high-voltage cable: a single wire with very thick insulation, the kind made for neon signs. Coax, such as RG-8U or RG-213, belongs between the transceiver and the tuner, where the voltage is modest and the shield keeps the signal inside the cable. On the exam, RG-8U and RG-213 are traps for the backstay run, and so is ordinary 16-gauge two-conductor wire."
     },
     {
-      "id": "s8",
+      "id": "s20",
+      "keyTopic": 86,
+      "template": "key-facts",
+      "params": {
+        "title": "Fuses and resistance",
+        "items": [
+          "Fuse: a thin metal link that melts if too much current flows",
+          "One fuse in the red lead, one in the black lead",
+          "Resistance: anything that holds the current back",
+          "More resistance, more voltage drop under a heavy load"
+        ]
+      },
+      "onScreen": ["Fuse melts if too much current flows", "A fuse in the red lead and in the black lead", "Resistance holds current back", "More resistance, more voltage drop"],
+      "narration": "That's the antenna side. Back on the power side, the exam asks about a fault, and it takes 2 more ideas to follow. First, fuses. A fuse is a thin metal link that melts and opens the circuit if too much current flows, protecting the wiring from overheating. The SSB has one in the red lead and one in the black lead. Second, resistance: anything that holds the current back, like a narrow section of pipe. Pushing current through resistance uses up some voltage, which is where a voltage drop comes from. The more resistance, and the heavier the load, meaning the current being drawn, the bigger the drop."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 86,
+      "template": "equipment-card",
+      "params": {
+        "title": "Apparent low voltage when transmitting",
+        "device": "battery",
+        "callouts": [
+          { "label": "Blown black negative fuse", "at": "negative" },
+          { "label": "Return current takes another path: coax shield, tuner, RF ground", "at": "cables" },
+          { "label": "More resistance: the voltage drops under transmit load", "at": "case" },
+          { "label": "Blown red positive fuse: the radio simply shuts off", "at": "positive" }
+        ]
+      },
+      "onScreen": ["Blown black negative fuse", "Return current via coax shield, tuner, RF ground", "Voltage drops under transmit load", "Blown red fuse: radio shuts off"],
+      "narration": "Here's the fault, and it ties the power side to the antenna side. Your marine SSB shows apparent low voltage when transmitting. A likely cause is a blown black negative fuse. The current still has to get back to the battery, so it finds another path, such as the coax shield, the tuner and the RF ground. That path has more resistance, so under the heavy transmit load the voltage drops. A blown red positive fuse is different: no current can reach the radio, so it simply shuts off. The other traps don't fit either. Good grounding helps rather than hurts, and an antenna mismatch affects the signal going out, not the supply voltage."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 86,
+      "template": "key-facts",
+      "params": {
+        "title": "SITOR: typed messages by radio",
+        "items": [
+          "SITOR: simplex teletype over radio",
+          "Teletype: each typed character sent as a short code",
+          "HF fading and static can wipe out characters",
+          "2 cures: ask for a repeat, or send everything twice"
+        ]
+      },
+      "onScreen": ["SITOR: simplex teletype over radio", "Each character sent as a short code", "Fading and static wipe out characters", "Cures: ask for a repeat, or send twice"],
+      "narration": "The SSB radio can carry text as well as voice. Ships send typed messages over MF and HF using SITOR, simplex teletype over radio. Teletype means each typed character is sent as a short code, a pattern of 2 kinds of signal, much like dots and dashes, and printed at the far end. Simplex, as with VHF, means one frequency, taking turns. The challenge is that HF signals fade, and bursts of static can wipe out characters. SITOR has 2 cures. The receiver can check the text and ask for a repeat of anything damaged. Or the sender can transmit everything twice, so a spare copy is always on the way."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 86,
+      "template": "block-diagram",
+      "params": {
+        "title": "ARQ: send 3 characters, wait for an answer",
+        "columns": 4,
+        "blocks": [
+          { "id": "send", "label": "Sender: a 3-character block" },
+          { "id": "check", "label": "Receiver checks the block" },
+          { "id": "ack", "label": "Receiver answers at once", "note": "OK, or please repeat" },
+          { "id": "next", "label": "Sender: next block, or a repeat" }
+        ],
+        "links": [
+          { "from": "send", "to": "check" },
+          { "from": "check", "to": "ack" },
+          { "from": "ack", "to": "next" }
+        ]
+      },
+      "onScreen": ["Sender: a 3-character block", "Receiver checks the block", "Receiver answers at once: OK or repeat", "Then the next block, or a repeat"],
+      "narration": "The first cure is ARQ, automatic repeat request, a two-way exchange between 2 stations. The sending station transmits the message in data groups of 3-character blocks. After every block, it pauses. The receiving station checks the block and acknowledges it right away, replying either OK or please repeat. Then the next block goes. It's like reading a phone number to someone 3 digits at a time, waiting for them to say got it. So on the exam, ARQ transmissions are not acknowledged only at the end of the message; every block is answered. ARQ is also called SITOR-A."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 86,
+      "template": "waveform",
+      "params": {
+        "title": "FEC: every character sent twice",
+        "kind": "repeat",
+        "chars": ["F", "E", "C"],
+        "noiseAt": 2,
+        "labels": [
+          "Each character is sent twice, at different moments",
+          "A noise burst wipes out one copy",
+          "The receiver prints the good copy, without replying",
+          "One-way, not interactive; time diversity is FEC's, not ARQ's"
+        ]
+      },
+      "onScreen": ["FEC: each character sent twice", "Noise wipes out one copy", "Receiver prints the good copy, no reply", "One-way, not interactive"],
+      "narration": "The second cure, FEC, forward error correction, takes the other approach. The sender transmits each character twice, with time diversity: the 2 copies go out at different moments, like saying everything twice on a bad phone line. If a burst of noise wipes out one copy, the other usually survives, and the receiver prints the good one. The receiver never replies. That makes FEC one-way, not interactive, so on the exam, forward error correction is not an interactive mode. Notice which mode uses time diversity: FEC. ARQ doesn't rely on time diversity, and ARQ doesn't send each character twice; it repeats a block only when asked. FEC is also called SITOR-B."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 86,
+      "template": "block-diagram",
+      "params": {
+        "title": "FEC broadcasts: no reply needed",
+        "columns": 2,
+        "blocks": [
+          { "id": "coast", "label": "Coast radio station", "note": "Weather and safety broadcasts in FEC" },
+          { "id": "a", "label": "Ship", "note": "Receives only" },
+          { "id": "b", "label": "Ship", "note": "Receives only" },
+          { "id": "c", "label": "Ship", "note": "Receives only" }
+        ],
+        "links": [
+          { "from": "coast", "to": "a" },
+          { "from": "coast", "to": "b" },
+          { "from": "coast", "to": "c" }
+        ]
+      },
+      "onScreen": ["Coast station broadcasts in FEC", "Every ship receives at once", "No two-way contact needed", "Why weather and safety broadcasts use FEC"],
+      "narration": "Because FEC needs no reply, any number of ships can copy the same transmission at once. Two-way communication with the coast radio station using FEC is not necessary to be able to receive the broadcasts. There's no link to set up, and no answerbacks to exchange; those are the identity codes stations swap at the start of an ARQ contact. That's exactly why weather and safety broadcasts use FEC. One trap claims that sending every character twice would make weather broadcasts too long; in fact, FEC is the mode they use."
+    },
+    {
+      "id": "s26",
       "keyTopic": 86,
       "template": "comparison-table",
       "params": {
-        "title": "SITOR modes",
-        "columns": ["Mode", "Communication", "How it works"],
+        "title": "The 3 SITOR modes",
+        "columns": ["Mode", "Sends to", "Direction"],
         "rows": [
-          ["ARQ", "Two-way", "3-character blocks, each acknowledged at once"],
-          ["FEC", "One-way to all stations", "Each character sent twice; receivers don't reply"],
-          ["SFEC", "One-way to a single station", "Selective forward error correction"]
+          ["ARQ", "One station, which replies", "Two-way"],
+          ["FEC", "All stations", "One-way"],
+          ["SFEC, selective FEC", "A single chosen station", "One-way"]
         ]
       },
-      "onScreen": ["ARQ: two-way, 3-character blocks acknowledged at once", "FEC: one-way to all stations, each character sent twice", "SFEC: one-way to a single station"],
-      "narration": "SITOR has 3 modes. ARQ, automatic repeat request, is two-way. Messages go in data groups of 3-character blocks, and the receiving station acknowledges each block right away, not only at the end of the message. ARQ does not rely on time diversity. FEC, forward error correction, is one-way to all stations. It sends each character twice with time diversity, and receivers decode without replying, so FEC is not interactive. Two-way communication with the coast radio station is not necessary to receive the broadcasts, which is why weather and safety broadcasts use FEC. SFEC, selective FEC, is one-way to a single station. So the sequence ARQ, FEC, SFEC means two-way, one-way to all stations, and one-way to a single station."
+      "onScreen": ["ARQ: two-way", "FEC: one-way to all stations", "SFEC: one-way to a single station"],
+      "narration": "There's one more mode: SFEC, selective FEC. It works like FEC, but the message is addressed to a single station instead of everyone. Now line all 3 up, because the exam gives them as a sequence. ARQ is two-way communication. FEC is one-way communication to all stations. SFEC is one-way communication to a single station. So the sequence ARQ, FEC, SFEC means two-way, one-way to all stations, one-way to a single station. The takeaway for SSB and SITOR: with no carrier, current surges with speech; high-voltage cable feeds the backstay; ARQ answers every block; FEC sends twice and needs no reply."
     },
     {
-      "id": "s9",
+      "id": "s27",
+      "keyTopic": 87,
+      "template": "block-diagram",
+      "params": {
+        "title": "When the crew takes to the survival craft",
+        "columns": 3,
+        "blocks": [
+          { "id": "epirb", "label": "EPIRB", "note": "Sends a distress alert" },
+          { "id": "sat", "label": "Satellites", "note": "Relay the alert" },
+          { "id": "rcc", "label": "Rescue center", "note": "Sends help" },
+          { "id": "sart", "label": "SART", "note": "Answers the rescuer's radar" },
+          { "id": "ship", "label": "Rescue ship" },
+          { "id": "vhf", "label": "Handheld VHF", "note": "Talk to rescuers nearby" }
+        ],
+        "links": [
+          { "from": "epirb", "to": "sat" },
+          { "from": "sat", "to": "rcc" },
+          { "from": "rcc", "to": "ship" },
+          { "from": "ship", "to": "sart", "label": "Radar" },
+          { "from": "vhf", "to": "ship", "label": "Voice" }
+        ]
+      },
+      "onScreen": ["EPIRB alert relayed by satellites to a rescue center", "Rescue ship's radar finds the SART", "Handheld VHF for talking to rescuers nearby"],
+      "narration": "Now the worst case: the crew must abandon ship and take to a survival craft, a life raft or lifeboat. GMDSS, the Global Maritime Distress and Safety System, is the international set of rules and equipment that makes sure they're found. 3 radio tools go with them. An EPIRB, emergency position-indicating radio beacon, sends a distress alert to satellites, which relay it to a rescue center. A SART, search and rescue radar transponder, guides the rescue ship in on its radar. And a handheld VHF lets survivors talk to rescuers nearby. We'll start with the SART, which needs a quick look at radar."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 87,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Radar: echoes at a bearing and range",
+        "rangeNm": 8,
+        "rings": 4,
+        "echoes": [
+          { "bearing": 40, "range": 5.5 },
+          { "bearing": 290, "range": 3.5 }
+        ],
+        "labels": [
+          "Pulses out, echoes back: a later echo means a farther object",
+          "Own ship at the center; each echo at its bearing and range",
+          "Ship radars: X-band near 9 GHz, S-band near 3 GHz"
+        ]
+      },
+      "onScreen": ["Later echo, farther object", "Own ship at the center; echoes at their bearing and range", "Ship radars: X-band near 9 GHz, S-band near 3 GHz"],
+      "narration": "Here's radar in a nutshell. It sends out short pulses of microwaves, radio waves in the gigahertz range, from a spinning antenna. When a pulse hits a ship or a coastline, an echo bounces back, like a shout echoing off a cliff. The radar times each echo: the longer it takes to return, the farther away the object. The round display puts your own ship at the center and draws each echo as a bright spot, in the direction it came from, called its bearing, and at its distance, called its range. Ship radars use 2 bands: X-band, near 9 gigahertz, and S-band, near 3 gigahertz. Keep that 9 in mind."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 87,
+      "template": "equipment-card",
+      "params": {
+        "title": "The SART: silent until a radar asks",
+        "device": "sart",
+        "callouts": [
+          { "label": "Activated in the survival craft: waits silently in standby", "at": "switch" },
+          { "label": "A radar pulse interrogates it", "at": "antenna" },
+          { "label": "Only then does it transmit its reply", "at": "body" }
+        ]
+      },
+      "onScreen": ["Activated: waits silently in standby", "Radar pulse interrogates it", "Only then does it transmit"],
+      "narration": "Now the SART itself. A transponder is a device that transmits a reply when it receives a signal, and the SART is one. After being activated in the survival craft, it waits silently in standby. It begins transmitting only when it responds to radar interrogation: a pulse from a searching ship's radar asks, and the SART answers. That saves its battery, and nobody needs to operate it. So the exam's trap answers are wrong. A SART doesn't begin radiating immediately when activated, manual or water activation alone doesn't make it radiate, and the operator never keys it."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 87,
+      "template": "band-strip",
+      "params": {
+        "title": "Which band does a SART answer?",
+        "min": 300,
+        "max": 12000,
+        "scale": "log",
+        "marks": [
+          { "at": 9000, "label": "9 GHz: X-band radar", "note": "The SART operates here", "tone": "key" },
+          { "at": 3000, "label": "3 GHz: S-band radar", "note": "Does not trigger a SART", "tone": "muted" },
+          { "at": 406, "label": "406 MHz", "note": "The EPIRB's frequency, not the SART's", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["SART: 9 GHz band, X-band radars", "Not 3 GHz S-band", "Not 406 MHz: that's the EPIRB"],
+      "narration": "Which radar can wake a SART? A search and rescue transponder operates in the 9 gigahertz band, roughly 9.2 to 9.5 gigahertz, so it answers X-band radars. It does not operate at 3 gigahertz: it only listens in the 9 gigahertz band, so an S-band radar won't trigger it. And it does not operate at 406 megahertz; that frequency belongs to the EPIRB, as we'll see shortly. On the exam, choose 9 gigahertz, and treat 3 gigahertz, S-band and 406 megahertz as traps."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 87,
+      "template": "waveform",
+      "params": {
+        "title": "Why a SART makes dots",
+        "kind": "sart-sweep",
+        "cycles": 12,
+        "xAxis": "time",
+        "yAxis": "SART frequency",
+        "labels": [
+          "The SART sweeps through the 9 GHz radar band",
+          "12 sweeps in each reply",
+          "Each pass through the radar's frequency: a burst it hears",
+          "Later bursts are drawn farther out: a line of dots"
+        ]
+      },
+      "onScreen": ["SART sweeps through the 9 GHz band", "12 sweeps per reply", "Each pass: a burst the radar hears", "Later bursts drawn farther out"],
+      "narration": "When it answers, the SART doesn't reply on one frequency. It sweeps through the whole 9 gigahertz radar band, 12 times. The searching radar listens on just one frequency. Each time the sweep passes through that frequency, the radar hears a short burst. Remember that radar turns time into distance: a burst that arrives later is drawn farther out. So 12 bursts, arriving one after another, are drawn as 12 spots in a line."
+    },
+    {
+      "id": "s32",
       "keyTopic": 87,
       "template": "radar-ppi",
       "params": {
@@ -147,122 +583,294 @@
         ],
         "sart": { "bearing": 135, "range": 1.5, "dots": 12, "spacing": 0.5 },
         "labels": [
-          "Once activated, the SART waits silently in standby",
-          "A radar interrogates it: 12 equally spaced dots outward along its bearing",
-          "As the ship closes within about a mile, the dots become arcs, then circles"
+          "Ordinary echoes: other ships and land",
+          "SART: 12 equally spaced dots outward along its bearing",
+          "Within about a mile: the dots become arcs, then circles"
         ]
       },
-      "onScreen": ["Activated SART waits silently in standby", "Radar interrogation: 12 equally spaced dots along its bearing", "Within about a mile: arcs, then circles"],
-      "narration": "Survival craft equipment next. A SART, or search and rescue radar transponder, is activated in the survival craft, but it stays silent in standby. It begins transmitting only when it responds to radar interrogation from a searching ship. On that radar's display, the SART signal appears as a series of 12 equally spaced dots, extending outward along the SART's bearing. As the ship closes within about a mile, the dots become arcs and then circles."
+      "onScreen": ["Ordinary echoes", "SART: 12 equally spaced dots along its bearing", "Within about a mile: arcs, then circles"],
+      "narration": "Here's what the rescuers see. Among the ordinary echoes, the SART signal appears as a series of 12 equally spaced dots, extending outward from the SART along its bearing. A line of dots like that stands out from anything else on the screen. As the ship closes within about a mile, the dots spread into arcs, and then into complete circles. That's because up close the SART's reply is so strong that the radar hears it even while its antenna points a little away, so the dots smear sideways. Circles tell the crew they're very close. On the exam, the answer is 12 equally spaced dots; dashes, 20 dashes and spirals are traps."
     },
     {
-      "id": "s10",
+      "id": "s33",
       "keyTopic": 87,
-      "template": "band-strip",
+      "template": "block-diagram",
       "params": {
-        "title": "Which band? SART versus EPIRB",
-        "min": 300,
-        "max": 12000,
-        "scale": "log",
-        "marks": [
-          { "at": 9000, "label": "9 GHz X-band radar", "note": "The SART answers here", "tone": "key" },
-          { "at": 3000, "label": "3 GHz S-band radar", "note": "Not a SART band", "tone": "muted" },
-          { "at": 406, "label": "406 MHz", "note": "EPIRB: primary GMDSS locating signal", "tone": "key" }
+        "title": "EPIRB on 406 MHz: the primary locating signal",
+        "columns": 3,
+        "blocks": [
+          { "id": "epirb", "label": "406 MHz EPIRB", "note": "Switched on, or floats free" },
+          { "id": "sat", "label": "Satellites", "note": "Hear the burst, find its position" },
+          { "id": "rcc", "label": "Rescue center", "note": "Sends help" }
+        ],
+        "links": [
+          { "from": "epirb", "to": "sat", "label": "406 MHz" },
+          { "from": "sat", "to": "rcc", "label": "Alert relayed" }
         ]
       },
-      "onScreen": ["SART: 9 GHz band, X-band radars", "Not the 3 GHz S-band", "406 MHz EPIRB: primary GMDSS locating signal"],
-      "narration": "A search and rescue transponder operates in the 9 gigahertz band, answering X-band radars. It does not operate in the 3 gigahertz S-band, and it does not operate at 406 megahertz. 406 megahertz belongs to the EPIRB, the emergency position-indicating radio beacon. Under GMDSS, the Global Maritime Distress and Safety System, the primary source of transmitting locating signals is an EPIRB transmitting on 406 megahertz, not a SART."
+      "onScreen": ["406 MHz EPIRB", "Satellites find its position", "Alert relayed to a rescue center", "Primary GMDSS locating signal: EPIRB on 406 MHz"],
+      "narration": "The SART helps with the final approach, but first rescuers must learn there's an emergency, and where. That's the EPIRB's job. Once activated, either by hand or automatically when it floats free of a sinking ship, it transmits on 406 megahertz. Satellites pick up the signal, work out where the beacon is, and relay the alert to a rescue center. So under GMDSS, the primary source of transmitting locating signals is an EPIRB transmitting on 406 megahertz. The trap is a SART transmitting on 406 megahertz; SARTs work at 9 gigahertz. A radio direction finder only measures a direction, and a survival craft transceiver is for talking, so neither is the answer."
     },
     {
-      "id": "s11",
+      "id": "s34",
       "keyTopic": 87,
       "template": "equipment-card",
       "params": {
-        "title": "What a 406 MHz EPIRB sends",
+        "title": "Inside the 406 MHz burst",
         "device": "epirb",
         "callouts": [
-          { "label": "Once activated, a satellite EPIRB transmits a signal", "at": "band" },
-          { "label": "Used to identify the vessel and to determine the beacon's position", "at": "beacon" },
-          { "label": "The code does not describe the nature of the distress", "at": "button" },
-          { "label": "Unique hexadecimal identification number, sent as a digital data burst", "at": "antenna" },
-          { "label": "Not a voice channel to the rescue center" }
+          { "label": "A digital data burst, not a voice channel", "at": "antenna" },
+          { "label": "Unique hexadecimal identification number", "at": "beacon" },
+          { "label": "Hexadecimal: digits 0 to 9, then letters A to F", "at": "band" },
+          { "label": "Registered to one vessel and its emergency contacts", "at": "bracket" }
         ]
       },
-      "onScreen": ["Signal sent once activated", "Identifies the vessel; used to find the beacon's position", "Not the nature of the distress", "Unique hexadecimal ID as a digital data burst", "No voice channel"],
-      "narration": "Once activated, a satellite EPIRB transmits a signal used for 2 things: identifying the vessel, and determining the position of the beacon. The code does not describe the nature of the distress. A 406 megahertz EPIRB transmits a unique hexadecimal identification number as a digital data burst. It is not a voice channel to the rescue center."
+      "onScreen": ["Digital data burst, not voice", "Unique hexadecimal ID", "Hexadecimal: 0 to 9, then A to F", "Registered to one vessel"],
+      "narration": "What does the EPIRB actually send? Not speech. A 406 megahertz EPIRB transmits a digital data burst, a short packet of code, repeated again and again. Inside is a unique hexadecimal identification number. Hexadecimal is a way of writing numbers with 16 symbols, the digits 0 to 9 followed by the letters A to F, so the ID looks like a string of 15 numbers and letters. The owner registers each ID in a national database, along with the vessel's details and emergency contacts, so rescuers can look up whose beacon is calling. On the exam, the trap says it allows immediate voice communications with the rescue center; it doesn't."
     },
     {
-      "id": "s12",
+      "id": "s35",
+      "keyTopic": 87,
+      "template": "equipment-card",
+      "params": {
+        "title": "What the EPIRB signal tells rescuers",
+        "device": "epirb",
+        "callouts": [
+          { "label": "Identifies the vessel", "at": "beacon" },
+          { "label": "Used to determine the position of the beacon", "at": "antenna" },
+          { "label": "Does not describe the nature of the distress", "at": "button" },
+          { "label": "Not the vessel's name and port: a coded ID that rescuers look up", "at": "band" }
+        ]
+      },
+      "onScreen": ["Identifies the vessel", "Used to find the beacon's position", "Not the nature of the distress", "A coded ID, not name and port"],
+      "narration": "So once activated, a satellite EPIRB transmits a signal used for 2 things: identifying the vessel, through that registered ID, and determining the position of the beacon. The satellites can work out the position from the signal itself. As a satellite passes, the beacon's frequency seems to rise and then fall, like the pitch of a passing siren, and that pattern shows where the beacon is. Or the beacon includes GPS data in its burst. What the code does not do is describe the nature of the distress: it can't say fire, flooding or sinking. Nor does it spell out the vessel's name and port of registry; it carries the coded ID, which rescuers look up."
+    },
+    {
+      "id": "s36",
+      "keyTopic": 87,
+      "template": "comparison-table",
+      "params": {
+        "title": "The 2 beacons side by side",
+        "columns": ["Feature", "EPIRB", "SART"],
+        "rows": [
+          ["Frequency", "406 MHz", "9 GHz radar band"],
+          ["Heard by", "Satellites", "A searching ship's radar"],
+          ["Job", "Raises the alarm, locates from afar", "Guides the rescuer in"],
+          ["Signal", "Hexadecimal ID in a data burst", "12 dots on the radar display"]
+        ]
+      },
+      "onScreen": ["EPIRB 406 MHz, SART 9 GHz", "EPIRB heard by satellites, SART by radar", "EPIRB alerts and locates, SART guides in", "Hexadecimal ID burst versus 12 dots"],
+      "narration": "Before we leave the life raft, set the 2 beacons side by side, because the exam's traps love to swap them. The EPIRB works on 406 megahertz; the SART works in the 9 gigahertz radar band. The EPIRB is heard by satellites; the SART answers a searching ship's radar. So the EPIRB raises the alarm and locates the survivors from afar, and the SART guides the rescuer in close. And the EPIRB sends a hexadecimal ID in a data burst, while the SART shows up as 12 dots on the radar display. That's the takeaway for survival craft."
+    },
+    {
+      "id": "s37",
       "keyTopic": 88,
       "template": "key-facts",
       "params": {
-        "title": "Weather facsimile",
+        "title": "Weather fax: charts by radio",
         "items": [
-          "Facsimile: printed pictures for permanent display on paper, such as weather charts",
-          "HF weather fax from shore stations, 3 MHz to 23 MHz: 120 lines per minute",
-          "A good crystal lattice band-pass filter: 1 kHz wide at -6 dB",
-          "Passes the frequency-shift keying signal and its 800 Hz shift, rejects noise"
+          "Facsimile: printed pictures sent for permanent display on paper",
+          "The classic marine example: weather charts",
+          "The picture is scanned and sent line by line",
+          "HF shore stations, 3 to 23 MHz: 120 lines per minute"
         ]
       },
-      "onScreen": ["Printed pictures on paper, like weather charts", "HF weather fax: 120 lines per minute", "Filter: 1 kHz at -6 dB", "Passes the 800 Hz shift, rejects noise"],
-      "narration": "Now weather fax. Facsimile is the transmission of printed pictures for permanent display on paper, such as weather charts. For high frequency weather facsimile reception from shore stations, between 3 and 23 megahertz, the standard scan rate is 120 lines per minute. A good crystal lattice band-pass filter for it has a bandwidth of 1 kilohertz at minus 6 decibels. That's wide enough to pass the frequency-shift keying signal, with its 800 hertz shift, while rejecting noise."
+      "onScreen": ["Facsimile: printed pictures for permanent display on paper", "Weather charts", "Scanned and sent line by line", "HF weather fax: 120 lines per minute"],
+      "narration": "Back aboard, the crew wants forecasts, so we add receivers for shore broadcasts, starting with weather fax. Facsimile, or fax, is the transmission of printed pictures for permanent display on paper, such as weather charts. The station scans the chart one thin line at a time. The receiver prints each line as it arrives, building the picture strip by strip. So fax isn't television, and it isn't typed characters forming a picture. Sender and receiver must keep the same pace, or the chart comes out slanted. For HF weather fax from shore stations, 3 to 23 megahertz, the standard scan rate is 120 lines per minute. 240 lines per minute, and 150 or 60 lines per second, are traps."
     },
     {
-      "id": "s13",
+      "id": "s38",
+      "keyTopic": 88,
+      "template": "waveform",
+      "params": {
+        "title": "How the shades travel: FSK",
+        "kind": "fm",
+        "cycles": 16,
+        "xAxis": "time",
+        "yAxis": "signal",
+        "labels": [
+          "Frequency-shift keying: the shade sets the frequency",
+          "Grays fall between black and white",
+          "Black and white: 800 Hz apart",
+          "The center frequency ± 400 Hz"
+        ]
+      },
+      "onScreen": ["Frequency-shift keying: shade sets the frequency", "Grays in between", "Black and white 800 Hz apart", "Center ± 400 Hz"],
+      "narration": "How does a shade of gray travel by radio? Weather fax uses frequency-shift keying, or FSK; keying just means switching. The signal shifts its frequency according to the shade being scanned: one frequency means white, another means black, and grays fall in between. For HF weather fax, black and white are 800 hertz apart: the center frequency plus or minus 400 hertz. So the whole signal lives in a slice of the band less than 1 kilohertz wide. That slice is what the receiver must let through."
+    },
+    {
+      "id": "s39",
+      "keyTopic": 88,
+      "template": "key-facts",
+      "params": {
+        "title": "Band-pass filters and decibels",
+        "items": [
+          "Band-pass filter: passes one slice of frequencies, blocks the rest",
+          "Crystal lattice: quartz crystals give sharp, steep edges",
+          "Decibels (dB): a scale for comparing signal strengths",
+          "-6 dB: the signal cut to about half its voltage"
+        ]
+      },
+      "onScreen": ["Band-pass filter: passes one slice", "Crystal lattice: sharp edges", "Decibels compare strengths", "-6 dB: about half the voltage"],
+      "narration": "To let through just that slice, the receiver uses a filter, because it hears a whole crowd of signals and noise. A band-pass filter lets through one slice of frequencies and blocks everything outside it, like a doorway only so wide. The best ones use a crystal lattice, a network of quartz crystals. Each crystal vibrates at one exact frequency, like a tuning fork, which gives the filter sharp, steep edges. A filter's width is measured between the points where it has weakened the signal by a set amount, given in decibels, a scale for comparing signal strengths. Minus 6 decibels means the signal is cut to about half its voltage."
+    },
+    {
+      "id": "s40",
       "keyTopic": 88,
       "template": "band-strip",
       "params": {
-        "title": "Where NAVTEX is, and isn't",
-        "min": 400,
-        "max": 2400,
-        "scale": "linear",
+        "title": "The fax filter: 1 kHz wide at -6 dB",
+        "min": 300,
+        "max": 20000,
+        "scale": "log",
         "marks": [
-          { "at": 518, "label": "518 kHz", "note": "Primary international NAVTEX frequency", "tone": "key" },
-          { "at": 2187.5, "label": "2187.5 kHz", "note": "DSC distress frequency: not NAVTEX", "tone": "muted" },
-          { "at": 2182, "label": "2182 kHz SSB", "note": "NAVTEX is not received here", "tone": "muted" }
+          { "at": 800, "label": "800 Hz shift", "note": "The weather fax signal" },
+          { "at": 1000, "label": "1 kHz at -6 dB", "note": "Passes the signal, rejects noise", "tone": "key" },
+          { "at": 500, "label": "500 Hz", "note": "Too narrow: clips the tones", "tone": "muted" },
+          { "at": 6000, "label": "6 kHz", "note": "Too wide: lets in needless noise", "tone": "muted" },
+          { "at": 15000, "label": "15 kHz", "note": "Far too wide", "tone": "muted" }
         ]
       },
-      "onScreen": ["518 kHz: used exclusively for NAVTEX internationally", "2187.5 kHz: DSC distress, not NAVTEX", "2182 kHz SSB: not NAVTEX"],
-      "narration": "NAVTEX is the automated broadcast of safety messages to ships. 518 kilohertz is the primary frequency used exclusively for NAVTEX broadcasts internationally. Watch out for the neighbors on the exam. 2187.5 kilohertz is a DSC distress frequency, not NAVTEX. And NAVTEX is not received on 2182 kilohertz using single sideband."
+      "onScreen": ["The signal: an 800 Hz shift", "Good filter: 1 kHz at -6 dB", "500 Hz: too narrow", "6 kHz and 15 kHz: too wide"],
+      "narration": "So which width suits weather fax? The signal spans 800 hertz. A good crystal lattice band-pass filter for HF weather fax has a bandwidth of 1 kilohertz at minus 6 decibels: wide enough to pass the whole frequency-shift keying signal, with a little margin, while rejecting noise and neighboring stations. The trap widths fail. 500 hertz is narrower than the 800 hertz shift, so it would clip the tones. 6 kilohertz and 15 kilohertz would pass the signal, but they also let in far more noise than needed. The takeaway for weather fax: 120 lines per minute, and a 1 kilohertz filter."
     },
     {
-      "id": "s14",
+      "id": "s41",
+      "keyTopic": 88,
+      "template": "band-strip",
+      "params": {
+        "title": "NAVTEX: 518 kHz worldwide",
+        "min": 400,
+        "max": 5000,
+        "scale": "log",
+        "marks": [
+          { "at": 518, "label": "518 kHz", "note": "Primary international NAVTEX frequency", "tone": "key" },
+          { "at": 2182, "label": "2182 kHz", "note": "SSB voice: NAVTEX isn't received here", "tone": "muted" },
+          { "at": 2187.5, "label": "2187.5 kHz", "note": "DSC distress frequency, not NAVTEX", "tone": "muted" },
+          { "at": 4209.5, "label": "4209.5 kHz", "note": "Some HF NAVTEX, but not the primary", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["518 kHz: used exclusively for NAVTEX internationally", "2182 kHz SSB: not NAVTEX", "2187.5 kHz: DSC distress", "4209.5 kHz: not the primary"],
+      "narration": "The second receiver is for NAVTEX, short for navigational telex: an automated service that broadcasts safety messages to ships as text. Coast stations around the world take turns on one frequency: 518 kilohertz is the primary frequency used exclusively for NAVTEX broadcasts internationally. Watch its neighbors on the exam. NAVTEX is not received on 2182 kilohertz using SSB; that's a voice frequency. 2187.5 kilohertz is a DSC distress frequency, for digital alerts. And 4209.5 kilohertz carries some NAVTEX on HF, but it isn't the primary international one."
+    },
+    {
+      "id": "s42",
       "keyTopic": 88,
       "template": "equipment-card",
       "params": {
-        "title": "Inside the NAVTEX receiver",
+        "title": "How NAVTEX is sent: SITOR-B",
         "device": "navtex",
         "callouts": [
-          { "label": "Receives MSI broadcasts in SITOR-B or FEC mode", "at": "antenna" },
-          { "label": "Ships only receive: they never transmit", "at": "receiver" },
+          { "label": "Receives MSI broadcasts in SITOR-B, or FEC, mode", "at": "antenna" },
+          { "label": "Ships only receive: they never transmit on 518 kHz", "at": "receiver" },
           { "label": "No ARQ: it needs two-way handshaking", "at": "receiver" },
-          { "label": "Subject indicator programmed for rejection: message not printed", "at": "buttons" },
-          { "label": "Navigational and meteorological warnings, SAR messages: can't be rejected", "at": "screen" }
+          { "label": "Messages printed or shown here", "at": "screen" }
         ]
       },
-      "onScreen": ["MSI in SITOR-B or FEC mode", "Ships only receive", "No ARQ", "Rejected subject indicator: not printed", "Navigational, meteorological and SAR messages can't be rejected"],
-      "narration": "A NAVTEX receiver gets maritime safety information, or MSI, broadcasts using SITOR-B, or FEC, mode. Ships only receive; they never transmit. ARQ is not used, because it needs two-way handshaking. Can you choose what gets printed? Partly. A NAVTEX receiver does not print a message when its subject indicator matches one the operator programmed for rejection. But navigational warnings, meteorological warnings and search and rescue messages cannot be rejected."
+      "onScreen": ["MSI in SITOR-B or FEC mode", "Ships only receive", "No ARQ: needs two-way handshaking", "Printed or shown on screen"],
+      "narration": "What does NAVTEX carry? MSI, maritime safety information: navigational warnings, weather warnings and search and rescue notices. It's sent with SITOR, which we met in the SSB section. NAVTEX receives MSI broadcasts using SITOR-B, which is FEC mode: each character sent twice, with no reply needed. That fits, because one coast station is talking to every ship in range at once. Ships only receive; they never transmit, so the trap saying the ship station transmits on 518 kilohertz is wrong. And ARQ, SITOR-A, isn't used, because it needs two-way handshaking, a reply for every block, which a broadcast can't have. A small dedicated receiver prints the messages or shows them on a screen, with no one needing to tune in."
     },
     {
-      "id": "s15",
+      "id": "s43",
+      "keyTopic": 88,
+      "template": "key-facts",
+      "params": {
+        "title": "Choosing what NAVTEX prints",
+        "items": [
+          "Each message header: station letter, subject indicator, serial number",
+          "Subject indicator: the kind of message",
+          "Subject programmed for rejection: the message is not printed",
+          "Never rejected: navigational and meteorological warnings, search and rescue messages"
+        ]
+      },
+      "onScreen": ["Header: station, subject indicator, serial number", "Subject indicator: kind of message", "Rejected subject: not printed", "Navigational, meteorological and search and rescue messages can't be rejected"],
+      "narration": "Can the crew choose what gets printed? Partly. Every NAVTEX message starts with a short header: a letter for the transmitting station, a letter called the subject indicator, which says what kind of message it is, and a serial number. The operator can program the receiver to reject chosen subjects. Then it does not print a message whose subject indicator matches one programmed for rejection. But navigational warnings, meteorological, or weather, warnings and search and rescue messages cannot be rejected; they're too important to miss. The traps fail because the receiver only reads the header. It can't judge whether a message concerns your vessel, and the station letter picks stations, not subjects. NAVTEX in short: 518 kilohertz, FEC, receive only."
+    },
+    {
+      "id": "s44",
+      "keyTopic": 89,
+      "template": "block-diagram",
+      "params": {
+        "title": "Sharing data: the NMEA standards",
+        "columns": 2,
+        "blocks": [
+          { "id": "gps", "label": "GPS receiver", "note": "Knows the boat's position" },
+          { "id": "radio", "label": "DSC VHF radio" },
+          { "id": "plotter", "label": "Chart plotter", "note": "An electronic map" },
+          { "id": "pilot", "label": "Autopilot", "note": "Steers the boat" }
+        ],
+        "links": [
+          { "from": "gps", "to": "radio", "label": "Position" },
+          { "from": "gps", "to": "plotter" },
+          { "from": "gps", "to": "pilot" }
+        ]
+      },
+      "onScreen": ["GPS position shared with other devices", "DSC radio, chart plotter, autopilot", "NMEA: National Marine Electronics Association", "NMEA 0183 and NMEA 2000"],
+      "narration": "Our boat's electronics now need to share information. The GPS position feeds the DSC radio, as we saw earlier, and also the chart plotter, an electronic map, and the autopilot, which steers. For devices from different makers to understand each other, they follow standards from NMEA, the National Marine Electronics Association. 2 standards are on the exam: the older NMEA 0183 and the newer NMEA 2000. They wire things together in very different ways, so let's take them one at a time."
+    },
+    {
+      "id": "s45",
+      "keyTopic": 89,
+      "template": "block-diagram",
+      "params": {
+        "title": "NMEA 0183: one talker, many listeners",
+        "columns": 2,
+        "blocks": [
+          { "id": "gps", "label": "Talker: GPS receiver", "note": "Sends data sentences" },
+          { "id": "radio", "label": "Listener: DSC radio" },
+          { "id": "plotter", "label": "Listener: chart plotter" },
+          { "id": "pilot", "label": "Listener: autopilot" }
+        ],
+        "links": [
+          { "from": "gps", "to": "radio" },
+          { "from": "gps", "to": "plotter" },
+          { "from": "gps", "to": "pilot" }
+        ]
+      },
+      "onScreen": ["One talker sends", "Multiple listeners receive", "Serial link: bits one after another", "Data flows one way"],
+      "narration": "NMEA 0183 is a one-talker, multiple-listener serial link. Serial means the data travels as a stream of bits, the 1s and 0s of digital data, one after another along a single pair of wires. One device, the talker, sends; here it's the GPS, sending its position as those short text sentences. Several devices, the listeners, can receive on the same pair. But the data flows one way only: a listener can't talk back on that line. If the radio needs to send something, it needs a separate line of its own, as a talker."
+    },
+    {
+      "id": "s46",
+      "keyTopic": 89,
+      "template": "block-diagram",
+      "params": {
+        "title": "Grounding the NMEA 0183 shield",
+        "columns": 2,
+        "blocks": [
+          { "id": "talker", "label": "Talker", "note": "Shield terminated to ground" },
+          { "id": "listener", "label": "Listener", "note": "Shield left unterminated" },
+          { "id": "g1", "label": "Ground at the talker" },
+          { "id": "g2", "label": "Ground at the listener" }
+        ],
+        "links": [
+          { "from": "talker", "to": "listener", "label": "Shielded data pair" },
+          { "from": "talker", "to": "g1" },
+          { "from": "listener", "to": "g2", "struck": true }
+        ]
+      },
+      "onScreen": ["Shield terminated to ground at the talker", "Unterminated at the listener", "Both ends grounded: a noisy ground loop"],
+      "narration": "One NMEA 0183 wiring rule is on the exam. The data wires run inside a shield, a braided or foil wrapper that catches electrical noise and drains it away to ground, the boat's common electrical connection. How should the shield be grounded? Terminated, meaning connected, to ground at the talker, and unterminated, left unconnected, at the listener. Why only one end? 2 ground points on a boat are rarely at exactly the same voltage. Connect the shield at both ends, and a small current circulates through it between them. That's a ground loop, and it injects noise into the data line. Leaving both ends unconnected wouldn't drain the noise at all, and grounding only the listener is backwards."
+    },
+    {
+      "id": "s47",
       "keyTopic": 89,
       "template": "comparison-table",
       "params": {
         "title": "NMEA 0183 versus NMEA 2000",
         "columns": ["Feature", "NMEA 0183", "NMEA 2000"],
         "rows": [
-          ["Kind of link", "Serial link", "Network data language"],
-          ["Talkers", "One talker", "Multi-transmitter"],
-          ["Listeners", "Multiple listeners", "Multi-receiver"],
-          ["Direction", "One way: talker to listeners", "Bi-directional"],
-          ["Wiring", "Shield grounded at the talker only", "Tee and drop cable to a backbone"]
+          ["Kind of link", "Serial link", "Network"],
+          ["Who sends", "One talker", "Many: multi-transmitter"],
+          ["Who receives", "Multiple listeners", "Many: multi-receiver"],
+          ["Direction", "One way", "Bi-directional"]
         ]
       },
-      "onScreen": ["NMEA 0183: one-talker, multiple-listener serial link", "NMEA 2000: bi-directional, multi-transmitter, multi-receiver network", "0183 shield: grounded at the talker, not the listener", "2000: tee and drop cable to a backbone"],
-      "narration": "Last topic: NMEA data. NMEA 2000 is the bi-directional, multi-transmitter, multi-receiver network data language. NMEA 0183 is a one-talker, multiple-listener serial link. On an NMEA 0183 data line, the shielding is terminated to ground at the talker and unterminated at the listener. Grounding only one end avoids a noisy ground loop. NMEA 2000 devices, by contrast, each connect to a shared backbone through a tee and a drop cable."
+      "onScreen": ["NMEA 0183: one-talker, multiple-listener serial link", "NMEA 2000: bi-directional network", "NMEA 2000: multi-transmitter, multi-receiver"],
+      "narration": "Now the newer standard. NMEA 2000 is a true network. Every device connects to one shared cable, and any device can both send and receive. So NMEA 2000 is the bi-directional, multi-transmitter, multi-receiver network data language. Think of 0183 as a lecture, with one speaker and an audience, and 2000 as a group conversation, where anyone can speak and everyone hears. On the exam, the answer is NMEA 2000. NMEA 0183 is the one-talker link, and 0181 and 0182 aren't the network either."
     },
     {
-      "id": "s16",
+      "id": "s48",
       "keyTopic": 89,
       "template": "block-diagram",
       "params": {
@@ -285,43 +893,109 @@
         ]
       },
       "onScreen": ["Continuous backbone", "Each device on a tee and drop cable", "One device fails", "No interruption to all other devices"],
-      "narration": "Here's why an NMEA 2000 network keeps working. Each device connects to a continuous backbone through a tee and a drop cable, so the backbone never runs through any device. If one device fails, like the depth sounder here, there will be no interruption to all the other devices. They keep talking and listening on the backbone as before."
+      "narration": "How is that shared cable laid out? A main cable, the backbone, runs through the boat. At each device, a T-shaped connector called a tee sits in the backbone, and a short drop cable runs from it to the device. Like houses tapped off a water main, the devices hang off the backbone; it never runs through them. So if one device fails, like this depth sounder, which measures water depth, there will be no interruption to all other devices. The traps of the system shutting down, or of everything after the failed device going dead, imagine a chain, with each device passing signals along. And a device that simply stops working won't open the backbone's main fuse."
     },
     {
-      "id": "s17",
-      "keyTopic": 89,
-      "template": "formula",
-      "params": {
-        "title": "Load equivalence number (LEN)",
-        "formula": "LEN = current draw ÷ 50 mA",
-        "steps": ["LEN 1 = 50 mA of current consumption", "Device draws 300 mA", "LEN = 300 mA ÷ 50 mA"],
-        "answer": "LEN = 6"
-      },
-      "onScreen": ["LEN 1 = 50 mA", "300 mA ÷ 50 mA", "LEN = 6"],
-      "narration": "Every NMEA 2000 device has a load equivalence number, or LEN. A LEN of 1 equals 50 milliamps of current consumption. So to find a device's LEN, divide its current draw by 50 milliamps. For example, a device drawing 300 milliamps has a LEN of 300 milliamps divided by 50 milliamps, which is 6."
-    },
-    {
-      "id": "s18",
+      "id": "s49",
       "keyTopic": 89,
       "template": "key-facts",
       "params": {
-        "title": "Powering an NMEA 2000 network",
+        "title": "Power on the backbone: the LEN",
         "items": [
-          "Devices in a single location: may be powered as an end-powered network",
-          "End powering keeps the cable run between supply and loads short",
-          "A voltage drop of 1.5 volts at the end of the last segment satisfies the cabling plan"
+          "The NMEA 2000 cable carries 12 volt power as well as data",
+          "Each device draws its current from the backbone",
+          "1 milliamp (mA) = 1 thousandth of an amp",
+          "Load equivalence number: LEN 1 = 50 mA"
         ]
       },
-      "onScreen": ["Single location: end-powered network", "Short cable run from supply to loads", "1.5 volts drop at the end of the last segment"],
-      "narration": "2 power rules. An NMEA 2000 system with its devices in a single location may be powered as an end-powered network, with power fed in at one end. That keeps the cable run between the supply and the loads short. And when you plan the cabling, a voltage drop of 1.5 volts at the end of the last segment satisfies NMEA 2000 network cabling plans."
+      "onScreen": ["Backbone carries 12 volt power and data", "Each device draws current", "1000 mA = 1 amp", "LEN 1 = 50 mA"],
+      "narration": "The NMEA 2000 cable carries more than data. It also carries 12 volt power from the boat's battery, so devices can draw current right from it. Every device adds to the load, and the installer adds them up to size the power supply and cable. Current is measured in amps, and small currents in milliamps: a milliamp is a thousandth of an amp, so 1000 milliamps make 1 amp. To make the adding easy, each NMEA 2000 device has a load equivalence number, or LEN, which states its current in whole-number units. In an NMEA 2000 device, a LEN of 1 is equivalent to 50 milliamps of current consumption. Remember 50; 5, 10 and 25 milliamps are the traps."
+    },
+    {
+      "id": "s50",
+      "keyTopic": 89,
+      "template": "formula",
+      "params": {
+        "title": "Working out a LEN",
+        "formula": "LEN = current draw ÷ 50 mA",
+        "steps": ["Device draws 300 mA", "LEN = 300 mA ÷ 50 mA = 6", "Not a whole number? Round up"],
+        "answer": "LEN = 6"
+      },
+      "onScreen": ["LEN = current draw ÷ 50 mA", "300 mA ÷ 50 mA = 6", "Round up if not a whole number", "LEN = 6"],
+      "narration": "Let's work one out. Each LEN stands for 50 milliamps, so a device's LEN is its current draw divided by 50 milliamps. Our device draws 300 milliamps. 300 milliamps divided by 50 milliamps is 6; the milliamps cancel, leaving a plain number. If the result weren't a whole number, you'd round up, so the plan never underestimates the load. Here it's exactly 6, so the LEN is 6. Does that make sense? 6 steps of 50 milliamps is 300 milliamps, so yes."
+    },
+    {
+      "id": "s51",
+      "keyTopic": 89,
+      "template": "block-diagram",
+      "params": {
+        "title": "Voltage drop along the backbone",
+        "columns": 4,
+        "blocks": [
+          { "id": "power", "label": "Power connection", "note": "Full voltage" },
+          { "id": "d1", "label": "Tee", "note": "A device draws current" },
+          { "id": "d2", "label": "Tee", "note": "A device draws current" },
+          { "id": "d3", "label": "End of last segment", "note": "Drop: no more than 1.5 volts" }
+        ],
+        "links": [
+          { "from": "power", "to": "d1" },
+          { "from": "d1", "to": "d2" },
+          { "from": "d2", "to": "d3" }
+        ]
+      },
+      "onScreen": ["Power fed into the backbone", "Each tee: a device draws current", "Voltage falls along the cable", "Limit: 1.5 volts at the end of the last segment"],
+      "narration": "Adding up the load matters because of voltage drop. Every cable has a little resistance, so current flowing through it loses some voltage along the way. That's the voltage drop we met with the SSB, and it works like water pressure falling along a long garden hose. The more current, and the longer the cable, the bigger the drop, so the last device on the backbone gets the lowest voltage. NMEA 2000 cabling plans set a limit: a voltage drop of 1.5 volts at the end of the last segment satisfies the plan. That keeps every device working even when the battery runs low. 0.5, 2.0 and 3.0 volts are the traps."
+    },
+    {
+      "id": "s52",
+      "keyTopic": 89,
+      "template": "key-facts",
+      "params": {
+        "title": "Where to feed the power in",
+        "items": [
+          "Devices in a single location: an end-powered network",
+          "Power fed in at one end of the backbone",
+          "Short cable run from supply to loads: a small voltage drop",
+          "Devices spread along a long backbone: feed power mid-way"
+        ]
+      },
+      "onScreen": ["Single location: end-powered network", "Power fed in at one end", "Short cable run, small drop", "Spread out: mid-powered"],
+      "narration": "So where should the power be fed in? It depends on where the devices are. An NMEA 2000 system with its devices in a single location, say all at the helm, the steering position, may be powered as an end-powered network, with power fed in at one end of the backbone. With the devices close together, the cable run between the supply and the loads stays short, and so does the voltage drop. When devices are spread along a long backbone, power is fed in mid-way instead, so the current divides both ways. Dual mid-powering is the trap for a single location. Powering devices individually misses the point: the backbone powers them, and NMEA 2000 devices do need 12 volts."
+    },
+    {
+      "id": "s53",
+      "keyTopic": 89,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts: Marine",
+        "items": [
+          "VHF: 25 kHz channels, ±5 kHz deviation; 16 distress and calling; 70 DSC only",
+          "SSB: no carrier, surges with speech; GTO-15 to the backstay; ARQ two-way, FEC one-way",
+          "SART: answers 9 GHz radars with 12 dots; EPIRB: 406 MHz, hexadecimal ID",
+          "Weather fax: 120 lines per minute, 1 kHz filter; NAVTEX: 518 kHz, FEC, receive only",
+          "NMEA 0183: shield grounded at the talker; NMEA 2000: backbone, LEN 1 = 50 mA, 1.5 V drop"
+        ]
+      },
+      "onScreen": ["VHF: 25 kHz, ±5 kHz, channels 16 and 70", "SSB and SITOR: surges, GTO-15, ARQ and FEC", "SART 9 GHz, 12 dots; EPIRB 406 MHz", "Fax 120 lines per minute; NAVTEX 518 kHz", "NMEA: talker-end shield, backbone, 50 mA, 1.5 V"],
+      "narration": "Let's wrap up. On VHF, channels are 25 kilohertz apart, deviation is plus or minus 5 kilohertz, 16 is for distress and calling, and 70 for DSC only. On SSB, there's no carrier, so current surges with speech; GTO-15 cable feeds the backstay. SITOR's ARQ is two-way, FEC one-way. In the life raft, the SART answers 9 gigahertz radars with 12 dots, and the 406 megahertz EPIRB sends a hexadecimal ID. Weather fax runs at 120 lines per minute through a 1 kilohertz filter, and NAVTEX is on 518 kilohertz in FEC, receive only. NMEA 0183 grounds its shield at the talker, while on NMEA 2000, a LEN of 1 is 50 milliamps, with at most a 1.5 volt drop."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [85] },
-    { "after": "s8", "keyTopics": [86] },
-    { "after": "s11", "keyTopics": [87] },
-    { "after": "s14", "keyTopics": [88] },
-    { "after": "s18", "keyTopics": [89] }
+    { "after": "s4", "keyTopics": [85], "questions": ["3-85N1"] },
+    { "after": "s8", "keyTopics": [85], "questions": ["3-85N4", "3-85N2", "3-85N3"] },
+    { "after": "s12", "keyTopics": [85], "questions": ["3-85N5", "3-85N6"] },
+    { "after": "s16", "keyTopics": [86], "questions": ["3-86N1"] },
+    { "after": "s19", "keyTopics": [86], "questions": ["3-86N3"] },
+    { "after": "s23", "keyTopics": [86], "questions": ["3-86N2", "3-86N4"] },
+    { "after": "s26", "keyTopics": [86], "questions": ["3-86N4", "3-86N6", "3-86N5"] },
+    { "after": "s30", "keyTopics": [87], "questions": ["3-87N1", "3-87N3"] },
+    { "after": "s33", "keyTopics": [87], "questions": ["3-87N2", "3-87N4"] },
+    { "after": "s36", "keyTopics": [87], "questions": ["3-87N6", "3-87N5", "3-87N3", "3-87N4", "3-87N2"] },
+    { "after": "s40", "keyTopics": [88], "questions": ["3-88N1", "3-88N2", "3-88N3"] },
+    { "after": "s43", "keyTopics": [88], "questions": ["3-88N5", "3-88N4", "3-88N6"] },
+    { "after": "s47", "keyTopics": [89], "questions": ["3-89N2", "3-89N1"] },
+    { "after": "s50", "keyTopics": [89], "questions": ["3-89N3", "3-89N4"] },
+    { "after": "s53", "keyTopics": [89], "questions": ["3-89N6", "3-89N5"] }
   ],
   "video": null
 }

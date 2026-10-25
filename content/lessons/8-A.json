@@ -11,78 +11,83 @@
       "params": {
         "kicker": "Element 8 · Subelement A",
         "title": "RADAR Principles",
-        "subtitle": "How pulse RADAR measures range, the timing, power and wavelength math, and the circuits in Figures 8A1 to 8A8."
+        "subtitle": "How a ship's radar finds a target, the timing and power math behind it, its main parts, and the circuits in Figures 8A1 to 8A8."
       },
-      "onScreen": ["RADAR Principles", "Pulse timing, power and wavelength math", "Circuits in Figures 8A1 to 8A8"],
-      "narration": "Welcome to RADAR principles. RADAR stands for radio detection and ranging. In this lesson you'll see how a pulse RADAR measures range, and how pulse timing, power and frequency fit together. We'll walk through the radar mile, average power, duty cycle, pulse repetition frequency and wavelength calculations one line at a time. Then we'll identify the receiver, logic and digital circuits shown in the pool figures, 8A1 through 8A8. Let's start with the main parts of a marine RADAR system."
+      "onScreen": ["RADAR Principles", "How radar finds a target", "Timing, power and wavelength math", "Radar parts and the circuits in Figures 8A1 to 8A8"],
+      "narration": "Welcome to RADAR principles, the first lesson of Element 8. A ship's radar sees other ships, buoys and coastlines in fog and darkness, and as a radar technician you'll be the one who keeps it working. You don't need any background in electricity or radar. We'll start from scratch with how radar finds a target: a short burst of radio energy goes out, an echo comes back, and the timing tells the distance. Then we'll add the pulse timing, power and wavelength calculations, the main parts of a radar set, and the circuits in the exam's Figures 8A1 through 8A8. By the end, you'll be able to work every calculation and explain why each answer is right."
     },
     {
       "id": "s2",
-      "keyTopic": 1,
+      "keyTopic": 2,
       "template": "block-diagram",
       "params": {
-        "title": "The RADAR system's timing and signal path",
+        "title": "Radar works like an echo",
         "columns": 4,
         "blocks": [
-          { "id": "sync", "label": "Synchronizer", "note": "Timer or trigger generator: sets timing" },
-          { "id": "tx", "label": "Modulator and magnetron", "note": "Fired by each timing pulse" },
-          { "id": "dup", "label": "Duplexer", "note": "Pulse to antenna; receiver blocked" },
-          { "id": "ant", "label": "Antenna", "note": "One antenna transmits and receives" },
-          { "id": "ind", "label": "Indicator", "note": "One sweep per pulse: PRF sets sweep rate" },
-          { "id": "rx", "label": "Receiver", "note": "Weak echoes arrive between pulses" }
+          { "id": "tx", "label": "Radar sends a pulse", "note": "A short burst of radio energy" },
+          { "id": "tgt", "label": "Target reflects it", "note": "A ship, buoy or coastline" },
+          { "id": "echo", "label": "Echo returns", "note": "A tiny part of the energy" },
+          { "id": "time", "label": "Wait time gives range", "note": "Longer wait: farther target" }
         ],
         "links": [
-          { "from": "sync", "to": "tx" },
-          { "from": "tx", "to": "dup" },
-          { "from": "dup", "to": "ant" },
-          { "from": "sync", "to": "ind", "label": "Starts the sweep" },
-          { "from": "dup", "to": "rx", "label": "Echoes between pulses" },
-          { "from": "rx", "to": "ind" }
+          { "from": "tx", "to": "tgt", "label": "Out" },
+          { "from": "tgt", "to": "echo", "label": "Back" },
+          { "from": "echo", "to": "time" }
         ]
       },
-      "onScreen": ["Synchronizer: timer or trigger generator", "Fires the modulator and magnetron", "Duplexer: one antenna for transmit and receive", "Indicator: one sweep per pulse, so PRF sets the sweep rate", "Receiver gets echoes between pulses"],
-      "narration": "The synchronizer, also called the timer or trigger generator, controls timing throughout the RADAR system. It produces the pulses that fire the modulator, which pulses the magnetron. The magnetron's pulse goes to the duplexer. The duplexer allows a single antenna to be used for both transmitting and receiving. During each pulse, it routes the energy to the antenna and blocks the receiver. At the same instant the modulator fires, the synchronizer starts the indicator sweep and range circuits. Each transmitted pulse triggers one sweep, so the sweep frequency of the indicator is set by the pulse repetition frequency, or PRF. Carrier frequency and pulse width don't decide how often the trace restarts. Between pulses, the duplexer passes the weak returning echoes to the receiver, and on to the indicator."
+      "onScreen": ["Radar sends a short pulse of radio energy", "The target reflects it", "A weak echo returns", "The wait time gives the range"],
+      "narration": "Start with an echo. Shout toward a cliff, and a moment later you hear your voice come back. The farther away the cliff, the longer you wait. Radar works the same way, using radio waves instead of sound. The name RADAR stands for radio detection and ranging, and ranging means measuring distance. The radar sends out a short burst of radio energy called a pulse. When the pulse hits a ship, a buoy or a coastline, a tiny part of its energy bounces back toward the radar. That returning signal is the echo. The radar measures how long the echo took to come back, and from that wait time it works out the range, the distance to the target."
     },
     {
       "id": "s3",
-      "keyTopic": 1,
+      "keyTopic": 2,
       "template": "key-facts",
       "params": {
-        "title": "Echo size and maximum range",
+        "title": "How fast a radio wave travels",
         "items": [
-          "Echo size: transmitted power, antenna effective area, transmit and receive losses",
-          "Also the target's RADAR cross section and the range to target",
-          "Receiver gain is not one: it only amplifies an echo after it arrives",
-          "Carrier frequency, PRF and receiver sensitivity affect maximum range",
-          "Recovery time has no effect on maximum range: it limits minimum range"
+          "A radio wave: electric and magnetic energy traveling through space",
+          "It moves at the speed of light",
+          "Microsecond (µs): one millionth of a second",
+          "Radio waves cover about 300 meters every microsecond"
         ]
       },
-      "onScreen": ["Echo size: power, antenna area, losses, RADAR cross section, range", "Receiver gain only amplifies", "Maximum range: carrier frequency, PRF, receiver sensitivity", "Recovery time: no effect on maximum range; limits minimum range"],
-      "narration": "What decides how big a target's echo is? The radar range equation answers that. The size of the echo is controlled by the transmitted power, the antenna's effective area, the transmit and receive losses, the RADAR cross section of the target, and the range to the target. Receiver gain is not on that list: it only amplifies an echo after it arrives. Now maximum range. Carrier frequency, PRF and receiver sensitivity all affect it. Recovery time has no effect on maximum range. Recovery time is how quickly the TR tube, the transmit-receive tube, and the receiver regain full sensitivity after each pulse. So it limits the minimum range, not the maximum."
+      "onScreen": ["Radio wave: electric and magnetic energy", "Travels at the speed of light", "Microsecond: one millionth of a second", "About 300 meters per microsecond"],
+      "narration": "So what is a radio wave? It's energy traveling through space as a ripple of electric and magnetic force. It belongs to the same family as light, just invisible to us, and it travels at the same speed: the speed of light. That's so fast that radar timing is measured in microseconds. A microsecond is one millionth of a second. In 1 microsecond, a radio wave travels about 300 meters. Hold on to that number, because it's the key to every range calculation in this lesson."
     },
     {
       "id": "s4",
-      "keyTopic": 1,
-      "template": "waveform",
+      "keyTopic": 2,
+      "template": "formula",
       "params": {
-        "title": "Peak power versus average power",
-        "kind": "pulse",
-        "cycles": 4,
-        "duty": 0.1,
-        "yAxis": "transmitter power",
-        "xAxis": "time",
-        "labels": [
-          "Peak power: the power during the brief pulse itself",
-          "Pulse width: how long each pulse lasts",
-          "Average power: the peak spread over the whole repetition period",
-          "P<sub>avg</sub> = P<sub>peak</sub> × pulse width × PRF"
-        ]
+        "title": "Meters of range per microsecond",
+        "formula": "Range per µs = 300 m ÷ 2",
+        "steps": ["A radio wave travels about 300 meters per µs", "The echo goes out and back: divide by 2", "300 m ÷ 2 = 150 m"],
+        "answer": "150 meters (not yards) per microsecond"
       },
-      "onScreen": ["Peak power: during the pulse", "Pulse width", "Average power: spread over the repetition period", "P avg = P peak × pulse width × PRF"],
-      "narration": "Here's a RADAR pulse train. Peak power is the power during the brief pulse itself. The pulse width is how long each pulse lasts, and then the transmitter rests until the next one. Average power is the transmitter power measured over a period of time: the peak pulse power spread over the whole repetition period. So P sub average equals P sub peak, times the pulse width, times the PRF. Because each pulse is so short, the average power is far lower than the peak. We'll come back to this pulse train whenever pulse width, PRF or duty cycle comes up."
+      "onScreen": ["About 300 meters per microsecond", "Out and back: divide by 2", "150 meters of range per microsecond"],
+      "narration": "Now the catch. The echo has to make 2 trips: out to the target and back again. In 1 microsecond the wave covers 300 meters, but that's 150 meters out and 150 meters back. So each microsecond of waiting means the target is 150 meters farther away: 300 meters divided by 2. That's the constant the exam asks for: RADAR range is measured by the constant 150 meters per microsecond. Watch the units. The trap answers offer 150 yards and 300 yards per microsecond. The correct one is meters, and it's 150, not 300, because of that round trip."
     },
     {
       "id": "s5",
+      "keyTopic": 1,
+      "template": "radar-ppi",
+      "params": {
+        "title": "Range and bearing on the screen",
+        "rangeNm": 6,
+        "rings": 3,
+        "echoes": [{ "bearing": 60, "range": 4 }],
+        "ebl": { "bearing": 60 },
+        "labels": [
+          "The echo: its distance from the center gives the range",
+          "Bearing: the direction the antenna faced when the echo came back",
+          "Range rings: circles at equal steps of distance"
+        ]
+      },
+      "onScreen": ["Own ship at the center", "Echo: distance from the center is the range", "Bearing: the direction the antenna faced", "Range rings mark equal distances"],
+      "narration": "Distance is only half the picture. The radar also needs direction. Its antenna keeps turning, sending pulses in a narrow beam, like a lighthouse sweeping its light across the sea. The screen, called the indicator, puts your ship at the center, and a line turns in step with the antenna. When an echo comes back, it's painted as a spot along that line. How far the spot sits from the center shows the range. The direction of the line shows the bearing: the direction the antenna was facing, measured in degrees clockwise from north or from the ship's heading, like a compass. Circles called range rings mark equal steps of distance, so you can read the range at a glance."
+    },
+    {
+      "id": "s6",
       "keyTopic": 2,
       "template": "radar-ppi",
       "params": {
@@ -92,78 +97,424 @@
         "echoes": [{ "bearing": 45, "range": 1 }],
         "labels": [
           "A target 1 nautical mile away",
-          "Out and back: 12.34 µs, 1 RADAR mile",
-          "One way: about 6.17 µs per nautical mile",
-          "3 nautical miles one way: 3 × 6.17 µs = 18.51 µs"
+          "Out and back: 12.34 µs",
+          "That round trip time is 1 RADAR mile"
         ]
       },
-      "onScreen": ["Target 1 nautical mile away", "Out and back: 12.34 µs, 1 RADAR mile", "One way: about 6.17 µs per nautical mile", "3 nautical miles one way: 18.51 µs"],
-      "narration": "Range is all about timing. A RADAR pulse travels out to a target 1 nautical mile away and back again in 12.34 microseconds. That round trip time is called 1 RADAR mile: 12.34 microseconds. One way, a radio wave covers 1 nautical mile in about 6.17 microseconds, half the RADAR mile. So a signal traveling one way to a point 3 nautical miles away takes 3 times 6.17 microseconds, or 18.51 microseconds."
-    },
-    {
-      "id": "s6",
-      "keyTopic": 2,
-      "template": "formula",
-      "params": {
-        "title": "Meters of range per microsecond",
-        "formula": "Range per µs = 300 m/µs ÷ 2",
-        "steps": ["Radio waves travel about 300 meters per µs", "The echo goes out and back: divide by 2"],
-        "answer": "150 meters (not yards) per microsecond"
-      },
-      "onScreen": ["Radio waves: about 300 meters per µs", "Out and back: 300 ÷ 2", "150 meters of range per microsecond"],
-      "narration": "Here's another constant the exam likes. Radio waves travel about 300 meters every microsecond. But the echo has to go out and come back, so each microsecond of echo delay covers only half that distance in range. 300 divided by 2 gives 150 meters of range per microsecond. Remember the units: RADAR range is measured by the constant 150 meters per microsecond, meters, not yards."
+      "onScreen": ["Target 1 nautical mile away", "Out and back: 12.34 µs", "1 RADAR mile = 12.34 µs"],
+      "narration": "Those range rings are marked in nautical miles, the unit of distance at sea, a little longer than the land mile. To go with it, radar technicians use a handy unit of time called the RADAR mile. Picture a target exactly 1 nautical mile away. The pulse races out to it, the echo races back, and the whole round trip takes 12.34 microseconds. That time is 1 RADAR mile. It comes straight from our 150 meters per microsecond: a nautical mile divided by 150 meters per microsecond works out to about 12.34 microseconds. Memorize 12.34. It's the most used number in this lesson, and the exam asks for it directly. The trap answer 6.2 is only the one-way time."
     },
     {
       "id": "s7",
       "keyTopic": 2,
       "template": "formula",
       "params": {
-        "title": "Echo time and range",
-        "formula": "t = range × 12.34 µs",
-        "steps": [
-          "5 nm: t = 5 × 12.34 µs = 61.7 µs",
-          "10 nm: t = 10 × 12.34 µs = 123.4 µs",
-          "Reverse it: R = t ÷ 12.34 µs, no halving",
-          "R = 308.5 µs ÷ 12.34 µs"
-        ],
-        "answer": "R = 25 nautical miles"
+        "title": "One way: half a RADAR mile",
+        "formula": "One way per nm = 12.34 µs ÷ 2 ≈ 6.17 µs",
+        "steps": ["3 nautical miles, one way only", "t = 3 × 6.17 µs"],
+        "answer": "t = 18.51 µs"
       },
-      "onScreen": ["t = range × 12.34 µs", "5 nm: 61.7 µs", "10 nm: 123.4 µs", "R = 308.5 ÷ 12.34 = 25 nautical miles"],
-      "narration": "To find echo time, multiply the range by the RADAR mile: t equals range times 12.34 microseconds. A target 5 miles away: 5 times 12.34 is 61.7 microseconds. A target 10 nautical miles away: 10 times 12.34 is 123.4 microseconds. Going the other way, range is echo time divided by the RADAR mile. Don't halve anything, because 12.34 microseconds is already a round trip. An echo that returns after 308.5 microseconds: 308.5 divided by 12.34 gives a range of 25 nautical miles."
+      "onScreen": ["One way: about 6.17 µs per nautical mile", "3 nautical miles, one way", "t = 3 × 6.17 µs = 18.51 µs"],
+      "narration": "Sometimes the exam asks about a one-way trip, with no echo coming back. The RADAR mile covers out and back, so one way takes half as long: 12.34 divided by 2, about 6.17 microseconds per nautical mile. Here's the question: how long does a radio wave take to travel 3 nautical miles? It's one way, so use 6.17. 3 times 6.17 microseconds is 18.51 microseconds. There are 2 traps: 6.17 microseconds is the time for just 1 mile, and 37.0 microseconds is what you'd get by using the round trip 12.34 by mistake."
     },
     {
       "id": "s8",
-      "keyTopic": 3,
-      "template": "band-strip",
+      "keyTopic": 2,
+      "template": "formula",
       "params": {
-        "title": "Marine RADAR bands in the SHF range",
-        "min": 2,
-        "max": 30,
-        "scale": "log",
-        "ends": ["2 GHz", "30 GHz"],
-        "marks": [
-          { "at": 3, "label": "S-band, near 3 GHz", "note": "Band 2 to 4 GHz: about 15 to 7.5 cm" },
-          { "at": 9.4, "label": "X-band, near 9.4 GHz", "note": "Band 8 to 12 GHz: about 3.2 cm", "tone": "key" }
-        ]
+        "title": "Echo time from range",
+        "formula": "t = range × 12.34 µs",
+        "steps": ["5 nm: t = 5 × 12.34 µs", "= 61.7 µs", "10 nm: t = 10 × 12.34 µs", "= 123.4 µs"],
+        "answer": "Each nautical mile adds 12.34 µs"
       },
-      "onScreen": ["SHF: 3 to 30 GHz", "S-band: 2 to 4 GHz, marine sets near 3 GHz", "X-band: 8 to 12 GHz, marine sets near 9.4 GHz"],
-      "narration": "Marine RADAR frequencies are in the SHF, or super high frequency, part of the radio spectrum: 3 to 30 gigahertz. Marine sets use mainly two bands. An S-band RADAR operates in the 2 to 4 gigahertz band, wavelengths of about 15 down to 7.5 centimeters, and marine S-band sets typically run near 3 gigahertz. An X-band RADAR operates in the 8 to 12 gigahertz band. Marine X-band sets usually transmit near 9.4 gigahertz, a wavelength of about 3.2 centimeters."
+      "onScreen": ["t = range × 12.34 µs", "5 nm: 61.7 µs", "10 nm: 123.4 µs"],
+      "narration": "Now the round trip, which is what a radar actually measures. Each nautical mile of range adds 1 RADAR mile of waiting. So the echo time, t, equals the range in nautical miles times 12.34 microseconds. A target 5 miles away: 5 times 12.34 microseconds is 61.7 microseconds. A target 10 nautical miles away: 10 times 12.34 is 123.4 microseconds. Does that make sense? Twice as far, twice the wait. On the 10 mile question, watch for 12.34 and 1.234 microseconds as traps: the first is the time for just 1 mile, and the second has a misplaced decimal point."
     },
     {
       "id": "s9",
-      "keyTopic": 3,
+      "keyTopic": 2,
       "template": "formula",
       "params": {
-        "title": "Wavelength of a 3 GHz RADAR",
-        "formula": "λ = c / f",
-        "steps": ["λ = 3 × 10<sup>8</sup> m/s ÷ 3 × 10<sup>9</sup> Hz", "λ = 0.1 m"],
-        "answer": "λ = 10 cm: S-band is 10-centimeter radar"
+        "title": "Range from echo time",
+        "formula": "R = t ÷ 12.34 µs",
+        "steps": ["Echo time t = 308.5 µs, out and back", "R = 308.5 µs ÷ 12.34 µs", "No halving: 12.34 µs is already a round trip"],
+        "answer": "R = 25 nautical miles"
       },
-      "onScreen": ["λ = c / f", "3 × 10⁸ m/s ÷ 3 × 10⁹ Hz = 0.1 m", "10 cm: 10-centimeter radar", "Microwaves give stronger echoes"],
-      "narration": "Wavelength, lambda, equals the speed of light, c, divided by frequency, f. For a 3 gigahertz RADAR: 3 times 10 to the power 8 meters per second, divided by 3 times 10 to the power 9 hertz, gives 0.1 meter, or 10 centimeters. That's why S-band is called 10-centimeter radar. Short wavelengths like this are why practical RADAR uses microwave frequencies: they produce stronger target echoes. A wavelength of a few centimeters is small compared with ships, buoys and coastlines, so they reflect strongly. And a practical-size antenna can form a narrow, high-gain beam."
+      "onScreen": ["R = t ÷ 12.34 µs", "308.5 µs out and back", "No halving", "R = 25 nautical miles"],
+      "narration": "The radar does the opposite: it measures the echo time and works out the range. Just turn the formula around. Range, R, equals the echo time divided by 12.34 microseconds. Suppose a pulse takes 308.5 microseconds to travel to a target and back. 308.5 divided by 12.34 is 25, so the target is 25 nautical miles away. Here's the trap. The question says the time covers the trip to the target and back, and it's tempting to halve it first. Don't: the 12.34 microsecond RADAR mile already includes the return trip. Halving would give 12.5 miles, only half the true range."
     },
     {
       "id": "s10",
+      "keyTopic": 6,
+      "template": "waveform",
+      "params": {
+        "title": "Pulses: talk, then listen",
+        "kind": "pulse",
+        "cycles": 4,
+        "duty": 0.1,
+        "yAxis": "transmitter power",
+        "xAxis": "time",
+        "labels": [
+          "Pulse: the transmitter switched on for a brief moment",
+          "Pulse width: how long each pulse lasts",
+          "Between pulses: the radar listens for echoes"
+        ]
+      },
+      "onScreen": ["Pulse: transmitter on briefly", "Pulse width: how long each pulse lasts", "Between pulses: listening for echoes"],
+      "narration": "So far we've timed a single pulse and its echo. But a radar never sends just one. Back to the cliff: if you shouted nonstop, you'd never hear the echo. So you shout once, then listen. Radar does the same, hundreds or thousands of times a second. Here's what that looks like over time. The transmitter switches on for a brief moment, sending a pulse, then switches off and waits. The length of each pulse is called the pulse width, and it's tiny: in the exam's examples, from 0.05 to 1 microsecond. Between pulses, the transmitter is silent, and the radar listens for echoes. This picture is called a pulse train, and we'll come back to it often."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 6,
+      "template": "waveform",
+      "params": {
+        "title": "How often the pulses repeat",
+        "kind": "pulse",
+        "cycles": 5,
+        "duty": 0.1,
+        "yAxis": "transmitter power",
+        "xAxis": "time",
+        "labels": [
+          "PRF, or PRR: pulses sent per second, in hertz",
+          "Pulse period, or PRI: start of one pulse to start of the next",
+          "PRI = 1 ÷ PRF"
+        ]
+      },
+      "onScreen": ["PRF or PRR: pulses per second", "Pulse period, or PRI", "PRI = 1 ÷ PRF"],
+      "narration": "How often does the radar send a pulse? That rate is the pulse repetition frequency, or PRF. It's also called the pulse repetition rate, or PRR: 2 names for the same thing. It's measured in hertz, and 1 hertz means once per second, so a PRF of 1000 hertz means 1000 pulses every second. The time from the start of one pulse to the start of the next is the pulse period, which the exam also calls the pulse repetition interval, or PRI. PRF and PRI are flip sides: the more pulses per second, the less time each one gets. At 1000 pulses a second, each gets a thousandth of a second. In symbols, PRI equals 1 divided by PRF."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 6,
+      "template": "formula",
+      "params": {
+        "title": "Pulse repetition interval",
+        "formula": "PRI = 1 ÷ PRF",
+        "steps": ["2,500 Hz: PRI = 1 ÷ 2,500 = 0.0004 s", "0.0004 s = 400 µs", "2,000 Hz: PRI = 1 ÷ 2,000 = 0.0005 s", "0.0005 s = 500 µs"],
+        "answer": "2500 Hz: 400 µs. 2000 Hz: 0.0005 s"
+      },
+      "onScreen": ["PRI = 1 ÷ PRF", "2500 Hz: 0.0004 s = 400 µs", "2000 Hz: 0.0005 s = 500 µs"],
+      "narration": "Let's work 2 exam questions. If the PRF is 2500 hertz, what is the PRI? Think of 1 second shared equally among 2,500 pulses. Each pulse gets 1 divided by 2,500 of a second, which is 0.0004 seconds. To turn seconds into microseconds, multiply by a million: 0.0004 seconds is 400 microseconds. Second question: a PRF of 2000 hertz. 1 divided by 2,000 is 0.0005 seconds, or 500 microseconds. That question wants seconds, so pick 0.0005 seconds, and watch for the traps with an extra or missing zero, such as 0.005 or 0.00005 seconds."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 6,
+      "template": "waveform",
+      "params": {
+        "title": "Duty cycle",
+        "kind": "pulse",
+        "cycles": 4,
+        "duty": 0.05,
+        "yAxis": "transmitter power",
+        "xAxis": "time",
+        "labels": [
+          "Duty cycle: the fraction of time the transmitter is on",
+          "Duty cycle = pulse width ÷ pulse period",
+          "The same thing: duty cycle = PW × PRF"
+        ]
+      },
+      "onScreen": ["Duty cycle: fraction of time on", "Pulse width ÷ pulse period", "Duty cycle = PW × PRF"],
+      "narration": "So the PRF says how often the transmitter fires. But how much of the time is it actually on? That fraction is called the duty cycle. Picture someone who says a single word, then listens for a whole minute: they're talking only a tiny fraction of the time. To find the duty cycle, divide the pulse width by the pulse period. Since the PRF is 1 divided by the pulse period, dividing by the pulse period is the same as multiplying by the PRF. So duty cycle also equals the pulse width, PW, times the PRF, and that's the form the exam uses. Duty cycle has no units: it's just a fraction, usually a very small one."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 6,
+      "template": "formula",
+      "params": {
+        "title": "Duty cycle, worked",
+        "formula": "Duty cycle = PW × PRF",
+        "steps": ["PW = 0.05 µs = 0.05 × 10<sup>−6</sup> s", "PRF = 2,000 Hz", "On time per second: 2,000 × 0.05 µs = 100 µs", "100 µs out of every second"],
+        "answer": "Duty cycle = 0.0001"
+      },
+      "onScreen": ["Duty cycle = PW × PRF", "0.05 µs pulses at 2000 Hz", "On 100 µs each second", "Duty cycle = 0.0001"],
+      "narration": "Let's try one. A radar has a PRF of 2000 hertz and a pulse width of 0.05 microseconds. What's the duty cycle? First, a word about 10 to the minus 6. It's the exam's way of writing one millionth, so 0.05 microseconds is 0.05 times 10 to the minus 6 seconds. Duty cycle is PW times PRF, and here's what that multiplication means. Think about 1 second of operation. The radar fires 2,000 pulses, each 0.05 microseconds long, so it's on for 2,000 times 0.05, or 100 microseconds in total. 100 microseconds out of the million microseconds in a second is 0.0001. So the duty cycle is 0.0001: the transmitter is on only one ten-thousandth of the time."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 4,
+      "template": "formula",
+      "params": {
+        "title": "Duty cycle: ignore the extras",
+        "formula": "Duty cycle = PW × PRF",
+        "steps": ["Given: 1,000 Hz, 0.5 µs, 150 kW, 75 m", "Needed: only PW and PRF", "0.5 × 10<sup>−6</sup> s × 1,000 Hz"],
+        "answer": "Duty cycle = 0.0005"
+      },
+      "onScreen": ["Given: 1000 Hz, 0.5 µs, 150 kW, 75 m", "Only PW and PRF needed", "Duty cycle = 0.0005"],
+      "narration": "The exam's version adds some distractions. A transmitter has a PRF of 1,000 hertz, a pulse width of 0.5 microseconds, a peak power of 150 kilowatts and a minimum range of 75 meters. What's its duty cycle? Peak power, the strength of each pulse, and minimum range, how close the radar can see, come later, and you don't need them here. Duty cycle needs only pulse width and PRF. 0.5 times 10 to the minus 6 seconds, times 1,000 hertz, is 0.0005. As a check, each second, 1,000 pulses of 0.5 microseconds add up to 500 microseconds of on time, and 500 out of a million is 0.0005. The traps, 0.5, 0.05 and 0.005, all misplace the decimal point."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 1,
+      "template": "block-diagram",
+      "params": {
+        "title": "The 4 main parts of a radar",
+        "columns": 4,
+        "blocks": [
+          { "id": "tx", "label": "Transmitter", "note": "Makes the powerful pulses" },
+          { "id": "ant", "label": "Antenna", "note": "Sends pulses out, catches echoes" },
+          { "id": "rx", "label": "Receiver", "note": "Amplifies the weak echoes" },
+          { "id": "ind", "label": "Indicator", "note": "The screen that shows targets" }
+        ],
+        "links": [
+          { "from": "tx", "to": "ant", "label": "Pulses" },
+          { "from": "ant", "to": "rx", "label": "Echoes" },
+          { "from": "rx", "to": "ind" }
+        ]
+      },
+      "onScreen": ["Transmitter: makes the pulses", "Antenna: sends and catches", "Receiver: amplifies echoes", "Indicator: shows targets"],
+      "narration": "You now know what radar measures and how its pulses are timed. Let's look at the equipment that does it. A radar set has 4 main parts. The transmitter makes the powerful radio pulses. The antenna, on its turning mount high on the mast, sends each pulse out in a narrow beam and catches the echoes that come back. The receiver takes those echoes, which are extremely weak, and amplifies them, meaning it makes them much stronger. And the indicator, the screen, shows the targets. Over the next few scenes we'll look inside each part, starting with what drives them all: electricity."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 1,
+      "template": "key-facts",
+      "params": {
+        "title": "Voltage, current and power",
+        "items": [
+          "Current: the flow of electric charge, measured in amperes (amps)",
+          "Voltage: the push that drives the current, measured in volts",
+          "Power: how fast energy is delivered, measured in watts",
+          "Watts = volts × amps; 1 kilowatt (kW) = 1000 watts"
+        ]
+      },
+      "onScreen": ["Current: flow, in amps", "Voltage: push, in volts", "Power: energy per second, in watts", "1 kilowatt = 1000 watts"],
+      "narration": "Every radar part runs on electricity, so here are 3 basic ideas. Picture water flowing through a pipe. Current is the flow itself: how much electric charge moves past a point each second. That charge is carried by electrons, tiny particles found in every atom. Current is measured in amperes, or amps. Voltage is the push, like water pressure, that drives the current along, and it's measured in volts. Power is how fast energy is delivered, like how hard the water works as it turns a mill wheel. It's measured in watts: volts times amps. A kilowatt, kilo meaning a thousand, is 1000 watts. To make strong pulses, a radar transmitter works with thousands of volts."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 1,
+      "template": "block-diagram",
+      "params": {
+        "title": "The synchronizer sets the timing",
+        "columns": 3,
+        "blocks": [
+          { "id": "sync", "label": "Synchronizer", "note": "Also called timer or trigger generator" },
+          { "id": "mod", "label": "Modulator", "note": "Sends a high-voltage pulse" },
+          { "id": "mag", "label": "Magnetron", "note": "Turns it into a radio pulse" },
+          { "id": "ind", "label": "Indicator", "note": "Starts its sweep at the same instant" }
+        ],
+        "links": [
+          { "from": "sync", "to": "mod", "label": "Trigger" },
+          { "from": "mod", "to": "mag" },
+          { "from": "sync", "to": "ind", "label": "Same trigger" }
+        ]
+      },
+      "onScreen": ["Synchronizer: timer or trigger generator", "Fires the modulator", "Modulator pulses the magnetron", "Same trigger starts the indicator sweep"],
+      "narration": "First, the radar's clock. The synchronizer, also called the timer or trigger generator, controls timing throughout the RADAR system. Each time a pulse is due, it sends out a short timing pulse called a trigger. The trigger fires the modulator, a switch that dumps a big burst of high voltage into the magnetron for exactly 1 pulse width. The magnetron is the tube that turns that burst into a pulse of radio energy. At the same instant, the same trigger starts the indicator's sweep, the spot moving out from the screen's center, and the range circuits, so range timing starts as the pulse leaves. On the exam, the synchronizer, not the power supply or the indicator, controls the timing."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 6,
+      "template": "equipment-card",
+      "params": {
+        "title": "Inside the magnetron",
+        "device": "magnetron",
+        "callouts": [
+          { "label": "Cathode: when hot, it gives off electrons", "at": "cathode" },
+          { "label": "Filament: the heater that keeps the cathode hot", "at": "filament" },
+          { "label": "Anode: a copper block around the cathode", "at": "anode" },
+          { "label": "Magnet: bends the electrons into a spinning cloud", "at": "magnet" },
+          { "label": "Cavities: ring at a microwave frequency, like whistles", "at": "cavities" },
+          { "label": "Output: a pulse each time it fires; the PRR is its firing rate", "at": "output" }
+        ]
+      },
+      "onScreen": ["Cathode gives off electrons", "Filament heats the cathode", "Copper anode block", "Magnet spins the electrons", "Cavities ring at microwave frequency", "PRR: the magnetron's firing rate"],
+      "narration": "Let's look inside the magnetron. It's a vacuum tube: a sealed metal case with the air pumped out. At its center is the cathode, which gives off electrons when it's hot. A small heater called the filament keeps it hot. Around it is a solid copper block, the anode, cut with a ring of small cavities. A strong magnet bends the electrons into a spinning cloud as they're pulled toward the anode. As they sweep past, the cavities ring like whistles at a microwave frequency, vibrating billions of times a second. The magnetron fires once for each pulse from the modulator. So the pulse repetition rate is the pulse rate of the magnetron: how many times per second it's fired."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 9,
+      "template": "equipment-card",
+      "params": {
+        "title": "The magnetron's dangerous voltage",
+        "device": "magnetron",
+        "callouts": [
+          { "label": "Anode: grounded", "at": "anode" },
+          { "label": "Cathode: pulsed to a high negative voltage", "at": "cathode" },
+          { "label": "Filament: tied to the cathode, so it rides at that voltage", "at": "filament" },
+          { "label": "The filament carries dangerous voltages", "at": "filament" }
+        ]
+      },
+      "onScreen": ["Anode grounded", "Cathode pulsed high negative", "Filament tied to the cathode", "Filament carries dangerous voltages"],
+      "narration": "One safety point while we're looking at the magnetron. Which part of it carries dangerous voltage? You might guess the anode, but in a radar magnetron the anode is grounded, connected to the metal frame. The modulator's high voltage pulse goes to the cathode instead, driving it to a high negative voltage. Now remember the filament, the little heater for the cathode. It's built right onto the cathode and connected to it, so the whole filament circuit rides at that same high voltage. So the filament of the magnetron carries dangerous voltages. On the exam, don't fall for the idea that the filament is a low voltage circuit just because it's a heater."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 1,
+      "template": "block-diagram",
+      "params": {
+        "title": "The duplexer: 1 antenna, 2 jobs",
+        "columns": 3,
+        "blocks": [
+          { "id": "mag", "label": "Magnetron", "note": "Powerful pulses" },
+          { "id": "dup", "label": "Duplexer", "note": "Switches the antenna" },
+          { "id": "ant", "label": "Antenna", "note": "Transmits and receives" },
+          { "id": "rx", "label": "Receiver", "note": "Hears only the weak echoes" }
+        ],
+        "links": [
+          { "from": "mag", "to": "dup", "label": "Pulse" },
+          { "from": "dup", "to": "ant" },
+          { "from": "mag", "to": "rx", "label": "Blocked during pulse", "struck": true },
+          { "from": "dup", "to": "rx", "label": "Echoes between pulses" }
+        ]
+      },
+      "onScreen": ["Duplexer: one antenna for transmit and receive", "During the pulse: energy to the antenna", "Receiver blocked during the pulse", "Between pulses: echoes to the receiver"],
+      "narration": "The pulse leaves the magnetron, heading for the antenna. But that same antenna must also catch the echoes. The duplexer is what allows a single antenna to be used for both transmitting and receiving. During each pulse, it routes the magnetron's energy to the antenna and blocks the path to the receiver, which the full pulse would burn out. Between pulses, it switches back and passes the weak echoes down to the receiver, like a railway switch flipping thousands of times a second. The wrong choices each have another job: the synchronizer sets the timing, the modulator powers the magnetron, and the mixer is part of the receiver, as you'll see next."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 6,
+      "template": "block-diagram",
+      "params": {
+        "title": "The receiver and its local oscillator",
+        "columns": 4,
+        "blocks": [
+          { "id": "dup", "label": "From the duplexer", "note": "Very weak echoes" },
+          { "id": "mix", "label": "Mixer", "note": "Shifts the echo to a lower frequency" },
+          { "id": "amp", "label": "Amplifiers", "note": "Make the echoes much stronger" },
+          { "id": "ind", "label": "To the indicator" },
+          { "id": "lo", "label": "Local oscillator", "note": "Klystron or solid-state: always on" }
+        ],
+        "links": [
+          { "from": "dup", "to": "mix" },
+          { "from": "mix", "to": "amp" },
+          { "from": "amp", "to": "ind" },
+          { "from": "lo", "to": "mix", "label": "Steady signal" }
+        ]
+      },
+      "onScreen": ["Weak echoes from the duplexer", "Mixer shifts them lower in frequency", "Amplifiers strengthen them", "Local oscillator runs continuously, not pulsed"],
+      "narration": "That's the transmitter side. Now follow the echo in. From the duplexer, the weak echo goes to the receiver's mixer. There it's combined with a steady signal from a small oscillator inside the receiver, called the local oscillator. An oscillator is a circuit that makes a continuous radio wave on its own. Mixing shifts the echo down to a lower frequency, a slower vibration, which amplifiers can build up far more easily. Here's an exam point: the local oscillator, whether a klystron tube or a solid-state device, meaning a small chip rather than a tube, runs continuously. It is never pulsed. So the pulse repetition rate refers to the magnetron, not to the local oscillator or the klystron."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 1,
+      "template": "waveform",
+      "params": {
+        "title": "A sweep for every pulse",
+        "kind": "sawtooth",
+        "cycles": 4,
+        "yAxis": "spot's distance from center",
+        "xAxis": "time",
+        "labels": [
+          "Each pulse starts one sweep from the center outward",
+          "Echoes are painted along the sweep as they arrive",
+          "Sweeps per second = pulses per second",
+          "Indicator sweep frequency is set by the PRF"
+        ]
+      },
+      "onScreen": ["Each pulse starts one sweep", "Echoes painted as they arrive", "Sweeps per second = pulses per second", "Sweep frequency set by the PRF"],
+      "narration": "Last stop: the indicator. The synchronizer starts it at the same instant each pulse leaves, and a spot moves steadily out from the center of the screen along the line: that's 1 sweep. The sawtooth shows the spot climbing, then snapping back for the next pulse. Echoes are painted along the sweep as they arrive, so a later echo lands farther out. Since each pulse triggers 1 sweep, there are as many sweeps per second as pulses per second. So the sweep frequency of a RADAR indicator is set by the pulse repetition frequency. The carrier frequency, the frequency of the radio wave itself, doesn't decide how often the trace restarts, and nor do pulse width or duty cycle."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 3,
+      "template": "waveform",
+      "params": {
+        "title": "Frequency: cycles per second",
+        "kind": "sine",
+        "cycles": 6,
+        "yAxis": "wave strength",
+        "xAxis": "time",
+        "labels": [
+          "1 cycle: a complete swing of the wave",
+          "Frequency: cycles per second, in hertz",
+          "Kilohertz: thousands. Megahertz: millions. Gigahertz: billions",
+          "Carrier frequency: the radio wave inside each pulse"
+        ]
+      },
+      "onScreen": ["1 cycle: one complete swing", "Frequency in hertz", "kHz, MHz, GHz", "Carrier frequency: the wave inside each pulse"],
+      "narration": "That completes the tour of the radar's parts. We've said the magnetron makes microwaves. What does that really mean? A radio wave vibrates, swinging back and forth like this. A complete swing is called a cycle, and the number of cycles each second is the wave's frequency, measured in hertz. A kilohertz is a thousand hertz, a megahertz is a million, and a gigahertz is a billion. A radar's radio wave vibrates billions of times a second. That's called the carrier frequency, because the wave carries the pulse. Don't mix it up with the PRF. A single pulse holds hundreds or thousands of carrier cycles, while the pulses themselves come far less often: hundreds or thousands per second."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 3,
+      "template": "band-strip",
+      "params": {
+        "title": "Where radar sits in the radio spectrum",
+        "min": 0.03,
+        "max": 300,
+        "scale": "log",
+        "ends": ["30 MHz", "300 GHz"],
+        "marks": [
+          { "at": 0.095, "label": "VHF: 30 to 300 MHz", "note": "Very high frequency", "tone": "muted" },
+          { "at": 0.95, "label": "UHF: 300 MHz to 3 GHz", "note": "Ultra high frequency", "tone": "muted" },
+          { "at": 9.5, "label": "SHF: 3 to 30 GHz", "note": "Super high frequency: marine radar", "tone": "key" },
+          { "at": 95, "label": "EHF: 30 to 300 GHz", "note": "Extremely high frequency", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["VHF: 30 to 300 MHz", "UHF: 300 MHz to 3 GHz", "SHF: 3 to 30 GHz, marine radar", "EHF: 30 to 300 GHz"],
+      "narration": "Radio waves come in a huge range of frequencies, called the radio spectrum, and it's divided into bands, each 10 times higher in frequency than the last. VHF, very high frequency, runs from 30 to 300 megahertz: that's where ship-to-ship voice radio lives. UHF, ultra high frequency, runs from 300 megahertz to 3 gigahertz. Next comes SHF, super high frequency, from 3 to 30 gigahertz. Frequencies generally used for marine RADAR are in the SHF part of the spectrum, mainly near 3 gigahertz and near 9.4 gigahertz. Above that is EHF, extremely high frequency. On the exam, VHF, UHF and EHF are the wrong choices: marine radar is SHF."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 3,
+      "template": "waveform",
+      "params": {
+        "title": "Wavelength",
+        "kind": "sine",
+        "cycles": 3,
+        "yAxis": "wave strength",
+        "xAxis": "distance",
+        "labels": [
+          "Wavelength (λ): the distance the wave travels in one cycle",
+          "λ = c ÷ f: speed of light divided by frequency",
+          "Higher frequency: shorter wavelength"
+        ]
+      },
+      "onScreen": ["Wavelength: distance per cycle", "λ = c ÷ f", "Higher frequency, shorter wavelength"],
+      "narration": "Besides its frequency, every radio wave also has a length. While the wave completes 1 cycle, it moves forward a certain distance. That distance is the wavelength, written with the Greek letter lambda. Think of ocean waves: the wavelength is the distance from one crest to the next. To find it, divide the speed of the wave by its frequency. For radio waves, the speed is the speed of light, written c. So lambda equals c divided by f, where f is the frequency. The more cycles squeezed into each second, the shorter each one must be. So the higher the frequency, the shorter the wavelength."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 3,
+      "template": "formula",
+      "params": {
+        "title": "Wavelength of a 3 GHz radar",
+        "formula": "λ = c ÷ f",
+        "steps": ["c = 3 × 10<sup>8</sup> m/s", "f = 3 GHz = 3 × 10<sup>9</sup> Hz", "λ = 3 × 10<sup>8</sup> ÷ 3 × 10<sup>9</sup> = 0.1 m"],
+        "answer": "λ = 10 cm: S-band is 10-centimeter radar"
+      },
+      "onScreen": ["λ = c ÷ f", "c = 3 × 10⁸ m/s, f = 3 × 10⁹ Hz", "λ = 0.1 m = 10 cm", "10-centimeter radar"],
+      "narration": "Let's find the wavelength of a RADAR operating at 3 gigahertz. The speed of light, c, is 3 times 10 to the power 8 meters per second: a 3 followed by 8 zeros, or 300 million meters every second, the same as our 300 meters per microsecond. The frequency, 3 gigahertz, is 3 times 10 to the power 9 hertz, a 3 followed by 9 zeros. Divide: the 3s cancel, and 10 to the 8 over 10 to the 9 leaves one tenth. So lambda is 0.1 meter, or 10 centimeters. Radar near 3 gigahertz is called S-band, as you'll see next, which is why S-band is often called 10-centimeter radar. The traps are 1, 3 and 30 centimeters."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 3,
+      "template": "band-strip",
+      "params": {
+        "title": "The 2 marine radar bands",
+        "min": 1,
+        "max": 12,
+        "scale": "linear",
+        "ends": ["1 GHz", "12 GHz"],
+        "marks": [
+          { "at": 3, "label": "S-band: 2 to 4 GHz", "note": "15 to 7.5 cm; marine sets near 3 GHz", "tone": "key" },
+          { "at": 9.4, "label": "X-band: 8 to 12 GHz", "note": "Marine sets near 9.4 GHz: about 3.2 cm", "tone": "key" },
+          { "at": 1.5, "label": "1 to 2 GHz", "note": "Trap: neither band", "tone": "muted" },
+          { "at": 6, "label": "4 to 8 GHz", "note": "Trap: neither band", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["S-band: 2 to 4 GHz, near 3 GHz", "X-band: 8 to 12 GHz, near 9.4 GHz", "1 to 2 GHz: a trap", "4 to 8 GHz: a trap"],
+      "narration": "Radar engineers name their bands with letters. An S-band RADAR operates in the 2 to 4 gigahertz band, with wavelengths from about 15 down to 7.5 centimeters, and marine S-band sets typically run near 3 gigahertz, our 10-centimeter radar. An X-band RADAR operates in the 8 to 12 gigahertz band. Marine X-band sets usually transmit near 9.4 gigahertz, a wavelength of about 3.2 centimeters. Notice the pattern: X-band's frequency is about 3 times higher, so its wavelength is about 3 times shorter. The exam offers 1 to 2 and 4 to 8 gigahertz as traps in both questions. Remember: S is 2 to 4, X is 8 to 12."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 3,
+      "template": "key-facts",
+      "params": {
+        "title": "Why radar uses microwaves",
+        "items": [
+          "Microwaves: wavelengths of a few centimeters",
+          "They're used so that stronger target echoes are produced",
+          "Reason 1: ships, buoys and coastlines are huge compared with the wave",
+          "Reason 2: a practical-size antenna can form a narrow, high-gain beam"
+        ]
+      },
+      "onScreen": ["Microwaves: centimeter wavelengths", "Stronger target echoes", "Targets much bigger than the wave reflect strongly", "Narrow, high-gain beam"],
+      "narration": "Why such high frequencies? Waves just a few centimeters long are called microwaves. Practical RADAR operation requires microwave frequencies so that stronger target echoes will be produced, for 2 reasons. First, a wave bounces best off objects much bigger than its wavelength: long ocean swells roll right past a thin post, but small ripples bounce off it. A ship, a buoy or a coastline is huge compared with a 3 centimeter wave, so it reflects strongly. Second, an antenna of practical size can form a narrow, high-gain beam, concentrating the energy like a flashlight's reflector. Less ground clutter, the unwanted echoes from land, and less interference aren't the reason, and radar needs a sharply directional antenna, not a non-directional one."
+    },
+    {
+      "id": "s30",
       "keyTopic": 3,
       "template": "comparison-table",
       "params": {
@@ -172,101 +523,228 @@
         "rows": [
           ["Band", "2 to 4 GHz", "8 to 12 GHz"],
           ["Wavelength", "About 10 cm", "About 3 cm"],
-          ["Rain, snow and fog", "Less affected: the major advantage", "Scattered and absorbed more"],
-          ["Bearing resolution", "Not as good", "Better"]
+          ["Rain, snow and fog", "Less affected: its major advantage", "Scattered and absorbed more"],
+          ["Bearing resolution", "Not as good", "Better: narrower beam"]
         ]
       },
       "onScreen": ["S-band: 2 to 4 GHz, about 10 cm", "X-band: 8 to 12 GHz, about 3 cm", "S-band: less affected by weather", "X-band: better bearing resolution"],
-      "narration": "Let's compare the two bands. S-band runs from 2 to 4 gigahertz, with a wavelength of about 10 centimeters. X-band runs from 8 to 12 gigahertz, about 3 centimeters. The major advantage of S-band over X-band is that it is less affected by weather conditions. Its longer wavelength is scattered and absorbed far less by rain, snow and fog. But watch the trap: X-band, not S-band, has the better bearing resolution."
+      "narration": "So which band is better? Each has a strength. S-band runs from 2 to 4 gigahertz, about 10 centimeters, and X-band from 8 to 12 gigahertz, about 3 centimeters. The major advantage of an S-band RADAR over an X-band RADAR is that it is less affected by weather conditions. Rain, snow and fog scatter and absorb short waves far more than long ones, so S-band's longer waves get through bad weather much better. X-band wins on bearing resolution: showing 2 targets side by side at the same range as 2 separate echoes. Its shorter waves give a narrower beam from the same size antenna. So the S-band advantage is weather, not bearing resolution, mechanical simplicity or greater power."
     },
     {
-      "id": "s11",
-      "keyTopic": 4,
+      "id": "s31",
+      "keyTopic": 1,
       "template": "waveform",
       "params": {
-        "title": "Duty cycle and the pulse period",
+        "title": "Peak power and average power",
         "kind": "pulse",
         "cycles": 4,
-        "duty": 0.08,
+        "duty": 0.1,
         "yAxis": "transmitter power",
         "xAxis": "time",
         "labels": [
-          "Duty cycle = PW × PRF: the fraction of time the transmitter is on",
-          "A 100 kW pulse, 0.5 µs wide, every 1600 µs",
-          "P<sub>avg</sub> = 100,000 W × 0.5 µs ÷ 1,600 µs = 31.25 W",
-          "PRF only 625 Hz; duty cycle only 0.03125 percent"
+          "Peak power: the power during the pulse itself",
+          "Between pulses: no power at all",
+          "Average power: the pulse power spread over the whole period",
+          "Average power is measured over a period of time"
         ]
       },
-      "onScreen": ["Duty cycle = PW × PRF", "100 kW, 0.5 µs pulse every 1600 µs", "P avg = 31.25 W", "PRF 625 Hz, duty cycle 0.03125 percent"],
-      "narration": "Back to our pulse train. Average power is peak power times duty cycle. Duty cycle is the fraction of time the transmitter is on, which is the pulse width, PW, times the PRF. So P sub average equals P sub peak times PW times PRF. You can also find average power as peak power times pulse width, divided by the pulse period. Take a 0.5 microsecond, 100 kilowatt pulse sent every 1600 microseconds. 100,000 watts times 0.5 microseconds, divided by 1,600 microseconds, gives 31.25 watts. That's a PRF of only 625 hertz, and a duty cycle of only 0.03125 percent."
+      "onScreen": ["Peak power: during the pulse", "No power between pulses", "Average power: spread over the period", "Average: measured over time"],
+      "narration": "So much for the radio wave inside each pulse. Now, how strong is each pulse? There are 2 ways to state a radar's power. Peak power is the power during the brief pulse itself, and it's large: often many kilowatts. But between pulses, the transmitter sends nothing at all. If you spread each pulse's energy evenly over the whole pulse period, you get the average power, which is far lower. It's like a camera flash: blindingly bright for an instant, but over a whole minute it gives very little light. So when the exam asks what type of transmitter power is measured over a period of time, the answer is average power, not peak."
     },
     {
-      "id": "s12",
+      "id": "s32",
       "keyTopic": 4,
       "template": "formula",
       "params": {
-        "title": "Average power, worked three times",
+        "title": "Average power, step by step",
         "formula": "P<sub>avg</sub> = P<sub>pk</sub> × PW × PRF",
-        "steps": [
-          "100,000 W × 1 × 10<sup>−6</sup> s × 400 Hz = 40 W",
-          "15,000 W × 0.5 × 10<sup>−6</sup> s × 900 Hz = 6.75 W",
-          "100,000 W × 1 × 10<sup>−6</sup> s × 1,000 Hz"
-        ],
-        "answer": "= 100 W, a duty cycle of 0.001"
+        "steps": ["P<sub>pk</sub> = 100 kW = 100,000 W", "Duty cycle = 1 × 10<sup>−6</sup> s × 400 Hz = 0.0004", "P<sub>avg</sub> = 100,000 W × 0.0004"],
+        "answer": "P<sub>avg</sub> = 40 W"
       },
-      "onScreen": ["P avg = P pk × PW × PRF", "400 Hz, 1 µs, 100 kW: 40 W", "900 Hz, 0.5 µs, 15 kW: 6.75 W", "1000 Hz, 1 µs, 100 kW: 100 W, duty cycle 0.001"],
-      "narration": "Now the exam's average power problems. First: a PRF of 400 hertz, a 1 microsecond pulse, and 100 kilowatts peak. 100,000 watts times 1 times 10 to the power minus 6 seconds, times 400 hertz, equals 40 watts. Second: a PRF of 900 hertz, a 0.5 microsecond pulse, and 15 kilowatts peak. 15,000 watts times 0.5 times 10 to the power minus 6 seconds, times 900 hertz, equals 6.75 watts. Third: a PRF of 1000 hertz, a 1 microsecond pulse, and 100 kilowatts peak. 100,000 watts times 1 times 10 to the power minus 6 seconds, times 1,000 hertz, equals 100 watts. That's a duty cycle of 0.001."
+      "onScreen": ["P avg = P pk × PW × PRF", "100 kW = 100,000 W", "Duty cycle = 0.0004", "P avg = 40 W"],
+      "narration": "How do you calculate average power? Multiply the peak power by the duty cycle. Since duty cycle is PW times PRF, P sub average equals P sub peak times PW times PRF. Here's the exam's question: a PRF of 400 hertz, a pulse width of 1 microsecond, and a peak power of 100 kilowatts. Step 1: convert to plain units. 100 kilowatts is 100,000 watts, and 1 microsecond is 1 times 10 to the minus 6 seconds. Step 2: the duty cycle, 1 times 10 to the minus 6, times 400, is 0.0004. Step 3: 100,000 watts times 0.0004 is 40 watts. That makes sense: on only 0.0004 of the time, a 100 kilowatt pulse averages just 40 watts."
     },
     {
-      "id": "s13",
+      "id": "s33",
       "keyTopic": 4,
       "template": "formula",
       "params": {
-        "title": "Duty cycle, then peak power",
-        "formula": "Duty cycle = PW × PRF",
-        "steps": [
-          "0.5 × 10<sup>−6</sup> s × 1,000 Hz = 0.0005",
-          "P<sub>pk</sub> = P<sub>avg</sub> ÷ (PW × PRF)",
-          "= 18 W ÷ (1 × 10<sup>−6</sup> s × 900 Hz)",
-          "= 18 ÷ 0.0009"
-        ],
+        "title": "Average power: a smaller radar",
+        "formula": "P<sub>avg</sub> = P<sub>pk</sub> × PW × PRF",
+        "steps": ["P<sub>pk</sub> = 15 kW = 15,000 W", "Duty cycle = 0.5 × 10<sup>−6</sup> s × 900 Hz = 0.00045", "P<sub>avg</sub> = 15,000 W × 0.00045"],
+        "answer": "P<sub>avg</sub> = 6.75 W"
+      },
+      "onScreen": ["15 kW = 15,000 W", "Duty cycle = 0.00045", "P avg = 6.75 W"],
+      "narration": "Same steps, new numbers. A RADAR transmitter has a PRF of 900 hertz, a pulse width of 0.5 microseconds, and a peak power of 15 kilowatts. What's its average power output? First, 15 kilowatts is 15,000 watts. Next, the duty cycle: 0.5 times 10 to the minus 6 seconds, times 900 hertz, is 0.00045. Finally, 15,000 watts times 0.00045 is 6.75 watts. Does it make sense? The transmitter is on less than a thousandth of the time, so the average should be far below the peak, and it is. Watch for 2 traps: 13.5 watts is what you'd get using a 1 microsecond pulse, and 15 kilowatts is the peak, not the average."
+    },
+    {
+      "id": "s34",
+      "keyTopic": 4,
+      "template": "formula",
+      "params": {
+        "title": "Average power and duty cycle together",
+        "formula": "P<sub>avg</sub> = P<sub>pk</sub> × PW × PRF",
+        "steps": ["P<sub>pk</sub> = 100,000 W", "Duty cycle = 1 × 10<sup>−6</sup> s × 1,000 Hz = 0.001", "P<sub>avg</sub> = 100,000 W × 0.001"],
+        "answer": "P<sub>avg</sub> = 100 W, duty cycle 0.001"
+      },
+      "onScreen": ["1000 Hz, 1 µs, 100 kW", "Duty cycle = 0.001", "P avg = 100 W"],
+      "narration": "One more. A RADAR set has a PRF of 1000 hertz, a pulse width of 1 microsecond, and a peak power rating of 100 kilowatts. What's the average power? The duty cycle is 1 times 10 to the minus 6 seconds, times 1,000 hertz, which is 0.001: on one thousandth of the time. 100,000 watts times 0.001 is 100 watts. Notice the shortcut: 1000 pulses of 1 microsecond add up to 1000 microseconds, a thousandth of a second, so the average is a thousandth of the peak. The traps, 10 and 1,000 watts, are each off by a factor of 10."
+    },
+    {
+      "id": "s35",
+      "keyTopic": 4,
+      "template": "formula",
+      "params": {
+        "title": "Average power from the pulse period",
+        "formula": "P<sub>avg</sub> = P<sub>pk</sub> × PW ÷ pulse period",
+        "steps": ["P<sub>pk</sub> = 100,000 W, PW = 0.5 µs", "Pulse period = 1,600 µs", "100,000 W × 0.5 µs ÷ 1,600 µs"],
+        "answer": "P<sub>avg</sub> = 31.25 W"
+      },
+      "onScreen": ["P avg = P pk × PW ÷ pulse period", "100 kW, 0.5 µs, every 1600 µs", "100,000 W × 0.5 µs ÷ 1600 µs", "P avg = 31.25 W"],
+      "narration": "Sometimes the exam gives you the pulse period instead of the PRF. A pulse RADAR transmits a 0.5 microsecond pulse with a peak power of 100 kilowatts every 1600 microseconds. Which statement about it is true? Since duty cycle is pulse width divided by pulse period, average power is peak power times pulse width, divided by the pulse period. The peak power is 100,000 watts and the pulse width 0.5 microseconds. The pulse period is 1,600 microseconds. So 100,000 watts times 0.5 microseconds, divided by 1,600 microseconds, gives 31.25 watts. The microseconds cancel out, leaving watts. That's the keyed answer: an average power of 31.25 watts."
+    },
+    {
+      "id": "s36",
+      "keyTopic": 4,
+      "template": "key-facts",
+      "params": {
+        "title": "Checking the other choices",
+        "items": [
+          "PRF = 1 ÷ 1,600 µs = 625 Hz, not 3,200",
+          "Duty cycle = 0.5 ÷ 1,600 = 0.03125 percent, not 3.125 percent",
+          "480 km is a one-way trip in 1,600 µs: the echo must come back",
+          "Only the average power, 31.25 W, is right"
+        ]
+      },
+      "onScreen": ["PRF: 625 Hz, not 3200", "Duty cycle: 0.03125 percent, not 3.125", "480 km forgets the return trip", "Answer: average power 31.25 W"],
+      "narration": "The other 3 choices are traps, and each is worth checking. A PRF of 3,200? The PRF is 1 divided by the pulse period. A second is a million microseconds, and a million divided by 1,600 is 625 hertz, not 3,200. A duty cycle of 3.125 percent? The duty cycle is 0.5 divided by 1,600, only 0.03125 percent. And a maximum range of 480 kilometers? That's how far a wave travels one way in 1,600 microseconds, at 300 meters per microsecond. It forgets that the echo must come back. So only the average power, 31.25 watts, is right."
+    },
+    {
+      "id": "s37",
+      "keyTopic": 4,
+      "template": "formula",
+      "params": {
+        "title": "Working backward to peak power",
+        "formula": "P<sub>pk</sub> = P<sub>avg</sub> ÷ (PW × PRF)",
+        "steps": ["P<sub>avg</sub> = 18 W, PW = 1 µs, PRF = 900 Hz", "PW × PRF = 1 × 10<sup>−6</sup> s × 900 Hz = 0.0009", "P<sub>pk</sub> = 18 W ÷ 0.0009"],
         "answer": "P<sub>pk</sub> = 20,000 W = 20 kW"
       },
-      "onScreen": ["Duty cycle = PW × PRF = 0.0005", "P pk = P avg ÷ (PW × PRF)", "18 W ÷ 0.0009", "P pk = 20 kW"],
-      "narration": "Duty cycle on its own: with a PRF of 1,000 hertz and a 0.5 microsecond pulse, the duty cycle is 0.5 times 10 to the power minus 6 seconds, times 1,000 hertz, or 0.0005. The question may also give you the peak power and minimum range, but you don't need them. Now turn the formula around to find peak power. P sub peak equals P sub average, divided by PW times PRF. With 18 watts average, a 1 microsecond pulse and a PRF of 900 hertz: 18 watts divided by 1 times 10 to the power minus 6 seconds times 900 hertz. That's 18 divided by 0.0009, which is 20,000 watts, or 20 kilowatts."
+      "onScreen": ["P pk = P avg ÷ (PW × PRF)", "Duty cycle = 0.0009", "18 W ÷ 0.0009", "P pk = 20 kW"],
+      "narration": "The formula also works backward. If average power is peak power times duty cycle, then peak power is average power divided by duty cycle. A search RADAR has a pulse width of 1.0 microsecond, a PRF of 900 hertz, and an average power of 18 watts. What's its peak power? First the duty cycle: 1 times 10 to the minus 6 seconds, times 900 hertz, is 0.0009. Then divide: 18 watts divided by 0.0009 is 20,000 watts, or 20 kilowatts. Check it by working forward: 20,000 watts times 0.0009 gives back exactly 18 watts. The other choices, 2, 180 and 200 kilowatts, fail that check."
     },
     {
-      "id": "s14",
+      "id": "s38",
+      "keyTopic": 5,
+      "template": "waveform",
+      "params": {
+        "title": "Wait for the echo before the next pulse",
+        "kind": "pulse",
+        "cycles": 3,
+        "duty": 0.06,
+        "yAxis": "transmitter power",
+        "xAxis": "time",
+        "labels": [
+          "Each echo must return before the next pulse fires",
+          "Pulse period ≥ round trip time to the farthest target",
+          "Round trip t = range × 12.34 µs, so PRF ≤ 1 ÷ t"
+        ]
+      },
+      "onScreen": ["Echo returns before the next pulse", "Pulse period at least the round trip time", "PRF ≤ 1 ÷ t"],
+      "narration": "That's what the pulses cost in power. Let's see how their timing limits range. Picture the radar set to look 5 miles out. After each pulse, it must wait for echoes from as far as 5 miles before firing again. If the next pulse fires too soon, a distant echo arrives after the new sweep has started, and the screen paints it close in, at the wrong range. So each echo must return before the next pulse fires: the pulse period must be at least the round trip time to the farthest range, t equals range times 12.34 microseconds. And since PRF is 1 divided by the pulse period, the PRF must be no more than 1 divided by t."
+    },
+    {
+      "id": "s39",
       "keyTopic": 5,
       "template": "formula",
       "params": {
-        "title": "Highest PRF for a given range",
+        "title": "Highest PRF for 5 nautical miles",
         "formula": "PRF ≤ 1 ÷ (range × 12.34 µs)",
-        "steps": ["Each echo must return before the next pulse", "5 nm: t = 5 × 12.34 µs = 61.7 µs", "PRF ≤ 1 ÷ 61.7 µs"],
-        "answer": "PRF ≤ 16.2 kHz"
+        "steps": ["t = 5 × 12.34 µs = 61.7 µs", "1 second ÷ 61.7 µs ≈ 16.2 thousand per second", "It's a maximum: or less"],
+        "answer": "PRF: 16.2 kHz or less"
       },
-      "onScreen": ["Echo returns before the next pulse", "PRF ≤ 1 ÷ (range × 12.34 µs)", "5 nm: t = 61.7 µs", "PRF 16.2 kHz or less"],
-      "narration": "Range also limits how fast pulses can be sent. Each echo must return before the next pulse fires. So the pulse period must be at least the round trip time, t equals range times 12.34 microseconds, and the PRF must be no more than 1 divided by t. For a range of 5 nautical miles: t equals 5 times 12.34, or 61.7 microseconds. 1 divided by 61.7 microseconds is about 16.2 kilohertz. So the PRF should be 16.2 kilohertz or less."
+      "onScreen": ["PRF ≤ 1 ÷ (range × 12.34 µs)", "5 nm: t = 61.7 µs", "About 16.2 thousand per second", "16.2 kHz or less"],
+      "narration": "For a range of 5 nautical miles, what should the PRF be? Step 1: the round trip time. 5 times 12.34 microseconds is 61.7 microseconds. Step 2: how many of those 61.7 microsecond waits fit into 1 second? A second is a million microseconds, and a million divided by 61.7 is about 16.2 thousand. So the radar can fire at most about 16.2 thousand pulses per second: 16.2 kilohertz. Step 3: the direction. It's a maximum, so the answer is 16.2 kilohertz or less. The traps flip that to 'or more', or change the unit to hertz or megahertz."
     },
     {
-      "id": "s15",
+      "id": "s40",
+      "keyTopic": 5,
+      "template": "formula",
+      "params": {
+        "title": "Highest PRF for 10 nautical miles",
+        "formula": "PRF ≤ 1 ÷ (range × 12.34 µs)",
+        "steps": ["t = 10 × 12.34 µs = 123.4 µs", "1 second ÷ 123.4 µs ≈ 8.1 thousand per second", "Twice the range: half the PRF"],
+        "answer": "PRF: about 8.1 kHz or less"
+      },
+      "onScreen": ["10 nm: t = 123.4 µs", "About 8.1 thousand per second", "Twice the range, half the PRF", "About 8.1 kHz or less"],
+      "narration": "Double the range to 10 nautical miles. The round trip is 10 times 12.34, or 123.4 microseconds. A million microseconds divided by 123.4 is about 8.1 thousand, so the PRF should be approximately 8.1 kilohertz or less. Notice what happened: twice the range means twice the wait, so only half as many pulses fit into each second. The traps here include 900 hertz, 18.1 kilohertz or more, and 120.3 microseconds, which isn't even a frequency."
+    },
+    {
+      "id": "s41",
       "keyTopic": 5,
       "template": "comparison-table",
       "params": {
-        "title": "Range and the maximum PRF",
-        "columns": ["Range", "Round trip t", "Maximum PRF"],
+        "title": "Range and the highest PRF",
+        "columns": ["Range", "Round trip t", "Highest PRF"],
         "rows": [
-          ["5 nm", "5 × 12.34 µs = 61.7 µs", "16.2 kHz"],
-          ["10 nm", "10 × 12.34 µs = 123.4 µs", "About 8.1 kHz"],
-          ["30 nm", "30 × 12.34 µs = 370.2 µs", "2.7 kHz"],
-          ["100 nm", "100 × 12.34 µs = 1,234 µs", "810 Hz"]
+          ["5 nm", "5 × 12.34 µs = 61.7 µs", "16.2 kHz or less"],
+          ["10 nm", "10 × 12.34 µs = 123.4 µs", "About 8.1 kHz or less"],
+          ["30 nm", "30 × 12.34 µs = 370.2 µs", "2.7 kHz or less"],
+          ["100 nm", "100 × 12.34 µs = 1,234 µs", "810 Hz or less"]
         ]
       },
       "onScreen": ["5 nm: 16.2 kHz or less", "10 nm: about 8.1 kHz or less", "30 nm: 2.7 kHz or less", "100 nm: 810 Hz or less"],
-      "narration": "The same steps work for any range. 5 nautical miles gave 16.2 kilohertz. For 10 nautical miles, t is 10 times 12.34, or 123.4 microseconds, so the PRF should be approximately 8.1 kilohertz or less. For 30 nautical miles, t is 30 times 12.34, or 370.2 microseconds, so the PRF should be 2.7 kilohertz or less. For 100 nautical miles, t is 100 times 12.34, or 1,234 microseconds, so the PRF should be 810 hertz or less. Notice the pattern: the longer the range, the lower the maximum PRF."
+      "narration": "Here are the first 2 again: 5 miles allows up to 16.2 kilohertz, and 10 miles about 8.1. The same 2 steps work for any range. For 30 nautical miles, the round trip is 30 times 12.34, or 370.2 microseconds. A million divided by 370.2 is about 2.7 thousand, so the PRF should be 2.7 kilohertz or less. For 100 nautical miles, the round trip is 100 times 12.34, or 1,234 microseconds, which is 1.234 thousandths of a second. 1 divided by that is about 810, so the PRF should be 810 hertz or less. The takeaway for the whole table: the longer the range, the lower the highest PRF, and the answer is always 'or less'."
     },
     {
-      "id": "s16",
+      "id": "s42",
+      "keyTopic": 1,
+      "template": "key-facts",
+      "params": {
+        "title": "What sets the size of an echo",
+        "items": [
+          "Transmitted power: send more, and more comes back",
+          "Antenna effective area: a bigger antenna catches more of the echo",
+          "Transmit and receive losses: energy lost along the way"
+        ]
+      },
+      "onScreen": ["Transmitted power", "Antenna effective area", "Transmit and receive losses"],
+      "narration": "Timing decides how far out the radar can look. But a distant echo is useless if it's too weak to see. So what controls the size of the target echo? The radar range equation, the formula engineers use for echo strength, lists 5 things, and the first 3 belong to the radar itself. Transmitted power: send more, and more comes back. Antenna effective area: a bigger antenna catches more of the returning echo. And transmit and receive losses: energy lost along the way, in the cables and in the waveguides, the metal pipes that carry microwaves."
+    },
+    {
+      "id": "s43",
+      "keyTopic": 1,
+      "template": "key-facts",
+      "params": {
+        "title": "Echo size: the target and its range",
+        "items": [
+          "The target's RADAR cross section: how well it reflects",
+          "Range to target: the echo fades very fast with distance",
+          "Exam answer: power, effective area, losses, cross section, range",
+          "Not receiver gain: it amplifies the echo only after it arrives"
+        ]
+      },
+      "onScreen": ["RADAR cross section", "Range to target", "All 5 together: the exam's answer", "Not receiver gain"],
+      "narration": "The other 2 depend on the target and where it is. The target's RADAR cross section is how well it reflects, which depends on its size, shape and material. And range to target: the pulse spreads out on the way there, and the echo spreads out again on the way back, so echoes fade very quickly with distance. So the exam's answer lists transmitted power, antenna effective area, transmit and receive losses, RADAR cross section and range to target. Watch for receiver gain in the wrong choices. Gain is how much the receiver amplifies, and it only strengthens an echo after it arrives, so it doesn't set the echo's size."
+    },
+    {
+      "id": "s44",
+      "keyTopic": 1,
+      "template": "comparison-table",
+      "params": {
+        "title": "What limits maximum range?",
+        "columns": ["Factor", "Effect on maximum range"],
+        "rows": [
+          ["Carrier frequency", "Affects it: weakened by air and rain"],
+          ["PRF", "Affects it: echoes must return in time"],
+          ["Receiver sensitivity", "Affects it: the weakest echo it can detect"],
+          ["Recovery time", "No effect: it limits the minimum range"]
+        ]
+      },
+      "onScreen": ["Carrier frequency: affects it", "PRF: affects it", "Receiver sensitivity: affects it", "Recovery time: no effect; limits minimum range"],
+      "narration": "Echo strength is only part of what sets maximum range, how far a radar can see. The carrier frequency matters, because higher frequencies are weakened more by air and rain. So does the PRF: fire too often, and distant echoes come back too late. And so does receiver sensitivity: the fainter the echo it can detect, the farther it can see. Recovery time is different. The duplexer's switch, the TR tube, short for transmit-receive tube, shields the receiver during each pulse. Recovery time is how quickly the TR tube and receiver regain full sensitivity afterward. Only echoes from very close targets arrive during that recovery. So recovery time has no effect on maximum range: it limits the minimum range instead."
+    },
+    {
+      "id": "s45",
       "keyTopic": 5,
       "template": "radar-ppi",
       "params": {
@@ -274,166 +752,276 @@
         "rangeNm": 2,
         "rings": 4,
         "echoes": [
-          { "bearing": 60, "range": 0.08 },
+          { "bearing": 60, "range": 0.05 },
           { "bearing": 210, "range": 1.3 }
         ],
-        "vrm": { "range": 0.15 },
+        "vrm": { "range": 0.12 },
         "labels": [
-          "A target very close in hides inside the transmitted pulse",
-          "While the pulse is on, the receiver is protected and can't hear echoes",
-          "Minimum range: about 150 m per µs of pulse width",
-          "Short range RADARs: narrow pulses at a fast rate"
+          "A very close target: its echo returns while the pulse is still going out",
+          "Blind zone: about 150 m for every µs of pulse width",
+          "A 0.5 µs pulse: about 75 m minimum range",
+          "Minimum range is set by the transmitted pulse width"
         ]
       },
-      "onScreen": ["Close target hidden inside the pulse", "Receiver protected during the pulse", "About 150 m of minimum range per µs of pulse width", "Short range: narrow pulses at a fast rate"],
-      "narration": "The minimum range of a RADAR is determined by the transmitted pulse width. A target very close in is hidden inside the transmitted pulse, because while the pulse is on, the receiver is protected and can't hear echoes. That works out to about 150 meters of minimum range for every microsecond of pulse width. That's why short range RADARs most likely transmit narrow pulses at a fast rate. Narrow pulses give a small minimum range and fine range resolution. And close-in echoes return quickly, so pulses can be sent often."
+      "onScreen": ["Close echo returns during the pulse", "Blind zone: about 150 m per µs of pulse width", "0.5 µs pulse: about 75 m", "Minimum range set by pulse width"],
+      "narration": "What mainly sets the minimum range, how close a radar can see? A very close target's echo returns almost instantly, while the pulse is still going out. During the pulse the receiver is shut off, so that echo is never heard. The inner circle shows that blind zone, and its size depends on how long the pulse lasts. At 150 meters per microsecond, every microsecond of pulse width hides about 150 meters of range, and a 0.5 microsecond pulse gives a minimum range of about 75 meters. So the minimum range of a RADAR is determined by the transmitted pulse width. The PRF, the PRR and the transmitter frequency are traps: the PRF and PRR limit the maximum range instead."
     },
     {
-      "id": "s17",
-      "keyTopic": 6,
-      "template": "formula",
-      "params": {
-        "title": "Pulse repetition interval",
-        "formula": "PRI = 1 ÷ PRF",
-        "steps": [
-          "PRI = 1 ÷ 2,500 Hz = 0.0004 s = 400 µs",
-          "PRI = 1 ÷ 2,000 Hz = 0.0005 s = 500 µs",
-          "Duty cycle = 0.05 × 10<sup>−6</sup> s × 2,000 Hz"
-        ],
-        "answer": "Duty cycle = 0.0001"
-      },
-      "onScreen": ["PRI = 1 ÷ PRF", "2500 Hz: 400 µs", "2000 Hz: 0.0005 s, 500 µs", "0.05 µs pulse at 2000 Hz: duty cycle 0.0001"],
-      "narration": "The pulse repetition interval, or PRI, is the time from the start of one pulse to the start of the next. It's the reciprocal of the PRF: PRI equals 1 divided by PRF. A PRF of 2500 hertz gives 1 divided by 2,500, which is 0.0004 seconds, or 400 microseconds. A PRF of 2000 hertz gives 1 divided by 2,000, which is 0.0005 seconds, or 500 microseconds. Now add a pulse width of 0.05 microseconds at that 2000 hertz PRF. Duty cycle equals PW times PRF: 0.05 times 10 to the power minus 6 seconds, times 2,000 hertz, equals 0.0001. The transmitter is on for only a tiny fraction of the time."
-    },
-    {
-      "id": "s18",
-      "keyTopic": 6,
+      "id": "s46",
+      "keyTopic": 5,
       "template": "waveform",
       "params": {
-        "title": "Pulse width and PRR go opposite ways",
+        "title": "Short range: narrow pulses, fast rate",
         "kind": "pulse",
-        "cycles": 3,
-        "duty": 0.25,
+        "cycles": 8,
+        "duty": 0.06,
         "yAxis": "transmitter power",
         "xAxis": "time",
         "labels": [
-          "Lower PRR with wider pulse width",
-          "Long range: wider pulses at a lower PRR",
-          "Lower PRR: time for distant echoes, duty cycle kept in limits",
-          "Short range: the opposite, narrow pulses at a higher PRR"
+          "Narrow pulses: small minimum range",
+          "Narrow pulses: fine range resolution",
+          "Close echoes return quickly: pulses can be sent often",
+          "Short range RADARs: narrow pulses at a fast rate"
         ]
       },
-      "onScreen": ["Lower PRR with wider pulse width", "Long range: wide pulses, lower PRR", "Time for distant echoes; average power in limits", "Short range: narrow pulses, higher PRR"],
-      "narration": "The pulse repetition rate, or PRR, and the pulse width go opposite ways: lower PRR with wider pulse width. This pulse train shows a long-range setting. It uses wider pulses and lowers the PRR. The lower rate allows time for distant echoes to return, and it keeps the duty cycle and the magnetron's average power within limits. Short-range settings do the opposite: narrow pulses at a higher PRR."
+      "onScreen": ["Narrow pulses: small minimum range", "Fine range resolution", "Close echoes return quickly", "Narrow pulses at a fast rate"],
+      "narration": "So what pulses suit a radar used at short range, say, entering a harbor? Narrow pulses. A narrow pulse gives a small minimum range, so close-in buoys and boats aren't lost in the blind zone. It also gives fine range resolution: the ability to show 2 targets on the same bearing, close together in range, as 2 separate echoes instead of a single long smear. And because close-in echoes return quickly, the radar doesn't need to wait long between pulses, so it can send them at a fast rate. More pulses also means more hits on each target. So short range RADARs most likely transmit narrow pulses at a fast rate."
     },
     {
-      "id": "s19",
+      "id": "s47",
+      "keyTopic": 6,
+      "template": "waveform",
+      "params": {
+        "title": "Long range: wide pulses, lower PRR",
+        "kind": "pulse",
+        "cycles": 3,
+        "duty": 0.22,
+        "yAxis": "transmitter power",
+        "xAxis": "time",
+        "labels": [
+          "Wide pulses: more energy on a distant target",
+          "Lower PRR: time for distant echoes to return",
+          "Lower PRR also keeps duty cycle and average power in limits",
+          "Lower PRR with wider pulse width"
+        ]
+      },
+      "onScreen": ["Wide pulses: more energy", "Lower PRR: time for distant echoes", "Duty cycle and average power in limits", "Lower PRR with wider pulse width"],
+      "narration": "At long range, the needs flip. A distant echo is weak, so the radar uses wider pulses to put more energy on the target. And distant echoes take longer to return, so it lowers the pulse repetition rate to give them time. There's another reason, too. Remember that duty cycle is pulse width times PRF. Widen the pulses but keep firing just as often, and the duty cycle, and with it the magnetron's average power, would climb past what the tube can safely handle. So the relationship between pulse repetition rate and pulse width is: lower PRR with wider pulse width. Short range settings do the opposite: narrow pulses at a higher PRR."
+    },
+    {
+      "id": "s48",
       "keyTopic": 6,
       "template": "key-facts",
       "params": {
-        "title": "What the PRR is, and seeing small targets",
+        "title": "Seeing small targets",
         "items": [
-          "PRR is the pulse rate of the magnetron: how many times per second it fires",
-          "The receiver's local oscillator, klystron or solid-state, runs continuously, not pulsed",
-          "Small targets: use a long pulse width with high output power",
-          "More energy on target gives an echo strong enough to stand out above receiver noise"
+          "A small target reflects very little energy",
+          "Its echo must stand out above receiver noise",
+          "Energy in a pulse = power × time",
+          "Best: a long pulse width with high output power"
         ]
       },
-      "onScreen": ["PRR: the magnetron's firing rate", "Local oscillator runs continuously", "Small targets: long pulse, high power", "Echo stands out above receiver noise"],
-      "narration": "What exactly is the PRR? It's the pulse rate of the magnetron: how many times per second the magnetron is fired. It is not the receiver's local oscillator. That oscillator, whether a klystron or solid-state, runs continuously and is not pulsed. One more exam favorite: small targets are best detected using a long pulse width with high output power. A long, powerful pulse puts more energy on the target, and gives an echo strong enough to stand out above the receiver noise."
+      "onScreen": ["Small target: little energy back", "Echo must beat receiver noise", "Energy = power × time", "Long pulse, high power"],
+      "narration": "What about a small target, like a small boat or a buoy far out? It reflects very little energy, so the question is whether its echo can stand out above receiver noise, the faint hiss of random electrical signals that every receiver hears. The energy in each pulse is its power multiplied by how long it lasts. So small targets are best detected using a long pulse width with high output power. That puts the most energy on the target and gives the strongest echo. The trap answers, short pulses at a fast rate or J band, just another band of frequencies, don't add energy, so 'all of these' is wrong too."
     },
     {
-      "id": "s20",
+      "id": "s49",
+      "keyTopic": 6,
+      "template": "comparison-table",
+      "params": {
+        "title": "Choosing pulses for the job",
+        "columns": ["Setting", "Short range", "Long range"],
+        "rows": [
+          ["Pulse width", "Narrow", "Wide"],
+          ["Pulse rate (PRR)", "Fast", "Slower"],
+          ["Why", "Small minimum range, fine detail", "More energy, time for echoes"]
+        ]
+      },
+      "onScreen": ["Short range: narrow pulses, fast rate", "Long range: wide pulses, slower rate", "Width and rate move opposite ways"],
+      "narration": "Let's put short range and long range side by side. Short range uses narrow pulses, long range uses wide ones. Short range sends them at a fast rate, long range at a slower one. The reasons: short range wants a small minimum range and fine detail, while long range wants more energy on distant targets and time for their echoes to return. Many marine radars switch between settings like these automatically when you change the range scale, how far out the screen shows. The takeaway: pulse width and pulse rate move in opposite directions."
+    },
+    {
+      "id": "s50",
       "keyTopic": 7,
       "template": "equipment-card",
       "params": {
-        "title": "Figure 8A1: blocks 46 and 47",
+        "title": "Figure 8A1: the echo's path",
         "figure": "8A1",
         "callouts": [
-          { "label": "Block 46: the TR box, between the waveguide and the crystal detector" },
-          { "label": "It fires during the transmitted pulse to protect the crystal" },
-          { "label": "The rest of the time, it passes the weak echoes" },
+          { "label": "From waveguide: echoes arrive through a metal pipe for microwaves" },
+          { "label": "Crystal detector: the mixer" },
+          { "label": "The block below it: the local oscillator, feeding the mixer" },
+          { "label": "IF amplifier, 30 or 40 MHz: the main amplifier" },
+          { "label": "Detector and video amplifier: recover the pulses for the CRT screen" }
+        ]
+      },
+      "onScreen": ["Echoes from the waveguide", "Crystal detector: the mixer", "Local oscillator below it", "IF amplifier: 30 or 40 MHz", "Detector, video amplifier, CRT"],
+      "narration": "With the pulses chosen, let's open up the receiver, using the exam's Figure 8A1. Echoes arrive at top left from the waveguide. After passing block 46, which we'll come back to, they reach the crystal detector, acting here as the mixer. Just below it, the local oscillator feeds in its steady signal. The mixer's output is the difference between the 2 frequencies, called the IF, or intermediate frequency: here 30 or 40 megahertz, far below the echo's gigahertz and much easier to amplify. The IF amplifier builds it up. The detector strips away the radio wave, leaving just the outline of each pulse, and the video amplifier strengthens those pulses for the CRT, the cathode ray tube screen."
+    },
+    {
+      "id": "s51",
+      "keyTopic": 7,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A1: block 46",
+        "figure": "8A1",
+        "callouts": [
+          { "label": "Block 46: the TR box, between the waveguide and the crystal" },
+          { "label": "During each pulse, its TR tube fires and shields the crystal" },
+          { "label": "Between pulses, it passes the weak echoes through" },
+          { "label": "Not the ATR box: that one keeps echoes out of the transmitter" }
+        ]
+      },
+      "onScreen": ["Block 46: TR box", "Fires during the pulse to protect the crystal", "Passes weak echoes between pulses", "Not the ATR box"],
+      "narration": "What is block 46? It sits between the waveguide and the crystal detector, right where the receiver needs protecting. So block 46 is the TR box, the transmit-receive switch that's part of the duplexer. Inside it is a gas-filled TR tube. When the powerful transmitted pulse arrives, the gas instantly fires, glowing like a tiny neon sign, and closes the path like a gate, turning the pulse away from the fragile crystal. When the pulse ends, the gas goes out, and the weak echoes pass through. The trap answer is the ATR box, anti-transmit-receive. It's the duplexer's other half, which keeps echoes from leaking into the transmitter, and it doesn't sit in front of the crystal."
+    },
+    {
+      "id": "s52",
+      "keyTopic": 7,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A1: block 47 and the AFC",
+        "figure": "8A1",
+        "callouts": [
+          { "label": "AFC, automatic frequency control: retunes the local oscillator" },
           { "label": "Block 47: the RF attenuator, fed straight from the magnetron" },
-          { "label": "Cuts a sample of the output to a safe level for the AFC mixer" }
+          { "label": "It cuts a sample of the pulse down to a safe level" },
+          { "label": "The sample feeds the AFC mixer, the next block along" }
         ]
       },
-      "onScreen": ["Block 46: TR box", "Fires during the pulse to protect the crystal", "Passes weak echoes", "Block 47: RF attenuator from the magnetron", "Safe sample for the AFC mixer"],
-      "narration": "Here's Figure 8A1. Block 46 is the TR box, the transmit-receive switch. It sits between the waveguide and the receiver's crystal detector. During the transmitted pulse, the TR box fires to protect the fragile crystal. The rest of the time, it passes the weak echoes through. Block 47 is the RF, or radio frequency, attenuator. It's fed straight from the magnetron, and it cuts a small sample of the powerful transmitter output down to a safe level for the AFC mixer. AFC stands for automatic frequency control."
+      "onScreen": ["AFC retunes the local oscillator", "Block 47: RF attenuator from the magnetron", "Safe sample of the pulse", "Sample feeds the AFC mixer"],
+      "narration": "Now the figure's bottom row: the AFC, automatic frequency control. A magnetron's frequency drifts as it warms up. The local oscillator must follow it, so the IF stays where the IF amplifier is tuned; otherwise the echoes would drift out of tune and fade. The AFC compares the 2 frequencies and retunes the local oscillator, using a sample of the magnetron's pulse. Block 47, fed straight from the magnetron, is the RF attenuator. RF means radio frequency, and an attenuator reduces signal strength, like sunglasses for radio waves. It cuts a sample of the powerful transmitter output down to a safe level for the AFC mixer. The ATR box, TR box and crystal detector are the wrong choices."
     },
     {
-      "id": "s21",
+      "id": "s53",
       "keyTopic": 7,
-      "template": "block-diagram",
+      "template": "key-facts",
       "params": {
-        "title": "A basic sample-and-hold circuit",
-        "columns": 4,
-        "blocks": [
-          { "id": "in", "label": "Input buffer", "note": "Amplifier: charges the capacitor fast" },
-          { "id": "sw", "label": "Analog switch", "note": "Closed: connects. Open: freezes it" },
-          { "id": "cap", "label": "Hold capacitor", "note": "Holds the sampled voltage" },
-          { "id": "out", "label": "Output buffer", "note": "Amplifier: load can't drain the capacitor" }
-        ],
-        "links": [
-          { "from": "in", "to": "sw" },
-          { "from": "sw", "to": "cap" },
-          { "from": "cap", "to": "out" }
+        "title": "Diodes and the silicon crystal",
+        "items": [
+          "Diode: lets current flow one way only, like a one-way valve",
+          "Semiconductor: a material such as silicon, between a conductor and an insulator",
+          "Point-contact diode: a fine wire touching a silicon crystal",
+          "The tiny contact handles microwaves, but it is fragile"
         ]
       },
-      "onScreen": ["Input buffer charges the capacitor quickly", "Analog switch: connects, then opens to freeze", "Hold capacitor", "Output buffer protects the held voltage"],
-      "narration": "A basic sample-and-hold circuit contains an analog switch, a capacitor, amplifiers, and input and output buffers. The signal enters through the input buffer, an amplifier that can charge the hold capacitor quickly. The analog switch connects the signal to the hold capacitor. When the switch opens, the voltage on the capacitor is frozen: that's the hold. Finally, the output buffer keeps the load from draining the capacitor, so the held voltage stays put."
+      "onScreen": ["Diode: a one-way valve for current", "Semiconductor, such as silicon", "Point-contact diode", "Handles microwaves, but fragile"],
+      "narration": "Back on the top row, the crystal detector is a type of diode, so let's see what that is. A diode lets current flow through it in one direction only, like a one-way valve in a water pipe. Most diodes are made of a semiconductor such as silicon: a material that conducts electricity better than an insulator like glass, but not as well as a metal. The radar's mixer crystal is a special kind called a point-contact diode. A fine metal wire just touches a tiny chip of silicon crystal. That tiny contact point is what lets it work at microwave frequencies, but it also makes it very fragile."
     },
     {
-      "id": "s22",
-      "keyTopic": 7,
-      "template": "comparison-table",
-      "params": {
-        "title": "TTL and CMOS NAND gates compared",
-        "columns": ["Feature", "TTL NAND", "CMOS NAND"],
-        "rows": [
-          ["Output pull-up", "Active", "Active"],
-          ["Pulled high by", "Upper transistor of the totem-pole output", "P-channel MOSFETs"],
-          ["Three-state device?", "No", "No"]
-        ]
-      },
-      "onScreen": ["Both have active pull-up", "TTL: totem-pole upper transistor", "CMOS: P-channel MOSFETs", "Neither is three-state"],
-      "narration": "Now compare a TTL NAND gate with a CMOS NAND gate. TTL means transistor-transistor logic, and CMOS means complementary metal-oxide semiconductor. Both have active pull-up outputs. TTL pulls its output high through the upper transistor of its totem-pole output. CMOS does it through P-channel MOSFETs, metal-oxide semiconductor field-effect transistors. And neither one is a three-state device. So what they have in common is active pull-up."
-    },
-    {
-      "id": "s23",
+      "id": "s54",
       "keyTopic": 7,
       "template": "key-facts",
       "params": {
         "title": "Handling silicon crystals",
         "items": [
-          "Mixer and detector crystals are fragile point-contact diodes",
           "Very sensitive to static electric charges",
           "Store them wrapped in lead foil",
-          "Only very low currents: about 3 mA is typical",
-          "Much higher current would burn out the tiny junction"
+          "They tolerate only very low currents",
+          "On the exam: all of these"
         ]
       },
-      "onScreen": ["Fragile point-contact diodes", "Static sensitive", "Store in lead foil", "Typical current: 3 mA", "Higher current burns out the junction"],
-      "narration": "Silicon mixer and detector crystals are fragile point-contact diodes, and every caution applies. They are very sensitive to static electric charges. They should be wrapped in lead foil for storage. And they tolerate only very low currents. A typical current for a silicon crystal in a RADAR mixer or detector circuit is 3 milliamps. Much higher currents would burn out the tiny junction."
+      "onScreen": ["Static sensitive", "Store in lead foil", "Very low currents only", "All of these"],
+      "narration": "Because they're so fragile, silicon crystals need careful handling, and the exam asks about every caution at once. They're very sensitive to static electric charges: the tiny spark you get from touching a doorknob can destroy one. They should be wrapped in lead foil for storage, which shields them from stray charges and fields. And they tolerate only very low currents. So when the exam lists all 3 cautions, the answer is all of these."
     },
     {
-      "id": "s24",
+      "id": "s55",
+      "keyTopic": 7,
+      "template": "band-strip",
+      "params": {
+        "title": "How much current a crystal takes",
+        "min": 1,
+        "max": 150,
+        "scale": "log",
+        "ends": ["Less current", "More current"],
+        "marks": [
+          { "at": 3, "label": "3 mA", "note": "Typical crystal current", "tone": "key" },
+          { "at": 15, "label": "15 mA", "note": "Trap: would burn out the junction", "tone": "muted" },
+          { "at": 50, "label": "50 mA", "note": "Trap: would burn out the junction", "tone": "muted" },
+          { "at": 100, "label": "100 mA", "note": "Trap: would burn out the junction", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Typical crystal current: 3 mA", "15 mA: too much", "50 mA: too much", "100 mA: too much"],
+      "narration": "How low is that current? Small currents are measured in milliamps. A milliamp is one thousandth of an amp. A typical current for a silicon crystal in a RADAR mixer or detector circuit is 3 milliamps. Much higher currents, such as the trap answers of 15, 50 or 100 milliamps, would burn out the tiny junction where the wire meets the crystal."
+    },
+    {
+      "id": "s56",
+      "keyTopic": 8,
+      "template": "waveform",
+      "params": {
+        "title": "What an oscillator needs",
+        "kind": "sine",
+        "cycles": 5,
+        "yAxis": "wave strength",
+        "xAxis": "time",
+        "labels": [
+          "Oscillator: makes a steady wave on its own",
+          "A resonator sets the frequency",
+          "An energy source makes up the losses on each cycle",
+          "Microwave resonator: a resonant cavity, a hollow metal box"
+        ]
+      },
+      "onScreen": ["Oscillator: a steady wave on its own", "Resonator sets the frequency", "Energy source makes up losses", "Resonant cavity: a hollow metal box"],
+      "narration": "That covers the receiver's front end. Now, its local oscillator. How does any oscillator keep a wave going by itself? Think of a child on a swing. The swing has a natural rhythm, set by the length of its ropes. Push in time with that rhythm, and the swinging keeps going. An oscillator needs the same 2 things: a resonator that sets the frequency, and a source of energy that tops up what's lost on each cycle. At microwave frequencies, the resonator is usually a resonant cavity: a hollow metal box that rings at just 1 frequency, the way a bottle hums a single note when you blow across it. A smaller cavity rings at a higher frequency."
+    },
+    {
+      "id": "s57",
+      "keyTopic": 8,
+      "template": "block-diagram",
+      "params": {
+        "title": "The Gunn oscillator",
+        "columns": 3,
+        "blocks": [
+          { "id": "diode", "label": "Gunn diode", "note": "Negative resistance keeps it going" },
+          { "id": "cav", "label": "Resonant cavity", "note": "Sets the frequency" },
+          { "id": "mix", "label": "Mixer", "note": "Its loading pulls the frequency slightly" },
+          { "id": "sup", "label": "Supply voltage", "note": "Only pulls the frequency slightly" }
+        ],
+        "links": [
+          { "from": "diode", "to": "cav", "label": "Energy" },
+          { "from": "cav", "to": "mix", "label": "Steady microwave signal" },
+          { "from": "sup", "to": "diode" }
+        ]
+      },
+      "onScreen": ["Gunn diode: negative resistance", "Resonant cavity: sets the frequency", "Mixer loading: slight pull only", "Supply voltage: slight pull only"],
+      "narration": "A common solid-state local oscillator is the Gunn oscillator: a small device called a Gunn diode, mounted inside a resonant cavity. Which part sets the frequency? The basic frequency-determining element in a Gunn oscillator is the resonant cavity. The diode is the energy source. It supplies negative resistance. Ordinary resistance, a material's opposition to current, soaks up energy as heat and would let the ringing die away. Negative resistance does the opposite: it feeds energy in, keeping the oscillation going. The loading by the mixer it feeds, or a change in supply voltage, only pulls the frequency slightly. So on the exam, pick the cavity, not the power supply voltage, the type of semiconductor, or the loading."
+    },
+    {
+      "id": "s58",
       "keyTopic": 8,
       "template": "key-facts",
       "params": {
-        "title": "The Gunn oscillator",
+        "title": "How a Gunn diode works",
         "items": [
-          "The resonant cavity is the basic frequency-determining element",
-          "The Gunn diode supplies the negative resistance that sustains oscillation",
-          "Supply voltage and loading only pull the frequency slightly",
-          "Uses both negative resistance and the bulk effect: no PN junction",
-          "At high fields, electrons in the gallium arsenide move to a slower energy band"
+          "No PN junction, unlike an ordinary diode",
+          "A single chip of gallium arsenide",
+          "At high fields, electrons shift to a slower energy band",
+          "More voltage, less current: negative resistance",
+          "It uses both negative resistance and the bulk effect"
         ]
       },
-      "onScreen": ["Resonant cavity sets the frequency", "Gunn diode: negative resistance", "Supply voltage and loading: slight pull only", "Negative resistance and bulk effect", "No PN junction"],
-      "narration": "Now two microwave oscillators. In a Gunn oscillator, the basic frequency-determining element is the resonant cavity. The Gunn diode supplies the negative resistance that keeps the oscillation going, and the supply voltage and loading only pull the frequency slightly. A Gunn diode oscillator takes advantage of both negative resistance and the bulk effect. It has no PN junction like an ordinary diode. Instead, at high fields, electrons in the bulk of the gallium arsenide transfer to a slower energy band, and that creates the negative resistance."
+      "onScreen": ["No PN junction", "Gallium arsenide", "Electrons shift to a slower band", "Negative resistance", "Negative resistance and bulk effect"],
+      "narration": "How does a Gunn diode make negative resistance? An ordinary diode has a PN junction, a boundary where 2 different kinds of semiconductor meet. A Gunn diode has no junction: it's a single chip of 1 semiconductor, gallium arsenide. Push the voltage across it high enough, and electrons throughout the material jump into a different energy band, where they move more slowly. So raising the voltage actually lowers the current: negative resistance. Because it happens throughout the bulk of the material, not at a junction, it's called the bulk effect. So a Gunn diode oscillator takes advantage of both negative resistance and the bulk effect. Pick the choice with both, not either alone, and not avalanche transit time."
     },
     {
-      "id": "s25",
+      "id": "s59",
+      "keyTopic": 8,
+      "template": "key-facts",
+      "params": {
+        "title": "The reflex klystron",
+        "items": [
+          "A vacuum tube oscillator, often the local oscillator",
+          "An electron beam passes through a resonant cavity",
+          "A negative repeller turns the electrons back through it in bunches",
+          "Cavity dimensions set the primary operating frequency",
+          "Coarse tuning: mechanically change the cavity's size"
+        ]
+      },
+      "onScreen": ["Vacuum tube oscillator", "Electron beam through a cavity", "Repeller turns electrons back", "Cavity dimensions: primary frequency", "Coarse tuning: change the cavity"],
+      "narration": "The older kind of local oscillator is the reflex klystron, a vacuum tube. A beam of electrons shoots through a resonant cavity toward a plate called the repeller, held at a negative voltage. Since like charges push each other away, the repeller turns the electrons around and sends them back through the cavity, now gathered into bunches. If the bunches arrive in step with the cavity's ringing, they give it energy and keep it oscillating. As with the Gunn oscillator, the primary operating frequency of a reflex klystron is controlled by the dimensions of its resonant cavity. Coarse tuning mechanically changes those dimensions, for example by flexing a cavity wall. Grid and repeller voltages are the trap answers."
+    },
+    {
+      "id": "s60",
       "keyTopic": 8,
       "template": "comparison-table",
       "params": {
@@ -441,34 +1029,126 @@
         "columns": ["Adjust", "What it changes", "Used for"],
         "rows": [
           ["Cavity dimensions", "Primary operating frequency", "Coarse tuning, done mechanically"],
-          ["Repeller voltage", "Return time of the electron bunches", "Fine tuning; what AFC circuits adjust"]
+          ["Repeller voltage", "Return time of the electron bunches", "Fine tuning; what the AFC adjusts"]
         ]
       },
-      "onScreen": ["Cavity dimensions: primary frequency, coarse tuning", "Repeller voltage: fine tuning", "AFC adjusts the repeller voltage"],
-      "narration": "A reflex klystron is tuned two ways. Its primary operating frequency is controlled by the dimensions of its resonant cavity, and coarse tuning mechanically changes those dimensions. Fine adjustments are made by varying the repeller voltage. That changes how long the electron bunches take to return to the cavity, which nudges the frequency. Varying the repeller voltage is also what AFC circuits do to keep the klystron on frequency."
+      "onScreen": ["Cavity dimensions: coarse tuning", "Repeller voltage: fine tuning", "AFC adjusts the repeller voltage"],
+      "narration": "So the cavity gives coarse tuning. How are fine adjustments made? By varying the repeller voltage. A slightly different repeller voltage changes how long the electron bunches take to turn around and return to the cavity. That nudges the frequency up or down a little, smoothly and with no moving parts. And that's exactly what the AFC circuits in Figure 8A1 adjust: the AFC output changes the klystron's repeller voltage to keep it in step with the magnetron. On the exam, the flexible cavity wall is coarse tuning, and 'adjusting the AFC control system' is wrong: the AFC is what does the adjusting, by changing the repeller voltage."
     },
     {
-      "id": "s26",
-      "keyTopic": 8,
+      "id": "s61",
+      "keyTopic": 9,
+      "template": "key-facts",
+      "params": {
+        "title": "Resistance and Ohm's law",
+        "items": [
+          "Resistance: opposition to current, measured in ohms (Ω)",
+          "Resistor: a part made to have a chosen resistance",
+          "Ohm's law: I = E ÷ R",
+          "Current (I) = voltage (E) ÷ resistance (R)"
+        ]
+      },
+      "onScreen": ["Resistance, in ohms", "Resistor", "Ohm's law: I = E ÷ R", "Current = voltage ÷ resistance"],
+      "narration": "Remember the synchronizer's trigger pulses and the indicator's sweep? Next come circuits that make them. They're built from resistors and capacitors, so let's meet those first. Resistance, which came up with the Gunn diode, is opposition to current, measured in ohms. In the water picture, it's a narrow section of pipe that holds back the flow. A resistor is a part made to have a chosen resistance. Voltage, current and resistance are tied together by Ohm's law: current equals voltage divided by resistance. In symbols, I equals E divided by R, where I is current, E is voltage, and R is resistance. More push means more current, and more resistance means less."
+    },
+    {
+      "id": "s62",
+      "keyTopic": 9,
+      "template": "formula",
+      "params": {
+        "title": "Capacitors and the RC time constant",
+        "formula": "T = R × C",
+        "steps": ["A capacitor stores charge, like a small tank", "It drains through a resistor, not instantly", "Bigger R or bigger C: slower draining"],
+        "answer": "Time constant T = R × C, in seconds"
+      },
+      "onScreen": ["Capacitor stores charge", "Drains through a resistor", "Bigger R or C: slower", "T = R × C"],
+      "narration": "The other building block is the capacitor, a part that stores electric charge, like a small tank that fills with water. Let a charged capacitor drain through a resistor, and it doesn't empty all at once. It drains quickly at first, then more and more slowly, like a tank emptying through a narrow pipe. A bigger tank or a narrower pipe takes longer. That time is measured by the RC time constant: T equals R times C, the resistance in ohms times the capacitance, the size of the tank, measured in farads. T comes out in seconds. Double either one, and the draining takes twice as long. So choosing a resistor and a capacitor sets a time."
+    },
+    {
+      "id": "s63",
+      "keyTopic": 9,
       "template": "waveform",
       "params": {
-        "title": "Why CMOS power rises with frequency",
-        "kind": "square",
-        "cycles": 8,
-        "yAxis": "gate output",
+        "title": "The blocking oscillator",
+        "kind": "pulse",
+        "cycles": 5,
+        "duty": 0.06,
+        "yAxis": "output",
         "xAxis": "time",
         "labels": [
-          "Static: CMOS draws almost no current",
-          "Every transition charges or discharges the load capacitance",
-          "More transitions per second means more power",
-          "At high frequencies, CMOS uses almost as much power as TTL"
+          "Conducts for one brief, sharp pulse",
+          "Then blocked: cut off while C discharges through R",
+          "Off time set by T = R × C",
+          "So R and C set the pulse repetition rate"
         ]
       },
-      "onScreen": ["Static CMOS: almost no current", "Each transition charges load capacitance", "Power rises with switching frequency", "High frequency: almost as much as TTL"],
-      "narration": "Here's a CMOS gate output switching. While it sits still, in a static state, CMOS draws almost no current. But every switching transition charges or discharges the load capacitance, and that takes current. So the faster it switches, the more power it uses: its power rises with switching frequency. That's why, at higher operating frequencies, CMOS circuits consume almost as much power as TTL circuits."
+      "onScreen": ["One brief, sharp pulse", "Cut off while C discharges", "T = R × C", "R and C set the pulse rate"],
+      "narration": "Here's a circuit that puts the time constant to work: the blocking oscillator. It's a simple pulse generator that can supply a radar's trigger pulses. It switches on hard for a single brief, sharp pulse. That pulse leaves its timing capacitor charged, and the charge holds the circuit switched off, or blocked, while the capacitor drains away through a resistor. Once it has drained enough, the circuit fires again. So the off time, and with it the pulse repetition rate, is set by the RC time constant. That's why blocking oscillators operate on the formula T equals R times C. The trap, I equals E over R, is Ohm's law, which doesn't set any timing."
     },
     {
-      "id": "s27",
+      "id": "s64",
+      "keyTopic": 9,
+      "template": "waveform",
+      "params": {
+        "title": "The phantastron: a precise ramp",
+        "kind": "sawtooth",
+        "cycles": 3,
+        "yAxis": "voltage",
+        "xAxis": "time",
+        "labels": [
+          "Triggered by an external pulse",
+          "One-shot: one ramp per trigger",
+          "A very linear ramp voltage of precisely settable length",
+          "Used for range-marker and delay timing"
+        ]
+      },
+      "onScreen": ["Externally triggered", "One ramp per trigger", "Very linear ramp voltage", "Range-marker and delay timing"],
+      "narration": "Trigger pulses are one timing job. The other is the indicator's sweep, which needs a ramp: a voltage rising at a perfectly steady rate, so equal distances on the screen mean equal times and ranges. A classic ramp maker is the phantastron, a triggered, one-shot sweep generator: each trigger from an outside source makes it produce exactly 1 ramp. That ramp is very linear, rising in a straight line, and its length can be set precisely, which suits range-marker and delay timing, placing a mark on the screen at an exact range. So the phantastron can develop a linear ramp voltage when triggered by an external source. It doesn't stabilize the magnetron, prevent receiver saturation or control the repeller voltage."
+    },
+    {
+      "id": "s65",
+      "keyTopic": 7,
+      "template": "waveform",
+      "params": {
+        "title": "Analog and digital",
+        "kind": "square",
+        "cycles": 4,
+        "yAxis": "voltage",
+        "xAxis": "time",
+        "labels": [
+          "Analog: any value, like the echoes from the receiver",
+          "Digital, drawn here: only 2 levels, high and low",
+          "High = 1, low = 0: binary digits, or bits",
+          "Radars process echoes as numbers"
+        ]
+      },
+      "onScreen": ["Analog: any value", "Digital: high and low", "1 and 0: bits", "Echoes processed as numbers"],
+      "narration": "Modern radars also contain digital circuits, so here's the idea behind them. The echoes coming out of the receiver are analog: a voltage that can rise and fall smoothly to any value. A digital circuit works with just 2 levels, high and low, like a light switch that's either on or off. High stands for 1 and low stands for 0. These 1s and 0s are binary digits, or bits, and groups of bits can stand for any number. Turning echoes into numbers lets a radar's computer circuits clean up clutter, the unwanted echoes from waves and rain, track targets and draw a sharp display."
+    },
+    {
+      "id": "s66",
+      "keyTopic": 7,
+      "template": "block-diagram",
+      "params": {
+        "title": "A basic sample-and-hold circuit",
+        "columns": 4,
+        "blocks": [
+          { "id": "in", "label": "Input buffer", "note": "Amplifier: charges the capacitor fast" },
+          { "id": "sw", "label": "Analog switch", "note": "Closed: follows. Open: holds" },
+          { "id": "cap", "label": "Hold capacitor", "note": "Stores the sampled voltage" },
+          { "id": "out", "label": "Output buffer", "note": "Keeps the load from draining it" }
+        ],
+        "links": [
+          { "from": "in", "to": "sw" },
+          { "from": "sw", "to": "cap" },
+          { "from": "cap", "to": "out" }
+        ]
+      },
+      "onScreen": ["Input buffer", "Analog switch", "Hold capacitor", "Output buffer"],
+      "narration": "To turn an analog voltage into a number, a converter must measure it, and the voltage has to hold still while it does. That's the job of a sample-and-hold circuit: it freezes a snapshot of the voltage. A basic sample-and-hold circuit contains an analog switch, a capacitor, amplifiers, and input and output buffers. A buffer is a helper amplifier that passes a voltage along unchanged while supplying plenty of current. The input buffer charges the hold capacitor quickly. While the analog switch is closed, it connects the signal to the capacitor, which follows it. When the switch opens, the capacitor holds its voltage: the snapshot. The output buffer reads it without draining it. Shorter choices leave parts out."
+    },
+    {
+      "id": "s67",
       "keyTopic": 8,
       "template": "comparison-table",
       "params": {
@@ -482,156 +1162,341 @@
         ]
       },
       "onScreen": ["Delta-sigma: a method", "Switched-capacitor: a method", "Dual-slope integration: a method", "Dynamic range: a specification, not a method"],
-      "narration": "Which of these is not a method of analog-to-digital conversion? Delta-sigma conversion, switched-capacitor conversion and dual-slope integration are all genuine conversion methods. Dynamic-range conversion is not. Dynamic range is a specification: the span of signal levels a converter can handle. It describes a converter, but it isn't a way of converting."
+      "narration": "The circuit that does the measuring is an analog-to-digital converter, or ADC. There are several ways to build one, and the exam asks which of these is not a method of analog-to-digital conversion. Delta-sigma conversion, switched-capacitor conversion and dual-slope integration are all genuine methods. You don't need to know how each one works, just that they're real. Dynamic-range conversion is the odd one out. Dynamic range is a specification: the span from the weakest to the strongest signal a converter can handle. It describes a converter, but it isn't a way of converting."
     },
     {
-      "id": "s28",
-      "keyTopic": 9,
+      "id": "s68",
+      "keyTopic": 10,
       "template": "key-facts",
       "params": {
-        "title": "Blocking oscillator and phantastron",
+        "title": "The transistor as a switch",
         "items": [
-          "Blocking oscillator: T = R × C",
-          "Conducts for one brief pulse, then is cut off while C discharges through R",
-          "That RC time constant sets the off time, and so the pulse repetition rate",
-          "Phantastron: a triggered, one-shot sweep generator",
-          "A very linear ramp of precisely settable length, for range-marker and delay timing"
+          "Transistor: a small current or voltage controls a larger current",
+          "Bipolar transistor: base, collector and emitter",
+          "Saturated: switched fully on",
+          "Off, or cut off: no current flows",
+          "MOSFET: a transistor switched by a voltage instead of a current"
         ]
       },
-      "onScreen": ["Blocking oscillator: T = R × C", "Brief pulse, then cut off while C discharges", "RC sets the off time and PRR", "Phantastron: triggered one-shot sweep", "Very linear ramp for range-marker and delay timing"],
-      "narration": "Two timing circuits. Blocking oscillators operate on the formula T equals R times C. The circuit conducts for one brief pulse, then is held cut off while its timing capacitor discharges through a resistor. That resistor-capacitor time constant sets the off time, and so the pulse repetition rate. The phantastron is a triggered, one-shot sweep generator. When it's triggered by an external source, it develops a very linear ramp voltage, and its length can be set precisely. That makes it useful for range-marker and delay timing."
+      "onScreen": ["Transistor: an electric switch", "Base, collector, emitter", "Saturated: fully on", "Cut off: no current", "MOSFET: voltage controlled"],
+      "narration": "Once the echoes are numbers, digital circuits do the work, and those are built from transistors. Here's what you need to know about them. A transistor is a semiconductor part that works like an electrically controlled switch. In the common bipolar type, a small current into one lead, the base, controls a much larger current between the other 2 leads, the collector and the emitter. Give the base enough current, and the transistor is switched fully on, which is called saturated. Take it away, and the transistor is off, or cut off, and no current flows. Another kind, the MOSFET, short for metal-oxide semiconductor field-effect transistor, is switched by a voltage instead of a current."
     },
     {
-      "id": "s29",
-      "keyTopic": 9,
+      "id": "s69",
+      "keyTopic": 7,
+      "template": "comparison-table",
+      "params": {
+        "title": "The NAND gate's truth table",
+        "columns": ["Input A", "Input B", "NAND output"],
+        "rows": [
+          ["Low", "Low", "High"],
+          ["Low", "High", "High"],
+          ["High", "Low", "High"],
+          ["High", "High", "Low"]
+        ]
+      },
+      "onScreen": ["Both inputs low: output high", "Either input low: output high", "Both inputs high: output low"],
+      "narration": "Transistors are combined into logic gates, small circuits that make simple decisions about highs and lows. The one the exam uses is the NAND gate, short for not-and. Here's its truth table, a list of every input combination and the output it gives. With both inputs low, the output is high. With either input low, the output is still high. Only when both inputs are high does the output go low. Keep that rule in mind: a NAND gate's output is low only when every input is high."
+    },
+    {
+      "id": "s70",
+      "keyTopic": 7,
+      "template": "comparison-table",
+      "params": {
+        "title": "TTL and CMOS NAND gates compared",
+        "columns": ["Feature", "TTL NAND", "CMOS NAND"],
+        "rows": [
+          ["Built from", "Bipolar transistors", "Pairs of P- and N-channel MOSFETs"],
+          ["Pulled high by", "Upper transistor of its totem-pole output", "Its P-channel MOSFETs"],
+          ["Active pull-up?", "Yes", "Yes"],
+          ["Three-state device?", "No", "No"]
+        ]
+      },
+      "onScreen": ["TTL: bipolar transistors", "CMOS: MOSFET pairs", "Both have active pull-up", "Neither is three-state"],
+      "narration": "Logic gates come in families. TTL, transistor-transistor logic, is built from bipolar transistors. CMOS, complementary metal-oxide semiconductor, is built from matched pairs of MOSFETs of 2 opposite types, P-channel and N-channel, which is what complementary means. Every gate output must be driven high or low. When a transistor actively switches on to pull the output high, that's called active pull-up. TTL does it with the upper transistor of its totem-pole output: 2 transistors stacked like a totem pole, one pulling up and one pulling down. CMOS does it with its P-channel MOSFETs. So both have active pull-up. Neither is a three-state device, whose output can also disconnect. And their input currents differ greatly, so they don't have comparable input sourcing."
+    },
+    {
+      "id": "s71",
+      "keyTopic": 8,
+      "template": "waveform",
+      "params": {
+        "title": "Why CMOS power rises with frequency",
+        "kind": "square",
+        "cycles": 8,
+        "yAxis": "gate output",
+        "xAxis": "time",
+        "labels": [
+          "Holding still: CMOS draws almost no current",
+          "Each switch charges or discharges the load capacitance",
+          "More switching per second: more power",
+          "At high frequencies, CMOS uses almost as much power as TTL"
+        ]
+      },
+      "onScreen": ["Static CMOS: almost no current", "Each switch charges load capacitance", "Power rises with switching frequency", "High frequency: almost as much as TTL"],
+      "narration": "Those matched pairs give CMOS its big advantage: low power. When a CMOS gate holds still, one transistor of each pair is always off, so almost no current flows. But every wire and input it drives has a little capacitance, the ability to store charge, just like a tiny capacitor. Each time the output switches, that capacitance must be charged or emptied, and that takes current. So the faster it switches, the more power it uses. That's why, at higher operating frequencies, CMOS circuits consume almost as much power as TTL circuits. On the exam, pick that statement over the choices about supply tolerances, unused inputs and sourcing current."
+    },
+    {
+      "id": "s72",
+      "keyTopic": 10,
       "template": "equipment-card",
       "params": {
-        "title": "Figure 8A2: buses and the ALU",
-        "figure": "8A2",
+        "title": "Figure 8A6: inside a TTL NAND gate",
+        "figure": "8A6",
         "callouts": [
-          { "label": "Memory and I/O interface: the only block on the memory and I/O bus" },
-          { "label": "So it is the memory and I/O that communicate with peripherals" },
-          { "label": "Internal bus: shared, carries one transfer at a time" },
-          { "label": "ALU: arithmetic on data from the general registers and TEMP register" },
-          { "label": "Results return over the internal bus; no address decoding in the ALU" }
+          { "label": "Q<sub>1</sub>: a multi-emitter transistor, one emitter for each input, A and B" },
+          { "label": "Q<sub>1</sub>'s base: fed from the 5 V supply through a resistor" },
+          { "label": "Q<sub>1</sub>'s collector drives the base of Q<sub>2</sub>" },
+          { "label": "Q<sub>3</sub> above, Q<sub>4</sub> below: the totem-pole output" }
         ]
       },
-      "onScreen": ["Memory and I/O interface on the external bus", "Memory and I/O communicate with peripherals", "Shared internal bus", "ALU: arithmetic on general register and TEMP data", "Result returns over the internal bus"],
-      "narration": "Figure 8A2 shows a processor's internal blocks. The memory and I-O, or input-output, interface is the only block connected to the external memory and I-O bus. So it's the memory and I-O that communicate with peripherals. Everything else talks over the internal bus, which is shared and carries one transfer at a time. The ALU, the arithmetic logic unit, executes arithmetic manipulations on data from the general registers and the TEMP register, then returns the result over the internal bus. Address decoding and instruction control happen elsewhere, not in the ALU."
+      "onScreen": ["Q1: one emitter per input", "Q1's base fed from the supply", "Q1's collector drives Q2", "Q3 and Q4: totem-pole output"],
+      "narration": "Now let's look inside the other family, TTL. Figure 8A6 shows the circuit of a TTL NAND gate, built from 4 transistors. On the left, Q sub 1 is a multi-emitter transistor: it has 2 emitters, one for each input, A and B. Its base is fed from the 5 volt supply through a resistor, so current is always ready to flow into it. Its collector drives the base of Q sub 2, in the middle. On the right, Q sub 3 above and Q sub 4 below form the totem-pole output you met earlier: one pulls the output high, the other pulls it low."
     },
     {
-      "id": "s30",
+      "id": "s73",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A6: either input low",
+        "figure": "8A6",
+        "callouts": [
+          { "label": "Either input low: Q<sub>1</sub>'s base current flows out that emitter" },
+          { "label": "Q<sub>1</sub> saturated: its collector pulls Q<sub>2</sub>'s base low" },
+          { "label": "Q<sub>2</sub> off, so the totem pole drives the output high" },
+          { "label": "Either A or B low: Q<sub>1</sub> saturated, Q<sub>2</sub> off" }
+        ]
+      },
+      "onScreen": ["Either input low: base current flows out", "Q1 saturated, Q2 base pulled low", "Q2 off, output high", "Either A or B low: Q1 saturated, Q2 off"],
+      "narration": "Now suppose either input is pulled low, close to 0 volts. The base current of Q sub 1 takes the easy path downhill, flowing out through that low emitter. Q sub 1 is now saturated, fully on, and its collector pulls the base of Q sub 2 low. With no base current, Q sub 2 is off. And with Q sub 2 off, the totem pole drives the output high. That matches the NAND rule: any low input gives a high output. So the exam's answer is: with either A or B low, Q sub 1 is saturated and Q sub 2 is off. The trap reverses it, with Q sub 1 off and Q sub 2 on."
+    },
+    {
+      "id": "s74",
       "keyTopic": 9,
       "template": "equipment-card",
       "params": {
         "title": "Figure 8A3: what is box X?",
         "figure": "8A3",
         "callouts": [
-          { "label": "Box X: a 51-ohm resistor" },
-          { "label": "It terminates the 50 Ω coax at the receiving end" },
-          { "label": "51 Ω: the nearest standard value to the cable's characteristic impedance" },
-          { "label": "Prevents reflections that would distort the fast digital pulses" }
+          { "label": "A line driver sends fast digital pulses down a 50 Ω cable" },
+          { "label": "A line receiver picks them up at the far end" },
+          { "label": "Box X: a 51-ohm resistor terminating the cable" },
+          { "label": "51 Ω: the nearest standard value to the cable's 50 Ω" },
+          { "label": "No reflections to distort the pulses" }
         ]
       },
-      "onScreen": ["Box X: 51-ohm resistor", "Terminates the 50 Ω coax", "Nearest standard value to the cable impedance", "No reflections to distort the pulses"],
-      "narration": "In Figure 8A3, digital pulses travel down a 50 ohm coaxial cable. What is the box marked X? It's a 51-ohm resistor, terminating the 50 ohm coax at the receiving end. 51 ohms is the nearest standard value to the cable's characteristic impedance. Terminating the line this way prevents reflections, which would otherwise distort the fast digital pulses."
+      "onScreen": ["Line driver and 50 Ω cable", "Line receiver at the far end", "Box X: 51-ohm resistor", "Nearest standard value to 50 Ω", "No reflections"],
+      "narration": "Between circuit boards, a gate's pulses often travel over coaxial cable: a center wire inside a tube-shaped shield. In Figure 8A3, a line driver sends pulses down a 50 ohm cable to a line receiver. 50 ohms is the cable's characteristic impedance, where impedance means opposition to changing signals, measured in ohms. A cable behaves well only if its far end is connected to a resistance equal to that impedance. Otherwise part of each pulse bounces back, like a wave on a rope tied to a wall, distorting the pulses. Box X is the fix: a 51-ohm resistor terminating the cable at the receiving end. 51 ohms, the nearest standard value to 50, absorbs each pulse instead of reflecting it."
     },
     {
-      "id": "s31",
-      "keyTopic": 9,
-      "template": "equipment-card",
-      "params": {
-        "title": "The magnetron's dangerous voltage",
-        "device": "magnetron",
-        "callouts": [
-          { "label": "Filament: heats the cathode and is tied to it", "at": "filament" },
-          { "label": "Cathode: pulsed to a high negative voltage", "at": "cathode" },
-          { "label": "Anode: grounded", "at": "anode" },
-          { "label": "So the filament rides at that same high voltage: dangerous", "at": "filament" }
-        ]
-      },
-      "onScreen": ["Filament tied to the cathode", "Cathode pulsed high negative", "Anode grounded", "Filament carries dangerous voltages"],
-      "narration": "Which magnetron circuit carries dangerous voltages? The filament. Here's why. The filament heats the cathode and is tied to it. The cathode is pulsed to a high negative voltage, while the anode is grounded. So the whole filament circuit rides at that same high voltage. Don't assume the filament is a low voltage circuit just because it's a heater."
-    },
-    {
-      "id": "s32",
-      "keyTopic": 10,
-      "template": "equipment-card",
-      "params": {
-        "title": "Figure 8A4: two clock cycles",
-        "figure": "8A4",
-        "callouts": [
-          { "label": "Pins 1 and 4 (clear and preset) held high; both flip-flops reset" },
-          { "label": "Reset: Q low, Q̄ high" },
-          { "label": "Left Q̄ output, pin 6, feeds back to its own data input, pin 2" },
-          { "label": "First clock cycle: the left flip-flop loads a high, so pin 5 goes high" },
-          { "label": "Pin 5 drives the right data input, pin 12; next clock sets pin 9 high" },
-          { "label": "Result: pin 5 high and pin 9 high" }
-        ]
-      },
-      "onScreen": ["Pins 1 and 4 high, both reset", "Q low, Q bar high", "Pin 6 feeds pin 2", "Pin 5 goes high", "Pin 12 input, pin 9 goes high", "Pin 5 high, pin 9 high"],
-      "narration": "Figure 8A4 shows two D-type flip-flops. Pins 1 and 4, the clear and preset inputs, are held high, and both flip-flops start in the reset state: Q low, and Q bar high. On the left flip-flop, the Q bar output on pin 6 feeds back to its own data input on pin 2. So that input is high, and its first clock cycle loads a high: pin 5 goes high. Pin 5 drives the right flip-flop's data input on pin 12. So the following clock cycle on the right flip-flop sets pin 9 high. The result: pin 5 high, and pin 9 high."
-    },
-    {
-      "id": "s33",
+      "id": "s75",
       "keyTopic": 10,
       "template": "key-facts",
       "params": {
-        "title": "Photodiode, TTL NAND and address pointers",
+        "title": "The D-type flip-flop",
         "items": [
-          "Figure 8A5: the 12 V battery reverse-biases the photodiode, the normal way to run it",
-          "Dark: only a tiny dark current. Light makes electron-hole pairs: more light, more current",
-          "Figure 8A6, TTL NAND: an input low → Q<sub>1</sub> saturated, Q<sub>2</sub> off, output high",
-          "Base current flows out Q<sub>1</sub>'s low emitter; its collector pulls Q<sub>2</sub>'s base low",
-          "Figure 8A2: address pointers are in the general registers (data and address registers)"
+          "Flip-flop: a circuit that remembers 1 bit",
+          "D-type: on each rising clock edge, Q copies the D input",
+          "Q̄ (Q bar): always the opposite of Q",
+          "Preset and clear: force Q high or low; often active low",
+          "Reset: Q low, Q̄ high"
         ]
       },
-      "onScreen": ["8A5: photodiode reverse-biased by the 12 V battery", "More light, more current", "8A6: either input low, Q1 saturated, Q2 off, output high", "Q1 collector pulls Q2 base low", "8A2: address pointers in the general registers"],
-      "narration": "Three quick figures. In Figure 8A5, the 12 volt battery reverse-biases the photodiode, which is the normal way to run one. In the dark, only a tiny dark current flows. Light creates electron-hole pairs in the junction, so more light means more diode current. Figure 8A6 is a TTL NAND gate. With either input low, base current flows out the low emitter of the multi-emitter transistor Q sub 1. Q sub 1 is saturated, and its collector pulls the base of Q sub 2 low, so Q sub 2 is off and the output goes high. Back in Figure 8A2, address pointers are contained in the general registers, which hold both the data and address registers. The ALU does arithmetic, not address decoding, and the control unit decodes instructions rather than doing arithmetic."
+      "onScreen": ["Flip-flop: remembers 1 bit", "Clock edge: Q copies D", "Q bar: opposite of Q", "Preset and clear: active low", "Reset: Q low, Q bar high"],
+      "narration": "Gates make decisions, but they don't remember anything. For memory, digital circuits use the flip-flop, a circuit that remembers 1 bit. The D-type flip-flop has a data input, D, and a clock input, which receives timing pulses. Each time the clock rises from low to high, the flip-flop copies whatever is on D to its output, Q, and holds it until the next rising edge. A second output, Q bar, is always the opposite of Q. Many flip-flops also have preset and clear inputs, which force Q high or low whatever the clock does. These are often active low, meaning they act only when pulled low. And in the reset state, Q is low and Q bar is high."
     },
     {
-      "id": "s34",
+      "id": "s76",
       "keyTopic": 10,
-      "template": "formula",
+      "template": "equipment-card",
       "params": {
-        "title": "Figure 8A7: the LED series resistor",
-        "formula": "R<sub>S</sub> = (V<sub>supply</sub> − V<sub>LED</sub>) ÷ I<sub>F</sub>",
-        "steps": ["R<sub>S</sub> = (5 V − 1.9 V) ÷ 40 mA", "R<sub>S</sub> = 3.1 V ÷ 0.040 amperes", "R<sub>S</sub> = 77.5 Ω"],
-        "answer": "R<sub>S</sub> ≈ 77 Ω"
+        "title": "Figure 8A4: the first clock",
+        "figure": "8A4",
+        "callouts": [
+          { "label": "Pins 1 and 4, clear and preset, held high: out of the way" },
+          { "label": "Both flip-flops start reset: Q low, Q̄ high" },
+          { "label": "Left flip-flop: Q̄ on pin 6 feeds its own D input, pin 2" },
+          { "label": "Pin 2 is high, so Clk A loads a high: pin 5 goes high" }
+        ]
       },
-      "onScreen": ["R S = (supply − LED voltage) ÷ forward current", "(5 V − 1.9 V) ÷ 40 mA", "3.1 V ÷ 0.040 amperes = 77.5 Ω", "About 77 Ω"],
-      "narration": "In Figure 8A7, an LED, a light-emitting diode, runs from a 5 volt supply through a series resistor, R sub S. The resistor must drop the supply voltage minus the LED voltage, at the LED's maximum forward current. Here that's 5 volts minus 1.9 volts, divided by 40 milliamps. 5 minus 1.9 is 3.1 volts. 3.1 volts divided by 0.040 amperes is 77.5 ohms, so the answer is about 77 ohms."
+      "onScreen": ["Pins 1 and 4 high", "Both reset: Q low, Q bar high", "Pin 6 feeds pin 2", "First clock: pin 5 goes high"],
+      "narration": "Figure 8A4 puts 2 D-type flip-flops to work. The exam tells you pins 1 and 4 are high and both flip-flops start in the reset state. Pins 1 and 4 are the left flip-flop's clear and preset inputs. They're active low, so holding them high keeps them out of the way. And since both start reset, each Q is low and each Q bar is high. Now look at the left flip-flop. Its Q bar output, pin 6, is wired back to its own D input, pin 2. Q bar is high, so pin 2 is high. When the first clock cycle arrives on clock A, the flip-flop copies that high to Q. So pin 5 goes high."
     },
     {
-      "id": "s35",
+      "id": "s77",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A4: the second clock",
+        "figure": "8A4",
+        "callouts": [
+          { "label": "Pin 5, now high, drives the right flip-flop's D input, pin 12" },
+          { "label": "Clk B loads that high into the right flip-flop" },
+          { "label": "Its Q output, pin 9, goes high" },
+          { "label": "Result: pin 5 high and pin 9 high" }
+        ]
+      },
+      "onScreen": ["Pin 5 drives pin 12", "Clk B loads the high", "Pin 9 goes high", "Pin 5 high, pin 9 high"],
+      "narration": "Now follow pin 5 to the right. It drives the right flip-flop's D input on pin 12, so pin 12 is now high. Next comes 1 cycle on clock B. The right flip-flop copies its high D input to its Q output, so pin 9 goes high. Pin 5 stays high, because the left flip-flop hasn't been clocked again. So after 1 cycle of clock A followed by 1 cycle of clock B, the answer is pin 5 high and pin 9 high. The trick is to take it one clock at a time, and always read D just before the clock edge."
+    },
+    {
+      "id": "s78",
       "keyTopic": 10,
       "template": "equipment-card",
       "params": {
         "title": "Figure 8A8: reading the truth table",
         "figure": "8A8",
         "callouts": [
-          { "label": "Clocked on each low-to-high edge: a D-type flip-flop" },
-          { "label": "Inverting: Qn takes the opposite of Dn, so a high in gives a low out" },
-          { "label": "A high on the active-low output enable forces Z, the high-impedance state" },
-          { "label": "So it is 3-state" },
+          { "label": "Inputs: OE̅ (output enable, active low), CP (clock), Dn (data)" },
+          { "label": "Clock rising: D high gives Q low; D low gives Q high" },
+          { "label": "Q takes the opposite of D: an inverting D-type flip-flop" },
+          { "label": "OE̅ high: output Z, high impedance, so it is 3-state" },
           { "label": "D-type flip-flop, 3-state, inverting" }
         ]
       },
-      "onScreen": ["D-type flip-flop", "Inverting: high in, low out", "Output enable high: Z, high impedance", "3-state", "D-type flip-flop, 3-state, inverting"],
-      "narration": "Last, Figure 8A8, a truth table for a part on a RADAR circuit board. Look at the rows with a low-to-high clock edge. On each one, the output Q n takes the opposite of the data input D n: a high in gives a low out. So it's a D-type flip-flop, and it's inverting. Now the bottom row: a high on the active-low output enable forces the output to Z, the high-impedance state. That makes it 3-state. Put together: a D-type flip-flop, 3-state, inverting."
+      "onScreen": ["OE bar, CP and Dn inputs", "D high gives Q low", "Inverting D-type flip-flop", "OE bar high: Z state, 3-state", "D-type flip-flop, 3-state, inverting"],
+      "narration": "Figure 8A8 is the truth table of another flip-flop, a part on a RADAR circuit board. The inputs are OE bar, the output enable, which is active low; CP, the clock; and D n, the data input. The output is Q n. In the first 2 rows, output enable is low and the clock goes from low to high. A high D gives a low Q, and a low D gives a high Q, so it's a D-type flip-flop that inverts. With no clock edge, nothing changes. In the bottom row, output enable is high, and the output goes to Z, the high-impedance state: disconnected. High, low or disconnected makes 3 states. So it's a D-type flip-flop, 3-state, inverting."
+    },
+    {
+      "id": "s79",
+      "keyTopic": 9,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A2: buses and the outside world",
+        "figure": "8A2",
+        "callouts": [
+          { "label": "Internal bus: shared wires linking the blocks" },
+          { "label": "Shared, so it carries one transfer at a time" },
+          { "label": "Memory and I/O interface: the only block on the memory and I/O bus" },
+          { "label": "So the memory and I/O communicate with peripherals" }
+        ]
+      },
+      "onScreen": ["Internal bus: shared wires", "One transfer at a time", "Memory and I/O interface on the outside bus", "Memory and I/O communicate with peripherals"],
+      "narration": "Thousands of gates and flip-flops together make a microprocessor, the small computer chip that runs a radar's digital functions. Figure 8A2 shows one. The long double-headed arrow near the top is the internal bus, a set of shared wires that carries data between the blocks inside the chip. Because it's shared, it carries one transfer at a time: the units take turns, they don't all use it at once. At the right is the memory and I-O interface, I-O meaning input-output. It's the only block connected to the outside memory and I-O bus. So it's the memory and I-O that communicate with peripherals, the devices outside the processor, such as memory chips, displays and keyboards."
+    },
+    {
+      "id": "s80",
+      "keyTopic": 9,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A2: registers and the ALU",
+        "figure": "8A2",
+        "callouts": [
+          { "label": "Registers: small, fast storage spots inside the chip" },
+          { "label": "General registers D0 to D7 and A0 to A7, plus the TEMP register" },
+          { "label": "ALU: executes arithmetic manipulations on their data" },
+          { "label": "The result goes back over the internal bus" },
+          { "label": "Control unit: decodes instructions; it does no arithmetic" }
+        ]
+      },
+      "onScreen": ["Registers: fast storage", "General registers and TEMP", "ALU: arithmetic", "Result over the internal bus", "Control unit: decodes instructions"],
+      "narration": "Inside, data waits in registers: small, fast storage spots. The general registers, labeled D 0 to D 7 and A 0 to A 7, hold the numbers being worked on, and the TEMP register holds a temporary value. Below them sits the ALU, the arithmetic logic unit. The ALU executes arithmetic manipulations: it takes data from the general registers and the TEMP register, adds, subtracts or compares it, and returns the result over the internal bus. The ALU doesn't decode instructions. That's the job of the control unit, on the right, which reads each program instruction and directs the other blocks, but does no arithmetic itself."
+    },
+    {
+      "id": "s81",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A2: where address pointers live",
+        "figure": "8A2",
+        "callouts": [
+          { "label": "Address: the number of a location in memory" },
+          { "label": "Address pointer: a register holding an address" },
+          { "label": "D registers hold data; A registers hold addresses" },
+          { "label": "So address pointers are in the general registers" }
+        ]
+      },
+      "onScreen": ["Address: a memory location's number", "Address pointer", "D: data, A: addresses", "Address pointers: general registers"],
+      "narration": "One more question on this figure. Every location in memory has a number, called its address, like a house number on a street. A register that holds an address, so the processor knows where to find its data, is called an address pointer. Look at the general registers again: D 0 to D 7 are data registers, and A 0 to A 7 are address registers. So address pointers are contained in the general registers. The traps put address pointers in the control unit, or say the ALU does address decoding, or that the general registers or control unit do the arithmetic. Remember: the ALU calculates, the control unit decodes instructions, and the general registers hold data and addresses."
+    },
+    {
+      "id": "s82",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A5: the photodiode",
+        "figure": "8A5",
+        "callouts": [
+          { "label": "The 12 V battery reverse-biases the photodiode: the normal way to run it" },
+          { "label": "Reverse-biased: the diode blocks, except a tiny dark current" },
+          { "label": "Light creates electron-hole pairs in the junction" },
+          { "label": "More light, more diode current" }
+        ]
+      },
+      "onScreen": ["12 V battery reverse-biases the photodiode", "Dark: only a tiny current", "Light makes electron-hole pairs", "More light, more current"],
+      "narration": "Let's finish with 2 circuits that work with light. In Figure 8A5, a photodiode, a diode that responds to light, is connected to a meter and a 12 volt battery. Remember that a diode is a one-way valve. Here the battery is connected the blocking way round, which is called reverse bias. That's the normal way to run a photodiode, not a wiring mistake. In the dark, only a tiny leakage current flows, called dark current. When light strikes the junction, it knocks electrons loose, each leaving behind a gap called a hole, and these electron-hole pairs carry current. So more light means more diode current, and the meter reads higher."
+    },
+    {
+      "id": "s83",
+      "keyTopic": 10,
+      "template": "equipment-card",
+      "params": {
+        "title": "Figure 8A7: why an LED needs a resistor",
+        "figure": "8A7",
+        "callouts": [
+          { "label": "LED: a light-emitting diode, lit by forward current" },
+          { "label": "Once lit, its voltage stays almost fixed: here 1.9 V" },
+          { "label": "Alone on the 5 V supply, its current would climb until it burned out" },
+          { "label": "R<sub>S</sub>: a series resistor, in the same path, limits the current" }
+        ]
+      },
+      "onScreen": ["LED: light-emitting diode", "Lit LED: about 1.9 V, almost fixed", "Alone, its current would climb", "R S: series resistor limits the current"],
+      "narration": "The second circuit works the other way round: instead of sensing light, it makes it. In Figure 8A7, an LED, a light-emitting diode, glows when current flows through it the forward way. Once an LED is lit, the voltage across it stays almost fixed, here 1.9 volts. So it can't limit its own current. Connect it straight to the 5 volt supply, and its current would climb until it burned out. That's why it has a series resistor, R sub S. Series means in the same path, so all of the LED's current must pass through the resistor, and the resistor sets how much flows."
+    },
+    {
+      "id": "s84",
+      "keyTopic": 10,
+      "template": "formula",
+      "params": {
+        "title": "Figure 8A7: the LED series resistor",
+        "formula": "R<sub>S</sub> = (V<sub>supply</sub> − V<sub>LED</sub>) ÷ I<sub>F</sub>",
+        "steps": ["Voltage across R<sub>S</sub>: 5 V − 1.9 V = 3.1 V", "Current: 40 mA = 0.040 amperes", "R<sub>S</sub> = 3.1 V ÷ 0.040 A = 77.5 Ω"],
+        "answer": "R<sub>S</sub> ≈ 77 Ω"
+      },
+      "onScreen": ["R S = (supply − LED voltage) ÷ current", "5 V − 1.9 V = 3.1 V", "40 mA = 0.040 amperes", "3.1 ÷ 0.040 = 77.5 Ω, about 77 Ω"],
+      "narration": "So what value should R sub S be? The resistor must drop whatever voltage the LED doesn't. The supply is 5 volts and the LED drops 1.9, so the resistor drops 5 minus 1.9, which is 3.1 volts. The current must not exceed the LED's maximum forward current, 40 milliamps, or 0.040 amperes, since a milliamp is a thousandth of an amp. Now Ohm's law, turned around: resistance equals voltage divided by current. 3.1 volts divided by 0.040 amperes is 77.5 ohms, so the answer is about 77 ohms. Watch for the 155 ohm trap: twice the resistance, it would let only half the current flow."
+    },
+    {
+      "id": "s85",
+      "keyTopic": 1,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": [
+          "1 RADAR mile = 12.34 µs; range: 150 meters per microsecond",
+          "Duty cycle = PW × PRF; P<sub>avg</sub> = P<sub>pk</sub> × PW × PRF",
+          "Highest PRF = 1 ÷ round trip time; minimum range set by pulse width",
+          "S-band 2 to 4 GHz, better in weather; X-band 8 to 12 GHz, better bearing",
+          "Synchronizer: timing. Duplexer: 1 antenna. TR box: protects the crystal"
+        ]
+      },
+      "onScreen": ["RADAR mile 12.34 µs; 150 m per µs", "Duty cycle and average power", "Highest PRF; minimum range", "S-band and X-band", "Synchronizer, duplexer, TR box"],
+      "narration": "To wrap up, 5 things to remember. Timing: a RADAR mile is 12.34 microseconds out and back, and range is measured at 150 meters per microsecond, so echo time divided by 12.34 gives nautical miles, with no halving. Power: duty cycle is pulse width times PRF, and average power is peak power times duty cycle. Range limits: the PRF can be no higher than 1 divided by the round trip time, and the pulse width sets the minimum range. Frequency: S-band, 2 to 4 gigahertz, handles weather better; X-band, 8 to 12 gigahertz, has better bearing resolution. And the parts: the synchronizer controls timing, the duplexer lets 1 antenna transmit and receive, and the TR box protects the receiver's crystal."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [1] },
-    { "after": "s7", "keyTopics": [2] },
-    { "after": "s10", "keyTopics": [3] },
-    { "after": "s13", "keyTopics": [4] },
-    { "after": "s16", "keyTopics": [5] },
-    { "after": "s19", "keyTopics": [6] },
-    { "after": "s23", "keyTopics": [7] },
-    { "after": "s27", "keyTopics": [8] },
-    { "after": "s31", "keyTopics": [9] },
-    { "after": "s35", "keyTopics": [10] }
+    { "after": "s4", "keyTopics": [2], "questions": ["8-2A3"] },
+    { "after": "s8", "keyTopics": [2], "questions": ["8-2A2", "8-2A1", "8-2A4", "8-2A5"] },
+    { "after": "s12", "keyTopics": [2, 6], "questions": ["8-2A6", "8-6A1", "8-6A2"] },
+    { "after": "s15", "keyTopics": [6, 4], "questions": ["8-6A4", "8-4A2"] },
+    { "after": "s19", "keyTopics": [1, 6], "questions": ["8-1A4", "8-6A3"] },
+    { "after": "s23", "keyTopics": [9, 1, 6], "questions": ["8-9A6", "8-1A5", "8-6A3", "8-1A6"] },
+    { "after": "s27", "keyTopics": [3], "questions": ["8-3A1", "8-3A4"] },
+    { "after": "s30", "keyTopics": [3], "questions": ["8-3A3", "8-3A6", "8-3A2", "8-3A5"] },
+    { "after": "s33", "keyTopics": [1, 4], "questions": ["8-1A3", "8-4A1", "8-4A4"] },
+    { "after": "s37", "keyTopics": [4], "questions": ["8-4A5", "8-4A3", "8-4A6"] },
+    { "after": "s41", "keyTopics": [5], "questions": ["8-5A1", "8-5A6", "8-5A5", "8-5A2"] },
+    { "after": "s45", "keyTopics": [1, 5], "questions": ["8-1A1", "8-1A2", "8-5A3"] },
+    { "after": "s49", "keyTopics": [5, 6], "questions": ["8-5A4", "8-6A6", "8-6A5"] },
+    { "after": "s52", "keyTopics": [7], "questions": ["8-7A1", "8-7A6"] },
+    { "after": "s55", "keyTopics": [7], "questions": ["8-7A4", "8-7A5"] },
+    { "after": "s59", "keyTopics": [8], "questions": ["8-8A1", "8-8A5", "8-8A4"] },
+    { "after": "s63", "keyTopics": [8, 9], "questions": ["8-8A6", "8-9A1"] },
+    { "after": "s67", "keyTopics": [9, 7, 8], "questions": ["8-9A3", "8-7A2", "8-8A2"] },
+    { "after": "s70", "keyTopics": [7], "questions": ["8-7A3"] },
+    { "after": "s74", "keyTopics": [8, 10, 9], "questions": ["8-8A3", "8-10A3", "8-9A5"] },
+    { "after": "s78", "keyTopics": [10], "questions": ["8-10A1", "8-10A6"] },
+    { "after": "s81", "keyTopics": [9, 10], "questions": ["8-9A2", "8-9A4", "8-10A5"] },
+    { "after": "s85", "keyTopics": [10], "questions": ["8-10A2", "8-10A4"] }
   ],
   "video": null
 }

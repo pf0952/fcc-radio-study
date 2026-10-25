@@ -11,133 +11,346 @@
       "params": {
         "kicker": "Element 3 · Subelement P",
         "title": "Satellite",
-        "subtitle": "Iridium, COSPAS-SARSAT, Inmarsat and GPS compared by orbit altitude, frequencies, services and antennas."
+        "subtitle": "How Iridium, COSPAS-SARSAT, Inmarsat and GPS work: their orbits, frequencies, services and antennas."
       },
       "onScreen": ["Satellite", "Iridium, COSPAS-SARSAT, Inmarsat and GPS"],
-      "narration": "This lesson compares 4 satellite systems: Iridium, COSPAS-SARSAT, Inmarsat, and GPS, the Global Positioning System. For each one, we'll look at how high it orbits, which frequencies it uses, what services it provides, and what antennas it needs. We'll start low, with Iridium, a low Earth orbit system."
+      "narration": "Welcome to Satellite. Far out at sea, beyond the reach of radio stations on shore, a ship relies on satellites to make phone calls, send messages, raise the alarm in a disaster, and know exactly where it is. In this lesson we'll meet the 4 satellite systems that do those jobs: Iridium, COSPAS-SARSAT, Inmarsat, and GPS, the Global Positioning System. We'll start from what a satellite and an orbit are, so you don't need any background. By the end, you'll be able to compare the 4 systems by how high they orbit, which frequencies they use, what services they offer and what antennas they need, which is exactly what the exam asks."
     },
     {
       "id": "s2",
       "keyTopic": 95,
-      "template": "key-facts",
+      "template": "block-diagram",
       "params": {
-        "title": "Iridium: low Earth orbit",
-        "items": [
-          "Orbits at 485 miles, far below the geostationary Inmarsat satellites",
-          "Uses the 1616–1626 MHz band for telephone and messaging",
-          "Digital voice and data at 2.4 kbps",
-          "No analog voice"
+        "title": "Why put a radio in space?",
+        "columns": 2,
+        "blocks": [
+          { "id": "ship", "label": "Ship far out at sea" },
+          { "id": "sat", "label": "Satellite", "note": "A radio relay high above the Earth" },
+          { "id": "shore", "label": "Station on shore" }
+        ],
+        "links": [
+          { "from": "ship", "to": "sat", "label": "Up" },
+          { "from": "sat", "to": "shore", "label": "Back down" },
+          { "from": "ship", "to": "shore", "label": "Blocked by the Earth's curve", "struck": true }
         ]
       },
-      "onScreen": ["Altitude 485 miles: low Earth orbit", "1616–1626 MHz: telephone and messaging", "Digital voice and data at 2.4 kbps", "No analog voice"],
-      "narration": "Iridium is a satellite communications system in low Earth orbit. Its satellites orbit at an altitude of 485 miles, far below the geostationary Inmarsat satellites. Iridium uses the 1616 to 1626 megahertz band for telephone and messaging. Its services are digital voice and data at 2.4 kilobits per second. There is no analog voice on Iridium."
+      "onScreen": ["Ship far out at sea", "Satellite: a radio relay above the Earth", "Station on shore", "Direct path blocked by the Earth's curve"],
+      "narration": "Let's start with the problem satellites solve. Picture a ship far out at sea. The radio signals in this lesson travel in straight lines, much like light, so they can't follow the curve of the Earth past the horizon. The fix is a satellite: a radio relay placed high above the Earth, where it can see huge areas at once. The ship sends its signal up to the satellite, and the satellite passes it back down to a station on shore. The ship could never reach that station directly, because the curve of the Earth is in the way, the same curve that hides a distant ship below the horizon."
     },
     {
       "id": "s3",
       "keyTopic": 95,
       "template": "comparison-table",
       "params": {
-        "title": "Iridium: true or false?",
-        "columns": ["Statement", "Verdict"],
+        "title": "Low orbits and high orbits",
+        "columns": ["Orbit", "Height", "One trip around"],
         "rows": [
-          ["48 spot beams per satellite, 30-mile footprint", "The keyed answer: choose it on the exam"],
-          ["Size of each spot beam", "Really about 400 km, or 250 miles, across"],
-          ["48 satellites in 4 orbital planes", "False"],
-          ["The real constellation", "66 active satellites in 6 near-polar planes"],
-          ["Inclination and period", "86.4°, about 100 minutes per orbit"]
+          ["Low Earth orbit", "A few hundred miles up", "About 100 minutes"],
+          ["Geostationary orbit", "Far higher, above the equator", "1 day: it seems to hang still"]
         ]
       },
-      "onScreen": ["For the exam: 48 spot beams, 30-mile footprint", "Really about 250 miles per beam", "Not 48 satellites in 4 planes", "66 active satellites, 6 near-polar planes", "Inclined 86.4°, about 100 minutes"],
-      "narration": "The exam asks which statement about Iridium is true. For the exam, the keyed answer is: there are 48 spot beams per satellite, with a footprint of 30 miles in diameter. Choose it. The 48 beams are real, but each one is really about 400 kilometers, or about 250 miles, across. Watch for a wrong choice: Iridium is not 48 satellites in 4 orbital planes. It uses 66 active satellites in 6 near-polar planes, inclined 86.4 degrees, with an orbital period of about 100 minutes."
+      "onScreen": ["Low Earth orbit: a few hundred miles, about 100 minutes", "Geostationary orbit: far higher, 1 day, seems to hang still"],
+      "narration": "But how does a satellite stay up there? It's in orbit, the path it follows around the Earth. It's actually falling the whole time, but moving sideways so fast that it keeps missing the ground. Gravity pulls hardest close to the Earth, so the lower the satellite, the faster it must go. In low Earth orbit, a few hundred miles up, it races around about once every 100 minutes. Higher up, a satellite moves slower along a longer path. At one special height above the equator, a trip takes 1 day, as long as the Earth takes to turn once. So it seems to hang still in the sky. That's a geostationary orbit: stationary over one spot on the Earth."
     },
     {
       "id": "s4",
       "keyTopic": 95,
+      "template": "band-strip",
+      "params": {
+        "title": "Iridium: low Earth orbit at 485 miles",
+        "min": 0,
+        "max": 24000,
+        "scale": "linear",
+        "ends": ["Earth", "Higher"],
+        "marks": [
+          { "at": 485, "label": "Iridium: 485 miles", "note": "Low Earth orbit", "tone": "key" },
+          { "at": 22177, "label": "Inmarsat: 22,177 miles", "note": "Geostationary: later in this lesson", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Iridium: 485 miles, low Earth orbit", "Inmarsat: 22,177 miles, geostationary"],
+      "narration": "With those 2 kinds of orbit in mind, meet the first system. Iridium is a satellite telephone network: its phones talk straight to the satellites overhead. Iridium satellites orbit at an altitude, or height, of 485 miles, in low Earth orbit. Why so low? A nearby satellite can hear a small handheld phone clearly. The price is that each satellite sees only a small patch of the Earth and crosses the sky in minutes. So Iridium needs many satellites, and a call is handed from one to the next as they pass. The exam's wrong choices are all much higher. Iridium is the low one: 485 miles, far below the geostationary Inmarsat satellites at 22,177 miles, which we'll visit later."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 95,
+      "template": "waveform",
+      "params": {
+        "title": "What is a frequency?",
+        "kind": "sine",
+        "cycles": 4,
+        "labels": [
+          "1 cycle: one complete wave, up and back down",
+          "Frequency: cycles per second, in hertz",
+          "1 megahertz (MHz): a million cycles per second",
+          "Band: a range of frequencies set aside for one use"
+        ],
+        "xAxis": "Time",
+        "yAxis": "Signal"
+      },
+      "onScreen": ["1 cycle: one complete wave", "Frequency: cycles per second, in hertz", "1 megahertz: a million cycles per second", "Band: a range of frequencies"],
+      "narration": "Altitude is the first way to tell the systems apart. The second is frequency, so here's what a frequency is. A radio signal is an invisible wave of energy that swings up and down, over and over. One complete swing, up and back down, is called a cycle. The number of cycles each second is the frequency, measured in hertz: 1 hertz is 1 cycle per second. Radio waves swing extremely fast, so we count them in megahertz: 1 megahertz is a million cycles per second. A band is a range of frequencies set aside for one use, like one lane of a highway kept for one kind of traffic."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 95,
+      "template": "band-strip",
+      "params": {
+        "title": "Iridium: 1616–1626 MHz",
+        "min": 900,
+        "max": 2500,
+        "scale": "linear",
+        "ends": ["Lower", "Higher"],
+        "marks": [
+          { "at": 1621, "label": "1616–1626 MHz", "note": "Iridium: telephone and messaging", "tone": "key" },
+          { "at": 975, "label": "965–985 MHz", "note": "Wrong choice", "tone": "muted" },
+          { "at": 1875, "label": "1855–1895 MHz", "note": "Wrong choice", "tone": "muted" },
+          { "at": 2425, "label": "2415–2435 MHz", "note": "Wrong choice", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Iridium: 1616–1626 MHz, telephone and messaging", "Wrong choices: 965–985, 1855–1895, 2415–2435 MHz"],
+      "narration": "So which lane is Iridium's? Iridium uses the 1616 to 1626 megahertz band for telephone and messaging. The greyed bands are the exam's wrong choices: other bands, some lower and some higher, that Iridium doesn't use for its phones. Iridium's slice is 10 megahertz wide, and the width of a slice like that is called its bandwidth. The phone and the satellite share it, taking turns to talk. A handy way to remember the band: it starts with 16, twice. Pick 1616 to 1626 megahertz."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 95,
+      "template": "key-facts",
+      "params": {
+        "title": "Analog or digital?",
+        "items": [
+          "Analog: the signal copies the smooth shape of the sound",
+          "Digital: the voice is measured and sent as bits, 1s and 0s",
+          "kbps: kilobits per second, thousands of bits each second",
+          "Iridium: digital voice and data at 2.4 kbps, no analog voice"
+        ]
+      },
+      "onScreen": ["Analog: copies the sound's shape", "Digital: sent as bits, 1s and 0s", "kbps: thousands of bits per second", "Iridium: digital voice and data at 2.4 kbps, no analog voice"],
+      "narration": "What does Iridium carry over that band? First, 2 words: analog and digital. In analog radio, the signal copies the smooth ups and downs of your voice. In digital radio, the voice is measured many times a second and turned into numbers, sent as bits: the 1s and 0s computers use. Bits can be checked and corrected, so digital speech stays clear even on a weak signal. Digital speed is counted in kilobits per second: thousands of bits each second. Iridium is all digital. It provides digital voice and data at 2.4 kilobits per second, with no analog voice at all. So any exam choice with analog voice, or a faster rate such as 9.6, is wrong."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 95,
+      "template": "key-facts",
+      "params": {
+        "title": "Iridium spot beams",
+        "items": [
+          "Footprint: the patch of Earth a satellite's antenna covers",
+          "Spot beam: a narrow beam aimed at one part of the footprint",
+          "Each Iridium satellite forms 48 spot beams",
+          "For the exam: 48 spot beams per satellite, 30-mile footprint",
+          "Really about 400 km, or 250 miles, across each beam"
+        ]
+      },
+      "onScreen": ["Footprint: the area a satellite covers", "Spot beam: a narrow beam within it", "48 spot beams per Iridium satellite", "For the exam: 30-mile footprint", "Really about 250 miles per beam"],
+      "narration": "One more Iridium exam question is about spot beams. A satellite's footprint is the patch of Earth its antenna covers. Rather than light that whole patch with one broad beam, like a floodlight, an Iridium satellite splits it into many narrow spot beams, like a cluster of flashlights. Each spot beam is stronger, and neighboring beams can carry different calls. Each Iridium satellite forms 48 spot beams. For the exam, the keyed answer is: there are 48 spot beams per satellite, with a footprint of 30 miles in diameter, meaning each beam's patch is 30 miles straight across. Choose it. The 48 is right, but each beam is really about 400 kilometers, or about 250 miles, across."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 95,
+      "template": "comparison-table",
+      "params": {
+        "title": "Iridium's constellation: the traps",
+        "columns": ["Exam choice", "Verdict"],
+        "rows": [
+          ["48 satellites in 4 orbital planes", "False: 66 active satellites in 6 planes"],
+          ["Planes inclined 55°", "False: 86.4°, near-polar"],
+          ["Orbital period about 85 minutes", "False: about 100 minutes"]
+        ]
+      },
+      "onScreen": ["Not 48 satellites in 4 planes: 66 in 6 planes", "Not 55°: inclined 86.4°, near-polar", "Not 85 minutes: about 100 minutes"],
+      "narration": "Why are the other Iridium choices wrong? They describe the constellation, the whole group of satellites. Each orbit lies in a flat ring around the Earth called an orbital plane, like a hoop. Inclination is how far that hoop tilts from the equator: 0 degrees runs along the equator, and 90 degrees passes over the poles. Iridium is not 48 satellites in 4 orbital planes. It uses 66 active satellites in 6 planes inclined 86.4 degrees, so close to 90 that they're called near-polar, and together they cover the whole Earth, poles included. 55 degrees belongs to GPS, which we'll meet later. And the orbital period, the time for one trip around, is about 100 minutes, not 85."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 95,
+      "template": "equipment-card",
+      "params": {
+        "title": "COSPAS-SARSAT and the EPIRB",
+        "device": "epirb",
+        "callouts": [
+          { "label": "EPIRB: emergency position-indicating radio beacon", "at": "beacon" },
+          { "label": "Many float free and switch on if the ship sinks", "at": "release" },
+          { "label": "Sends a distress call on 406 MHz", "at": "antenna" },
+          { "label": "Strobe light helps rescuers spot it", "at": "strobe" }
+        ]
+      },
+      "onScreen": ["EPIRB: emergency position-indicating radio beacon", "Floats free and switches on", "Distress call on 406 MHz", "Strobe light"],
+      "narration": "Iridium carries everyday calls. The other system that relies on low-orbit satellites has one life-saving job. Its name, COSPAS-SARSAT, joins a Russian name with an English one, SARSAT: search and rescue satellite-aided tracking. It listens for EPIRBs, emergency position-indicating radio beacons. An EPIRB is a small, tough transmitter carried on a ship. Many are mounted so they float free and switch on by themselves if the ship sinks. The beacon then sends a distress call on 406 megahertz, and a flashing strobe light helps rescuers spot it once they're close."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 95,
       "template": "block-diagram",
       "params": {
-        "title": "How COSPAS-SARSAT locates a ship",
+        "title": "COSPAS-SARSAT: from beacon to rescuers",
         "columns": 4,
         "blocks": [
           { "id": "epirb", "label": "EPIRB", "note": "Distress call on 406 MHz" },
           { "id": "sat", "label": "COSPAS-SARSAT satellite", "note": "Monitors 406 MHz and relays" },
           { "id": "lut", "label": "Local user terminal", "note": "Ground station" },
-          { "id": "fix", "label": "Ship's position", "note": "Doppler shift at several orbit points" }
+          { "id": "rcc", "label": "Rescue coordination center", "note": "Organizes the search" }
         ],
         "links": [
           { "from": "epirb", "to": "sat" },
           { "from": "sat", "to": "lut" },
-          { "from": "lut", "to": "fix" }
+          { "from": "lut", "to": "rcc" }
         ]
       },
-      "onScreen": ["EPIRB distress call on 406 MHz", "COSPAS-SARSAT monitors 406 MHz", "Relayed to local user terminals", "Position from Doppler shift at several orbit points"],
-      "narration": "Now COSPAS-SARSAT. Its main function is to monitor 406 megahertz for distress calls from EPIRBs, emergency position-indicating radio beacons, and relay them to ground stations called local user terminals. How does it find the ship in distress? By measuring the Doppler shift of the 406 megahertz signal, taken at several different points in the satellite's orbit. Only beacons with built-in GPS send their own coordinates."
+      "onScreen": ["EPIRB distress call on 406 MHz", "Satellite monitors 406 MHz and relays", "Local user terminal: ground station", "Rescue coordination center"],
+      "narration": "So what does the satellite do? The main function of COSPAS-SARSAT is to monitor 406 megahertz for distress calls from EPIRBs, and relay them to ground stations called local user terminals. The local user terminal works out where the beacon is and passes the alert to a rescue coordination center, which organizes the search. The exam's traps offer other frequencies, such as 121.5 megahertz, an older beacon frequency the satellites no longer listen for. The satellites listen on 406."
     },
     {
-      "id": "s5",
+      "id": "s12",
+      "keyTopic": 95,
+      "template": "waveform",
+      "params": {
+        "title": "The Doppler shift",
+        "kind": "fm",
+        "cycles": 16,
+        "labels": [
+          "Approaching: waves bunch up and are heard a little higher",
+          "Moving away: waves stretch out and are heard a little lower",
+          "At the closest point: no shift at all"
+        ],
+        "xAxis": "Time"
+      },
+      "onScreen": ["Approaching: heard a little higher", "Moving away: heard a little lower", "Closest point: no shift"],
+      "narration": "How does the local user terminal know where the beacon is? The name says position-indicating, but not every EPIRB reports its position: only beacons with built-in GPS send their own coordinates. For the rest, it uses the Doppler shift, which you've heard on the street. An ambulance siren sounds higher coming toward you and lower moving away, though the siren itself never changes. Its motion bunches the sound waves up in front, so they arrive more often, and stretches them out behind. Radio waves do the same. A low-orbit satellite racing toward the beacon hears its 406 megahertz signal a little high, and a little low as it moves away. When it's closest, there's no shift at all."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 95,
+      "template": "key-facts",
+      "params": {
+        "title": "Finding the beacon by Doppler",
+        "items": [
+          "Shift passes through zero: the satellite is at its closest",
+          "Sharp swing from high to low: it passed nearly overhead",
+          "Together these give the beacon's position",
+          "Exam: Doppler shift of 406 MHz at several points in the orbit"
+        ]
+      },
+      "onScreen": ["Shift through zero: satellite closest", "Sharp swing: passed nearly overhead", "Together: the beacon's position", "Doppler shift of 406 MHz at several points in the orbit"],
+      "narration": "That changing frequency is the clue. The moment the shift passes through zero tells the local user terminal when the satellite was closest to the beacon. How quickly the shift swings from high to low tells how far the beacon is from the satellite's path: a sharp swing means the satellite passed almost overhead. Put those together, and the terminal can work out where the beacon is. So, for the exam: COSPAS-SARSAT determines the position of a ship in distress by measuring the Doppler shift of the 406 megahertz signal, taken at several different points in its orbit."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 95,
+      "template": "comparison-table",
+      "params": {
+        "title": "Finding the beacon: the traps",
+        "columns": ["Exam choice", "Verdict"],
+        "rows": [
+          ["Doppler shift at several points in the orbit", "True: the keyed answer"],
+          ["The EPIRB always transmits its position", "False: only beacons with built-in GPS"],
+          ["It takes 2 different satellites", "False: 1 satellite's pass is enough"]
+        ]
+      },
+      "onScreen": ["True: Doppler shift at several points in the orbit", "False: the EPIRB always sends its position", "False: it takes 2 satellites"],
+      "narration": "The keyed answer is the Doppler one, and it shows why the system uses low orbits: a satellite that seemed to hang still would show no shift at all. Now the traps. The EPIRB always transmits its position? No: as we saw, only beacons with built-in GPS send their own coordinates, and the Doppler method works without them. It takes 2 different satellites? No: 1 satellite, measuring the shift at several points along its own pass, is enough. The takeaway for low orbits: close and fast, so small phones can reach them and Doppler can find a beacon."
+    },
+    {
+      "id": "s15",
       "keyTopic": 96,
       "template": "band-strip",
       "params": {
         "title": "Inmarsat: geostationary at 22,177 miles",
+        "min": 0,
+        "max": 24000,
+        "scale": "linear",
+        "ends": ["Earth", "Higher"],
+        "marks": [
+          { "at": 22177, "label": "Inmarsat: 22,177 miles", "note": "Geostationary, above the equator", "tone": "key" },
+          { "at": 485, "label": "Iridium: 485 miles", "note": "Low Earth orbit", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Inmarsat: 22,177 miles, geostationary above the equator", "Iridium: 485 miles"],
+      "narration": "Now we leave the low orbits and climb to the highest one in this lesson. Inmarsat, named for the International Maritime Satellite Organization that founded it, carries ships' phone calls, messages, data and distress alerts. Its satellites orbit at an altitude of 22,177 miles, in geostationary orbit above the equator. As you saw earlier, that means each trip around takes 1 day, so each satellite hangs over the same spot. A ship's antenna can stay pointed at it, and just a few satellites can cover most of the oceans. The exam's other altitudes are just wrong numbers, and one of them is even higher, so don't simply pick the biggest. Remember 22,177 miles, far above Iridium's 485."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 96,
+      "template": "key-facts",
+      "params": {
+        "title": "Placing a geostationary satellite",
+        "items": [
+          "Each satellite stays over one spot on the equator",
+          "So its longitude alone says where it is",
+          "Longitude: degrees east or west of Greenwich, England, at 0°",
+          "Inmarsat: 4 satellites, one for each ocean region"
+        ]
+      },
+      "onScreen": ["Fixed over one spot on the equator", "Its longitude says where it is", "Longitude: degrees east or west of Greenwich", "4 satellites, one per ocean region"],
+      "narration": "Because a geostationary satellite never leaves its spot over the equator, you can say where it is with a single number: its longitude. Longitude measures how far east or west a place is, in degrees around the Earth, counted from 0 degrees, the line that runs from pole to pole through Greenwich, England. The classic Inmarsat system uses 4 satellites, one for each ocean region, the stretch of ocean it looks down on, and each region is named for that ocean. Let's place all 4."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 96,
+      "template": "band-strip",
+      "params": {
+        "title": "Inmarsat's 4 ocean regions",
         "min": -180,
         "max": 180,
         "scale": "linear",
         "ends": ["West", "East"],
         "marks": [
-          { "at": -15.5, "label": "AOR-E, 15.5° W", "note": "Atlantic Ocean Region East" },
-          { "at": -54, "label": "AOR-W, 54° W", "note": "Atlantic Ocean Region West" },
-          { "at": 178, "label": "POR, 178° E", "note": "Pacific Ocean Region" },
-          { "at": 64.5, "label": "IOR, 64.5° E", "note": "Indian Ocean Region" }
+          { "at": 0, "label": "Greenwich, 0°", "note": "Where longitude starts", "tone": "muted" },
+          { "at": -15.5, "label": "AOR-E, 15.5° W", "note": "Atlantic Ocean Region East", "tone": "key" },
+          { "at": -54, "label": "AOR-W, 54° W", "note": "Atlantic Ocean Region West", "tone": "key" },
+          { "at": 178, "label": "POR, 178° E", "note": "Pacific Ocean Region", "tone": "key" },
+          { "at": 64.5, "label": "IOR, 64.5° E", "note": "Indian Ocean Region", "tone": "key" }
         ]
       },
-      "onScreen": ["Geostationary at 22,177 miles", "AOR-E 15.5° W", "AOR-W 54° W", "POR 178° E", "IOR 64.5° E"],
-      "narration": "Inmarsat satellites orbit at an altitude of 22,177 miles, in geostationary orbit above the equator. The system is laid out by ocean region. AOR-E, the Atlantic Ocean Region East, is at 15.5 degrees west. AOR-W, the Atlantic Ocean Region West, is at 54 degrees west. POR, the Pacific Ocean Region, is at 178 degrees east. And IOR, the Indian Ocean Region, is at 64.5 degrees east."
+      "onScreen": ["Greenwich, 0°", "AOR-E 15.5° W", "AOR-W 54° W", "POR 178° E", "IOR 64.5° E"],
+      "narration": "Here is the Inmarsat satellite system, region by region, measured from Greenwich. AOR-E, the Atlantic Ocean Region East, is at 15.5 degrees west: of the 2 Atlantic satellites, East is the one nearer Greenwich. AOR-W, the Atlantic Ocean Region West, is at 54 degrees west, farther out toward the Americas. POR, the Pacific Ocean Region, is at 178 degrees east, almost halfway around the world. And IOR, the Indian Ocean Region, is at 64.5 degrees east. So both Atlantic satellites are west of Greenwich, and the Pacific and Indian ones are east. The trap answers invent regions such as POR-E or IOR-W, or shift the degrees, so learn these 4 exactly."
     },
     {
-      "id": "s6",
+      "id": "s18",
       "keyTopic": 96,
-      "template": "key-facts",
+      "template": "band-strip",
       "params": {
-        "title": "Inmarsat coverage",
-        "items": [
-          "Coverage to vessels in nearly all of the world's navigable waters",
-          "Geostationary above the equator: not in polar orbit",
-          "Polar regions above about 70° latitude are missed",
-          "So the coverage is not truly global"
+        "title": "Latitude and Inmarsat coverage",
+        "min": 0,
+        "max": 90,
+        "scale": "linear",
+        "ends": ["Equator", "Pole"],
+        "marks": [
+          { "at": 0, "label": "Equator, 0°", "note": "Satellites high in the sky", "tone": "key" },
+          { "at": 90, "label": "Pole, 90°", "note": "No coverage", "tone": "muted" },
+          { "at": 70, "label": "About 70° latitude", "note": "Coverage ends", "tone": "key" }
         ]
       },
-      "onScreen": ["Nearly all navigable waters", "Not in polar orbit", "Misses the poles above about 70° latitude", "Not truly global"],
-      "narration": "Where do these satellites reach? Inmarsat geostationary satellites provide coverage to vessels in nearly all of the world's navigable waters. But they are not in polar orbit. Sitting above the equator, they miss the polar regions above about 70 degrees latitude. So Inmarsat coverage is not truly global, and a choice claiming a polar orbit or true global coverage is wrong."
+      "onScreen": ["Equator, 0°: satellites high in the sky", "Pole, 90°: no coverage", "About 70° latitude: coverage ends"],
+      "narration": "How far can these 4 satellites reach? For that you need latitude: how far north or south of the equator a place is, from 0 degrees at the equator to 90 degrees at the poles. Since the satellites sit over the equator, a ship near the equator sees them high in the sky. Sail toward a pole, and the satellite sinks lower and lower toward the horizon, until the curve of the Earth hides it. Above about 70 degrees latitude, a ship can't use Inmarsat at all."
     },
     {
-      "id": "s7",
+      "id": "s19",
       "keyTopic": 96,
-      "template": "equipment-card",
+      "template": "comparison-table",
       "params": {
-        "title": "Inmarsat-C and Inmarsat-B on board",
-        "device": "satcom-terminal",
-        "callouts": [
-          { "label": "Inmarsat-C SES antenna: omnidirectional, no aiming or stabilization", "at": "radome" },
-          { "label": "Inmarsat-B voice: CODECs digitize the voice signal", "at": "terminal" },
-          { "label": "Obstruction, such as a mast, blocking the signal on a certain course", "at": "mast" },
-          { "label": "Satellite on a low elevation, below the horizon" },
-          { "label": "Travel beyond the effective radius of the satellite" }
+        "title": "Inmarsat coverage: true or false?",
+        "columns": ["Statement", "Verdict"],
+        "rows": [
+          ["Covers nearly all the world's navigable waters", "True: the keyed answer"],
+          ["In polar orbit, for true global coverage", "False: they sit over the equator"],
+          ["Equatorial orbit, for true global coverage", "False: the poles are missed"],
+          ["Equatorial waters can use only 1 satellite", "False"]
         ]
       },
-      "onScreen": ["Inmarsat-C SES antenna: omnidirectional", "Inmarsat-B voice: CODECs digitize it", "Mast obstruction on a certain course", "Satellite below the horizon", "Beyond the satellite's effective radius"],
-      "narration": "Now the ship's equipment. The Inmarsat-C SES, or ship earth station, antenna is omnidirectional, so it needs no aiming or stabilization. For voice communications through an Inmarsat-B terminal, CODECs, or coder-decoders, are used to digitize the voice signal. And 3 conditions can make Inmarsat-B communications impossible: an obstruction, such as a mast, blocking the signal when the vessel steers a certain course; a satellite on a low elevation, below the horizon; or travel beyond the effective radius of the satellite. Any of these will do it, so the answer is all of these."
+      "onScreen": ["True: nearly all navigable waters", "False: polar orbit", "False: true global coverage", "False: only 1 satellite near the equator"],
+      "narration": "So the true statement is: Inmarsat geostationary satellites provide coverage to vessels in nearly all of the world's navigable waters. Navigable waters are the seas ships actually sail, and few ships go above 70 degrees latitude. Now the traps. The satellites are not in polar orbit; they sit over the equator. Their orbit is equatorial, but that doesn't give true global coverage, because the polar regions above about 70 degrees are missed. And the claim that ships in equatorial waters can use only 1 satellite is also false: neighboring coverage areas overlap, and the overlaps are widest near the equator, right under the satellites. The takeaway: high, fixed, and nearly everywhere, but not at the poles."
     },
     {
-      "id": "s8",
+      "id": "s20",
       "keyTopic": 97,
       "template": "block-diagram",
       "params": {
         "title": "Inmarsat-C: store-and-forward",
         "columns": 4,
         "blocks": [
-          { "id": "ship", "label": "Ship earth station", "note": "Routine or distress message" },
+          { "id": "ship", "label": "Ship earth station", "note": "Sends a routine or distress message" },
           { "id": "sat", "label": "Inmarsat satellite" },
           { "id": "les", "label": "Land earth station", "note": "Stores the message, then forwards it" },
-          { "id": "dest", "label": "Recipient", "note": "Not real time" }
+          { "id": "dest", "label": "Recipient", "note": "Gets it later: not real time" }
         ],
         "links": [
           { "from": "ship", "to": "sat" },
@@ -145,47 +358,225 @@
           { "from": "les", "to": "dest" }
         ]
       },
-      "onScreen": ["Ship earth station sends a routine or distress message", "Via the satellite", "Land earth station stores, then forwards", "Not real-time telex, no voice"],
-      "narration": "Inmarsat-C is a store-and-forward system that provides routine and distress communications. A message from the ship earth station goes up to the satellite and down to a land earth station, which stores it and then forwards it to the recipient. So Inmarsat-C is not real-time telex, and it does not carry voice."
+      "onScreen": ["Ship earth station sends a routine or distress message", "Via the Inmarsat satellite", "Land earth station stores, then forwards", "Recipient gets it later: not real time"],
+      "narration": "That's where Inmarsat reaches. Now, what can a ship do with it? Inmarsat offers several services, most named with a letter. Inmarsat-C is the simplest: a store-and-forward system that provides routine and distress communications, meaning everyday messages as well as distress alerts. Here's how store-and-forward works. The ship types a text message, and its ship earth station, the ship's satellite terminal, sends it up to the satellite. The satellite passes it down to a land earth station, a large ground station linked to the phone and data networks on land. The land earth station stores the whole message, then forwards it to the recipient, like posting a letter rather than making a phone call."
     },
     {
-      "id": "s9",
+      "id": "s21",
       "keyTopic": 97,
       "template": "comparison-table",
       "params": {
-        "title": "Inmarsat-B versus Inmarsat-C",
-        "columns": ["Feature", "Inmarsat-B", "Inmarsat-C"],
+        "title": "Inmarsat-C: true or false?",
+        "columns": ["Exam choice", "Verdict"],
         "rows": [
-          ["Services", "Voice 16, fax 14.4, data 64/54 kbps", "Routine and distress messages, no voice"],
-          ["Delivery", "Real time", "Store-and-forward"],
-          ["Antenna", "Larger and directional", "Small and omnidirectional"]
+          ["Store-and-forward, routine and distress", "True: the keyed answer"],
+          ["A real-time telex system", "False: messages wait at the land station"],
+          ["Slow speed telex and voice service", "False: no voice at all"],
+          ["World-wide coverage", "False: misses the polar regions"]
         ]
       },
-      "onScreen": ["B: voice 16 kbps, fax 14.4 kbps, data 64/54 kbps", "Inmarsat-B: real time; Inmarsat-C: store-and-forward", "B antenna: larger, directional", "C antenna: small, omnidirectional"],
-      "narration": "Compare Inmarsat-B with Inmarsat-C. Inmarsat-B services are voice at 16 kilobits per second, fax at 14.4 kilobits per second, and high-speed data at 64 slash 54 kilobits per second, all delivered in real time rather than store-and-forward. Inmarsat-C carries routine and distress messages, but no voice. The antennas differ too. Inmarsat-C antennas are small and omnidirectional, while Inmarsat-B antennas are larger and directional."
+      "onScreen": ["True: store-and-forward, routine and distress", "False: real-time telex", "False: telex and voice", "False: world-wide coverage"],
+      "narration": "So on the exam, the best description of Inmarsat-C is the store-and-forward one, for routine and distress communications. Each trap gets one detail wrong. It is not a real-time telex system. Telex is an older way of sending typed text between machines, where the words reach the other end as they're typed. Inmarsat-C messages wait at the land earth station first. It doesn't provide slow speed telex and voice either, because Inmarsat-C carries no voice at all. And it doesn't provide worldwide coverage: like all Inmarsat, it misses the polar regions."
     },
     {
-      "id": "s10",
+      "id": "s22",
       "keyTopic": 97,
       "template": "key-facts",
       "params": {
-        "title": "Inmarsat-M, mini-M and high-speed data",
+        "title": "Inmarsat-B: real-time voice, fax and data",
         "items": [
-          "Inmarsat-M: voice at 6.2 kbps, data at 2.4 kbps, fax at 2.4 kbps, and e-mail",
-          "Mini-M: a satellite system using spot beams for small craft communications",
-          "High-speed data at 64/54 kbps: Inmarsat-B, M4 and Fleet",
-          "Their high-gain directional antennas make it possible"
+          "Voice at 16 kbps",
+          "Fax at 14.4 kbps: a copy of a printed page",
+          "High-speed data at 64/54 kbps",
+          "All in real time, not store-and-forward"
         ]
       },
-      "onScreen": ["Inmarsat-M: voice 6.2 kbps, data and fax 2.4 kbps, e-mail", "Mini-M: spot beams for small craft", "64/54 kbps data: B, M4 and Fleet", "High-gain directional antennas"],
-      "narration": "2 more Inmarsat services. Inmarsat-M provides voice at 6.2 kilobits per second, data at 2.4 kilobits per second, fax at 2.4 kilobits per second, and e-mail. The Inmarsat mini-M system is a satellite system utilizing spot beams to provide for small craft communications. Finally, which systems offer high-speed data at 64 slash 54 kilobits per second? Inmarsat-B, M4 and Fleet, because their high-gain directional antennas support it."
+      "onScreen": ["Voice at 16 kbps", "Fax at 14.4 kbps", "High-speed data at 64/54 kbps", "Real time, not store-and-forward"],
+      "narration": "Inmarsat-B is the opposite: a live connection, like a phone call. Its services start with voice at 16 kilobits per second. Next is fax, short for facsimile: a copy of a printed page, sent at 14.4 kilobits per second. Then comes high-speed data, which the exam writes as 64 slash 54 kilobits per second. All of it is delivered in real time, rather than store-and-forward. Notice how much faster these rates are than Iridium's 2.4. The store-and-forward choice is the trap here, because store-and-forward belongs to Inmarsat-C."
     },
     {
-      "id": "s11",
+      "id": "s23",
+      "keyTopic": 96,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inmarsat-B voice: the CODEC",
+        "columns": 4,
+        "blocks": [
+          { "id": "voice", "label": "Speech in" },
+          { "id": "coder", "label": "CODEC: coder", "note": "Turns speech into bits" },
+          { "id": "link", "label": "Satellite link", "note": "Digital voice at 16 kbps" },
+          { "id": "decoder", "label": "CODEC: decoder", "note": "Turns bits back into speech" }
+        ],
+        "links": [
+          { "from": "voice", "to": "coder" },
+          { "from": "coder", "to": "link" },
+          { "from": "link", "to": "decoder" }
+        ]
+      },
+      "onScreen": ["Speech in", "Coder turns speech into bits", "Digital voice at 16 kbps", "Decoder turns bits back into speech"],
+      "narration": "How does a voice travel as bits? Like Iridium, Inmarsat-B is digital, so for voice communications via an Inmarsat-B terminal, CODECs are used to digitize the voice signal: turn it into bits. CODEC is short for coder-decoder. The coder measures your voice and turns it into a stream of bits. They cross the satellite link at 16 kilobits per second. At the far end, the decoder turns the bits back into sound. The traps: noise-blanking, selected by the operator, is a receiver feature for cutting out bursts of static. Compressing the voice to fit the bandwidth, or expanding it at the receiving end, may sound like CODEC work, but the exam keys the plain answer: digitizing."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 96,
+      "template": "comparison-table",
+      "params": {
+        "title": "Two kinds of antenna",
+        "columns": ["Feature", "Omnidirectional", "Directional"],
+        "rows": [
+          ["Pattern", "All directions, like a bare bulb", "A narrow beam, like a flashlight"],
+          ["Gain", "Low", "High: a much stronger signal"],
+          ["Aiming", "None needed", "Must point at the satellite"],
+          ["On a rolling ship", "Works any way the ship points", "Needs stabilization"]
+        ]
+      },
+      "onScreen": ["Omnidirectional: all directions, low gain, no aiming", "Directional: narrow beam, high gain", "Directional must be aimed and stabilized"],
+      "narration": "So far we've seen what Inmarsat-B and Inmarsat-C carry, and that decides what antenna each needs. There are 2 kinds. An omnidirectional antenna sends and receives about equally in all directions, like a bare light bulb. A directional antenna, such as a dish, focuses its energy into a narrow beam, like a flashlight. That focusing is called gain: it makes the signal much stronger, but only where the antenna points. On a rolling, turning ship, motors must keep a dish pointed at the satellite, which is called stabilization. Why does this matter? More bits each second need a stronger signal to arrive without errors. So faster data needs a stronger signal, and a stronger signal needs gain."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 96,
+      "template": "equipment-card",
+      "params": {
+        "title": "Inmarsat-C ship earth station",
+        "device": "satcom-terminal",
+        "callouts": [
+          { "label": "SES: ship earth station, the ship's satellite terminal", "at": "terminal" },
+          { "label": "Inmarsat-C antenna: small and omnidirectional", "at": "radome" },
+          { "label": "No aiming or stabilization needed" },
+          { "label": "Works on any heading as the ship rolls and turns" },
+          { "label": "Not a stabilized dish, a cardioid pattern or a narrow beam up" }
+        ]
+      },
+      "onScreen": ["SES: ship earth station", "Inmarsat-C antenna: omnidirectional", "No aiming or stabilization", "Works on any heading", "Not a dish, a cardioid or a narrow beam"],
+      "narration": "Start with Inmarsat-C. It sends short text messages at a slow rate, so it doesn't need a strong, focused signal. The Inmarsat-C SES, or ship earth station, antenna is omnidirectional, so it needs no aiming or stabilization. It's a small unit that works on any heading, meaning whichever way the ship points, however it rolls and turns. On the exam, the traps all describe beams: a highly directional dish needing stabilization, a heart-shaped pattern off the front, which the exam calls cardioid, or a narrow beam straight up. None of them fits Inmarsat-C. The answer is omnidirectional."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 97,
+      "template": "comparison-table",
+      "params": {
+        "title": "Inmarsat-B versus Inmarsat-C antennas",
+        "columns": ["Feature", "Inmarsat-B", "Inmarsat-C"],
+        "rows": [
+          ["Antenna", "Larger and directional", "Small and omnidirectional"],
+          ["Why", "High gain for voice and fast data", "Slow text needs little gain"],
+          ["Aiming", "Stabilized dish aimed at the satellite", "None"]
+        ]
+      },
+      "onScreen": ["Inmarsat-B: larger and directional", "Inmarsat-C: small and omnidirectional", "B needs high gain; C needs little", "B is aimed and stabilized; C needs no aiming"],
+      "narration": "Put the 2 side by side. Inmarsat-C antennas are small and omnidirectional, while Inmarsat-B antennas are larger and directional. The reason is the data rate. Inmarsat-B's real-time voice and fast data need high gain. A bigger dish collects more of the signal, the way a wider bucket catches more rain, so it gives more gain, as long as it's aimed at the satellite and kept stabilized. Inmarsat-C's slow text gets by with little gain. The traps swap the details: an omnidirectional Inmarsat-B, an Inmarsat-C with a parabolic antenna, meaning a dish, or an Inmarsat-B dish described as smaller or lower gain. In short: C is small and omnidirectional; B is larger and directional."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 96,
+      "template": "equipment-card",
+      "params": {
+        "title": "What can block Inmarsat-B?",
+        "device": "satcom-terminal",
+        "callouts": [
+          { "label": "The dish needs a clear line of sight to the satellite", "at": "dish" },
+          { "label": "A mast blocking the signal on a certain course", "at": "mast" },
+          { "label": "A satellite on a low elevation, below the horizon" },
+          { "label": "Travel beyond the effective radius of the satellite" },
+          { "label": "Any one makes it impossible: the answer is all of these" }
+        ]
+      },
+      "onScreen": ["Needs a clear line of sight", "Mast blocking on a certain course", "Satellite below the horizon", "Beyond the satellite's effective radius", "All of these"],
+      "narration": "That narrow beam has a weakness: the Inmarsat-B dish needs a clear line of sight to the satellite: an unblocked straight path. 3 conditions can make Inmarsat-B communications impossible. First, an obstruction, such as a mast, blocking the signal between the satellite and the SES antenna when the vessel steers a certain course. Second, a satellite on a low elevation, meaning low in the sky, below the horizon. Third, travel beyond the effective radius of the satellite, out of its coverage area. Any one of them is enough, so on the exam, the answer is all of these."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 97,
+      "template": "key-facts",
+      "params": {
+        "title": "Inmarsat-M",
+        "items": [
+          "Voice at 6.2 kbps",
+          "Data at 2.4 kbps",
+          "Fax at 2.4 kbps",
+          "Plus e-mail",
+          "A smaller antenna than Inmarsat-B"
+        ]
+      },
+      "onScreen": ["Voice at 6.2 kbps", "Data at 2.4 kbps", "Fax at 2.4 kbps", "E-mail", "Smaller antenna than Inmarsat-B"],
+      "narration": "That covers Inmarsat-B and Inmarsat-C, the 2 ends of the family. In between sits Inmarsat-M, a compact digital voice service. Inmarsat-M provides voice at 6.2 kilobits per second, lower than Inmarsat-B's 16, because it uses a low-rate CODEC that packs speech into fewer bits. It also provides data at 2.4 kilobits per second, fax at 2.4 kilobits per second, and e-mail. All of that works through a smaller antenna than Inmarsat-B needs. Watch for trap rates such as 4.8 and 9.6. Look for 6.2 for voice and 2.4 for data and fax."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 97,
+      "template": "key-facts",
+      "params": {
+        "title": "Inmarsat mini-M",
+        "items": [
+          "A satellite system utilizing spot beams",
+          "Spot beams focus the satellite's power on smaller areas",
+          "A stronger signal means a small, light antenna is enough",
+          "Provides for small craft communications"
+        ]
+      },
+      "onScreen": ["Satellite system utilizing spot beams", "Power focused on smaller areas", "Small, light antenna", "For small craft"],
+      "narration": "Remember Iridium's spot beams? They're back. The Inmarsat mini-M system is a satellite system utilizing spot beams to provide for small craft communications. Instead of spreading its power over a whole ocean region, the satellite concentrates it into narrower spot beams aimed at chosen areas. With a stronger signal arriving, a small, light antenna is enough, which suits yachts and other small craft. The traps call mini-M a sonar or a depth finder, which are underwater sound devices, or a global satellite system, which it isn't, because its spot beams cover only chosen areas. It's the spot beam system for small craft."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 97,
+      "template": "key-facts",
+      "params": {
+        "title": "High-speed data at 64/54 kbps",
+        "items": [
+          "Fast data needs a strong signal: high gain",
+          "High gain needs a directional antenna",
+          "Inmarsat-B, M4 and Fleet have one",
+          "Inmarsat-C and mini-M don't: small antennas, slow data"
+        ]
+      },
+      "onScreen": ["Fast data needs high gain", "High gain needs a directional antenna", "Inmarsat-B, M4 and Fleet", "Not C or mini-M"],
+      "narration": "Now that you've met the whole family, one last Inmarsat question brings back the gain idea. Which systems offer high-speed data at 64 slash 54 kilobits per second? Fast data needs a strong signal, a strong signal needs high gain, and high gain needs a directional antenna. Inmarsat-B, M4 and Fleet have one, so they're the answer. M4 and Fleet are later Inmarsat services built around that same kind of aimed antenna. The traps are Inmarsat-C alone, B and C together, and mini-M. Inmarsat-C and mini-M use small antennas that limit them to slow data, so any choice that includes them is wrong."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 97,
+      "template": "comparison-table",
+      "params": {
+        "title": "The Inmarsat services side by side",
+        "columns": ["Service", "What it carries", "Antenna"],
+        "rows": [
+          ["Inmarsat-B", "Voice 16, fax 14.4, data 64/54 kbps", "Larger, directional"],
+          ["Inmarsat-C", "Text, store-and-forward; no voice", "Small, omnidirectional"],
+          ["Inmarsat-M", "Voice 6.2, data and fax 2.4 kbps, e-mail", "Smaller than B"],
+          ["Mini-M", "Small craft calls via spot beams", "Small and light"]
+        ]
+      },
+      "onScreen": ["Inmarsat-B: voice 16, fax 14.4, data 64/54 kbps", "Inmarsat-C: store-and-forward text", "Inmarsat-M: voice 6.2, data and fax 2.4 kbps", "Mini-M: spot beams for small craft"],
+      "narration": "Here's the Inmarsat family in one view. Inmarsat-B: real-time voice at 16, fax at 14.4 and data at 64 slash 54 kilobits per second, through a larger directional dish. Inmarsat-C: routine and distress text, store-and-forward, no voice, through a small omnidirectional antenna. Inmarsat-M: voice at 6.2, data and fax at 2.4, plus e-mail. And mini-M: spot beams serving small craft. The rule of thumb: the faster the service, the bigger and more directional the antenna."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 98,
+      "template": "block-diagram",
+      "params": {
+        "title": "GPS: position from timed signals",
+        "columns": 3,
+        "blocks": [
+          { "id": "sat", "label": "GPS satellite", "note": "Broadcasts its exact time and position" },
+          { "id": "rx", "label": "Ship's GPS receiver", "note": "Measures how long the signal took" },
+          { "id": "dist", "label": "Distance to that satellite", "note": "Travel time at the speed of light" }
+        ],
+        "links": [
+          { "from": "sat", "to": "rx" },
+          { "from": "rx", "to": "dist" }
+        ]
+      },
+      "onScreen": ["GPS satellite broadcasts its time and position", "Receiver measures the travel time", "Travel time gives the distance"],
+      "narration": "That completes Inmarsat. Our last system works differently. Iridium, COSPAS-SARSAT and Inmarsat all carry messages. GPS, the Global Positioning System, does something else: it tells you where you are, and what time it is. Each GPS satellite carries a very precise clock and keeps broadcasting its exact time and position. A GPS receiver on the ship picks up that signal and checks how long it took to arrive. Radio waves travel at the speed of light, so the travel time tells the distance to that satellite. Distances to several satellites, as we'll see, pin down the ship's position."
+    },
+    {
+      "id": "s33",
       "keyTopic": 98,
       "template": "band-strip",
       "params": {
-        "title": "Orbit altitudes compared",
+        "title": "GPS at 12,554 miles: in between",
         "min": 0,
         "max": 24000,
         "scale": "linear",
@@ -193,50 +584,116 @@
         "marks": [
           { "at": 12554, "label": "GPS: 12,554 miles", "note": "About once around every 12 hours", "tone": "key" },
           { "at": 485, "label": "Iridium: 485 miles", "note": "Low Earth orbit", "tone": "muted" },
-          { "at": 22177, "label": "Inmarsat: 22,177 miles", "note": "Geostationary, above the equator", "tone": "muted" }
+          { "at": 22177, "label": "Inmarsat: 22,177 miles", "note": "Geostationary", "tone": "muted" }
         ]
       },
       "onScreen": ["GPS: 12,554 miles, about once every 12 hours", "Iridium: 485 miles", "Inmarsat: 22,177 miles"],
-      "narration": "Now GPS. GPS satellites orbit at an altitude of 12,554 miles, circling the Earth about once every 12 hours. Here's how that compares. Iridium sits far below, in low Earth orbit at 485 miles. Inmarsat sits far above, in geostationary orbit at 22,177 miles. So from low to high, it's Iridium, then GPS, then Inmarsat."
+      "narration": "Where are the GPS satellites? GPS satellites orbit at an altitude of 12,554 miles, circling the Earth about once every 12 hours, which is twice a day. That's called a medium Earth orbit, and it completes our picture. Iridium is far below, in low Earth orbit at 485 miles. Inmarsat is far above, in geostationary orbit at 22,177 miles. So from low to high, it's Iridium, then GPS, then Inmarsat. Remember that order, and the exam's altitude questions get much easier."
     },
     {
-      "id": "s12",
+      "id": "s34",
       "keyTopic": 98,
       "template": "key-facts",
       "params": {
-        "title": "The GPS constellation",
+        "title": "24 GPS satellites",
         "items": [
-          "24 GPS satellites normally in operation, 4 in each orbital plane, plus spares",
-          "6 orbital planes, equally spaced, inclined about 55° to the equator",
-          "Neither polar nor geosynchronous",
-          "4 satellites must be received for complete position and time",
-          "The receiver solves latitude, longitude, altitude and its own clock error"
+          "24 GPS satellites normally in operation",
+          "6 orbital planes × 4 satellites each = 24",
+          "Extra satellites kept in orbit as spares",
+          "At least 4 in view from anywhere on Earth"
         ]
       },
-      "onScreen": ["24 satellites, 4 per plane, plus spares", "6 planes inclined about 55°", "Not polar, not geosynchronous", "4 satellites for position and time", "Latitude, longitude, altitude, clock error"],
-      "narration": "24 GPS satellites are normally in operation, 4 in each orbital plane, with extra satellites kept as spares. There are 6 orbital planes, equally spaced and inclined about 55 degrees to the equator, so GPS orbits are neither polar nor geosynchronous. How many satellites must be received to provide complete position and time? 4. The receiver has to solve for latitude, longitude, altitude, and its own clock error, and that takes 4 satellites."
+      "onScreen": ["24 satellites in operation", "6 planes × 4 satellites = 24", "Plus spares", "At least 4 in view anywhere"],
+      "narration": "How many GPS satellites are there? 24 GPS satellites are normally in operation, 4 in each orbital plane. An orbital plane, you'll recall, is the hoop an orbit lies in. GPS uses 6 of them, and 6 planes times 4 satellites is 24. Extra satellites are kept in orbit as spares, in case one fails. The 24 are spread out so that at least 4 are in view from anywhere on Earth, which, as you'll see, is exactly what a receiver needs. The exam's wrong counts are 8, 18 and 36. The answer is 24."
     },
     {
-      "id": "s13",
+      "id": "s35",
+      "keyTopic": 98,
+      "template": "comparison-table",
+      "params": {
+        "title": "GPS orbits: true or false?",
+        "columns": ["Statement", "Verdict"],
+        "rows": [
+          ["6 planes, equally spaced, inclined about 55°", "True: the keyed answer"],
+          ["4 planes spaced 90° in a polar orbit", "False: not polar"],
+          ["Geosynchronous, spaced around the equator", "False: 12 hours, not 1 day"],
+          ["8 planes at about 1,000 miles", "False: 12,554 miles"]
+        ]
+      },
+      "onScreen": ["True: 6 planes inclined about 55°", "False: polar orbit", "False: geosynchronous", "False: 8 planes at 1,000 miles"],
+      "narration": "Now the shape of those orbits. GPS satellites are in 6 orbital planes, equally spaced and inclined about 55 degrees to the equator. Picture 6 tilted hoops spread evenly around the Earth. Iridium's 86.4 degrees is nearly polar; GPS's 55 is well short of that, so GPS orbits are not polar. Nor are they geosynchronous. Geosynchronous means an orbit that takes 1 day; geostationary, like Inmarsat, is the kind that sits over the equator. GPS takes 12 hours. So the traps fail: not 4 polar planes spaced 90 degrees, not geosynchronous over the equator, and not 8 planes at about 1,000 miles."
+    },
+    {
+      "id": "s36",
       "keyTopic": 98,
       "template": "band-strip",
       "params": {
-        "title": "Satellite frequencies in this lesson",
+        "title": "GPS frequencies: 1227.6 and 1575.4 MHz",
         "min": 300,
         "max": 1800,
         "scale": "linear",
         "marks": [
           { "at": 1227.6, "label": "1227.6 MHz", "note": "GPS", "tone": "key" },
           { "at": 1575.4, "label": "1575.4 MHz", "note": "GPS", "tone": "key" },
-          { "at": 1621, "label": "1616–1626 MHz", "note": "Iridium telephone and messaging", "tone": "muted" },
+          { "at": 1621, "label": "1616–1626 MHz", "note": "Iridium: telephone and messaging", "tone": "muted" },
           { "at": 406, "label": "406 MHz", "note": "COSPAS-SARSAT: EPIRB distress calls", "tone": "muted" }
         ]
       },
       "onScreen": ["GPS: 1227.6 MHz and 1575.4 MHz", "Iridium: 1616–1626 MHz", "COSPAS-SARSAT: 406 MHz"],
-      "narration": "The GPS transmitted frequencies are 1227.6 megahertz and 1575.4 megahertz. Don't mix them up with the other satellite frequencies in this lesson. Just above GPS is Iridium's 1616 to 1626 megahertz band for telephone and messaging. And far below is 406 megahertz, which COSPAS-SARSAT monitors for distress calls from EPIRBs."
+      "narration": "Next, the timing signals themselves: they go out on 2 frequencies. The GPS transmitted frequencies are 1227.6 megahertz and 1575.4 megahertz. Don't mix them up with the other satellite frequencies in this lesson. Just above GPS is Iridium's 1616 to 1626 megahertz band for telephone and messaging, and far below is 406 megahertz, where COSPAS-SARSAT listens for EPIRBs. On the exam, watch the digits: one trap pairs 946.2 with 1226.6, which looks almost like 1227.6. The right pair is 1227.6 and 1575.4."
     },
     {
-      "id": "s14",
+      "id": "s37",
+      "keyTopic": 98,
+      "template": "key-facts",
+      "params": {
+        "title": "From distances to a position",
+        "items": [
+          "1 distance: somewhere on a sphere around that satellite",
+          "2 distances: on the circle where the 2 spheres cross",
+          "3 distances: 2 points, and only 1 is near the Earth",
+          "But only if the receiver's clock is perfect"
+        ]
+      },
+      "onScreen": ["1 distance: on a sphere", "2 distances: on a circle", "3 distances: 2 points, 1 near the Earth", "Only with a perfect clock"],
+      "narration": "So how does the receiver turn travel times into a position? Each travel time gives a distance. Knowing you're a certain distance from one satellite puts you somewhere on a giant imaginary ball, a sphere, centered on it. A second distance narrows that down to the circle where the 2 spheres cross. A third leaves just 2 possible points, and only 1 of them is anywhere near the Earth. So in principle, 3 satellites would be enough. But there's a catch. Radio covers about a foot in a billionth of a second, so a tiny clock error becomes a big distance error. The satellites carry costly atomic clocks, but a receiver has an ordinary one, and it's never perfect."
+    },
+    {
+      "id": "s38",
+      "keyTopic": 98,
+      "template": "formula",
+      "params": {
+        "title": "Why 4 satellites?",
+        "formula": "4 unknowns need 4 satellite distances",
+        "steps": [
+          "Unknown 1: latitude",
+          "Unknown 2: longitude",
+          "Unknown 3: altitude",
+          "Unknown 4: the receiver's clock error"
+        ],
+        "answer": "4 satellites: complete position and time"
+      },
+      "onScreen": ["4 unknowns need 4 distances", "Latitude, longitude, altitude", "The receiver's clock error", "4 satellites for complete position and time"],
+      "narration": "The way around it: the receiver treats its own clock error as one more thing to solve for. Count the unknowns: latitude, longitude, altitude, and the receiver's clock error. That's 4 unknowns. Like a puzzle where each clue settles one thing, solving for 4 unknowns takes 4 measurements, one from each of 4 satellites. So 4 satellites must be received to provide complete position and time. With only 3, a receiver can give a position only by assuming its altitude. That's why 1, 2 and 3 are wrong on the exam. The answer is 4."
+    },
+    {
+      "id": "s39",
+      "keyTopic": 98,
+      "template": "key-facts",
+      "params": {
+        "title": "Why GPS needs a helper",
+        "items": [
+          "GPS positions still carry small errors",
+          "One cause: signals slowed in the upper atmosphere",
+          "A station at a known spot can measure the error",
+          "Nearby receivers have nearly the same error"
+        ]
+      },
+      "onScreen": ["Small errors remain", "Signals slowed in the upper atmosphere", "A known spot can measure the error", "Nearby receivers share it"],
+      "narration": "Even with 4 satellites, a GPS position isn't perfect. Small errors creep in, for example as the signals slow slightly passing through the upper atmosphere. Here's the clever part. Imagine a station that already knows exactly where it stands, because its spot has been carefully surveyed, that is, measured exactly. It can compare that true position with what GPS tells it, and the difference is the error. A ship nearby is receiving the same satellites through nearly the same sky, so it has nearly the same error."
+    },
+    {
+      "id": "s40",
       "keyTopic": 98,
       "template": "block-diagram",
       "params": {
@@ -253,15 +710,40 @@
           { "from": "ref", "to": "ship", "label": "Correction factors" }
         ]
       },
-      "onScreen": ["GPS satellites", "Reference station at a precisely surveyed location", "Correction factors to the ship's receiver", "Improved position accuracy"],
-      "narration": "Finally, DGPS, or Differential GPS. It is a system to provide additional correction factors to improve position accuracy. A reference station sits at a precisely surveyed location. Because it knows exactly where it is, it can measure the error in the GPS signals it receives, and it broadcasts correction factors. A ship's receiver applies them to improve its position accuracy."
+      "onScreen": ["GPS satellites", "Reference station at a precisely surveyed location measures the error", "Ship's GPS receiver applies the corrections", "Correction factors from the station to the ship"],
+      "narration": "That idea is DGPS, Differential GPS. It is a system to provide additional correction factors to improve position accuracy. A reference station at a precisely surveyed location measures the error in the GPS signals it receives and broadcasts correction factors. A ship's receiver applies them, and its position becomes more accurate. Note that D stands for differential, not digital. The corrections come from the reference station, not from the GPS satellites themselves, and DGPS isn't just altitude corrections for aircraft. It's correction factors for better position accuracy."
+    },
+    {
+      "id": "s41",
+      "keyTopic": 98,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": [
+          "Low to high: Iridium 485, GPS 12,554, Inmarsat 22,177 miles",
+          "Iridium 1616–1626 MHz; GPS 1227.6 and 1575.4 MHz",
+          "COSPAS-SARSAT hears EPIRBs on 406 MHz and finds them by Doppler shift",
+          "Inmarsat-C: small omni antenna, store-and-forward; B: larger directional dish",
+          "GPS: 24 satellites, 6 planes at 55°, 4 for a fix; DGPS adds corrections"
+        ]
+      },
+      "onScreen": ["Iridium 485, GPS 12,554, Inmarsat 22,177 miles", "Iridium 1616–1626 MHz; GPS 1227.6 and 1575.4 MHz", "COSPAS-SARSAT: 406 MHz, Doppler", "Inmarsat-C omni, store-and-forward; B directional", "GPS: 24 satellites, 4 for a fix; DGPS corrections"],
+      "narration": "Let's wrap up with the 5 things to carry into the exam. From low to high: Iridium at 485 miles, GPS at 12,554, Inmarsat at 22,177. Iridium talks on 1616 to 1626 megahertz, and GPS transmits on 1227.6 and 1575.4. COSPAS-SARSAT listens for EPIRBs on 406 megahertz and finds them by the Doppler shift. Inmarsat-C uses a small omnidirectional antenna and stores and forwards text, while Inmarsat-B needs a larger directional dish for real-time voice, fax and fast data. Finally, GPS has 24 satellites in 6 planes inclined 55 degrees, you need 4 of them for complete position and time, and DGPS sharpens the fix with correction factors from a surveyed reference station. Well done."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [95] },
-    { "after": "s7", "keyTopics": [96] },
-    { "after": "s10", "keyTopics": [97] },
-    { "after": "s14", "keyTopics": [98] }
+    { "after": "s4", "keyTopics": [95], "questions": ["3-95P1"] },
+    { "after": "s8", "keyTopics": [95], "questions": ["3-95P2", "3-95P3", "3-95P4"] },
+    { "after": "s11", "keyTopics": [95], "questions": ["3-95P4", "3-95P5"] },
+    { "after": "s14", "keyTopics": [95], "questions": ["3-95P6"] },
+    { "after": "s17", "keyTopics": [96], "questions": ["3-96P1", "3-96P2"] },
+    { "after": "s20", "keyTopics": [96, 97], "questions": ["3-96P5", "3-97P1"] },
+    { "after": "s23", "keyTopics": [96, 97], "questions": ["3-97P1", "3-97P3", "3-96P4"] },
+    { "after": "s27", "keyTopics": [96, 97], "questions": ["3-96P3", "3-97P5", "3-96P6"] },
+    { "after": "s31", "keyTopics": [97], "questions": ["3-97P6", "3-97P2", "3-97P4", "3-97P3", "3-97P1", "3-97P5"] },
+    { "after": "s35", "keyTopics": [98], "questions": ["3-98P1", "3-98P3", "3-98P4"] },
+    { "after": "s38", "keyTopics": [98], "questions": ["3-98P2", "3-98P5"] },
+    { "after": "s41", "keyTopics": [98], "questions": ["3-98P6"] }
   ],
   "video": null
 }

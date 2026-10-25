@@ -11,108 +11,372 @@
       "params": {
         "kicker": "Element 3 · Subelement L",
         "title": "Installation, Maintenance & Repair",
-        "subtitle": "Meters, test instruments and oscilloscopes, then the measurement, repair, installation and troubleshooting practices for radio equipment."
+        "subtitle": "What each meter and test instrument measures and how it works, then the right way to measure, repair, install and troubleshoot."
       },
-      "onScreen": ["Installation, Maintenance & Repair", "Meters and test instruments, then measurement, repair, installation and troubleshooting"],
-      "narration": "Welcome to the technician's workbench. This lesson is about choosing the right meter or test instrument for a job, and then using it the right way. We'll cover indicating meters, test equipment, oscilloscopes and specialized instruments, then measurement procedures, repair procedures, installation codes and troubleshooting. Let's start with the meters, beginning with the DMM, the digital multimeter."
+      "onScreen": ["Installation, Maintenance & Repair", "Meters and test instruments, then measuring, repairing, installing and troubleshooting"],
+      "narration": "Welcome to the technician's workbench. Electricity is invisible, so a radio technician relies on meters and test instruments to see what a circuit is doing. In this lesson you'll learn what each instrument measures, how it works inside, and which one to pick for each job. Then we'll cover the right way to test a receiver, repair a circuit board, install equipment and track down faults. You don't need any background in electronics: we'll refresh each basic idea just before we use it. By the end, you'll be ready for every question in this subelement, and you'll know why each answer is right. We'll start with what a meter actually measures."
     },
     {
       "id": "s2",
       "keyTopic": 74,
-      "template": "equipment-card",
+      "template": "comparison-table",
       "params": {
-        "title": "The half digit on a DMM",
-        "device": "multimeter",
-        "callouts": [
-          { "label": "3½-digit display: the leading ½ digit can show only 0 or 1", "at": "display" },
-          { "label": "So the meter counts to 1999 instead of 999", "at": "body" },
-          { "label": "Partial extended accuracy on the lower part of the range", "at": "selector" }
+        "title": "What a meter measures",
+        "columns": ["Quantity", "Unit", "In a water pipe"],
+        "rows": [
+          ["Current: the flow of charge", "Amperes (amps)", "How much water flows past"],
+          ["Voltage: the push", "Volts", "The water pressure"],
+          ["Resistance: the opposition", "Ohms", "A narrow section of pipe"],
+          ["Power: volts × amps", "Watts", "How fast the flow does work"]
         ]
       },
-      "onScreen": ["3½-digit display: the leading half digit shows only 0 or 1", "Counts to 1999 instead of 999", "Partial extended accuracy on the lower part of the range"],
-      "narration": "What is a half digit on a digital multimeter? Many meters are sold as 3 and a half digit meters. The half digit is the leading digit, and it can show only 0 or 1. That lets the meter count up to 1999 instead of stopping at 999. Readings that begin with a 1 get an extra digit of resolution. So a half digit gives partial extended accuracy on the lower part of the range."
+      "onScreen": ["Current: the flow of charge, in amperes", "Voltage: the push, in volts", "Resistance: the opposition, in ohms", "Power: volts times amps, in watts"],
+      "narration": "A meter measures electricity: a flow of tiny charged particles called electrons, moving through a conductor, a material they travel through easily, such as copper wire. Picture water in a pipe. Current is the flow itself: how much charge passes a point each second, measured in amperes, or amps. Voltage is the push that drives the flow, like water pressure, measured in volts. Resistance is whatever holds the flow back, like a narrow section of pipe, measured in ohms. Current only flows around a complete loop, called a circuit. And power, in watts, is how fast the flow delivers energy: volts times amps. The first meters in this lesson measure these quantities."
     },
     {
       "id": "s3",
+      "keyTopic": 74,
+      "template": "equipment-card",
+      "params": {
+        "title": "The multimeter",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Selector: choose volts, amps or ohms, and the range", "at": "selector" },
+          { "label": "2 probes touch the circuit", "at": "probes" },
+          { "label": "Common jack, plus a jack for volts or for amps", "at": "com" },
+          { "label": "DMM: the reading appears as digits", "at": "display" }
+        ]
+      },
+      "onScreen": ["Selector: volts, amps or ohms, and the range", "2 probes touch the circuit", "Common jack plus a volts or amps jack", "DMM: the reading as digits"],
+      "narration": "Volts, amps and ohms can all be measured with 1 instrument, the multimeter, the tool on every technician's bench. You turn the selector to choose what to measure and the range, which is the biggest value the meter will read on that setting. Then you touch the 2 probes to the circuit. One plugs into the common jack, or socket, and the other into the jack for what you're measuring. An older analog meter shows the reading with a needle swinging across a printed scale. A DMM, a digital multimeter, shows it as digits on a display. We'll start with the digital one, and a question the exam asks about its display."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 74,
+      "template": "band-strip",
+      "params": {
+        "title": "Half digit: partial extended accuracy",
+        "min": 0,
+        "max": 2200,
+        "scale": "linear",
+        "marks": [
+          { "at": 999, "label": "999", "note": "The most 3 full digits can show", "tone": "muted" },
+          { "at": 1999, "label": "1999", "note": "3½ digits: leading ½ digit is only 0 or 1", "tone": "key" },
+          { "at": 2100, "label": "2000 and up", "note": "Won't fit: up a range, 1 digit less", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["3 full digits count only to 999", "3½ digits: the leading half digit shows only 0 or 1, so the meter counts to 1999", "2000 and up won't fit: up a range, 1 digit less", "Partial extended accuracy on the lower part of the range"],
+      "narration": "Many DMMs are sold as 3 and a half digit meters. What is a half digit? A full digit shows anything from 0 to 9, so 3 full digits stop at 999. A half digit is an extra leading digit that shows only 0 or 1, just 2 of the 10 values, so it counts as half. With it, the meter counts up to 1999. Readings that start with a 1 gain a digit of detail; a reading of 2000 won't fit, so the meter moves up a range and drops a digit. Extra detail, but only on the lower part: that's why the exam calls the half digit partial extended accuracy on the lower part of the range. It isn't a smaller readout on the left or right, and it does apply to DMMs."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 74,
+      "template": "formula",
+      "params": {
+        "title": "Ohm's law",
+        "formula": "V = I × R",
+        "steps": ["V: voltage, in volts", "I: current, in amperes; R: resistance, in ohms", "Example: 2 A flowing through 6 Ω", "V = 2 A × 6 Ω"],
+        "answer": "V = 12 volts"
+      },
+      "onScreen": ["V = I × R", "V in volts, I in amperes, R in ohms", "2 amperes through 6 ohms", "V = 12 volts"],
+      "narration": "A digital meter hides its workings. An analog meter doesn't, and to understand it you need 1 rule: Ohm's law. It ties the 3 quantities together: V equals I times R. V is the voltage in volts, I is the current in amperes, and R is the resistance in ohms. In words, the push needed equals the flow times the opposition. Say 2 amperes flow through 6 ohms. 2 times 6 gives 12 volts across that resistance. That makes sense: more flow, or a narrower pipe, needs more push. Turned around, the same law gives the current: I equals V divided by R. We'll use both forms in this lesson."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 74,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inside an analog meter: the movement",
+        "columns": 4,
+        "blocks": [
+          { "id": "cur", "label": "Current in", "note": "From the circuit being measured" },
+          { "id": "coil", "label": "Coil between magnet poles", "note": "Current makes the coil a magnet" },
+          { "id": "twist", "label": "Coil twists against a spring", "note": "More current, more twist" },
+          { "id": "needle", "label": "Needle swings across the scale", "note": "Deflection; full scale at 50 µA" }
+        ],
+        "links": [
+          { "from": "cur", "to": "coil" },
+          { "from": "coil", "to": "twist" },
+          { "from": "twist", "to": "needle" }
+        ]
+      },
+      "onScreen": ["Current flows into the movement", "A coil between magnet poles becomes a magnet", "It twists against a spring", "The needle swings: deflection, full scale at 50 µA"],
+      "narration": "With Ohm's law in hand, open up an analog meter. Inside is the meter movement, the part that turns current into needle motion. It's a coil of very fine wire on a pivot, between the poles of a permanent magnet. Current always creates magnetism, so current through the coil turns it into a magnet too. The 2 magnets push on each other, and the coil twists against a small spring. More current means more twist, and the needle fixed to the coil swings farther. How far it swings is called deflection. A sensitive movement reaches full-scale deflection, the end of the scale, with a tiny current, such as 50 microamperes, millionths of an ampere. And the coil's fine wire has some resistance of its own, called its internal resistance."
+    },
+    {
+      "id": "s7",
       "keyTopic": 74,
       "template": "formula",
       "params": {
         "title": "Voltage across a meter movement",
         "formula": "V = I × R",
-        "steps": ["Full scale: 50 µA; internal resistance: 2,000 Ω", "Half scale needs half the current: I = 25 µA", "V = 25 µA × 2,000 Ω"],
+        "steps": ["Movement: 50 µA full scale, 2,000 Ω inside", "Half scale needs half the current: 25 µA", "V = 25 µA × 2,000 Ω", "Check: full scale would take 0.1 volts"],
         "answer": "V = 0.05 volts"
       },
       "onScreen": ["V = I × R", "50 µA movement with 2,000 Ω internal resistance", "Half scale: 25 µA", "25 µA × 2,000 Ω = 0.05 volts"],
-      "narration": "The voltage across a meter movement follows Ohm's law: V equals I times R. Here's the exam's example. A 50 microampere meter movement has 2,000 ohms of internal resistance. What voltage across it gives half-scale deflection? Half scale needs half the full-scale current, so I is 25 microamperes. Now multiply: 25 microamperes times 2,000 ohms equals 0.05 volts. The answer is 0.05 volts."
+      "narration": "Because the coil has resistance, a current through it needs a voltage across it, and Ohm's law tells us how much. Here's the exam's example. A 50 microampere meter movement has an internal resistance of 2,000 ohms. What voltage gives half-scale deflection? Step 1: the needle's swing follows the current, so half scale needs half the full-scale current. Half of 50 microamperes is 25 microamperes. Step 2: V equals I times R, so 25 microamperes times 2,000 ohms. That's 25 millionths of an ampere times 2,000, which is 0.05 volts. Does it make sense? Full scale would take twice as much, 0.1 volts. So the answer is 0.05 volts, and the 0.10 volt choice is a trap: that's the full-scale figure."
     },
     {
-      "id": "s4",
+      "id": "s8",
       "keyTopic": 74,
       "template": "block-diagram",
       "params": {
-        "title": "Extending ranges and choosing meters",
-        "columns": 2,
+        "title": "Voltmeter: the series multiplier",
+        "columns": 4,
         "blocks": [
+          { "id": "in", "label": "Voltage to measure", "note": "Far more than the movement can take" },
           { "id": "mult", "label": "Series multiplier resistor", "note": "Drops most of the applied voltage" },
-          { "id": "vm", "label": "Voltmeter movement", "note": "Voltage-indicating range increased" },
-          { "id": "shunt", "label": "Shunt resistor", "note": "In parallel: carries most of the current" },
-          { "id": "am", "label": "Ammeter movement", "note": "Ampere-indicating range increased" },
-          { "id": "logic", "label": "Digital circuit", "note": "High or low voltage state?" },
-          { "id": "probe", "label": "Logic probe", "note": "Indicates high and low states" },
-          { "id": "swr", "label": "SWR meter", "note": "Low SWR shows a good match" },
-          { "id": "ant", "label": "Radio antenna", "note": "Verified working properly" }
+          { "id": "mv", "label": "Meter movement", "note": "Sees only its small share" },
+          { "id": "out", "label": "Higher voltage range", "note": "Voltage-indicating range increased" }
         ],
         "links": [
-          { "from": "mult", "to": "vm", "label": "in series" },
-          { "from": "shunt", "to": "am", "label": "in parallel" },
-          { "from": "logic", "to": "probe" },
-          { "from": "swr", "to": "ant" }
+          { "from": "in", "to": "mult" },
+          { "from": "mult", "to": "mv", "label": "in series" },
+          { "from": "mv", "to": "out" }
         ]
       },
-      "onScreen": ["Series multiplier resistor: increases a voltmeter's range", "Shunt resistor in parallel: increases an ammeter's range", "Logic probe: high and low digital voltage states", "SWR meter: verifies the antenna; low SWR is a good match"],
-      "narration": "How do we stretch a meter's range? To increase the voltage-indicating range of a voltmeter, add a series multiplier resistor. It drops most of the applied voltage, so the movement sees only its small share. To increase the ampere-indicating range of an ammeter, add a shunt resistor. It sits in parallel with the movement and carries most of the current around it. 2 more meters to know. A logic probe indicates high and low digital voltage states. And an SWR, or standing wave ratio, meter may be used to verify that a radio antenna is working properly. A low SWR shows a good match."
+      "onScreen": ["Voltage to measure", "Series multiplier resistor drops most of it", "The movement sees only a small share", "Voltage-indicating range increased"],
+      "narration": "So on its own, our movement reads no more than 0.1 volts. How can it measure bigger voltages? Inside a voltmeter, a resistor is placed in series with the movement, meaning in the same path, one after the other. It's called a series multiplier resistor. The same current flows through both, and V equals I times R, so the bigger resistance takes the bigger share of the voltage. The multiplier's resistance is far higher, so it drops most of the applied voltage, like a long, narrow stretch of pipe that uses up most of the pressure. The movement gets only a small share. That's why a series multiplier is used to increase the voltage-indicating range of a voltmeter. It doesn't decrease the range, and it isn't used with an ammeter."
     },
     {
-      "id": "s5",
+      "id": "s9",
+      "keyTopic": 74,
+      "template": "comparison-table",
+      "params": {
+        "title": "Multiplier or shunt?",
+        "columns": ["Feature", "Series multiplier", "Shunt"],
+        "rows": [
+          ["Used with", "Voltmeter", "Ammeter"],
+          ["Connected", "In series with the movement", "In parallel with the movement"],
+          ["Resistance", "High", "Low"],
+          ["Its job", "Drops most of the voltage", "Carries most of the current"],
+          ["Result", "Increases the voltage range", "Increases the ampere range"]
+        ]
+      },
+      "onScreen": ["Series multiplier: voltmeter, in series, drops most of the voltage", "Shunt: ammeter, in parallel, carries most of the current", "Both increase the meter's range"],
+      "narration": "That's the voltmeter. Now the ammeter, which measures current. You open the circuit and insert the ammeter, so all the current being measured flows through it. But our movement can carry only 50 microamperes. The answer is a shunt resistor: a low resistance connected in parallel with the movement, meaning side by side, giving the current a second path. Think of a wide bypass pipe beside a narrow one: most of the water takes the bypass. In the same way, the shunt carries most of the current, and only a small, fixed fraction goes through the movement. So a shunt resistor is used to increase the ampere-indicating range of an ammeter. The wrong choices swap these 2 parts. Remember: series multiplier for volts, parallel shunt for amps."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 74,
+      "template": "key-facts",
+      "params": {
+        "title": "The logic probe",
+        "items": [
+          "Digital circuits use just 2 voltage states: high and low",
+          "High stands for 1, low stands for 0",
+          "A logic probe touched to a point lights up for high or low",
+          "Ohmmeter, megger, signal strength meter: none show logic states"
+        ]
+      },
+      "onScreen": ["Digital circuits: 2 voltage states, high and low", "High is 1, low is 0", "Logic probe: lights show high or low", "Not an ohmmeter, megger or signal strength meter"],
+      "narration": "So far, a voltage or current could take any value. Digital circuits, the kind inside computers and modern radios, use just 2 voltage states: high and low. High stands for 1 and low for 0, and every number and command is built from those 1s and 0s. To check them, a technician uses a logic probe, a pen-shaped tester. Touch its tip to a point in the circuit, and its lights show whether that point is high or low, and often whether it's pulsing. The logic probe, then, is the instrument used to indicate high and low digital voltage states. The other choices can't: an ohmmeter measures resistance, a megger measures insulation resistance, and a signal strength meter reads radio signals in the air."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 74,
+      "template": "block-diagram",
+      "params": {
+        "title": "Transmitter to antenna: the feed line",
+        "columns": 4,
+        "blocks": [
+          { "id": "tx", "label": "Transmitter", "note": "Produces the RF power" },
+          { "id": "line", "label": "Feed line (coax)", "note": "Carries the power to the antenna" },
+          { "id": "ant", "label": "Antenna", "note": "Sends it out, if well matched" },
+          { "id": "refl", "label": "Reflected power", "note": "Bounces back down the line" }
+        ],
+        "links": [
+          { "from": "tx", "to": "line", "label": "forward power" },
+          { "from": "line", "to": "ant" },
+          { "from": "ant", "to": "refl", "label": "if mismatched" }
+        ]
+      },
+      "onScreen": ["Transmitter sends RF power up the feed line", "A well-matched antenna sends it out", "A mismatch reflects some power back down the line"],
+      "narration": "1 more meter, and it works between a transmitter and its antenna. Radio power, called RF, for radio frequency, travels from the transmitter up a cable called the feed line. It's usually coax: a center wire inside a tube-shaped shield. When the antenna suits the line electrically, which is called a good match, it accepts nearly all the power and sends it out as radio waves. When it doesn't, because the antenna is damaged or a cable or connector is faulty, part of the power bounces back down the line, like a wave off a sea wall. The outgoing and returning waves combine into a fixed pattern of high and low spots along the line, called standing waves. The worse the mismatch, the stronger they are."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 74,
+      "template": "band-strip",
+      "params": {
+        "title": "The SWR meter",
+        "min": 1,
+        "max": 4,
+        "scale": "linear",
+        "ends": ["Good match", "Poor match"],
+        "marks": [
+          { "at": 1, "label": "1:1", "note": "Perfect match: nothing reflected", "tone": "key" },
+          { "at": 1.6, "label": "Low SWR", "note": "Good match: antenna working properly", "tone": "key" },
+          { "at": 3.5, "label": "High SWR", "note": "Check the antenna, cable and connectors", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["SWR meter: compares forward and reflected power", "1:1 is a perfect match", "Low SWR: a good match", "High SWR: check the antenna, cable and connectors"],
+      "narration": "An SWR meter, short for standing wave ratio meter, measures those standing waves: the ratio is the high spots compared with the low spots. It sits in the feed line and compares the forward power with the reflected power. A perfect match reads 1 to 1, meaning nothing comes back. A low SWR shows a good match, so the antenna and line are working properly. A high or changing reading points to a damaged antenna, connector or cable. That's why an SWR meter may be used to verify proper radio antenna functioning. An ohmmeter, a frequency meter or a different radio can't tell you that."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 75,
+      "template": "waveform",
+      "params": {
+        "title": "Frequency and time",
+        "kind": "sine",
+        "cycles": 3,
+        "xAxis": "time",
+        "yAxis": "voltage",
+        "labels": ["1 cycle: 1 complete back-and-forth", "Frequency: cycles per second, in hertz", "Period: the time 1 cycle takes", "Frequency = 1 ÷ period"]
+      },
+      "onScreen": ["1 cycle: 1 complete back-and-forth", "Frequency: cycles per second, in hertz", "Period: the time 1 cycle takes", "Frequency = 1 ÷ period"],
+      "narration": "That's the meters. The next group of test equipment deals with frequency and time. We met the word in RF, radio frequency, so what is a frequency? Alternating current, and every radio signal, swings back and forth, over and over. 1 complete back-and-forth is called a cycle. Frequency is how many cycles happen each second, measured in hertz, and 1000 hertz is a kilohertz. The time 1 cycle takes is called the period. Frequency and period are reciprocals: each is 1 divided by the other. If a signal makes 1000 cycles every second, each cycle lasts 1 thousandth of a second. Measure either one, and you know the other."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 75,
+      "template": "block-diagram",
+      "params": {
+        "title": "The frequency counter",
+        "columns": 2,
+        "blocks": [
+          { "id": "sig", "label": "Signal to measure", "note": "Cycles or events arrive" },
+          { "id": "cnt", "label": "Counter", "note": "Counts cycles, or times the gap" },
+          { "id": "tb", "label": "Accurate time base", "note": "An internal clock: exactly 1 second" },
+          { "id": "disp", "label": "Display", "note": "Frequency, or time between events" }
+        ],
+        "links": [
+          { "from": "sig", "to": "cnt" },
+          { "from": "tb", "to": "cnt" },
+          { "from": "cnt", "to": "disp" }
+        ]
+      },
+      "onScreen": ["Signal in", "Counter counts cycles or times events", "Accurate internal time base", "Display: frequency, or time between events"],
+      "narration": "A frequency counter puts those ideas to work. Inside, a counter counts the incoming signal's cycles. For how long? An accurate time base, an internal clock, sets an exact interval, such as 1 second. The number of cycles in that second is the frequency, and the display shows it. Or the counter can time the gap between 2 events, such as 2 pulses; for a repeating signal, that gap is the period. In the exam's words, a frequency counter is used to measure the time between events, or the frequency, which is the reciprocal of the time. Watch for the zero beat trap: tuning a variable oscillator, a circuit that makes a steady signal, until it matches the unknown one. That's an older kind of frequency meter, not a counter."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 75,
+      "template": "key-facts",
+      "params": {
+        "title": "The frequency standard",
+        "items": [
+          "A counter is only as accurate as its time base",
+          "Frequency standard: an extremely stable oscillator",
+          "It produces a highly accurate reference frequency",
+          "Used to calibrate counters, signal generators and transmitters"
+        ]
+      },
+      "onScreen": ["A counter is only as accurate as its time base", "Frequency standard: an extremely stable oscillator", "Produces a highly accurate reference frequency", "Calibrates other equipment"],
+      "narration": "That raises a question. A counter is only as accurate as its time base, so how do you know the time base is right? You compare it with a frequency standard: an extremely stable oscillator, like the master clock you set every other clock by. A frequency standard is a device used to produce a highly accurate reference frequency. Notice the difference: a counter measures an unknown frequency, while a standard produces a known one. Technicians use it to calibrate other equipment, meaning to check and adjust it against the reference: counters, transmitters, and signal generators, the instruments that make test radio signals. It isn't a frequency used for sending messages, and it isn't a measuring device."
+    },
+    {
+      "id": "s16",
       "keyTopic": 75,
       "template": "comparison-table",
       "params": {
-        "title": "Frequency instruments and EMI hunting",
-        "columns": ["Instrument", "What it does", "Key point"],
+        "title": "Which standard in the field?",
+        "columns": ["Standard", "Keeps time by", "In practice"],
         "rows": [
-          ["Frequency counter", "Measures time between events, or frequency", "Frequency is the reciprocal of time"],
-          ["Frequency standard", "Produces a highly accurate reference", "Used to calibrate other equipment"],
-          ["Rubidium standard", "Field technician's time base standard", "Compact, quick warm-up, more stable than quartz"],
-          ["Portable AM receiver", "Tracks down EMI aboard a ship or aircraft", "Noise grows louder near the source"]
+          ["Quartz crystal", "A vibrating sliver of quartz", "Good, but drifts more"],
+          ["Rubidium standard", "The natural vibration of rubidium atoms", "Compact, quick warm-up: the field choice"],
+          ["Cesium beam", "The natural vibration of cesium atoms", "Large and costly: kept in labs"],
+          ["LC tank oscillator", "A coil and a capacitor", "Drifts the most"]
         ]
       },
-      "onScreen": ["Frequency counter: measures time between events, or frequency", "Frequency standard: produces an accurate reference", "Rubidium standard: the field time base standard", "Portable AM receiver: tracks down EMI"],
-      "narration": "Next, test equipment, and the first job is telling look-alikes apart. A frequency counter measures the time between events, or the frequency, which is the reciprocal of the time. A frequency standard does a different job: it produces a highly accurate reference frequency, used to calibrate other equipment. Out in the field, technicians use a rubidium standard as their time base standard, because it is compact, warms up quickly, and is far more stable than quartz. And to track down EMI, electromagnetic interference, aboard a ship or aircraft, use a portable AM, or amplitude modulation, receiver. The noise grows louder as you approach the source."
+      "onScreen": ["Quartz crystal: drifts more", "Rubidium standard: compact, quick warm-up, far more stable than quartz", "Cesium beam: a lab standard", "LC tank oscillator: drifts the most"],
+      "narration": "Frequency standards come in several kinds. A quartz crystal, the same part that keeps a wristwatch on time, is a sliver of quartz that vibrates at a precise rate, but it drifts, meaning it wanders slightly off frequency, with temperature and age. An atomic standard does better by locking onto the natural vibration of atoms. Which one do field technicians use as a time base standard? The rubidium standard. It's compact, it warms up quickly, and it's far more stable than quartz. A cesium beam standard is even more precise, but it's larger and costlier, so it usually stays in a laboratory. An LC tank oscillator drifts the most of all. It's a simple circuit of a coil, written L, and a capacitor, written C, a part that stores charge."
     },
     {
-      "id": "s6",
+      "id": "s17",
+      "keyTopic": 75,
+      "template": "waveform",
+      "params": {
+        "title": "Why an AM radio hears electrical noise",
+        "kind": "am",
+        "cycles": 24,
+        "depth": 0.6,
+        "xAxis": "time",
+        "yAxis": "strength",
+        "labels": ["EMI: unwanted electrical noise", "Modulation: sound placed on a radio wave", "AM: the sound changes the wave's strength", "Noise changes the strength too, so AM hears it"]
+      },
+      "onScreen": ["EMI: unwanted electrical noise", "Modulation: sound placed on a radio wave", "AM: the sound changes the wave's strength", "Noise changes the strength too, so an AM radio hears it"],
+      "narration": "Frequency tools done, now a hunting job, and it starts with interference. EMI, electromagnetic interference, is unwanted electrical noise. Motors, switching power supplies like the ones that charge computers, and sparking switch contacts all give it off, and radios pick it up as buzzing or crackling. Why do some radios hear it so well? Modulation means placing sound onto a radio wave. In AM, amplitude modulation, the sound rides on changes in the wave's strength, which you can see in the rising and falling outline here. Electrical noise is also a jumble of sudden changes in strength, so an AM receiver turns it straight into sound you can hear."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 75,
+      "template": "block-diagram",
+      "params": {
+        "title": "Tracking down EMI",
+        "columns": 3,
+        "blocks": [
+          { "id": "src", "label": "Noise source", "note": "Motor, power supply, sparking contact" },
+          { "id": "rx", "label": "Portable AM receiver", "note": "Tuned between stations" },
+          { "id": "find", "label": "Louder as you get closer", "note": "Follow the noise to its source" }
+        ],
+        "links": [
+          { "from": "src", "to": "rx", "label": "radiated noise" },
+          { "from": "rx", "to": "find" }
+        ]
+      },
+      "onScreen": ["Noise source: a motor, power supply or sparking contact", "Portable AM receiver tuned between stations", "The noise grows louder near the source"],
+      "narration": "That makes an AM radio a handy noise detector. Aboard a ship or an aircraft, how do you find where EMI is coming from? Use a portable AM receiver. Tune it between stations, so all you hear is noise, and carry it around. The noise grows louder as you approach the source, like a game of hotter and colder. A multimeter, a logic probe, or the oscilloscope we'll meet soon all need a direct connection to a circuit, so none of them can find a source that sends its noise through the air."
+    },
+    {
+      "id": "s19",
       "keyTopic": 75,
       "template": "formula",
       "params": {
-        "title": "Where an analog wattmeter is accurate",
-        "formula": "Error = ±5% of full scale, at every reading",
-        "steps": ["100 W scale: ±5% of 100 W = ±5 W", "The same ±5 W applies across the whole scale", "At a 20 W reading: 5 W ÷ 20 W = 25%"],
-        "answer": "Only the upper 1/3 of the scale is truly calibrated"
+        "title": "Analog wattmeter accuracy",
+        "formula": "Error = ±5% of full scale",
+        "steps": ["A wattmeter reads power, in watts", "Full scale on this range: 100 W", "5% of 100 W = 5 W"],
+        "answer": "±5 W at every reading on the scale"
       },
-      "onScreen": ["Accuracy is only at full scale", "±5% of 100 W = ±5 W", "At 20 W, ±5 W is 25%", "Only the upper 1/3 is truly calibrated"],
-      "narration": "On an analog wattmeter, the accuracy is only at full scale, and that absolute number is carried through to the rest of the range. Take a meter rated plus or minus 5 percent on a 100 watt scale. That's plus or minus 5 watts, and the same 5 watts of possible error applies at every reading. At a 20 watt reading, 5 watts is 25 percent of what you're reading. That's why the upper third of the meter is the only truly calibrated part."
+      "onScreen": ["Accuracy is stated as a percent of full scale", "Full scale: 100 W", "±5% of 100 W = ±5 W", "The same ±5 W applies at every reading"],
+      "narration": "Back on the bench, a meter for power: the wattmeter, which measures power in watts, such as the RF power a transmitter sends to its antenna. On an analog wattmeter, the maker states the accuracy as a percentage of full scale, the top of the scale. Take a meter rated plus or minus 5 percent on its 100 watt scale. 5 percent of 100 watts is 5 watts, so the needle can be off by up to 5 watts either way. Here's the catch: that 5 watts isn't a percentage of what you're reading. It's a fixed amount, and it applies at every point on the scale, whether the needle shows 100 watts or 20."
     },
     {
-      "id": "s7",
+      "id": "s20",
+      "keyTopic": 75,
+      "template": "band-strip",
+      "params": {
+        "title": "Only the upper third is truly calibrated",
+        "min": 0,
+        "max": 100,
+        "scale": "linear",
+        "marks": [
+          { "at": 100, "label": "100 W full scale", "note": "±5 W is just 5%", "tone": "key" },
+          { "at": 20, "label": "20 W reading", "note": "±5 W is 25% of the reading", "tone": "muted" },
+          { "at": 67, "label": "Upper 1/3 of the scale", "note": "The only truly calibrated part", "tone": "key" }
+        ]
+      },
+      "onScreen": ["At full scale, ±5 W is 5%", "At 20 W, ±5 W is 25% of the reading", "Upper 1/3 of the scale: the only truly calibrated part"],
+      "narration": "So what does a fixed 5 watts do at different readings? At full scale, 5 watts out of 100 is just 5 percent. But at a 20 watt reading, 5 watts divided by 20 watts is 25 percent of the reading, far too rough to trust. Only near the top is the error small. That's the exam answer: the accuracy is only at full scale, and that absolute number, the fixed 5 watts, is carried through to the rest of the range, so the upper third of the meter is the only truly calibrated part. The traps say the accuracy is constant everywhere, holds only in the top 5 percent, or can't be determined. For a trustworthy reading, pick a scale that puts the needle in its upper third."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 75,
+      "template": "comparison-table",
+      "params": {
+        "title": "What SINAD means",
+        "columns": ["Reading", "Contains"],
+        "rows": [
+          ["Receiver audio with the test tone", "Signal + noise + distortion"],
+          ["Test tone notched out", "Noise + distortion only"],
+          ["SINAD", "The 1st reading compared with the 2nd, in dB"]
+        ]
+      },
+      "onScreen": ["With the tone: signal + noise + distortion", "Tone removed: noise + distortion", "SINAD: the ratio of the 2, in decibels"],
+      "narration": "The next instrument tests receivers, and its name needs unpacking first. Feed a receiver a radio signal carrying a steady 1000 hertz test tone, and its audio output holds 3 things: the tone, which is the wanted signal; noise, the background hiss; and distortion, unwanted tones the receiver adds by not reproducing the signal perfectly. SINAD stands for signal plus noise and distortion, compared with noise and distortion alone. If the noise and distortion are tiny, the first reading is far bigger than the second. To compare 2 levels like these, technicians use decibels, written dB: a scale where every 3 decibels roughly doubles the power. So the higher the SINAD in decibels, the cleaner the audio."
+    },
+    {
+      "id": "s22",
       "keyTopic": 75,
       "template": "block-diagram",
       "params": {
         "title": "Inside a SINAD meter",
         "blocks": [
-          { "id": "rx", "label": "Receiver audio", "note": "The signal under test" },
-          { "id": "filter", "label": "1000 Hz bandstop filter", "note": "Sharp and internal" },
+          { "id": "rx", "label": "Receiver audio", "note": "Tone plus noise and distortion" },
+          { "id": "filter", "label": "1000 Hz bandstop filter", "note": "Sharp and internal: notches out the tone" },
           { "id": "volt", "label": "Multirange AF voltmeter", "note": "Calibrated in dB" },
-          { "id": "test", "label": "Quieting tests", "note": "Both parts used together" }
+          { "id": "test", "label": "Quieting tests", "note": "Filter and voltmeter used together" }
         ],
         "links": [
           { "from": "rx", "to": "filter" },
@@ -120,69 +384,184 @@
           { "from": "volt", "to": "test" }
         ]
       },
-      "onScreen": ["Receiver audio in", "Sharp internal 1000 Hz bandstop filter", "Multirange AF voltmeter calibrated in dB", "Used together for quieting tests"],
-      "narration": "A SINAD meter is built for receiver testing. SINAD compares signal plus noise and distortion with the noise and distortion alone. Inside the meter are 2 key parts. The first is a sharp, internal 1000 hertz bandstop filter, which can notch the 1000 hertz test tone out of the receiver's audio. The second is a multirange AF, or audio frequency, voltmeter calibrated in decibels. Used together, the filter and the voltmeter perform quieting tests on the receiver."
+      "onScreen": ["Receiver audio in", "Sharp, internal 1000 Hz bandstop filter", "Multirange AF voltmeter calibrated in dB", "Used together for quieting tests"],
+      "narration": "A SINAD meter makes that measurement. The receiver's audio can pass through a sharp, internal 1000 hertz bandstop filter, which blocks 1 narrow band of frequencies, here the test tone. Next comes a multirange AF voltmeter, AF meaning audio frequency, calibrated in decibels. With the filter out, it reads the whole audio. With the filter in, it reads only the noise and distortion left over. Comparing the 2 readings gives the SINAD. Used together, the filter and voltmeter perform quieting tests: with no signal, many receivers hiss loudly, and the test shows how much an incoming signal quiets that hiss. Filter plus voltmeter: that's the SINAD meter the exam describes. A reflectometer, a dip meter and a vector-impedance meter test antennas, cables and circuits, not receiver audio."
     },
     {
-      "id": "s8",
+      "id": "s23",
+      "keyTopic": 76,
+      "template": "equipment-card",
+      "params": {
+        "title": "The oscilloscope's screen",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "The screen is a graph: voltage up and down, time across", "at": "screen" },
+          { "label": "The trace: a bright line sweeping left to right", "at": "trace" },
+          { "label": "Time base: sets the sweep speed, in time per division", "at": "timebase" }
+        ]
+      },
+      "onScreen": ["Screen: a graph, voltage up and time across, divided into squares", "Trace: a bright line sweeping left to right", "Time base: sets the sweep speed, in time per division"],
+      "narration": "Now the oscilloscope. Our other instruments give a single number; an oscilloscope, or scope for short, draws a picture. Its screen is a graph: up and down is voltage, and left to right is time. A grid divides it into squares called divisions. A bright line, the trace, sweeps across the screen from left to right at a steady speed, then jumps back and starts again. A circuit called the sweep oscillator drives it, and the time base control sets its speed, in time per division. On a scope, time base just means this sweep timing, not the counter's clock."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 76,
+      "template": "equipment-card",
+      "params": {
+        "title": "The oscilloscope's vertical amplifier",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "The probe touches the circuit", "at": "probe" },
+          { "label": "The signal enters at the input", "at": "input" },
+          { "label": "Vertical amplifier: moves the trace up and down, in volts per division", "at": "vertical" },
+          { "label": "Across and up and down together: the waveform", "at": "trace" }
+        ]
+      },
+      "onScreen": ["The probe touches the circuit", "The signal enters at the input", "Vertical amplifier: moves the trace up and down, in volts per division", "Together: the signal's waveform"],
+      "narration": "That's the side-to-side motion. The up-and-down motion comes from the signal itself. The probe touches the circuit, and the signal enters the scope's input. From there it goes through the vertical amplifier. An amplifier is a circuit that makes a signal bigger, and this one pushes the trace up and down in step with the voltage. The volts per division control sets how many volts each square stands for. Put the 2 motions together, steady across and following the voltage up and down, and the trace draws the signal's waveform: its shape, drawn over time."
+    },
+    {
+      "id": "s25",
       "keyTopic": 76,
       "template": "comparison-table",
       "params": {
         "title": "Oscilloscope or spectrum analyzer?",
-        "columns": ["Instrument", "Displays signals in", "You see"],
+        "columns": ["Feature", "Oscilloscope", "Spectrum analyzer"],
         "rows": [
-          ["Oscilloscope", "The time domain", "How a signal changes over time"],
-          ["Spectrum analyzer", "The frequency domain", "Each signal at its own frequency"]
+          ["Displays signals in", "The time domain", "The frequency domain"],
+          ["Draws", "The wave over time", "The strength at each frequency"],
+          ["Like watching", "A string vibrating", "A stereo's bars, 1 per pitch"],
+          ["Shows", "Audio or radio signals", "Audio or radio signals"]
         ]
       },
-      "onScreen": ["Oscilloscope: the time domain", "Spectrum analyzer: the frequency domain"],
-      "narration": "Now the oscilloscope, which is easy to confuse with the spectrum analyzer. Here's the difference the exam asks about. An oscilloscope displays electrical signals in the time domain: you watch how a signal changes over time. A spectrum analyzer displays signals in the frequency domain: each signal shows up at its own frequency. Same signal, 2 different views. Remember it this way: the scope shows time, the analyzer shows frequency."
+      "onScreen": ["Oscilloscope: the time domain", "Spectrum analyzer: the frequency domain", "Scope: the wave over time; analyzer: strength at each frequency", "Both show audio or radio signals"],
+      "narration": "Because it plots against time, we say an oscilloscope displays electrical signals in the time domain. Another instrument, the spectrum analyzer, shows the same signals a different way: in the frequency domain. Instead of a wave wiggling over time, it shows how strong the signal is at each frequency. Think of music. A scope is like watching a guitar string vibrate, moment by moment. A spectrum analyzer is like the bouncing bars on a stereo's display, 1 bar for each pitch. That's the difference the exam asks about: scope, time domain; analyzer, frequency domain. The traps reverse them, or claim one is only for audio and the other only for radio. Both can show audio or radio signals, within their limits."
     },
     {
-      "id": "s9",
-      "keyTopic": 76,
-      "template": "equipment-card",
-      "params": {
-        "title": "Inside the oscilloscope",
-        "device": "oscilloscope",
-        "callouts": [
-          { "label": "10:1 divider probe: circuit sees about 10 MΩ, not the scope's 1 MΩ", "at": "probe" },
-          { "label": "Less circuit loading, but the signal is divided by 10", "at": "input" },
-          { "label": "Vertical amplifier determines the maximum frequency response", "at": "vertical" },
-          { "label": "Time base only sets how fast the trace sweeps", "at": "timebase" },
-          { "label": "Sweep oscillator quality and deflection amplifier bandwidth limit accuracy", "at": "trace" }
-        ]
-      },
-      "onScreen": ["10:1 probe: about 10 MΩ instead of 1 MΩ", "Less loading; signal divided by 10", "Vertical amplifier: maximum frequency response", "Time base: sweep speed only", "Sweep oscillator and deflection amplifier bandwidth set the limits"],
-      "narration": "Let's look inside the scope. A 10 to 1 divider probe decreases circuit loading. The circuit sees about 10 megohms instead of the scope's 1 megohm, while the signal is divided by 10. What determines the maximum frequency response of an oscilloscope? The vertical amplifier. The time base only sets how fast the trace sweeps across the screen. More broadly, an oscilloscope's accuracy, frequency response and stability are limited by the quality of its sweep oscillator and the bandwidth of its deflection amplifiers."
-    },
-    {
-      "id": "s10",
+      "id": "s26",
       "keyTopic": 76,
       "template": "key-facts",
       "params": {
         "title": "What an oscilloscope can measure",
         "items": [
-          "Electrical voltage",
-          "Electron flow, with the aid of a resistor",
+          "Electrical voltage, read straight off the screen",
+          "Electron flow (current), with the aid of a resistor: I = V ÷ R",
           "The phase difference between 2 signals",
-          "SSB signal quality: the scope shows the shape of the waveform",
-          "Not a scope job: measuring the velocity of light with a light emitting diode"
+          "Not a scope job: measuring the velocity of light with an LED"
         ]
       },
-      "onScreen": ["Voltage", "Electron flow, with a resistor", "Phase difference between 2 signals", "SSB signal quality from the waveform shape", "Not: velocity of light with an LED"],
-      "narration": "What can an oscilloscope do? It measures electrical voltage. It measures electron flow, or current, with the aid of a resistor, by reading the voltage across it. It measures the phase difference between 2 signals. And it's the instrument used to check the signal quality of an SSB, or single sideband, transmission, because it shows the shape of the waveform. What can't it do? Measure the velocity of light with the aid of a light emitting diode. That's the exception the exam is looking for."
+      "onScreen": ["Voltage", "Electron flow, with a resistor", "Phase difference between 2 signals", "Not: velocity of light with an LED"],
+      "narration": "So what can a scope measure? Electrical voltage, directly: count how many divisions the trace moves up and multiply by the volts per division. Electron flow, which is current, with the aid of a resistor: send the current through a known resistor, read the voltage across it, and Ohm's law gives the current, I equals V divided by R. And the phase difference between 2 signals. Phase is where a wave is in its cycle, so with 2 traces on the screen together, you can see how far one lags behind the other. What can't it do? Measure the velocity of light with the aid of an LED, a light emitting diode, a tiny electronic lamp. That's the exception the exam is looking for."
     },
     {
-      "id": "s11",
+      "id": "s27",
+      "keyTopic": 76,
+      "template": "key-facts",
+      "params": {
+        "title": "Loading: measuring changes the circuit",
+        "items": [
+          "Every instrument draws a little current from the circuit",
+          "That changes the circuit: called loading",
+          "Like a tire gauge letting out a little air",
+          "A scope's input: 1 MΩ, which can still upset a sensitive circuit"
+        ]
+      },
+      "onScreen": ["Every instrument draws a little current", "That changes the circuit: loading", "Like a tire gauge letting out air", "Scope input: 1 MΩ"],
+      "narration": "Connecting a scope brings a problem. Any instrument draws a little current from the circuit it's measuring, and that changes what the circuit does. That's called loading. It's like checking a tire with a pressure gauge, which lets out a little air as it measures. The less current the instrument draws, the less it disturbs the circuit. A scope's input has a resistance of 1 megohm, 1 million ohms. By Ohm's law, a high resistance draws only a small current, but even that can upset a sensitive circuit."
+    },
+    {
+      "id": "s28",
+      "keyTopic": 76,
+      "template": "formula",
+      "params": {
+        "title": "The 10:1 divider probe",
+        "formula": "Circuit sees 9 MΩ + 1 MΩ ≈ 10 MΩ",
+        "steps": ["Scope input alone: 1 MΩ", "10:1 probe adds about 9 MΩ in series", "Less loading: the circuit is disturbed less", "Signal divided by 10: multiply the reading by 10"],
+        "answer": "10:1 divider probe decreases circuit loading"
+      },
+      "onScreen": ["Scope input: 1 MΩ", "10:1 probe adds about 9 MΩ: the circuit sees about 10 MΩ", "Less circuit loading", "Signal divided by 10"],
+      "narration": "The cure is a 10 to 1 divider probe. It places about 9 megohms in series with the scope's 1 megohm, so the circuit sees about 10 megohms in all. By Ohm's law, 10 times the resistance draws a tenth of the current, so the circuit is disturbed far less. That's how a 10 to 1 divider probe decreases circuit loading. The price: the 2 resistances divide the voltage too, so only a tenth of the signal reaches the scope, and you multiply the reading by 10. Dual input amplifiers, inductive probes and resistive probes are the wrong choices."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 76,
+      "template": "block-diagram",
+      "params": {
+        "title": "What sets a scope's frequency response",
+        "columns": 2,
+        "blocks": [
+          { "id": "probe", "label": "Probe and input", "note": "The signal comes in" },
+          { "id": "vamp", "label": "Vertical amplifier", "note": "Its bandwidth sets the highest frequency" },
+          { "id": "disp", "label": "Display", "note": "Draws the waveform" },
+          { "id": "sweep", "label": "Time base (sweep oscillator)", "note": "Only sets how fast the trace sweeps" }
+        ],
+        "links": [
+          { "from": "probe", "to": "vamp" },
+          { "from": "vamp", "to": "disp", "label": "up and down" },
+          { "from": "sweep", "to": "disp", "label": "across" }
+        ]
+      },
+      "onScreen": ["Probe and input", "Vertical amplifier: sets the maximum frequency response", "Display", "Time base: only sets the sweep speed"],
+      "narration": "Loading is 1 practical limit. Another is speed. A scope's frequency response is the range of frequencies it can display accurately. Above that, fast signals come out shrunken and rounded off. What sets the limit? Follow the signal: it enters through the probe, then must pass through the vertical amplifier on its way to the display. If that amplifier can't keep up with a fast signal, nothing after it can fix it. So the vertical amplifier determines the maximum frequency response of an oscilloscope. Its bandwidth, the range of frequencies it passes, becomes the scope's bandwidth. The time base, the horizontal sweep and the power supply are the trap answers: the time base only sets how fast the trace sweeps across."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 76,
+      "template": "key-facts",
+      "params": {
+        "title": "What limits accuracy and stability",
+        "items": [
+          "Sweep oscillator quality: an even, steady sweep keeps time readings accurate",
+          "A poor sweep makes the picture jitter",
+          "Deflection amplifier bandwidth: how faithfully fast signals are drawn",
+          "Exam answer: sweep oscillator quality and deflection amplifier bandwidth"
+        ]
+      },
+      "onScreen": ["Sweep oscillator quality", "A poor sweep jitters", "Deflection amplifier bandwidth", "Answer: sweep oscillator quality and deflection amplifier bandwidth"],
+      "narration": "The exam also asks about a scope's accuracy, frequency response and stability together. What limits all 3? 2 things. First, the quality of the sweep oscillator. Time is read from how far the trace has moved across, so the sweep must be perfectly even and steady. A poor sweep oscillator throws off time readings and makes the picture jitter. Second, the bandwidth of the deflection amplifiers, the amplifiers that move the trace, including the vertical amplifier. Their bandwidth decides how faithfully fast waveforms are reproduced. The exam answer: sweep oscillator quality and deflection amplifier bandwidth. Choices about tube face voltage increments or output impedance sound technical, but they're wrong."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 76,
+      "template": "waveform",
+      "params": {
+        "title": "Refresher: single sideband",
+        "kind": "ssb",
+        "sideband": "upper",
+        "carrier": "suppressed",
+        "xAxis": "frequency",
+        "yAxis": "amplitude",
+        "labels": ["Carrier: a steady radio wave, suppressed in SSB", "Upper sideband: carries the voice", "Lower sideband: removed"]
+      },
+      "onScreen": ["Carrier: suppressed in SSB", "1 sideband carries the voice", "The other sideband is removed"],
+      "narration": "1 more job for the scope involves a kind of transmission you need to picture first. A transmitter puts out a carrier, a steady radio wave at its operating frequency. In AM, the voice changes the carrier's strength, and that creates sidebands, copies of the voice just above and just below the carrier's frequency. The carrier itself carries no voice at all, and each sideband carries all of it. So SSB, single sideband, sends just 1 sideband and suppresses the carrier and the other sideband. That saves power and takes up half the room on the band. It also means an SSB transmitter puts out almost nothing until you speak, and its output rises and falls with your voice. Hold onto that; it comes back in troubleshooting."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 76,
+      "template": "waveform",
+      "params": {
+        "title": "Checking SSB signal quality",
+        "kind": "am",
+        "cycles": 36,
+        "depth": 1,
+        "xAxis": "time",
+        "yAxis": "voltage",
+        "labels": ["The oscilloscope shows the shape of the SSB waveform", "2-tone test: smooth, regular loops mean a clean signal", "Flat tops or uneven loops: distortion"]
+      },
+      "onScreen": ["Oscilloscope: shows the shape of the SSB waveform", "2-tone test: smooth, regular loops", "Flat tops: distortion"],
+      "narration": "How do you check the signal quality of an SSB transmission? With an oscilloscope, because it shows the shape of the waveform. A common way is the 2-tone test: feed 2 steady audio tones into the microphone input and look at the transmitter's output on the scope. 2 tones together make a steady, repeating pattern that's easy to judge. A clean transmitter draws regular, smooth, rounded loops like these. If the tops are squashed flat, the transmitter is being overdriven, pushed harder than it can handle, and it distorts. A leaking carrier changes the pattern too. The other choices, a field strength meter, a signal level meter or a sidetone monitor, can't show the waveform's shape. So for SSB signal quality, use the oscilloscope."
+    },
+    {
+      "id": "s33",
       "keyTopic": 77,
       "template": "block-diagram",
       "params": {
         "title": "Time-domain reflectometer (TDR)",
         "columns": 4,
         "blocks": [
-          { "id": "pulse", "label": "Pulse generator", "note": "Sends a pulse down the line" },
-          { "id": "line", "label": "Transmission line", "note": "The line under test" },
+          { "id": "pulse", "label": "Pulse generator", "note": "Sends a sharp pulse down the line" },
+          { "id": "line", "label": "Transmission line", "note": "The cable under test" },
           { "id": "fault", "label": "Fault", "note": "Reflects part of the pulse back" },
           { "id": "scope", "label": "Oscilloscope", "note": "Reflection delay gives the distance" }
         ],
@@ -192,163 +571,429 @@
           { "from": "fault", "to": "scope", "label": "reflection" }
         ]
       },
-      "onScreen": ["Pulse generator", "Transmission line under test", "Fault reflects the pulse", "Oscilloscope: reflection delay gives the distance"],
-      "narration": "Some instruments are combinations. Put an oscilloscope together with a pulse generator and you have a TDR, a time-domain reflectometer, used to measure transmission line characteristics. The pulse generator sends a pulse down the line. Wherever there's a fault, part of the pulse reflects back, and the reflection shows up on the oscilloscope. The delay of each reflection gives the distance to the fault."
+      "onScreen": ["Pulse generator", "Transmission line under test", "A fault reflects the pulse", "Oscilloscope: the reflection delay gives the distance"],
+      "narration": "Some jobs call for specialized instruments, and the first combines 2 we already know. Remember how a mismatch reflects power back down a feed line? Any transmission line, the general name for a cable that carries signals, also reflects at a fault: a break, a crushed spot, a wet connector, or 2 wires touching. Put a pulse generator, which makes short bursts of voltage, together with an oscilloscope, and you have a TDR, a time-domain reflectometer, used to measure the characteristics of transmission lines. It sends a sharp pulse down the line. At a fault, part of the pulse bounces back, like an echo from a canyon wall, and the scope shows when it arrives. The pulse travels at a known speed, so the longer the delay, the farther away the fault."
     },
     {
-      "id": "s12",
-      "keyTopic": 77,
-      "template": "key-facts",
-      "params": {
-        "title": "Reading a spectrum analyzer",
-        "items": [
-          "Horizontal axis: frequency",
-          "Vertical axis: amplitude",
-          "It displays spurious signals in a radio transmitter's output",
-          "A wattmeter can't: it reads only total power"
-        ]
-      },
-      "onScreen": ["Horizontal axis: frequency", "Vertical axis: amplitude", "Shows spurious signals in a transmitter's output", "A wattmeter reads only total power"],
-      "narration": "On a spectrum analyzer, the horizontal axis displays frequency, and the vertical axis displays amplitude. Every signal appears as its own peak at its own frequency. That's why a spectrum analyzer can display spurious signals in the output of a radio transmitter. A wattmeter can't do that job: it reads only the total power, so the unwanted signals hide inside the reading."
-    },
-    {
-      "id": "s13",
+      "id": "s34",
       "keyTopic": 77,
       "template": "comparison-table",
       "params": {
-        "title": "Pick the right specialized instrument",
-        "columns": ["Job", "Instrument"],
+        "title": "Time domain or frequency domain reflectometer?",
+        "columns": ["Feature", "Time domain (TDR)", "Frequency domain"],
         "rows": [
-          ["Distance to a transmission line fault", "Time-domain reflectometer"],
-          ["Most accurate antenna and line check", "Frequency domain reflectometer"],
-          ["Spurious signals in a transmitter's output", "Spectrum analyzer"],
-          ["Monitor frequency and modulation", "Service monitor"],
-          ["Receiver sensitivity, distortion, audio tones", "Service monitor"]
+          ["Test signal", "1 sharp pulse", "A signal swept across the band"],
+          ["Best at", "Finding where a fault is", "Showing the match at each frequency"],
+          ["At the operating frequency", "Can't show it", "Most accurate check"]
         ]
       },
-      "onScreen": ["Fault distance: time-domain reflectometer", "Most accurate antenna and line check: frequency domain reflectometer", "Spurious signals: spectrum analyzer", "Frequency, modulation, receiver sensitivity, distortion, audio tones: service monitor"],
-      "narration": "Let's match jobs to instruments. To find the distance to a fault in a transmission line, use a time-domain reflectometer. For the most accurate check of antennas and transmission lines at the antenna's operating frequency, use a frequency domain reflectometer. For spurious signals in a transmitter's output, a spectrum analyzer. And for everyday radio service work, technicians commonly use a service monitor. It monitors frequency and modulation, checks receiver sensitivity and distortion, and generates audio tones."
+      "onScreen": ["TDR: 1 sharp pulse, finds where a fault is", "Frequency domain reflectometer: sweeps the operating band", "Most accurate for antennas and lines at the operating frequency"],
+      "narration": "The TDR has a cousin with a similar name, and the exam likes to swap them. A TDR's sharp pulse is great for finding where a fault is, but an antenna behaves differently at different frequencies, and a single pulse can't show that. A frequency domain reflectometer instead sweeps a test signal across the antenna's actual operating band, the range of frequencies it's used on, and measures the reflections at each frequency. It shows the match right where the antenna will be used, plus the distance to faults. The exam's answer, then: the frequency domain reflectometer is the most accurate instrument for checking antennas and transmission lines at the antenna's operating frequency. Not the time domain reflectometer, a wattmeter or a DMM."
     },
     {
-      "id": "s14",
+      "id": "s35",
+      "keyTopic": 77,
+      "template": "waveform",
+      "params": {
+        "title": "Reading a spectrum analyzer",
+        "kind": "ssb",
+        "sideband": "both",
+        "carrier": "full",
+        "xAxis": "frequency (horizontal axis)",
+        "yAxis": "amplitude (vertical axis)",
+        "labels": ["Horizontal axis: frequency", "Vertical axis: amplitude", "Each signal: a peak at its own frequency"]
+      },
+      "onScreen": ["Horizontal axis: frequency", "Vertical axis: amplitude", "Each signal stands at its own frequency"],
+      "narration": "Back to the spectrum analyzer we met beside the scope. Here it shows an AM signal. Read the axes first. The horizontal axis displays frequency, low on the left, high on the right. The vertical axis displays amplitude, the strength of each signal. So every signal stands at its own frequency, with a height that shows how strong it is. You can see the tall carrier in the middle and a sideband on each side, just as we described for AM. On the exam: horizontal is frequency, vertical is amplitude. Don't mix it up with a scope, whose horizontal axis is time."
+    },
+    {
+      "id": "s36",
+      "keyTopic": 77,
+      "template": "band-strip",
+      "params": {
+        "title": "Spurious signals on a spectrum analyzer",
+        "min": 0,
+        "max": 4,
+        "scale": "linear",
+        "ends": ["Lower freq.", "Higher freq."],
+        "marks": [
+          { "at": 1, "label": "Carrier", "note": "The wanted signal", "tone": "key" },
+          { "at": 2, "label": "2nd harmonic", "note": "Twice the frequency: spurious", "tone": "muted" },
+          { "at": 3, "label": "3rd harmonic", "note": "3 times the frequency: spurious", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["Carrier: the wanted signal", "Harmonics: spurious signals", "A spectrum analyzer shows each one; a wattmeter reads only total power"],
+      "narration": "That view makes the spectrum analyzer ideal for a key transmitter test. A transmitter should send only its wanted signal. Anything it puts out on other frequencies is a spurious signal, and it can interfere with other radio services. Common ones are harmonics: copies at 2 and 3 times the operating frequency. On a spectrum analyzer, each spurious signal stands out as its own small peak, and you can measure its strength. That makes a spectrum analyzer the test instrument that can display spurious signals in the output of a radio transmitter. A wattmeter can't: it reads only the total power, so the spurious signals hide inside 1 number. A logic analyzer, which watches digital circuits, and a TDR, which tests cables, are wrong too."
+    },
+    {
+      "id": "s37",
+      "keyTopic": 77,
+      "template": "key-facts",
+      "params": {
+        "title": "The service monitor: a test bench in a box",
+        "items": [
+          "Monitors a transmitter's frequency and modulation",
+          "Signal generator: feeds test signals to a receiver",
+          "Checks receiver sensitivity and distortion",
+          "Generates audio tones"
+        ]
+      },
+      "onScreen": ["Monitors frequency and modulation", "Built-in signal generator", "Checks receiver sensitivity and distortion", "Generates audio tones"],
+      "narration": "For everyday radio servicing, carrying a separate instrument for every test would be a chore. So radio service technicians commonly use a service monitor, also called a communications test set. It combines several instruments in 1 box. It monitors a transmitter's frequency and modulation. Its built-in signal generator feeds test signals to a receiver. With its SINAD and distortion meter, it checks receiver sensitivity and distortion. And it generates audio tones for testing. That's the answer when the exam lists all of those jobs together. An oscilloscope, a spectrum analyzer or a DMM handles only part of the list."
+    },
+    {
+      "id": "s38",
       "keyTopic": 78,
       "template": "block-diagram",
       "params": {
         "title": "Measuring receiver sensitivity",
         "blocks": [
-          { "id": "gen", "label": "Signal generator", "note": "Sets the RF level and deviation" },
+          { "id": "gen", "label": "Signal generator", "note": "RF signal with a 1000 Hz tone" },
           { "id": "rx", "label": "Receiver under test", "note": "Recovers the audio" },
-          { "id": "sinad", "label": "SINAD meter", "note": "Reads 12 dB of SINAD" }
+          { "id": "sinad", "label": "SINAD meter", "note": "Measures the recovered audio" }
         ],
         "links": [
           { "from": "gen", "to": "rx", "label": "RF signal" },
           { "from": "rx", "to": "sinad", "label": "recovered audio" }
         ]
       },
-      "onScreen": ["Signal generator", "Receiver under test", "SINAD meter: sensitivity at 12 dB of SINAD", "Bandwidth test: RF 6 dB above, raise deviation until SINAD is back to 12 dB"],
-      "narration": "Now measurement procedures. A signal generator feeds the receiver, and the recovered audio goes to a SINAD meter. The exact sensitivity specification of a receiver is found by measuring the recovered audio for 12 decibels of SINAD: the weakest RF, or radio frequency, signal that still gives 12 decibels of SINAD. To find the receiver's effective bandwidth, run a modulation-acceptance bandwidth test. Set the RF level 6 decibels above the 12 decibel SINAD point, then raise the deviation until SINAD falls back to 12 decibels."
+      "onScreen": ["Signal generator: RF signal with a 1000 Hz tone", "Receiver under test", "SINAD meter measures the recovered audio"],
+      "narration": "With the instruments in hand, we turn to measurement procedures, the standard ways of testing. First, receiver sensitivity: the weakest signal a receiver can turn into usable audio. A more sensitive receiver hears weaker, more distant stations. To measure it, a signal generator feeds the receiver an RF signal at a chosen strength, carrying the 1000 hertz test tone. The receiver recovers the audio, meaning it takes the tone back off the radio signal, and that recovered audio goes to the SINAD meter. Now turn the generator's level down. As the signal gets weaker, noise creeps in and the SINAD falls. The question is where to stop."
     },
     {
-      "id": "s15",
+      "id": "s39",
+      "keyTopic": 78,
+      "template": "key-facts",
+      "params": {
+        "title": "Sensitivity: 12 dB of SINAD",
+        "items": [
+          "Exact sensitivity: measure the recovered audio for 12 dB of SINAD",
+          "The weakest RF level that still gives 12 dB of SINAD",
+          "About 25% noise and distortion: speech still understandable",
+          "Traps: 10 dB of SINAD, 10 dB or 25 dB of quieting"
+        ]
+      },
+      "onScreen": ["Sensitivity: measure the recovered audio for 12 dB of SINAD", "The weakest RF level giving 12 dB of SINAD", "About 25% noise and distortion", "Not 10 dB of SINAD, nor 10 or 25 dB of quieting"],
+      "narration": "Everyone agrees on 1 stopping point. The exact sensitivity specification of a receiver is found by measuring the recovered audio for 12 decibels of SINAD. The sensitivity is the weakest RF level, usually given in microvolts, millionths of a volt, that still gives 12 decibels of SINAD. At that point the audio is about 25 percent noise and distortion: rough, but speech is still understandable. Because the whole industry uses the same point, you can fairly compare 1 receiver with another. Watch the numbers in the traps: 10 decibels of SINAD, and 10 or 25 decibels of quieting. Quieting is an older, less precise method. Remember 12 decibels of SINAD."
+    },
+    {
+      "id": "s40",
+      "keyTopic": 78,
+      "template": "waveform",
+      "params": {
+        "title": "FM and deviation",
+        "kind": "fm",
+        "cycles": 16,
+        "xAxis": "time",
+        "labels": ["FM: the voice shifts the carrier's frequency", "A louder voice makes a wider swing", "Deviation: how far the frequency swings, in kHz"]
+      },
+      "onScreen": ["FM: the voice shifts the carrier's frequency", "Louder voice: a wider swing", "Deviation: how far the frequency swings"],
+      "narration": "The next measurements involve FM, frequency modulation, the system most 2-way radios use on VHF and UHF, the very high and ultra high frequency bands. In AM, the voice changes the carrier's strength. In FM, the voice shifts the carrier's frequency up and down instead, so the waves bunch together and spread apart, as you see here. A louder voice makes a wider swing. How far the frequency swings from its center is called deviation, measured in kilohertz. Each channel is like a lane on a highway, with a set width. Too much deviation makes the signal too wide for its lane, and it spills into the neighboring channel."
+    },
+    {
+      "id": "s41",
       "keyTopic": 78,
       "template": "band-strip",
       "params": {
         "title": "Maximum FM voice deviation",
         "min": 0,
-        "max": 6,
+        "max": 11,
         "scale": "linear",
         "marks": [
-          { "at": 2.5, "label": "2.5 kHz", "note": "The narrowband figure", "tone": "muted" },
-          { "at": 5, "label": "5.0 kHz", "note": "Normal wideband VHF or UHF voice channel", "tone": "key" }
+          { "at": 5, "label": "5.0 kHz", "note": "Wideband VHF or UHF voice: the maximum", "tone": "key" },
+          { "at": 2.5, "label": "2.5 kHz", "note": "Narrowband channels, 12.5 kHz wide", "tone": "muted" },
+          { "at": 7.5, "label": "7.5 kHz", "note": "Too wide", "tone": "muted" },
+          { "at": 10, "label": "10 kHz", "note": "Too wide", "tone": "muted" }
         ]
       },
-      "onScreen": ["2.5 kHz: the narrowband figure", "5.0 kHz: maximum on a normal wideband VHF or UHF channel"],
-      "narration": "What is the maximum FM, or frequency modulation, deviation for voice on a normal wideband VHF or UHF channel? That's very high frequency or ultra high frequency. Don't be fooled by 2.5 kilohertz: that's the narrowband figure. On a normal wideband channel, the maximum deviation is 5.0 kilohertz. Remember 5.0 kilohertz."
+      "onScreen": ["5.0 kHz: maximum on a normal wideband VHF or UHF channel", "2.5 kHz: the narrowband figure", "7.5 and 10 kHz: too wide"],
+      "narration": "So how wide may the swing be? On a normal wideband VHF or UHF channel, 25 kilohertz wide, the maximum FM deviation for voice is 5.0 kilohertz. Don't be fooled by 2.5 kilohertz. That's the figure for narrowband channels, which are only 12.5 kilohertz wide, so their swing is cut in half. And 7.5 or 10 kilohertz would be too wide for either. For a normal wideband channel, remember 5.0 kilohertz."
     },
     {
-      "id": "s16",
+      "id": "s42",
+      "keyTopic": 78,
+      "template": "formula",
+      "params": {
+        "title": "Modulation-acceptance bandwidth test",
+        "formula": "Goal: the receiver's effective bandwidth",
+        "steps": ["1. Find the 12 dB SINAD point", "2. Set the RF level 6 dB above it", "3. Raise the deviation", "4. Stop when SINAD falls back to 12 dB"],
+        "answer": "That deviation shows the effective bandwidth"
+      },
+      "onScreen": ["Goal: the receiver's effective bandwidth", "RF level 6 dB above the 12 dB SINAD point", "Raise the deviation until SINAD falls back to 12 dB", "That deviation shows the effective bandwidth"],
+      "narration": "Deviation and SINAD come together in the next test. A receiver has filters that let in only so wide a signal. How wide a signal it can actually accept is its effective bandwidth, and a modulation-acceptance bandwidth test determines it. Step 1: find the 12 decibel SINAD point, as before. Step 2: set the RF level 6 decibels above it. That's 2 doublings, about 4 times the power, so signal strength can't be the problem. Step 3: slowly raise the deviation, making the signal wider. Step 4: once the signal is too wide for the receiver's filters, distortion rises and SINAD falls back to 12 decibels. Stop there: that deviation shows how wide a signal the receiver accepts. That's the purpose of the test: to determine the effective bandwidth of a communications receiver."
+    },
+    {
+      "id": "s43",
+      "keyTopic": 78,
+      "template": "block-diagram",
+      "params": {
+        "title": "Monitoring P25 with a scanner",
+        "columns": 2,
+        "blocks": [
+          { "id": "radio", "label": "P25 radio system", "note": "Sends voice as digital data" },
+          { "id": "dec", "label": "Scanner with P25 decoding", "note": "Turns the data back into voice" },
+          { "id": "plain", "label": "Scanner without P25 decoding", "note": "Hears only digital noise" }
+        ],
+        "links": [
+          { "from": "radio", "to": "dec", "label": "voice heard" },
+          { "from": "radio", "to": "plain", "label": "no voice", "struck": true }
+        ]
+      },
+      "onScreen": ["P25: voice sent as digital data", "Scanner with P25 decoding: voice heard", "Without P25 decoding: only digital noise"],
+      "narration": "Many modern radios are digital, and that changes how you monitor and measure them. P25, short for Project 25, is a digital radio standard widely used by public safety agencies, such as police and fire services. A P25 radio turns the voice into digital data, a stream of 1s and 0s, before sending it. A scanner, a receiver that hunts through channels for activity, can monitor a P25 system, but only if it has P25 decoding, which turns that data back into voice. Without decoding, all it hears is a harsh digital buzz. So the answer is yes, if the scanner has P25 decoding. Not regardless of decoding, and there's no such thing as P26 decoding."
+    },
+    {
+      "id": "s44",
       "keyTopic": 78,
       "template": "key-facts",
       "params": {
-        "title": "Scanners, CDMA and radio programming",
+        "title": "Measuring CDMA power",
         "items": [
-          "P25 system: a scanner can monitor it only if it has P25 decoding",
-          "CDMA power is not accurate on an analog power meter: the signal is noise-like",
-          "Infra-red: a common way to program radios without a wired connection"
+          "CDMA: many users share 1 channel, each with its own code",
+          "The signal is noise-like: its power changes constantly",
+          "An analog power meter can't follow it: the reading is not accurate",
+          "Use a power sensor designed for digital signals"
         ]
       },
-      "onScreen": ["P25: scanner needs P25 decoding", "CDMA: an analog power meter is not accurate", "Infra-red programming, no wires"],
-      "narration": "3 more measurement facts. A P25, or Project 25, radio system can be monitored with a scanner only if the scanner has P25 decoding. The RF power reading of a CDMA, or code division multiple access, radio is not accurate on an analog power meter. CDMA signals are noise-like, with constantly changing power, so the meter can't settle on a true reading. And infra-red communication is a common method to program radios without a wired connection."
+      "onScreen": ["CDMA: many users share 1 channel", "Noise-like, constantly changing power", "Analog power meter: not accurate", "Use a sensor designed for digital signals"],
+      "narration": "Digital signals can fool power meters too. CDMA, code division multiple access, lets many users share the same channel at the same time, each spread out and tagged with its own code. Added together, the result looks like noise, with power that jumps up and down constantly, and brief peaks far above the average. An analog power meter, like the wattmeter we met earlier, is built for a steady carrier, so its needle can't follow, and the reading is not accurate. That's the true statement on the exam: the RF power reading on a CDMA radio is not accurate on an analog power meter. Power can still be measured, with a sensor designed for digital signals."
     },
     {
-      "id": "s17",
-      "keyTopic": 79,
-      "template": "comparison-table",
-      "params": {
-        "title": "The right repair tool",
-        "columns": ["Job", "Use", "Why"],
-        "rows": [
-          ["Clean solder from plated-through holes", "Vacuum desoldering device", "Pulls out molten solder; hole and pads safe"],
-          ["Cut plastic wire ties", "Flush-cut diagonal pliers", "Cut flush: no sharp stub left"],
-          ["Remove wire insulation", "Thermal stripper", "Melts insulation; conductor not nicked"],
-          ["Melt solder without contact", "Hot gas bonder", "Stream of heated air or gas"]
-        ]
-      },
-      "onScreen": ["Plated-through holes: vacuum device", "Wire ties: flush-cut diagonal pliers", "Insulation: thermal stripper", "Non-contact melting: hot gas bonder"],
-      "narration": "Now repair procedures, and the right tool for each job. The preferred method of cleaning solder from plated-through circuit-board holes is a vacuum device. It pulls out the molten solder without damaging the hole or the pads. Cut plastic wire ties with flush-cut diagonal pliers, and cut flush, so no sharp stub is left behind. The ideal method of removing insulation from wire is the thermal stripper, which melts the insulation without nicking the conductor. And a hot gas bonder is used for non-contact melting of solder, with a stream of heated air or gas."
-    },
-    {
-      "id": "s18",
+      "id": "s45",
       "keyTopic": 79,
       "template": "key-facts",
       "params": {
-        "title": "Protect the parts, and protect yourself",
+        "title": "Words for the repair bench",
         "items": [
-          "Wrist strap for soldering or CMOS work: for the exam, less than 100,000 ohms",
-          "Its job: to prevent static electricity",
-          "Real straps include about 1 megohm in series, but the exam answer stays the same",
-          "Repairing circuit board assemblies: safety glasses matter most"
+          "Circuit board: copper tracks on a board join the parts",
+          "Solder: a soft mix of metals, melted to join parts to the board",
+          "Plated-through hole: a copper-lined hole joining both sides",
+          "Desoldering: removing old solder to free a part"
         ]
       },
-      "onScreen": ["Wrist strap: less than 100,000 ohms (exam answer)", "Prevents static electricity", "Real straps: about 1 megohm in series", "Safety glasses: most important"],
-      "narration": "Safety on the bench. When soldering or working with CMOS, or complementary metal oxide semiconductor, electronics, wear a wrist strap to prevent static electricity. For the exam, the wrist strap must have less than 100,000 ohms of resistance. Be aware that real straps include about 1 megohm in series, so you aren't solidly grounded if you touch a live voltage. But on the test, choose less than 100,000 ohms. And when repairing circuit board assemblies, the most important thing is to wear safety glasses."
+      "onScreen": ["Circuit board: copper tracks join the parts", "Solder: a soft mix of metals that melts low", "Plated-through hole: copper-lined, joins both sides", "Desoldering: removing old solder"],
+      "narration": "Now from measuring to fixing: repair procedures. A few words first. Most radio circuits are built on a circuit board, a stiff board with thin copper tracks that act as wires between the parts. Parts are fixed in place with solder, a soft mix of metals that melts at a low temperature. A soldering iron melts it, and it hardens into a joint that holds the part and conducts electricity. Many boards have plated-through holes, holes lined with copper that connect tracks on both sides of the board. To replace a part, you first remove the old solder, which is called desoldering. Each of these jobs has a right tool, and wrong ones that do damage."
     },
     {
-      "id": "s19",
+      "id": "s46",
+      "keyTopic": 79,
+      "template": "block-diagram",
+      "params": {
+        "title": "Static electricity and CMOS",
+        "columns": 2,
+        "blocks": [
+          { "id": "body", "label": "Your body", "note": "Builds up static charge as you move" },
+          { "id": "chip", "label": "CMOS chip", "note": "A static spark can punch through it" },
+          { "id": "strap", "label": "Wrist strap", "note": "Bleeds the charge away steadily" },
+          { "id": "gnd", "label": "Ground point", "note": "The charge drains away safely" }
+        ],
+        "links": [
+          { "from": "body", "to": "strap" },
+          { "from": "strap", "to": "gnd" },
+          { "from": "body", "to": "chip", "label": "spark", "struck": true }
+        ]
+      },
+      "onScreen": ["Your body builds up static charge", "CMOS chips are easily damaged by a spark", "A wrist strap bleeds the charge to ground"],
+      "narration": "Before you touch a board, think about static electricity. As you move, your body builds up electric charge, the same charge that snaps when you touch a doorknob. Some parts are easily damaged by it, above all CMOS chips, CMOS meaning complementary metal oxide semiconductor. Inside them are layers of insulation so thin that a static spark too small to feel can punch straight through and ruin the chip. The protection is a wrist strap: a band on your wrist, with a cord to a ground point on the bench. It bleeds your charge away steadily, so it never builds up into a spark. In the exam's words, its purpose is to prevent static electricity."
+    },
+    {
+      "id": "s47",
+      "keyTopic": 79,
+      "template": "key-facts",
+      "params": {
+        "title": "The wrist strap: the exam answer",
+        "items": [
+          "For the exam: less than 100,000 ohms of resistance",
+          "Low enough to drain the charge quickly",
+          "Real straps include about 1 megohm in series, for your safety",
+          "Connect to a proper ground point, not a water pipe"
+        ]
+      },
+      "onScreen": ["Wrist strap: less than 100,000 ohms (exam answer)", "Drains charge quickly", "Real straps: about 1 megohm in series", "A proper ground point, not a water pipe"],
+      "narration": "How much resistance should the strap have? For the exam, a wrist strap used when soldering or working with CMOS electronics must have less than 100,000 ohms of resistance, to prevent static electricity. Low resistance lets the charge drain away quickly. Real straps are made differently, though. They include about 1 megohm in series, so that if you touch a live voltage, you aren't solidly connected to ground, and the current through your body stays small. On the test, choose less than 100,000 ohms. The other choices are plainly wrong: a strap can be used with TTL, transistor transistor logic, another family of chips; it connects to a proper ground point, not a water pipe; and it works fine with anti-static floor mats."
+    },
+    {
+      "id": "s48",
+      "keyTopic": 79,
+      "template": "comparison-table",
+      "params": {
+        "title": "Clearing a plated-through hole",
+        "columns": ["Method", "Result"],
+        "rows": [
+          ["Vacuum device", "Pulls out molten solder; hole and pads safe"],
+          ["Dental pick", "Can tear the copper plating"],
+          ["Iron tip above 900 °F", "Too hot: lifts the pads"],
+          ["Air jet", "Sprays solder across the board"]
+        ]
+      },
+      "onScreen": ["Vacuum device: the preferred method", "Dental pick: tears the plating", "Iron above 900 °F: lifts the pads", "Air jet: sprays solder"],
+      "narration": "Strap on, and now the first repair job: removing a part from a plated-through hole. The old solder fills the hole, and all of it has to come out. The preferred method is a vacuum device, either a hand-held solder sucker or a powered desoldering station. You melt the solder, and the vacuum pulls it out of the hole without damaging the copper lining or the pads, the small copper rings around the hole. The trap answers each cause damage. A dental pick can tear the plating. An iron tip hotter than 900 degrees Fahrenheit can lift the pads off the board. And an air jet sprays molten solder across the board."
+    },
+    {
+      "id": "s49",
+      "keyTopic": 79,
+      "template": "key-facts",
+      "params": {
+        "title": "The hot gas bonder",
+        "items": [
+          "A stream of heated air or gas melts the solder",
+          "Non-contact: no tool touches the part",
+          "Suits tiny surface-mount parts"
+        ]
+      },
+      "onScreen": ["Heated air or gas melts the solder", "Non-contact melting of solder", "For tiny surface-mount parts"],
+      "narration": "Melting solder usually means touching it with a hot iron. But some parts are too small or delicate for that, such as the tiny surface-mount parts on modern boards, soldered flat onto the surface instead of through holes. For those, there's the hot gas bonder. It directs a stream of heated air or gas onto the joint, and the solder melts without any tool touching the part. So a hot gas bonder is used for non-contact melting of solder. It's not for applying solder to the iron's tip, not for soldering both sides of a board at once, and not for curing adhesives."
+    },
+    {
+      "id": "s50",
+      "keyTopic": 79,
+      "template": "comparison-table",
+      "params": {
+        "title": "Removing insulation from wire",
+        "columns": ["Method", "Result"],
+        "rows": [
+          ["Thermal stripper", "Melts the insulation: no blade, no nick"],
+          ["Pocket knife", "A blade can nick the conductor"],
+          ["Mechanical wire stripper", "A blade can nick the conductor"],
+          ["Scissor-action stripping tool", "A blade can nick the conductor"]
+        ]
+      },
+      "onScreen": ["Thermal stripper: melts the insulation, no nick", "Pocket knife: can nick the conductor", "Mechanical stripper: can nick the conductor", "Scissor-action tool: can nick the conductor"],
+      "narration": "Next, wire work. The plastic insulation around a wire has to come off before you can connect it. The ideal method is the thermal stripper, which melts through the insulation with a heated element. There's no blade, so nothing nicks the copper conductor inside. Why does a nick matter? It leaves a thin, weak spot that can snap later from vibration or bending. That's why the pocket knife, the mechanical wire stripper and the scissor action stripping tool are the wrong answers: each one cuts with a blade."
+    },
+    {
+      "id": "s51",
+      "keyTopic": 79,
+      "template": "key-facts",
+      "params": {
+        "title": "Cutting plastic wire ties",
+        "items": [
+          "Wire ties: plastic straps that hold wires in bundles",
+          "Cut with flush-cut diagonal pliers, and cut flush",
+          "Flush: level with the tie's head, so no sharp stub is left",
+          "Not semi-flush pliers, scissors or a knife"
+        ]
+      },
+      "onScreen": ["Wire ties hold wires in bundles", "Flush-cut diagonal pliers, cut flush", "No sharp stub left", "Not semi-flush pliers, scissors or a knife"],
+      "narration": "Once wires are connected, they're bundled neatly with plastic wire ties, straps that loop around the bundle and lock. After a tie is pulled tight, its long tail is cut off. The proper way to cut plastic wire ties is with flush-cut diagonal pliers, and cut flush. Diagonal pliers, or side cutters, have short angled blades, and flush-cut ones leave a smooth, level end. Cut right at the tie's head, and no sharp stub is left to cut hands or scrape nearby insulation. Semi-flush pliers leave a small sharp point, and scissors or a knife can slip and damage the cable."
+    },
+    {
+      "id": "s52",
+      "keyTopic": 79,
+      "template": "key-facts",
+      "params": {
+        "title": "Safety first: glasses on",
+        "items": [
+          "Repairing circuit boards: most important is to wear safety glasses",
+          "Clipped wire ends fly off the cutters",
+          "Molten solder and flux can spatter",
+          "An eye injury can't be undone",
+          "Holding fixture, solder bridges, dental pick: technique, not safety"
+        ]
+      },
+      "onScreen": ["Most important: wear safety glasses", "Clipped wire ends fly", "Solder and flux spatter", "Eye injuries can't be undone", "The other choices are technique, not safety"],
+      "narration": "Above all the techniques, there's 1 rule that protects you. When repairing circuit board assemblies, the most important thing is to wear safety glasses. Clipped wire ends fly off the cutters at speed. Molten solder can spatter, along with flux, the cleaning chemical inside solder that helps it flow, and so can cleaning solvents. Any of these can hit an eye, and an eye injury can't be undone. The other choices are about technique, not safety: using a holding fixture, a clamp that holds the board, bridging broken tracks with solder, and clearing holes with a dental pick, which, as we saw, can tear the plating. Safety glasses come first."
+    },
+    {
+      "id": "s53",
       "keyTopic": 80,
       "template": "comparison-table",
       "params": {
-        "title": "Cable color codes",
-        "columns": ["Cable", "Pairs", "Color"],
+        "title": "Color codes for pair cables",
+        "columns": ["Pairs", "Main color", "Partner colors"],
         "rows": [
-          ["100-pair", "1–25", "Blue binder"],
-          ["100-pair", "26–50", "Orange binder"],
-          ["100-pair", "51–75", "Green binder"],
-          ["100-pair", "76–100", "Brown binder"],
-          ["25 pair switchboard", "Pair 6", "Red/Blue, Blue/Red"]
+          ["1–5", "White", "Blue, orange, green, brown, slate"],
+          ["6–10", "Red", "Blue, orange, green, brown, slate"],
+          ["Then", "Black, yellow, violet", "Same 5 partners: 25 pairs in all"],
+          ["Pair 6", "Red/Blue, Blue/Red", "The first pair of the red group"]
         ]
       },
-      "onScreen": ["100-pair binders: blue 1–25, orange 26–50", "Green 51–75, brown 76–100", "25 pair switchboard cable, pair 6: Red/Blue, Blue/Red"],
-      "narration": "Installation codes start with cable colors. A 100-pair cable is split into binder groups of 25 pairs. Pairs 1 to 25 are in the blue binder, 26 to 50 orange, 51 to 75 green, and 76 to 100 brown. So the binder for pairs 51 to 75 is green. In a 25 pair switchboard cable, as found in building telecommunications, the 6th pair color code is red blue, blue red, because pair 6 starts the red group."
+      "onScreen": ["Pairs 1–5: white with blue, orange, green, brown, slate", "Pairs 6–10: red with the same 5 colors", "Then black, yellow, violet: 25 pairs", "Pair 6: Red/Blue, Blue/Red"],
+      "narration": "Repaired equipment has to be installed properly, so on to installation codes and procedures. In buildings, telephone and data wiring uses pair cables: bundles of wire pairs, each pair twisted together. So that each pair can be told apart, it gets 2 colors. 5 main colors, white, red, black, yellow and violet, each combine with 5 partner colors, blue, orange, green, brown and slate, a grey. 5 times 5 makes 25 pairs. Pairs 1 to 5 are white with each partner in turn. Pair 6 starts the red group, with blue. So in a 25 pair switchboard cable, as found in building telecommunications, the 6th pair color code is red blue, blue red: 1 wire red striped with blue, its partner blue striped with red."
     },
     {
-      "id": "s20",
+      "id": "s54",
+      "keyTopic": 80,
+      "template": "band-strip",
+      "params": {
+        "title": "Binder groups in a 100-pair cable",
+        "min": 1,
+        "max": 4,
+        "scale": "even",
+        "marks": [
+          { "at": 1, "label": "Blue binder", "note": "Pairs 1–25" },
+          { "at": 2, "label": "Orange binder", "note": "Pairs 26–50" },
+          { "at": 3, "label": "Green binder", "note": "Pairs 51–75", "tone": "key" },
+          { "at": 4, "label": "Brown binder", "note": "Pairs 76–100" }
+        ]
+      },
+      "onScreen": ["Blue: pairs 1–25", "Orange: pairs 26–50", "Green: pairs 51–75", "Brown: pairs 76–100"],
+      "narration": "Bigger cables repeat that 25 pair pattern. A 100-pair cable is split into 4 groups of 25 pairs, and each group is wrapped in a colored ribbon called a binder, following the partner colors in order. Pairs 1 to 25 are in the blue binder, 26 to 50 orange, 51 to 75 green, and 76 to 100 brown. So the binder for pairs 51 to 75 is green. Learn the order, blue, orange, green, brown, and you can find any group."
+    },
+    {
+      "id": "s55",
       "keyTopic": 80,
       "template": "key-facts",
       "params": {
-        "title": "Installing it right",
+        "title": "Routing cables in a vehicle",
         "items": [
-          "Mobile units: route cables so they don't interfere with normal vehicle operation",
-          "Radio towers: no white or translucent tie wraps; the Sun's UV destroys them fast",
-          "Base station rack: plumb to just inside the bubble on a level",
-          "SSB automatic tuner to an insulated backstay: GTO-15 high-voltage cable"
+          "Most important: cables must not interfere with normal vehicle operation",
+          "Keep clear of pedals, steering, airbags and seat tracks",
+          "Not under floor mats, where they get crushed"
         ]
       },
-      "onScreen": ["Mobile cables: don't interfere with the vehicle", "No white or translucent ties on towers", "Rack plumb to just inside the bubble", "GTO-15 cable from the SSB tuner to the backstay"],
-      "narration": "4 installation rules. When routing cables in a mobile unit, the most important thing is making sure the radio and electronics cables do not interfere with the normal operation of the vehicle. On a radio tower, don't use white or translucent plastic tie wraps: UV, or ultraviolet, radiation from the Sun deteriorates that plastic very quickly. A single base station radio rack should be installed plumb, to just inside the bubble on a level. And connect an SSB automatic tuner to an insulated backstay with GTO-15 high-voltage cable, because that lead carries very high RF voltage."
+      "onScreen": ["Most important: don't interfere with the vehicle's normal operation", "Clear of pedals, steering, airbags and seat tracks", "Not under floor mats"],
+      "narration": "In buildings, cables follow color codes. In a vehicle, the big concern is safety. This is a mobile installation: a radio in a car, truck or other vehicle. Cables have to run from the radio to the antenna and the battery, and how you route them matters. The most important thing is assuring that the radio and electronics cables do not interfere with the normal operation of the vehicle. Keep them clear of pedals, steering, airbags, seat tracks and anything hot or moving. A cable snagged in a pedal could cause a crash. Cutting cables to exact length, making the radio reachable from outside, or hiding cables under floor mats, where they get crushed and chafed, are the wrong answers."
     },
     {
-      "id": "s21",
+      "id": "s56",
+      "keyTopic": 80,
+      "template": "comparison-table",
+      "params": {
+        "title": "Tie wraps on a radio tower",
+        "columns": ["Tie wrap", "In sunlight"],
+        "rows": [
+          ["White or translucent", "UV makes the plastic brittle: fails quickly"],
+          ["Black", "Carbon black blocks UV: lasts for years"]
+        ]
+      },
+      "onScreen": ["White or translucent ties: UV from the Sun destroys them quickly", "Black ties: carbon black blocks UV"],
+      "narration": "From vehicles up to towers. Cables on a radio tower are held with plastic tie wraps, the same kind of wire ties, and their color matters. Don't use white or translucent tie wraps. The reason: UV, ultraviolet radiation from the Sun, deteriorates that plastic very quickly, because ordinary white or clear plastic has nothing in it to block UV. It turns brittle and snaps, and the cables come loose. Black tie wraps contain carbon black, which blocks UV, so they last for years outdoors. The traps offer odd reasons: wasps attracted to white, approval by the FAA, the Federal Aviation Administration, or electrolysis. The real reason is the Sun's UV."
+    },
+    {
+      "id": "s57",
+      "keyTopic": 80,
+      "template": "key-facts",
+      "params": {
+        "title": "Standing a rack plumb",
+        "items": [
+          "Plumb: perfectly upright",
+          "Check it with a spirit level: a bubble in a tube of liquid",
+          "Install a base station rack plumb to just inside the bubble"
+        ]
+      },
+      "onScreen": ["Plumb: perfectly upright", "Spirit level: a bubble between 2 marks", "Rack plumb to just inside the bubble"],
+      "narration": "Back down from the tower, inside the equipment room, base station radios, the fixed radios that stay in one place, mount in a tall metal frame called a rack. A rack must stand plumb, meaning perfectly upright, so its weight sits evenly on its base and its doors and equipment hang properly. You check it with a spirit level, a tube of liquid with an air bubble inside, between 2 marks. When the bubble sits just inside the marks, the rack is plumb within practical limits. So a single base station radio rack should be installed plumb to just inside the bubble on a level. Just outside the bubble means it's leaning, and no tolerance at all isn't the answer either."
+    },
+    {
+      "id": "s58",
+      "keyTopic": 80,
+      "template": "equipment-card",
+      "params": {
+        "title": "SSB tuner to an insulated backstay",
+        "device": "antenna",
+        "callouts": [
+          { "label": "Backstay section, cut free by insulators: the antenna", "at": "whip" },
+          { "label": "SSB automatic tuner: matches the antenna to the radio", "at": "coupler" },
+          { "label": "Coax such as RG8U or RG213: radio to tuner only", "at": "coax" },
+          { "label": "GTO-15 high-voltage cable: tuner up to the backstay", "at": "insulator" }
+        ]
+      },
+      "onScreen": ["Insulated backstay section: the antenna", "SSB automatic tuner", "Coax: radio to tuner", "GTO-15 high-voltage cable: tuner to backstay"],
+      "narration": "Last installation job, on a sailboat. A backstay is the wire rope that braces the mast from the back of the boat. Insulators, which block electricity, near each end cut a section of it free, so that section can serve as the long antenna an HF, high frequency, SSB radio needs. Between them sits an SSB automatic tuner, a box that matches the antenna to the radio on each frequency. Coax runs from the radio to the tuner. But the short lead from the tuner to the backstay feeds the antenna directly and carries very high RF voltage, often thousands of volts, enough to spark through ordinary insulation. So that lead uses GTO-15 high-voltage cable, a heavily insulated single wire. Not RG8U or RG213 coax, and not 16-gauge 2-conductor wire."
+    },
+    {
+      "id": "s59",
       "keyTopic": 81,
       "template": "waveform",
       "params": {
@@ -360,54 +1005,192 @@
         "yAxis": "amplitude",
         "labels": [
           "Fault: a steady 75 W as soon as the transmitter is keyed",
-          "Probable defect: the carrier is being transmitted",
-          "Normal SSB voice: carrier suppressed, output follows the speech"
+          "Normal SSB: carrier suppressed, output follows the voice",
+          "Probable defect: the carrier is being transmitted"
         ]
       },
-      "onScreen": ["Steady 75 W when keyed", "Probable defect: carrier transmitted", "SSB voice: carrier suppressed"],
-      "narration": "On to troubleshooting. You key a 150 watt marine SSB HF, or high frequency, transceiver, and the meter shows a steady output of 75 watts. What does that indicate? A probable defect causing the carrier to be transmitted. In normal SSB voice operation the carrier is suppressed, so with no speech the output stays near zero, and it rises and falls with your voice. A steady carrier, like the tall amber line here, means something is wrong."
+      "onScreen": ["Steady 75 W when keyed", "Normal SSB: carrier suppressed", "Probable defect: the carrier is transmitted"],
+      "narration": "That SSB radio leads into the last part of the job, troubleshooting: finding out why equipment isn't working right. Know what normal looks like, spot the difference, then reason out the cause. Here's an exam case: a 150 watt marine SSB HF transceiver, a combined transmitter and receiver. You key it, meaning switch it to transmit, and before you say a word, the wattmeter shows a steady 75 watts. Remember, SSB suppresses the carrier, so with no speech the output should be near 0, rising and falling with your voice. A steady output means a carrier is being sent. So there's probably a defect in the system causing the carrier to be transmitted. It's not normal operation, and it isn't a missing sideband or both sidebands being sent."
     },
     {
-      "id": "s22",
+      "id": "s60",
       "keyTopic": 81,
       "template": "key-facts",
       "params": {
-        "title": "Quick fixes and checks",
+        "title": "Refresher: the capacitor and frequency",
         "items": [
-          "Elevator tachometer interference: add a .01 µF capacitor across the motor/tachometer leads",
-          "The capacitor bypasses RF without loading the circuit",
-          "Programming portable or mobile radios: commonly done with a laptop computer",
-          "Software-defined transceiver: the built-in self-test is the best quick overall check"
+          "Capacitor: 2 metal plates separated by an insulator",
+          "Blocks steady current",
+          "Passes high frequencies easily, low frequencies poorly",
+          "Small capacitor: almost a short circuit for RF, nearly invisible to slow signals"
         ]
       },
-      "onScreen": ["Elevator tachometer: .01 µF across the leads", "Bypasses RF without loading", "Program radios with a laptop", "Software-defined transceiver: built-in self-test"],
-      "narration": "A few common fixes and checks. If a nearby radio system interferes with a building elevator's tachometer, a common fix is to add a .01 microfarad capacitor across the motor and tachometer leads. It bypasses RF without loading the circuit. A common method of programming portable or mobile radios is to use a laptop computer. And for the best quick overall evaluation of a software-defined transceiver's operational condition, use its built-in self-test feature."
+      "onScreen": ["Capacitor: 2 plates and an insulator", "Blocks steady current", "Passes high frequencies easily", "Small capacitor: a path for RF only"],
+      "narration": "The next fault needs 1 part explained first: the capacitor. A capacitor is 2 metal plates separated by a thin insulator. Steady current can't cross the gap, but an alternating signal can pass through by charging and discharging the plates, and the faster it alternates, the more easily it passes. A capacitor's opposition to alternating current is called reactance, and it falls as the frequency rises. So a small capacitor acts nearly like a short circuit, an almost free path, for RF, which alternates millions of times a second, while slow signals hardly notice it. That makes it a handy way to drain RF off a wire while leaving a slow signal on that wire alone."
     },
     {
-      "id": "s23",
+      "id": "s61",
+      "keyTopic": 81,
+      "template": "block-diagram",
+      "params": {
+        "title": "Fixing elevator tachometer interference",
+        "columns": 4,
+        "blocks": [
+          { "id": "tx", "label": "Nearby radio system", "note": "Its RF is picked up on the wires" },
+          { "id": "leads", "label": "Motor/tachometer leads", "note": "Carry the slow speed signal" },
+          { "id": "cap", "label": ".01 µF capacitor across leads", "note": "Bypasses RF without loading the circuit" },
+          { "id": "tach", "label": "Tachometer", "note": "Reads the speed correctly again" }
+        ],
+        "links": [
+          { "from": "tx", "to": "leads", "label": "RF pickup" },
+          { "from": "leads", "to": "cap" },
+          { "from": "cap", "to": "tach" }
+        ]
+      },
+      "onScreen": ["Nearby radio causes interference", "Motor and tachometer leads pick up RF", "Add a .01 µF capacitor across the leads", "Bypasses RF without loading the circuit"],
+      "narration": "Now the case. A building's elevator uses a tachometer, a sensor that reports how fast the motor turns. Its wires pick up RF from a nearby radio system, like an antenna. A common fix is to add a .01 microfarad capacitor across the motor and tachometer leads, bridging 1 wire to the other. A microfarad is a millionth of a farad, the unit that measures a capacitor's size, so this is a small one. To RF it's nearly a short circuit, so the RF is drained away, or bypassed, while the slow tachometer signal hardly notices it. It bypasses RF without loading the circuit. A 200 microfarad capacitor is far bigger, so it would pass the slow signal too, loading the circuit heavily. Replacing the tachometer or adding a series resistor doesn't remove the RF."
+    },
+    {
+      "id": "s62",
+      "keyTopic": 81,
+      "template": "block-diagram",
+      "params": {
+        "title": "Programming a radio",
+        "columns": 3,
+        "blocks": [
+          { "id": "laptop", "label": "Laptop computer", "note": "Runs the maker's programming software" },
+          { "id": "cable", "label": "Programming cable", "note": "Or a programming interface" },
+          { "id": "radio", "label": "Portable or mobile radio", "note": "Channels, tones and features loaded" }
+        ],
+        "links": [
+          { "from": "laptop", "to": "cable" },
+          { "from": "cable", "to": "radio" }
+        ]
+      },
+      "onScreen": ["Laptop computer with the maker's software", "Programming cable", "Portable or mobile radio"],
+      "narration": "Troubleshooting often ends with reprogramming. Modern radios are small computers, and their settings, the channels, tones and features, are loaded into memory. That's called programming. A common method of programming portable or mobile radios is to use a laptop computer, running the maker's programming software, connected to the radio through a programming cable. The trap answers are test equipment, not programming tools: a dummy load, which is a resistor that stands in for an antenna, a wattmeter, and a signal generator."
+    },
+    {
+      "id": "s63",
+      "keyTopic": 78,
+      "template": "key-facts",
+      "params": {
+        "title": "Programming without a cable",
+        "items": [
+          "Infra-red communication: a common wireless method",
+          "Works like a TV remote control",
+          "From a computer interface or from another radio",
+          "Not ultraviolet, and not by satellite"
+        ]
+      },
+      "onScreen": ["Infra-red communication", "Like a TV remote", "From a computer interface or another radio", "Not ultraviolet or satellite"],
+      "narration": "What if there's no wired connection? Some radios have an infra-red port, a small window that sends and receives invisible light, just like a TV remote control. Programming data can travel that way from a computer interface, or from 1 radio to another. So infra-red communication is a common method to program radios without a wired connection. Watch the trap that swaps in ultraviolet: radios don't program each other with ultraviolet light, and the maker doesn't send programming down by satellite."
+    },
+    {
+      "id": "s64",
+      "keyTopic": 81,
+      "template": "key-facts",
+      "params": {
+        "title": "Quick check: the built-in self-test",
+        "items": [
+          "Software-defined transceiver: software does much of the radio's work",
+          "Built-in self-test: checks its own circuits and reports faults",
+          "The best quick overall evaluation of its condition",
+          "No FCC rule forbids self-tests in commercial radios"
+        ]
+      },
+      "onScreen": ["Software-defined transceiver", "Built-in self-test checks and reports faults", "Best quick overall evaluation", "Self-tests are allowed"],
+      "narration": "Some radios take the computer idea further and do most of their work in software. In a software-defined transceiver, jobs that once needed separate circuits, such as filtering and recovering the audio, are done by a computer program. Radios like this usually include a built-in self-test feature that checks the main circuits and reports any faults. For a quick overall evaluation of the radio's operational condition, then, the best way is to use the built-in self-test feature. A full bench check with a spectrum analyzer and service monitor takes far longer. And despite what 1 of the traps claims, no FCC, Federal Communications Commission, rule forbids self-tests in commercial radios."
+    },
+    {
+      "id": "s65",
       "keyTopic": 81,
       "template": "equipment-card",
       "params": {
-        "title": "Installing a DSC VHF radio",
+        "title": "DSC on a marine VHF radio",
         "device": "transceiver",
         "callouts": [
-          { "label": "GPS sentence correct? Look for latitude and longitude on the display", "at": "display" },
-          { "label": "Enter the registered 9-digit MMSI", "at": "keypad" },
-          { "label": "DSC emergency signaling is activated by the registered 9-digit MMSI", "at": "distress" }
+          { "label": "Distress button: sends a digital distress alert", "at": "distress" },
+          { "label": "MMSI: the vessel's identity number, entered here", "at": "keypad" },
+          { "label": "GPS connection: supplies the position", "at": "panel" }
         ]
       },
-      "onScreen": ["GPS check: latitude and longitude on the display", "Enter the registered 9-digit MMSI", "DSC distress activated by the MMSI"],
-      "narration": "Last, a marine DSC, or digital selective calling, VHF radio. After connecting the GPS, the Global Positioning System, how does the installer verify that the correct GPS sentence is reaching the radio? Look for latitude and longitude on the display. And the DSC emergency signaling function is activated by input of a registered 9-digit MMSI, the Maritime Mobile Service Identity. Until that MMSI is entered, the DSC emergency function isn't active."
+      "onScreen": ["DSC: digital selective calling", "Distress button sends a digital alert", "MMSI: who you are", "GPS: where you are"],
+      "narration": "Our last cases come from a boat. A modern marine VHF radio includes DSC, digital selective calling. Instead of a voice call, it sends a short digital message, addressed to 1 particular station or, in an emergency, to every station in range. Press and hold the red distress button, and the radio sends a distress alert that says who you are and where you are. Who you are comes from a number called the MMSI, the Maritime Mobile Service Identity, which works like a phone number for the vessel. Where you are comes from GPS, the Global Positioning System, connected to the back of the radio."
+    },
+    {
+      "id": "s66",
+      "keyTopic": 81,
+      "template": "key-facts",
+      "params": {
+        "title": "Checking the GPS connection",
+        "items": [
+          "GPS sends its position as lines of data called sentences",
+          "Correct sentence: latitude and longitude appear on the display",
+          "No position shown: check the wiring and the sentence format",
+          "Never press the distress button to test"
+        ]
+      },
+      "onScreen": ["GPS data comes in sentences", "Verify: latitude and longitude on the display", "No position: check wiring and format", "Never test with the distress button"],
+      "narration": "So after connecting the GPS, an installer has to make sure the radio is getting the right data. A GPS receiver sends its position as short lines of text called sentences, in a standard format. Latitude says how far north or south you are, and longitude how far east or west. How do you verify that the correct GPS sentence reaches the DSC radio? Look for latitude and longitude on the display. If they appear, the radio understands the data. If not, check the wiring and the sentence format. Never press the distress button to test it. And the exam's answer isn't a GPS confirmation readout or a position report over the air."
+    },
+    {
+      "id": "s67",
+      "keyTopic": 81,
+      "template": "block-diagram",
+      "params": {
+        "title": "Activating DSC: the 9-digit MMSI",
+        "columns": 3,
+        "blocks": [
+          { "id": "mmsi", "label": "Registered 9-digit MMSI entered", "note": "The vessel's identity" },
+          { "id": "dsc", "label": "DSC emergency function active", "note": "Distress alerts can now be sent" },
+          { "id": "alert", "label": "Alert names the vessel", "note": "Position added from the GPS" }
+        ],
+        "links": [
+          { "from": "mmsi", "to": "dsc" },
+          { "from": "dsc", "to": "alert" }
+        ]
+      },
+      "onScreen": ["Enter the registered 9-digit MMSI", "The DSC emergency function is activated", "Alerts name the vessel, with GPS position"],
+      "narration": "There's 1 more step before DSC can call for help. Every DSC message identifies the sender by its MMSI, so the distress function stays disabled until a number is entered. The DSC emergency signaling function on a marine VHF is activated by input of a registered 9-digit MMSI. Registered means the number has been officially assigned to that vessel. A GPS input is strongly recommended, so alerts include the position, but it's the MMSI that switches DSC on. A separate 12 volt supply or a second antenna isn't needed. Remember the 9-digit MMSI."
+    },
+    {
+      "id": "s68",
+      "keyTopic": 81,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to take away",
+        "items": [
+          "Meter movement: 0.05 V for half scale; multiplier for volts, shunt for amps",
+          "Oscilloscope: time domain; spectrum analyzer: frequency domain",
+          "Receiver sensitivity: 12 dB of SINAD; wideband FM deviation: 5.0 kHz",
+          "Wrist strap, for the exam: less than 100,000 ohms",
+          "DSC: activated by a registered 9-digit MMSI"
+        ]
+      },
+      "onScreen": ["0.05 volts; multiplier for volts, shunt for amps", "Scope: time domain; analyzer: frequency domain", "12 dB of SINAD; 5.0 kHz deviation", "Wrist strap: less than 100,000 ohms", "DSC: registered 9-digit MMSI"],
+      "narration": "Let's wrap up the workbench. Meters run on Ohm's law: half scale on a 50 microampere, 2,000 ohm movement takes 0.05 volts, a series multiplier extends a voltmeter, and a parallel shunt extends an ammeter. The oscilloscope shows signals in the time domain, and the spectrum analyzer in the frequency domain. A receiver's sensitivity is measured at 12 decibels of SINAD, and wideband FM voice deviation tops out at 5.0 kilohertz. For the exam, a wrist strap has less than 100,000 ohms. And a marine DSC radio's emergency function comes alive only when its registered 9-digit MMSI is entered. Now let's check what you remember."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [74] },
-    { "after": "s7", "keyTopics": [75] },
-    { "after": "s10", "keyTopics": [76] },
-    { "after": "s13", "keyTopics": [77] },
-    { "after": "s16", "keyTopics": [78] },
-    { "after": "s20", "keyTopics": [79, 80] },
-    { "after": "s23", "keyTopics": [81] }
+    { "after": "s4", "keyTopics": [74], "questions": ["3-74L1"] },
+    { "after": "s8", "keyTopics": [74], "questions": ["3-74L2", "3-74L3"] },
+    { "after": "s12", "keyTopics": [74], "questions": ["3-74L4", "3-74L5", "3-74L6"] },
+    { "after": "s16", "keyTopics": [75], "questions": ["3-75L1", "3-75L2", "3-75L5"] },
+    { "after": "s20", "keyTopics": [75], "questions": ["3-75L3", "3-75L4"] },
+    { "after": "s24", "keyTopics": [75], "questions": ["3-75L6"] },
+    { "after": "s28", "keyTopics": [76], "questions": ["3-76L2", "3-76L5", "3-76L1"] },
+    { "after": "s32", "keyTopics": [76], "questions": ["3-76L3", "3-76L4", "3-76L6"] },
+    { "after": "s36", "keyTopics": [77], "questions": ["3-77L1", "3-77L4", "3-77L2", "3-77L3", "3-77L5"] },
+    { "after": "s39", "keyTopics": [77, 78], "questions": ["3-77L6", "3-78L4"] },
+    { "after": "s43", "keyTopics": [78], "questions": ["3-78L6", "3-78L5", "3-78L1"] },
+    { "after": "s47", "keyTopics": [78, 79], "questions": ["3-78L2", "3-79L1"] },
+    { "after": "s51", "keyTopics": [79], "questions": ["3-79L2", "3-79L5", "3-79L4", "3-79L3"] },
+    { "after": "s55", "keyTopics": [79, 80], "questions": ["3-79L6", "3-80L4", "3-80L1", "3-80L2"] },
+    { "after": "s58", "keyTopics": [80], "questions": ["3-80L3", "3-80L5", "3-80L6"] },
+    { "after": "s61", "keyTopics": [81], "questions": ["3-81L1", "3-81L2"] },
+    { "after": "s64", "keyTopics": [78, 81], "questions": ["3-81L3", "3-78L3", "3-81L4"] },
+    { "after": "s68", "keyTopics": [81], "questions": ["3-81L5", "3-81L6"] }
   ],
   "video": null
 }

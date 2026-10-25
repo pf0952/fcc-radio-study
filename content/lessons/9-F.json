@@ -11,80 +11,184 @@
       "params": {
         "kicker": "Element 9 · Subelement F",
         "title": "Other Equipment and Networks",
-        "subtitle": "Computers, Ethernet, NMEA 0183 and NMEA 2000, depth finders, gyro compasses, SSAS, AIS, electronic charts, auto pilots and data recorders."
+        "subtitle": "Computers, Ethernet, the NMEA 0183 and NMEA 2000 ship networks, and the bridge instruments that use them."
       },
-      "onScreen": ["Other Equipment and Networks", "Computers, networks, NMEA, navigation equipment and data recorders"],
-      "narration": "This lesson covers the other electronics you will maintain aboard ship. We'll start with troubleshooting computers and Ethernet networks. Then come the 2 marine data networks from the National Marine Electronics Association, or NMEA: NMEA 0183 and NMEA 2000. After that: depth finders, gyro compasses, the Ship Security Alert System and the Automatic Identification System. We finish with electronic charts, auto pilots and the Vessel Data Recorder. First up, computers."
+      "onScreen": ["Other Equipment and Networks", "Computers, Ethernet, NMEA 0183 and NMEA 2000, and bridge instruments"],
+      "narration": "A GMDSS maintainer, the technician who keeps a ship's Global Maritime Distress and Safety System working, looks after more than radios. The same person gets called when the office computer won't start or the bridge network drops out. This lesson covers that other equipment. First, computers and the networks that link them. Then NMEA 0183 and NMEA 2000, named after the National Marine Electronics Association: the 2 networks that let a ship's instruments share data. After that, the instruments themselves, from depth finders and compasses to the auto pilot and the data recorder. By the end you'll be able to troubleshoot common computer faults, explain how ship networks are wired, and recall the numbers the exam asks about."
     },
     {
       "id": "s2",
       "keyTopic": 41,
-      "template": "key-facts",
+      "template": "block-diagram",
       "params": {
-        "title": "Printer won't print, or no display?",
-        "items": [
-          "Printer won't print: frozen printer queue, out of toner or ink, or a paper jam",
-          "Not a likely reason: a defective graphics card, which only drives the monitor",
-          "No display: bad video card, bad 15 pin video connector, or no power to the monitor",
-          "Not the cause: a CD-ROM drive or a fragmented hard drive"
+        "title": "Inside a computer: follow the path",
+        "columns": 4,
+        "blocks": [
+          { "id": "pc", "label": "Computer", "note": "Processor, memory and hard drive" },
+          { "id": "os", "label": "Operating system", "note": "The main program, such as Windows" },
+          { "id": "queue", "label": "Printer queue", "note": "Print jobs waiting their turn" },
+          { "id": "printer", "label": "Printer" },
+          { "id": "video", "label": "Video card", "note": "Also called the graphics card" },
+          { "id": "monitor", "label": "Monitor", "note": "Shows the picture" }
+        ],
+        "links": [
+          { "from": "pc", "to": "os" },
+          { "from": "os", "to": "queue" },
+          { "from": "queue", "to": "printer" },
+          { "from": "pc", "to": "video" },
+          { "from": "video", "to": "monitor", "label": "15 pin video connector" }
         ]
       },
-      "onScreen": ["Printer: frozen queue, no toner or ink, paper jam", "Not the graphics card", "No display: video card, 15 pin video connector, monitor power", "Not a CD-ROM drive or a fragmented hard drive"],
-      "narration": "2 quick troubleshooting questions. First, a printer won't print a document. Likely reasons are a frozen printer queue, a printer out of toner or ink, or a paper jam. A defective graphics card is not a likely reason, because the graphics card only drives the monitor. Second, there's no display on the monitor. The most likely causes are a bad video card, a bad 15 pin video connector, or no power to the monitor. A CD-ROM drive or a fragmented hard drive has nothing to do with it."
+      "onScreen": ["Computer: processor, memory, hard drive", "Printer path: operating system, printer queue, printer", "Picture path: video card, 15 pin video connector, monitor"],
+      "narration": "First, the computer, because troubleshooting one is mostly a matter of following a path. The processor is the chip that does the work. The memory, called RAM for random access memory, holds what it's working on, and the hard drive keeps files even with the power off. The operating system, such as Windows, is the main program that runs everything. A printout follows one path: through the operating system's printer queue, the waiting line of print jobs, and out to the printer. The picture follows another: the video card, also called the graphics card, makes the picture signal and sends it through a 15 pin video connector to the monitor. When something fails, first ask which path it's on."
     },
     {
       "id": "s3",
       "keyTopic": 41,
+      "template": "key-facts",
+      "params": {
+        "title": "The printer won't print",
+        "items": ["Frozen printer queue: jobs stuck in the waiting line", "Out of toner or ink", "A paper jam", "Not a likely reason: a defective graphics card"]
+      },
+      "onScreen": ["Frozen printer queue", "Out of toner or ink", "Paper jam", "Not a likely reason: a defective graphics card"],
+      "narration": "So the printer won't print a document. Walk along the printer path. The printer queue may be frozen: one stuck job blocks the line, so nothing behind it moves. The printer may be out of toner or ink, the powder or liquid that makes the marks. Or there may be a paper jam. Each of those is a likely reason. Now, which is not a likely reason? A defective graphics card. The graphics card only drives the monitor; it isn't on the printer path at all. The exam asks for the reason that is not likely, so the graphics card is the one to pick."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 41,
+      "template": "key-facts",
+      "params": {
+        "title": "No display on the monitor",
+        "items": ["Bad video card", "Bad 15 pin video connector", "No power to the monitor", "Not the cause: a CD-ROM drive or a fragmented hard drive"]
+      },
+      "onScreen": ["Bad video card", "Bad 15 pin video connector", "No power to the monitor", "Not a CD-ROM drive or a fragmented hard drive"],
+      "narration": "Now the other path: no display on the monitor. The most likely causes sit along the picture path: a bad video card, a bad 15 pin video connector, or no power to the monitor. Check the easy one first: is the monitor plugged in and on? A CD-ROM drive, for compact disc read-only memory, just reads discs; it has nothing to do with the picture. Neither does a fragmented hard drive, where files are stored in scattered pieces; that slows a computer but never blanks the screen. So the keyed answer stays on the picture path: bad video card, bad 15 pin video connector, or no power to the monitor. The trap choice slips in a bad CD-ROM."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 41,
+      "template": "key-facts",
+      "params": {
+        "title": "Switching on: the BIOS takes charge",
+        "items": ["The operating system is stored on a drive: something must start it", "BIOS: the basic input-output system", "A small program in a chip on the main circuit board", "Like a caretaker: checks the building, then opens up"]
+      },
+      "onScreen": ["Something must start the operating system", "BIOS: basic input-output system", "A program in a chip on the main board", "Checks first, then starts things up"],
+      "narration": "Both of those faults happen on a computer that's already running. But what happens before that, when you switch it on? The operating system is stored on a drive, and something has to start it. That job belongs to the BIOS, the basic input-output system. It's a small program built into a chip on the computer's main circuit board, so it's ready the instant the power comes on. Think of a caretaker who arrives first, checks the building, then unlocks the doors for the staff. The BIOS works the same way: it checks the computer, then starts the operating system."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 41,
       "template": "block-diagram",
       "params": {
-        "title": "The BIOS: 4 main functions",
+        "title": "Start-up: P.O.S.T., then the bootstrap loader",
         "columns": 4,
         "blocks": [
           { "id": "power", "label": "Power on" },
           { "id": "post", "label": "P.O.S.T.", "note": "Power-on self-test" },
           { "id": "boot", "label": "Bootstrap loader", "note": "Finds and starts the operating system" },
-          { "id": "os", "label": "Operating system", "note": "Loads printer drivers, not the BIOS" },
-          { "id": "setup", "label": "BIOS setup", "note": "Won't boot? Check the BIOS settings" },
-          { "id": "drivers", "label": "BIOS drivers", "note": "Basic access to the hardware" }
+          { "id": "os", "label": "Operating system" }
         ],
         "links": [
           { "from": "power", "to": "post" },
           { "from": "post", "to": "boot" },
-          { "from": "boot", "to": "os" },
-          { "from": "power", "to": "setup" },
-          { "from": "post", "to": "drivers" }
+          { "from": "boot", "to": "os" }
         ]
       },
-      "onScreen": ["Power on", "P.O.S.T.: power-on self-test", "Bootstrap loader starts the operating system", "Printer drivers: loaded by the operating system", "BIOS setup: check settings if it won't boot", "BIOS drivers"],
-      "narration": "The BIOS, the basic input-output system, has 4 main functions. When the power comes on, it runs P.O.S.T., the power-on self-test. Next, the bootstrap loader finds and starts the operating system. Printer drivers are not a BIOS function; the operating system loads those. The other 2 functions are BIOS setup and the BIOS drivers. If the power is on but the computer will not boot into the operating system, use the BIOS setup mode to check for proper BIOS settings, such as the boot device order and drive detection."
+      "onScreen": ["Power on", "P.O.S.T.: power-on self-test", "Bootstrap loader: finds and starts the operating system", "Operating system"],
+      "narration": "Here are those 2 steps in order. When the power comes on, the BIOS first runs P.O.S.T., the power-on self-test: a quick check that the memory, keyboard, video and drives answer. If something fails, the computer beeps or shows an error. Then comes the bootstrap loader, which finds the operating system on a drive and starts it. The name comes from the old saying about pulling yourself up by your own bootstraps, since the computer is starting itself. Starting up this way is called booting."
     },
     {
-      "id": "s4",
+      "id": "s7",
+      "keyTopic": 41,
+      "template": "key-facts",
+      "params": {
+        "title": "The BIOS: 4 main functions",
+        "items": ["P.O.S.T. and the bootstrap loader: the first 2", "BIOS drivers: basic control of keyboard, screen and drives", "BIOS setup: the settings screen, such as boot order"]
+      },
+      "onScreen": ["P.O.S.T. and bootstrap loader", "BIOS drivers", "BIOS setup"],
+      "narration": "Those are 2 of the BIOS's 4 main functions. The third is the BIOS drivers. A driver is software that lets a computer control a piece of equipment, and the BIOS drivers give basic control of the keyboard, screen and drives until the operating system takes over. The fourth is BIOS setup: a settings screen you open by pressing a key during start-up. It stores choices such as which drive to boot from. So the 4 main functions of the BIOS are P.O.S.T., the bootstrap loader, BIOS drivers and BIOS setup."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 41,
+      "template": "comparison-table",
+      "params": {
+        "title": "BIOS function or not?",
+        "columns": ["Item", "One of the 4?"],
+        "rows": [
+          ["P.O.S.T. and bootstrap loader", "Yes"],
+          ["BIOS drivers and BIOS setup", "Yes"],
+          ["Printer drivers", "No: loaded by the operating system"],
+          ["CPU setup and RAM setup", "No"],
+          ["Disc partitions", "No"]
+        ]
+      },
+      "onScreen": ["P.O.S.T., bootstrap loader, BIOS drivers, BIOS setup: yes", "Printer drivers: loaded by the operating system", "CPU setup, RAM setup, disc partitions: no"],
+      "narration": "The exam's wrong answers swap one of those 4 for something else. Printer drivers are the favorite swap. But a printer isn't needed to start the computer, so the operating system loads the printer driver later, once it's running. That makes it an operating system job, not a BIOS function. Other wrong lists name CPU setup and RAM setup, CPU meaning central processing unit, another name for the processor. Some name disc partitions, the sections a drive is divided into. None of those is among the 4 main functions."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 41,
+      "template": "key-facts",
+      "params": {
+        "title": "Power on, but it won't boot",
+        "items": ["Power is on, but the operating system won't load", "The loader searches the drives in the boot device order", "Wrong order, or drive not detected: nothing to start", "Fix: use BIOS setup mode to check the BIOS settings"]
+      },
+      "onScreen": ["Power on, operating system won't load", "Loader searches in boot device order", "Wrong order or drive not detected", "Fix: check the settings in BIOS setup mode"],
+      "narration": "BIOS setup is also where you go when the power is on but the computer won't boot into the operating system. The fans spin, but instead of Windows you get a message that no boot device was found. Why? The bootstrap loader searches the drives in the order the BIOS settings list them. If that boot device order is wrong, or the BIOS hasn't detected the drive, the loader finds nothing to start. So use the BIOS setup mode to check for proper BIOS settings, such as boot device order and drive detection. Checking the CPU fan, cleaning a plug-in card's contacts, or unplugging the external cables won't fix a wrong setting."
+    },
+    {
+      "id": "s10",
       "keyTopic": 41,
       "template": "block-diagram",
       "params": {
-        "title": "Windows XP drives: find them, replace them",
+        "title": "Windows XP: which disc drives are fitted?",
         "columns": 4,
         "blocks": [
           { "id": "start", "label": "Start" },
           { "id": "programs", "label": "Programs" },
           { "id": "accessories", "label": "Accessories" },
-          { "id": "info", "label": "System Information", "note": "Shows the type of disc drives" },
-          { "id": "old", "label": "Old CD-ROM drive", "note": "IDE/ATAPI, SATA or SCSI interface" },
-          { "id": "new", "label": "Replacement drive", "note": "Speed and transfer rate need not match" }
+          { "id": "info", "label": "System Information", "note": "In System Tools: lists each drive type" }
         ],
         "links": [
           { "from": "start", "to": "programs" },
           { "from": "programs", "to": "accessories" },
-          { "from": "accessories", "to": "info" },
-          { "from": "old", "to": "new", "label": "Same interface system" }
+          { "from": "accessories", "to": "info" }
         ]
       },
-      "onScreen": ["Start, Programs, Accessories, System Information", "System Information shows the disc drive types", "Replacement CD-ROM drive: same interface as the old one", "Speed and data transfer rate need not match"],
-      "narration": "To determine the type of disc drives in a Windows XP system, click Start, then Programs, then Accessories, and then System Information. Now suppose you are replacing a CD-ROM drive. The old drive uses an interface system such as IDE/ATAPI, SATA or SCSI. The important consideration is that the replacement drive should use the same interface system as the old drive. Its speed and data transfer rate don't have to match."
+      "onScreen": ["Start", "Programs", "Accessories", "System Information: shows the disc drive types"],
+      "narration": "Once the computer does boot, you may need to know what drives it has, say before replacing one. Windows XP is an older version of Microsoft Windows, still found on some ship equipment. To determine the type of disc drives in a Windows XP system, click Start, then Programs, then Accessories, and then System Information. On the real menu, System Information sits one folder further in, under System Tools. It lists the computer's hardware, including the type of each drive. The trap choices send you to a System Information button straight off the Start menu, or into the Control Panel's sound or taskbar settings; those won't show you the drives."
     },
     {
-      "id": "s5",
+      "id": "s11",
+      "keyTopic": 41,
+      "template": "comparison-table",
+      "params": {
+        "title": "Replacing a CD-ROM drive",
+        "columns": ["Feature", "Must it match?"],
+        "rows": [
+          ["Interface: IDE/ATAPI, SATA or SCSI", "Yes: same as the old drive"],
+          ["Speed", "No: a faster drive is fine"],
+          ["Data transfer rate", "No"],
+          ["Amount of RAM", "Not a drive feature"]
+        ]
+      },
+      "onScreen": ["Interface system: must match the old drive", "Speed: need not match", "Data transfer rate: need not match", "RAM: not part of the drive"],
+      "narration": "Say System Information shows a CD-ROM drive that has failed, and you're replacing it. The key word is interface: the type of connection between the drive and the computer, meaning both the plug and the signals it carries. Common interface systems go by their initials: IDE/ATAPI, SATA and SCSI. IDE/ATAPI uses a wide flat ribbon cable; SATA uses a thin one. Like a plug and socket, the interface has to fit, so the replacement drive should use the same interface system as the old drive. Otherwise it won't connect. Its speed and data transfer rate need not match; a faster drive works fine. RAM, the computer's working memory, isn't part of a CD-ROM drive, so there's no RAM to match."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 42,
+      "template": "key-facts",
+      "params": {
+        "title": "From one computer to a network",
+        "items": ["Network: computers linked so they can share data", "Node: any device on the network, such as a computer or printer", "LAN: a local area network, inside one ship or building", "Ethernet: the usual way to wire a LAN"]
+      },
+      "onScreen": ["Network: computers sharing data", "Node: each device on it", "LAN: local area network", "Ethernet: the usual LAN wiring"],
+      "narration": "That covers single computers. But aboard ship, computers rarely work alone. The office computer sends to a shared printer, and the bridge computers share charts and email. Linking them makes a network: computers connected so they can share data. Each device on the network, a computer or a printer, is called a node. A network inside one ship or building is a LAN, a local area network. And the usual way to wire a LAN is Ethernet. Data travels on it in short bundles called packets, rather like envelopes, each carrying the address of the node it's for."
+    },
+    {
+      "id": "s13",
       "keyTopic": 42,
       "template": "block-diagram",
       "params": {
@@ -92,10 +196,10 @@
         "columns": 3,
         "blocks": [
           { "id": "bridge", "label": "Bridge computer" },
+          { "id": "hub", "label": "Central hub", "note": "Passes each packet to the other nodes" },
           { "id": "chart", "label": "Chart computer" },
           { "id": "office", "label": "Office computer" },
           { "id": "printer", "label": "Printer" },
-          { "id": "hub", "label": "Central hub", "note": "Same collision domain: shared bandwidth" },
           { "id": "crew", "label": "Crew computer" }
         ],
         "links": [
@@ -106,48 +210,189 @@
           { "from": "crew", "to": "hub" }
         ]
       },
-      "onScreen": ["Ethernet star", "Each node: a home-run cable back to the central hub", "Same collision domain: bandwidth shared between all nodes"],
-      "narration": "Now Ethernet. Ethernet nodes are interconnected in a star. Each node, whether it's a computer or a printer, has its own cable making a home run back to the central hub. All of these nodes are in the same collision domain. Within the same collision domain, the available bandwidth is shared between all the nodes, because only 1 of them can transmit at a time."
+      "onScreen": ["Ethernet star", "Each node: a home run cable back to the central hub"],
+      "narration": "So how are Ethernet nodes wired together? They're interconnected in a star, with a box called a hub at the center. Each node has its own cable running straight back to the central hub, like a spoke of a wheel. That cable is called a home run, because it runs all the way home to the hub without joining any other cable. The hub passes each packet it receives on to the other nodes. Modern networks often use a switch, a smarter kind of hub, in its place, but the star is the same. On the exam, the home run goes back to the central hub; router, backbone and computer are the trap answers."
     },
     {
-      "id": "s6",
-      "keyTopic": 42,
-      "template": "comparison-table",
-      "params": {
-        "title": "Ethernet and USB cables",
-        "columns": ["Cable", "What to remember"],
-        "rows": [
-          ["10Base-T and 100Base-TX", "CAT-5 with 4 twisted pairs"],
-          ["Coax or fiber optic", "Not what these systems generally use"],
-          ["USB 2.0 cable", "5 meters max: hub to hub or hub to peripheral"]
-        ]
-      },
-      "onScreen": ["10Base-T and 100Base-TX: CAT-5 with 4 twisted pairs", "Not coax or fiber optic", "USB 2.0: 5 meters max between hubs or hub and peripheral"],
-      "narration": "Now the cables. 10Base-T and 100Base-TX systems generally use CAT-5 cable with 4 twisted pairs. Not coax, and not fiber optic. Next, USB, the Universal Serial Bus. The maximum length of a USB 2.0 cable between 2 hubs, or between a hub and a peripheral, is 5 meters."
-    },
-    {
-      "id": "s7",
+      "id": "s14",
       "keyTopic": 42,
       "template": "key-facts",
       "params": {
-        "title": "Setting up a router",
-        "items": [
-          "Open a web browser",
-          "Enter the router's address for network admin",
-          "Enter the username and password: no internet download needed",
-          "For the exam, common router addresses: 192.168.1.1, 192.168.0.1 and 192.168.2.0",
-          "In practice, 192.168.2.0 is normally a network address; the usual default is 192.168.2.1"
-        ]
+        "title": "One at a time: the collision domain",
+        "items": ["The hub passes every packet to every node", "2 nodes sending at once: a collision", "Collision domain: the nodes that can collide with each other", "Only 1 can transmit at a time, so they share the bandwidth"]
       },
-      "onScreen": ["Open a web browser", "Enter the router's address", "Enter username and password", "For the exam: 192.168.1.1, 192.168.0.1 and 192.168.2.0", "Usual default is really 192.168.2.1"],
-      "narration": "Installing a router? The initial steps are simple. Open a web browser, enter the router's address for network admin, and then enter the username and password. No internet download is needed. For the exam, the most commonly used router IP, or Internet Protocol, addresses are 192.168.1.1, 192.168.0.1 and 192.168.2.0. In practice, 192.168.2.0 is normally a network address, and the usual default is 192.168.2.1. But on the exam, choose the set with 192.168.1.1, 192.168.0.1 and 192.168.2.0."
+      "onScreen": ["Hub repeats every packet", "2 at once: a collision", "Collision domain", "Bandwidth shared: 1 transmits at a time"],
+      "narration": "Because a hub passes everything to everyone, there's a catch. If 2 nodes send at once, their signals collide and both are garbled, so each waits a random moment and tries again. All the nodes that can collide this way form a collision domain. Within the same collision domain, only 1 node can transmit at a time, so the available bandwidth, the network's capacity to carry data, is shared between all the nodes. It's like a single-lane bridge: everyone gets across, but one at a time, so more traffic means slower trips. On the exam, bandwidth is shared within the same collision domain, not the same compartment, address range or star topology, topology meaning the shape of the wiring."
     },
     {
-      "id": "s8",
+      "id": "s15",
+      "keyTopic": 42,
+      "template": "key-facts",
+      "params": {
+        "title": "Reading the name: 10Base-T",
+        "items": ["Bit: a single 1 or 0", "10 or 100: the speed, in megabits per second", "Base: the cable carries just this one signal", "T: twisted pair, 2 wires twisted around each other"]
+      },
+      "onScreen": ["Bit: a single 1 or 0", "10 or 100: megabits per second", "Base: one signal on the cable", "T: twisted pair"],
+      "narration": "That's the shape of the network. Now the cable that makes each home run. You'll see Ethernet types named like 10Base-T and 100Base-TX, and each part of the name means something. Data is counted in bits: a bit is a single 1 or 0. The first number is the speed: 10 or 100 megabits, that's millions of bits, per second. Base means the cable carries just this one signal. And the T stands for twisted pair: 2 wires twisted around each other. Twisting makes interference, electrical noise picked up from nearby equipment, hit both wires equally, and the receiver, which looks at the difference between them, cancels it out."
+    },
+    {
+      "id": "s16",
+      "keyTopic": 42,
+      "template": "comparison-table",
+      "params": {
+        "title": "The cable for 10Base-T and 100Base-TX",
+        "columns": ["Cable", "Used?"],
+        "rows": [
+          ["CAT-5 with 4 twisted pairs", "Yes: the keyed answer"],
+          ["CAT-5 with 2 twisted pairs", "No: CAT-5 has 4 pairs"],
+          ["Coax", "No"],
+          ["Fiber optic", "No"]
+        ]
+      },
+      "onScreen": ["CAT-5 with 4 twisted pairs", "Not 2 pairs", "Not coax", "Not fiber optic"],
+      "narration": "So which cable do these systems use? 10Base-T and 100Base-TX systems generally use CAT-5 cable, short for category 5, with 4 twisted pairs: 8 wires in all. The trap answer offers CAT-5 with 2 twisted pairs, but standard CAT-5 always has 4 pairs inside. Coax, a single wire inside a round shield, belongs to older Ethernet types, and fiber optic, which carries light instead of electricity, to others. So the answer to remember is CAT-5 with 4 twisted pairs."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 42,
+      "template": "key-facts",
+      "params": {
+        "title": "USB 2.0 cables: 5 meters max",
+        "items": ["USB: Universal Serial Bus, for keyboards, printers and memory sticks", "Peripheral: a device plugged into the computer", "USB 2.0 cable: 5 meters max, hub to hub or hub to peripheral", "More distance? Add a hub: another 5 meters"]
+      },
+      "onScreen": ["USB: Universal Serial Bus", "Peripheral: a plugged-in device", "USB 2.0: 5 meters max", "Add a hub for more distance"],
+      "narration": "One more cable on the exam isn't Ethernet: USB, the Universal Serial Bus, the everyday plug for keyboards, printers and memory sticks. A device plugged into a computer this way is a peripheral, and a USB hub is a small box that turns one USB socket into several. The maximum length of a USB 2.0 cable between 2 hubs, or between a hub and a peripheral, is 5 meters. Why so short? The computer expects each reply within a tiny window of time, and a longer cable delays and weakens the signal. To cover more distance, add a hub; each new cable is again limited to 5 meters. On the exam, don't be tempted by 10, 15 or 20 meters."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 42,
+      "template": "key-facts",
+      "params": {
+        "title": "Routers and IP addresses",
+        "items": ["Router: links the ship's network to another network", "IP address: each device's number on the network", "Written as 4 numbers separated by dots", "The router has its own address, set at the factory"]
+      },
+      "onScreen": ["Router: links networks", "IP address: a device's number", "4 numbers separated by dots", "The router's own factory address"],
+      "narration": "So much for the cables inside the ship. To reach beyond the ship's own network, say to the internet over the satellite link, you need a router: a box that connects one network to another and sends each packet the right way. For that, every device needs an address. Its IP address, IP standing for Internet Protocol, is the device's number on the network, rather like a house number on a street. It's written as 4 numbers separated by dots. The router has an IP address of its own, set at the factory, and you'll need it to set the router up."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 42,
+      "template": "key-facts",
+      "params": {
+        "title": "Router addresses, for the exam",
+        "items": ["Router defaults often start with 192.168: a block for local networks", "For the exam: 192.168.1.1, 192.168.0.1 and 192.168.2.0", "In practice: 192.168.2.0 names a whole network", "The usual default there is 192.168.2.1"]
+      },
+      "onScreen": ["192.168: a block for local networks", "For the exam: 192.168.1.1, 192.168.0.1 and 192.168.2.0", "192.168.2.0 really names a network", "Usual default is really 192.168.2.1"],
+      "narration": "Which addresses do routers come with? Many use addresses starting with 192.168, a block set aside for local networks. For the exam, the most commonly used router IP addresses are 192.168.1.1, 192.168.0.1 and 192.168.2.0. In practice, 192.168.2.0 is normally a network address, the name of a whole network rather than of one device, and the usual default is 192.168.2.1. But on the exam, choose that set anyway: it's the only one where every address starts with 192.168."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 42,
+      "template": "block-diagram",
+      "params": {
+        "title": "Installing a router: the first steps",
+        "columns": 4,
+        "blocks": [
+          { "id": "browser", "label": "Open a web browser" },
+          { "id": "address", "label": "Enter the router's address", "note": "For network admin" },
+          { "id": "login", "label": "Username and password" },
+          { "id": "download", "label": "Internet download", "note": "Not needed" }
+        ],
+        "links": [
+          { "from": "browser", "to": "address" },
+          { "from": "address", "to": "login" },
+          { "from": "login", "to": "download", "struck": true }
+        ]
+      },
+      "onScreen": ["Open a web browser", "Enter the router's address for network admin", "Enter username and password", "No internet download needed"],
+      "narration": "Once you know that address, setting up is simple, because a router has its own built-in settings page. With a computer connected to the router, the initial steps are: open a web browser, enter the router's address for network admin, meaning the settings that manage the network, and then enter the username and password. The browser talks to the router directly, so no internet access and no download are needed, and no setup software either. Nor do you type in the addresses of all the stations on the network; the exam offers those steps as wrong choices."
+    },
+    {
+      "id": "s21",
       "keyTopic": 43,
       "template": "block-diagram",
       "params": {
-        "title": "NMEA 0183: one talker, several listeners",
+        "title": "Bridge instruments share their data",
+        "columns": 2,
+        "blocks": [
+          { "id": "gps", "label": "GPS receiver", "note": "Talker: sends the position" },
+          { "id": "chart", "label": "Chart display", "note": "Listener" },
+          { "id": "radar", "label": "Radar", "note": "Listener" },
+          { "id": "radio", "label": "DSC radio", "note": "Listener" }
+        ],
+        "links": [
+          { "from": "gps", "to": "chart", "label": "NMEA sentences" },
+          { "from": "gps", "to": "radar" },
+          { "from": "gps", "to": "radio" }
+        ]
+      },
+      "onScreen": ["GPS receiver: the talker", "Chart display, radar and DSC radio: listeners", "NMEA sentences: short lines of text"],
+      "narration": "That's the office side. Now the bridge, where the instruments share their readings. The GPS receiver works out the ship's position from Global Positioning System satellites. Other units need that position: the chart display; the radar, which shows nearby ships and land; and the DSC radio, the digital selective calling radio that sends distress alerts. The rules for sharing it come from the National Marine Electronics Association, or NMEA. The unit that sends is the talker; the units that receive are listeners. The data travels as sentences: short lines of text, like telegrams, saying who is talking, what kind of data it is, and the values. There are 2 NMEA standards: NMEA 0183, the older one, and NMEA 2000."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 43,
+      "template": "waveform",
+      "params": {
+        "title": "NMEA 0183: serial data",
+        "kind": "square",
+        "cycles": 6,
+        "xAxis": "time",
+        "yAxis": "signal on the data line",
+        "labels": ["Serial: 1 bit at a time, one after another", "Parallel: several bits side by side, on several wires", "NMEA 0183 is serial: not parallel, CAN bus or Ethernet"]
+      },
+      "onScreen": ["Serial: 1 bit at a time", "Parallel: several bits at once", "NMEA 0183: serial"],
+      "narration": "First, NMEA 0183. It uses serial data communication, the same serial as in Universal Serial Bus. Serial means the bits go down one pair of wires 1 at a time, one after another, like people in single file through a door. On screen, the line steps between high and low, and each level stands for a 1 or a 0. The other way is parallel: several wires side by side, each carrying a bit at once, like a crowd through a wide gate. NMEA 0183 sends its sentences serially, usually at 4800 bits per second. On the exam, NMEA 0183 is serial: not parallel, not Ethernet, and not a CAN bus, a Controller Area Network, which comes with NMEA 2000."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 43,
+      "template": "comparison-table",
+      "params": {
+        "title": "NMEA 0183: the RS422 standard",
+        "columns": ["Standard", "Where it fits"],
+        "rows": [
+          ["RS422", "Current NMEA 0183: 1 talker, several listeners"],
+          ["RS232", "Early NMEA 0183 and old computer serial ports"],
+          ["RS485", "Not the NMEA 0183 answer"]
+        ]
+      },
+      "onScreen": ["RS422: the current NMEA 0183 standard", "RS232: early versions", "RS485: not the answer"],
+      "narration": "Which electrical standard carries those bits? The current and most recent version of NMEA 0183 uses the RS422 standard for data communications. RS stands for recommended standard. RS422 is balanced: the talker sends each bit on a pair of wires as mirror images, one wire high while the other is low, and the listener reads the difference. Noise that hits both wires equally cancels out, the same trick as twisted pair. Only 1 talker is allowed per line, though it can feed several listeners: 2 talkers on the same pair would fight each other. Early versions of NMEA 0183 were compatible with RS232, the old computer serial port standard. RS232, RS485 and ISO 11783 are the trap answers."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 43,
+      "template": "equipment-card",
+      "params": {
+        "title": "NMEA 0183 inputs: survive ±15 volts",
+        "device": "oscilloscope",
+        "callouts": [
+          { "label": "Trace: an NMEA 0183 signal swings above and below 0 volts", "at": "trace" },
+          { "label": "A unit must survive ±15 volts without damage", "at": "input" },
+          { "label": "Older RS232 style talkers can swing up to 15 volts either way", "at": "screen" }
+        ]
+      },
+      "onScreen": ["Signal swings above and below 0 volts", "Must handle ±15 volts without damage", "RS232 style talkers swing up to 15 volts"],
+      "narration": "RS232 matters for one more NMEA 0183 number, a voltage limit. Voltage is the electrical push behind a signal, like water pressure in a pipe. An oscilloscope, an instrument that draws a signal's voltage over time, shows an NMEA 0183 signal swinging above and below 0 volts. An NMEA 0183 unit must be capable of handling a maximum signal voltage range of plus or minus 15 volts without damage. Why that much? A listener may end up wired to an older RS232 style talker, whose signals can swing up to 15 volts either way. Normal NMEA 0183 signals swing less, but the input must survive the worst case. Plus or minus 5, 10 and 12 volts are the trap answers."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 43,
+      "template": "key-facts",
+      "params": {
+        "title": "The problem: ground loops",
+        "items": ["Ground: each unit's 0 volt reference, tied to its metal chassis", "Grounds in different places sit at slightly different voltages", "Shield grounded at both ends: current flows round a ground loop", "Result: noise and data errors"]
+      },
+      "onScreen": ["Ground: the 0 volt reference", "Grounds differ slightly", "Both ends grounded: a ground loop", "Noise and data errors"],
+      "narration": "Voltage also lies behind a wiring problem NMEA 0183 must avoid. Every unit has a ground: its 0 volt point, the level its other voltages are measured from, tied to its metal case, the chassis. Grounds in different parts of a ship can sit at slightly different voltages. The data cable has a shield, a foil or braid wrapped around the wires that catches interference and drains it to ground. If that shield is grounded at both ends, it joins the 2 grounds, and current, the flow of electricity, runs along it, like water through a pipe between 2 tanks at slightly different heights. That path is a ground loop, and its current adds noise and data errors."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 43,
+      "template": "block-diagram",
+      "params": {
+        "title": "The fix: opto-isolators, one grounded end",
         "columns": 2,
         "blocks": [
           { "id": "talker", "label": "Talker", "note": "Shield grounded to this chassis only" },
@@ -156,16 +401,27 @@
           { "id": "listenerc", "label": "Listener", "note": "Opto-isolated input" }
         ],
         "links": [
-          { "from": "talker", "to": "listenera", "label": "Serial data" },
+          { "from": "talker", "to": "listenera", "label": "Shielded serial line" },
           { "from": "talker", "to": "listenerb" },
           { "from": "talker", "to": "listenerc" }
         ]
       },
-      "onScreen": ["Serial data, 1 bit at a time", "Only 1 talker per line", "Opto-isolators must be used", "Shield grounded to the talker chassis only"],
-      "narration": "NMEA 0183 uses serial data communication. It sends its sentences 1 bit at a time. It is not parallel, not Ethernet, and not a Controller Area Network, or CAN, bus. Only 1 talker is allowed on each line, and it sends to several listeners. In an NMEA 0183 system, opto-isolators must be used, and the cable shield should be grounded to the talker chassis only. Grounding the shield at that 1 end prevents ground loops."
+      "onScreen": ["Shield grounded to the talker chassis only", "Opto-isolators must be used", "No ground loop"],
+      "narration": "NMEA 0183 breaks the loop in 2 ways. First, opto-isolators must be used. An opto-isolator is a tiny light and a light sensor sealed together. The incoming signal flashes the light, and the sensor facing it switches in step. The data crosses the gap as light, so no wire joins the talker's ground to the listener's. Second, the cable shield should be grounded to the talker chassis only. With 1 grounded end there's no loop, and the shield still drains away interference. So the keyed statement is: opto-isolators must be used, and the shield is grounded to the talker chassis only. Grounding both ends, or the listener end only, is wrong, and version 2 devices don't use higher voltages."
     },
     {
-      "id": "s9",
+      "id": "s27",
+      "keyTopic": 43,
+      "template": "key-facts",
+      "params": {
+        "title": "Watching NMEA 0183 data on a PC",
+        "items": ["Sentences are plain text, so a PC can show them", "Connect the NMEA 0183 line to a PC serial port", "HyperTerminal shows each sentence as it arrives", "Logging: saving the sentences to a file", "Not Excel, Windows Explorer or Microsoft Word"]
+      },
+      "onScreen": ["Plain text: a PC can show it", "NMEA 0183 line to a PC serial port", "HyperTerminal shows the sentences", "Logging: saving to a file", "Not Excel, Explorer or Word"],
+      "narration": "Even with good wiring, an instrument sometimes isn't getting its data. Then you want to see what the talker is actually sending. Because NMEA 0183 sentences are plain text, a PC, a personal computer, can show them. Connect the line to the PC's serial port and run a terminal program, which simply displays whatever text arrives. A typical PC program used widely for logging and troubleshooting NMEA 0183 data is HyperTerminal, which came with older versions of Windows. Logging means saving the sentences to a file to study later. Excel, Windows Explorer and Microsoft Word can't open a serial port, so they're the wrong choices."
+    },
+    {
+      "id": "s28",
       "keyTopic": 43,
       "template": "comparison-table",
       "params": {
@@ -173,136 +429,258 @@
         "columns": ["Feature", "NMEA 0183", "NMEA 2000"],
         "rows": [
           ["Talkers", "Single talker per line", "Multi-talkers"],
-          ["Data", "Serial, 1 bit at a time", "CAN bus"],
-          ["To log or view data", "HyperTerminal on a PC", "Needs a gateway"]
+          ["Wiring", "A line from each talker", "One shared backbone"],
+          ["Data", "Serial, 1 bit at a time", "CAN bus network"]
         ]
       },
-      "onScreen": ["Single talker versus multi-talkers", "NMEA 0183: serial; NMEA 2000: CAN bus","NMEA 0183 data: HyperTerminal on a PC", "NMEA 2000 data: needs a gateway"],
-      "narration": "Here's an important difference between NMEA 0183 and NMEA 2000: single talker versus multi-talkers. NMEA 0183 is serial and allows only 1 talker per line. NMEA 2000 is a CAN bus with multiple talkers on the same network. For logging and troubleshooting NMEA 0183 data, a typical PC program used widely is HyperTerminal. NMEA 2000 data needs a gateway, which we'll come to shortly."
+      "onScreen": ["Single talker versus multi-talkers", "A line per talker versus a shared backbone", "Serial versus CAN bus"],
+      "narration": "That's NMEA 0183. Its single talker per line becomes a problem on a busy bridge. Every talker needs its own line, and feeding several talkers to one listener needs an extra box, a multiplexer, to merge them. NMEA 2000 solves this. It's a true network: one shared cable, called the backbone, runs through the ship, and every device plugs into it and can both talk and listen. So an important difference between NMEA 0183 and NMEA 2000 is single talker versus multi-talkers. NMEA 2000 is built on a CAN bus, a Controller Area Network: a system first designed for cars, so that many controllers could share one pair of data wires, taking turns."
     },
     {
-      "id": "s10",
-      "keyTopic": 43,
-      "template": "key-facts",
-      "params": {
-        "title": "NMEA 0183: electrical facts",
-        "items": [
-          "Current and most recent version: the RS422 standard for data communications",
-          "A unit must handle a maximum signal voltage range of ±15 volts without damage",
-          "Opto-isolators must be used",
-          "Shield grounded to the talker chassis only: no ground loops"
-        ]
-      },
-      "onScreen": ["RS422 standard", "±15 volts without damage", "Opto-isolators", "Shield grounded at the talker chassis only"],
-      "narration": "2 more NMEA 0183 facts. The current and most recent version of NMEA 0183 uses the RS422 standard for data communications. And an NMEA 0183 unit must be capable of handling a maximum signal voltage range of plus or minus 15 volts without damage. Keep the wiring rule with them: opto-isolators must be used, and the shield is grounded to the talker chassis only, which prevents ground loops."
-    },
-    {
-      "id": "s11",
+      "id": "s29",
       "keyTopic": 44,
       "template": "block-diagram",
       "params": {
-        "title": "Building an NMEA 2000 network",
-        "columns": 4,
+        "title": "The NMEA 2000 backbone",
+        "columns": 3,
         "blocks": [
-          { "id": "terma", "label": "Terminating resistor", "note": "One at each end" },
-          { "id": "teea", "label": "Tee" },
+          { "id": "teea", "label": "Tee", "note": "A T-shaped joint in the backbone" },
           { "id": "teeb", "label": "Tee" },
-          { "id": "termb", "label": "Terminating resistor", "note": "One at each end" },
-          { "id": "device", "label": "NMEA 2000 device" },
-          { "id": "power", "label": "Power supply", "note": "Power cable onto the backbone" },
-          { "id": "gateway", "label": "Gateway", "note": "Translates messages for viewing" },
-          { "id": "pc", "label": "PC or display" }
+          { "id": "power", "label": "Power cable", "note": "Feeds power onto the backbone" },
+          { "id": "deva", "label": "NMEA 2000 device", "note": "Such as a GPS receiver" },
+          { "id": "devb", "label": "NMEA 2000 device", "note": "Such as a display" }
         ],
         "links": [
-          { "from": "terma", "to": "teea" },
           { "from": "teea", "to": "teeb", "label": "Backbone cable" },
-          { "from": "teeb", "to": "termb" },
-          { "from": "teea", "to": "device", "label": "Drop cable: 6 meters max" },
-          { "from": "power", "to": "teea" },
-          { "from": "teeb", "to": "gateway" },
-          { "from": "gateway", "to": "pc" }
+          { "from": "power", "to": "teeb" },
+          { "from": "teea", "to": "deva", "label": "Drop cable" },
+          { "from": "teeb", "to": "devb", "label": "Drop cable" }
         ]
       },
-      "onScreen": ["Backbone cables and tees", "Terminating resistor at each end", "Drop cable to a device: 6 meters max", "Power cable", "Gateway translates messages for a PC"],
-      "narration": "NMEA 2000 networks are built from backbone cables, tees, drop cables, power cables and terminating resistors. The backbone runs from a terminating resistor at one end, through the tees, to a terminating resistor at the other end. Each device connects to a tee with a drop cable, and the maximum length for a drop cable to a single NMEA 2000 device is 6 meters. A power cable feeds the backbone. Multiplexers, combiners and routers are not NMEA 2000 components. And because NMEA 2000 is a CAN bus, viewing its data requires a gateway, which translates its messages for the viewing equipment, such as a PC."
+      "onScreen": ["Backbone cable joined by tees", "Power cable feeds the backbone", "A drop cable from each tee to one device"],
+      "narration": "So what does that backbone look like? The backbone cable is the main trunk, running the length of the network. Wherever a device joins it, there's a tee, a T-shaped connector. A power cable joins at a tee too, feeding power onto the backbone, because NMEA 2000 carries power for its devices in the same cable as the data. From each tee, a short drop cable runs to one device, such as a GPS receiver or a display. Every device talks and listens on that one shared backbone."
     },
     {
-      "id": "s12",
+      "id": "s30",
+      "keyTopic": 44,
+      "template": "comparison-table",
+      "params": {
+        "title": "NMEA 2000 part or not?",
+        "columns": ["Item", "NMEA 2000 part?"],
+        "rows": [
+          ["Terminating resistors", "Yes: one at each end"],
+          ["Backbone cables, tees, drops, power cables", "Yes"],
+          ["Multiplexers and combiners", "No: NMEA 0183 boxes"],
+          ["Routers", "No: computer networks"]
+        ]
+      },
+      "onScreen": ["Terminating resistor at each end", "Backbone cables, tees, drop cables, power cables", "Not multiplexers, combiners or routers"],
+      "narration": "One part is still missing. At each end of the backbone sits a terminating resistor. A resistor is a part that resists current. Here it soaks up the signal when it reaches the end of the line, so it doesn't bounce back like a wave off a harbor wall and garble the next message. So NMEA 2000 networks are built from backbone cables, tees, drop cables, power cables and terminating resistors. Multiplexers and combiners are NMEA 0183 boxes that merge talkers, which a shared backbone doesn't need. Routers belong to computer networks. When the exam asks which list is not NMEA 2000 components, pick multiplexers, combiners and routers."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 44,
+      "template": "key-facts",
+      "params": {
+        "title": "Drop cables: 6 meters max",
+        "items": ["Drop cable: from a tee to 1 device", "Maximum length to a single device: 6 meters", "Not 12, 18 or 24 meters"]
+      },
+      "onScreen": ["Drop cable: tee to device", "6 meters max", "Not 12, 18 or 24 meters"],
+      "narration": "Back to those drop cables: they have a limit. The maximum length for a drop cable to a single NMEA 2000 device is 6 meters. Why? A drop is a dead-end side branch off the backbone. Signals reflect back from the end of a long branch, the same kind of bounce the terminating resistors stop at the ends of the backbone, and disturb the messages. A long drop also loses voltage on the way to the device. So keep each drop to 6 meters or less. 12, 18 and 24 meters are the wrong choices."
+    },
+    {
+      "id": "s32",
+      "keyTopic": 44,
+      "template": "equipment-card",
+      "params": {
+        "title": "Backbone power: 9 to 16 volts",
+        "device": "multimeter",
+        "callouts": [
+          { "label": "Reading must stay within 9 to 16 volts", "at": "display" },
+          { "label": "Set to DC volts", "at": "selector" },
+          { "label": "Probes across the backbone's power supply pair", "at": "probes" }
+        ]
+      },
+      "onScreen": ["Must read 9 to 16 volts", "Set to DC volts", "Probes across the power supply pair"],
+      "narration": "Then there's the power cable. It feeds the backbone's power supply pair: 2 wires that carry DC, direct current, the steady one-way current a battery gives, usually from the ship's 12 volt supply. The voltage of the NMEA 2000 backbone power supply pair must be maintained within 9 to 16 volts. The danger is voltage drop: just as water pressure falls along a long hose, the voltage sags along a long, busy backbone, and it must not fall below 9 volts at any device. To check, set a multimeter, a handheld test meter, to DC volts and put its probes across the pair. 0 to 5, 10.5 to 13.6, and 12 to 24 volts are the trap ranges."
+    },
+    {
+      "id": "s33",
       "keyTopic": 44,
       "template": "formula",
       "params": {
         "title": "Load Equivalency Numbers (LENs)",
         "formula": "1 LEN = 50 mA",
-        "steps": ["3 LEN device: 3 × 50 mA"],
-        "answer": "A 3 LEN device draws up to 150 mA"
+        "steps": ["Device rated 3 LEN", "3 × 50 mA"],
+        "answer": "Draws up to 150 mA"
       },
-      "onScreen": ["1 LEN = 50 mA", "3 × 50 mA", "3 LEN device: up to 150 mA"],
-      "narration": "NMEA 2000 certified devices state their current requirements in LENs, which stands for Load Equivalency Numbers. 1 LEN is equal to 50 milliamps. So a device rated at 3 LEN draws up to 3 times 50 milliamps, or 150 milliamps. That's the number to hold on to: 1 LEN equals 50 milliamps."
+      "onScreen": ["1 LEN = 50 mA", "Device rated 3 LEN", "3 × 50 mA", "Draws up to 150 mA"],
+      "narration": "Every device on the backbone draws some current from that power pair. Current is measured in amps, and a milliamp is a thousandth of an amp. NMEA 2000 certified devices state their current requirements in LENs, Load Equivalency Numbers. 1 LEN is equal to 50 milliamps. Say a device is rated 3 LEN. How much current can it draw? Each LEN stands for 50 milliamps, so multiply: 3 times 50 milliamps is 150 milliamps. That's a small current, which makes sense for an instrument. Adding up the LENs of every device tells you whether the power supply and cable can carry the load. 1 amp, 500 milliamps and 25 milliamps are the trap answers."
     },
     {
-      "id": "s13",
+      "id": "s34",
       "keyTopic": 44,
       "template": "key-facts",
       "params": {
-        "title": "NMEA 2000 numbers to remember",
-        "items": [
-          "Backbone power supply pair: maintained within 9 to 16 volts",
-          "1 LEN = 50 mA",
-          "For the exam, backbone operating speed: 250 bps (the real rate is 250 kbit/s)",
-          "Drop cable to a single device: 6 meters max",
-          "Viewing the data requires a gateway"
-        ]
+        "title": "Backbone speed: 250, for the exam",
+        "items": ["Data rate: how many bits are sent each second", "For the exam: 250 bps", "In reality: 250 kilobits per second"]
       },
-      "onScreen": ["Backbone power: 9 to 16 volts", "1 LEN = 50 mA", "For the exam: 250 bps", "Drop cable: 6 meters max", "Gateway to view the data"],
-      "narration": "Let's collect the NMEA 2000 numbers. The voltage of the backbone power supply pair must be maintained within 9 to 16 volts. 1 LEN equals 50 milliamps. For the exam, the backbone operating speed is keyed as 250 bits per second. The real backbone runs at 250 kilobits per second, but choose 250 bits per second on the exam. A drop cable to a single device can be at most 6 meters long. And to view NMEA 2000 data, you need a gateway."
+      "onScreen": ["Data rate: bits per second", "For the exam: 250 bps", "Really 250 kilobits per second"],
+      "narration": "That's the power side. Now the data: how fast does the backbone carry it? Speed here means the data rate: how many bits are sent each second. On a CAN bus, every device shares the same pair of wires and must read every other device's bits, so they all signal at the same fixed rate, set by the standard. For the exam, the NMEA 2000 backbone operating speed is keyed as 250 bits per second. The real backbone runs at 250 kilobits per second, that's 250 thousand bits each second. But the exam choices are all plain bits per second, so choose 250, not 500, 1500 or 2000."
     },
     {
-      "id": "s14",
+      "id": "s35",
+      "keyTopic": 44,
+      "template": "block-diagram",
+      "params": {
+        "title": "Viewing NMEA 2000 data: a gateway",
+        "columns": 3,
+        "blocks": [
+          { "id": "backbone", "label": "NMEA 2000 backbone", "note": "CAN bus messages" },
+          { "id": "gateway", "label": "Gateway", "note": "Translates the messages" },
+          { "id": "pc", "label": "PC or display" },
+          { "id": "hyper", "label": "HyperTerminal alone", "note": "Can't read a CAN bus" }
+        ],
+        "links": [
+          { "from": "backbone", "to": "gateway" },
+          { "from": "gateway", "to": "pc" },
+          { "from": "backbone", "to": "hyper", "struck": true }
+        ]
+      },
+      "onScreen": ["NMEA 2000 backbone: CAN bus", "Gateway translates the messages", "PC or display", "HyperTerminal alone can't read it"],
+      "narration": "Last NMEA 2000 fact: seeing the data. NMEA 0183 sentences could go straight into a PC running HyperTerminal. NMEA 2000 can't, because it's a CAN bus: its messages are packed in a format a PC's serial port doesn't understand. So viewing NMEA 2000 data requires a gateway. A gateway is a translator box. It reads the NMEA 2000 messages and passes them on in a format the viewing equipment understands, such as USB, Ethernet or NMEA 0183. On the exam, the answer is gateway. A voltmeter only measures voltage, not messages. Converter sounds close, but it isn't the keyed word, and HyperTerminal alone can't read a CAN bus."
+    },
+    {
+      "id": "s36",
+      "keyTopic": 45,
+      "template": "block-diagram",
+      "params": {
+        "title": "How a depth finder works",
+        "columns": 4,
+        "blocks": [
+          { "id": "tx", "label": "Transmitter", "note": "Makes a short electrical burst" },
+          { "id": "transducer", "label": "Transducer", "note": "Under the hull: turns it into sound" },
+          { "id": "seabed", "label": "Seabed", "note": "Reflects the sound" },
+          { "id": "display", "label": "Receiver and display", "note": "Echo time becomes depth" }
+        ],
+        "links": [
+          { "from": "tx", "to": "transducer" },
+          { "from": "transducer", "to": "seabed", "label": "Sound pulse down" },
+          { "from": "seabed", "to": "display", "label": "Echo back up" }
+        ]
+      },
+      "onScreen": ["Transmitter: a short burst", "Transducer: turns it into sound", "Seabed reflects it", "Echo time becomes depth"],
+      "narration": "With the networks done, let's meet the instruments they connect, starting with the depth finder, also called an echo sounder. It works like shouting at a cliff and timing the echo. A transmitter makes a short electrical burst. A transducer under the hull, a device that turns electrical signals into sound and back, sends it straight down as a pulse of sound. The sound bounces off the seabed and comes back up to the transducer. Sound travels through seawater at about 1500 meters per second. Multiply the echo's travel time by that speed, then halve the result, since the sound went down and back up: that's the depth."
+    },
+    {
+      "id": "s37",
+      "keyTopic": 45,
+      "template": "band-strip",
+      "params": {
+        "title": "Depth finder frequencies: 200-400 kHz",
+        "min": 100,
+        "max": 10000000,
+        "scale": "log",
+        "ends": ["Lower", "Higher"],
+        "marks": [
+          { "at": 450, "label": "200-800 Hz", "note": "Audible sound: far too low", "tone": "muted" },
+          { "at": 300000, "label": "200-400 kHz", "note": "Common for depth finding", "tone": "key" },
+          { "at": 1600000, "label": "1000-2600 kHz", "note": "Absorbed too quickly", "tone": "muted" },
+          { "at": 5000000, "label": "4,000-6,000 kHz", "note": "Absorbed too quickly", "tone": "muted" }
+        ]
+      },
+      "onScreen": ["200-800 Hz: too low", "200-400 kHz: the common range", "1000-2600 kHz: too high", "4,000-6,000 kHz: too high"],
+      "narration": "What kind of sound does it use? Frequency is how many times each second the sound vibrates, measured in hertz, and a kilohertz is a thousand vibrations a second. Human hearing tops out around 20 kilohertz, so the trap range of 200 to 800 hertz is ordinary audible sound, far too low. Depth finding equipment commonly uses frequencies of 200 to 400 kilohertz: ultrasound, far above hearing. Why there? Higher frequencies make a narrower beam and finer detail, but seawater absorbs them faster. That rules out 1000 to 2600 and 4,000 to 6,000 kilohertz: they would be absorbed too quickly. 200 to 400 kilohertz is the balance: fine detail, and still a useful depth."
+    },
+    {
+      "id": "s38",
       "keyTopic": 45,
       "template": "waveform",
       "params": {
-        "title": "Depth finder pulses",
+        "title": "Depth finder pulse widths",
         "kind": "pulse",
         "cycles": 5,
         "duty": 0.15,
         "xAxis": "time",
         "yAxis": "transmitted pulses",
-        "labels": [
-          "Common frequencies: 200-400 kHz",
-          "Common pulse widths: 25 to 600 microseconds",
-          "Short pulses: fine resolution in shallow water",
-          "Longer pulses: deeper soundings"
-        ]
+        "labels": ["Pulse width: how long each burst lasts", "Common range: 25 to 600 microseconds", "Short pulses: fine resolution in shallow water", "Longer pulses: deeper soundings"]
       },
-      "onScreen": ["200-400 kHz", "Pulse widths 25 to 600 microseconds", "Short pulses: shallow water", "Longer pulses: deeper soundings"],
-      "narration": "Now depth finders. Depth finding equipment commonly uses frequencies of 200 to 400 kilohertz. It transmits in pulses, and common pulse widths are 25 to 600 microseconds. Short pulses give fine resolution in shallow water. Longer pulses are used for deeper soundings. So remember the pair: 200 to 400 kilohertz, and 25 to 600 microseconds."
+      "onScreen": ["Pulse width: how long each burst lasts", "25 to 600 microseconds", "Short pulses: shallow water", "Longer pulses: deeper soundings"],
+      "narration": "The depth finder doesn't send that sound nonstop. It goes out in pulses: short bursts, with silence in between to listen for the echo. Pulse width is how long each burst lasts. A microsecond is a millionth of a second. Depth finding equipment commonly uses pulse widths of 25 to 600 microseconds. Short pulses give fine resolution in shallow water: close echoes stay separate instead of blurring together. Longer pulses put more energy into the water, for deeper soundings: the echo still comes back strong from far below. 10 to 30 microseconds leaves out the longer pulses deep water needs. And 2 to 20 or 50 to 200 milliseconds, thousandths of a second, would be far too long."
     },
     {
-      "id": "s15",
+      "id": "s39",
       "keyTopic": 45,
       "template": "comparison-table",
       "params": {
-        "title": "Gyro compasses",
-        "columns": ["Gyro compass", "Key part", "What it does"],
+        "title": "What a gyro compass does",
+        "columns": ["Feature", "Magnetic compass", "Gyro compass"],
         "rows": [
-          ["Older gyro compass", "Carbon pile", "Voltage regulation, as a variable resistor"],
-          ["Fiber-optic gyro compass", "3 coils and a dual-axis electronic level sensor", "Finds true north, with no spinning rotor"]
+          ["Points to", "Magnetic north", "True north"],
+          ["Pulled off by the ship's steel?", "Yes", "No"],
+          ["Works by sensing", "The earth's magnetism", "The earth's rotation"]
         ]
       },
-      "onScreen": ["Older gyro: carbon pile gives voltage regulation", "Fiber-optic gyro: 3 fiber-optic coils and a dual-axis electronic level sensor", "Finds true north"],
-      "narration": "Next, gyro compasses. On an older gyro compass, the carbon pile provides voltage regulation. It works as a variable resistor. A fiber-optic gyro compass has no spinning rotor at all. It uses 3 fiber-optic coils and a dual-axis electronic level sensor to determine the direction of true north."
+      "onScreen": ["Magnetic compass: magnetic north", "Gyro compass: true north", "Not pulled off by the ship's steel", "Senses the earth's rotation"],
+      "narration": "The depth finder tells you what's under the ship. The next instrument tells you which way it's pointing: the gyro compass. A compass gives the ship's heading, the direction its bow is pointing. A magnetic compass points to magnetic north, and the ship's own steel can pull it off. A gyro compass finds true north, the direction of the earth's North Pole, by sensing the earth's rotation instead of its magnetism. Older gyro compasses do this with a heavy wheel, the rotor, spinning very fast; once it settles, its spin axis lines up with north. The gyro's heading feeds the radar, the auto pilot and the chart display, so a gyro fault shows up all over the bridge."
     },
     {
-      "id": "s16",
+      "id": "s40",
+      "keyTopic": 45,
+      "template": "key-facts",
+      "params": {
+        "title": "Older gyro compass: the carbon pile",
+        "items": ["Carbon pile: a stack of carbon disks", "Squeeze harder: lower resistance; ease off: higher resistance", "So it acts as a variable resistor, set by the output voltage", "Purpose: voltage regulation"]
+      },
+      "onScreen": ["Carbon pile: a stack of carbon disks", "Squeeze changes its resistance", "A variable resistor", "Purpose: voltage regulation"],
+      "narration": "Those older spinning gyros needed a steady electrical supply, often from a motor-generator, an electric motor turning a generator. That's where the carbon pile comes in. A carbon pile is a stack of carbon disks. Resistance is how strongly something opposes current, like a narrow section of pipe. Squeeze the stack harder and its resistance drops; ease off and it rises. That makes the pile a variable resistor. The output voltage sets the squeeze: if the voltage creeps up, the pile loosens, its resistance rises, and the voltage comes back down. So the carbon pile on an older gyro compass provides voltage regulation. Ballast regulation, precession control and pendulum effect errors are mechanical gyro terms, and the trap answers."
+    },
+    {
+      "id": "s41",
       "keyTopic": 45,
       "template": "block-diagram",
       "params": {
-        "title": "Ship Security Alert System (SSAS)",
+        "title": "Fiber-optic gyro: no spinning rotor",
         "columns": 3,
         "blocks": [
-          { "id": "ssas", "label": "SSAS activated", "note": "Sends a covert alert" },
-          { "id": "inmarsat", "label": "Inmarsat-C terminal" },
-          { "id": "addresses", "label": "Specific addresses" },
+          { "id": "coils", "label": "3 fiber-optic coils", "note": "Sense the earth's rotation" },
+          { "id": "computer", "label": "Computer" },
+          { "id": "north", "label": "True north" },
+          { "id": "level", "label": "Dual-axis level sensor", "note": "Finds level in 2 directions" },
+          { "id": "rotor", "label": "Spinning rotor", "note": "Not used" }
+        ],
+        "links": [
+          { "from": "coils", "to": "computer" },
+          { "from": "computer", "to": "north" },
+          { "from": "level", "to": "computer" },
+          { "from": "rotor", "to": "computer", "struck": true }
+        ]
+      },
+      "onScreen": ["3 fiber-optic coils", "Computer works out true north", "Dual-axis electronic level sensor", "No spinning rotor"],
+      "narration": "Newer ships often use a different design: the fiber-optic gyro compass. A fiber-optic coil is a long strand of glass fiber wound into a coil, with light sent both ways around it. If the coil turns, one beam has farther to go than the other, and the difference shows how fast it's turning. 3 coils, one for each direction of turn, measure the earth's rotation. A dual-axis electronic level sensor checks level in 2 directions. From those, the computer works out true north. So the fiber-optic gyro compass uses 3 fiber-optic coils and a dual-axis electronic level sensor, with no spinning rotor at all. Choices with fewer coils, accelerometers or a yaw detector are wrong."
+    },
+    {
+      "id": "s42",
+      "keyTopic": 45,
+      "template": "key-facts",
+      "params": {
+        "title": "SSAS: a silent alarm",
+        "items": ["Ship Security Alert System: for piracy or hijacking", "Hidden buttons: one on the bridge, at least one elsewhere", "Covert: the alert is secret", "No alarm sounds aboard"]
+      },
+      "onScreen": ["Ship Security Alert System", "Hidden buttons", "A covert, secret alert", "No alarm aboard"],
+      "narration": "Not every danger at sea comes from the weather or the seabed, so from navigation we turn to security. The Ship Security Alert System, or SSAS, is for piracy or a hijacking. Hidden buttons, one on the bridge and at least one elsewhere aboard, send a covert, meaning secret, alert. No alarm sounds aboard, so the attackers aren't tipped off that help has been called. A crew member can press a button and carry on as if nothing has happened."
+    },
+    {
+      "id": "s43",
+      "keyTopic": 45,
+      "template": "block-diagram",
+      "params": {
+        "title": "How SSAS sends its alert",
+        "columns": 3,
+        "blocks": [
+          { "id": "ssas", "label": "Hidden SSAS button", "note": "Sends a covert alert" },
+          { "id": "inmarsat", "label": "Inmarsat-C terminal", "note": "Satellite text messages" },
+          { "id": "addresses", "label": "Specific addresses", "note": "Set up in advance" },
           { "id": "allships", "label": "All ships alert", "note": "Not on VHF-DSC or MF-HF" }
         ],
         "links": [
@@ -311,89 +689,178 @@
           { "from": "ssas", "to": "allships", "struck": true }
         ]
       },
-      "onScreen": ["SSAS: covert alert", "Via the Inmarsat-C terminal", "To specific addresses", "No all ships alert on VHF-DSC or MF-HF"],
-      "narration": "The Ship Security Alert System, or SSAS, operates by sending a covert alert through the ship's Inmarsat-C terminal to specific addresses. It does not send an all ships alert. Not on VHF, or very high frequency, digital selective calling, known as DSC, and not on MF-HF, the medium and high frequency bands. Because the alert is covert, it goes only to those specific addresses, not to the ships around you."
+      "onScreen": ["SSAS: a covert alert", "Via the Inmarsat-C terminal", "To specific addresses", "No all ships alert on VHF-DSC or MF-HF"],
+      "narration": "So where does that secret alert go? SSAS operates by sending the alert through the Inmarsat-C terminal, the ship's satellite text message terminal, to specific addresses set up in advance, such as the shipping company's security officer. It does not send an all ships alert on VHF-DSC, the very high frequency DSC radio, or on MF-HF, the medium and high frequency bands. An all ships alert would be heard by every radio nearby, including the attackers'. And the keyed answer says specific addresses, not the rescue coordination center."
     },
     {
-      "id": "s17",
+      "id": "s44",
+      "keyTopic": 45,
+      "template": "radar-ppi",
+      "params": {
+        "title": "AIS: every ship announces itself",
+        "rangeNm": 6,
+        "rings": 3,
+        "echoes": [
+          { "bearing": 40, "range": 3.5 },
+          { "bearing": 150, "range": 2.5 },
+          { "bearing": 290, "range": 4.5 }
+        ],
+        "labels": ["Each ship's AIS broadcasts its identity, position, course and speed"]
+      },
+      "onScreen": ["Ships around you", "Each AIS broadcasts identity, position, course and speed"],
+      "narration": "SSAS keeps quiet on purpose. AIS, the Automatic Identification System, does the opposite: it announces the ship to everyone. Every ship's AIS unit automatically broadcasts the ship's identity, position, course and speed by radio, over and over, and listens for everyone else's. Picture each ship calling out: this is my name, here I am, this is where I'm heading. Nobody has to press anything; that's what automatic means. On the radar, each nearby ship shows as an echo, the bright spot its radar reflection makes, and the AIS reports put a name and course beside it. So you know not just that a ship is there, but which ship it is and where it's going."
+    },
+    {
+      "id": "s45",
       "keyTopic": 45,
       "template": "band-strip",
       "params": {
-        "title": "AIS channels: 9.6 kbs GMSK",
-        "min": 161.9,
-        "max": 162.1,
-        "scale": "linear",
+        "title": "AIS channels: 87B and 88B",
+        "min": 0,
+        "max": 4,
+        "scale": "even",
         "marks": [
-          { "at": 161.975, "label": "Channel 87B: 161.975 MHz", "note": "AIS, 9.6 kbs GMSK", "tone": "key" },
-          { "at": 162.025, "label": "Channel 88B: 162.025 MHz", "note": "AIS, 9.6 kbs GMSK", "tone": "key" }
+          { "at": 3, "label": "Ch 87B: 161.975 MHz", "note": "AIS", "tone": "key" },
+          { "at": 4, "label": "Ch 88B: 162.025 MHz", "note": "AIS", "tone": "key" },
+          { "at": 1, "label": "Ch 65B: 160.875 MHz", "note": "Not AIS", "tone": "muted" },
+          { "at": 2, "label": "Ch 18B: 161.500 MHz", "note": "Not AIS", "tone": "muted" }
         ]
       },
-      "onScreen": ["Channel 87B: 161.975 MHz", "Channel 88B: 162.025 MHz", "9.6 kbs GMSK modulation"],
-      "narration": "AIS, the Automatic Identification System, uses 2 VHF channels. Channel 87B is 161.975 megahertz, and channel 88B is 162.025 megahertz. AIS units send their data at 9.6 kbs, that's kilobits per second, using GMSK modulation, which stands for Gaussian minimum shift keying. So: 87B and 88B, 161.975 and 162.025 megahertz, and 9.6 kbs GMSK."
+      "onScreen": ["AIS: channel 87B, 161.975 MHz", "AIS: channel 88B, 162.025 MHz", "Not AIS: 65B and 18B"],
+      "narration": "Those reports go out by VHF radio, the same very high frequency band as the ship's voice radio. A channel is a numbered frequency slot, and megahertz means millions of cycles each second. AIS units use 2 VHF channels: channel 87B at 161.975 megahertz, and channel 88B at 162.025 megahertz. Each unit alternates between the 2, so interference on one channel doesn't silence a ship. Watch the trap choices: 65B and 66B, or 18B and 19B, are other marine channels, and 16 and 70 are kept for voice distress calling and DSC. The pair to know is 87B at 161.975, and 88B at 162.025 megahertz."
     },
     {
-      "id": "s18",
+      "id": "s46",
+      "keyTopic": 45,
+      "template": "waveform",
+      "params": {
+        "title": "AIS data: 9.6 kbs GMSK",
+        "kind": "fm",
+        "cycles": 8,
+        "xAxis": "time",
+        "yAxis": "radio signal",
+        "labels": ["Data rate: 9.6 kbs, kilobits per second", "Shift keying: the frequency shifts for each 1 or 0", "GMSK: Gaussian minimum shift keying", "Smoothed shifts keep the signal inside its channel"]
+      },
+      "onScreen": ["9.6 kbs", "Frequency shifts carry the 1s and 0s", "GMSK: Gaussian minimum shift keying", "Smoothed to stay in its channel"],
+      "narration": "How does AIS put its data on the radio wave? That's called modulation. AIS units send 9.6 kilobits per second using GMSK modulation: Gaussian minimum shift keying. Shift keying means the transmitter shifts its frequency slightly up or down for each 1 or 0, which is why the wave on screen bunches up and spreads out. Minimum shift means using the smallest shift that still works, which keeps the signal narrow. Gaussian refers to a smoothing filter, named after the mathematician Gauss, that rounds off each change so the signal stays inside its channel. The trap choices use the wrong channels or 4.8 kilobits per second. So: 87B and 88B, 9.6 kilobits per second, GMSK."
+    },
+    {
+      "id": "s47",
       "keyTopic": 46,
       "template": "key-facts",
       "params": {
-        "title": "Electronic chart systems",
-        "items": [
-          "C-Map charts: enter license information for each computer being used",
-          "Not just once in a master terminal",
-          "Data inputs include position, speed, depth and radar",
-          "SSAS is not a chart input: \"Radar, SSAS and Position\" is incorrect"
-        ]
+        "title": "Electronic charts and ECDIS",
+        "items": ["Electronic chart system: the nautical chart on a screen", "The ship's own position drawn on it live", "ECDIS: the approved kind, which can replace paper charts"]
       },
-      "onScreen": ["C-Map: license information on each computer", "Not just the master terminal", "Inputs: position, speed, depth, radar", "Not SSAS"],
-      "narration": "Electronic chart systems include ECDIS, the Electronic Chart Display and Information System. Before using C-Map charts for an electronic chart system, license information must be entered for each computer being used, not just in a master terminal. The system's data inputs include position, speed, depth and radar. SSAS is not a chart input, so the list radar, SSAS and position is the incorrect one."
+      "onScreen": ["Electronic chart system: the chart on a screen", "Live ship position", "ECDIS: the approved kind"],
+      "narration": "Now the last key topic: the bridge systems that bring all these readings together. First, the chart display you met as a listener on the NMEA network. It's called an electronic chart system. It shows the nautical chart, the seafarer's map of coasts, depths and hazards, on a screen, with the ship's own position drawn on it live. The approved kind, which can stand in for paper charts, is ECDIS, the Electronic Chart Display and Information System. To draw the ship on the chart, the system needs data from other instruments."
     },
     {
-      "id": "s19",
+      "id": "s48",
+      "keyTopic": 46,
+      "template": "block-diagram",
+      "params": {
+        "title": "Electronic chart system inputs",
+        "columns": 3,
+        "blocks": [
+          { "id": "pos", "label": "Position", "note": "From the GPS receiver" },
+          { "id": "speed", "label": "Speed", "note": "From the speed log" },
+          { "id": "depth", "label": "Depth", "note": "From the depth finder" },
+          { "id": "radar", "label": "Radar", "note": "Laid over the chart" },
+          { "id": "ecs", "label": "Electronic chart system" },
+          { "id": "ssas", "label": "SSAS", "note": "Not a chart input" }
+        ],
+        "links": [
+          { "from": "pos", "to": "ecs" },
+          { "from": "speed", "to": "ecs" },
+          { "from": "depth", "to": "ecs" },
+          { "from": "radar", "to": "ecs" },
+          { "from": "ssas", "to": "ecs", "struck": true }
+        ]
+      },
+      "onScreen": ["Inputs: position, speed, depth, radar", "Electronic chart system", "SSAS is not a chart input"],
+      "narration": "Which ones? Electronic chart system data inputs include position from the GPS, speed from the speed log, an instrument that measures the ship's speed, depth from the depth finder, and radar, whose picture can be laid over the chart. SSAS is not a chart input: it's the covert security alert, and it supplies no chart data. So on the exam, the list radar, SSAS and position is the incorrect one."
+    },
+    {
+      "id": "s49",
+      "keyTopic": 46,
+      "template": "key-facts",
+      "params": {
+        "title": "C-Map charts: a license for each computer",
+        "items": ["C-Map: a commercial brand of electronic charts", "Enter the license information for each computer being used", "Not just once in a master terminal"]
+      },
+      "onScreen": ["C-Map: electronic charts", "License information on each computer", "Not just the master terminal"],
+      "narration": "Before the charts appear, they have to be licensed. C-Map is a commercial brand of electronic charts, and its licenses are tied to the specific computer they're entered on. So before using C-Map charts for an electronic chart system, license information must be entered for each computer being used. Entering it once in a master terminal doesn't unlock the charts on the others. Downloading the charts from the internet, or plugging a dongle, a small security key, into the master terminal, isn't the procedure the exam wants either. Each computer needs its own license information."
+    },
+    {
+      "id": "s50",
+      "keyTopic": 46,
+      "template": "key-facts",
+      "params": {
+        "title": "What an auto pilot does",
+        "items": ["Auto pilot: steers the ship on a set course", "Course information: the set course and the gyro heading", "Steering gear: the machinery that moves the rudder"]
+      },
+      "onScreen": ["Auto pilot: steers a set course", "Course information", "Steering gear moves the rudder"],
+      "narration": "The chart shows where the ship should go. The auto pilot keeps it on that course, steering automatically. Think about how a helmsman steers. They look at the compass, compare the heading with the course they've been given, and turn the wheel to correct the difference. The auto pilot does the same. Its course information is the set course compared with the actual heading from the gyro compass. When they differ, it orders the steering gear, the powerful machinery that moves the rudder, to swing the rudder over. But how does it know how far the rudder has actually moved?"
+    },
+    {
+      "id": "s51",
       "keyTopic": 46,
       "template": "block-diagram",
       "params": {
         "title": "The auto pilot loop",
         "columns": 3,
         "blocks": [
-          { "id": "course", "label": "Course information", "note": "Required input" },
+          { "id": "rudder", "label": "Rudder" },
+          { "id": "feedback", "label": "Rudder feedback unit", "note": "Reports the actual rudder angle" },
           { "id": "autopilot", "label": "Auto pilot" },
           { "id": "steering", "label": "Steering gear" },
-          { "id": "gps", "label": "GPS", "note": "Useful extra, not necessary" },
-          { "id": "feedback", "label": "Rudder feedback unit", "note": "Reports the actual rudder angle" },
-          { "id": "rudder", "label": "Rudder" }
+          { "id": "course", "label": "Course information", "note": "Required input" },
+          { "id": "gps", "label": "GPS", "note": "Useful extra, not necessary" }
         ],
         "links": [
-          { "from": "course", "to": "autopilot" },
-          { "from": "autopilot", "to": "steering" },
-          { "from": "steering", "to": "rudder" },
           { "from": "rudder", "to": "feedback" },
           { "from": "feedback", "to": "autopilot", "label": "Rudder feedback" },
+          { "from": "autopilot", "to": "steering" },
+          { "from": "steering", "to": "rudder" },
+          { "from": "course", "to": "autopilot" },
           { "from": "gps", "to": "autopilot" }
         ]
       },
-      "onScreen": ["Course information: required", "Auto pilot drives the steering gear", "GPS: a useful extra only", "Rudder feedback unit: necessary, reports rudder angle"],
-      "narration": "The inputs normally required for an auto pilot are course information and rudder feedback. The auto pilot takes the course information and orders the steering gear to move the rudder. GPS, the Global Positioning System, can be a useful extra input, but it is not necessary. The necessary component is the rudder feedback unit. It reports the actual rudder angle back to the auto pilot, closing the loop."
+      "onScreen": ["Rudder feedback unit: necessary, reports the rudder angle", "Auto pilot drives the steering gear", "Course information: required", "GPS: a useful extra only"],
+      "narration": "That's the job of the rudder feedback unit, a sensor at the rudder that reports the actual rudder angle back to the auto pilot. The auto pilot compares the angle it ordered with the angle reported, and stops the steering gear at the right point. Without that feedback it would be steering blind. Order, move, report, correct: that's a loop. So the rudder feedback unit is a necessary component of an auto pilot, and the inputs normally required are course information and rudder feedback. GPS can be a useful extra input, but it isn't necessary. Yaw sensors, which sense the bow swinging side to side, aren't required either. Nor are radar data, engine RPM, meaning revolutions per minute, or SSAS."
     },
     {
-      "id": "s20",
+      "id": "s52",
       "keyTopic": 46,
       "template": "comparison-table",
       "params": {
-        "title": "Vessel Data Recorder (VDR) inputs",
-        "columns": ["Recorded by the VDR", "Not a VDR input"],
+        "title": "What the Vessel Data Recorder records",
+        "columns": ["Recorded item", "Comes from"],
         "rows": [
-          ["Date, time, position, speed and heading", ""],
-          ["Depth of water, radar, audio from the bridge", ""],
-          ["VHF radio communications, rudder feedback", ""],
-          ["", "EGC (Enhanced Group Call) data"],
-          ["", "MSI (Maritime Safety Information)"]
+          ["Date, time and position", "The GPS receiver"],
+          ["Speed and heading", "Speed log and gyro compass"],
+          ["Depth of water", "The depth finder"],
+          ["Radar", "The radar"],
+          ["Bridge audio and VHF radio", "Bridge microphones and the VHF"]
         ]
       },
-      "onScreen": ["Recorded: date, time, position, speed, heading", "Depth of water, radar, bridge audio, VHF radio, rudder feedback", "Not recorded: EGC data", "Not an input: MSI"],
-      "narration": "The Vessel Data Recorder, or VDR, records items such as the date, time, position, speed and heading, the depth of water, radar, audio from the bridge, and VHF radio communications. Rudder feedback may be an input too. But 2 things are not VDR inputs: EGC data, from Enhanced Group Call, and MSI, which is Maritime Safety Information. So any list that includes EGC data or MSI is the wrong one."
+      "onScreen": ["Date, time and position", "Speed and heading", "Depth of water", "Radar", "Audio from the bridge and VHF radio"],
+      "narration": "One more system, and it keeps a record of all the others: the Vessel Data Recorder, or VDR, also called the voyage data recorder. It's the ship's black box, like an airliner's flight recorder. It runs all the time, so after an accident investigators can replay what happened on the bridge. It records items such as the date, time and position, the speed and heading, the depth of water, the radar picture, audio from the bridge microphones, and VHF radio communications. Rudder feedback may be an input too. Notice that most of the instruments in this lesson feed it."
     },
     {
-      "id": "s21",
+      "id": "s53",
+      "keyTopic": 46,
+      "template": "key-facts",
+      "params": {
+        "title": "Not VDR inputs: EGC data and MSI",
+        "items": ["EGC: Enhanced Group Call, Inmarsat-C broadcasts to groups of ships", "MSI: Maritime Safety Information, navigation and weather warnings", "Neither is a VDR input", "On the exam: the list with EGC data or MSI is the wrong one"]
+      },
+      "onScreen": ["EGC: Enhanced Group Call", "MSI: Maritime Safety Information", "Neither is a VDR input", "The list with EGC or MSI is wrong"],
+      "narration": "Now the 2 items that are not VDR inputs. EGC, Enhanced Group Call, is the Inmarsat-C service that broadcasts safety messages to groups of ships at once. MSI, Maritime Safety Information, means the navigation warnings, weather warnings and forecasts broadcast to ships. Both arrive as messages on their own receivers, and neither is among the items the VDR records. So on the exam, the list heading, depth of water, EGC data and radar is the inaccurate one. And the statement that data input may include MSI is the one that's not true."
+    },
+    {
+      "id": "s54",
       "keyTopic": 46,
       "template": "timeline",
       "params": {
@@ -404,16 +871,37 @@
         ]
       },
       "onScreen": ["Crash Survivable Module: up to 12 hours", "Data Acquisition Unit: as long as 30 days"],
-      "narration": "2 parts of the Vessel Data Recorder to know. The Crash Survivable Module, or CSM, retains data for up to 12 hours. The Data Acquisition Unit, or DAU, may have data storage for as long as 30 days. So: up to 12 hours in the crash survivable module, and as long as 30 days in the data acquisition unit."
+      "narration": "So where does all that recorded data go? The VDR has 2 storage parts to know. The Crash Survivable Module, or CSM, is a tough capsule built to survive fire, impact and sinking, so the record can be recovered after an accident. It retains data for up to 12 hours, keeping the most recent and recording over the oldest. The Data Acquisition Unit, or DAU, is the main unit that collects all the inputs, and it may have data storage for as long as 30 days. On the exam, both statements are true: up to 12 hours in the CSM, as long as 30 days in the DAU."
+    },
+    {
+      "id": "s55",
+      "keyTopic": 46,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": ["Computers: follow the path. BIOS: P.O.S.T., bootstrap loader, BIOS drivers, BIOS setup", "Ethernet: home runs to a central hub; CAT-5 with 4 twisted pairs", "NMEA 0183: serial, RS422, single talker, ±15 V", "NMEA 2000: 9-16 V, 1 LEN = 50 mA, 6 m drops, gateway", "Depth 200-400 kHz; AIS 87B and 88B; rudder feedback; VDR: no EGC or MSI"]
+      },
+      "onScreen": ["Computers: follow the path; BIOS: 4 functions", "Ethernet star, CAT-5", "NMEA 0183 numbers", "NMEA 2000 numbers", "Instruments: depth, AIS, auto pilot, VDR"],
+      "narration": "Let's pull it together. Troubleshoot a computer by following the path, and remember the BIOS's 4 functions: P.O.S.T., the bootstrap loader, BIOS drivers and BIOS setup, where you check a computer that won't boot. Ethernet is a star of home run cables to a central hub, on CAT-5 with 4 twisted pairs. NMEA 0183 is serial, RS422, single talker, and survives plus or minus 15 volts. NMEA 2000 is a multi-talker CAN bus: 9 to 16 volts, 1 LEN is 50 milliamps, 6 meter drops, and a gateway to view it. On the bridge, depth finders use 200 to 400 kilohertz, AIS uses 87B and 88B, auto pilots need rudder feedback, and the VDR records neither EGC data nor MSI."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [41] },
-    { "after": "s7", "keyTopics": [42] },
-    { "after": "s10", "keyTopics": [43] },
-    { "after": "s13", "keyTopics": [44] },
-    { "after": "s17", "keyTopics": [45] },
-    { "after": "s21", "keyTopics": [46] }
+    { "after": "s4", "keyTopics": [41], "questions": ["9-41F1", "9-41F2"] },
+    { "after": "s8", "keyTopics": [41], "questions": ["9-41F3"] },
+    { "after": "s11", "keyTopics": [41], "questions": ["9-41F4", "9-41F5", "9-41F6"] },
+    { "after": "s14", "keyTopics": [42], "questions": ["9-42F1", "9-42F6"] },
+    { "after": "s17", "keyTopics": [42], "questions": ["9-42F3", "9-42F2"] },
+    { "after": "s20", "keyTopics": [42], "questions": ["9-42F5", "9-42F4"] },
+    { "after": "s24", "keyTopics": [43], "questions": ["9-43F4", "9-43F3", "9-43F2"] },
+    { "after": "s27", "keyTopics": [43], "questions": ["9-43F5", "9-43F1"] },
+    { "after": "s31", "keyTopics": [43, 44], "questions": ["9-43F6", "9-44F3", "9-44F6"] },
+    { "after": "s35", "keyTopics": [44], "questions": ["9-44F1", "9-44F2", "9-44F4", "9-44F5"] },
+    { "after": "s38", "keyTopics": [45], "questions": ["9-45F1", "9-45F2"] },
+    { "after": "s41", "keyTopics": [45], "questions": ["9-45F3", "9-45F4"] },
+    { "after": "s45", "keyTopics": [45], "questions": ["9-45F5", "9-45F6"] },
+    { "after": "s48", "keyTopics": [45, 46], "questions": ["9-45F6", "9-46F2"] },
+    { "after": "s51", "keyTopics": [46], "questions": ["9-46F1", "9-46F3", "9-46F4"] },
+    { "after": "s55", "keyTopics": [46], "questions": ["9-46F5", "9-46F6"] }
   ],
   "video": null
 }

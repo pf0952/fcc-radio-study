@@ -1,6 +1,6 @@
 [package]
 name = "fcc-radio-study"
-version = "1.1.0"
+version = "1.2.0"
 description = "Offline study program for the FCC Element 3, 8 and 9 commercial radio license exams"
 license = "MIT"
 edition = "2021"

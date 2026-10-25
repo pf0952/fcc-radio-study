@@ -24,3 +24,14 @@ export const videoUrl = (id: string): string | null => videoFiles[`../../content
 
 /** Index of the first scene teaching the key topic. */
 export const firstSceneOf = (lesson: Lesson, keyTopic: number) => Math.max(0, lesson.scenes.findIndex((s) => s.keyTopic === keyTopic));
+
+/**
+ * "Replay that part" after a missed checkpoint question: the first scene of its key topic in the stretch
+ * since the previous checkpoint (the part just heard), else the key topic's first scene.
+ */
+export function replaySceneOf(lesson: Lesson, after: number, keyTopic: number): number {
+  const ends = lesson.checkpoints.map((c) => lesson.scenes.findIndex((s) => s.id === c.after)).filter((i) => i >= 0 && i < after);
+  const from = ends.length ? Math.max(...ends) + 1 : 0;
+  const i = lesson.scenes.findIndex((s, n) => n >= from && n <= after && s.keyTopic === keyTopic);
+  return i >= 0 ? i : firstSceneOf(lesson, keyTopic);
+}

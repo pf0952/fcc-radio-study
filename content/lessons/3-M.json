@@ -11,13 +11,106 @@
       "params": {
         "kicker": "Element 3 · Subelement M",
         "title": "Communications Technology",
-        "subtitle": "Spread spectrum, TDMA and SSB, voice CODECs, data codes and layers, software radio, and the DSC and SITOR character codes."
+        "subtitle": "How radios spread and share signals, turn voice into data, and guard their bits: spread spectrum, TDMA, CODECs, layers, SDR, DSC and SITOR."
       },
-      "onScreen": ["Communications Technology", "Transmission types, CODECs, data codes, software radio, DSC and SITOR codes"],
-      "narration": "This lesson covers communications technology: how modern radios spread their signals and share a channel, how voice becomes digital data, and the codes behind computer data, digital selective calling and radio teleprinting. Many of these terms look alike, so we'll line them up side by side. We'll start with the types of transmissions, beginning with spread spectrum."
+      "onScreen": ["Communications Technology", "Spreading and sharing signals, voice to data, codes and software radio"],
+      "narration": "Welcome to Communications Technology. Modern radios do far more than send a voice on 1 frequency. They hop between channels, take turns on a shared channel, turn speech into digital data, and check every character for errors. A radio technician meets all of this in cell phones, public safety radios and ships' radios. We'll start with a quick refresher on carriers, channels and modulation, so you need no background. Then we'll see how signals are spread and shared, how voice becomes data, how that data is organized, and the codes ships use for distress calls and messages. By the end, you'll tell apart the look-alike terms the exam likes to mix up, and know why each answer is right."
     },
     {
       "id": "s2",
+      "keyTopic": 82,
+      "template": "waveform",
+      "params": {
+        "title": "Radio basics: frequency, carrier, channel",
+        "kind": "sine",
+        "cycles": 4,
+        "xAxis": "time",
+        "labels": [
+          "Cycle: 1 complete swing of the wave",
+          "Frequency: cycles per second, in hertz",
+          "Carrier: the steady wave that will carry the message",
+          "Channel: a lane of frequencies around a center frequency"
+        ]
+      },
+      "onScreen": ["A radio wave swinging up and down", "Cycle: 1 complete swing", "Frequency: cycles per second, in hertz", "Carrier: the steady wave", "Channel: a lane of frequencies around a center frequency"],
+      "narration": "First, the basics. A transmitter sends out a radio wave, an invisible ripple of electrical energy that travels through space. Its strength swings up and down, over and over. Each complete swing is called a cycle. The number of cycles every second is the wave's frequency, measured in hertz: 1 hertz is 1 cycle a second, and 1 kilohertz is 1000. A steady wave like this is called a carrier, because it will carry a message. To keep users from bumping into each other, each stays on a channel: a narrow slice of frequencies, like a lane on a highway. A channel is named by its center frequency, the frequency in the middle of the lane, where the carrier sits."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 82,
+      "template": "waveform",
+      "params": {
+        "title": "Modulation puts the message on the carrier",
+        "kind": "ssb",
+        "sideband": "both",
+        "carrier": "full",
+        "xAxis": "frequency",
+        "labels": [
+          "Carrier alone: in the middle, carrying no message",
+          "Modulation: AM changes its strength, FM its frequency",
+          "Sidebands: copies of the voice on each side",
+          "Bandwidth: the total width, which must fit the channel"
+        ]
+      },
+      "onScreen": ["AM signal seen as a spectrum", "Carrier alone carries no message", "Modulation: AM changes strength, FM frequency", "2 sidebands: copies of the voice", "Bandwidth must fit inside the channel"],
+      "narration": "On its own, that steady wave holds no information. To send a voice, the transmitter modulates it, changing the wave in step with the voice. AM, amplitude modulation, changes the carrier's strength, the size of its swings. FM, frequency modulation, nudges its frequency up and down. Here's an AM signal as a spectrum: frequency runs left to right, and height shows strength. The tall line in the middle is the carrier. A voice is a vibration too, at much lower frequencies. Modulating creates new frequencies: the carrier frequency plus and minus each voice frequency. Those are the 2 sidebands: copies of the voice. The total width they cover is the signal's bandwidth, and it must fit inside the channel."
+    },
+    {
+      "id": "s4",
+      "keyTopic": 82,
+      "template": "waveform",
+      "params": {
+        "title": "SSB voice: J3E emission",
+        "kind": "ssb",
+        "sideband": "upper",
+        "carrier": "suppressed",
+        "xAxis": "frequency",
+        "labels": [
+          "Only 1 sideband is sent",
+          "Carrier suppressed: only a faint trace remains",
+          "Less power and half the bandwidth of AM",
+          "J3E: 1 sideband and a suppressed carrier"
+        ]
+      },
+      "onScreen": ["1 sideband only", "Carrier suppressed", "Less power, half the bandwidth", "J3E: 1 sideband, suppressed carrier"],
+      "narration": "Think back to that AM signal. The carrier takes most of the transmitter's power, yet it carries none of the voice. And the 2 sidebands are mirror images carrying the same voice. So why send all 3? Single sideband, or SSB, doesn't. As you see here, it sends only 1 sideband, and it suppresses the carrier, cutting it down to almost nothing. That saves power and needs only half the bandwidth. The receiver adds its own carrier back in to recover the voice. An emission is the signal a transmitter sends out, and each kind has a short code. On the exam, SSB voice transmissions normally use J3E emission, which consists of 1 sideband and a suppressed carrier."
+    },
+    {
+      "id": "s5",
+      "keyTopic": 82,
+      "template": "comparison-table",
+      "params": {
+        "title": "Reading emission codes",
+        "columns": ["Code", "1st letter: modulation", "Digit: signal", "Last letter: content"],
+        "rows": [
+          ["J3E", "J: SSB, suppressed carrier", "3: analog, like a voice", "E: telephony (voice)"],
+          ["A3E", "A: AM, full carrier", "3: analog, like a voice", "E: telephony (voice)"],
+          ["F3E", "F: FM", "3: analog, like a voice", "E: telephony (voice)"],
+          ["A1A", "A: AM, full carrier", "1: digital, keyed on and off", "A: telegraphy by ear"]
+        ]
+      },
+      "onScreen": ["J3E: SSB voice, suppressed carrier", "A3E: full-carrier AM voice", "F3E: FM voice", "A1A: Morse telegraphy"],
+      "narration": "Emission codes are worth decoding, because the exam's wrong answers are built from them. Each code has 3 parts. The first letter tells how the carrier is modulated: J is single sideband with the carrier suppressed, A is full-carrier AM, and F is FM. The digit tells what kind of signal does the modulating: 3 is analog, varying smoothly like a voice, and 1 is digital. In A1A, it's just the carrier keyed, or switched, on and off. The last letter tells what's being sent: E is telephony, meaning voice, and A is telegraphy, Morse code heard by ear. So A3E is full-carrier AM voice, F3E is FM voice, and A1A is Morse telegraphy. Only J3E is SSB voice."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 82,
+      "template": "key-facts",
+      "params": {
+        "title": "Spread spectrum: spreading a signal wide",
+        "items": [
+          "A normal signal: one narrow channel, one fixed carrier frequency",
+          "Spread spectrum: a wide-bandwidth system",
+          "The RF carrier frequency varies according to a predetermined sequence",
+          "The receiver follows the same sequence and gathers the signal back",
+          "Hard to jam, hard to overhear, and many users can share the band"
+        ]
+      },
+      "onScreen": ["Normal signal: narrow, fixed frequency", "Spread spectrum: wide bandwidth", "Carrier frequency varies by a predetermined sequence", "Receiver follows the same sequence", "Hard to jam or overhear"],
+      "narration": "That's how a voice rides on a carrier. Now for a very different idea. Until now, every signal kept to its own narrow lane. Spread spectrum stretches a signal across a band, a wide range of frequencies, far wider than needed. On the exam, spread spectrum communication is a wide-bandwidth system in which the RF carrier frequency varies according to some predetermined sequence. RF simply means radio frequency, and predetermined means fixed in advance: the receiver knows the same pattern, follows it, and gathers the signal back together. Why bother? Interference on 1 frequency, even deliberate jamming, spoils only a small piece of it. Anyone without the pattern hears little more than noise. And many users can share the band."
+    },
+    {
+      "id": "s7",
       "keyTopic": 82,
       "template": "band-strip",
       "params": {
@@ -27,55 +120,128 @@
         "scale": "linear",
         "ends": ["Lower freq.", "Higher freq."],
         "marks": [
-          { "at": 6.5, "label": "Hop 1", "note": "Pseudo-random list of channels", "tone": "key" },
-          { "at": 2, "label": "Hop 2", "tone": "key" },
-          { "at": 8.5, "label": "Hop 3", "tone": "key" },
-          { "at": 4, "label": "Hop 4", "tone": "key" }
+          { "at": 6.5, "label": "Hop 1", "note": "A conventional carrier on 1 channel", "tone": "key" },
+          { "at": 2, "label": "Hop 2", "note": "Jumps many times per second", "tone": "key" },
+          { "at": 8.5, "label": "Hop 3", "note": "Pseudo-random list of channels", "tone": "key" },
+          { "at": 4, "label": "Hop 4", "note": "The receiver hops in step", "tone": "key" }
         ]
       },
-      "onScreen": ["Spread spectrum: wide bandwidth", "Carrier frequency follows a predetermined sequence", "Frequency hopping: center frequency changes many times per second", "Pseudo-random list of channels"],
-      "narration": "Spread spectrum communication is a wide-bandwidth system in which the RF, or radio frequency, carrier frequency varies according to some predetermined sequence. One common way to do it is frequency hopping. The center frequency of a conventional carrier is altered many times per second, following a pseudo-random list of channels. Watch it jump: hop 1, hop 2, hop 3, hop 4, never in simple order across the band."
+      "onScreen": ["Frequency hopping", "Hop 1: a conventional carrier", "Hops many times per second", "Pseudo-random list of channels", "Receiver hops in step"],
+      "narration": "There are 2 main ways to do the spreading. The first is frequency hopping. Picture an ordinary, or conventional, carrier, the kind we started with, sitting on 1 channel. Now make it jump to another channel, then another, many times per second. Each jump alters its center frequency, and the jumps follow a pseudo-random list of channels. Pseudo-random means the order looks random, but it's really a fixed list that both radios share. The receiver hops in step, so it hears the whole message, while anyone else hears only scattered blips. That's frequency hopping as the exam describes it: the center frequency of a conventional carrier altered many times per second, according to a pseudo-random list of channels."
     },
     {
-      "id": "s3",
+      "id": "s8",
+      "keyTopic": 82,
+      "template": "block-diagram",
+      "params": {
+        "title": "Direct sequence spread spectrum",
+        "columns": 4,
+        "blocks": [
+          { "id": "msg", "label": "Message", "note": "Changes slowly" },
+          { "id": "mix", "label": "Mixed with a chip code", "note": "Fast pseudo-random pulses" },
+          { "id": "wide", "label": "Spread signal", "note": "Wide band, fixed center frequency" },
+          { "id": "rx", "label": "Receiver", "note": "Same code: message back" }
+        ],
+        "links": [
+          { "from": "msg", "to": "mix" },
+          { "from": "mix", "to": "wide" },
+          { "from": "wide", "to": "rx" }
+        ]
+      },
+      "onScreen": ["Message", "Mixed with a fast chip code", "Spread signal: wide band, fixed center frequency", "Receiver uses the same code"],
+      "narration": "The second way, direct sequence, works quite differently. Direct sequence keeps the center frequency fixed. Instead of moving the carrier, it mixes the message with a very fast pseudo-random code, a stream of on-off pulses called chips. Remember the sidebands: the faster the modulating signal changes, the farther they spread from the carrier. The chips change very fast, so they smear the signal's energy thinly across a wide band around the center. The receiver mixes in the same code a second time, which cancels it, and the message pops back out. So the 2 types of spread spectrum used in most RF communications are direct sequence and frequency hopping. One keeps the center frequency fixed; the other hops it."
+    },
+    {
+      "id": "s9",
       "keyTopic": 82,
       "template": "comparison-table",
       "params": {
-        "title": "Spreading and sharing the channel",
-        "columns": ["Term", "What it is"],
+        "title": "Spreading methods versus modulation types",
+        "columns": ["Name", "What it is"],
         "rows": [
-          ["Direct Sequence", "Spread spectrum: center frequency stays fixed"],
-          ["Frequency Hopping", "Spread spectrum: center frequency hops"],
-          ["AM, FM, QPSK, QAM, APSK", "Modulation types, not spreading methods"],
-          ["TDMA", "Conversations take turns in separate time slots"],
-          ["CDMA and GSM", "The 2 most-used PCS coding techniques"]
+          ["Direct sequence", "Spread spectrum: fixed center, fast chip code"],
+          ["Frequency hopping", "Spread spectrum: the center frequency hops"],
+          ["AM, FM", "Modulation types, not spreading methods"],
+          ["QPSK, QAM, APSK", "Modulation types, not spreading methods"]
         ]
       },
-      "onScreen": ["Direct Sequence: center frequency fixed", "Frequency Hopping: center frequency hops", "AM, FM, QPSK, QAM, APSK: not spreading methods", "TDMA: separate time slots", "CDMA and GSM: the 2 most-used PCS techniques"],
-      "narration": "The 2 types of spread spectrum used in most RF communications are Direct Sequence and Frequency Hopping. Direct sequence keeps the center frequency fixed; frequency hopping moves it. AM and FM, amplitude and frequency modulation, are modulation types, not spreading methods. So are QPSK, QAM and APSK: quadrature phase shift keying, quadrature amplitude modulation, and amplitude and phase shift keying. Now, sharing a channel. A TDMA, or time division multiple access, radio carries multiple conversations sequentially, in separate time slots. And in PCS, or Personal Communications Systems, the 2 most-used coding techniques for separating calls are CDMA, code division multiple access, and GSM, the Global System for Mobile Communications."
+      "onScreen": ["Direct sequence: spread spectrum", "Frequency hopping: spread spectrum", "AM, FM: modulation types", "QPSK, QAM, APSK: modulation types"],
+      "narration": "With the right pair in hand, here's how the exam tries to trip you up. Its wrong answers name modulation types instead of spreading methods. Modulation, remember, is how information gets onto a carrier, not how a signal gets spread. AM and FM you already know. QPSK, quadrature phase shift keying, sends data by switching the carrier's phase, meaning the point its cycle has reached, between 4 set positions, each a quarter of a cycle apart. QAM, quadrature amplitude modulation, and APSK, amplitude and phase shift keying, shift both the strength and the phase. None of them is a spreading method. So a pair like frequency hopping and APSK is wrong, because only one half of it is spread spectrum."
     },
     {
-      "id": "s4",
+      "id": "s10",
       "keyTopic": 82,
+      "template": "timeline",
+      "params": {
+        "title": "TDMA: taking turns in time slots",
+        "badges": [
+          { "label": "Conversation A", "value": "Time slot 1", "note": "A short burst, then it waits" },
+          { "label": "Conversation B", "value": "Time slot 2", "note": "Its turn on the same channel" },
+          { "label": "Conversation C", "value": "Time slot 3", "note": "Each turn is a split second" },
+          { "label": "Conversation A again", "value": "Time slot 1", "note": "The turns repeat over and over" }
+        ]
+      },
+      "onScreen": ["TDMA: time division multiple access", "Slot 1: conversation A", "Slot 2: conversation B", "Slot 3: conversation C", "Then slot 1 again"],
+      "narration": "Spreading is one way to share the airwaves. Another is simply to take turns. When many users share 1 channel, it's called multiple access. TDMA stands for time division multiple access, and a TDMA radio carries multiple conversations sequentially, one after another, in separate time slots. Conversation A sends a short burst in slot 1, then waits while B uses slot 2 and C uses slot 3. Then it's A's turn again. The turns come so fast that each voice sounds continuous. The exam's wrong answers offer separate frequencies, separate pilot tones, which are steady reference tones, or separate power levels. Separate frequencies is the older way, frequency division, with each conversation on its own channel. TDMA divides time instead."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 84,
       "template": "waveform",
       "params": {
-        "title": "J3E: how SSB voice is sent",
-        "kind": "ssb",
-        "sideband": "upper",
-        "carrier": "suppressed",
-        "xAxis": "frequency",
+        "title": "GSM: Time Division Multiplex",
+        "kind": "pulse",
+        "cycles": 8,
+        "duty": 0.8,
+        "xAxis": "time",
+        "yAxis": "one GSM carrier",
         "labels": [
-          "J3E: 1 sideband, carrier suppressed",
-          "A3E: full-carrier AM",
-          "F3E: FM",
-          "A1A: Morse telegraphy"
+          "GSM: the worldwide digital cell-phone system",
+          "Time Division Multiplex: the channel's time cut into slots",
+          "Each 200 kHz carrier is divided into 8 time slots",
+          "Each call repeats in its own slot; not frequency division"
         ]
       },
-      "onScreen": ["J3E: 1 sideband, suppressed carrier", "A3E: full-carrier AM", "F3E: FM", "A1A: Morse telegraphy"],
-      "narration": "SSB, or single sideband, voice transmissions normally use emission type J3E. J3E consists of 1 sideband and a suppressed carrier, which is just what this spectrum shows: a single sideband standing alone, with the carrier only a faint dashed line. Don't confuse J3E with its neighbors. A3E is full-carrier AM, F3E is FM, and A1A is Morse telegraphy."
+      "onScreen": ["GSM: Global System for Mobile Communications", "Time Division Multiplex", "Each 200 kHz carrier divided into 8 time slots", "Each call in its own repeating slot"],
+      "narration": "The best-known time-sharing system is GSM, the Global System for Mobile Communications, the digital cell-phone standard used around the world. To multiplex means to combine several signals on 1 channel. GSM lets multiple conversations share 1 radio channel by Time Division Multiplex, the same idea as TDMA: the channel's time is cut into slots. Each 200 kilohertz carrier is divided into 8 time slots, and each conversation gets its own slot. Here are the 8 bursts on 1 carrier. After slot 8, the pattern starts again at slot 1, so each call keeps taking its turn. The trap answers are frequency division multiplex, which gives each signal its own frequency, and double sideband, which is a kind of AM."
     },
     {
-      "id": "s5",
+      "id": "s12",
+      "keyTopic": 82,
+      "template": "key-facts",
+      "params": {
+        "title": "PCS: the 2 main ways to separate calls",
+        "items": [
+          "PCS: Personal Communications Systems, the digital cell-phone networks",
+          "GSM: each call in its own time slot",
+          "CDMA: code division multiple access, each call with its own code",
+          "Wrong pairs: QPSK and QAM; AM and frequency hopping"
+        ]
+      },
+      "onScreen": ["PCS: Personal Communications Systems", "GSM: time slots", "CDMA: a code for each call", "The 2 most-used: CDMA and GSM"],
+      "narration": "Digital cell-phone networks like this are called PCS, Personal Communications Systems. A PCS network has to keep a crowd of calls from tangling together, and the 2 most-used PCS coding techniques for separating calls are CDMA and GSM. You've just met GSM: each call gets its own time slot. CDMA, code division multiple access, works differently. Every call is spread across the same wide band at the same time, each with its own code. That's direct sequence spread spectrum put to work. It's like a room where everyone talks at once, each pair in a different language: you only understand your own. On the exam, QPSK and QAM are modulation types, and AM with frequency hopping isn't the PCS pair."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 83,
+      "template": "waveform",
+      "params": {
+        "title": "From a smooth voice to bits",
+        "kind": "sine",
+        "cycles": 3,
+        "xAxis": "time",
+        "labels": [
+          "Analog: a smooth wave that can take any value",
+          "Sampling: measure the wave thousands of times a second",
+          "Each measurement written in bits: 1s and 0s",
+          "Digital: a stream of bits, easy to check, squeeze and scramble"
+        ]
+      },
+      "onScreen": ["A smooth voice wave", "Analog: smooth, any value", "Sampling: thousands of measurements a second", "Bits: each a 1 or a 0", "Digital: a stream of bits"],
+      "narration": "GSM and CDMA carry voice as digital data. How does a voice become data? A microphone turns your voice into an electrical wave that rises and falls smoothly, like this one. That's analog: it can take any value. To make it digital, a circuit measures it thousands of times a second. That's called sampling. Each measurement is written as a number using only 2 digits, 1 and 0, like a switch, on or off. Each 1 or 0 is called a bit, short for binary digit, and a digital signal is a stream of them. Bits are easy to check, squeeze and scramble, and the receiver only has to tell a 1 from a 0, so noise does less harm."
+    },
+    {
+      "id": "s14",
       "keyTopic": 83,
       "template": "block-diagram",
       "params": {
@@ -94,67 +260,254 @@
         ]
       },
       "onScreen": ["Voice in", "CODEC converts voice to a predetermined digital format", "Encrypted digital transmission", "CODEC converts received data back to audio"],
-      "narration": "Digital radios turn your voice into data. That's the job of a CODEC, short for coder-decoder. A CODEC is an IC, an integrated circuit, or other circuitry that converts a voice signal into a predetermined digital format for encrypted transmission. At the receiving end, a CODEC converts the received data back to audio you can hear."
+      "narration": "The part that does this conversion is called a CODEC, short for coder-decoder. A CODEC is an IC or circuitry that converts a voice signal into a predetermined digital format for encrypted transmission. An IC, an integrated circuit, is a complete circuit on 1 small chip. Predetermined means a fixed, agreed format, so the far end knows how to read it. Encrypted means scrambled with a secret key, so only the intended receiver can make sense of it. At the receiving end, a CODEC converts the data back to audio. The wrong choices call it a Morse code reader or a voice amplitude compression chip, which only evens out loud and soft sounds. Neither turns voice into data and back."
     },
     {
-      "id": "s6",
-      "keyTopic": 83,
-      "template": "comparison-table",
-      "params": {
-        "title": "Which CODEC or code?",
-        "columns": ["Used for", "CODEC or code", "Notes"],
-        "rows": [
-          ["GSM digital mobile radio", "RPE CODEC", "Regular-Pulse Excited"],
-          ["Phase 2 P25 radios", "AMBE CODEC", "1 TDMA slot: 2 talk paths per 12.5 kHz"],
-          ["Computer-to-computer data", "ASCII", "Widest acceptance"]
-        ]
-      },
-      "onScreen": ["GSM: Regular-Pulse Excited (RPE) CODEC", "Phase 2 P25: AMBE CODEC, 2 talk paths per 12.5 kHz", "ASCII: widest acceptance for computer data"],
-      "narration": "Different systems use different CODECs. GSM uses a Regular-Pulse Excited, or RPE, CODEC for digital mobile radio communications. Phase 2 P25, or Project 25, radios use the AMBE CODEC, short for Advanced Multi-Band Excitation. It fits voice into 1 TDMA time slot, so 2 talk paths share a single 12.5 kilohertz channel. And for exchanging data from computer to computer, the code that has gained the widest acceptance is ASCII, the American Standard Code for Information Interchange."
-    },
-    {
-      "id": "s7",
+      "id": "s15",
       "keyTopic": 83,
       "template": "key-facts",
       "params": {
-        "title": "The 7-level reference model",
+        "title": "Speech CODECs squeeze the voice",
         "items": [
-          "International Organization for Standardization: a 7-level model for packet radio",
-          "Physical layer (bottom): actual transmission of data and handshaking signals",
-          "Link layer (just above it): arranges bits into frames and controls data flow"
+          "Sampled voice: more bits than a crowded channel can carry",
+          "A speech CODEC sends a compact description of the sound",
+          "The CODEC at the far end rebuilds the voice from it",
+          "Far fewer bits, and still easy to understand"
         ]
       },
-      "onScreen": ["7-level reference model for packet radio", "Physical layer: actual transmission of data and handshaking signals", "Link layer: bits into frames, controls data flow"],
-      "narration": "Packet radio follows the International Organization for Standardization's 7-level reference model, often called the OSI, or Open Systems Interconnection, model. The exam asks about 2 of its layers. At the bottom, the physical layer is responsible for the actual transmission of data and handshaking signals. Just above it, the link layer arranges the bits into frames and controls the flow of data."
+      "onScreen": ["Sampled voice: too many bits", "Speech CODEC: a compact description", "Far end rebuilds the voice", "Far fewer bits"],
+      "narration": "Most CODECs do more than convert: they compress. Sampling a voice thousands of times a second makes a lot of bits, more than a crowded radio channel can carry. So a speech CODEC squeezes them down. Instead of sending every sample, it sends a compact description of the sound. The CODEC at the far end rebuilds the voice from that description. The result isn't a perfect copy, but it's easy to understand, and it needs far fewer bits. Each speech CODEC has its own way of describing a voice, and the exam names 2 of them."
     },
     {
-      "id": "s8",
+      "id": "s16",
+      "keyTopic": 83,
+      "template": "block-diagram",
+      "params": {
+        "title": "GSM's CODEC: Regular-Pulse Excited (RPE)",
+        "columns": 3,
+        "blocks": [
+          { "id": "pulses", "label": "Regular pulses", "note": "Evenly spaced" },
+          { "id": "filter", "label": "Filter", "note": "Shaped like the throat and mouth" },
+          { "id": "speech", "label": "Speech", "note": "From about 13 thousand bits a second" }
+        ],
+        "links": [
+          { "from": "pulses", "to": "filter", "label": "excite" },
+          { "from": "filter", "to": "speech" }
+        ]
+      },
+      "onScreen": ["GSM: Regular-Pulse Excited (RPE) CODEC", "Regular pulses drive a filter", "Filter shaped like the throat and mouth", "Speech from about 13 thousand bits a second"],
+      "narration": "GSM uses a Regular-Pulse Excited, or RPE, CODEC for digital mobile radio communications. The name tells you how it works. The decoder starts from a train of evenly spaced pulses: the regular pulses. They excite, meaning drive, a filter, a circuit that passes some frequencies more strongly than others. The filter is set to copy the shape of the speaker's throat and mouth, so what comes out sounds like speech. The whole voice fits in about 13 thousand bits each second. On the exam, the other choices are look-alike CODEC names. For GSM, remember RPE: Regular-Pulse Excited."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 83,
+      "template": "equipment-card",
+      "params": {
+        "title": "Phase 2 P25 radios: the AMBE CODEC",
+        "device": "vhf-handheld",
+        "callouts": [
+          { "label": "P25, Project 25: digital two-way radio for public safety", "at": "body" },
+          { "label": "Phase 2 P25: AMBE CODEC, Advanced Multi-Band Excitation", "at": "display" },
+          { "label": "Voice squeezed into 1 TDMA time slot", "at": "speaker" },
+          { "label": "2 talk paths share one 12.5 kHz channel", "at": "antenna" }
+        ]
+      },
+      "onScreen": ["P25: Project 25 public safety radio", "Phase 2 P25: AMBE CODEC", "Voice fits 1 TDMA time slot", "2 talk paths per 12.5 kHz channel"],
+      "narration": "Cell phones aren't the only digital radios. Police, fire and other public safety agencies use digital radios built to a standard called P25, short for Project 25. Phase 2 P25 radios use the AMBE CODEC, which stands for Advanced Multi-Band Excitation. AMBE squeezes voice into so few bits that it fits into 1 TDMA time slot. Remember TDMA, taking turns in time? Here the channel is split into 2 slots, so 2 talk paths, meaning 2 separate conversations, share a single 12.5 kilohertz channel. Older Phase 1 radios carry just 1 conversation per channel, so Phase 2 doubles the number without needing more channels. The other answers are just jumbles of letters; the Phase 2 P25 CODEC is AMBE."
+    },
+    {
+      "id": "s18",
+      "keyTopic": 83,
+      "template": "comparison-table",
+      "params": {
+        "title": "Codes for text: ASCII wins for computers",
+        "columns": ["Code", "How it sends a character", "Main use"],
+        "rows": [
+          ["ASCII", "7 bits", "Computer to computer: widest acceptance"],
+          ["Morse", "Dots and dashes", "Telegraphy by hand and ear"],
+          ["Baudot", "5 bits", "Older teleprinters"],
+          ["Gray", "Neighbors differ by 1 bit", "Position encoders"]
+        ]
+      },
+      "onScreen": ["ASCII: widest acceptance for computer data", "Morse: dots and dashes", "Baudot: 5 bits, teleprinters", "Gray: position encoders"],
+      "narration": "Radios carry text too, and text needs a code: an agreed table giving every letter, digit and punctuation mark its own pattern of bits. The code that has gained the widest acceptance for exchange of data from one computer to another is ASCII, the American Standard Code for Information Interchange. It uses 7 bits per character, and nearly every computer adopted it. The wrong choices have other jobs. Morse code is dots and dashes for telegraphy by hand. Baudot is an older 5 bit code for teleprinters, machines that print out received text. And Gray code, where neighboring values differ by only 1 bit, is used in position encoders, sensors that report how far a shaft has turned."
+    },
+    {
+      "id": "s19",
+      "keyTopic": 83,
+      "template": "block-diagram",
+      "params": {
+        "title": "Packet radio: a 7-level reference model",
+        "columns": 1,
+        "blocks": [
+          { "id": "up", "label": "Upper layers, 3 to 7", "note": "Routing, delivery, the program you use" },
+          { "id": "link", "label": "Layer 2: link", "note": "Organizes the bits" },
+          { "id": "phys", "label": "Layer 1: physical", "note": "Sends the bits" },
+          { "id": "air", "label": "Radio channel" }
+        ],
+        "links": [
+          { "from": "up", "to": "link" },
+          { "from": "link", "to": "phys" },
+          { "from": "phys", "to": "air" }
+        ]
+      },
+      "onScreen": ["Packet radio: data in short bundles", "ISO 7-level reference model", "Upper layers 3 to 7", "Layer 2: link", "Layer 1: physical", "Radio channel"],
+      "narration": "Once text is in bits, it has to be packaged for the trip. Packet radio cuts the data into short bundles called packets, each labeled with its sender and destination, like a letter in an envelope. Getting a packet across takes many separate jobs, so the International Organization for Standardization, ISO, developed a 7-level reference model, a standard plan that splits the work into layers, and packet radio follows it. It's usually called the OSI model, for Open Systems Interconnection. Level and layer mean the same thing here. Each layer does one job and hands the data on, so each can be fixed on its own. A message passes down the stack, out over the air, and back up at the far end."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 83,
+      "template": "key-facts",
+      "params": {
+        "title": "The 2 bottom layers",
+        "items": [
+          "Physical layer (layer 1): actual transmission of data and handshaking signals",
+          "Handshaking: signals that say ready to send, go ahead",
+          "Link layer (layer 2): arranges the bits into frames and controls data flow",
+          "Not the answer: transport layer; no communications or synchronization layer"
+        ]
+      },
+      "onScreen": ["Physical layer: transmission of data and handshaking", "Handshaking: ready, go ahead", "Link layer: frames and data flow", "Not transport, communications or synchronization"],
+      "narration": "The exam asks about the bottom 2 layers. The physical layer, layer 1, is responsible for the actual transmission of data and handshaking signals. That's the hardware putting bits on the air. Handshaking signals are the exchanges 2 machines make before and during sending: are you ready, yes, go ahead. Above it, the link layer, layer 2, arranges the bits into frames and controls data flow. A frame is a bundle of bits with a clear start and end, an address, and a few extra bits for spotting errors. Controlling the flow means not sending faster than the other end can take. As for the traps, the transport layer sits higher up, handling end-to-end delivery, and there's no communications or synchronization layer."
+    },
+    {
+      "id": "s21",
       "keyTopic": 84,
       "template": "block-diagram",
       "params": {
-        "title": "Software-defined radio and DSP",
+        "title": "Inside a traditional radio: fixed circuits",
         "columns": 3,
         "blocks": [
-          { "id": "filt", "label": "Filtering" },
-          { "id": "dsp", "label": "Software (DSP)", "note": "Instead of fixed hardware" },
-          { "id": "mod", "label": "Modulation" },
-          { "id": "freq", "label": "Frequency" },
-          { "id": "demod", "label": "Demodulation (detection)" },
-          { "id": "swr", "label": "SWR", "note": "Depends on the antenna match" }
+          { "id": "mic", "label": "Microphone", "note": "Your voice in" },
+          { "id": "mod", "label": "Modulator", "note": "Puts the voice on the carrier" },
+          { "id": "txant", "label": "To the antenna", "note": "Signal out" },
+          { "id": "rxant", "label": "From the antenna", "note": "Signal in" },
+          { "id": "filt", "label": "Filter", "note": "Keeps the wanted channel only" },
+          { "id": "demod", "label": "Demodulator", "note": "Takes the voice back off" }
         ],
         "links": [
-          { "from": "dsp", "to": "filt" },
-          { "from": "dsp", "to": "mod" },
+          { "from": "mic", "to": "mod" },
+          { "from": "mod", "to": "txant" },
+          { "from": "rxant", "to": "filt" },
+          { "from": "filt", "to": "demod" }
+        ]
+      },
+      "onScreen": ["Transmit: microphone, modulator, antenna", "Receive: antenna, filter, demodulator", "Each job done by a fixed circuit"],
+      "narration": "So much for how data is organized. Now let's look inside the radio itself. A traditional radio does each job with its own fixed circuit. To transmit, your voice goes from the microphone to the modulator, which puts it on the carrier, and on to the antenna. To receive, signals come in from the antenna, and a filter lets the wanted channel through and blocks the rest. Then the demodulator does the reverse of modulation: it takes the voice back off the carrier. Each circuit is built for one job, so giving the radio a new job means building new hardware."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 84,
+      "template": "comparison-table",
+      "params": {
+        "title": "SDR: the radio's jobs move into software",
+        "columns": ["Job", "Traditional radio", "Software defined radio"],
+        "rows": [
+          ["Filtering", "Fixed circuits", "Software"],
+          ["Modulation", "Fixed circuits", "Software"],
+          ["Demodulation", "Fixed circuits", "Software"],
+          ["Adding a new mode", "New hardware", "New software"]
+        ]
+      },
+      "onScreen": ["SDR: Software Defined Radio", "Filtering in software", "Modulation in software", "Demodulation in software", "New mode: new software"],
+      "narration": "SDR, Software Defined Radio, changes that. An SDR turns the incoming signal into a stream of numbers by sampling it, just as a voice is sampled. Then filtering, modulation and demodulation are done in software rather than fixed hardware: a processor does the math that the separate circuits used to do. Want a new mode, a new way of sending? Load new software; no new parts are needed. On the exam, pick Software Defined Radio, not a software deviation ratio, not a kind of computer memory, and not an SWR meter, a meter for the standing wave ratio, which you'll meet shortly."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 84,
+      "template": "block-diagram",
+      "params": {
+        "title": "What the DSP controls, and what it can't",
+        "columns": 3,
+        "blocks": [
+          { "id": "freq", "label": "Frequency" },
+          { "id": "dsp", "label": "DSP", "note": "Digital signal processing" },
+          { "id": "mod", "label": "Modulation" },
+          { "id": "demod", "label": "Detection", "note": "Demodulation" },
+          { "id": "swr", "label": "SWR", "note": "Set by the antenna match" }
+        ],
+        "links": [
           { "from": "dsp", "to": "freq" },
+          { "from": "dsp", "to": "mod" },
           { "from": "dsp", "to": "demod" },
           { "from": "dsp", "to": "swr", "struck": true }
         ]
       },
-      "onScreen": ["SDR: filtering, modulation and demodulation in software", "DSP controls frequency, modulation and detection", "DSP does not control SWR: that depends on the antenna match"],
-      "narration": "SDR stands for Software Defined Radio. In an SDR, filtering, modulation and demodulation are done in software rather than in fixed hardware. In a modern DSP, or digital signal processing, radio, the DSP controls the frequency, the modulation and the detection. What it does not control is the SWR, the standing wave ratio. SWR depends on the antenna match, not on the radio's software."
+      "onScreen": ["DSP controls frequency", "DSP controls modulation", "DSP controls detection", "DSP does not control SWR: that depends on the antenna match"],
+      "narration": "Doing radio work with math on those numbers is called DSP, digital signal processing. In a modern DSP radio, the DSP controls the frequency the radio works on, the modulation, and the detection, which is another word for demodulation. All 3 happen to the signal inside the radio, so they're just calculations. What the DSP does not control is SWR, the standing wave ratio. That's the exam's answer to what the DSP doesn't do. To see why SWR is out of its reach, we have to step outside the radio, out to the antenna."
     },
     {
-      "id": "s9",
+      "id": "s24",
+      "keyTopic": 84,
+      "template": "equipment-card",
+      "params": {
+        "title": "SWR depends on the antenna match",
+        "device": "antenna",
+        "callouts": [
+          { "label": "Cable: carries the power up from the transmitter", "at": "coax" },
+          { "label": "Good match: nearly all the power radiates", "at": "whip" },
+          { "label": "Poor match: some power bounces back down", "at": "tip" },
+          { "label": "Antenna tuner: adjusts the match, outside the DSP", "at": "coupler" }
+        ]
+      },
+      "onScreen": ["Power travels up the cable", "Good match: power radiates", "Poor match: power bounces back", "SWR set by antenna, cable and tuner"],
+      "narration": "The transmitter's power travels up a cable to the antenna. SWR measures how well the antenna is matched to that cable and the transmitter. With a good match, the antenna sends nearly all the power out as radio waves. With a poor match, some power bounces back down the cable. The outgoing and returning waves add up into a pattern that stays in place along the cable: a standing wave. So SWR depends on the antenna match, which is set by the antenna, the cable and any antenna tuner, a box that adjusts the match. All of those sit outside the processor. It's like a car's engine computer: it runs the engine, but it can't fix a flat tire."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 84,
+      "template": "key-facts",
+      "params": {
+        "title": "Catching errors with check bits",
+        "items": [
+          "Noise can flip a bit: a 1 arrives as a 0",
+          "Check bits: extra bits worked out from the data, like a parity bit",
+          "Error detection: the receiver can tell a character is bad",
+          "Error correction: the receiver also ends up with the right character"
+        ]
+      },
+      "onScreen": ["Noise can flip a bit", "Check bits: extra bits from the data", "Error detection", "Error correction"],
+      "narration": "Our last topic is how ships' radios protect their data, where a single wrong bit could garble a distress call. A burst of static can flip a bit, so a 1 arrives as a 0. To catch that, the sender adds check bits: extra bits worked out from the data itself. The simplest is a parity bit, 1 extra bit chosen so the number of 1s always comes out even. If a bit flips, the count comes out odd, and the receiver knows something's wrong. That's error detection. Error correction goes a step further: the receiver also ends up with the right character, for example from a second copy. Keep these ideas handy for the 2 maritime codes coming up."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 84,
+      "template": "block-diagram",
+      "params": {
+        "title": "GMDSS DSC: a 10-bit character",
+        "columns": 3,
+        "blocks": [
+          { "id": "data", "label": "7 data bits", "note": "Sent first: the information" },
+          { "id": "check", "label": "3 check bits", "note": "Count of zeros in the data" },
+          { "id": "char", "label": "1 DSC character", "note": "10 bits in all" }
+        ],
+        "links": [
+          { "from": "data", "to": "check" },
+          { "from": "check", "to": "char" }
+        ]
+      },
+      "onScreen": ["DSC: digital selective calling, part of GMDSS", "7 data bits first", "Then 3 check bits: a count of zeros", "10 bit error correcting code"],
+      "narration": "The first maritime code is DSC, digital selective calling, part of GMDSS, the Global Maritime Distress and Safety System. DSC sends short digital messages, such as a distress alert or a call to one particular ship. The code used for GMDSS DSC transmissions is a 10 bit error correcting code. Each character starts with 7 bits of data, followed by a 3 bit error correcting code. Those 3 check bits count how many of the 7 data bits are zeros, written as a binary number. 3 bits give 8 different patterns, enough to count from 0 zeros up to 7. Together, that's 1 DSC character of 10 bits."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 84,
+      "template": "comparison-table",
+      "params": {
+        "title": "DSC code: the right answer and the traps",
+        "columns": ["Answer choice", "Verdict"],
+        "rows": [
+          ["7 data bits, then 3 check bits", "Right: the DSC code"],
+          ["3 check bits, then 7 data bits", "Wrong: the check bits come last"],
+          ["8 bits: 7 data bits, 1 parity bit", "Wrong: that's plain parity"],
+          ["7 bits, sent twice", "Wrong: DSC characters are 10 bits"]
+        ]
+      },
+      "onScreen": ["Right: 7 data bits, then 3 check bits", "Wrong: check bits first", "Wrong: 8 bits with 1 parity bit", "Wrong: 7 bits sent twice"],
+      "narration": "So when noise flips a bit, the count of zeros no longer matches the check bits, and the receiver knows that character is bad. On the exam, the right answer is 10 bits: 7 data bits first, then the 3 check bits. The traps change one detail each. One puts the 3 check bits first; they actually come last. One offers an 8 bit code with 7 data bits and a single parity bit; that's the plain parity check, not DSC. The last says a 7 bit code transmitted twice. DSC does send every character twice, so the receiver can pick a good copy, but each character is 10 bits, not 7."
+    },
+    {
+      "id": "s28",
       "keyTopic": 84,
       "template": "comparison-table",
       "params": {
@@ -167,49 +520,69 @@
         ]
       },
       "onScreen": ["DSC: 10 bits, 7 data bits then 3 check bits", "SITOR: 7 bits, 4 zeros and 3 ones", "Wrong ratio: error detected"],
-      "narration": "Now 2 maritime codes. GMDSS, the Global Maritime Distress and Safety System, uses DSC, or digital selective calling. The code used for GMDSS DSC transmissions is a 10 bit error correcting code. It starts with 7 bits of data, followed by a 3 bit error correcting code. SITOR, simplex teletype over radio, works differently, in both SITOR-A and SITOR-B. Each character is 7 bits, always with 4 zeros and 3 ones, so a character that breaks this ratio is detected as an error."
+      "narration": "The second code belongs to SITOR, simplex teletype over radio. SITOR sends typed text between ships and coast stations over long distances, printed out at the far end. Simplex means only 1 station transmits at a time. In the code used for SITOR-A and SITOR-B, each character consists of 7 bits, not DSC's 10, always with 4 zeros and 3 ones. If noise flips a bit, the count changes, so a character that breaks the 4 to 3 ratio is detected as an error. On the exam, don't reverse the mix to 3 zeros and 4 ones, and don't pick the 5 bit Baudot code. And 7 data bits plus 3 check bits is DSC, not SITOR."
     },
     {
-      "id": "s10",
+      "id": "s29",
+      "keyTopic": 84,
+      "template": "waveform",
+      "params": {
+        "title": "SITOR's 2 modes: ARQ and FEC",
+        "kind": "repeat",
+        "chars": ["S", "H", "I", "P"],
+        "noiseAt": 2,
+        "labels": [
+          "SITOR-A, ARQ: the receiver asks for repeats",
+          "SITOR-B, FEC: every character sent twice",
+          "Noise wipes 1 copy, the other gets through"
+        ]
+      },
+      "onScreen": ["SITOR-A: ARQ, the receiver asks for repeats", "SITOR-B: FEC, each character sent twice", "Noise wipes 1 copy, the other gets through"],
+      "narration": "You've seen the names SITOR-A and SITOR-B: they're its 2 modes. SITOR-A, also called ARQ, automatic repeat request, connects just 2 stations. The receiver checks each small block of characters, using that 4 to 3 ratio, and asks for a repeat whenever something's wrong. SITOR-B can't ask, because it usually broadcasts to many ships at once. So it uses FEC, forward error correction. Forward means the fix travels with the message, with no reply needed: every character is sent twice. If noise wipes out 1 copy, as it does here, the receiver prints the other. That's error correction without ever answering back."
+    },
+    {
+      "id": "s30",
       "keyTopic": 84,
       "template": "key-facts",
       "params": {
         "title": "SITOR-B phasing: Idle Signal alpha",
         "items": [
-          "SITOR-B is the FEC (forward error correction) mode",
-          "Idle Signal alpha: 0000111",
-          "Used for FEC Phasing Signal 1",
-          "Like every SITOR character: 4 zeros and 3 ones"
+          "Phasing: the receiver must find where each character begins",
+          "Phasing signals at the start get the receiver in step",
+          "FEC Phasing Signal 1: Idle Signal alpha, 0000111",
+          "0000111: 4 zeros and 3 ones, like every SITOR character"
         ]
       },
-      "onScreen": ["SITOR-B: FEC mode", "Idle Signal alpha: 0000111", "FEC Phasing Signal 1", "4 zeros and 3 ones"],
-      "narration": "SITOR-B uses FEC, forward error correction, and it needs phasing signals so the receiver can get in step. The Idle Signal alpha, 0, 0, 0, 0, 1, 1, 1, is used for FEC Phasing Signal 1. Notice that it follows the SITOR rule: 4 zeros and 3 ones, 7 bits in all."
+      "onScreen": ["Phasing: finding where each character begins", "Phasing signals get the receiver in step", "FEC Phasing Signal 1: Idle Signal alpha, 0000111", "4 zeros and 3 ones"],
+      "narration": "One more step comes before a SITOR-B message can be read. The bits arrive in a steady stream, and the receiver must know exactly where each character begins, or every character comes out wrong. So the transmission starts with phasing signals that get the receiver in step. In SITOR-B, the Idle Signal alpha, a filler character with no message meaning, is used for FEC Phasing Signal 1. Alpha is the Greek letter a, and on the exam it appears as Idle Signal a. Its bits are 0, 0, 0, 0, 1, 1, 1. Count them: 4 zeros and 3 ones, just like every SITOR character. The other choices pair other signals with other jobs."
     },
     {
-      "id": "s11",
+      "id": "s31",
       "keyTopic": 84,
-      "template": "waveform",
+      "template": "key-facts",
       "params": {
-        "title": "GSM: Time Division Multiplex",
-        "kind": "pulse",
-        "cycles": 8,
-        "duty": 0.8,
-        "xAxis": "time",
-        "yAxis": "one GSM carrier",
-        "labels": [
-          "Multiple conversations share one radio channel",
-          "Each 200 kHz carrier is divided into time slots",
-          "Each conversation gets its own repeating slot"
+        "title": "Key facts to remember",
+        "items": [
+          "Spread spectrum: direct sequence or frequency hopping. SSB voice: J3E",
+          "TDMA: separate time slots. GSM: 8 slots per 200 kHz carrier. PCS: CDMA and GSM",
+          "CODEC: voice to digital and back. GSM: RPE. Phase 2 P25: AMBE. Computer data: ASCII",
+          "Physical layer: transmission and handshaking. Link layer: frames and data flow",
+          "SDR: jobs in software. DSP can't control SWR. DSC: 10 bits. SITOR: 4 zeros, 3 ones"
         ]
       },
-      "onScreen": ["GSM: Time Division Multiplex", "Each 200 kHz carrier divided into time slots", "Each conversation in its own slot"],
-      "narration": "Finally, GSM lets multiple conversations share 1 radio channel by Time Division Multiplex. Each 200 kilohertz carrier is divided into eight time slots. Each conversation gets its own slot, and the slots repeat over and over, so every call takes its turn on the same carrier."
+      "onScreen": ["Spread spectrum and J3E", "TDMA, GSM and PCS", "CODECs and ASCII", "Physical and link layers", "SDR, DSP, DSC and SITOR"],
+      "narration": "Let's pull it together. Spread spectrum comes in 2 types: direct sequence, with a fixed center, and frequency hopping. SSB voice uses J3E: 1 sideband, suppressed carrier. TDMA shares a channel in separate time slots, GSM splits each 200 kilohertz carrier into 8 of them, and PCS separates calls with CDMA and GSM. A CODEC turns voice into digital data and back: RPE for GSM, AMBE for Phase 2 P25. Computers exchange data in ASCII. The physical layer transmits data and handshaking; the link layer builds frames and controls flow. An SDR works in software, its DSP can't control SWR, DSC uses 10 bits with 3 check bits, and SITOR uses 7 bits with 4 zeros and 3 ones."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [82] },
-    { "after": "s7", "keyTopics": [83] },
-    { "after": "s11", "keyTopics": [84] }
+    { "after": "s4", "keyTopics": [82], "questions": ["3-82M5"] },
+    { "after": "s8", "keyTopics": [82], "questions": ["3-82M5", "3-82M1", "3-82M3", "3-82M2"] },
+    { "after": "s12", "keyTopics": [82, 84], "questions": ["3-82M2", "3-82M4", "3-84M6", "3-82M6"] },
+    { "after": "s16", "keyTopics": [83], "questions": ["3-83M1", "3-83M2"] },
+    { "after": "s20", "keyTopics": [83], "questions": ["3-83M5", "3-83M3", "3-83M4", "3-83M6"] },
+    { "after": "s24", "keyTopics": [84], "questions": ["3-84M1", "3-84M2"] },
+    { "after": "s28", "keyTopics": [84], "questions": ["3-84M3", "3-84M4"] },
+    { "after": "s31", "keyTopics": [84], "questions": ["3-84M5", "3-84M4"] }
   ],
   "video": null
 }

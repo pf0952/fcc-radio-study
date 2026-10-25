@@ -11,57 +11,61 @@
       "params": {
         "kicker": "Element 3 · Subelement H",
         "title": "Modulation",
-        "subtitle": "Deviation ratio versus modulation index, how FM, double-sideband and SSB signals are made and tested, and pulse modulation."
+        "subtitle": "How a voice rides on a radio wave: FM deviation, double and single sideband, the two-tone test, and pulse modulation."
       },
-      "onScreen": ["Modulation", "Deviation ratio, FM, DSB, SSB and pulse modulation"],
-      "narration": "This lesson is about modulation. We'll start with FM, frequency modulation, and the difference between deviation ratio and modulation index. Then we'll see how FM and double sideband, or DSB, signals are produced, read the SSB, or single sideband, transmitter in Figure 3H17, and test its linearity. Finally, we'll look at what each pulse modulation method varies."
+      "onScreen": ["Modulation", "How a voice rides on a radio wave"],
+      "narration": "Welcome to modulation: how a transmitter puts a voice onto a radio wave. Every transmitter you'll work on does this in some way, so understanding it helps you set one up, test it and track down faults. We'll build from the basics, so you don't need any background. By the end, you'll be able to work out the deviation ratio of a frequency modulation signal and tell it apart from the modulation index. You'll know how frequency modulation, double sideband and single sideband signals are made, how to read the single sideband transmitter in Figure 3H17 and test that it amplifies a voice without distorting it, and what each kind of pulse modulation changes."
     },
     {
       "id": "s2",
       "keyTopic": 57,
-      "template": "formula",
+      "template": "waveform",
       "params": {
-        "title": "Deviation ratio",
-        "formula": "Deviation ratio = max deviation ÷ max audio",
-        "steps": [
-          "±5 kHz ÷ 3 kHz = 1.666…, listed as 1.66",
-          "Not 3 ÷ 5 = 0.6: that's upside down",
-          "±7.5 kHz ÷ 3.5 kHz ≈ 2.14",
-          "Not 3.5 ÷ 7.5 = 0.47: upside down again"
-        ],
-        "answer": "1.66 and 2.14: deviation on top"
+        "title": "Waves, cycles and frequency",
+        "kind": "sine",
+        "cycles": 4,
+        "xAxis": "time",
+        "yAxis": "voltage",
+        "labels": [
+          "1 cycle: one full swing up, down and back",
+          "Frequency: cycles per second, in hertz (Hz). 1 kHz = 1000 Hz",
+          "Audio from a microphone: about 100 Hz to a few kHz. Radio: far higher",
+          "Carrier: a steady radio-frequency wave from an oscillator"
+        ]
       },
-      "onScreen": ["Deviation ratio = maximum deviation ÷ highest audio frequency", "5 kHz ÷ 3 kHz = 1.66", "Not 0.6", "7.5 kHz ÷ 3.5 kHz ≈ 2.14", "Not 0.47"],
-      "narration": "The deviation ratio is the maximum carrier frequency deviation divided by the highest audio modulating frequency. It's a fixed figure for a given FM system. Deviation goes on top, audio on the bottom, never the other way round. Example 1: a maximum deviation of plus or minus 5 kilohertz, and a maximum modulation rate of 3 kilohertz. 5 divided by 3 is 1.666, listed as 1.66. Divide upside down and you get the wrong answer, 0.6. Example 2: a maximum swing of plus or minus 7.5 kilohertz, with a maximum modulation rate of 3.5 kilohertz. 7.5 divided by 3.5 is about 2.14. Upside down gives the wrong 0.47."
+      "onScreen": ["1 cycle: one full swing", "Frequency: cycles per second, in hertz; 1 kHz = 1000 Hz", "Audio: about 100 Hz to a few kHz; radio far higher", "Carrier: a steady radio wave from an oscillator"],
+      "narration": "First, a quick refresher on waves. A radio signal is an electrical wave: a voltage, or electrical push, that swings up, down and back again, over and over, in a smooth shape called a sine wave. One complete swing is a cycle. The number of cycles each second is the frequency, measured in hertz: 1 hertz is 1 cycle per second, and 1 kilohertz is 1000 hertz. A microphone turns your voice into an electrical wave too, called audio: a mix of frequencies from about 100 hertz up to a few thousand. Radio frequencies are far higher, often millions of cycles a second. A transmitter makes its radio wave with an oscillator, a circuit that swings steadily at one frequency, like a pendulum. That steady wave is the carrier."
     },
     {
       "id": "s3",
       "keyTopic": 57,
-      "template": "comparison-table",
+      "template": "key-facts",
       "params": {
-        "title": "Modulation index or deviation ratio?",
-        "columns": ["Term", "Deviation used", "Divided by", "Value"],
-        "rows": [
-          ["Modulation index", "Actual deviation at a given time", "Modulating frequency at that time", "Varies with audio level and frequency"],
-          ["Deviation ratio", "Maximum deviation", "Highest audio modulating frequency", "Fixed for the FM system"]
+        "title": "Modulation: putting the audio on the carrier",
+        "items": [
+          "Audio alone: would need an antenna many miles long",
+          "Each station: its own carrier frequency",
+          "Modulation: changing the carrier in step with the audio",
+          "AM, amplitude modulation: the audio changes the carrier's height",
+          "FM, frequency modulation: the audio changes the carrier's frequency"
         ]
       },
-      "onScreen": ["Modulation index: deviation over modulating frequency at a given time, varies", "Deviation ratio: maximum deviation over highest audio frequency, fixed"],
-      "narration": "Don't mix up these two terms. The modulation index is the ratio between the deviation of a frequency modulated signal and the modulating frequency at a given time. So it changes as the audio level and frequency change. The deviation ratio uses the limits: the maximum deviation divided by the maximum audio modulating frequency. It's fixed for the system. So if the exam asks for the term for maximum deviation divided by maximum audio modulating frequency, the answer is deviation ratio, not modulation index."
+      "onScreen": ["Audio alone needs an antenna miles long", "Each station: its own carrier", "Modulation: changing the carrier with the audio", "AM changes the height", "FM changes the frequency"],
+      "narration": "Why does a transmitter need a carrier at all? Why not just send the audio itself? Audio makes a very poor radio wave: you'd need an antenna many miles long. And every station would crowd onto the same few frequencies, so you'd hear them all at once. So each station gets its own carrier frequency, and the audio rides on it. But a steady carrier holds no message. To send a voice, the transmitter changes the carrier in step with the audio. That's modulation, and the audio doing the changing is called the modulating signal. There are 2 main ways. Amplitude modulation, or AM, changes the carrier's height, its amplitude, while the frequency stays put. Frequency modulation, or FM, keeps the height steady and nudges the frequency up and down."
     },
     {
       "id": "s4",
       "keyTopic": 57,
       "template": "block-diagram",
       "params": {
-        "title": "Producing an FM-phone signal",
+        "title": "Making FM: audio into the oscillator",
         "columns": 4,
         "blocks": [
-          { "id": "audio", "label": "Audio", "note": "Fed directly to the oscillator" },
-          { "id": "modulator", "label": "Varactor or reactance modulator", "note": "Varies the oscillator's tuning" },
+          { "id": "audio", "label": "Audio", "note": "From the microphone" },
+          { "id": "modulator", "label": "Varactor or reactance modulator", "note": "Tuning that follows the audio" },
           { "id": "osc", "label": "Oscillator", "note": "Frequency swings with the audio" },
           { "id": "fm", "label": "FM signal" },
-          { "id": "supply", "label": "Amplifier supply voltage", "note": "Varying it makes AM instead" }
+          { "id": "supply", "label": "Amplifier supply voltage", "note": "Varying it gives AM, not FM" }
         ],
         "links": [
           { "from": "audio", "to": "modulator" },
@@ -71,10 +75,204 @@
         ]
       },
       "onScreen": ["Audio fed directly to the oscillator", "Varactor or reactance modulator", "Oscillator frequency swings with the audio", "FM signal", "Varying amplifier supply voltage gives AM, not FM"],
-      "narration": "How is an FM-phone signal produced in a transmitter? By feeding the audio directly to the oscillator. In practice, the audio goes through a varactor or a reactance modulator, which varies the oscillator's tuning, so the oscillator frequency swings with the audio. Out comes the FM signal. Don't confuse this with varying an amplifier's supply voltage. That produces AM, amplitude modulation, instead."
+      "narration": "AM comes back later; first, how is FM made? Start with the audio from the microphone. It goes to a varactor, a tuning part whose effect changes with the voltage across it. The varactor sits in the oscillator's tuning, which sets its frequency the way a guitar string's length sets its note. So as the audio voltage rises and falls, the oscillator's frequency swings up and down in step. A reactance modulator does the same job with a different circuit. That's how an FM-phone signal, phone meaning voice, is produced: by feeding the audio directly to the oscillator. The trap is an amplifier's supply voltage. An amplifier makes a signal stronger, so varying the supply it runs on changes the output's strength, not its frequency. That gives AM instead. A balanced modulator, met later, doesn't make FM either."
     },
     {
       "id": "s5",
+      "keyTopic": 57,
+      "template": "waveform",
+      "params": {
+        "title": "FM up close: deviation",
+        "kind": "fm",
+        "cycles": 16,
+        "xAxis": "time",
+        "yAxis": "carrier voltage",
+        "labels": [
+          "Crowded cycles: higher frequency. Spread out: lower",
+          "Deviation: how far the frequency swings from center",
+          "Louder audio: bigger deviation",
+          "Modulating frequency: how often the swing repeats"
+        ]
+      },
+      "onScreen": ["Crowded cycles: higher frequency", "Deviation: how far the frequency swings", "Louder audio, bigger deviation", "Modulating frequency: how often it swings"],
+      "narration": "Now look at the FM signal itself more closely. Where the cycles crowd together, the frequency is higher; where they spread out, it's lower. The carrier's resting frequency is its center frequency. How far the frequency moves away from the center is called the deviation, measured in kilohertz. It's written plus or minus, because the swing goes both above and below: plus or minus 5 kilohertz means up to 5 kilohertz either side. The audio controls 2 things. Its loudness sets the deviation: louder audio puts a bigger voltage on the varactor, so the frequency swings further. Its frequency, called the modulating frequency, sets how often the swing happens: a steady 1 kilohertz tone swings the carrier up and down 1000 times a second."
+    },
+    {
+      "id": "s6",
+      "keyTopic": 57,
+      "template": "formula",
+      "params": {
+        "title": "Modulation index: a moment-by-moment ratio",
+        "formula": "Index = deviation ÷ modulating frequency",
+        "steps": [
+          "Both in kHz, so the units cancel",
+          "Quiet 1 kHz tone, ±1 kHz: 1 ÷ 1 = 1",
+          "Louder, ±3 kHz: 3 ÷ 1 = 3",
+          "Higher pitch, 3 kHz, still ±3 kHz: 3 ÷ 3 = 1"
+        ],
+        "answer": "The index changes from moment to moment"
+      },
+      "onScreen": ["Index = deviation ÷ modulating frequency", "Units cancel", "Quiet 1 kHz tone, ±1 kHz: index 1", "Louder, ±3 kHz: index 3", "3 kHz tone, ±3 kHz: index 1", "Changes moment to moment"],
+      "narration": "Deviation and modulating frequency combine into one number, the modulation index. It's the ratio between the deviation of a frequency modulated signal and the modulating frequency at a given time: one divided by the other. That compares how far the carrier swings with how often it swings. Both are in kilohertz, so the units cancel. Take a quiet 1 kilohertz tone that swings the carrier plus or minus 1 kilohertz: 1 divided by 1 gives an index of 1. Make it louder, swinging plus or minus 3 kilohertz, and the index jumps to 3. Raise the pitch to 3 kilohertz at that loudness, and 3 divided by 3 brings it back to 1. Speech keeps changing in loudness and pitch, so the index changes from moment to moment."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 57,
+      "template": "key-facts",
+      "params": {
+        "title": "Deviation ratio: the fixed design figure",
+        "items": [
+          "Deviation ratio = maximum deviation ÷ highest audio modulating frequency",
+          "Both are limits set when the FM system is designed",
+          "So it's one fixed figure for the system",
+          "Deviation on top, audio frequency on the bottom"
+        ]
+      },
+      "onScreen": ["Deviation ratio = maximum deviation ÷ highest audio frequency", "Both are design limits", "Fixed for the system", "Deviation on top"],
+      "narration": "A number that keeps changing can't describe a whole FM system, though. For that, there's the deviation ratio: the maximum carrier frequency deviation divided by the highest audio modulating frequency. Those are the extremes, the biggest deviation the system allows and the highest audio frequency it accepts. Both are limits built into the design, so the deviation ratio is one fixed figure for a given FM system. It doesn't wander with the speech, and those same 2 limits set how wide a slice of the radio band the signal needs. One rule to remember: deviation goes on top, audio frequency on the bottom. The exam's wrong choices turn it upside down, or bring in the carrier's center frequency or an average audio frequency instead."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 57,
+      "template": "formula",
+      "params": {
+        "title": "Worked example 1: deviation ratio",
+        "formula": "Deviation ratio = max deviation ÷ max audio",
+        "steps": [
+          "Maximum deviation: ±5 kHz, so use 5 kHz",
+          "Maximum modulation rate (audio): 3 kHz",
+          "5 kHz ÷ 3 kHz = 1.666…, the kHz cancel",
+          "Not 3 ÷ 5 = 0.6: that's upside down"
+        ],
+        "answer": "Deviation ratio: 1.666…, listed as 1.66"
+      },
+      "onScreen": ["Deviation ratio = maximum deviation ÷ maximum audio", "Maximum deviation 5 kHz", "Maximum audio 3 kHz", "5 ÷ 3 = 1.666…, listed as 1.66", "Not 0.6"],
+      "narration": "Now the first exam example. An FM-phone signal has a maximum frequency deviation of plus or minus 5 kilohertz, and accepts a maximum modulation rate of 3 kilohertz. For the deviation, use the size of the swing, 5 kilohertz; the plus or minus only says it goes both ways. Modulation rate is another name for the audio frequency: it's how many times a second the carrier gets swung. Now divide, deviation on top: 5 kilohertz divided by 3 kilohertz is 1.666 and so on, and the kilohertz cancel out. Divide upside down, 3 by 5, and you get the trap answer, 0.6. The right answer, as the exam lists it, is 1.66. Does that make sense? The deviation is bigger than the audio frequency, so the ratio should be more than 1, and it is."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 57,
+      "template": "formula",
+      "params": {
+        "title": "Worked example 2: deviation ratio",
+        "formula": "Deviation ratio = max deviation ÷ max audio",
+        "steps": [
+          "Maximum swing: ±7.5 kHz, so use 7.5 kHz",
+          "Maximum modulation rate (audio): 3.5 kHz",
+          "7.5 kHz ÷ 3.5 kHz ≈ 2.14",
+          "Not 3.5 ÷ 7.5 = 0.47: upside down again"
+        ],
+        "answer": "Deviation ratio ≈ 2.14"
+      },
+      "onScreen": ["Maximum swing 7.5 kHz", "Maximum audio 3.5 kHz", "7.5 ÷ 3.5 ≈ 2.14", "Not 0.47", "Deviation ratio about 2.14"],
+      "narration": "The second example uses the same method. This time the maximum frequency swing is plus or minus 7.5 kilohertz, and the maximum modulation rate is 3.5 kilohertz. Swing is just another word for deviation. Put the deviation on top: 7.5 kilohertz divided by 3.5 kilohertz is about 2.14. Flip it, 3.5 divided by 7.5, and you get the trap, 0.47. The other wrong choices, 0.214 and 47, are just 2.14 and 0.47 with the decimal point moved. So the answer is about 2.14, and it makes sense: above 1, because the deviation is the bigger number."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 57,
+      "template": "comparison-table",
+      "params": {
+        "title": "Modulation index or deviation ratio?",
+        "columns": ["Term", "Deviation used", "Divided by", "Value"],
+        "rows": [
+          ["Modulation index", "Deviation at a given time", "Modulating frequency at that time", "Varies with the audio"],
+          ["Deviation ratio", "Maximum deviation", "Highest audio modulating frequency", "Fixed for the FM system"],
+          ["Deviation index, modulation ratio", "—", "—", "Wrong choices on the exam"]
+        ]
+      },
+      "onScreen": ["Modulation index: deviation over modulating frequency at a given time, varies", "Deviation ratio: maximum deviation over highest audio frequency, fixed", "Deviation index and modulation ratio: wrong choices"],
+      "narration": "Now put the 2 terms side by side, because the exam likes to swap them. Both divide a deviation by an audio frequency. The modulation index uses whatever is happening at a given time, so it changes as the audio changes. The deviation ratio uses the limits, the maximum deviation and the maximum audio modulating frequency, so it's fixed for the system. If a question asks for the term for maximum deviation divided by maximum audio modulating frequency, the answer is deviation ratio, not modulation index. The word maximum is your clue, and deviation index and modulation ratio aren't the names used. If it asks what modulation index means, pick the ratio between the deviation and the modulating frequency, the choice without the word maximum."
+    },
+    {
+      "id": "s11",
+      "keyTopic": 58,
+      "template": "waveform",
+      "params": {
+        "title": "AM up close: the envelope",
+        "kind": "am",
+        "cycles": 36,
+        "depth": 0.6,
+        "xAxis": "time",
+        "yAxis": "carrier voltage",
+        "labels": [
+          "Fast wiggles: the carrier",
+          "The peaks rise and fall with the audio",
+          "Envelope: the outline traced by the peaks"
+        ]
+      },
+      "onScreen": ["The carrier", "Peaks follow the audio", "Envelope: the outline of the peaks"],
+      "narration": "That's frequency modulation done. Our next topic is single sideband, a slimmed-down form of AM, so let's look at AM properly first. Here's an AM signal. The fast wiggles are the carrier. Their height rises and falls with the audio, so the peaks trace out the shape of the audio wave. That outline, top and bottom, is called the envelope. The envelope is the message: an AM receiver simply follows it to recover the sound. Keep the word envelope in mind, because we'll use it later to test transmitters."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 58,
+      "template": "waveform",
+      "params": {
+        "title": "AM by frequency: a carrier and 2 sidebands",
+        "kind": "ssb",
+        "sideband": "both",
+        "carrier": "full",
+        "xAxis": "frequency",
+        "yAxis": "strength",
+        "labels": [
+          "Spectrum: the signal spread out by frequency",
+          "Center: the carrier",
+          "Upper sideband: carrier + audio. Lower: carrier − audio",
+          "Both sidebands: double sideband (DSB)"
+        ]
+      },
+      "onScreen": ["Spectrum: spread out by frequency", "Carrier in the center", "Upper and lower sidebands", "Double sideband, DSB"],
+      "narration": "There's a second way to look at the same signal. Instead of spreading it out over time, spread it out by frequency, the way a prism spreads light into colors. This view is called a spectrum. The carrier is the tall line in the middle. And it shows something surprising: modulation creates new frequencies. Modulate the carrier with a 1 kilohertz tone, and new frequencies appear exactly 1 kilohertz above and below it. A voice, a mix of many tones, makes whole bands of them. Just above the carrier is the upper sideband, a band of frequencies at the carrier plus the audio. Just below it is the lower sideband, at the carrier minus the audio. Each sideband carries a complete copy of the audio. Ordinary AM has both, so it's called double sideband, or DSB."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 58,
+      "template": "block-diagram",
+      "params": {
+        "title": "Making double sideband",
+        "columns": 3,
+        "blocks": [
+          { "id": "osc", "label": "Oscillator", "note": "Steady carrier" },
+          { "id": "amp", "label": "Class C amplifier", "note": "Output strength follows its supply" },
+          { "id": "dsb", "label": "AM: carrier + 2 sidebands", "note": "A double-sideband signal" },
+          { "id": "audio", "label": "Audio" },
+          { "id": "supply", "label": "Supply voltage", "note": "Pushed up and down by the audio" },
+          { "id": "react", "label": "Reactance modulator or varactor", "note": "These make FM instead" }
+        ],
+        "links": [
+          { "from": "osc", "to": "amp" },
+          { "from": "amp", "to": "dsb" },
+          { "from": "audio", "to": "supply" },
+          { "from": "supply", "to": "amp" },
+          { "from": "react", "to": "dsb", "label": "Makes FM", "struck": true }
+        ]
+      },
+      "onScreen": ["Oscillator: steady carrier", "Class C amplifier", "AM: carrier with 2 sidebands", "Audio varies the supply voltage", "Reactance modulators and varactors make FM"],
+      "narration": "So how is a double sideband phone signal produced? By modulating the supply voltage to a class C amplifier. An oscillator makes a steady carrier, and a class C amplifier boosts it for sending. Like any amplifier, it takes its power from its supply voltage. Class C means it works in short bursts, switching on for just part of each cycle. That makes it very efficient, and its output strength follows its supply voltage closely. Now let the audio push the supply voltage up and down, and the carrier coming out grows and shrinks with it. That's ordinary AM, the AM we met as the FM trap: a carrier with 2 sidebands, a double sideband signal. A reactance modulator, or a varactor in an oscillator, makes FM instead. A phase detector, oscillator and filter in a feedback loop just holds an oscillator steady on one frequency."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 58,
+      "template": "waveform",
+      "params": {
+        "title": "Single sideband: keep only what's needed",
+        "kind": "ssb",
+        "sideband": "upper",
+        "carrier": "suppressed",
+        "xAxis": "frequency",
+        "yAxis": "strength",
+        "labels": [
+          "The carrier is the same whether you speak or not",
+          "The 2 sidebands are copies of the same audio",
+          "SSB: 1 sideband, carrier suppressed",
+          "All the power carries the voice, in half the bandwidth"
+        ]
+      },
+      "onScreen": ["Carrier: no message", "2 sidebands: 2 copies", "SSB: 1 sideband, carrier suppressed", "Half the bandwidth"],
+      "narration": "Double sideband works, but it's wasteful. The carrier is the same whether you're talking or not, so it carries no message, yet it takes a big share of the transmitter's power. And the 2 sidebands are mirror copies of the same audio. So why send all 3? Single sideband, or SSB, sends just one sideband and suppresses the carrier, meaning it's removed or reduced to almost nothing. Now all the transmitter's power goes into the part that carries your voice, and the signal takes up half the bandwidth, the width of the slice of frequencies it occupies. The receiver puts a carrier back in to recover the sound."
+    },
+    {
+      "id": "s15",
       "keyTopic": 58,
       "template": "equipment-card",
       "params": {
@@ -83,87 +281,189 @@
         "callouts": [
           { "label": "Block 1: 455 kHz crystal oscillator, supplies the carrier" },
           { "label": "Block 2: microphone, where audio intelligence is inserted" },
-          { "label": "Block 3: balanced modulator, fed audio through an amplifier" },
-          { "label": "Block 4: mixer, heterodynes up to the operating frequency" },
-          { "label": "Block 4 shows this is most likely an SSB radio transmitter" }
+          { "label": "An audio amplifier carries the voice up to block 3" },
+          { "label": "Block 3: balanced modulator, where audio meets carrier" },
+          { "label": "Block 4: mixer" }
         ]
       },
-      "onScreen": ["Block 1: 455 kHz crystal oscillator", "Block 2: microphone, audio in", "Block 3: balanced modulator", "Block 4: mixer", "An SSB radio transmitter"],
-      "narration": "Here's Figure 3H17. Block 1 is the 455 kilohertz crystal oscillator that supplies the carrier. Block 2 is the microphone: that's where audio intelligence is inserted. Its audio passes through an amplifier into block 3, the balanced modulator. Block 4 is a mixer. Remember those two numbers: audio goes in at block 2, and block 4 is the mixer. A mixer that moves the signal up to the operating frequency, followed by amplifiers and an antenna, tells you this schematic is most likely an SSB radio transmitter."
+      "onScreen": ["Block 1: 455 kHz crystal oscillator", "Block 2: microphone, audio in", "Audio amplifier", "Block 3: balanced modulator", "Block 4: mixer"],
+      "narration": "How does a real SSB transmitter do it? Figure 3H17 shows one, with 4 numbered blocks. Block 1 is a 455 kilohertz crystal oscillator. A quartz crystal holds an oscillator on one exact frequency, and this one supplies the carrier. SSB won't send the carrier, but it needs it to make the sidebands. Block 2, at the bottom, is the microphone. That's where the audio intelligence, meaning the information being sent, is inserted. Its audio passes through an amplifier up into block 3, the balanced modulator, where the audio meets the carrier. Further along, block 4 is the mixer. For the exam, remember 2 numbers: audio goes in at block 2, and block 4 is the mixer. Don't pick block 3: the audio reaches it, but it's inserted at block 2."
     },
     {
-      "id": "s6",
+      "id": "s16",
       "keyTopic": 58,
       "template": "block-diagram",
       "params": {
-        "title": "The SSB transmitter signal path",
-        "columns": 4,
+        "title": "Figure 3H17: making the sidebands",
+        "columns": 2,
         "blocks": [
-          { "id": "osc", "label": "Block 1: oscillator", "note": "455 kHz crystal: the carrier" },
-          { "id": "balmod", "label": "Block 3: balanced modulator", "note": "Audio joins here" },
-          { "id": "if", "label": "I.F. amplifier", "note": "455 kHz sideband signal" },
-          { "id": "mixer", "label": "Block 4: mixer", "note": "Up to the operating frequency" },
-          { "id": "mic", "label": "Block 2: microphone", "note": "Audio intelligence in" },
-          { "id": "audioamp", "label": "Audio amplifier" },
-          { "id": "linear", "label": "Linear amplifiers" },
-          { "id": "antenna", "label": "Antenna" }
+          { "id": "osc", "label": "Block 1: crystal oscillator", "note": "455 kHz carrier" },
+          { "id": "mic", "label": "Block 2: microphone", "note": "Audio, through an amplifier" },
+          { "id": "balmod", "label": "Block 3: balanced modulator", "note": "2 sidebands, carrier cancelled" },
+          { "id": "if", "label": "I.F. amplifier", "note": "Where one sideband is removed" }
         ],
         "links": [
           { "from": "osc", "to": "balmod" },
-          { "from": "balmod", "to": "if" },
+          { "from": "mic", "to": "balmod" },
+          { "from": "balmod", "to": "if" }
+        ]
+      },
+      "onScreen": ["Block 1: crystal oscillator, the 455 kHz carrier", "Block 2: microphone, the audio", "Block 3: balanced modulator, 2 sidebands, carrier cancelled", "I.F. amplifier: one sideband removed"],
+      "narration": "Now follow the signal through. Block 1, the crystal oscillator, sends its steady 455 kilohertz carrier along the top of the figure. Block 2, the microphone, sends the voice up from below, through its amplifier. They meet at block 3, the balanced modulator, which combines them to make the 2 sidebands. It's called balanced because its 2 halves are arranged so the carrier cancels itself out, leaving just the sidebands. That's how SSB uses the carrier without sending it. The 2 sidebands then go on to the I.F. amplifier, where one of them is removed."
+    },
+    {
+      "id": "s17",
+      "keyTopic": 58,
+      "template": "block-diagram",
+      "params": {
+        "title": "Figure 3H17: up to the operating frequency",
+        "columns": 4,
+        "blocks": [
+          { "id": "if", "label": "I.F. amplifier", "note": "455 kHz: a filter leaves 1 sideband" },
+          { "id": "mixer", "label": "Block 4: mixer", "note": "Heterodynes up to the operating frequency" },
+          { "id": "linear", "label": "Linear amplifiers", "note": "Boost the signal" },
+          { "id": "antenna", "label": "Antenna", "note": "Sends it out" }
+        ],
+        "links": [
           { "from": "if", "to": "mixer" },
-          { "from": "mic", "to": "audioamp" },
-          { "from": "audioamp", "to": "balmod" },
           { "from": "mixer", "to": "linear" },
           { "from": "linear", "to": "antenna" }
         ]
       },
-      "onScreen": ["Block 1: 455 kHz oscillator", "Block 3: balanced modulator", "I.F. amplifier: 455 kHz sideband", "Block 4: mixer to operating frequency", "Block 2: microphone and audio amplifier", "Linear amplifiers feed the antenna"],
-      "narration": "Now the same path as a block diagram. The 455 kilohertz crystal oscillator, block 1, feeds the carrier to the balanced modulator, block 3. The I.F., or intermediate frequency, amplifier passes the 455 kilohertz sideband signal on to block 4, the mixer. Audio from the microphone, block 2, goes through an audio amplifier and joins at the balanced modulator. The mixer heterodynes the sideband signal up to the operating frequency, and linear amplifiers then feed the antenna. Oscillator, balanced modulator, I.F. stage, mixer and linear amplifiers: that's an SSB transmitter."
+      "onScreen": ["I.F. amplifier: a filter leaves 1 sideband at 455 kHz", "Block 4: mixer up to the operating frequency", "Linear amplifiers", "Antenna", "So: an SSB radio transmitter"],
+      "narration": "So what's an I.F. amplifier? I.F. stands for intermediate frequency: a fixed in-between frequency, here 455 kilohertz. A filter, a circuit that passes some frequencies and blocks others, is far easier to make sharp at one fixed frequency, so in a real transmitter a filter here removes one sideband. Next is block 4, the mixer. A mixer heterodynes: it combines the signal with another frequency to make new ones, their sum and their difference. The one kept is the operating frequency, the frequency the station transmits on. Linear amplifiers boost it and feed the antenna. So block 4 is the clue: a mixer taking a sideband signal up to the operating frequency means this schematic, or circuit drawing, is most likely an SSB radio transmitter, not an audio amplifier, a shipboard radar or a wireless network computer."
     },
     {
-      "id": "s7",
+      "id": "s18",
+      "keyTopic": 58,
+      "template": "key-facts",
+      "params": {
+        "title": "Linear amplifiers: a faithful copy",
+        "items": [
+          "Linear: the output is an exact, bigger copy of the input",
+          "Double the input, double the output",
+          "An SSB signal's strength rises and falls with the voice",
+          "A non-linear stage squashes or mangles it: distortion",
+          "Class C, working in bursts, is ruled out"
+        ]
+      },
+      "onScreen": ["Linear: an exact, bigger copy", "Double in, double out", "SSB strength follows the voice", "Non-linear: distortion", "Class C ruled out"],
+      "narration": "Those last amplifiers must be linear. What does that mean? A linear amplifier makes an exact, bigger copy of its input: double the input, and the output doubles too, right up to the loudest peaks. Think of a good photocopier enlarging a drawing without warping it. Why does SSB need this? With the carrier gone, the SSB signal's strength rises and falls with your voice, and that changing strength is the message. If an amplifier squashes the loudest peaks, or mangles the quiet parts, the voice comes out distorted, changed in shape. That rules out a class C amplifier: working in bursts, its output doesn't follow its input's strength. So technicians need a way to check an SSB transmitter's amplitude linearity: whether its output strength faithfully follows its input."
+    },
+    {
+      "id": "s19",
       "keyTopic": 58,
       "template": "waveform",
       "params": {
-        "title": "Two-tone test: SSB linearity",
+        "title": "The two-tone test",
         "kind": "am",
         "cycles": 36,
         "depth": 1,
         "xAxis": "time",
         "yAxis": "output on the oscilloscope",
         "labels": [
-          "Two-tone audio sine wave in; output viewed on an oscilloscope",
-          "Non-harmonic tones within the passband, about 700 and 1,900 Hz",
-          "Clean, evenly shaped loops: the transmitter is linear",
-          "Flat tops or distortion at the zero crossings: non-linear"
+          "Input: a two-tone audio-frequency sine wave",
+          "Output viewed on an oscilloscope",
+          "1 tone: a flat, constant envelope, nothing to judge",
+          "2 tones: the envelope swells and shrinks in loops"
         ]
       },
-      "onScreen": ["Two-tone audio sine wave, oscilloscope", "Non-harmonic tones, about 700 and 1,900 Hz", "Clean loops: linear", "Flat-topping or crossover distortion: non-linear"],
-      "narration": "How do you test the amplitude linearity of a single sideband phone transmitter? Feed it a two-tone audio-frequency sine wave, and view the output on an oscilloscope. A single tone won't do: it gives a constant envelope that shows nothing about linearity. The two tones must be non-harmonically related audio signals within the transmitter's modulation passband, for example about 700 hertz and 1,900 hertz. So a two-tone test illustrates linearity. Clean, evenly shaped envelope loops like these mean the transmitter is linear. Flat-topping, or distortion where the envelope crosses zero, means it's non-linear."
+      "onScreen": ["Two-tone audio sine wave in", "Output on an oscilloscope", "1 tone: constant envelope", "2 tones: loops"],
+      "narration": "That check is the two-tone test. Feed the transmitter a two-tone audio-frequency sine wave, meaning 2 pure tones at once, and view the output on an oscilloscope, an instrument that draws a signal's shape on a screen. Why 2 tones? A single tone makes an SSB transmitter put out one steady radio frequency, with a flat envelope that shows nothing about linearity. That's why a single sine wave fails, and so does whistling, which is close to one pure tone. With 2 tones, the output holds 2 radio frequencies that drift in and out of step, like 2 guitar strings slightly out of tune. Where they line up, they add to a peak; where they oppose, they cancel to zero. So the envelope swells and shrinks in loops, testing the amplifiers at every strength from zero to full."
     },
     {
-      "id": "s8",
+      "id": "s20",
       "keyTopic": 58,
+      "template": "comparison-table",
+      "params": {
+        "title": "Reading the two-tone pattern",
+        "columns": ["On the oscilloscope", "What it means"],
+        "rows": [
+          ["Clean, evenly shaped loops", "Linear: the transmitter is good"],
+          ["Flat tops on the loops", "Non-linear: the peaks are squashed"],
+          ["Distortion where the envelope crosses zero", "Non-linear at low levels"],
+          ["Exam's wrong choices", "Phase shift, FM percentage, sideband suppression"]
+        ]
+      },
+      "onScreen": ["Clean, even loops: linear", "Flat tops: non-linear", "Distortion at the zero crossings: non-linear", "Wrong choices: phase shift, FM percentage, sideband suppression"],
+      "narration": "So what does a two-tone test illustrate on an oscilloscope? The linearity of an SSB transmitter. Here's how to read it. Clean, evenly shaped loops, all alike and smoothly rounded, mean the transmitter is linear. Flattened tops on the loops mean an amplifier is running out of room at the peaks. Distortion where the envelope crosses zero, between the loops, means the quiet parts are being mangled. Either fault means the transmitter is non-linear. The exam's wrong choices are carrier phase shift, percentage of frequency modulation and sideband suppression. But SSB has no carrier to shift and isn't frequency modulation, and how well the unwanted sideband is removed is a separate check. The two-tone test is about linearity."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 58,
+      "template": "band-strip",
+      "params": {
+        "title": "Choosing the 2 tones",
+        "min": 300,
+        "max": 2800,
+        "scale": "linear",
+        "ends": ["Passband low", "Passband high"],
+        "marks": [
+          { "at": 700, "label": "About 700 Hz", "note": "Tone 1", "tone": "key" },
+          { "at": 1400, "label": "2 × 700 Hz", "note": "A harmonic of tone 1: avoid", "tone": "muted" },
+          { "at": 1900, "label": "About 1,900 Hz", "note": "Tone 2: not a harmonic of tone 1", "tone": "key" }
+        ]
+      },
+      "onScreen": ["Both tones inside the passband", "Tone 1: about 700 Hz", "2 × 700 Hz is a harmonic: avoid", "Tone 2: about 1,900 Hz"],
+      "narration": "One question remains: which 2 tones? Non-harmonically related audio signals within the modulation passband of the transmitter, such as about 700 hertz and 1,900 hertz. The passband is the range of audio frequencies the transmitter lets through; a tone outside it wouldn't be sent. A harmonic is a whole-number multiple of a frequency: 2 times 700 hertz is a harmonic of 700 hertz. Distortion creates extra frequencies at such multiples, so if one tone were a harmonic of the other, those extras could land right on it and hide. 1,900 hertz isn't a whole-number multiple of 700, so it's safe. That rules out harmonically related tones, square waves, which jump abruptly between high and low and are full of harmonics, and 2 signals of the same frequency, which are really one tone."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 59,
       "template": "waveform",
       "params": {
-        "title": "Producing a double-sideband signal",
-        "kind": "ssb",
-        "sideband": "both",
-        "carrier": "full",
-        "xAxis": "frequency",
-        "yAxis": "amplitude",
+        "title": "Pulses: sending in bursts",
+        "kind": "pulse",
+        "cycles": 8,
+        "duty": 0.3,
+        "xAxis": "time",
+        "yAxis": "transmitter output",
         "labels": [
-          "Audio modulates the supply voltage to a class C amplifier",
-          "Result: ordinary AM, a carrier with two sidebands",
-          "Reactance modulators and varactor-tuned oscillators make FM instead"
+          "Pulse: a short burst, on then off",
+          "Pulses repeat at a steady repetition rate",
+          "Each pulse carries a sample of the voice",
+          "A pulse's height, width or timing can change"
         ]
       },
-      "onScreen": ["Modulate the supply voltage to a class C amplifier", "Ordinary AM: carrier with two sidebands", "Reactance modulators and varactors make FM"],
-      "narration": "How is a double sideband phone signal produced? By modulating the supply voltage to a class C amplifier. That gives ordinary AM: a carrier in the middle, with a sideband on each side. Two sidebands, so it's double sideband. Watch out for the wrong choices: a reactance modulator, or varying the voltage to a varactor in an oscillator circuit, produces FM, not double sideband."
+      "onScreen": ["Pulse: a short burst", "Steady repetition rate", "Each pulse carries a sample", "Height, width or timing"],
+      "narration": "Our last topic, pulse modulation, works quite differently, and it's behind radar and digital telephone links. Everything so far used a carrier that flows nonstop. Pulse modulation sends the message as a train of short bursts called pulses: on for a moment, then off, repeating at a steady rate called the repetition rate. How can bursts carry a voice? By sampling: measuring the voice wave at regular instants, many times a second, and letting each pulse carry one measurement. Done fast enough, the receiver can rebuild the voice from the samples, the way a film makes smooth motion from still frames. A pulse has 3 things you can change: its height, or amplitude; its length, called width or duration; and its timing, called position."
     },
     {
-      "id": "s9",
+      "id": "s23",
+      "keyTopic": 59,
+      "template": "key-facts",
+      "params": {
+        "title": "Pulse-width modulation (PWM)",
+        "items": [
+          "Start with a standard pulse of a set length",
+          "The voice varies its duration at each instant",
+          "Low point in the voice wave: short pulse. High point: long",
+          "Pulse amplitude and repetition rate stay fixed",
+          "Also called pulse-duration modulation"
+        ]
+      },
+      "onScreen": ["A standard pulse", "Voice varies its duration", "Low point short, high point long", "Amplitude and repetition rate fixed", "Also called pulse-duration modulation"],
+      "narration": "First, pulse-width modulation, or PWM. Every pulse starts as a standard pulse of a set length, and the voice stretches or shrinks it. Voice is sent by varying a standard pulse in duration by an amount depending on the voice waveform, the shape of the voice wave, at that instant. A low point in the wave gives a short pulse, a high point a long one. In a pulse-width modulation system, then, the modulating signal varies the pulse duration, while pulse amplitude and repetition rate stay fixed. Since duration means how long a pulse lasts, this is also called pulse-duration modulation. Modulation that varies the duration of the transmitted pulse is pulse-width modulation, not pulse-height, which would mean changing the amplitude."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 59,
+      "template": "key-facts",
+      "params": {
+        "title": "Pulse-position modulation (PPM)",
+        "items": [
+          "Every pulse has the same width and amplitude",
+          "Each pulse has a normal moment to occur",
+          "The voice shifts it earlier or later",
+          "So the signal varies the time each pulse occurs",
+          "Pulse-amplitude modulation: the height follows the voice instead"
+        ]
+      },
+      "onScreen": ["Same width and amplitude", "A normal moment for each pulse", "Voice shifts it earlier or later", "Signal varies the time each pulse occurs", "Pulse-amplitude: height changes"],
+      "narration": "Next, pulse-position modulation, or PPM. Now every pulse is identical: same width, same height. Each one has a normal moment when it would occur, and the voice nudges it a little earlier or a little later, by an amount set by the voice at that instant. So in a pulse-position modulation system, the modulating signal varies the time at which each pulse occurs, while pulse width and amplitude stay constant. Think of a drummer keeping a steady beat but playing each hit slightly ahead of or behind it. The third method is the simplest: pulse-amplitude modulation, where the pulse heights follow the voice, and width and timing stay fixed."
+    },
+    {
+      "id": "s25",
       "keyTopic": 59,
       "template": "comparison-table",
       "params": {
@@ -176,10 +476,10 @@
         ]
       },
       "onScreen": ["Pulse-width: varies duration", "Pulse-position: varies timing", "Pulse-amplitude: varies amplitude"],
-      "narration": "Now pulse modulation. In a pulse-width modulation system, or PWM, the modulating signal varies the pulse duration, while pulse amplitude and repetition rate stay fixed. That's why modulation that varies the duration of the transmitted pulse is called pulse-width, or pulse-duration, modulation. To send voice this way, a standard pulse is varied in duration by an amount depending on the voice waveform at that instant. In a pulse-position modulation system, or PPM, the modulating signal varies the time at which each pulse occurs, while pulse width and amplitude stay constant. Varying the pulse amplitude instead would be pulse-amplitude modulation."
+      "narration": "Here are the 3 side by side, because the exam's wrong answers come from mixing them up. Pulse-width, or pulse-duration, modulation varies how long each pulse lasts. So when a pulse-width question offers pulse frequency, pulse amplitude or pulse intensity, pick duration instead. Pulse-position modulation varies when each pulse occurs: the answer is the time at which each pulse occurs, not the number of pulses per second or their duration. Pulse-amplitude modulation varies how tall each pulse is. Takeaway: width is how long, position is when, amplitude is how tall."
     },
     {
-      "id": "s10",
+      "id": "s26",
       "keyTopic": 59,
       "template": "waveform",
       "params": {
@@ -191,20 +491,80 @@
         "yAxis": "transmitter power",
         "labels": [
           "Short pulses separated by long off periods",
-          "Average power = peak power × duty cycle",
-          "So peak power is normally much greater than average power",
-          "Radar works this way"
+          "Duty cycle: the fraction of the time it's on",
+          "Peak power: the power during a pulse",
+          "Average power = peak power × duty cycle"
         ]
       },
-      "onScreen": ["Short pulses, long off periods", "Average = peak × duty cycle", "Peak much greater than average", "As in radar"],
-      "narration": "In a pulse modulation system, the peak transmitter power is normally much greater than the average power. Here's why. The transmitter sends short pulses separated by long off periods. Average power equals peak power times the duty cycle, the fraction of the time the transmitter is on. With short pulses and long gaps, that fraction is small, so the average sits far below the peaks. Radar is the classic example."
+      "onScreen": ["Short pulses, long off periods", "Duty cycle: fraction of time on", "Peak power: power during a pulse", "Average = peak × duty cycle"],
+      "narration": "Pulses also change how we think about power, the rate at which a transmitter sends out energy, measured in watts. A pulse transmitter is on only during each short pulse, then off for a long gap before the next. The fraction of the time it's on is called the duty cycle. The power while a pulse is on is the peak power. Spread over time, though, the long gaps pull the power way down: the average power equals the peak power times the duty cycle. Radar is the classic example: brief, powerful pulses, with long gaps between them to listen for the echoes."
     },
     {
-      "id": "s11",
+      "id": "s27",
+      "keyTopic": 59,
+      "template": "formula",
+      "params": {
+        "title": "Worked example: average power",
+        "formula": "Average power = peak power × duty cycle",
+        "steps": [
+          "Peak power: 1000 watts (W)",
+          "Duty cycle: on 1 part in 1000 of the time",
+          "Average = 1000 W × 1/1000 = 1 W",
+          "Check: it's off almost all the time, so tiny fits"
+        ],
+        "answer": "Peak power is much greater than average power"
+      },
+      "onScreen": ["Average power = peak power × duty cycle", "Peak power 1000 W", "On 1 part in 1000 of the time", "Average power 1 W", "Peak much greater than average"],
+      "narration": "Let's put numbers on it. Suppose a pulse transmitter's peak power is 1000 watts. It's on for just 1 part in 1000 of the time, so its duty cycle is 1 in 1000. To find the average power, multiply the peak power by the duty cycle: 1000 watts times 1 over 1000 is just 1 watt. Does that make sense? The transmitter is off almost all the time, so yes, the average should be tiny. That rules out the choices with the average only slightly below the peak, or the peak twice the average, and the SSB voice choice doesn't describe how a pulse system works. The right description: in a pulse modulation system, the peak transmitter power is normally much greater than the average power."
+    },
+    {
+      "id": "s28",
       "keyTopic": 59,
       "template": "block-diagram",
       "params": {
-        "title": "PCM with time-division multiplex",
+        "title": "Pulse-code modulation (PCM)",
+        "columns": 4,
+        "blocks": [
+          { "id": "voice", "label": "Voice" },
+          { "id": "sample", "label": "Sample", "note": "Measure the wave at regular instants" },
+          { "id": "code", "label": "Code", "note": "Turn each measurement into a number" },
+          { "id": "pulses", "label": "On-off pulses", "note": "Send each number as a pulse pattern" }
+        ],
+        "links": [
+          { "from": "voice", "to": "sample" },
+          { "from": "sample", "to": "code" },
+          { "from": "code", "to": "pulses" }
+        ]
+      },
+      "onScreen": ["Voice", "Sampled at regular instants", "Each sample turned into a number", "Sent as on-off pulses"],
+      "narration": "Back to carrying a voice. One more pulse method, pulse-code modulation, or PCM, goes a step further. It still samples the voice at regular instants, but instead of changing a pulse's height, width or timing, it measures each sample and turns it into a number. That number is sent as a code: a pattern of pulses that are simply on or off, the way computers store numbers. The receiver reads each pattern, turns it back into a measurement, and rebuilds the voice. Noise, the random hiss and crackle picked up along the way, can blur a pulse's height or width, but it rarely turns on into off. So PCM shrugs off a lot of noise."
+    },
+    {
+      "id": "s29",
+      "keyTopic": 59,
+      "template": "block-diagram",
+      "params": {
+        "title": "Time-division multiplex: taking turns",
+        "columns": 3,
+        "blocks": [
+          { "id": "channels", "label": "Channels 1, 2 and 3", "note": "Separate conversations" },
+          { "id": "slots", "label": "Time slots", "note": "1, 2, 3, then round again" },
+          { "id": "link", "label": "One shared link", "note": "One frequency, kept apart by time" }
+        ],
+        "links": [
+          { "from": "channels", "to": "slots" },
+          { "from": "slots", "to": "link" }
+        ]
+      },
+      "onScreen": ["Channels 1, 2 and 3", "Each sample in its own time slot, in turn", "One shared link, kept apart by time"],
+      "narration": "PCM also makes it easy for many conversations to share one link. Each conversation is a channel: say channels 1, 2 and 3. Time-division multiplex lets them take turns. Multiplex means sending several channels over one link, and time division means each gets its own share of the time. A sample from channel 1 goes out in its own short time slot, then one from channel 2, then one from channel 3, and then round again, like dealing cards around a table. So all 3 share one link, on one frequency, kept apart only by time. The turns come so fast that each conversation still sounds continuous."
+    },
+    {
+      "id": "s30",
+      "keyTopic": 59,
+      "template": "block-diagram",
+      "params": {
+        "title": "Keeping the clocks in step",
         "columns": 4,
         "blocks": [
           { "id": "channels", "label": "Channels 1, 2 and 3", "note": "Each sampled in turn" },
@@ -219,13 +579,36 @@
         ]
       },
       "onScreen": ["Channels sampled in turn", "Transmit clock assigns time slots", "Receive clock synchronized", "Out of step: channels scrambled"],
-      "narration": "Finally, pulse-code modulation, or PCM, using time-division multiplex. Several channels share one link, each sampled in turn. The transmit clock puts each sample into its assigned time slot. At the far end, the receive clock must keep in step, so the transmit and receive clock pulse rates must be synchronized. That's the important factor. If the clocks drift apart, samples land in the wrong time slots and the channels are scrambled."
+      "narration": "Taking turns only works if both ends agree on whose turn it is. A clock, a circuit that ticks out steady timing pulses, sets the time slots at the transmitter. At the far end, a clock at the receiver deals the samples back out to the right channels. So the important factor in pulse-code modulation using time-division multiplex is synchronization of the transmit and receive clock pulse rates, meaning the 2 clocks are kept in step. If they drift apart, samples land in the wrong time slots and the channels are scrambled. Frequency separation is the wrong choice: these channels share one frequency and are kept apart by time."
+    },
+    {
+      "id": "s31",
+      "keyTopic": 59,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": [
+          "Deviation ratio = max deviation ÷ highest audio: 1.66 and 2.14",
+          "Modulation index varies; deviation ratio is fixed",
+          "FM: audio into the oscillator. DSB: modulate a class C amplifier's supply",
+          "Figure 3H17: audio in at block 2, block 4 mixer; test SSB with 2 tones",
+          "Pulses: width = duration, position = timing, peak ≫ average, clocks in sync"
+        ]
+      },
+      "onScreen": ["Deviation ratio: 1.66 and 2.14", "Index varies, ratio fixed", "FM and DSB: how they're made", "Figure 3H17: blocks 2 and 4; two-tone test", "Pulses: width, position, peak power, clocks"],
+      "narration": "To wrap up, here's what to remember. The deviation ratio is maximum deviation divided by the highest audio frequency, deviation on top: 5 over 3 is 1.66, and 7.5 over 3.5 is 2.14. The modulation index is the same kind of ratio at a given time, so it varies, while the deviation ratio is fixed. FM comes from feeding audio straight to the oscillator, and double sideband from modulating a class C amplifier's supply voltage. In Figure 3H17, audio goes in at block 2, and block 4, the mixer, marks an SSB transmitter, tested for linearity with 2 tones on an oscilloscope. In pulse modulation, width means duration, position means timing, peak power far exceeds average power, and time-division multiplex needs synchronized clocks."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [57] },
-    { "after": "s8", "keyTopics": [58] },
-    { "after": "s11", "keyTopics": [59] }
+    { "after": "s4", "keyTopics": [57], "questions": ["3-57H4"] },
+    { "after": "s7", "keyTopics": [57], "questions": ["3-57H5", "3-57H1", "3-57H6"] },
+    { "after": "s10", "keyTopics": [57], "questions": ["3-57H2", "3-57H3", "3-57H5", "3-57H6"] },
+    { "after": "s13", "keyTopics": [58], "questions": ["3-58H5"] },
+    { "after": "s17", "keyTopics": [58], "questions": ["3-58H1", "3-58H2"] },
+    { "after": "s21", "keyTopics": [58], "questions": ["3-58H3", "3-58H4", "3-58H6"] },
+    { "after": "s24", "keyTopics": [59], "questions": ["3-59H2", "3-59H3", "3-59H6", "3-59H5"] },
+    { "after": "s27", "keyTopics": [59], "questions": ["3-59H2", "3-59H3", "3-59H5", "3-59H4"] },
+    { "after": "s31", "keyTopics": [59], "questions": ["3-59H1"] }
   ],
   "video": null
 }

@@ -74,8 +74,11 @@ export type Scene = {
   narration: string;
 };
 
-/** A pop-up question shown after the given scene, drawn from these key topics. */
-export type Checkpoint = { after: string; keyTopics: number[] };
+/**
+ * A pop-up question shown after the given scene, drawn from these key topics; `questions` narrows it to the
+ * pool questions whose facts the lesson has taught by then.
+ */
+export type Checkpoint = { after: string; keyTopics: number[]; questions?: string[] };
 
 /** content/lessons/<id>.json */
 export type Lesson = {

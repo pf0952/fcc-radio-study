@@ -2,7 +2,18 @@
   "id": "9-C",
   "element": 9,
   "title": "Satellite Systems",
-  "keyTopics": [23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
+  "keyTopics": [
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
   "scenes": [
     {
       "id": "s1",
@@ -11,13 +22,94 @@
       "params": {
         "kicker": "Element 9 · Subelement C",
         "title": "Satellite Systems",
-        "subtitle": "Inmarsat-C, Fleet Broadband, LRIT and GPS: how the equipment and antennas work, and how to diagnose common terminal and antenna faults."
+        "subtitle": "How a ship's Inmarsat-C, GPS, LRIT and Fleet Broadband equipment works, and how to track down common terminal and antenna faults."
       },
-      "onScreen": ["Satellite Systems", "Inmarsat-C, Fleet Broadband, LRIT and GPS", "Diagnosing terminal and antenna faults"],
-      "narration": "This lesson covers the satellite equipment on a Global Maritime Distress and Safety System, or GMDSS, ship: the Inmarsat-C terminal, Fleet Broadband, Long Range Identification and Tracking, or LRIT, and the Global Positioning System, or GPS. We'll see how the terminals and antennas work, then diagnose the common terminal and antenna faults the exam asks about. First, the technology: the frequencies an Inmarsat-C terminal uses, and the amplifier that makes reception possible."
+      "onScreen": [
+        "Satellite Systems",
+        "Inmarsat-C, GPS, LRIT and Fleet Broadband",
+        "How they work, and how to find faults"
+      ],
+      "narration": "At sea, a ship stays in touch through satellites. This lesson is about a GMDSS ship's satellite equipment. GMDSS is the Global Maritime Distress and Safety System: the international radio equipment and procedures ships use to call for help and receive safety warnings. We'll cover the Inmarsat-C terminal, the Global Positioning System, or GPS, Long Range Identification and Tracking, or LRIT, and Fleet Broadband. As the technician, you install, test and repair this equipment. By the end, you'll be able to follow a signal from ship to satellite to shore, explain how each system and its antenna works, and reason out the faults the exam describes. No background is needed: we'll start with how a ship talks through a satellite."
     },
     {
       "id": "s2",
+      "keyTopic": 23,
+      "template": "block-diagram",
+      "params": {
+        "title": "How a ship talks through a satellite",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "ship",
+            "label": "Ship's terminal",
+            "note": "The radio equipment on board"
+          },
+          {
+            "id": "sat",
+            "label": "Satellite",
+            "note": "A relay station high in the sky"
+          },
+          {
+            "id": "les",
+            "label": "LES: Land Earth Station",
+            "note": "Big dish antenna on shore"
+          },
+          {
+            "id": "land",
+            "label": "Phone and data networks",
+            "note": "Ashore, worldwide"
+          }
+        ],
+        "links": [
+          {
+            "from": "ship",
+            "to": "sat",
+            "label": "uplink"
+          },
+          {
+            "from": "sat",
+            "to": "les",
+            "label": "downlink"
+          },
+          {
+            "from": "les",
+            "to": "land"
+          }
+        ]
+      },
+      "onScreen": [
+        "Ship's terminal",
+        "Satellite: a relay in the sky",
+        "LES: Land Earth Station",
+        "Phone and data networks ashore"
+      ],
+      "narration": "A ship's radio equipment for talking to a satellite is the terminal, and its antenna sends out and catches the radio waves. The terminal sends its signal up to a satellite: picture a relay station high in the sky, something that catches a radio message and passes it on. Any path up to a satellite is called an uplink. The satellite passes the signal back down toward shore, on a downlink. There, a Land Earth Station, or LES, picks it up with a large dish and passes it into the phone and data networks. Replies make the same trip the other way. Being so high, the satellite sees a huge piece of the Earth, so even a ship in mid-ocean can reach shore."
+    },
+    {
+      "id": "s3",
+      "keyTopic": 23,
+      "template": "key-facts",
+      "params": {
+        "title": "Inmarsat: satellites that stay put",
+        "items": [
+          "Inmarsat: the satellite network GMDSS ships use",
+          "Satellites circle high above the equator once a day",
+          "They keep pace with the Earth's turning, so they seem to hang still",
+          "Each covers a huge area: an ocean region",
+          "Inmarsat-C for text messages, Fleet Broadband for calls and Internet"
+        ]
+      },
+      "onScreen": [
+        "Inmarsat: the GMDSS satellite network",
+        "Circle above the equator once a day",
+        "Seem to hang still: geostationary",
+        "Each covers an ocean region",
+        "Inmarsat-C: text. Fleet Broadband: calls and Internet"
+      ],
+      "narration": "Which satellites does a GMDSS ship use? Inmarsat's. Inmarsat began as the International Maritime Satellite Organization, and its satellites orbit, or circle the Earth, high above the equator. The higher an orbit, the slower a satellite goes around. At that height, a lap takes 1 day, the same time the Earth takes to turn. So the satellite keeps pace with the spot below and seems to hang still in the sky. That's called a geostationary orbit, and it's why a ship's antenna finds the satellite in the same direction hour after hour. Each satellite covers a huge area called an ocean region. Of Inmarsat's services, 2 matter most here: Inmarsat-C for text messages, and Fleet Broadband for phone calls and Internet."
+    },
+    {
+      "id": "s4",
       "keyTopic": 23,
       "template": "band-strip",
       "params": {
@@ -25,369 +117,880 @@
         "min": 1500,
         "max": 1700,
         "scale": "linear",
-        "ends": ["1500 MHz", "1700 MHz"],
-        "marks": [
-          { "at": 1537.5, "label": "1530.0–1545.0 MHz", "note": "Ship receives: downlink from the satellite", "tone": "key" },
-          { "at": 1636, "label": "1626.5–1645.5 MHz", "note": "Ship transmits: uplink, the higher band", "tone": "key" }
-        ]
-      },
-      "onScreen": ["Receive: 1530.0 to 1545.0 MHz", "Transmit: 1626.5 to 1645.5 MHz, the higher band"],
-      "narration": "An Inmarsat-C ship terminal works in the L-band. It receives from the satellite on 1530.0 to 1545.0 megahertz. It transmits up to the satellite on 1626.5 to 1645.5 megahertz. So the ship's transmit band is the higher of the pair: receive low, transmit high. Exam choices swap them, or shift the band edges slightly, so learn these exact numbers."
-    },
-    {
-      "id": "s3",
-      "keyTopic": 23,
-      "template": "block-diagram",
-      "params": {
-        "title": "The LNA: low noise amplifier",
-        "columns": 4,
-        "blocks": [
-          { "id": "sat", "label": "Satellite", "note": "Very weak signal arrives" },
-          { "id": "lna", "label": "LNA at or near the antenna", "note": "Amplifies it, adds very little noise" },
-          { "id": "coax", "label": "Coax cable", "note": "Cable losses come after the gain" },
-          { "id": "rx", "label": "Receiver", "note": "Noise figure set mostly by the LNA" }
+        "ends": [
+          "1500 MHz",
+          "1700 MHz"
         ],
-        "links": [
-          { "from": "sat", "to": "lna", "label": "weak signal" },
-          { "from": "lna", "to": "coax", "label": "amplified" },
-          { "from": "coax", "to": "rx" }
+        "marks": [
+          {
+            "at": 1537.5,
+            "label": "1530.0–1545.0 MHz",
+            "note": "Ship receives: downlink from the satellite",
+            "tone": "key"
+          },
+          {
+            "at": 1636,
+            "label": "1626.5–1645.5 MHz",
+            "note": "Ship transmits: uplink, the higher band",
+            "tone": "key"
+          }
         ]
       },
-      "onScreen": ["Satellite: very weak signal", "LNA at or near the antenna: amplifies, adds little noise", "Coax cable losses come after the gain", "Receiver noise figure set by the LNA"],
-      "narration": "The signal arriving from the satellite is very weak. The first thing it meets is the LNA, which stands for low noise amplifier. Not low noise antenna, and not line noise amplifier. The LNA sits at or near the antenna, where it receives and amplifies the weak signal before cable losses and the later stages add their noise. A good LNA adds very little noise of its own, so it largely sets the receiver's overall noise figure. It lowers the noise figure; it doesn't increase it."
-    },
-    {
-      "id": "s4",
-      "keyTopic": 23,
-      "template": "key-facts",
-      "params": {
-        "title": "Fade margin and signal to noise ratio",
-        "items": [
-          "Fade margin: a design allowance to accommodate expected fading",
-          "Extra signal above the minimum keeps the link working through rain or multipath",
-          "Signal to noise ratio compares the level of the signal to the level of the noise",
-          "Abbreviated SNR (or S/N), usually given in decibels",
-          "SNR of 10 dB: the signal power is 10 times the noise power"
-        ]
-      },
-      "onScreen": ["Fade margin: allowance for expected fading", "Extra signal above the minimum", "SNR compares signal level to noise level", "SNR, or S/N, in decibels", "10 dB: signal power 10 times noise power"],
-      "narration": "Here are 2 more terms. Fade margin is a design allowance to accommodate expected fading. The link is built with extra signal level above the minimum it needs, so it keeps working when rain, multipath or other fading weakens the signal. Signal to noise ratio is a measure that compares the level of a desired signal to the level of background noise. Level, not distance and not frequency. It's abbreviated SNR, sometimes written S slash N, and it's usually given in decibels. An SNR of 10 decibels means the signal power is 10 times the noise power."
+      "onScreen": [
+        "L-band, 1500 to 1700 MHz",
+        "Receive: 1530.0 to 1545.0 MHz",
+        "Transmit: 1626.5 to 1645.5 MHz, the higher band"
+      ],
+      "narration": "To reach those satellites, the terminal needs the right frequencies. A radio signal is a wave, vibrating back and forth; the number of vibrations each second is its frequency, counted in hertz. 1 megahertz is a million vibrations a second. Inmarsat works around 1500 to 1700 megahertz, in a range called the L-band. An Inmarsat-C ship terminal receives from the satellite on 1530.0 to 1545.0 megahertz. It can't transmit on those frequencies too: its own strong signal would drown out the faint one it's trying to hear. So it transmits on a separate band, 1626.5 to 1645.5 megahertz. The transmit band is the higher of the pair: receive low, transmit high. Exam choices swap or widen the bands, so learn these exact numbers."
     },
     {
       "id": "s5",
-      "keyTopic": 24,
-      "template": "equipment-card",
+      "keyTopic": 23,
+      "template": "key-facts",
       "params": {
-        "title": "Grounding and weatherproofing",
-        "device": "satcom-terminal",
-        "callouts": [
-          { "label": "Terminal chassis connected to electrical ground: the case can't stay live", "at": "terminal" },
-          { "label": "Antenna grounded to the mast, never insulated from it", "at": "radome" },
-          { "label": "Silicone weatherproofs the ground connection", "at": "mast" },
-          { "label": "Drip loop near the antenna, secured with a cable tie", "at": "mast" },
-          { "label": "Connectors sealed with sealant or putty, wrapped in self-bonding tape", "at": "cable" }
+        "title": "Weak signals and noise",
+        "items": [
+          "The satellite's signal arrives extremely weak",
+          "Noise: a random electrical hiss from every circuit",
+          "Amplifier: a circuit that makes a signal bigger",
+          "It boosts the noise too, and adds some of its own",
+          "Noise figure: how much noise a stage adds. Lower is better"
         ]
       },
-      "onScreen": ["Terminal chassis grounded", "Antenna grounded to the mast, never insulated", "Silicone over the ground connection", "Drip loop secured with a cable tie", "Connectors sealed and taped"],
-      "narration": "Start with safety. To minimize shock hazard, make sure the chassis of the Inmarsat terminal is connected to an electrical ground. Then a fault current blows a fuse or trips a breaker instead of leaving the case live. Isolating the frame does the opposite. Up top, an Inmarsat-C antenna should never be electrically insulated from its mounting mast. Ground the antenna chassis to the mast, so static and lightning energy have a path to the hull, and weatherproof that connection with silicone. Form a drip loop in the transmission line near the antenna, secured with a cable tie. And seal the connectors with waterproof sealant or putty, wrapped in self-bonding or vinyl tape."
+      "onScreen": [
+        "Signal arrives extremely weak",
+        "Noise: random electrical hiss",
+        "Amplifier makes the signal bigger",
+        "It adds noise of its own",
+        "Noise figure: lower is better"
+      ],
+      "narration": "Now follow the signal coming down to the ship. After crossing tens of thousands of kilometers of space, it's spread out and extremely weak, like a flashlight beam that grows dim with distance. And it has company: noise, a random electrical hiss produced by every circuit, a bit like the chatter in a crowded room. To use the signal, the receiver must make it bigger, with an amplifier. But an amplifier boosts whatever it's given, noise included, and adds a little noise of its own. A receiver is a chain of stages, each a circuit with one job, such as amplifying. How much noise a stage adds is described by its noise figure. A lower noise figure is better."
     },
     {
       "id": "s6",
+      "keyTopic": 23,
+      "template": "key-facts",
+      "params": {
+        "title": "The LNA: low noise amplifier",
+        "items": [
+          "LNA: low noise amplifier",
+          "Not low noise antenna, not line noise amplifier",
+          "Receives and amplifies the very weak satellite signal",
+          "The first amplifier the signal meets",
+          "Sits at or near the antenna, not in the radio room"
+        ]
+      },
+      "onScreen": [
+        "LNA: low noise amplifier",
+        "Not antenna, not line noise",
+        "Amplifies the very weak signal",
+        "First amplifier in the chain",
+        "At or near the antenna"
+      ],
+      "narration": "That's where the LNA comes in. LNA stands for low noise amplifier: an amplifier built to add as little noise as possible. Not low noise antenna, and not line noise amplifier; the exam offers both. Its job is to receive and amplify the very weak signal from the satellite. It's the first amplifier the signal meets, the first stage of the chain. And it sits at or near the antenna, up on the mast, not down in the radio room with the rest of the receiver."
+    },
+    {
+      "id": "s7",
+      "keyTopic": 23,
+      "template": "block-diagram",
+      "params": {
+        "title": "Why the LNA sits at the antenna",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "lna",
+            "label": "LNA at or near the antenna",
+            "note": "Amplifies first, adds very little noise"
+          },
+          {
+            "id": "coax",
+            "label": "Coax cable",
+            "note": "Its losses come after the gain"
+          },
+          {
+            "id": "rx",
+            "label": "Receiver",
+            "note": "Noise figure set mostly by the LNA"
+          }
+        ],
+        "links": [
+          {
+            "from": "lna",
+            "to": "coax",
+            "label": "amplified signal"
+          },
+          {
+            "from": "coax",
+            "to": "rx"
+          }
+        ]
+      },
+      "onScreen": [
+        "LNA at the antenna: amplifies first, little noise",
+        "Coax cable losses come after the gain",
+        "Receiver noise figure set by the LNA"
+      ],
+      "narration": "Why up on the mast? The weak signal meets the LNA first, right at the antenna. The LNA makes it strong while it's still clean, adding very little noise. Then the signal travels down a coax cable, a center wire inside a tube-shaped shield, to the receiver. The cable loses some of the signal on the way, and every later stage adds a little noise. But by then the signal is strong, so the losses and noise matter far less. Put the LNA after the cable instead, and the signal would arrive weakened, closer to the noise, and the amplifier would boost both together. Coming first, and adding so little noise, the LNA largely sets the receiver's overall noise figure, and lowers it rather than increasing it."
+    },
+    {
+      "id": "s8",
+      "keyTopic": 23,
+      "template": "key-facts",
+      "params": {
+        "title": "Signal to noise ratio",
+        "items": [
+          "SNR: signal to noise ratio, also written S/N",
+          "Compares the level of the desired signal to the level of the noise",
+          "Not their distance, not their frequency",
+          "Higher SNR: a cleaner signal, easier to read"
+        ]
+      },
+      "onScreen": [
+        "SNR, or S/N: signal to noise ratio",
+        "Signal level compared to noise level",
+        "Not distance, not frequency",
+        "Higher SNR: cleaner signal"
+      ],
+      "narration": "The LNA keeps the signal well above the noise. How do we measure that? With the signal to noise ratio, abbreviated SNR, and sometimes written S slash N. It's a measure that compares the level of a desired signal to the level of background noise. Think of a voice in a noisy room. What matters isn't how far away the speaker stands, or how high the voice is pitched, but how loud it is compared with the chatter. Radio is the same. So the exam's wrong choices, which compare distance, or frequency, or a forward and a reverse direction, are out: SNR compares level with level. The higher the SNR, the more easily the receiver recovers the message."
+    },
+    {
+      "id": "s9",
+      "keyTopic": 23,
+      "template": "formula",
+      "params": {
+        "title": "Signal to noise ratio in decibels",
+        "formula": "SNR = signal power ÷ noise power",
+        "steps": [
+          "Signal power is 10 times the noise power",
+          "Ratio: 10 to 1",
+          "Decibels: each factor of 10 counts as 10 dB",
+          "A ratio of 10 is 10 dB"
+        ],
+        "answer": "SNR of 10 dB: signal power 10 × noise power"
+      },
+      "onScreen": [
+        "SNR = signal power ÷ noise power",
+        "Signal 10 times the noise",
+        "Ratio 10 to 1",
+        "Each factor of 10 is 10 dB",
+        "SNR of 10 dB: signal power 10 times noise power"
+      ],
+      "narration": "SNR is usually given in decibels, or dB. A decibel is a way of comparing 2 powers, or strengths, that keeps big ratios down to small, handy numbers. Let's work the exam's example: what does an SNR of 10 decibels mean? The formula: SNR is signal power divided by noise power. Suppose the signal power is 10 times the noise power. The ratio is 10 to 1. On the decibel scale, each factor of 10 in power counts as 10 decibels, so a ratio of 10 is 10 decibels. So an SNR of 10 decibels means the signal power is 10 times the noise power. That makes sense: positive decibels mean the signal is stronger than the noise."
+    },
+    {
+      "id": "s10",
+      "keyTopic": 23,
+      "template": "key-facts",
+      "params": {
+        "title": "Why signals fade",
+        "items": [
+          "Fading: the signal weakens for a while, then recovers",
+          "Heavy rain soaks up some of the signal",
+          "Multipath: a copy bounces off the sea and partly cancels the direct signal",
+          "Too deep a fade, and the link drops out"
+        ]
+      },
+      "onScreen": [
+        "Fading: signal weakens, then recovers",
+        "Heavy rain soaks up signal",
+        "Multipath: a reflection off the sea partly cancels it",
+        "Too deep a fade: the link drops out"
+      ],
+      "narration": "Even a strong, clean signal doesn't stay perfectly steady. It fades: it weakens for a while, then recovers. Heavy rain is one cause: it soaks up some of the signal on its way down. Multipath is another: a copy of the signal bounces off the sea and reaches the antenna a moment later, slightly out of step with the direct one, so the 2 partly cancel. If a fade is deep enough, the signal drops below what the receiver needs, and the link fails. So how do designers plan for it?"
+    },
+    {
+      "id": "s11",
+      "keyTopic": 23,
+      "template": "band-strip",
+      "params": {
+        "title": "Fade margin: signal kept in reserve",
+        "min": 1,
+        "max": 4,
+        "scale": "even",
+        "ends": [
+          "Weaker",
+          "Stronger"
+        ],
+        "marks": [
+          {
+            "at": 1,
+            "label": "Noise floor",
+            "note": "The background hiss",
+            "tone": "muted"
+          },
+          {
+            "at": 2,
+            "label": "Minimum usable level",
+            "note": "Below this, the link fails"
+          },
+          {
+            "at": 3,
+            "label": "Fade margin",
+            "note": "Extra signal to ride out fading",
+            "tone": "key"
+          },
+          {
+            "at": 4,
+            "label": "Normal received level",
+            "note": "Designed in above the minimum"
+          }
+        ]
+      },
+      "onScreen": [
+        "Noise floor",
+        "Minimum usable level",
+        "Fade margin: extra signal in reserve",
+        "Normal level designed above the minimum"
+      ],
+      "narration": "With fade margin. Read the strip from the bottom up. At the bottom is the noise floor, the background hiss. Above it is the minimum usable level, the weakest signal the receiver can still read; below that line, the link fails. Next is the fade margin: a design allowance to accommodate expected fading. It's extra signal level built in above the minimum, like leaving early to allow for traffic. When a fade comes, the signal dips into that reserve but stays above the minimum. So the normal received level sits at the top, well clear of the minimum, and the link keeps working. On the exam, pick the design allowance; a ratio of largest to smallest values just describes variation."
+    },
+    {
+      "id": "s12",
+      "keyTopic": 24,
+      "template": "block-diagram",
+      "params": {
+        "title": "Inmarsat-C: store-and-forward",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "ship",
+            "label": "Ship's Inmarsat-C terminal",
+            "note": "Sends the whole message"
+          },
+          {
+            "id": "sat",
+            "label": "Satellite",
+            "note": "Relays it down"
+          },
+          {
+            "id": "les",
+            "label": "LES stores the message",
+            "note": "Then forwards it"
+          },
+          {
+            "id": "dest",
+            "label": "Destination ashore",
+            "note": "Receives it complete"
+          }
+        ],
+        "links": [
+          {
+            "from": "ship",
+            "to": "sat"
+          },
+          {
+            "from": "sat",
+            "to": "les"
+          },
+          {
+            "from": "les",
+            "to": "dest",
+            "label": "forwarded"
+          }
+        ]
+      },
+      "onScreen": [
+        "Ship's terminal sends the whole message",
+        "Satellite relays it",
+        "LES stores it, then forwards it",
+        "Destination receives it complete"
+      ],
+      "narration": "Now meet the first system built on that technology: Inmarsat-C, the satellite text terminal most GMDSS ships carry. Inmarsat-C is a low-rate, store-and-forward data system. Low-rate means it sends data slowly, a little at a time, which is fine for text. Store-and-forward means each message travels as a whole. The terminal sends it up through the satellite to a Land Earth Station, which stores it, then forwards it to its destination. It's like posting a letter rather than making a phone call: the letter arrives complete, but there's no live conversation."
+    },
+    {
+      "id": "s13",
+      "keyTopic": 24,
+      "template": "comparison-table",
+      "params": {
+        "title": "What Inmarsat-C can and cannot do",
+        "columns": [
+          "Service",
+          "Inmarsat-C?"
+        ],
+        "rows": [
+          [
+            "Messages to and from a mobile unit",
+            "Yes"
+          ],
+          [
+            "Broadcast data to groups of mobile terminals",
+            "Yes"
+          ],
+          [
+            "Position reporting from fleets of mobile units",
+            "Yes"
+          ],
+          [
+            "Telephone calls via VoIP",
+            "No: no voice of any kind"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Messages to and from a mobile unit: yes",
+        "Broadcast data to groups: yes",
+        "Fleet position reporting: yes",
+        "VoIP telephone calls: no"
+      ],
+      "narration": "So what can a letter service do? Plenty, as long as it's text. Inmarsat-C provides message transmission to and from a mobile unit, which here means a ship's terminal. It provides broadcast data to groups of mobile terminals: one letter copied to many ships. And it provides position reporting from fleets of mobile units, each ship sending in where it is, so its owner can follow the whole fleet. What it can't do is hold a conversation. A conversation needs a live connection, open both ways at once, and a store-and-forward system never opens one. So Inmarsat-C cannot provide telephone communications via VoIP, Voice over Internet Protocol, which carries calls as Internet data, or any voice at all."
+    },
+    {
+      "id": "s14",
+      "keyTopic": 24,
+      "template": "block-diagram",
+      "params": {
+        "title": "1 NCS per ocean region",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "ncs",
+            "label": "NCS: just 1 per ocean region",
+            "note": "Manages the region's channels"
+          },
+          {
+            "id": "sat",
+            "label": "Inmarsat satellite",
+            "note": "Covers the ocean region"
+          },
+          {
+            "id": "ship",
+            "label": "Ship terminals",
+            "note": "Listen to the NCS when idle"
+          },
+          {
+            "id": "les1",
+            "label": "LES",
+            "note": "Handles message traffic"
+          },
+          {
+            "id": "les2",
+            "label": "Another LES",
+            "note": "Handles message traffic"
+          }
+        ],
+        "links": [
+          {
+            "from": "ncs",
+            "to": "sat",
+            "label": "channel control"
+          },
+          {
+            "from": "sat",
+            "to": "ship"
+          },
+          {
+            "from": "les1",
+            "to": "sat",
+            "label": "traffic"
+          },
+          {
+            "from": "les2",
+            "to": "sat",
+            "label": "traffic"
+          }
+        ]
+      },
+      "onScreen": [
+        "NCS: 1 per ocean region, per system",
+        "Manages the region's channels",
+        "Several LESs handle the traffic"
+      ],
+      "narration": "Who directs all those messages in an ocean region? Each Inmarsat ocean region has just 1 NCS, a Network Coordination Station, for each Inmarsat system, such as Inmarsat-C. The NCS manages the region's channels, the separate frequencies the traffic travels on, a bit like a harbor master assigning berths. It sends out a common channel that idle terminals, those not busy with a message, keep listening to. The message traffic itself is handled by several LESs, the Land Earth Stations from earlier. With 1 coordinator per region, there's never any doubt about who assigns the channels. So remember: 1 NCS per ocean region per system, but several LESs. The exam offers 2, 3 or 4 NCSs. The answer is 1."
+    },
+    {
+      "id": "s15",
+      "keyTopic": 24,
+      "template": "comparison-table",
+      "params": {
+        "title": "EGC: one message to many ships",
+        "columns": [
+          "EGC service",
+          "What it carries"
+        ],
+        "rows": [
+          [
+            "SafetyNET",
+            "Maritime safety information"
+          ],
+          [
+            "FleetNET",
+            "Commercial messages to selected ships"
+          ],
+          [
+            "System",
+            "Network system messages"
+          ]
+        ]
+      },
+      "onScreen": [
+        "SafetyNET: maritime safety information",
+        "FleetNET: commercial messages to selected ships",
+        "System: network system messages"
+      ],
+      "narration": "The NCS has one more job: it broadcasts EGC messages through the satellite. EGC stands for Enhanced Group Call: one message sent to many ships at once, like a radio announcement rather than a letter. EGC messages contain SafetyNET, FleetNET and System information. SafetyNET carries maritime safety information, such as navigational and weather warnings and distress relays. FleetNET carries commercial messages to selected groups of ships, for example a shipping company writing to its own fleet. And System messages carry network information from the Inmarsat system itself. Watch for near-miss names in the choices, like SafeNet or FleetwideNet, and for unrelated ones like grounding codes. The correct trio is SafetyNET, FleetNET and System."
+    },
+    {
+      "id": "s16",
       "keyTopic": 24,
       "template": "block-diagram",
       "params": {
         "title": "The LOOP BACK test",
         "columns": 3,
         "blocks": [
-          { "id": "tx", "label": "Ship terminal", "note": "Send yourself a test message" },
-          { "id": "up", "label": "Satellite", "note": "Uplink" },
-          { "id": "les", "label": "LES: Land Earth Station", "note": "Sends the message back" },
-          { "id": "rx", "label": "Same terminal", "note": "Message arrives: whole path proven" },
-          { "id": "down", "label": "Satellite", "note": "Downlink" },
-          { "id": "ping", "label": "Ping 127.0.0.1", "note": "Never leaves the computer" }
+          {
+            "id": "tx",
+            "label": "Ship terminal",
+            "note": "Send yourself a test message"
+          },
+          {
+            "id": "sat",
+            "label": "Satellite",
+            "note": "Up from the ship, down to the LES"
+          },
+          {
+            "id": "les",
+            "label": "LES: Land Earth Station",
+            "note": "Sends the message straight back"
+          },
+          {
+            "id": "rx",
+            "label": "Same terminal",
+            "note": "Message arrives: whole path proven"
+          },
+          {
+            "id": "ping",
+            "label": "Ping 127.0.0.1",
+            "note": "Never leaves the computer"
+          }
         ],
         "links": [
-          { "from": "tx", "to": "up" },
-          { "from": "up", "to": "les" },
-          { "from": "les", "to": "down" },
-          { "from": "down", "to": "rx" },
-          { "from": "ping", "to": "les", "struck": true }
+          {
+            "from": "tx",
+            "to": "sat"
+          },
+          {
+            "from": "sat",
+            "to": "les"
+          },
+          {
+            "from": "les",
+            "to": "rx",
+            "label": "back via the satellite"
+          },
+          {
+            "from": "ping",
+            "to": "les",
+            "struck": true
+          }
         ]
       },
-      "onScreen": ["Send yourself a test message", "Up through the satellite to the LES", "Back to the same terminal", "Ping 127.0.0.1 never leaves the computer"],
-      "narration": "How do you do a LOOP BACK test on an Inmarsat-C terminal? Send yourself a test message. It travels up through the satellite to the LES, the Land Earth Station, and the LES sends it back to the same terminal, down through the satellite. When your own message arrives, you've proven the whole transmit and receive path. Pinging the address 127.0.0.1 can't do that, because that test never leaves the computer."
-    },
-    {
-      "id": "s7",
-      "keyTopic": 24,
-      "template": "comparison-table",
-      "params": {
-        "title": "What Inmarsat-C provides",
-        "columns": ["Service", "Inmarsat-C?"],
-        "rows": [
-          ["Messages to and from a mobile unit", "Yes"],
-          ["Broadcast data to groups of mobile terminals", "Yes"],
-          ["Position reporting from fleets of mobile units", "Yes"],
-          ["Telephone calls via VoIP", "No: no voice of any kind"]
-        ]
-      },
-      "onScreen": ["Messages to and from a mobile unit: yes", "Broadcast data to groups: yes", "Fleet position reporting: yes", "VoIP telephone calls: no"],
-      "narration": "Inmarsat-C is a low-rate, store-and-forward data system. It provides message transmission to and from a mobile unit, broadcast data to groups of mobile terminals, and position reporting from fleets of mobile units. What it cannot provide is telephone communications via VoIP, which stands for Voice over Internet Protocol, or any other kind of voice. So when the exam asks which service Inmarsat-C does not offer, the answer is VoIP telephone calls."
-    },
-    {
-      "id": "s8",
-      "keyTopic": 24,
-      "template": "block-diagram",
-      "params": {
-        "title": "NCS and Enhanced Group Call",
-        "columns": 3,
-        "blocks": [
-          { "id": "ncs", "label": "NCS: 1 per ocean region", "note": "Manages the region's channels" },
-          { "id": "sat", "label": "Inmarsat satellite", "note": "Carries the EGC broadcasts" },
-          { "id": "les", "label": "Several LESs", "note": "Handle the message traffic" },
-          { "id": "safety", "label": "SafetyNET", "note": "Maritime safety information" },
-          { "id": "fleet", "label": "FleetNET", "note": "Commercial messages to selected ships" },
-          { "id": "system", "label": "System", "note": "Network system messages" }
-        ],
-        "links": [
-          { "from": "ncs", "to": "sat", "label": "EGC broadcast" },
-          { "from": "les", "to": "sat", "label": "traffic" },
-          { "from": "sat", "to": "safety" },
-          { "from": "sat", "to": "fleet" },
-          { "from": "sat", "to": "system" }
-        ]
-      },
-      "onScreen": ["NCS: 1 per ocean region, per system", "Several LESs handle the traffic", "SafetyNET: maritime safety information", "FleetNET: commercial messages to selected ships", "System: network system messages"],
-      "narration": "Each Inmarsat ocean region has just 1 NCS, or Network Coordination Station, per Inmarsat system. The NCS manages the region's channels and broadcasts EGC, or Enhanced Group Call, messages through the satellite. Several LESs handle the actual message traffic. EGC messages contain SafetyNET, FleetNET and System information. SafetyNET carries maritime safety information. FleetNET carries commercial messages to selected groups of ships. And System messages carry network system information."
-    },
-    {
-      "id": "s9",
-      "keyTopic": 25,
-      "template": "block-diagram",
-      "params": {
-        "title": "How an LRIT report travels",
-        "columns": 3,
-        "blocks": [
-          { "id": "gps", "label": "GPS satellite", "note": "Broadcasts only: supplies the position" },
-          { "id": "term", "label": "Inmarsat-C or Mini-C terminal", "note": "Sends identity, position and time" },
-          { "id": "sat", "label": "Inmarsat-C satellite", "note": "LRIT is detected on this network" },
-          { "id": "alt", "label": "Inmarsat-D+ or Iridium", "note": "Other routes for the report" },
-          { "id": "center", "label": "LRIT data center", "note": "For US ships: the National Data Center" },
-          { "id": "flag", "label": "Flag administration", "note": "The ship's own flag state" }
-        ],
-        "links": [
-          { "from": "gps", "to": "term", "label": "receive only" },
-          { "from": "term", "to": "sat", "label": "report" },
-          { "from": "sat", "to": "center" },
-          { "from": "alt", "to": "center" },
-          { "from": "center", "to": "flag" }
-        ]
-      },
-      "onScreen": ["GPS: broadcasts only, supplies the position", "Inmarsat-C or Mini-C terminal sends the report", "Detected on the Inmarsat-C network", "Inmarsat-D+ or Iridium can also carry it", "Data center, then the flag administration"],
-      "narration": "LRIT, Long Range Identification and Tracking, also appears on the exam as Long Range Identity Tracking or Long Range Information Tracking. GPS supplies the ship's position, but GPS does not support LRIT: its satellites only broadcast, and can't carry a report back. The report goes out from the GMDSS Inmarsat-C or Mini-C terminal, which is how most ships meet the requirement, so LRIT is detected on the Inmarsat-C satellite network. Inmarsat-D plus or Iridium can also carry it. The ship's identity, position and time go to a data center, and on to the ship's own flag administration."
-    },
-    {
-      "id": "s10",
-      "keyTopic": 25,
-      "template": "timeline",
-      "params": {
-        "title": "LRIT reporting schedule",
-        "badges": [
-          { "label": "APR: automatic position report", "value": "Every 6 hours", "note": "Terminal configured to send it automatically" },
-          { "label": "Position reports per day", "value": "At least 4", "note": "To the U.S. National Data Center, each US Flag ship" },
-          { "label": "PR: position report", "value": "On request, by a poll", "note": "Sent automatically when the data center polls" },
-          { "label": "Number of crew", "value": "Not part of the report" }
-        ]
-      },
-      "onScreen": ["APR every 6 hours", "At least 4 position reports a day", "PR sent on request by a poll", "Crew numbers not reported"],
-      "narration": "An LRIT terminal must be capable of being configured to automatically transmit an APR, an automatic position report, and it must transmit an APR every 6 hours. So the U.S. National Data Center, which monitors polling input for each US Flag ship, must receive at least 4 position reports daily, a report every 6 hours. The data center can poll for more, and the terminal must be able to automatically transmit a PR, a position report, if a poll requests it. The number of crew aboard is not part of the report."
-    },
-    {
-      "id": "s11",
-      "keyTopic": 25,
-      "template": "key-facts",
-      "params": {
-        "title": "LRIT stands apart",
-        "items": [
-          "A separate tracking system for each flag state's security",
-          "Separate from AIS and AMVER, and not broadcast on the Internet",
-          "Does not use AIS channels and is not a backup for AIS",
-          "Not reporting? Check the GMDSS console's Inmarsat-C terminal",
-          "Is it powered, logged in and working normally?"
-        ]
-      },
-      "onScreen": ["Separate system for each flag state's security", "Not AIS, not AMVER, not on the Internet", "No AIS channels, not an AIS backup", "Not reporting: check the Inmarsat-C terminal", "Powered, logged in, working?"],
-      "narration": "Keep LRIT separate in your mind. It's a separate tracking system for each flag state's security. It is separate from AIS, the Automatic Identification System, and from AMVER, the Automated Mutual-assistance Vessel Rescue system, and it is not broadcast on the Internet. LRIT does not use AIS channels, and it is not a backup for AIS. So if a compulsory equipped ship under the IMO, the International Maritime Organization, is not correctly broadcasting its LRIT information, don't look at the AIS. Double check the GMDSS console's Inmarsat-C terminal for regular operation: is it powered, logged in and working?"
-    },
-    {
-      "id": "s12",
-      "keyTopic": 26,
-      "template": "equipment-card",
-      "params": {
-        "title": "Fleet Broadband: above and below deck",
-        "device": "satcom-terminal",
-        "callouts": [
-          { "label": "Radome above deck: antenna, RF and antenna-control electronics", "at": "radome" },
-          { "label": "Below deck: the Fleet Broadband terminal stores the configuration data", "at": "terminal" },
-          { "label": "The terminal contains all user interfaces and LED indicators", "at": "screen" }
-        ]
-      },
-      "onScreen": ["Radome above deck: antenna, RF and antenna-control electronics", "Below deck terminal stores the configuration data", "All user interfaces and LED indicators"],
-      "narration": "Inmarsat Fleet Broadband equipment comes in 2 parts. Above deck, the radome holds the antenna, the RF, or radio frequency, electronics and the antenna-control electronics. Below deck is the Fleet Broadband terminal, a component of the below deck equipment. The terminal stores the configuration data, and it contains all the user interfaces and the LED, or light-emitting diode, indicators."
-    },
-    {
-      "id": "s13",
-      "keyTopic": 26,
-      "template": "comparison-table",
-      "params": {
-        "title": "The Fleet Broadband IP handset",
-        "columns": ["Function", "IP handset?"],
-        "rows": [
-          ["Voice over IP telephone calls", "Yes, also as circuit-switched calls"],
-          ["Talk to the terminal", "Yes, using TCP/IP"],
-          ["Display status, change parameters", "Yes, through its menus"],
-          ["Polling and data reporting", "No: an Inmarsat-C function"],
-          ["Power over Ethernet to the terminal", "No: the terminal powers the handset"]
-        ]
-      },
-      "onScreen": ["VoIP and circuit-switched calls", "TCP/IP link to the terminal", "Status display and parameter changes", "Not polling and data reporting", "Does not power the terminal"],
-      "narration": "The Fleet Broadband IP handset does more than make calls. It makes Voice over IP telephone calls, and its calls can be transmitted as circuit-switched calls. It uses TCP IP, Transmission Control Protocol over Internet Protocol, to communicate with the terminal. Through its menus, it displays terminal status and changes terminal parameters. But there are 2 things it does not do. Polling and data reporting is not a handset function; that belongs to Inmarsat-C. And the handset does not provide the terminal with Power over Ethernet, or PoE. Power flows the other way, from the terminal's LAN, or local area network, port to the handset."
-    },
-    {
-      "id": "s14",
-      "keyTopic": 26,
-      "template": "key-facts",
-      "params": {
-        "title": "BGAN services and the fax setting",
-        "items": [
-          "BGAN Streaming: exclusive, high-priority, for time critical uses like live video",
-          "Standard IP: shared, for e-mail, file transfer and the Internet",
-          "Fax/Data: RJ11 Port 1 and 2 set to 3.1 kHz audio",
-          "3.1 kHz audio passes fax and modem tones unprocessed; standard voice garbles them",
-          "LAN ports carry IP data, not audio"
-        ]
-      },
-      "onScreen": ["Streaming: exclusive, high-priority, time critical", "Standard IP: shared", "Fax/Data: RJ11 Port 1 and 2 at 3.1 kHz audio", "Standard voice garbles fax tones", "LAN ports: IP data, not audio"],
-      "narration": "Now compare 2 Inmarsat BGAN data services. BGAN stands for Broadband Global Area Network. Streaming Data is an exclusive, high-priority connection, ideal for time critical applications such as live video. Ordinary e-mail, file transfer and Internet traffic uses the shared Standard IP service. Now fax. The correct Fax and Data configuration of a Fleet Broadband terminal is RJ11 Port 1 and 2 set to 3.1 kilohertz audio. That passes fax and modem tones through unprocessed. Standard voice would garble them, and the LAN ports carry IP data, not audio."
-    },
-    {
-      "id": "s15",
-      "keyTopic": 26,
-      "template": "block-diagram",
-      "params": {
-        "title": "Testing the Inmarsat Distress Alarm",
-        "columns": 4,
-        "blocks": [
-          { "id": "ship", "label": "Ship", "note": "Calls service number 33" },
-          { "id": "svc", "label": "Service number 33", "note": "Technical assistance" },
-          { "id": "les", "label": "LES", "note": "Arranges the test in advance" },
-          { "id": "test", "label": "Test Distress Alarm sent", "note": "Expected and handled as a test" },
-          { "id": "button", "label": "Just pressing DISTRESS", "note": "Don't test this way" },
-          { "id": "rcc", "label": "RCC", "note": "Rescue Coordination Centre" }
-        ],
-        "links": [
-          { "from": "ship", "to": "svc" },
-          { "from": "svc", "to": "les" },
-          { "from": "les", "to": "test" },
-          { "from": "button", "to": "rcc", "label": "a real distress alert" }
-        ]
-      },
-      "onScreen": ["Service number 33: technical assistance", "LES arranges the test in advance", "Test alert expected", "Pressing DISTRESS sends a real alert to an RCC"],
-      "narration": "What's the best way to test the Inmarsat Distress Alarm? Use service number 33, technical assistance, to arrange a Distress Alarm test transmission with the LES in advance. The test alert you then send is expected, and it's handled as a test. Don't just lift the cover and press the DISTRESS button. That sends a real alert to an RCC, a Rescue Coordination Centre."
-    },
-    {
-      "id": "s16",
-      "keyTopic": 27,
-      "template": "block-diagram",
-      "params": {
-        "title": "LAN port or ISDN port?",
-        "columns": 3,
-        "blocks": [
-          { "id": "pc", "label": "PC on TCP/IP", "note": "Configuration, troubleshooting, browsing" },
-          { "id": "lan", "label": "LAN (Ethernet) port", "note": "IP connectivity" },
-          { "id": "voip", "label": "VoIP telephone handset", "note": "Voice over IP" },
-          { "id": "isdnphone", "label": "ISDN telephone handset", "note": "Not a LAN port function" },
-          { "id": "isdn", "label": "ISDN port", "note": "Separate interface, its own port" }
-        ],
-        "links": [
-          { "from": "lan", "to": "pc", "label": "TCP/IP" },
-          { "from": "lan", "to": "voip" },
-          { "from": "lan", "to": "isdnphone", "struck": true },
-          { "from": "isdn", "to": "isdnphone" }
-        ]
-      },
-      "onScreen": ["PC on TCP/IP: configuration, troubleshooting, browsing", "LAN (Ethernet) port: IP connectivity", "VoIP telephone handset", "ISDN handset: not on the LAN port", "ISDN port: a separate interface"],
-      "narration": "A PC connected to the LAN interface of an Inmarsat terminal uses the TCP IP protocol. E-mail and file transfer protocols, SMTP and FTP, ride on top of TCP IP. On a Fleet Broadband terminal, the LAN, or Ethernet, port provides IP connectivity for terminal configuration and troubleshooting, for Internet browsing with a computer, and for a Voice Over IP telephone handset. Connecting an ISDN telephone handset is not a LAN port function. ISDN, the Integrated Services Digital Network, is a separate interface, and ISDN handsets plug into the terminal's dedicated ISDN port."
+      "onScreen": [
+        "Send yourself a test message",
+        "Up through the satellite to the LES",
+        "Back to the same terminal: whole path proven",
+        "Ping 127.0.0.1 never leaves the computer"
+      ],
+      "narration": "That's the network. Now the technician's side: how do you prove a terminal works from end to end? With a LOOP BACK test: send yourself a test message. First it goes up to the satellite, which shows your transmitter works. The satellite passes it to the LES, which sends it straight back, so the satellite and the LES work too. When your message arrives back at the same terminal, your receiver has done its part, and the whole path is proven. Asking the LES to send you a message would test only the receiving half. And pinging 127.0.0.1, a test signal to the address every computer uses to talk to itself, never leaves the computer, so it proves nothing about the satellite."
     },
     {
       "id": "s17",
-      "keyTopic": 27,
-      "template": "comparison-table",
+      "keyTopic": 24,
+      "template": "key-facts",
       "params": {
-        "title": "F250 and F500: RJ11 Port 1 and 2",
-        "columns": ["RJ11 setting", "Standard voice", "3.1 kHz audio"],
-        "rows": [
-          ["Used for", "Ordinary voice telephones", "Group 3 analog fax and modems"],
-          ["Signal", "Compressed speech codec", "Tones passed unprocessed"],
-          ["Fax tones", "Distorted", "Clean"],
-          ["Cost", "Lower", "Higher"],
-          ["Group 5 fax or 5.1 kHz?", "Not offered", "Not offered"]
+        "title": "Voltage, current and a path",
+        "items": [
+          "Voltage: the electrical pressure that pushes current",
+          "Current: the flow of electricity",
+          "Current flows only when it has a complete path",
+          "A worn wire touching an ungrounded case makes it live",
+          "Touch a live case, and you become the path"
         ]
       },
-      "onScreen": ["Standard voice: ordinary phones, compressed, lower cost", "3.1 kHz audio: Group 3 analog fax and modems", "Standard voice distorts fax tones", "No Group 5 fax or 5.1 kHz channel"],
-      "narration": "On Thrane and Thrane F250 and F500 terminals, RJ11 Port 1 and 2 can be set 2 ways. For standard voice telephone operation on the F500, set them to standard voice. For facsimile, configure Group 3 fax via the 3.1 kilohertz audio channel, for analog fax applications. Standard voice is a compressed speech service. Its codec distorts fax tones, while 3.1 kilohertz audio passes them through unprocessed. In return, standard voice costs less than 3.1 kilohertz audio. And there is no Group 5 fax and no 5.1 kilohertz channel: those are wrong answers."
+      "onScreen": [
+        "Voltage: electrical pressure",
+        "Current: the flow",
+        "Current needs a complete path",
+        "A worn wire can make the case live",
+        "A person can become the path"
+      ],
+      "narration": "A working terminal also has to be a safe one, and that takes 2 ideas. Voltage is the electrical pressure that pushes electricity along, like water pressure in a pipe. Current is the flow itself, like the water moving. And current flows only when it has a complete path. Now picture a worn wire inside the terminal touching its metal case. If the case has no connection to ground, it now sits at a dangerous voltage. We call that live. The first person to touch it gives the current its path, straight through their body."
     },
     {
       "id": "s18",
-      "keyTopic": 27,
-      "template": "key-facts",
+      "keyTopic": 24,
+      "template": "equipment-card",
       "params": {
-        "title": "SIM, PIN and PUK",
-        "items": [
-          "SIM: Subscriber Identity Module, an integrated circuit device",
-          "Securely stores the Inmarsat identity and an authentication key",
-          "The network uses them to verify the terminal",
-          "Too many wrong PIN (Personal Identification Number) entries lock the SIM",
-          "PUK (PIN Unlock Key) unlocks the SIM; the airtime provider supplies it"
+        "title": "Grounding the terminal chassis",
+        "device": "satcom-terminal",
+        "callouts": [
+          {
+            "label": "Terminal chassis connected to electrical ground",
+            "at": "terminal"
+          },
+          {
+            "label": "A fault sends current to ground: the fuse blows or the breaker trips",
+            "at": "cable"
+          },
+          {
+            "label": "The case can't stay live",
+            "at": "screen"
+          },
+          {
+            "label": "Never isolate the frame or insulate the supply from the hull",
+            "at": "keyboard"
+          }
         ]
       },
-      "onScreen": ["SIM: Subscriber Identity Module", "Stores the Inmarsat identity and authentication key", "Network verifies the terminal", "Too many wrong PINs lock the SIM", "PUK unlocks it, from the airtime provider"],
-      "narration": "Every Fleet Broadband terminal holds a SIM, a Subscriber Identity Module. It's an integrated circuit device that securely stores the Inmarsat identity and an authentication key, and the network uses them to verify the terminal. The SIM is protected by a PIN, a Personal Identification Number. Enter the wrong PIN too many times and the SIM card locks. To unlock the SIM card in a Fleet Broadband terminal, you use the PUK, the PIN Unlock Key, which the airtime provider supplies."
+      "onScreen": [
+        "Chassis connected to electrical ground",
+        "Fault current blows a fuse or trips a breaker",
+        "Case can't stay live",
+        "Never isolate the frame"
+      ],
+      "narration": "Here's the cure. To minimize shock hazard, make sure the chassis of the Inmarsat terminal, its metal frame and case, is connected to an electrical ground: a solid connection to the ship's hull. Now, if a wire touches the case, a large current rushes straight to ground. That blows a fuse or trips a breaker, the safety devices that cut the power when too much current flows. So the case can't stay live. The wrong choices, isolating the transceiver's metal frame or insulating the power supply from the hull, do the opposite: they leave the fault current no path except through a person."
     },
     {
       "id": "s19",
+      "keyTopic": 24,
+      "template": "equipment-card",
+      "params": {
+        "title": "Grounding the antenna to its mast",
+        "device": "satcom-terminal",
+        "callouts": [
+          {
+            "label": "Never insulated from the mast",
+            "at": "radome"
+          },
+          {
+            "label": "Antenna chassis grounded to the mast",
+            "at": "mast"
+          },
+          {
+            "label": "Static and lightning energy find a path to the hull",
+            "at": "mast"
+          },
+          {
+            "label": "Silicone weatherproofs the ground connection",
+            "at": "mast"
+          }
+        ]
+      },
+      "onScreen": [
+        "Never insulated from the mast",
+        "Antenna chassis grounded to the mast",
+        "Static and lightning go to the hull",
+        "Silicone over the ground connection"
+      ],
+      "narration": "Up on the mast, the same thinking applies. An Inmarsat-C antenna should never be electrically insulated from its mounting mast. Instead, ground the antenna chassis to the mast. Then static electricity that builds up on the antenna, and the energy from a nearby lightning strike, have a path to the hull, instead of through the equipment and its cable. Weatherproof that connection with silicone, so salt spray can't corrode it. A corroded joint stops conducting, and the ground is lost."
+    },
+    {
+      "id": "s20",
+      "keyTopic": 24,
+      "template": "key-facts",
+      "params": {
+        "title": "Keeping water out of the antenna cable",
+        "items": [
+          "Drip loop: a downward loop in the cable near the antenna",
+          "Rain drips off the bottom, not into the connector",
+          "Secured to the mast with a cable tie",
+          "Connectors sealed with sealant or putty, wrapped in self-bonding or vinyl tape",
+          "Not recommended: insulating the antenna from the mast"
+        ]
+      },
+      "onScreen": [
+        "Drip loop near the antenna",
+        "Rain drips off, away from the connector",
+        "Secured with a cable tie",
+        "Connectors sealed and taped",
+        "Never insulate the antenna from the mast"
+      ],
+      "narration": "Water is the other enemy. Form a drip loop in the transmission line, the antenna cable, near the antenna. It's a downward loop, so rain running along the cable drips off at the bottom instead of running into the connector. Secure it to the mast with a cable tie. Then seal the connectors with waterproof sealant or putty, and wrap them in self-bonding or vinyl tape. All of these are recommended practice. So when the exam asks which practice is not recommended, the answer is insulating the antenna from the mast."
+    },
+    {
+      "id": "s21",
+      "keyTopic": 29,
+      "template": "waveform",
+      "params": {
+        "title": "A radio wave: 2 fields together",
+        "kind": "sine",
+        "cycles": 3,
+        "labels": [
+          "Electric field",
+          "Magnetic field, at right angles to it",
+          "Both travel together, out from the antenna"
+        ],
+        "xAxis": "Direction of travel"
+      },
+      "onScreen": [
+        "Electric field",
+        "Magnetic field at right angles",
+        "They travel together"
+      ],
+      "narration": "That's how to connect and seal the antenna. But what kind of antenna is it? To answer that, we need 2 ideas, and the first is polarization. A radio wave, also called an RF signal, for radio frequency, is made of 2 invisible fields that vibrate together: an electric field and a magnetic field. A field is a push or pull that acts across empty space, like the pull around a magnet. The 2 fields stand at right angles to each other, and they travel along together, out from the antenna."
+    },
+    {
+      "id": "s22",
+      "keyTopic": 29,
+      "template": "comparison-table",
+      "params": {
+        "title": "Polarization: the electric field's direction",
+        "columns": [
+          "Polarization",
+          "The electric field"
+        ],
+        "rows": [
+          [
+            "Vertical",
+            "Vibrates up and down"
+          ],
+          [
+            "Horizontal",
+            "Vibrates side to side"
+          ],
+          [
+            "Circular",
+            "Turns as it travels, like a corkscrew"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Polarization: the electric field's orientation",
+        "Vertical: up and down",
+        "Horizontal: side to side",
+        "Circular: turns like a corkscrew"
+      ],
+      "narration": "The polarization of a satellite signal is the orientation of the RF signal's electric field component, not its magnetic field. It belongs to the wave itself, so choices that measure it against a dipole, a simple rod antenna, or against a dish are wrong. Picture shaking a rope: up and down makes a vertical wave, side to side a horizontal one. Those are vertical and horizontal polarization. In circular polarization, the electric field turns steadily as the wave travels, like a corkscrew. An antenna receives best when it matches the signal's polarization, and circular is the kind Inmarsat uses."
+    },
+    {
+      "id": "s23",
+      "keyTopic": 29,
+      "template": "key-facts",
+      "params": {
+        "title": "Radiation patterns",
+        "items": [
+          "Radiation pattern: the shape of the area an antenna covers",
+          "Omni-directional: equal in every direction, like a bare bulb",
+          "Directional: one narrow direction, like a flashlight",
+          "Cardioid: heart-shaped, favoring one side"
+        ]
+      },
+      "onScreen": [
+        "Radiation pattern: the area covered",
+        "Omni-directional: every direction",
+        "Directional: one narrow direction",
+        "Cardioid: heart-shaped"
+      ],
+      "narration": "The second idea is the radiation pattern: the shape of the area an antenna covers, sending or receiving. An omni-directional antenna works equally well in every direction around it, like a bare light bulb lighting a whole room. A directional antenna concentrates on one narrow direction, like a flashlight, and has to be pointed. In between is a cardioid pattern, heart-shaped, which favors one side. Hold on to the bulb and the flashlight; they come back later."
+    },
+    {
+      "id": "s24",
+      "keyTopic": 29,
+      "template": "comparison-table",
+      "params": {
+        "title": "The Inmarsat-C antenna: RHC and omni",
+        "columns": [
+          "Inmarsat-C antenna",
+          "Why"
+        ],
+        "rows": [
+          [
+            "Small, fixed, no motors to aim it",
+            "The ship turns and rolls beneath it"
+          ],
+          [
+            "Omni-directional pattern",
+            "Sees the satellite on any heading"
+          ],
+          [
+            "RHC: right-hand circular polarization",
+            "Matches Inmarsat's signal as the ship rolls"
+          ],
+          [
+            "Not cardioid, not highly directional",
+            "Would lose the satellite as the ship turns"
+          ],
+          [
+            "Not vertical, not horizontal",
+            "Inmarsat's signal is circular"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Inmarsat-C antenna: RHC polarized, omni-directional",
+        "Small and fixed, no motors",
+        "Omni: sees the satellite on any heading",
+        "RHC: steady as the ship rolls",
+        "Not cardioid or highly directional",
+        "Not vertical or horizontal"
+      ],
+      "narration": "With those 2 ideas, we can describe the Inmarsat-C antenna. It is RHC polarized, meaning right-hand circular, with an omni-directional radiation pattern. Why this pair? The antenna is small and fixed, with no motors to aim it, while the ship turns and rolls beneath it. An omni pattern sees the satellite whichever way the ship is heading. And Inmarsat's signals are right-hand circular, so an antenna tilting as the ship rolls still matches the turning field, and reception stays steady. That rules out the wrong patterns: a cardioid or a highly directional one would lose the satellite as the ship turns. And it rules out the wrong polarizations, vertical or horizontal."
+    },
+    {
+      "id": "s25",
+      "keyTopic": 29,
+      "template": "equipment-card",
+      "params": {
+        "title": "Where to mount Inmarsat antennas",
+        "device": "satcom-terminal",
+        "callouts": [
+          {
+            "label": "As high as practical",
+            "at": "mast"
+          },
+          {
+            "label": "Free from shadowing by masts and funnels",
+            "at": "radome"
+          },
+          {
+            "label": "Clear of other antennas and radar beams",
+            "at": "dish"
+          },
+          {
+            "label": "No filter cutting above 1 GHz: that would block the signal",
+            "at": "cable"
+          }
+        ]
+      },
+      "onScreen": [
+        "As high as practical",
+        "No shadowing by masts or funnels",
+        "Clear of other antennas and radar beams",
+        "No filter cutting above 1 GHz"
+      ],
+      "narration": "Where on the ship should it go? Best practice is to install Inmarsat satellite antennas as high as practical, free from shadowing of structures such as masts and funnels. L-band signals travel in straight lines, like light, so a funnel between the antenna and the satellite casts a radio shadow. And far from the equator, the satellite sits low in the sky, where even a small obstruction can block it. Keep the antenna clear of other antennas and radar beams too, since their strong signals can swamp its sensitive receiver. That rules out mounting it right next to other Inmarsat antennas. And a filter that blocks frequencies above 1 gigahertz, which is 1000 megahertz, would block the Inmarsat signal itself."
+    },
+    {
+      "id": "s26",
+      "keyTopic": 28,
+      "template": "key-facts",
+      "params": {
+        "title": "GPS: satellites that tell you where you are",
+        "items": [
+          "GPS: the Global Positioning System",
+          "Each satellite carries an extremely precise clock",
+          "It keeps broadcasting where it is and the exact time",
+          "Receive only: the ship never transmits back"
+        ]
+      },
+      "onScreen": [
+        "GPS: Global Positioning System",
+        "An extremely precise clock aboard",
+        "Broadcasts its position and the time",
+        "Receive only"
+      ],
+      "narration": "So far, satellites have carried messages. Now a second family of satellites with a different job: telling the ship where it is. GPS, the Global Positioning System, is a set of satellites that broadcast timing signals. Each satellite carries an extremely precise clock, and keeps sending out where it is and exactly what time it is. Notice that the signal goes one way. GPS satellites only broadcast; the ship's receiver listens and never transmits anything back. That will matter for LRIT, coming up soon."
+    },
+    {
+      "id": "s27",
+      "keyTopic": 28,
+      "template": "block-diagram",
+      "params": {
+        "title": "How GPS finds a position",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "sat",
+            "label": "GPS satellites",
+            "note": "Broadcast their position and the time"
+          },
+          {
+            "id": "rx",
+            "label": "Ship's GPS receiver",
+            "note": "Times each signal's arrival"
+          },
+          {
+            "id": "dist",
+            "label": "Travel time to distance",
+            "note": "Radio travels at a known speed"
+          },
+          {
+            "id": "fix",
+            "label": "Position fix",
+            "note": "The one spot that fits every distance"
+          }
+        ],
+        "links": [
+          {
+            "from": "sat",
+            "to": "rx",
+            "label": "receive only"
+          },
+          {
+            "from": "rx",
+            "to": "dist"
+          },
+          {
+            "from": "dist",
+            "to": "fix"
+          }
+        ]
+      },
+      "onScreen": [
+        "GPS satellites broadcast position and time",
+        "Receiver times each arrival",
+        "Travel time gives distance",
+        "Distances give the position fix"
+      ],
+      "narration": "How does a time signal give a position? The ship's GPS receiver notes when each signal arrives. Radio travels at a known speed, so the delay tells the receiver how far away that satellite is, just as counting the seconds between lightning and thunder tells you how far away a storm is. One distance only says you're somewhere at that distance from that satellite. Each extra satellite narrows it down, until only one spot fits every distance: the ship's position, called its fix."
+    },
+    {
+      "id": "s28",
       "keyTopic": 28,
       "template": "timeline",
       "params": {
         "title": "The GPS constellation",
         "badges": [
-          { "label": "Satellites", "value": "24", "note": "The usual GPS arrangement" },
-          { "label": "Orbital planes", "value": "6", "note": "4 satellites in each plane" },
-          { "label": "Altitude", "value": "20,200 km" },
-          { "label": "Inclination", "value": "55 degrees" }
+          {
+            "label": "Satellites",
+            "value": "24",
+            "note": "The usual GPS arrangement"
+          },
+          {
+            "label": "Orbital planes",
+            "value": "6",
+            "note": "4 satellites in each plane"
+          },
+          {
+            "label": "Altitude",
+            "value": "20,200 km"
+          },
+          {
+            "label": "Inclination",
+            "value": "55 degrees"
+          }
         ]
       },
-      "onScreen": ["24 satellites", "6 orbital planes, 4 in each plane", "20,200 km altitude", "55 degrees inclination"],
-      "narration": "The usual GPS arrangement is 24 satellites in 6 orbital planes, with 4 satellites in each plane. They orbit at 20,200 kilometers altitude, at an inclination of 55 degrees. That arrangement keeps at least 4 satellites in view anywhere on Earth. The exam's wrong choices mix in other counts, altitudes and inclinations, so learn these exact numbers: 24 satellites, 6 planes, 4 per plane, 20,200 kilometers and 55 degrees."
+      "onScreen": [
+        "24 satellites",
+        "6 orbital planes, 4 in each plane",
+        "20,200 km altitude",
+        "55 degrees inclination"
+      ],
+      "narration": "How many satellites does this take? The usual GPS arrangement is 24 satellites, spread so that at least 4 are in view anywhere on Earth. They travel in 6 orbital planes, 4 satellites in each plane. An orbital plane is the flat ring a satellite's path traces around the Earth: picture 6 hoops, each carrying 4 satellites. The satellites orbit at 20,200 kilometers altitude. Unlike Inmarsat's, they don't hang still; they cross the sky, circling the Earth about twice a day. Each ring is tilted from the equator, and that tilt is called inclination: here, 55 degrees. The wrong choices mix in other numbers, so learn the set: 24 satellites, 6 planes, 4 per plane, 20,200 kilometers and 55 degrees."
     },
     {
-      "id": "s20",
+      "id": "s29",
       "keyTopic": 28,
       "template": "key-facts",
       "params": {
         "title": "Why at least 4 satellites?",
         "items": [
-          "At least 4 satellites give the highest accuracy",
+          "At least 4 satellites for the highest accuracy",
           "The receiver solves for 4 unknowns",
           "Latitude, longitude and altitude",
           "Plus its own clock error"
         ]
       },
-      "onScreen": ["At least 4 satellites for the highest accuracy", "4 unknowns", "Latitude, longitude, altitude", "Receiver clock error"],
-      "narration": "To provide the highest accuracy, a GPS receiver must receive at least 4 satellites. Here's why. The receiver solves for 4 unknowns: latitude, longitude, altitude, and its own clock error. The receiver's clock is far less precise than the satellites' clocks, so its error is an unknown too. 4 unknowns need at least 4 satellites, which is why the constellation is designed to keep at least 4 in view."
+      "onScreen": [
+        "At least 4 satellites for the highest accuracy",
+        "4 unknowns",
+        "Latitude, longitude, altitude",
+        "Receiver clock error"
+      ],
+      "narration": "Why at least 4 in view? To provide the highest accuracy, a GPS receiver must receive at least 4 satellites. It has 4 unknowns to solve, and each satellite gives it one measurement, so 4 unknowns take at least 4 measurements. 3 of the unknowns are its position: latitude, how far north or south, longitude, how far east or west, and altitude, how high. The fourth is its own clock error. The satellites' clocks are extremely precise, but the receiver's is an ordinary one, and radio travels so fast that even a tiny timing error throws every distance off. So the receiver treats its clock error as one more unknown. The answer is 4, not 2, 6 or 8."
     },
     {
-      "id": "s21",
+      "id": "s30",
       "keyTopic": 28,
       "template": "band-strip",
       "params": {
@@ -396,293 +999,2073 @@
         "max": 1700,
         "scale": "linear",
         "marks": [
-          { "at": 1575.42, "label": "L1: 1575.42 MHz", "note": "Navigation message and SPS code signals", "tone": "key" },
-          { "at": 1227.6, "label": "L2: 1227.60 MHz", "note": "Measures the ionospheric delay", "tone": "key" },
-          { "at": 1650.5, "label": "1650.5 MHz", "note": "Not a GPS frequency", "tone": "muted" }
+          {
+            "at": 1227.6,
+            "label": "L2: 1227.60 MHz",
+            "note": "Measures the ionospheric delay",
+            "tone": "key"
+          },
+          {
+            "at": 1575.42,
+            "label": "L1: 1575.42 MHz",
+            "note": "Navigation message and SPS code signals",
+            "tone": "key"
+          },
+          {
+            "at": 1650.5,
+            "label": "1650.5 MHz",
+            "note": "Not a GPS frequency",
+            "tone": "muted"
+          }
         ]
       },
-      "onScreen": ["L1: 1575.42 MHz, navigation message and SPS code", "L2: 1227.60 MHz, ionospheric delay", "1650.5 MHz: not GPS"],
-      "narration": "GPS satellites transmit 2 carriers. L1, at 1575.42 megahertz, carries the navigation message and the SPS, or Standard Positioning Service, code signals. L2, at 1227.60 megahertz, is used to measure the ionospheric delay. That delay depends on frequency, so by comparing the L1 and L2 arrival times, a dual-frequency receiver can remove it. The 2 carriers are transmitted separately; they are not combined in a mixer. And 1650.5 megahertz is not a GPS frequency at all."
+      "onScreen": [
+        "L2: 1227.60 MHz, ionospheric delay",
+        "L1: 1575.42 MHz, navigation message and SPS code",
+        "1650.5 MHz: not GPS"
+      ],
+      "narration": "What exactly do the satellites send? Each transmits 2 carriers. A carrier is the steady radio wave the information rides on, the way a truck carries its load. Lower on the strip is L2, at 1227.60 megahertz, used to measure the ionospheric delay; more on that next. Higher is L1, at 1575.42 megahertz. It carries the navigation message, which tells the receiver where each satellite is and the time, and the SPS code signals. SPS stands for Standard Positioning Service: the service everyday civilian receivers use. The 2 carriers are transmitted separately, not combined in a mixer, a circuit that blends signals together. And 1650.5 megahertz, a common trap, is not a GPS frequency at all."
     },
     {
-      "id": "s22",
+      "id": "s31",
+      "keyTopic": 28,
+      "template": "key-facts",
+      "params": {
+        "title": "L2 and the ionospheric delay",
+        "items": [
+          "Ionosphere: a layer of electrically charged air high above the Earth",
+          "It slows GPS signals slightly: the ionospheric delay",
+          "The delay depends on frequency",
+          "Compare L1 and L2 arrival times to remove it",
+          "L2, 1227.60 MHz: measures the ionospheric delay"
+        ]
+      },
+      "onScreen": [
+        "Ionosphere: charged air high above",
+        "It delays GPS signals",
+        "Delay depends on frequency",
+        "Compare L1 and L2 to remove it",
+        "L2 measures the ionospheric delay"
+      ],
+      "narration": "Now that delay. High above the weather lies the ionosphere, a layer of air that sunlight has electrically charged. GPS signals pass through it on their way down, and it slows them slightly. That's the ionospheric delay, and it makes each satellite seem a little farther away than it is. Here's the trick: the delay depends on frequency, and lower frequencies are slowed more. So a dual-frequency receiver compares the arrival times on L1 and L2, works out the delay and removes it. That's why the L2 carrier of 1227.60 megahertz is used to measure the ionospheric delay. The traps pin the wrong numbers on L1 and L2, so pair them carefully: L1, 1575.42, navigation message; L2, 1227.60, ionospheric delay."
+    },
+    {
+      "id": "s32",
       "keyTopic": 28,
       "template": "block-diagram",
       "params": {
-        "title": "DGPS corrections and the bridge network",
-        "columns": 4,
+        "title": "Differential GPS",
+        "columns": 3,
         "blocks": [
-          { "id": "ref", "label": "DGPS reference station", "note": "Fixed, at a precisely surveyed point" },
-          { "id": "beacon", "label": "MF radiobeacon", "note": "Corrections in the 285–325 kHz band" },
-          { "id": "gps", "label": "Ship's GPS receiver", "note": "Corrects for various errors" },
-          { "id": "bridge", "label": "Radars, DSC, ECDIS, autopilots", "note": "Share position, speed and time" }
+          {
+            "id": "ref",
+            "label": "DGPS reference station",
+            "note": "Fixed, at a precisely surveyed point"
+          },
+          {
+            "id": "beacon",
+            "label": "MF radiobeacon",
+            "note": "Corrections in the 285–325 kHz band"
+          },
+          {
+            "id": "gps",
+            "label": "Ship's GPS receiver",
+            "note": "Applies the corrections"
+          }
         ],
         "links": [
-          { "from": "ref", "to": "beacon", "label": "corrections" },
-          { "from": "beacon", "to": "gps", "label": "radio signals" },
-          { "from": "gps", "to": "bridge", "label": "NMEA-0183 or NMEA-2000 LAN" }
+          {
+            "from": "ref",
+            "to": "beacon",
+            "label": "corrections"
+          },
+          {
+            "from": "beacon",
+            "to": "gps",
+            "label": "radio signals"
+          }
         ]
       },
-      "onScreen": ["DGPS reference station at a surveyed point", "MF radiobeacons, 285–325 kHz", "Ship's GPS corrects its errors", "NMEA-0183 or NMEA-2000 LAN to radars, DSC, ECDIS, autopilots"],
-      "narration": "Differential GPS, or DGPS, corrects for various errors using a fixed receiving station at a precisely surveyed point. The station transmits corrections via radio signals; marine systems use medium frequency, or MF, radiobeacons in the 285 to 325 kilohertz band. The ship's GPS applies them. GPS is usually interconnected with other bridge equipment through a NMEA 0183 or NMEA 2000 LAN. NMEA is the National Marine Electronics Association. The network shares position, speed and time with radars, digital selective calling, or DSC, radios, ECDIS, the electronic chart display and information system, and autopilots."
+      "onScreen": [
+        "Reference station at a surveyed point",
+        "MF radiobeacons, 285–325 kHz",
+        "Ship's GPS applies the corrections"
+      ],
+      "narration": "Even after that, small errors remain. Differential GPS, or DGPS, cleans most of them up. It corrects for various errors using a fixed receiving station at a precisely surveyed point. The station knows exactly where it is, so it compares that with what GPS tells it. The difference is the error, and ships nearby see almost the same error. So the station transmits corrections via radio signals. Marine systems use MF, medium frequency, radiobeacons in the 285 to 325 kilohertz band. A kilohertz is 1000 vibrations a second, far below GPS frequencies. The ship's GPS receiver applies the corrections. The traps send corrections inside the GPS signal itself, or compare L1 and L2. DGPS uses its own radio link."
     },
     {
-      "id": "s23",
+      "id": "s33",
+      "keyTopic": 28,
+      "template": "block-diagram",
+      "params": {
+        "title": "Sharing GPS data on the bridge",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "gps",
+            "label": "GPS receiver",
+            "note": "Position, speed and time"
+          },
+          {
+            "id": "lan",
+            "label": "NMEA-0183 or NMEA-2000 LAN",
+            "note": "The bridge data network"
+          },
+          {
+            "id": "radar",
+            "label": "Radars"
+          },
+          {
+            "id": "dsc",
+            "label": "DSC radios"
+          },
+          {
+            "id": "ecdis",
+            "label": "ECDIS"
+          },
+          {
+            "id": "auto",
+            "label": "Autopilots"
+          }
+        ],
+        "links": [
+          {
+            "from": "gps",
+            "to": "lan"
+          },
+          {
+            "from": "lan",
+            "to": "radar"
+          },
+          {
+            "from": "lan",
+            "to": "dsc"
+          },
+          {
+            "from": "lan",
+            "to": "ecdis"
+          },
+          {
+            "from": "lan",
+            "to": "auto"
+          }
+        ]
+      },
+      "onScreen": [
+        "GPS: position, speed and time",
+        "NMEA-0183 or NMEA-2000 LAN",
+        "Radars, DSC radios, ECDIS, autopilots"
+      ],
+      "narration": "With a corrected position in hand, the GPS shares it around the bridge. GPS is usually interconnected with other bridge equipment through a NMEA 0183 or NMEA 2000 LAN. NMEA is the National Marine Electronics Association, which sets the standards, and a LAN, a local area network, is wiring that lets nearby equipment share data. Over it, the GPS sends position, speed and time to the radars; to the DSC radios, DSC being digital selective calling, the automatic calling built into GMDSS radios; to ECDIS, the electronic chart display and information system; and to the autopilots. The traps offer an ordinary Ethernet LAN, a USB port or a parallel line. For the exam, it's NMEA 0183 or NMEA 2000."
+    },
+    {
+      "id": "s34",
+      "keyTopic": 25,
+      "template": "key-facts",
+      "params": {
+        "title": "LRIT: tracking for the flag state",
+        "items": [
+          "LRIT: Long Range Identification and Tracking",
+          "Flag state: the country a ship is registered in",
+          "Identity, position and time go to a data center",
+          "Then on to the ship's own flag administration",
+          "A separate tracking system for each flag state's security"
+        ]
+      },
+      "onScreen": [
+        "LRIT: Long Range Identification and Tracking",
+        "Flag state: where the ship is registered",
+        "Identity, position and time",
+        "To the flag administration",
+        "Separate system for each flag state's security"
+      ],
+      "narration": "Now we can put 2 ideas together: a position from GPS, sent as a message over Inmarsat-C. That's LRIT, Long Range Identification and Tracking. The exam also calls it Long Range Identity Tracking or Long Range Information Tracking. Every ship is registered in a country, its flag state, whose flag it flies. The ship's identity, position and time go through a data center to its own flag administration, the government office in charge of that country's ships. So LRIT data is a separate tracking system for each flag state's security."
+    },
+    {
+      "id": "s35",
+      "keyTopic": 25,
+      "template": "comparison-table",
+      "params": {
+        "title": "LRIT is not AIS or AMVER",
+        "columns": [
+          "System",
+          "What it is",
+          "And LRIT?"
+        ],
+        "rows": [
+          [
+            "AIS",
+            "VHF broadcast to all ships nearby",
+            "Not on AIS channels, not a backup"
+          ],
+          [
+            "AMVER",
+            "Voluntary reports to help rescues",
+            "AMVER reports don't replace LRIT"
+          ],
+          [
+            "Internet",
+            "Public, for anyone",
+            "LRIT is not broadcast there"
+          ]
+        ]
+      },
+      "onScreen": [
+        "AIS: VHF broadcast, not LRIT",
+        "AMVER reports don't replace LRIT",
+        "LRIT not broadcast on the Internet"
+      ],
+      "narration": "The exam's wrong answers mix LRIT up with 2 other systems. AIS, the Automatic Identification System, has every ship broadcast its identity and position by VHF, very high frequency, radio to everyone nearby. LRIT doesn't use AIS channels, and it isn't a backup for AIS. AMVER, the Automated Mutual-assistance Vessel Rescue system, is a voluntary reporting system that helps rescuers find ships near an emergency. Sending AMVER reports doesn't replace LRIT. And LRIT is not broadcast on the Internet for company tracking. It's a separate, private system."
+    },
+    {
+      "id": "s36",
+      "keyTopic": 25,
+      "template": "block-diagram",
+      "params": {
+        "title": "How an LRIT report travels",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "gps",
+            "label": "GPS satellite",
+            "note": "Broadcasts only: supplies the position"
+          },
+          {
+            "id": "term",
+            "label": "Inmarsat-C or Mini-C terminal",
+            "note": "Sends identity, position and time"
+          },
+          {
+            "id": "sat",
+            "label": "Inmarsat-C satellite",
+            "note": "LRIT is detected on this network"
+          },
+          {
+            "id": "alt",
+            "label": "Inmarsat-D+ or Iridium",
+            "note": "Other 2-way routes for the report"
+          },
+          {
+            "id": "center",
+            "label": "LRIT data center",
+            "note": "For US ships: the National Data Center"
+          },
+          {
+            "id": "flag",
+            "label": "Flag administration",
+            "note": "The ship's own flag state"
+          }
+        ],
+        "links": [
+          {
+            "from": "gps",
+            "to": "term",
+            "label": "receive only"
+          },
+          {
+            "from": "term",
+            "to": "sat",
+            "label": "report"
+          },
+          {
+            "from": "sat",
+            "to": "center"
+          },
+          {
+            "from": "alt",
+            "to": "center"
+          },
+          {
+            "from": "center",
+            "to": "flag"
+          }
+        ]
+      },
+      "onScreen": [
+        "GPS: broadcasts only, supplies the position",
+        "Inmarsat-C or Mini-C terminal sends the report",
+        "Detected on the Inmarsat-C network",
+        "Inmarsat-D+ or Iridium can also carry it",
+        "Data center, then the flag administration"
+      ],
+      "narration": "How does a report get there? GPS supplies the ship's position. But GPS does not support LRIT: its satellites only broadcast, and can't carry a report back. The report goes out from the GMDSS Inmarsat-C or Mini-C terminal, Mini-C being a smaller version of the same terminal. That's how most ships meet the requirement, so LRIT is detected on the Inmarsat-C satellite network. Inmarsat-D plus or Iridium, other 2-way satellite systems, can also carry it. From the satellite, the report reaches the data center, then the flag administration. So when the exam asks which satellite system does not support LRIT, the answer is GPS."
+    },
+    {
+      "id": "s37",
+      "keyTopic": 25,
+      "template": "timeline",
+      "params": {
+        "title": "LRIT: an APR every 6 hours",
+        "badges": [
+          {
+            "label": "APR: automatic position report",
+            "value": "Every 6 hours",
+            "note": "Sent automatically, no one pressing a button"
+          },
+          {
+            "label": "Hours in a day, divided by 6",
+            "value": "24 ÷ 6 = 4"
+          },
+          {
+            "label": "U.S. National Data Center",
+            "value": "At least 4 a day",
+            "note": "Position reports from each US Flag ship"
+          }
+        ]
+      },
+      "onScreen": [
+        "APR every 6 hours, automatically",
+        "24 hours ÷ 6 = 4",
+        "At least 4 reports a day to the National Data Center"
+      ],
+      "narration": "How often does the ship report? An LRIT terminal must be capable of being configured to automatically transmit an APR, an automatic position report: it sends one on its own, with no one pressing a button. It must transmit an APR every 6 hours. A day has 24 hours, and 24 divided by 6 is 4, so that's 4 reports a day. That's why the U.S. National Data Center must receive at least 4 position reports daily from each US Flag ship. The traps say every 12, 8 or 24 hours, or every hour."
+    },
+    {
+      "id": "s38",
+      "keyTopic": 25,
+      "template": "block-diagram",
+      "params": {
+        "title": "Poll and PR: a report on request",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "center",
+            "label": "LRIT data center",
+            "note": "Sends a poll: a request for a report"
+          },
+          {
+            "id": "term",
+            "label": "Ship's LRIT terminal",
+            "note": "Receives the poll"
+          },
+          {
+            "id": "pr",
+            "label": "PR: position report",
+            "note": "Sent back automatically"
+          },
+          {
+            "id": "crew",
+            "label": "Number of crew aboard",
+            "note": "Not part of any report"
+          }
+        ],
+        "links": [
+          {
+            "from": "center",
+            "to": "term",
+            "label": "poll"
+          },
+          {
+            "from": "term",
+            "to": "pr"
+          },
+          {
+            "from": "crew",
+            "to": "pr",
+            "struck": true
+          }
+        ]
+      },
+      "onScreen": [
+        "Data center sends a poll",
+        "Terminal receives it",
+        "PR sent back automatically",
+        "Crew numbers not reported"
+      ],
+      "narration": "The data center can also ask for a report whenever it wants one. That request is called a poll, and it's what the exam means when it says the National Data Center monitors polling input for each US Flag ship. The poll goes out to the ship's LRIT terminal. The terminal must be able to automatically transmit a PR, a position report, if requested by a poll. So the PR goes straight back, again with no one aboard pressing a button. Watch for a trap that has the terminal receive an APR instead of sending one. And the number of crew aboard is not part of any report."
+    },
+    {
+      "id": "s39",
+      "keyTopic": 25,
+      "template": "comparison-table",
+      "params": {
+        "title": "LRIT not reporting? Check the right unit",
+        "columns": [
+          "Check",
+          "Worth it?"
+        ],
+        "rows": [
+          [
+            "GMDSS console's Inmarsat-C terminal",
+            "Yes: it sends the reports"
+          ],
+          [
+            "Reboot the AIS unit",
+            "No: AIS plays no part in LRIT"
+          ],
+          [
+            "Ship Security Alert System",
+            "No: a different system"
+          ],
+          [
+            "At the terminal",
+            "Powered? Logged in? Working normally?"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Check the GMDSS console's Inmarsat-C terminal",
+        "Not the AIS",
+        "Not the Ship Security Alert System",
+        "Powered, logged in, working normally?"
+      ],
+      "narration": "And if the reports stop? Suppose a compulsory equipped IMO ship, one the International Maritime Organization's rules require to carry LRIT, is not correctly broadcasting its LRIT information. What should you do? Double check the GMDSS console's Inmarsat-C terminal for regular operation, because that terminal is what sends the reports. Rebooting the AIS unit won't help: AIS plays no part in LRIT. And the Ship Security Alert System is a different system altogether. So at the terminal, check 3 things. Is it powered? Is it logged in, meaning signed on to the satellite network, the way a mobile phone registers with its network? And is it working normally?"
+    },
+    {
+      "id": "s40",
+      "keyTopic": 26,
+      "template": "key-facts",
+      "params": {
+        "title": "Fleet Broadband: calls and Internet",
+        "items": [
+          "Inmarsat-C: slow text messages, small fixed antenna",
+          "Fleet Broadband: phone calls and fast data",
+          "The maritime form of BGAN: Broadband Global Area Network",
+          "Older family: Fleet 77, Fleet 55 and Fleet 33",
+          "Needs an antenna that keeps pointing at the satellite"
+        ]
+      },
+      "onScreen": [
+        "Inmarsat-C: slow text",
+        "Fleet Broadband: calls and fast data",
+        "BGAN: Broadband Global Area Network",
+        "Older Fleet 77, 55 and 33",
+        "Antenna must track the satellite"
+      ],
+      "narration": "That completes Inmarsat-C's jobs: messages, safety broadcasts and LRIT reports. But Inmarsat-C handles text, slowly. For phone calls and Internet, ships use Fleet Broadband, the maritime form of Inmarsat's BGAN service. BGAN stands for Broadband Global Area Network, and broadband simply means a fast data connection. Before Fleet Broadband came an older family of Inmarsat ship terminals, Fleet 77, Fleet 55 and Fleet 33, and the exam still asks about them. All of them move far more data than Inmarsat-C, and fast data needs a stronger signal. So instead of a small antenna that hears equally in every direction, they use a directional antenna that concentrates on the satellite and keeps pointing at it as the ship turns and rolls."
+    },
+    {
+      "id": "s41",
+      "keyTopic": 26,
+      "template": "equipment-card",
+      "params": {
+        "title": "Fleet Broadband: above and below deck",
+        "device": "satcom-terminal",
+        "callouts": [
+          {
+            "label": "Radome above deck: antenna, RF and antenna-control electronics",
+            "at": "radome"
+          },
+          {
+            "label": "Below deck: the Fleet Broadband terminal",
+            "at": "terminal"
+          },
+          {
+            "label": "The terminal stores the configuration data",
+            "at": "screen"
+          },
+          {
+            "label": "It contains all user interfaces and LED indicators",
+            "at": "keyboard"
+          },
+          {
+            "label": "Not a Main Control Unit or Master Communications Unit",
+            "at": "terminal"
+          }
+        ]
+      },
+      "onScreen": [
+        "Radome above deck: antenna, RF and antenna-control electronics",
+        "Below deck: the Fleet Broadband terminal",
+        "Stores the configuration data",
+        "All user interfaces and LED indicators",
+        "Not a Main Control Unit or Master Communications Unit"
+      ],
+      "narration": "Let's look at the hardware. A Fleet Broadband installation comes in 2 parts. Above deck sits the radome, a weatherproof dome over the antenna. It holds the antenna, the RF electronics that transmit and receive, and the antenna-control electronics that keep it aimed. Below deck is the Fleet Broadband terminal, a component of the below deck equipment. It stores the configuration data, meaning all its settings, and it contains all the user interfaces, the sockets and controls you connect to, and the LED indicators: the small status lights, LED meaning light-emitting diode. So the unit with the configuration data, interfaces and LEDs is the Fleet Broadband terminal. Trap names like Main Control Unit or Master Communications Unit are not the answer."
+    },
+    {
+      "id": "s42",
       "keyTopic": 29,
       "template": "key-facts",
       "params": {
-        "title": "Polarization and the parabolic dish",
+        "title": "Inside a Fleet Broadband radome",
         "items": [
-          "Polarization: the orientation of the RF signal's electric field",
-          "Not its magnetic field",
-          "Dish: the feedhorn is adjusted to the focal point",
-          "The reflector focuses the energy there: high gain, narrow beam",
-          "Dishes are for microwave frequencies, not HF"
+          "Stabilized antenna",
+          "RF unit",
+          "Antenna Control Unit (ACU)",
+          "GPS antenna",
+          "Not: rotary joint, gyro-stabilized platform, high voltage supply"
         ]
       },
-      "onScreen": ["Polarization: electric field orientation", "Not the magnetic field", "Feedhorn at the focal point", "High gain, narrow beam", "Microwave, not HF"],
-      "narration": "The polarization of a satellite signal is the orientation of the RF signal's electric field component, not its magnetic field. Now the parabolic dish. Its reflector focuses the incoming energy onto a single spot, the focal point, so the feedhorn is adjusted to the focal point of the antenna. Dishes give high gain and narrow beams, and they're used at microwave frequencies, not at HF, high frequency."
+      "onScreen": [
+        "Stabilized antenna",
+        "RF unit",
+        "Antenna Control Unit (ACU)",
+        "GPS antenna",
+        "Not a rotary joint, gyro platform or high voltage supply"
+      ],
+      "narration": "Let's open the radome. An Inmarsat Fleet Broadband radome typically includes 4 parts. First, a stabilized antenna: motors hold it steady and on target while the ship rolls and turns. Second, an RF unit, which transmits and receives. Third, an Antenna Control Unit, or ACU, which works out where to point and drives the antenna there. And fourth, a GPS antenna, because the system needs to know where the ship is to know where in the sky the satellite is. Learn the 4 together: stabilized antenna, RF unit, ACU and GPS antenna. The wrong choices swap in other parts, such as a rotary joint, a gyro-stabilized platform or a high voltage power supply."
     },
     {
-      "id": "s24",
+      "id": "s43",
+      "keyTopic": 29,
+      "template": "comparison-table",
+      "params": {
+        "title": "Omni-directional or directional?",
+        "columns": [
+          "Antenna",
+          "Omni-directional",
+          "Directional"
+        ],
+        "rows": [
+          [
+            "Covers",
+            "Every direction, like a bulb",
+            "A narrow beam, like a flashlight"
+          ],
+          [
+            "Gain",
+            "Low",
+            "High"
+          ],
+          [
+            "Aiming",
+            "None needed",
+            "Must point at the satellite"
+          ],
+          [
+            "Example",
+            "Inmarsat-C",
+            "Fleet Broadband"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Omni: every direction. Directional: a narrow beam",
+        "Gain: low versus high",
+        "Directional antennas must be aimed",
+        "Inmarsat-C omni, Fleet Broadband directional"
+      ],
+      "narration": "That stabilized antenna is directional. Remember the bulb and the flashlight? Inmarsat-C's omni-directional antenna is the bulb, covering every direction, but thinly. A directional antenna is the flashlight, squeezing its energy into a narrow beam. How much stronger the signal is in that favored direction is called gain: low for the bulb, high for the flashlight. It works the same way when receiving: a directional antenna collects far more from the direction it faces. The narrower the beam, the higher the gain. The price is aiming. An omni antenna needs none, but a directional one must point at the satellite. That's why Inmarsat-C gets by with a fixed omni antenna, while Fleet Broadband's is directional and stabilized."
+    },
+    {
+      "id": "s44",
+      "keyTopic": 29,
+      "template": "key-facts",
+      "params": {
+        "title": "The parabolic dish",
+        "items": [
+          "Curved reflector focuses energy onto the focal point",
+          "Feedhorn adjusted to the focal point, not behind the reflector",
+          "High gain, narrow beam",
+          "Suits microwaves like the L-band, not HF (3-30 MHz)"
+        ]
+      },
+      "onScreen": [
+        "Reflector focuses onto the focal point",
+        "Feedhorn at the focal point",
+        "High gain, narrow beam",
+        "Microwaves, not HF"
+      ],
+      "narration": "The classic directional antenna is the parabolic dish. Its curved reflector focuses incoming energy onto a single spot in front of it, the focal point, the way a curved mirror can focus sunlight. So the feedhorn, the small pickup that collects that energy, is adjusted to the focal point of the antenna. Not behind the reflector, where no energy arrives. Dishes give high gain and narrow beams, so a choice calling them low gain is wrong. And they suit microwave frequencies, the range the L-band belongs to, not HF, high frequency, 3 to 30 megahertz, where the waves are so long a dish would have to be enormous."
+    },
+    {
+      "id": "s45",
+      "keyTopic": 29,
+      "template": "waveform",
+      "params": {
+        "title": "Phase: in step or out of step",
+        "kind": "sine",
+        "cycles": 3,
+        "labels": [
+          "Phase: where a wave is in its swing",
+          "In step: the waves add up",
+          "Out of step: the waves cancel"
+        ],
+        "xAxis": "Time"
+      },
+      "onScreen": [
+        "Phase: where a wave is in its swing",
+        "In step: waves add up",
+        "Out of step: waves cancel"
+      ],
+      "narration": "A dish must be physically turned to aim it. There's another way to aim a beam, with nothing moving, and it rests on one idea: phase. Phase is the timing of a wave: where it is in its up-and-down swing at a given moment. When 2 waves meet in step, peak with peak, they add up into a bigger wave, like 2 people pushing a swing together: it goes higher. When they meet out of step, the peak of one with the low point of the other, they cancel, like 2 people pushing against each other: the swing barely moves."
+    },
+    {
+      "id": "s46",
       "keyTopic": 29,
       "template": "block-diagram",
       "params": {
         "title": "Phased array: steering without moving",
         "columns": 4,
         "blocks": [
-          { "id": "feed", "label": "RF feed", "note": "From the transmitter" },
-          { "id": "shift", "label": "Phase shifter for each element", "note": "Phase, and often amplitude, varied" },
-          { "id": "elements", "label": "Multiple antenna elements", "note": "Fixed in place" },
-          { "id": "beam", "label": "Desired radiation pattern", "note": "Beam steered electronically" }
+          {
+            "id": "feed",
+            "label": "RF feed",
+            "note": "From the transmitter"
+          },
+          {
+            "id": "shift",
+            "label": "Phase shifter for each element",
+            "note": "Phase, and often amplitude, varied"
+          },
+          {
+            "id": "elements",
+            "label": "Multiple antenna elements",
+            "note": "Fixed in place"
+          },
+          {
+            "id": "beam",
+            "label": "Desired radiation pattern",
+            "note": "Beam steered electronically"
+          }
         ],
         "links": [
-          { "from": "feed", "to": "shift" },
-          { "from": "shift", "to": "elements" },
-          { "from": "elements", "to": "beam" }
+          {
+            "from": "feed",
+            "to": "shift"
+          },
+          {
+            "from": "shift",
+            "to": "elements"
+          },
+          {
+            "from": "elements",
+            "to": "beam"
+          }
         ]
       },
-      "onScreen": ["RF feed", "Phase shifter for each element", "Multiple antenna elements", "Desired pattern, steered electronically"],
-      "narration": "In a phased array antenna system, the RF is fed through its own phase shifter to each of multiple antennas. The RF from the multiple antennas is varied in phase, and often in amplitude, to produce a desired radiation pattern. Change the phases, and the combined beam swings across the sky, steered electronically, without moving the antenna at all."
+      "onScreen": [
+        "RF feed",
+        "Phase shifter for each element",
+        "Multiple antenna elements",
+        "Desired pattern, steered electronically"
+      ],
+      "narration": "A phased array uses that idea. The RF is shared out to a set of phase shifters, circuits that each delay the wave by a chosen amount. Each shifter feeds one of multiple small antenna elements, fixed side by side. In one direction, the waves from the elements arrive in step and add into a strong beam; elsewhere, they cancel. So in a phased array antenna system, the RF from multiple antennas is varied in phase, and often in amplitude, meaning strength, to produce a desired radiation pattern. Change the phases, and the beam steers electronically. The wrong choices have a single element doing all the work, or the antennas combined for unity gain, meaning no gain at all."
     },
     {
-      "id": "s25",
-      "keyTopic": 29,
-      "template": "equipment-card",
+      "id": "s47",
+      "keyTopic": 27,
+      "template": "comparison-table",
       "params": {
-        "title": "Mounting an Inmarsat-C antenna",
-        "device": "satcom-terminal",
-        "callouts": [
-          { "label": "RHC: right-hand circular polarization", "at": "radome" },
-          { "label": "Omni-directional: sees the satellite on any heading and as the ship rolls", "at": "radome" },
-          { "label": "As high as practical, free from shadowing by masts and funnels", "at": "mast" },
-          { "label": "Clear of other antennas and radar beams", "at": "mast" }
+        "title": "Protocols at the LAN port",
+        "columns": [
+          "Name",
+          "What it is",
+          "At the LAN port?"
+        ],
+        "rows": [
+          [
+            "TCP/IP",
+            "The basic rules of network data",
+            "Yes: what the PC uses"
+          ],
+          [
+            "SMTP, FTP",
+            "E-mail and file transfer rules",
+            "Ride on top of TCP/IP"
+          ],
+          [
+            "ISDN",
+            "A digital telephone standard",
+            "No: its own separate port"
+          ]
         ]
       },
-      "onScreen": ["RHC polarized", "Omni-directional pattern", "As high as practical, no shadowing", "Clear of other antennas and radar beams"],
-      "narration": "An Inmarsat-C antenna is RHC polarized, meaning right-hand circular, with an omni-directional radiation pattern. That lets the small fixed antenna see the satellite on any heading and as the ship rolls. Best practice is to install Inmarsat satellite antennas as high as practical, free from shadowing by structures such as masts and funnels, and clear of other antennas and radar beams."
+      "onScreen": [
+        "TCP/IP: what a PC on the LAN port uses",
+        "SMTP and FTP ride on top of TCP/IP",
+        "ISDN: its own separate port"
+      ],
+      "narration": "That's the antenna side. Now back below deck, to the terminal's sockets. The most important is the LAN port, also called the Ethernet port: the same socket home and office networks use. To talk over it, devices follow a protocol, an agreed set of rules for exchanging data, like a shared language. A PC connected to the LAN interface of an Inmarsat terminal uses the TCP IP protocol: Transmission Control Protocol and Internet Protocol, the basic language of the Internet. The exam also lists SMTP, for e-mail, and FTP, for file transfer. Those ride on top of TCP IP, so they aren't the answer. And ISDN, the Integrated Services Digital Network, is a digital telephone standard with its own port."
     },
     {
-      "id": "s26",
-      "keyTopic": 29,
+      "id": "s48",
+      "keyTopic": 27,
+      "template": "block-diagram",
+      "params": {
+        "title": "LAN port or ISDN port?",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "pc",
+            "label": "PC: configuration",
+            "note": "Configuration and troubleshooting"
+          },
+          {
+            "id": "lan",
+            "label": "LAN (Ethernet) port",
+            "note": "IP connectivity"
+          },
+          {
+            "id": "web",
+            "label": "PC: Internet browsing",
+            "note": "Through the terminal"
+          },
+          {
+            "id": "voip",
+            "label": "VoIP telephone handset",
+            "note": "Voice over IP"
+          },
+          {
+            "id": "isdnphone",
+            "label": "ISDN telephone handset",
+            "note": "Not a LAN port function"
+          },
+          {
+            "id": "isdn",
+            "label": "ISDN port",
+            "note": "Separate interface, its own port"
+          }
+        ],
+        "links": [
+          {
+            "from": "lan",
+            "to": "pc"
+          },
+          {
+            "from": "lan",
+            "to": "web"
+          },
+          {
+            "from": "lan",
+            "to": "voip"
+          },
+          {
+            "from": "lan",
+            "to": "isdnphone",
+            "struck": true
+          },
+          {
+            "from": "isdn",
+            "to": "isdnphone"
+          }
+        ]
+      },
+      "onScreen": [
+        "LAN (Ethernet) port: IP connectivity",
+        "Configuration and troubleshooting",
+        "Internet browsing",
+        "VoIP telephone handset",
+        "ISDN handset: its own ISDN port"
+      ],
+      "narration": "What does the LAN port connect? On a Fleet Broadband terminal, the LAN, or Ethernet, port provides IP connectivity, meaning a network link that speaks Internet Protocol, for 3 things. Terminal configuration and troubleshooting from a computer, through the terminal's built-in web pages. Internet browsing with a computer. And a Voice over IP telephone handset. Connecting an ISDN telephone handset is not a function of the LAN port. An ISDN handset speaks ISDN, not IP, so it plugs into the terminal's dedicated ISDN port. When the exam asks which is NOT a LAN port function, pick the ISDN handset."
+    },
+    {
+      "id": "s49",
+      "keyTopic": 26,
+      "template": "comparison-table",
+      "params": {
+        "title": "The Fleet Broadband IP handset",
+        "columns": [
+          "Function",
+          "IP handset?"
+        ],
+        "rows": [
+          [
+            "Voice over IP telephone calls",
+            "Yes"
+          ],
+          [
+            "Talk to the terminal",
+            "Yes, using TCP/IP"
+          ],
+          [
+            "Calls sent as circuit-switched calls",
+            "Yes"
+          ],
+          [
+            "Display status, change parameters",
+            "Yes, through its menus"
+          ],
+          [
+            "Polling and data reporting",
+            "No: an Inmarsat-C function"
+          ]
+        ]
+      },
+      "onScreen": [
+        "VoIP calls",
+        "TCP/IP link to the terminal",
+        "Circuit-switched calls",
+        "Status display and parameter changes",
+        "Not polling and data reporting"
+      ],
+      "narration": "Take a closer look at that Voice over IP handset. It's the Fleet Broadband IP handset: a telephone that plugs into the LAN port. It makes Voice over IP telephone calls, and it uses TCP IP to communicate with the terminal. Over the satellite, its calls can be transmitted as circuit-switched calls, meaning a dedicated connection held open for the whole call, like a traditional phone line. Through its menus, it can display terminal status and change terminal parameters, the terminal's settings. What it doesn't do is polling and data reporting. That's an Inmarsat-C function: remember the LRIT polls and position reports. So it's the odd one out when the exam lists the handset's functions."
+    },
+    {
+      "id": "s50",
+      "keyTopic": 26,
+      "template": "block-diagram",
+      "params": {
+        "title": "Power over Ethernet: which way?",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "term",
+            "label": "Terminal LAN port",
+            "note": "Supplies the power"
+          },
+          {
+            "id": "handset",
+            "label": "IP handset",
+            "note": "Powered through its network cable"
+          },
+          {
+            "id": "back",
+            "label": "Terminal",
+            "note": "Gets no power from the handset"
+          }
+        ],
+        "links": [
+          {
+            "from": "term",
+            "to": "handset",
+            "label": "data and power"
+          },
+          {
+            "from": "handset",
+            "to": "back",
+            "label": "power",
+            "struck": true
+          }
+        ]
+      },
+      "onScreen": [
+        "PoE: power over the network cable",
+        "From the terminal's LAN port to the handset",
+        "Never from the handset to the terminal"
+      ],
+      "narration": "One more handset fact catches people out: power. The handset gets its electricity through its network cable. That's called Power over Ethernet, or PoE: power sent down the same cable as the data, so no separate power cord is needed. But which way does it flow? From the terminal's LAN port to the handset. The handset does not provide the terminal with Power over Ethernet; a small handset couldn't run the terminal. So among the handset's characteristics, providing the terminal with Power over Ethernet is the one that's false."
+    },
+    {
+      "id": "s51",
+      "keyTopic": 27,
       "template": "key-facts",
       "params": {
-        "title": "Inside a Fleet Broadband radome",
-        "items": ["Stabilized antenna", "RF unit", "Antenna Control Unit (ACU)", "GPS antenna"]
+        "title": "RJ11 ports: standard voice",
+        "items": [
+          "RJ11: the ordinary small telephone socket",
+          "RJ11 Port 1 and 2: standard voice or 3.1 kHz audio",
+          "Standard voice: compressed speech, costs less",
+          "F500 phones: set RJ11 Port 1 and 2 to standard voice"
+        ]
       },
-      "onScreen": ["Stabilized antenna", "RF unit", "Antenna Control Unit (ACU)", "GPS antenna"],
-      "narration": "Now look inside an Inmarsat Fleet Broadband radome, the weatherproof dome above deck. Unlike the small fixed Inmarsat-C antenna, it typically includes 4 parts: a stabilized antenna, an RF unit, an Antenna Control Unit, or ACU, and a GPS antenna. Learn that list of 4 together; the exam's wrong choices swap in other parts."
+      "onScreen": [
+        "RJ11: ordinary telephone socket",
+        "Port 1 and 2: standard voice or 3.1 kHz audio",
+        "Standard voice: compressed, cheaper",
+        "F500 phones: standard voice"
+      ],
+      "narration": "Besides its LAN ports, the terminal has RJ11 ports: the ordinary telephone sockets that plain phones and fax machines plug into. On Thrane and Thrane F250 and F500 terminals, Thrane and Thrane being the maker, RJ11 Port 1 and 2 can be set 2 ways: standard voice, or 3.1 kilohertz audio. Standard voice is a compressed speech service. A codec, a circuit that squeezes sound into fewer bits, the 1s and 0s of digital data, keeps what makes speech understandable and drops the rest. That uses less satellite capacity, so standard voice costs less. For standard voice telephone operation on the F500, set RJ11 Port 1 and 2 to standard voice. Not 3.1 kilohertz, and not the ISDN port."
     },
     {
-      "id": "s27",
+      "id": "s52",
+      "keyTopic": 26,
+      "template": "comparison-table",
+      "params": {
+        "title": "Fax needs 3.1 kHz audio",
+        "columns": [
+          "RJ11 setting",
+          "Standard voice",
+          "3.1 kHz audio"
+        ],
+        "rows": [
+          [
+            "Used for",
+            "Ordinary telephones",
+            "Fax machines and modems"
+          ],
+          [
+            "Signal",
+            "Compressed by a speech codec",
+            "Whole telephone band, unprocessed"
+          ],
+          [
+            "Fax tones",
+            "Garbled",
+            "Clean"
+          ],
+          [
+            "Fax and Data setting",
+            "Wrong choice",
+            "RJ11 Port 1 and 2 set to this"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Standard voice: ordinary phones",
+        "3.1 kHz audio: fax machines and modems",
+        "A speech codec garbles fax tones; 3.1 kHz audio passes them clean",
+        "Fax and Data: RJ11 Port 1 and 2 on 3.1 kHz audio"
+      ],
+      "narration": "So ordinary phones go on standard voice. Fax machines and modems are different. A modem is a device that sends computer data as sound. Both send their data as tones, and a speech codec garbles those tones, because it was built only to keep speech understandable. The 3.1 kilohertz audio setting passes the whole ordinary telephone sound band, about 3.1 kilohertz wide, through unprocessed. So the correct Fax and Data configuration of a Fleet Broadband terminal is RJ11 Port 1 and 2 set to 3.1 kilohertz audio. Not standard voice, which would garble the tones. Not the ISDN port. And not the LAN ports, which carry IP data, not audio."
+    },
+    {
+      "id": "s53",
+      "keyTopic": 27,
+      "template": "key-facts",
+      "params": {
+        "title": "F250 and F500 fax: Group 3",
+        "items": [
+          "Thrane & Thrane F250 and F500 terminals",
+          "Fax: Group 3 fax via the 3.1 kHz audio channel",
+          "Group 3: the standard for ordinary analog fax machines",
+          "Not via standard voice, not via ISDN",
+          "No Group 5 fax, no 5.1 kHz channel"
+        ]
+      },
+      "onScreen": [
+        "Thrane & Thrane F250 and F500",
+        "Group 3 fax via 3.1 kHz audio",
+        "Group 3: ordinary analog fax",
+        "Not standard voice, not ISDN",
+        "No Group 5, no 5.1 kHz"
+      ],
+      "narration": "The exam asks about fax on the Thrane and Thrane F250 and F500, too. Their facsimile operation is configured as Group 3 fax via the 3.1 kilohertz audio channel, for analog fax applications. Group 3 is the standard for ordinary analog fax machines, the kind that send a page as sound over a phone line. The traps change one detail. Group 3 via the standard voice channel would garble the tones. Group 3 via the ISDN channel uses the wrong port. And there's no Group 5 fax and no 5.1 kilohertz channel at all."
+    },
+    {
+      "id": "s54",
+      "keyTopic": 27,
+      "template": "key-facts",
+      "params": {
+        "title": "The SIM: the terminal's identity",
+        "items": [
+          "SIM: Subscriber Identity Module",
+          "An integrated circuit device",
+          "Securely stores the Inmarsat identity and an authentication key",
+          "The network uses them to verify the terminal"
+        ]
+      },
+      "onScreen": [
+        "SIM: Subscriber Identity Module",
+        "An integrated circuit device",
+        "Stores the Inmarsat identity and authentication key",
+        "Network verifies the terminal"
+      ],
+      "narration": "Whatever plugs into it, the terminal itself must first be accepted by the network. How does the network know which terminal is calling, and that it's genuine? Like a mobile phone, every Fleet Broadband terminal holds a SIM, a Subscriber Identity Module. It's an integrated circuit device, a small card carrying a chip, that securely stores the Inmarsat identity and an authentication key. The identity says who the terminal is. The authentication key is a secret code that proves it, like a key that fits only one lock. The network uses them to verify the terminal before it allows calls or data. The other choices describe something else: rights management, high-speed data features, or a read and write data device."
+    },
+    {
+      "id": "s55",
+      "keyTopic": 27,
+      "template": "block-diagram",
+      "params": {
+        "title": "Locked SIM: PIN and PUK",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "pin",
+            "label": "Wrong PIN, too many times",
+            "note": "PIN: Personal Identification Number"
+          },
+          {
+            "id": "lock",
+            "label": "SIM locks",
+            "note": "No calls or data"
+          },
+          {
+            "id": "puk",
+            "label": "Enter the PUK",
+            "note": "PIN Unlock Key, from the airtime provider"
+          },
+          {
+            "id": "ok",
+            "label": "SIM unlocked",
+            "note": "Set a new PIN"
+          }
+        ],
+        "links": [
+          {
+            "from": "pin",
+            "to": "lock"
+          },
+          {
+            "from": "lock",
+            "to": "puk"
+          },
+          {
+            "from": "puk",
+            "to": "ok"
+          }
+        ]
+      },
+      "onScreen": [
+        "Too many wrong PINs",
+        "SIM locks",
+        "PUK from the airtime provider",
+        "SIM unlocked"
+      ],
+      "narration": "The SIM is protected by a PIN, a Personal Identification Number, much like a bank card. Enter the wrong PIN too many times and the SIM card locks itself, so nobody can keep guessing. To unlock the SIM card in a Fleet Broadband terminal, you use the PUK, which stands for PIN Unlock Key. The airtime provider, the company that sells the satellite service, supplies it. The wrong choices use the PUK for credit card calls, telephone extensions or long distance blocks. It has one job: unlocking the SIM, after which you can set a new PIN."
+    },
+    {
+      "id": "s56",
+      "keyTopic": 26,
+      "template": "comparison-table",
+      "params": {
+        "title": "Standard IP or Streaming?",
+        "columns": [
+          "BGAN service",
+          "Standard IP",
+          "Streaming"
+        ],
+        "rows": [
+          [
+            "Connection",
+            "Shared with other users",
+            "Exclusive"
+          ],
+          [
+            "Priority",
+            "Ordinary",
+            "High"
+          ],
+          [
+            "Best for",
+            "E-mail, file transfer, Internet",
+            "Time critical uses, like live video"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Standard IP: shared",
+        "Streaming: exclusive, high-priority",
+        "Standard IP: e-mail, files, Internet",
+        "Streaming: time critical, like live video"
+      ],
+      "narration": "Once the SIM is accepted, the terminal can carry data. As a BGAN service, Fleet Broadband offers 2 kinds of data connection. Think of a road. Standard IP is the shared road: everyone in the area uses the same capacity, and you get whatever share is free. That's fine for ordinary e-mail, file transfer and Internet traffic, which can wait a moment. Inmarsat BGAN Streaming Data service is like a reserved lane: an exclusive, high-priority connection, ideal for time critical applications such as live video, which stutters if its data arrives late. So for Streaming, choose the exclusive, high-priority connection, not the e-mail and Internet service, the web interface or ISDN."
+    },
+    {
+      "id": "s57",
+      "keyTopic": 26,
+      "template": "block-diagram",
+      "params": {
+        "title": "Testing the Inmarsat Distress Alarm",
+        "columns": 2,
+        "blocks": [
+          {
+            "id": "button",
+            "label": "Just pressing DISTRESS",
+            "note": "Sends a real alert at once"
+          },
+          {
+            "id": "rcc",
+            "label": "RCC: Rescue Coordination Centre",
+            "note": "Starts a real rescue"
+          },
+          {
+            "id": "ship",
+            "label": "Ship's terminal",
+            "note": "Calls service number 33"
+          },
+          {
+            "id": "svc",
+            "label": "Service number 33",
+            "note": "Technical assistance"
+          },
+          {
+            "id": "les",
+            "label": "LES",
+            "note": "Arranges the test in advance"
+          },
+          {
+            "id": "test",
+            "label": "Test Distress Alarm sent",
+            "note": "Expected and handled as a test"
+          }
+        ],
+        "links": [
+          {
+            "from": "button",
+            "to": "rcc",
+            "label": "a real distress alert"
+          },
+          {
+            "from": "ship",
+            "to": "svc"
+          },
+          {
+            "from": "svc",
+            "to": "les"
+          },
+          {
+            "from": "les",
+            "to": "test"
+          }
+        ]
+      },
+      "onScreen": [
+        "Pressing DISTRESS sends a real alert to an RCC",
+        "Service number 33: technical assistance",
+        "LES arranges the test in advance",
+        "Test alert expected"
+      ],
+      "narration": "One last feature, and the most serious: distress. Inmarsat terminals have a DISTRESS button under a cover. Press it, and a real distress alert goes straight to an RCC, a Rescue Coordination Centre: the shore center that organizes searches and rescues. So how do you test the Inmarsat Distress Alarm without starting a rescue? Use service number 33, the technical assistance code, to arrange a Distress Alarm test transmission with the LES in advance. The test alert is then expected, and handled as a test. Don't just lift the cover and press the button. Telling the Coast Guard first, or sending a safety call just before, doesn't make it a test either. Only the arrangement with the LES does."
+    },
+    {
+      "id": "s58",
       "keyTopic": 30,
       "template": "block-diagram",
       "params": {
-        "title": "Connecting to the Inmarsat-C data port",
+        "title": "A serial data link: DTE and DCE",
         "columns": 3,
         "blocks": [
-          { "id": "portgood", "label": "Inmarsat-C data port", "note": "Wired as DCE" },
-          { "id": "straight", "label": "Straight-through EIA-232 cable", "note": "Stop bits and parity just match" },
-          { "id": "dtegood", "label": "DTE: data terminal equipment", "note": "Communicates normally" },
-          { "id": "portbad", "label": "Inmarsat-C data port", "note": "Wired as DCE" },
-          { "id": "nullmodem", "label": "Null modem cable", "note": "Crosses transmit and receive lines" },
-          { "id": "dtebad", "label": "DTE", "note": "Neither end hears the other" }
+          {
+            "id": "dte",
+            "label": "DTE: a computer or printer",
+            "note": "Data terminal equipment"
+          },
+          {
+            "id": "cable",
+            "label": "EIA-232 cable",
+            "note": "Sends data 1 bit at a time"
+          },
+          {
+            "id": "dce",
+            "label": "DCE: the Inmarsat-C data port",
+            "note": "Data communications equipment"
+          }
         ],
         "links": [
-          { "from": "portgood", "to": "straight" },
-          { "from": "straight", "to": "dtegood", "label": "data flows" },
-          { "from": "portbad", "to": "nullmodem" },
-          { "from": "nullmodem", "to": "dtebad", "struck": true }
+          {
+            "from": "dte",
+            "to": "cable"
+          },
+          {
+            "from": "cable",
+            "to": "dce"
+          }
         ]
       },
-      "onScreen": ["Data port wired as DCE", "Straight-through EIA-232 cable to the DTE", "Stop bits and parity just need to match", "Null modem cable crosses transmit and receive: no communication"],
-      "narration": "The Inmarsat-C data port is wired as DCE, data communications equipment. It connects through a straight-through EIA-232 cable to the DTE, data terminal equipment, such as a computer. Stop bit and parity settings don't prevent communication; they're ordinary settings that just need to match at both ends. What does prevent communication is using a null modem cable to connect the DTE. A null modem cable crosses the transmit and receive lines, so neither end hears the other."
+      "onScreen": [
+        "DTE: a computer or printer",
+        "EIA-232 cable, 1 bit at a time",
+        "Inmarsat-C data port wired as DCE"
+      ],
+      "narration": "You now know how each system should work, and that's exactly what troubleshooting needs: the trick is to ask what each symptom rules out. We'll start with a computer that won't talk to an Inmarsat-C terminal. The terminal's data port connects to a computer or printer through an EIA-232 cable, an older standard that sends data 1 bit at a time. The computer or printer is DTE, data terminal equipment. The Inmarsat-C data port is wired as DCE, data communications equipment. Each end transmits on one wire and listens on another, and DCE and DTE are wired opposite to each other. So a plain straight-through cable lines up one end's transmit with the other end's receive."
     },
     {
-      "id": "s28",
+      "id": "s59",
+      "keyTopic": 30,
+      "template": "block-diagram",
+      "params": {
+        "title": "Straight-through or null modem?",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "portgood",
+            "label": "Inmarsat-C data port",
+            "note": "Wired as DCE"
+          },
+          {
+            "id": "straight",
+            "label": "Straight-through EIA-232 cable",
+            "note": "Stop bits and parity just match"
+          },
+          {
+            "id": "dtegood",
+            "label": "DTE: data terminal equipment",
+            "note": "Communicates normally"
+          },
+          {
+            "id": "portbad",
+            "label": "Inmarsat-C data port",
+            "note": "Wired as DCE"
+          },
+          {
+            "id": "nullmodem",
+            "label": "Null modem cable",
+            "note": "Crosses transmit and receive lines"
+          },
+          {
+            "id": "dtebad",
+            "label": "DTE",
+            "note": "Neither end hears the other"
+          }
+        ],
+        "links": [
+          {
+            "from": "portgood",
+            "to": "straight"
+          },
+          {
+            "from": "straight",
+            "to": "dtegood",
+            "label": "data flows"
+          },
+          {
+            "from": "portbad",
+            "to": "nullmodem"
+          },
+          {
+            "from": "nullmodem",
+            "to": "dtebad",
+            "struck": true
+          }
+        ]
+      },
+      "onScreen": [
+        "Straight-through EIA-232 cable: data flows",
+        "Stop bits and parity just need to match",
+        "Null modem cable crosses transmit and receive",
+        "No communication"
+      ],
+      "narration": "That's the working setup, with a straight-through cable. Data flows as long as the stop bit and parity settings match at both ends. A stop bit marks the end of each character, and parity is a simple error check. They're ordinary settings; they don't block the link. So what would prevent communication between the data port and the DTE? Using a null modem cable to connect the DTE. A null modem cable crosses the transmit and receive lines inside it, for joining 2 devices wired the same way, such as 2 computers. Put it between the DCE data port and the DTE, and the crossing undoes the match: transmit meets transmit, receive meets receive, and neither end hears the other."
+    },
+    {
+      "id": "s60",
       "keyTopic": 30,
       "template": "comparison-table",
       "params": {
-        "title": "Messages and codes",
-        "columns": ["Message or code", "Meaning"],
+        "title": "Inmarsat-C: test flag and ACB",
+        "columns": [
+          "Message or code",
+          "Meaning"
+        ],
         "rows": [
-          ["Test flag set in a Distress Alert", "A TEST alert: no rescue response starts"],
-          ["ACB on a Non-Delivery Notification", "Access to the Inmarsat system barred"],
-          ["\"RX2 Comm error\" or \"ACU Comm error\"", "Fleet 77 RX2 to ACU link has failed"],
-          ["00F0h or 00F1h", "Not registered to the MPDS network"]
+          [
+            "Test flag set in a Distress Alert",
+            "A TEST alert: no rescue response starts"
+          ],
+          [
+            "NDN: Non-Delivery Notification",
+            "A message couldn't be delivered: here's why"
+          ],
+          [
+            "ACB on a Non-Delivery Notification",
+            "Access to the Inmarsat system barred"
+          ]
         ]
       },
-      "onScreen": ["Test flag set: a TEST alert", "ACB: access barred", "RX2 or ACU Comm error: RX2 to ACU link failure", "00F0h or 00F1h: not registered to MPDS"],
-      "narration": "Some messages and codes. An LES or RCC can tell an Inmarsat-C Distress Alert is a TEST transmission because a flag in the message is set to identify it as a test alert, so no rescue response starts. ACB on an Inmarsat-C NDN, a Non-Delivery Notification, means access to the Inmarsat system has been barred. In a Fleet 77 terminal, a communication failure between the second receiver, RX2, and the Antenna Control Unit shows as RX2 Comm error or ACU Comm error. Locking onto the network coordination station's common channel, the NCSC, or receiving a valid frame are signs of normal operation. And if a connection to the Inmarsat MPDS, Mobile Packet Data Service, network fails, the terminal shows zero zero F zero H or zero zero F one H: it is not registered to the MPDS network."
+      "onScreen": [
+        "Test flag set: a TEST alert",
+        "No rescue response",
+        "NDN: a message could not be delivered",
+        "ACB on an NDN: access barred"
+      ],
+      "narration": "Once the link works, the terminal reports back with messages and codes. Start with 2 from Inmarsat-C. Remember the distress test? How can an LES or RCC tell an Inmarsat-C Distress Alert is a TEST transmission? A flag in the message, a marker set inside the alert, identifies it as a test alert. So it's recognized at once and no rescue response starts; staff don't have to verify each alert by hand. When a message can't be delivered, the system sends back an NDN, a Non-Delivery Notification, with a failure code. The code ACB means access to the Inmarsat system has been barred: the network has blocked that terminal or service. It isn't an answer-back, bit error or channel failure."
     },
     {
-      "id": "s29",
+      "id": "s61",
+      "keyTopic": 30,
+      "template": "comparison-table",
+      "params": {
+        "title": "Fleet 77 messages and codes",
+        "columns": [
+          "Message or code",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "\"RX2 Comm error\" or \"ACU Comm error\"",
+            "The RX2 to ACU link has failed"
+          ],
+          [
+            "RX2 locked on the NCSC, valid frame",
+            "Normal operation"
+          ],
+          [
+            "00F0h or 00F1h",
+            "Not registered to the MPDS network"
+          ]
+        ]
+      },
+      "onScreen": [
+        "RX2 or ACU Comm error: RX2 to ACU link failure",
+        "Locked on the NCSC, valid frame: normal",
+        "00F0h or 00F1h: not registered to MPDS"
+      ],
+      "narration": "2 more codes come from the older Fleet 77 terminal. Inside it, a second receiver, RX2, exchanges data with the Antenna Control Unit, the ACU. If that link fails, the terminal displays RX2 Comm error or ACU Comm error; Comm is short for communication. RX2 locking onto the NCSC, the NCS common channel from earlier, or receiving a valid frame, a complete block of data, are signs of normal operation. Then there's MPDS, the Mobile Packet Data Service, which sends data in small chunks called packets. If a connection to the MPDS network fails, the terminal shows zero zero F zero H or zero zero F one H: it is not registered to the MPDS network. Codes starting 77 are traps."
+    },
+    {
+      "id": "s62",
       "keyTopic": 30,
       "template": "block-diagram",
       "params": {
         "title": "What interferes with Fleet 77 and 55?",
         "columns": 3,
         "blocks": [
-          { "id": "hf", "label": "Transmitters, 3-30 MHz", "note": "Powerful and close by" },
-          { "id": "fleet", "label": "Fleet 77 or 55 antenna", "note": "Picks up the interference" },
-          { "id": "radar", "label": "Shipboard radars", "note": "In close proximity" },
-          { "id": "epirb", "label": "EPIRB", "note": "Low power, seldom transmits" },
-          { "id": "sart", "label": "SART", "note": "Low power, seldom transmits" },
-          { "id": "survival", "label": "Survival craft radio", "note": "Low power, seldom transmits" }
+          {
+            "id": "hf",
+            "label": "Transmitters, 3-30 MHz",
+            "note": "Powerful and close by"
+          },
+          {
+            "id": "fleet",
+            "label": "Fleet 77 or 55 antenna",
+            "note": "Picks up the interference"
+          },
+          {
+            "id": "radar",
+            "label": "Shipboard radars",
+            "note": "In close proximity"
+          },
+          {
+            "id": "epirb",
+            "label": "EPIRB",
+            "note": "Low power, seldom transmits"
+          },
+          {
+            "id": "sart",
+            "label": "SART",
+            "note": "Low power, seldom transmits"
+          },
+          {
+            "id": "survival",
+            "label": "Survival craft radio",
+            "note": "Low power, seldom transmits"
+          }
         ],
         "links": [
-          { "from": "hf", "to": "fleet", "label": "interference" },
-          { "from": "radar", "to": "fleet", "label": "interference" },
-          { "from": "epirb", "to": "fleet", "struck": true },
-          { "from": "sart", "to": "fleet", "struck": true },
-          { "from": "survival", "to": "fleet", "struck": true }
+          {
+            "from": "hf",
+            "to": "fleet",
+            "label": "interference"
+          },
+          {
+            "from": "radar",
+            "to": "fleet",
+            "label": "interference"
+          },
+          {
+            "from": "epirb",
+            "to": "fleet",
+            "struck": true
+          },
+          {
+            "from": "sart",
+            "to": "fleet",
+            "struck": true
+          },
+          {
+            "from": "survival",
+            "to": "fleet",
+            "struck": true
+          }
         ]
       },
-      "onScreen": ["Transmitters in the 3-30 MHz range", "Fleet 77 or 55 antenna", "Shipboard radars in close proximity", "Not EPIRBs, SARTs or survival craft radios"],
-      "narration": "Transmitters operating in the 3 to 30 megahertz range, the HF band, can interfere with a Fleet 77 or Fleet 55 system, and so can shipboard radars in close proximity. Both are powerful and close by. The exam also offers EPIRBs, Emergency Position Indicating Radio Beacons, SARTs, Search And Rescue Radar Transponders, and survival craft radios. Those are low power and seldom transmit, so they aren't the likely source."
+      "onScreen": [
+        "Transmitters in the 3-30 MHz range",
+        "Fleet 77 or 55 antenna",
+        "Shipboard radars in close proximity",
+        "Not EPIRBs, SARTs or survival craft radios"
+      ],
+      "narration": "Some faults come from outside the equipment. Transmitters operating in the 3 to 30 megahertz range, the HF band ships use for long-range radio, can interfere with Fleet 77 and Fleet 55 systems, and so can shipboard radars in close proximity. Both are powerful and close by. A nearby HF transmitter induces strong RF currents in the antenna cables, meaning it creates them without touching, and a radar beam sweeping across the antenna can overload its sensitive receiver. The exam also offers EPIRBs, Emergency Position Indicating Radio Beacons, SARTs, Search And Rescue Radar Transponders, and survival craft radios. Those are low power and seldom transmit, so they aren't the likely source."
     },
     {
-      "id": "s30",
-      "keyTopic": 31,
-      "template": "comparison-table",
+      "id": "s63",
+      "keyTopic": 32,
+      "template": "equipment-card",
       "params": {
-        "title": "Inmarsat-C: no signal or no log in",
-        "columns": ["Symptom", "Cause or action"],
-        "rows": [
-          ["\"No Receive Signal\", no center-pin voltage", "Blown antenna power fuse in the ADE"],
-          ["Bad LNA instead?", "The voltage would still be present"],
-          ["Won't log in; logs in with test cable, new ADE", "Original ADE at fault: install a replacement"],
-          ["Replace AZ or EL motors?", "None: Inmarsat-C antennas are fixed omni units"]
+        "title": "Ferrite clamps against HF interference",
+        "device": "satcom-terminal",
+        "callouts": [
+          {
+            "label": "Ferrite clamps on the coax cable",
+            "at": "cable"
+          },
+          {
+            "label": "They suppress HF induced on the outside of the shield",
+            "at": "cable"
+          },
+          {
+            "label": "The L-band signal inside passes untouched",
+            "at": "radome"
+          },
+          {
+            "label": "A longer ground lead would make it worse",
+            "at": "terminal"
+          },
+          {
+            "label": "Not a low-pass filter: it would block the L-band signal",
+            "at": "mast"
+          }
         ]
       },
-      "onScreen": ["No Receive Signal, no center-pin voltage: blown antenna power fuse", "A bad LNA would leave the voltage", "Logs in with a new ADE: replace the ADE", "No AZ or EL motors on Inmarsat-C"],
-      "narration": "Now Inmarsat-C troubleshooting. If the terminal shows a No Receive Signal alarm and there's no voltage on the antenna center pin, the most likely cause is a blown antenna power fuse in the above deck equipment, or ADE. The antenna's direct current, or DC, supply travels on the coax center conductor, and a bad LNA would still leave that voltage present. If the terminal will not LOG IN, but does log in with a test antenna cable and a new ADE in view of the satellite, the original ADE is at fault: install a replacement ADE. Don't plan on replacing motors. Inmarsat-C antennas are fixed omni-directional units with no AZ, azimuth, or EL, elevation, motors."
+      "onScreen": [
+        "Ferrite clamps on the coax",
+        "Suppress induced HF on the shield",
+        "L-band signal unaffected",
+        "Not a longer ground lead",
+        "Not a low-pass filter"
+      ],
+      "narration": "And the cure? To resolve interference induced from nearby HF transmitters, install ferrite clamps on the coax cable to suppress induced RF. Ferrite is a magnetic ceramic material, and a clamp snaps around the cable like a thick bead. The unwanted HF energy rides on the outside of the coax shield, and the ferrite chokes it off there, without affecting the L-band signal travelling inside the cable. A longer ground lead would make it worse, since a longer wire picks up more HF, like a bigger antenna. And a low-pass filter, which passes low frequencies and blocks high ones, would block the L-band signal and let the HF through: exactly backwards."
     },
     {
-      "id": "s31",
+      "id": "s64",
       "keyTopic": 31,
       "template": "block-diagram",
       "params": {
-        "title": "\"Antenna not connected\": test the coax",
+        "title": "\"No Receive Signal\": follow the DC",
         "columns": 4,
         "blocks": [
-          { "id": "alarm", "label": "Won't LOG IN", "note": "\"Antenna not connected\" alarm" },
-          { "id": "short", "label": "Short one end of the coax", "note": "Then go to the other end" },
-          { "id": "meter", "label": "Measure the resistance", "note": "Ohmmeter at the other end" },
-          { "id": "replace", "label": "Above 1 ohm?", "note": "Replace the cable" }
+          {
+            "id": "term",
+            "label": "Inmarsat-C terminal",
+            "note": "Sends DC up the coax"
+          },
+          {
+            "id": "pin",
+            "label": "Antenna center pin",
+            "note": "No voltage here"
+          },
+          {
+            "id": "fuse",
+            "label": "Antenna power fuse in the ADE",
+            "note": "Blown: the most likely cause"
+          },
+          {
+            "id": "lna",
+            "label": "LNA",
+            "note": "Gets no power, passes no signal"
+          }
         ],
         "links": [
-          { "from": "alarm", "to": "short" },
-          { "from": "short", "to": "meter" },
-          { "from": "meter", "to": "replace" }
+          {
+            "from": "term",
+            "to": "pin",
+            "label": "DC power"
+          },
+          {
+            "from": "pin",
+            "to": "fuse"
+          },
+          {
+            "from": "fuse",
+            "to": "lna",
+            "struck": true
+          }
         ]
       },
-      "onScreen": ["Won't log in: Antenna not connected", "Short one end of the coax", "Measure resistance at the other end", "Above 1 ohm: replace the cable"],
-      "narration": "If an Inmarsat-C terminal will not LOG IN and shows an Antenna not connected alarm, test the coax cable. Short one end of the coax cable, then go to the other end and measure the resistance with an ohmmeter. A good cable reads almost nothing. If the resistance is above 1 ohm, replace the cable."
+      "onScreen": [
+        "DC travels up the coax center conductor",
+        "No voltage on the center pin",
+        "Blown antenna power fuse in the ADE",
+        "A bad LNA would leave the voltage"
+      ],
+      "narration": "Back inside the system, here are 3 Inmarsat-C antenna faults. First, a refresher: the LNA up at the antenna needs power. The terminal sends it DC, direct current, a steady one-way flow like a battery's, up the same coax that brings the signal down, on its center conductor, which ends at the antenna's center pin. Suppose the terminal shows a No Receive Signal alarm, and there's no voltage on the antenna center pin. The most likely cause is a blown antenna power fuse in the ADE, the above deck equipment. The supply path is open, so the LNA gets no power and passes no signal. A defective LNA is the trap: it would still leave the voltage on the pin."
     },
     {
-      "id": "s32",
+      "id": "s65",
+      "keyTopic": 31,
+      "template": "block-diagram",
+      "params": {
+        "title": "Won't LOG IN: the swap test",
+        "columns": 4,
+        "blocks": [
+          {
+            "id": "fail",
+            "label": "Terminal won't LOG IN",
+            "note": "With the original ADE"
+          },
+          {
+            "id": "test",
+            "label": "Test cable and new ADE",
+            "note": "In view of the satellite"
+          },
+          {
+            "id": "ok",
+            "label": "LOG IN succeeds",
+            "note": "The terminal is proven good"
+          },
+          {
+            "id": "fix",
+            "label": "Install a replacement ADE",
+            "note": "The original ADE is at fault"
+          }
+        ],
+        "links": [
+          {
+            "from": "fail",
+            "to": "test"
+          },
+          {
+            "from": "test",
+            "to": "ok"
+          },
+          {
+            "from": "ok",
+            "to": "fix"
+          }
+        ]
+      },
+      "onScreen": [
+        "Won't LOG IN",
+        "Test cable and new ADE in view of the satellite",
+        "LOG IN succeeds",
+        "Install a replacement ADE"
+      ],
+      "narration": "Second fault: the Inmarsat-C terminal will not LOG IN, meaning it can't sign on to the network. To narrow it down, connect a test antenna cable with a new ADE, placed in view of the satellite. If the terminal now logs in, the terminal below deck is proven good, and so is the satellite, so trying a different satellite with the original ADE wouldn't help. The fault is in the original ADE: install a replacement ADE. Replacing the AZ or EL motor is a trap too. AZ is azimuth, the compass direction an antenna faces, and EL is elevation, its angle up from the horizon. Inmarsat-C antennas are fixed omni-directional units with no AZ or EL motors to replace."
+    },
+    {
+      "id": "s66",
       "keyTopic": 31,
       "template": "equipment-card",
       "params": {
-        "title": "Tracking antenna faults",
+        "title": "\"Antenna not connected\": test the coax",
+        "device": "multimeter",
+        "callouts": [
+          {
+            "label": "Set the meter to measure resistance, in ohms",
+            "at": "selector"
+          },
+          {
+            "label": "Short one end of the coax: center conductor to shield",
+            "at": "probes"
+          },
+          {
+            "label": "Measure at the other end: a good cable reads almost 0 ohms",
+            "at": "display"
+          },
+          {
+            "label": "Above 1 ohm: replace the cable",
+            "at": "body"
+          }
+        ]
+      },
+      "onScreen": [
+        "Meter set to resistance",
+        "Short one end of the coax",
+        "Measure at the other end: almost 0 ohms is good",
+        "Above 1 ohm: replace the cable"
+      ],
+      "narration": "Third fault: the terminal will not LOG IN and shows an Antenna not connected alarm. That points to the coax. Test it with an ohmmeter: the resistance setting of a multimeter, the technician's meter for voltage, current and resistance. Resistance is how strongly a path opposes the flow of current, measured in ohms. Short one end of the coax, joining its center conductor to its shield. Then measure between them at the other end. Current now runs up the center and back along the shield, so you test the whole loop. A good cable reads almost 0 ohms. Above 1 ohm, a conductor or connector is damaged: replace the cable. Changing satellites or replacing the antenna won't fix a broken cable."
+    },
+    {
+      "id": "s67",
+      "keyTopic": 31,
+      "template": "equipment-card",
+      "params": {
+        "title": "How a tracking antenna finds the satellite",
         "device": "satcom-terminal",
         "callouts": [
-          { "label": "Passes the satellite's AZ EL, won't initialize: antenna control module", "at": "radome" },
-          { "label": "Creeps up and down: check the EL step motor, power off; replace if stiff", "at": "dish" },
-          { "label": "Tries to initialize, points straight up and stops: level platform sensor", "at": "radome" }
+          {
+            "label": "AZ motor turns the antenna around: azimuth",
+            "at": "dish"
+          },
+          {
+            "label": "EL motor tilts it up and down: elevation",
+            "at": "dish"
+          },
+          {
+            "label": "Level platform sensor: the horizontal reference",
+            "at": "radome"
+          },
+          {
+            "label": "Antenna control module: finds the signal and locks on",
+            "at": "mast"
+          }
         ]
       },
-      "onScreen": ["Passes the satellite, won't initialize: antenna control module", "Creeps up and down: EL step motor", "Points straight up and stops: level platform sensor"],
-      "narration": "Stabilized tracking antennas have faults of their own. If the antenna goes past the AZ EL of the satellite, its azimuth and elevation, but does not initialize, yet manual pointing acquires the signal, the most likely problem is a faulty antenna control module. The motors and the RF path clearly work. If the antenna creeps up and down after initialization, check the EL step motor with the power off, and replace it if it's stiff. Up and down creep is an elevation problem, not azimuth. If the antenna tries to initialize, then points straight up and stops, the most likely problem is a defective level platform sensor, which gives the controller its horizontal reference."
+      "onScreen": [
+        "AZ motor: azimuth",
+        "EL motor: elevation",
+        "Level platform sensor: horizontal reference",
+        "Antenna control module: finds and locks on"
+      ],
+      "narration": "Inmarsat-C's antenna is fixed. Stabilized tracking antennas, like Fleet Broadband's, have moving parts, and faults to match. When one starts up, it initializes: it searches the sky, finds the satellite and locks on. 4 parts share the work. The AZ motor turns the antenna around in azimuth, and the EL motor tilts it up and down in elevation. The level platform sensor tells the controller which way is level, its horizontal reference, so it can measure elevation. And the antenna control module, part of the antenna-control electronics, steers the search, recognizes the satellite's signal and locks onto it. Knowing who does what lets you reason from a symptom to the faulty part."
     },
     {
-      "id": "s33",
-      "keyTopic": 32,
+      "id": "s68",
+      "keyTopic": 31,
+      "template": "key-facts",
+      "params": {
+        "title": "Passes the satellite, won't initialize",
+        "items": [
+          "Antenna goes past the satellite's AZ EL, won't initialize",
+          "Pointed by hand, it acquires the signal",
+          "Motors work, RF path works",
+          "Most likely: a faulty antenna control module"
+        ]
+      },
+      "onScreen": [
+        "Passes the satellite, won't initialize",
+        "Manual pointing acquires the signal",
+        "Motors and RF path work",
+        "Faulty antenna control module"
+      ],
+      "narration": "Suppose the antenna goes past the AZ EL of the satellite, its azimuth and elevation, but does not initialize. Yet you can point it at the satellite by hand and acquire the signal. What's left? The motors clearly work, since the antenna swept right past the satellite. The coax and the RF path clearly work too, since manual pointing gets a signal. So the most likely problem is a faulty antenna control module, the part that should have recognized the signal and locked on. A defective coax, or a bad IF, intermediate frequency, amplifier, a stage deeper inside the receiver, is ruled out by the signal you got by hand."
+    },
+    {
+      "id": "s69",
+      "keyTopic": 31,
       "template": "comparison-table",
       "params": {
-        "title": "More faults and fixes",
-        "columns": ["Symptom", "Cause or action"],
+        "title": "Up and down, or straight up?",
+        "columns": [
+          "Symptom",
+          "Check or cause",
+          "Why"
+        ],
         "rows": [
-          ["Fleet Broadband antenna keeps changing azimuth", "Web interface: check the event log first"],
-          ["Inmarsat-C won't power up; AC at supply input", "Component failure inside the power supply"],
-          ["Interference from nearby HF transmitters", "Ferrite clamps on the coax cable"],
-          ["A longer ground lead?", "No: that makes it worse"]
+          [
+            "Creeps up and down after initialization",
+            "An elevation problem",
+            "Up and down is elevation, not azimuth"
+          ],
+          [
+            "EL step motor, power off",
+            "Stiff when turned by hand: replace it",
+            "It should hold firmly between steps"
+          ],
+          [
+            "Points straight up and stops",
+            "Defective level platform sensor",
+            "No horizontal reference"
+          ]
         ]
       },
-      "onScreen": ["Azimuth keeps changing: check the event log", "No power up, AC present: power supply failure", "HF interference: ferrite clamps on the coax", "Not a longer ground lead"],
-      "narration": "Here are 3 more cases. If an Inmarsat Fleet Broadband antenna continuously changes azimuth after initialization, use the Web interface to check the event log. It shows the cause before you replace any parts. If an Inmarsat-C terminal fails to power up while AC, or alternating current, voltage is present at the input terminals of the power supply, the cause is a component failure within the power supply itself. And to resolve interference induced from nearby HF transmitters, install ferrite clamps on the coax cable. They suppress induced RF on the shield without affecting the L-band signal inside. A longer ground lead would make it worse."
+      "onScreen": [
+        "Creeps up and down: an elevation problem",
+        "Check the EL step motor with power off; stiff means replace",
+        "Points straight up and stops: level platform sensor"
+      ],
+      "narration": "2 more symptoms, and here the direction of movement is the clue. If the antenna creeps up and down after initialization, that's an elevation problem, not azimuth, which would show as side-to-side movement. A step motor turns in small exact steps and should hold firmly between them. So check the EL step motor with the power off: turn it by hand, and if it's stiff, replace it. If instead the antenna tries to initialize, then points straight up and stops, the most likely problem is a defective level platform sensor. Without its horizontal reference, the controller can't work out elevation, so it drives to its straight-up limit and gives up. The motors are fine; they moved it."
     },
     {
-      "id": "s34",
+      "id": "s70",
       "keyTopic": 32,
       "template": "equipment-card",
       "params": {
-        "title": "Laptop can't connect to the terminal",
+        "title": "Antenna keeps hunting: check the event log",
         "device": "satcom-terminal",
         "callouts": [
-          { "label": "Ethernet cable in the ISDN port: same RJ-45 connector, but no Ethernet", "at": "terminal" },
-          { "label": "Wrong IP address entered as the URL in the web browser", "at": "screen" },
-          { "label": "The browser can't find the terminal's built-in web server", "at": "screen" }
+          {
+            "label": "Antenna continuously changes azimuth after initialization",
+            "at": "radome"
+          },
+          {
+            "label": "Open the terminal's Web interface",
+            "at": "screen"
+          },
+          {
+            "label": "Check the event log before replacing any parts",
+            "at": "terminal"
+          }
         ]
       },
-      "onScreen": ["Cable in the ISDN port: same RJ-45, no Ethernet", "Wrong IP address as the URL", "Browser can't find the built-in web server"],
-      "narration": "There are 2 ways a technician's laptop can fail to make an IP connection with a Fleet Broadband terminal. First, the Ethernet cable is connected to the terminal's ISDN port. It has the same style RJ-45 connector, but it carries ISDN, not Ethernet. Second, the wrong IP address is entered as the URL, the web address, in the web browser. Then the browser cannot find the terminal's built-in web server."
+      "onScreen": [
+        "Azimuth keeps changing",
+        "Use the Web interface",
+        "Check the event log first"
+      ],
+      "narration": "Sometimes the antenna moves but never settles. Then the terminal itself can tell you why. If an Inmarsat Fleet Broadband antenna continuously changes azimuth after initialization, hunting from side to side, use the Web interface to check the event log. The Web interface is the terminal's set of built-in web pages, opened in a laptop's web browser. The event log is the terminal's record of faults and events, such as a lost heading input from the ship's compass, or a tracking fault. Checking it shows the cause before you replace any parts. Replacing a motor first is guesswork, and checking the EL motor looks at the wrong axis."
     },
     {
-      "id": "s35",
+      "id": "s71",
+      "keyTopic": 32,
+      "template": "block-diagram",
+      "params": {
+        "title": "Won't power up, AC present",
+        "columns": 3,
+        "blocks": [
+          {
+            "id": "mains",
+            "label": "Ship's AC supply",
+            "note": "Voltage present at the input"
+          },
+          {
+            "id": "psu",
+            "label": "Power supply",
+            "note": "Component failure inside"
+          },
+          {
+            "id": "term",
+            "label": "Inmarsat-C terminal",
+            "note": "Won't power up"
+          }
+        ],
+        "links": [
+          {
+            "from": "mains",
+            "to": "psu",
+            "label": "AC arrives"
+          },
+          {
+            "from": "psu",
+            "to": "term",
+            "label": "no DC out",
+            "struck": true
+          }
+        ]
+      },
+      "onScreen": [
+        "AC present at the supply input",
+        "Component failure inside the power supply",
+        "Terminal won't power up"
+      ],
+      "narration": "Next, an Inmarsat-C terminal that won't power up at all. Its power supply takes in the ship's AC, alternating current, the main electrical supply that reverses direction many times a second, and turns it into the steady DC the terminal's circuits need. If AC voltage is present at the input terminals of the power supply, power is reaching it, yet nothing comes out. So the cause is a component failure within the power supply itself, such as a blown fuse or a failed part inside it. A bad coax cable, a receiver stage or a monitor wouldn't stop the unit from switching on."
+    },
+    {
+      "id": "s72",
+      "keyTopic": 32,
+      "template": "equipment-card",
+      "params": {
+        "title": "Laptop can't connect: the wrong socket",
+        "device": "satcom-terminal",
+        "callouts": [
+          {
+            "label": "Ethernet cable plugged into the terminal's ISDN port",
+            "at": "terminal"
+          },
+          {
+            "label": "Same style RJ-45 connector as the LAN ports, so it fits",
+            "at": "terminal"
+          },
+          {
+            "label": "It carries ISDN, not Ethernet: no IP link",
+            "at": "cable"
+          },
+          {
+            "label": "Fix: move the cable to a LAN port",
+            "at": "screen"
+          }
+        ]
+      },
+      "onScreen": [
+        "Cable in the ISDN port",
+        "Same RJ-45 connector as the LAN ports",
+        "ISDN, not Ethernet: no IP link",
+        "Move it to a LAN port"
+      ],
+      "narration": "Now the technician's own laptop. There are 2 ways it can fail to connect with a Fleet Broadband terminal. The first is the wrong socket: the Ethernet cable is plugged into the terminal's ISDN port. That port has the same style RJ-45 connector as the LAN ports, RJ-45 being the plug used on network cables, so the cable fits. But the ISDN port carries ISDN signals, not Ethernet, so there's no IP link at all. Move the cable to a LAN port."
+    },
+    {
+      "id": "s73",
+      "keyTopic": 32,
+      "template": "comparison-table",
+      "params": {
+        "title": "Laptop can't connect: the wrong address",
+        "columns": [
+          "URL typed in the browser",
+          "Result"
+        ],
+        "rows": [
+          [
+            "The terminal's IP address",
+            "Reaches its built-in web server"
+          ],
+          [
+            "The wrong IP address",
+            "Can't find the terminal's web server"
+          ]
+        ]
+      },
+      "onScreen": [
+        "Right IP address: reaches the terminal's web server",
+        "Wrong IP address: can't find it"
+      ],
+      "narration": "The second way is the wrong address. An IP address is the number that identifies a device on a network, like a house address, and a URL is the web address you type into a browser. To reach the terminal's settings pages, you type the terminal's IP address into the laptop's web browser as the URL, and the browser finds the terminal's built-in web server, the part of the terminal that serves those pages. Enter the wrong IP address, and the browser cannot find the terminal's built-in web server, even though the cable and the terminal are fine. Check the address and try again."
+    },
+    {
+      "id": "s74",
       "keyTopic": 32,
       "template": "block-diagram",
       "params": {
         "title": "Why Standard IP slows down",
         "columns": 4,
         "blocks": [
-          { "id": "channel", "label": "Standard IP channel", "note": "Throughput shared by all its users" },
-          { "id": "busy", "label": "Channel \"busy\"", "note": "Many active users" },
-          { "id": "share", "label": "Smaller share for each", "note": "Same throughput, divided more ways" },
-          { "id": "slow", "label": "Lower observed bit rate", "note": "On the Fleet Broadband terminal" }
+          {
+            "id": "channel",
+            "label": "Standard IP channel",
+            "note": "Throughput shared by all its users"
+          },
+          {
+            "id": "busy",
+            "label": "Channel \"busy\"",
+            "note": "Many active users"
+          },
+          {
+            "id": "share",
+            "label": "Smaller share for each",
+            "note": "Same throughput, divided more ways"
+          },
+          {
+            "id": "slow",
+            "label": "Lower observed bit rate",
+            "note": "On the Fleet Broadband terminal"
+          }
         ],
         "links": [
-          { "from": "channel", "to": "busy", "label": "more users join" },
-          { "from": "busy", "to": "share" },
-          { "from": "share", "to": "slow" }
+          {
+            "from": "channel",
+            "to": "busy",
+            "label": "more users join"
+          },
+          {
+            "from": "busy",
+            "to": "share"
+          },
+          {
+            "from": "share",
+            "to": "slow"
+          }
         ]
       },
-      "onScreen": ["Standard IP throughput is shared", "Channel busy with many active users", "Smaller share for each user", "Lower observed bit rate"],
-      "narration": "Finally, a slow connection. A Fleet Broadband terminal's observed bit rate drops when a Standard IP satellite channel is busy with many active users. That's because Standard IP throughput is shared among everyone using the channel. As more users join, each one's share shrinks, and the bit rate you see falls. If a time critical application can't share, that's what the exclusive BGAN Streaming service is for."
+      "onScreen": [
+        "Standard IP throughput is shared",
+        "Channel busy with many active users",
+        "Smaller share for each user",
+        "Lower observed bit rate"
+      ],
+      "narration": "Finally, a connection that works but crawls. A Fleet Broadband terminal's observed bit rate, the number of bits per second it actually gets, drops when a Standard IP satellite channel is busy with many active users. Remember the shared road. Standard IP throughput, the total data the channel can carry, is shared among everyone using it at the time. As more users join, each one's share shrinks, like traffic at rush hour, and the bit rate your terminal observes falls. Nothing is broken. An application that can't tolerate that needs the exclusive Streaming service instead. The trap choices blame protocols like FTP, but those ride on TCP IP anyway."
+    },
+    {
+      "id": "s75",
+      "keyTopic": 32,
+      "template": "key-facts",
+      "params": {
+        "title": "Key facts to remember",
+        "items": [
+          "Inmarsat-C: receive 1530.0–1545.0 MHz, transmit higher, 1626.5–1645.5 MHz",
+          "LNA at the antenna sets the noise figure; Inmarsat-C is text only, RHC omni",
+          "GPS: 24 satellites, 6 planes, 20,200 km, 55°; at least 4; L1 1575.42, L2 1227.60",
+          "LRIT: GPS position sent over Inmarsat-C, an APR every 6 hours, 4 a day",
+          "Fleet Broadband: fax on 3.1 kHz audio, distress tests via 33. Faults: what's ruled out?"
+        ]
+      },
+      "onScreen": [
+        "Inmarsat-C frequencies",
+        "LNA; text only; RHC omni",
+        "GPS constellation and carriers",
+        "LRIT: every 6 hours, 4 a day",
+        "3.1 kHz fax, code 33, reason from symptoms"
+      ],
+      "narration": "Let's gather up the key facts. Inmarsat-C receives on 1530.0 to 1545.0 megahertz and transmits on the higher band, 1626.5 to 1645.5 megahertz. The low noise amplifier at the antenna sets the noise figure. Inmarsat-C carries text, never voice, through an RHC, omni-directional antenna. GPS uses 24 satellites in 6 planes at 20,200 kilometers and 55 degrees, needs at least 4 of them, and sends L1 on 1575.42 and L2 on 1227.60 megahertz. LRIT sends the GPS position over Inmarsat-C, an APR every 6 hours, 4 a day. On Fleet Broadband, fax uses 3.1 kilohertz audio, and distress tests are arranged through service number 33. And when troubleshooting, ask what each symptom rules out."
     }
   ],
   "checkpoints": [
-    { "after": "s4", "keyTopics": [23] },
-    { "after": "s8", "keyTopics": [24] },
-    { "after": "s11", "keyTopics": [25] },
-    { "after": "s15", "keyTopics": [26] },
-    { "after": "s18", "keyTopics": [27] },
-    { "after": "s22", "keyTopics": [28] },
-    { "after": "s26", "keyTopics": [29] },
-    { "after": "s29", "keyTopics": [30] },
-    { "after": "s32", "keyTopics": [31] },
-    { "after": "s35", "keyTopics": [32] }
+    {
+      "after": "s4",
+      "keyTopics": [
+        23
+      ],
+      "questions": [
+        "9-23C1"
+      ]
+    },
+    {
+      "after": "s7",
+      "keyTopics": [
+        23
+      ],
+      "questions": [
+        "9-23C2",
+        "9-23C3"
+      ]
+    },
+    {
+      "after": "s11",
+      "keyTopics": [
+        23
+      ],
+      "questions": [
+        "9-23C5",
+        "9-23C6",
+        "9-23C4"
+      ]
+    },
+    {
+      "after": "s15",
+      "keyTopics": [
+        24
+      ],
+      "questions": [
+        "9-24C6",
+        "9-24C5",
+        "9-24C3"
+      ]
+    },
+    {
+      "after": "s18",
+      "keyTopics": [
+        24
+      ],
+      "questions": [
+        "9-24C2",
+        "9-24C1"
+      ]
+    },
+    {
+      "after": "s22",
+      "keyTopics": [
+        24,
+        29
+      ],
+      "questions": [
+        "9-24C4",
+        "9-29C1"
+      ]
+    },
+    {
+      "after": "s25",
+      "keyTopics": [
+        29
+      ],
+      "questions": [
+        "9-29C4",
+        "9-29C5"
+      ]
+    },
+    {
+      "after": "s29",
+      "keyTopics": [
+        28
+      ],
+      "questions": [
+        "9-28C1",
+        "9-28C6"
+      ]
+    },
+    {
+      "after": "s33",
+      "keyTopics": [
+        28
+      ],
+      "questions": [
+        "9-28C5",
+        "9-28C4",
+        "9-28C2",
+        "9-28C3"
+      ]
+    },
+    {
+      "after": "s36",
+      "keyTopics": [
+        25
+      ],
+      "questions": [
+        "9-25C2",
+        "9-25C3",
+        "9-25C6"
+      ]
+    },
+    {
+      "after": "s39",
+      "keyTopics": [
+        25
+      ],
+      "questions": [
+        "9-25C5",
+        "9-25C1",
+        "9-25C4"
+      ]
+    },
+    {
+      "after": "s42",
+      "keyTopics": [
+        26,
+        29
+      ],
+      "questions": [
+        "9-26C1",
+        "9-29C6"
+      ]
+    },
+    {
+      "after": "s46",
+      "keyTopics": [
+        29
+      ],
+      "questions": [
+        "9-29C2",
+        "9-29C3"
+      ]
+    },
+    {
+      "after": "s50",
+      "keyTopics": [
+        27,
+        26
+      ],
+      "questions": [
+        "9-27C1",
+        "9-27C3",
+        "9-26C2",
+        "9-26C6"
+      ]
+    },
+    {
+      "after": "s53",
+      "keyTopics": [
+        27,
+        26
+      ],
+      "questions": [
+        "9-27C5",
+        "9-26C5",
+        "9-27C4"
+      ]
+    },
+    {
+      "after": "s57",
+      "keyTopics": [
+        27,
+        26
+      ],
+      "questions": [
+        "9-27C6",
+        "9-27C2",
+        "9-26C3",
+        "9-26C4"
+      ]
+    },
+    {
+      "after": "s60",
+      "keyTopics": [
+        30
+      ],
+      "questions": [
+        "9-30C1",
+        "9-30C2",
+        "9-30C3"
+      ]
+    },
+    {
+      "after": "s63",
+      "keyTopics": [
+        30,
+        32
+      ],
+      "questions": [
+        "9-30C4",
+        "9-30C6",
+        "9-30C5",
+        "9-32C5"
+      ]
+    },
+    {
+      "after": "s66",
+      "keyTopics": [
+        31
+      ],
+      "questions": [
+        "9-31C1",
+        "9-31C2",
+        "9-31C3"
+      ]
+    },
+    {
+      "after": "s69",
+      "keyTopics": [
+        31
+      ],
+      "questions": [
+        "9-31C4",
+        "9-31C5",
+        "9-31C6"
+      ]
+    },
+    {
+      "after": "s72",
+      "keyTopics": [
+        32
+      ],
+      "questions": [
+        "9-32C1",
+        "9-32C2",
+        "9-32C3"
+      ]
+    },
+    {
+      "after": "s75",
+      "keyTopics": [
+        32
+      ],
+      "questions": [
+        "9-32C4",
+        "9-32C6"
+      ]
+    }
   ],
   "video": null
 }
