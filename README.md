@@ -1,24 +1,19 @@
 # FCC Radio Study
 
-Offline study app for the FCC commercial radio exams: Element 3 (GROL), Element 8 (ship radar) and Element 9 (GMDSS maintainer). Narrated lessons, practice exams built like the real thing, and all 1,200 pool questions with explanations. Windows 10/11.
+Offline study app for the FCC commercial radio exams: Element 3 (GROL), Element 8 (ship radar) and Element 9 (GMDSS maintainer). Windows 10/11.
 
-## Get it
-
-Download **[FCC-Radio-Study.exe](https://github.com/pf0952/fcc-radio-study/releases/latest/download/FCC-Radio-Study.exe)** from the [latest release](https://github.com/pf0952/fcc-radio-study/releases/latest) and run it. Nothing to install. It's a big file (about 230 MB) because all 20 hours of lesson narration are built in.
-
-Your progress lives in a `FCC-Radio-Study-Data` folder next to the exe, so you can keep the whole thing on a USB stick. The exe isn't signed, so SmartScreen might complain: hit **More info → Run anyway**.
-
-## Build it yourself
-
-Needs Node, Rust and the Visual Studio C++ build tools.
+## Download
 
 ```
-npm ci
-npx tauri build --no-bundle
+curl.exe -L -o FCC-Radio-Study.exe https://github.com/pf0952/fcc-radio-study/releases/latest/download/FCC-Radio-Study.exe
 ```
 
-The exe lands in `src-tauri/target/release/`.
+Or with the GitHub CLI:
 
-## Heads up
+```
+gh release download --repo pf0952/fcc-radio-study --pattern FCC-Radio-Study.exe
+```
 
-The question pools are public domain (FCC, 2009, for Elements 3 and 8; U.S. Coast Guard, 2012, for Element 9). Check with your COLEM that they're still current before you test.
+Or grab it from the [latest release](https://github.com/pf0952/fcc-radio-study/releases/latest).
+
+Run the exe, nothing to install. If SmartScreen pops up, hit **More info → Run anyway**. Progress is saved in a folder next to the exe.
