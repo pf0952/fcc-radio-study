@@ -9,6 +9,8 @@
   import { progress, recordAnswer, saveProgress } from '../lib/progress.svelte';
   import { drawCheckpoint } from '../lib/quiz';
   import type { Checkpoint, Item, Lesson, Question } from '../lib/types.ts';
+  import { captionChunks, chunkAt } from './captions';
+  import { shrinkToFit } from './fit';
   import Scene from './Scene.svelte';
 
   let {
@@ -35,15 +37,18 @@
   let index = $state(startAt ?? Math.min(saved.scene, lesson.scenes.length - 1));
   let narration = $state<Narration | null>(null);
   let overlay = $state<Overlay | null>(null);
-  let showTranscript = $state(false);
   let showVideo = $state(false);
   let dialog = $state<HTMLDialogElement>();
+  let transcript = $state<HTMLDialogElement>();
   let advance: ReturnType<typeof setTimeout> | undefined;
 
   const scene = $derived(lesson.scenes[index]);
   // Before the narration starts (e.g. after jumping while paused) the whole scene is shown.
   const fraction = $derived(narration && (narration.playing || narration.progress > 0) ? narration.progress / narration.text.length : 1);
   const spoken = $derived(narration && narration.progress > 0 && !narration.done ? narration.progress : 0);
+  // Captions show the piece of the narration being spoken, so they always fit in two lines.
+  const chunks = $derived(captionChunks(scene.narration));
+  const chunk = $derived(chunks[chunkAt(chunks, narration?.progress ?? 0)]);
   const checkpointAfter = $derived(new Set(lesson.checkpoints.map((c) => c.after)));
 
   function startScene(i: number, play: boolean) {
@@ -105,6 +110,11 @@
     else continueAfter(after);
   }
 
+  function openTranscript() {
+    transcript?.showModal();
+    transcript?.querySelector('.current')?.scrollIntoView({ block: 'center' });
+  }
+
   function togglePlay() {
     if (!narration) return;
     if (narration.playing) {
@@ -158,35 +168,57 @@
 
 <div class="player">
   <header>
-    <button class="link" onclick={onexit}>← Lessons</button>
-    <h1>{lesson.id} {lesson.title}</h1>
-    <p class="muted">Element {lesson.element} · key topics {lesson.keyTopics[0]}–{lesson.keyTopics.at(-1)} · {lesson.scenes.length} scenes</p>
+    <div class="top">
+      <button class="link" onclick={onexit}>← Lessons</button>
+      <div class="group">
+        <label>
+          Speed
+          <select value={prefs.rate} onchange={(e) => setRate(Number(e.currentTarget.value))}>
+            {#each [0.75, 1, 1.25, 1.5] as r (r)}<option value={r}>{r}×</option>{/each}
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" bind:checked={prefs.captions} onchange={saveProgress} /> Captions</label>
+        <button class="secondary small" onclick={openTranscript}>Transcript</button>
+        {#if video}
+          <button class="secondary small" aria-pressed={showVideo} onclick={() => ((showVideo = !showVideo), narration?.pause())}>Watch video</button>
+        {/if}
+      </div>
+    </div>
+    <div class="title">
+      <h1>{lesson.id} {lesson.title}</h1>
+      <p class="muted">Element {lesson.element} · key topics {lesson.keyTopics[0]}–{lesson.keyTopics.at(-1)} · {lesson.scenes.length} scenes</p>
+    </div>
   </header>
 
+  <!-- The stage takes whatever height is left, as wide as 16:9 allows, so the player never scrolls. -->
   <div class="stage-wrap">
-    {#if showVideo && video}
-      <!-- svelte-ignore a11y_media_has_caption -->
-      <video src={video} controls class="video"></video>
-    {:else}
-      <Scene {scene} {fraction} />
-    {/if}
-    {#if overlay?.kind === 'end'}
-      <div class="end">
-        <h2>Lesson complete</h2>
-        <p>Next, the section quiz: 5 questions from this lesson's key topics. Get 4 right to pass.</p>
-        <div class="buttons">
-          <button class="primary" onclick={onquiz}>Take the section quiz</button>
-          <button class="secondary" onclick={() => startScene(0, true)}>Replay lesson</button>
-          <button class="secondary" onclick={onexit}>Back to lessons</button>
+    <div class="stage-box">
+      {#if showVideo && video}
+        <!-- svelte-ignore a11y_media_has_caption -->
+        <video src={video} controls class="video"></video>
+      {:else}
+        <Scene {scene} {fraction} />
+      {/if}
+      {#if overlay?.kind === 'end'}
+        <div class="end">
+          <h2>Lesson complete</h2>
+          <p>Next, the section quiz: 5 questions from this lesson's key topics. Get 4 right to pass.</p>
+          <div class="buttons">
+            <button class="primary" onclick={onquiz}>Take the section quiz</button>
+            <button class="secondary" onclick={() => startScene(0, true)}>Replay lesson</button>
+            <button class="secondary" onclick={onexit}>Back to lessons</button>
+          </div>
         </div>
-      </div>
-    {/if}
+      {/if}
+    </div>
   </div>
 
   {#if prefs.captions && !showVideo}
-    <p class="captions" aria-live="off">
-      <span class="spoken">{scene.narration.slice(0, spoken)}</span>{scene.narration.slice(spoken)}
-    </p>
+    {#key chunk}
+      <p class="captions" aria-live="off" use:shrinkToFit>
+        {#if spoken > chunk[0]}<span class="spoken">{scene.narration.slice(chunk[0], Math.min(spoken, chunk[1]))}</span>{/if}{scene.narration.slice(Math.max(spoken, chunk[0]), chunk[1])}
+      </p>
+    {/key}
   {/if}
 
   <div class="timeline" aria-label="Scenes">
@@ -203,45 +235,32 @@
     {/each}
   </div>
 
-  <div class="controls">
-    <div class="group">
-      <button class="secondary" onclick={() => startScene(index - 1, playingNow())} disabled={index === 0} aria-label="Previous scene">⏮</button>
-      <button class="primary play" onclick={togglePlay} aria-label={narration?.playing ? 'Pause' : 'Play'}>{narration?.playing ? 'Pause' : 'Play'}</button>
-      <button class="secondary" onclick={() => startScene(index + 1, playingNow())} disabled={index === last} aria-label="Next scene">⏭</button>
-      <button class="secondary" onclick={() => startScene(index, true)}>Replay scene</button>
-      <span class="muted count">Scene {index + 1} of {lesson.scenes.length}</span>
-    </div>
-    <div class="group">
-      <label>
-        Speed
-        <select value={prefs.rate} onchange={(e) => setRate(Number(e.currentTarget.value))}>
-          {#each [0.75, 1, 1.25, 1.5] as r (r)}<option value={r}>{r}×</option>{/each}
-        </select>
-      </label>
-      <label class="check"><input type="checkbox" bind:checked={prefs.captions} onchange={saveProgress} /> Captions</label>
-      <button class="secondary" aria-pressed={showTranscript} onclick={() => (showTranscript = !showTranscript)}>Transcript</button>
-      {#if video}
-        <button class="secondary" aria-pressed={showVideo} onclick={() => ((showVideo = !showVideo), narration?.pause())}>Watch video</button>
-      {/if}
-    </div>
+  <div class="controls group">
+    <button class="secondary" onclick={() => startScene(index - 1, playingNow())} disabled={index === 0} aria-label="Previous scene">⏮</button>
+    <button class="primary play" onclick={togglePlay} aria-label={narration?.playing ? 'Pause' : 'Play'}>{narration?.playing ? 'Pause' : 'Play'}</button>
+    <button class="secondary" onclick={() => startScene(index + 1, playingNow())} disabled={index === last} aria-label="Next scene">⏭</button>
+    <button class="secondary" onclick={() => startScene(index, true)}>Replay scene</button>
+    <span class="muted count">Scene {index + 1} of {lesson.scenes.length}</span>
   </div>
-
-  {#if showTranscript}
-    <section class="card transcript" aria-label="Transcript">
-      {#each lesson.keyTopics as t (t)}
-        <h2>Key topic {t}: {topicTitle(t)}</h2>
-        {#each lesson.scenes as s, i (s.id)}
-          {#if s.keyTopic === t}
-            <p class:current={i === index}>
-              <button class="link" onclick={() => startScene(i, false)}>Scene {i + 1}</button>
-              {s.narration}
-            </p>
-          {/if}
-        {/each}
-      {/each}
-    </section>
-  {/if}
 </div>
+
+<dialog bind:this={transcript} class="transcript" aria-labelledby="transcript-title">
+  <div class="transcript-head">
+    <h2 id="transcript-title">Transcript</h2>
+    <button class="secondary small" onclick={() => transcript?.close()}>Close</button>
+  </div>
+  {#each lesson.keyTopics as t (t)}
+    <h3>Key topic {t}: {topicTitle(t)}</h3>
+    {#each lesson.scenes as s, i (s.id)}
+      {#if s.keyTopic === t}
+        <p class:current={i === index}>
+          <button class="link" onclick={() => (transcript?.close(), startScene(i, false))}>Scene {i + 1}</button>
+          {s.narration}
+        </p>
+      {/if}
+    {/each}
+  {/each}
+</dialog>
 
 {#if overlay?.kind === 'checkpoint'}
   <dialog bind:this={dialog} class="checkpoint" aria-label="Checkpoint question" oncancel={(e) => e.preventDefault()}>
@@ -261,20 +280,47 @@
 {/if}
 
 <style>
+  /*
+   * The player fills the window height. Its width is what a 16:9 stage can use at this height (the rest of the
+   * player is about 15.3rem tall, main's padding 3rem), so the captions and controls line up with the stage.
+   */
   .player {
-    max-width: 68rem;
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: calc((100vh - 18.3rem) * 16 / 9);
+    margin: 0 auto;
   }
 
-  header h1 {
-    margin: 0.5rem 0 0;
+  .title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 1rem;
+    margin: 0.35rem 0 0.75rem;
   }
 
-  header p {
-    margin: 0.2rem 0 1rem;
+  .title h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .title p {
+    margin: 0;
   }
 
   .stage-wrap {
+    flex: 1 1 0;
+    min-height: 12rem;
+    max-height: calc(100cqw * 9 / 16);
+    container-type: size;
+  }
+
+  .stage-box {
     position: relative;
+    width: min(100cqw, 100cqh * 16 / 9);
+    margin: 0 auto;
   }
 
   .video {
@@ -307,8 +353,11 @@
     flex-wrap: wrap;
   }
 
+  /* Two lines, sized in rem so shrinkToFit can make a long piece smaller without shrinking the box. */
   .captions {
-    min-height: 3.2em;
+    flex: none;
+    height: calc(2 * 1.05rem * 1.5 + 1.4rem + 2px);
+    overflow: hidden;
     margin: 0.75rem 0 0;
     padding: 0.7rem 1rem;
     border-radius: var(--radius);
@@ -324,6 +373,7 @@
   }
 
   .timeline {
+    flex: none;
     display: flex;
     gap: 3px;
     margin: 0.75rem 0;
@@ -361,9 +411,10 @@
     outline-offset: 1px;
   }
 
-  .controls {
+  .top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
   }
@@ -396,10 +447,27 @@
   }
 
   .transcript {
-    margin-top: 1rem;
+    width: min(46rem, 92vw);
+    max-width: none;
+    max-height: 85vh;
+    padding-top: 0;
   }
 
-  .transcript h2 {
+  .transcript-head {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0 0.5rem;
+    background: var(--surface);
+  }
+
+  .transcript-head h2 {
+    margin: 0;
+  }
+
+  .transcript h3 {
     font-size: 1rem;
     margin: 1rem 0 0.4rem;
   }
@@ -419,8 +487,9 @@
     font-weight: 600;
   }
 
+  /* Wide enough for the question card to put a figure beside the choices. */
   .checkpoint {
-    width: min(46rem, 92vw);
+    width: min(52rem, 92vw);
     max-width: none;
   }
 

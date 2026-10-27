@@ -75,73 +75,75 @@
   </p>
 {/if}
 
-<section class="card" aria-labelledby="settings-look">
-  <h2 id="settings-look">Appearance</h2>
-  <fieldset>
-    <legend>Theme</legend>
-    <label><input type="radio" name="theme" value="system" bind:group={progress.prefs.theme} onchange={saveProgress} /> Match Windows</label>
-    <label><input type="radio" name="theme" value="light" bind:group={progress.prefs.theme} onchange={saveProgress} /> Light</label>
-    <label><input type="radio" name="theme" value="dark" bind:group={progress.prefs.theme} onchange={saveProgress} /> Dark</label>
-  </fieldset>
-  <label class="row">
-    Text size
-    <select bind:value={progress.prefs.textSize} onchange={saveProgress}>
-      {#each SIZES as s (s.value)}<option value={s.value}>{s.label}</option>{/each}
-    </select>
-  </label>
-  <p class="muted note">The lesson scenes scale with the window; the text size changes everything else, including the captions.</p>
-</section>
-
-<section class="card" aria-labelledby="settings-progress">
-  <h2 id="settings-progress">Your progress</h2>
-  <p class="muted">{summary(progress)}.</p>
-  <div class="buttons">
-    <button class="secondary" onclick={exportProgress}>Export progress</button>
-    <button class="secondary" onclick={() => fileInput.click()}>Import progress…</button>
-    <input bind:this={fileInput} type="file" accept=".json,application/json" class="sr-only" tabindex="-1" aria-hidden="true" onchange={importChosen} />
-  </div>
-  <p class="muted note">
-    Export saves everything to one .json file in your Downloads folder. Import on another computer replaces the progress there; settings stay as they
-    are.
-  </p>
-
-  <h3>Reset</h3>
-  <div class="buttons">
-    <label>
-      <span class="sr-only">What to reset</span>
-      <select bind:value={resetTarget}>
-        <option value="all">All progress</option>
-        {#each elements as el (el.element)}<option value={String(el.element)}>Element {el.element} only</option>{/each}
+<div class="cards">
+  <section class="card" aria-labelledby="settings-look">
+    <h2 id="settings-look">Appearance</h2>
+    <fieldset>
+      <legend>Theme</legend>
+      <label><input type="radio" name="theme" value="system" bind:group={progress.prefs.theme} onchange={saveProgress} /> Match Windows</label>
+      <label><input type="radio" name="theme" value="light" bind:group={progress.prefs.theme} onchange={saveProgress} /> Light</label>
+      <label><input type="radio" name="theme" value="dark" bind:group={progress.prefs.theme} onchange={saveProgress} /> Dark</label>
+    </fieldset>
+    <label class="row">
+      Text size
+      <select bind:value={progress.prefs.textSize} onchange={saveProgress}>
+        {#each SIZES as s (s.value)}<option value={s.value}>{s.label}</option>{/each}
       </select>
     </label>
-    <button class="danger" onclick={() => resetDialog.showModal()}>Reset…</button>
-  </div>
-</section>
+    <p class="muted note">The whole app scales with the window. Text size makes everything bigger or smaller on top of that; lesson scenes always fill their stage.</p>
+  </section>
 
-<section class="card" aria-labelledby="settings-data">
-  <h2 id="settings-data">Data folder</h2>
-  {#await dataInfo()}
-    <p class="muted">Checking…</p>
-  {:then info}
-    <p><code>{info.path}</code></p>
-    {#if info.portable}
-      <p class="muted">Portable: the folder sits next to the program, so your progress travels with it on a USB stick.</p>
-    {:else}
-      <p class="muted">The folder next to the program isn't writable, so your progress is stored in your Windows profile (%APPDATA%) instead.</p>
-    {/if}
-  {:catch err}
-    <p class="error">Could not read the data folder: {err}</p>
-  {/await}
-</section>
+  <section class="card" aria-labelledby="settings-progress">
+    <h2 id="settings-progress">Your progress</h2>
+    <p class="muted">{summary(progress)}.</p>
+    <div class="buttons">
+      <button class="secondary" onclick={exportProgress}>Export progress</button>
+      <button class="secondary" onclick={() => fileInput.click()}>Import progress…</button>
+      <input bind:this={fileInput} type="file" accept=".json,application/json" class="sr-only" tabindex="-1" aria-hidden="true" onchange={importChosen} />
+    </div>
+    <p class="muted note">
+      Export saves everything to one .json file in your Downloads folder. Import on another computer replaces the progress there; settings stay as they
+      are.
+    </p>
 
-<section class="card" aria-labelledby="settings-dev">
-  <h2 id="settings-dev">Developer options</h2>
-  <label class="row">
-    <input type="checkbox" bind:checked={progress.prefs.unlockAll} onchange={saveProgress} />
-    Unlock everything
-  </label>
-  <p class="muted note">Opens every practice exam without finishing the lessons and section quizzes. For testing; leave it off to study.</p>
-</section>
+    <h3>Reset</h3>
+    <div class="buttons">
+      <label>
+        <span class="sr-only">What to reset</span>
+        <select bind:value={resetTarget}>
+          <option value="all">All progress</option>
+          {#each elements as el (el.element)}<option value={String(el.element)}>Element {el.element} only</option>{/each}
+        </select>
+      </label>
+      <button class="danger" onclick={() => resetDialog.showModal()}>Reset…</button>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="settings-data">
+    <h2 id="settings-data">Data folder</h2>
+    {#await dataInfo()}
+      <p class="muted">Checking…</p>
+    {:then info}
+      <p><code>{info.path}</code></p>
+      {#if info.portable}
+        <p class="muted">Portable: the folder sits next to the program, so your progress travels with it on a USB stick.</p>
+      {:else}
+        <p class="muted">The folder next to the program isn't writable, so your progress is stored in your Windows profile (%APPDATA%) instead.</p>
+      {/if}
+    {:catch err}
+      <p class="error">Could not read the data folder: {err}</p>
+    {/await}
+  </section>
+
+  <section class="card" aria-labelledby="settings-dev">
+    <h2 id="settings-dev">Developer options</h2>
+    <label class="row">
+      <input type="checkbox" bind:checked={progress.prefs.unlockAll} onchange={saveProgress} />
+      Unlock everything
+    </label>
+    <p class="muted note">Opens every practice exam without finishing the lessons and section quizzes. For testing; leave it off to study.</p>
+  </section>
+</div>
 
 <dialog bind:this={importDialog} aria-labelledby="import-title" onclose={() => (pending = null)}>
   <h2 id="import-title">Replace your progress?</h2>
@@ -168,6 +170,17 @@
 </dialog>
 
 <style>
+  /* Two columns when there is room, so the page fits the window. */
+  .cards {
+    columns: 2 24rem;
+    column-gap: 1rem;
+  }
+
+  .cards > .card {
+    break-inside: avoid;
+    margin: 0 0 1rem;
+  }
+
   .message {
     margin: 0 0 1rem;
     border-left: 4px solid var(--good);

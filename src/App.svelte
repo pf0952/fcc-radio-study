@@ -29,7 +29,7 @@
     const root = document.documentElement;
     if (progress.prefs.theme === 'system') delete root.dataset.theme;
     else root.dataset.theme = progress.prefs.theme;
-    root.style.setProperty('--text-scale', `${progress.prefs.textSize}%`);
+    root.style.setProperty('--text-scale', String(progress.prefs.textSize / 100));
   });
 
   function onkeydown(e: KeyboardEvent) {
@@ -246,7 +246,7 @@
 
   main {
     overflow-y: auto;
-    padding: 2rem 2.5rem 3rem;
+    padding: 1.5rem 2.5rem;
   }
 
   main:focus {

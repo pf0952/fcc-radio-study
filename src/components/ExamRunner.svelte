@@ -117,29 +117,31 @@
   </header>
 
   <div class="layout">
-    <section class="card current" aria-label="Question {exam.current + 1} of {exam.items.length}">
-      <div class="question-head">
-        <h2>Question {exam.current + 1} of {exam.items.length}</h2>
-        <button class="secondary small" aria-pressed={item.flagged} onclick={toggleFlag}>
-          {item.flagged ? 'Flagged for review' : 'Flag for review'}
-        </button>
-      </div>
-      {#key item.q}
-        <QuestionCard {question} {item} reveal={study && item.chosen !== null} locked={study && item.chosen !== null} onchoose={choose} />
-      {/key}
-      <div class="nav-buttons">
-        <button class="secondary" disabled={exam.current === 0} onclick={() => goTo(exam.current - 1)}>Previous</button>
-        {#if exam.current < exam.items.length - 1}
-          <button class="primary" onclick={() => goTo(exam.current + 1)}>Next</button>
-        {:else}
-          <button class="primary" onclick={() => confirm.showModal()}>Review and submit</button>
-        {/if}
-      </div>
-    </section>
-
-    <div class="side">
+    <div class="main-col">
+      <section class="card current" aria-label="Question {exam.current + 1} of {exam.items.length}">
+        <div class="question-head">
+          <h2>Question {exam.current + 1} of {exam.items.length}</h2>
+          <button class="secondary small" aria-pressed={item.flagged} onclick={toggleFlag}>
+            {item.flagged ? 'Flagged for review' : 'Flag for review'}
+          </button>
+        </div>
+        {#key item.q}
+          <QuestionCard {question} {item} reveal={study && item.chosen !== null} locked={study && item.chosen !== null} onchoose={choose} />
+        {/key}
+        <div class="nav-buttons">
+          <button class="secondary" disabled={exam.current === 0} onclick={() => goTo(exam.current - 1)}>Previous</button>
+          {#if exam.current < exam.items.length - 1}
+            <button class="primary" onclick={() => goTo(exam.current + 1)}>Next</button>
+          {:else}
+            <button class="primary" onclick={() => confirm.showModal()}>Review and submit</button>
+          {/if}
+        </div>
+      </section>
       <!-- The calculator is offered in study mode only, never in exam mode. -->
       {#if study && showCalc}<Calculator onclose={() => (showCalc = false)} />{/if}
+    </div>
+
+    <div class="side">
       <nav class="card grid-panel" aria-label="Question navigator">
         <h2>Questions</h2>
         <div class="grid">
@@ -189,7 +191,12 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 1rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .bar h1 {
+    font-size: 1.5rem;
+    margin: 0;
   }
 
   .bar p {
@@ -215,9 +222,19 @@
 
   .layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 17rem;
+    grid-template-columns: minmax(0, 1fr) 14rem;
     gap: 1rem;
     align-items: start;
+  }
+
+  .main-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .main-col > :global(.card) {
+    margin: 0;
   }
 
   .question-head {
@@ -225,7 +242,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .question-head h2 {
@@ -237,7 +254,7 @@
   .nav-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 1.25rem;
+    margin-top: 0.75rem;
   }
 
   .side {
@@ -252,21 +269,26 @@
     margin: 0;
   }
 
+  .grid-panel {
+    padding: 1rem;
+  }
+
   .grid-panel h2 {
     font-size: 1rem;
   }
 
+  /* Six across, so even a 100-question exam fits beside the question. */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(2.1rem, 1fr));
-    gap: 0.3rem;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.25rem;
   }
 
   .cell {
     position: relative;
-    height: 2.1rem;
+    height: 1.75rem;
     padding: 0;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-variant-numeric: tabular-nums;
     background: var(--surface);
     color: var(--text);

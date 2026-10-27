@@ -83,7 +83,8 @@
     </section>
   {/if}
 
-  <div class="elements">
+  <!-- Three across when the exams are open; the longer checklists of locked elements need the width of two. -->
+  <div class="elements" class:locked-any={elements.some((el) => !unlockStatus(el.element, subelementsOf(el.element), progress, progress.prefs.unlockAll).unlocked)}>
     {#each elements as el (el.element)}
       {@const o = options[el.element]}
       {@const past = progress.exams.filter((e) => e.element === el.element).toReversed()}
@@ -179,9 +180,13 @@
 
   .elements {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: 1rem;
     align-items: start;
+  }
+
+  .elements.locked-any {
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
   }
 
   .elements .card {
@@ -193,7 +198,8 @@
     padding: 0;
     margin: 0.75rem 0 0.5rem;
     display: flex;
-    gap: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
   }
 
   legend {

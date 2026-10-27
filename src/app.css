@@ -18,7 +18,8 @@
   --radius: 10px;
   --shadow: 0 1px 2px rgb(16 24 40 / 0.06), 0 1px 3px rgb(16 24 40 / 0.08);
   color-scheme: light;
-  font-size: var(--text-scale, 100%);
+  /* Everything is sized in rem, so the whole app scales with the window: 16px at the default 1200×820, then the text-size setting. */
+  font-size: calc(clamp(12px, min(1.3333vw, 1.9512vh), 32px) * var(--text-scale, 1));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -111,7 +112,7 @@ code {
 
 .lead {
   color: var(--muted);
-  margin: 0 0 1.75rem;
+  margin: 0 0 1.5rem;
   max-width: 46rem;
 }
 

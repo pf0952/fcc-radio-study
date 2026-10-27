@@ -97,10 +97,9 @@
         </ol>
         <p class="muted how">
           {ready.examAverage === null
-            ? 'Your recent accuracy in each subelement'
-            : `${ready.examCount === 1 ? 'Your exam score' : `Your last ${ready.examCount} exams`} (${pct(ready.examAverage)}%) and recent accuracy in each subelement`}, weighted
-          like the real exam.
-          Each bar is your last {RECENT_ANSWERS} answers in that subelement.
+            ? 'Your recent accuracy'
+            : `${ready.examCount === 1 ? 'Your exam score' : `Your last ${ready.examCount} exams`} (${pct(ready.examAverage)}%) and recent accuracy`} per subelement
+          (last {RECENT_ANSWERS} answers each), weighted like the real exam.
         </p>
       </div>
 
@@ -112,8 +111,8 @@
         <div><dt>Missed questions due</dt><dd>{due}</dd></div>
       </dl>
       <p class="muted rule">
-        Exam: {el.exam.questions} questions, pass with {el.exam.passMark} correct.
-        {#if !lock.unlocked}Practice exams unlock when every lesson and section quiz is done ({lock.done} of {lock.total}).{/if}
+        Exam: {el.exam.questions} questions, pass with {el.exam.passMark}.
+        {#if !lock.unlocked}Opens after every lesson and section quiz ({lock.done} of {lock.total} done).{/if}
       </p>
       <div class="buttons">
         <button class="primary" onclick={() => go('exams')}>{lock.unlocked ? 'Practice exam' : 'Practice exams (locked)'}</button>
@@ -125,6 +124,7 @@
 
 <style>
   .continue {
+    padding-block: 0.9rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -152,6 +152,10 @@
     margin: 0;
     display: flex;
     flex-direction: column;
+  }
+
+  .grid h2 {
+    font-size: 1.1rem;
   }
 
   .eyebrow {
@@ -207,7 +211,7 @@
     gap: 2px;
     list-style: none;
     padding: 0;
-    margin: 0.75rem 0 0;
+    margin: 0.5rem 0 0;
   }
 
   .subs li {
@@ -222,7 +226,7 @@
     position: relative;
     width: 100%;
     max-width: 1.4rem;
-    height: 2.2rem;
+    height: 1.8rem;
     border-radius: 3px 3px 0 0;
     background: var(--surface-2);
   }
@@ -251,9 +255,15 @@
 
   dl {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem 1rem;
-    margin: 0.5rem 0 1rem;
+    gap: 0.15rem;
+    margin: 0.25rem 0 0.75rem;
+  }
+
+  dl div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
   }
 
   dt {
@@ -264,10 +274,11 @@
   dd {
     margin: 0;
     font-weight: 600;
+    text-align: right;
   }
 
   .rule {
-    margin: auto 0 1rem;
+    margin: auto 0 0.75rem;
     font-size: 0.9rem;
   }
 

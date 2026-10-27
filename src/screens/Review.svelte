@@ -96,7 +96,7 @@
 <style>
   .elements {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: 1rem;
     align-items: start;
   }
@@ -136,11 +136,16 @@
 
   .sub-drill {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.5rem;
   }
 
+  .sub-drill label {
+    max-width: 100%;
+  }
+
   select {
-    max-width: 14rem;
+    max-width: min(14rem, 100%);
   }
 </style>

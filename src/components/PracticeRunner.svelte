@@ -134,7 +134,7 @@
   .next {
     display: flex;
     justify-content: flex-end;
-    margin-top: 1.25rem;
+    margin-top: 0.75rem;
   }
 
   .score {

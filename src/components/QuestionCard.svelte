@@ -25,43 +25,45 @@
 
 <article class="question" aria-labelledby="stem-{question.id}">
   <p class="meta">{question.id} · Key topic {question.keyTopic}: {question.keyTopicTitle}</p>
-  <p class="stem" id="stem-{question.id}">{@html rich(question.stem)}</p>
+  <div class="body" class:with-figure={question.figure && figure}>
+    <p class="stem" id="stem-{question.id}">{@html rich(question.stem)}</p>
 
-  {#if question.figure}
-    {#if figure}
-      <figure>
-        <img src={figure} alt="Figure {question.figure} from the official question pool" />
-      </figure>
-    {:else}
-      <p class="missing-figure">
-        Figure {question.figure} - see the official pool.
-        <button class="link" onclick={() => openUrl(elementInfo(question.element).pool.url)}>Open the official pool</button>
-      </p>
+    {#if question.figure}
+      {#if figure}
+        <figure>
+          <img src={figure} alt="Figure {question.figure} from the official question pool" />
+        </figure>
+      {:else}
+        <p class="missing-figure">
+          Figure {question.figure} - see the official pool.
+          <button class="link" onclick={() => openUrl(elementInfo(question.element).pool.url)}>Open the official pool</button>
+        </p>
+      {/if}
     {/if}
-  {/if}
 
-  <div class="choices" role="group" aria-label="Answer choices">
-    {#each item.order as original, pos (original)}
-      {@const chosen = item.chosen === original}
-      {@const keyed = original === question.answer}
-      <button
-        class="choice"
-        class:chosen
-        class:right={reveal && keyed}
-        class:wrong={reveal && chosen && !keyed}
-        aria-pressed={chosen}
-        aria-disabled={locked}
-        onclick={() => !locked && onchoose?.(original)}
-      >
-        <span class="letter" aria-hidden="true">{'ABCD'[pos]}</span>
-        <span class="text">{@html rich(question.choices[original])}</span>
-        {#if reveal && keyed}
-          <span class="tag">Correct answer</span>
-        {:else if reveal && chosen}
-          <span class="tag">Your answer</span>
-        {/if}
-      </button>
-    {/each}
+    <div class="choices" role="group" aria-label="Answer choices">
+      {#each item.order as original, pos (original)}
+        {@const chosen = item.chosen === original}
+        {@const keyed = original === question.answer}
+        <button
+          class="choice"
+          class:chosen
+          class:right={reveal && keyed}
+          class:wrong={reveal && chosen && !keyed}
+          aria-pressed={chosen}
+          aria-disabled={locked}
+          onclick={() => !locked && onchoose?.(original)}
+        >
+          <span class="letter" aria-hidden="true">{'ABCD'[pos]}</span>
+          <span class="text">{@html rich(question.choices[original])}</span>
+          {#if reveal && keyed}
+            <span class="tag">Correct answer</span>
+          {:else if reveal && chosen}
+            <span class="tag">Your answer</span>
+          {/if}
+        </button>
+      {/each}
+    </div>
   </div>
 
   {#if reveal}
@@ -83,7 +85,7 @@
   }
 
   .stem {
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
     font-size: 1.15rem;
     font-weight: 600;
     line-height: 1.45;
@@ -99,11 +101,44 @@
     max-width: 100%;
   }
 
+  /* Capped in height too, so a tall diagram still leaves the choices on screen. */
   img {
     display: block;
     width: 30rem;
     max-width: 100%;
     height: auto;
+    max-height: 12rem;
+    object-fit: contain;
+  }
+
+  .question {
+    container-type: inline-size;
+  }
+
+  /* When the card is wide, the figure sits beside the stem and choices instead of above them. */
+  @container (min-width: 44rem) {
+    .with-figure {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 40%);
+      grid-template-rows: auto 1fr;
+      column-gap: 1.25rem;
+      align-items: start;
+    }
+
+    .with-figure .stem,
+    .with-figure .choices {
+      grid-column: 1;
+    }
+
+    .with-figure figure {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      margin: 0;
+    }
+
+    .with-figure img {
+      max-height: 16rem;
+    }
   }
 
   .missing-figure {
@@ -114,16 +149,16 @@
 
   .choices {
     display: grid;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .choice {
     display: grid;
-    grid-template-columns: 2rem 1fr auto;
+    grid-template-columns: 1.75rem 1fr auto;
     align-items: center;
     gap: 0.75rem;
     text-align: left;
-    padding: 0.7rem 0.9rem;
+    padding: 0.45rem 0.9rem;
     background: var(--surface);
     color: var(--text);
     border: 1px solid var(--border);
@@ -141,8 +176,8 @@
   .letter {
     display: grid;
     place-items: center;
-    width: 2rem;
-    height: 2rem;
+    width: 1.75rem;
+    height: 1.75rem;
     border-radius: 50%;
     background: var(--surface-2);
     font-weight: 600;
@@ -186,8 +221,8 @@
   }
 
   .feedback {
-    margin-top: 1rem;
-    padding: 0.9rem 1.1rem;
+    margin-top: 0.75rem;
+    padding: 0.7rem 1rem;
     border-radius: var(--radius);
     border-left: 4px solid var(--bad);
     background: var(--surface-2);
