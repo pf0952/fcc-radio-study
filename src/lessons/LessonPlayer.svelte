@@ -2,8 +2,8 @@
   import { onMount } from 'svelte';
   import QuestionCard from '../components/QuestionCard.svelte';
   import { newItem } from '../lib/exam.ts';
-  import { choiceKey, fromInside, ignoreShortcut } from '../lib/keys';
-  import { firstSceneOf, narrationOf, replaySceneOf, videoUrl } from '../lib/lessons';
+  import { choiceKey, formatClock, formatEstimate, fromInside, ignoreShortcut } from '../lib/keys';
+  import { estimateOf, narrationOf, replaySceneOf, sceneSeconds, videoUrl } from '../lib/lessons';
   import { Narration } from '../lib/narrator.svelte';
   import { pools } from '../lib/pools';
   import { progress, recordAnswer, saveProgress } from '../lib/progress.svelte';
@@ -21,6 +21,8 @@
   }: { lesson: Lesson; startAt?: number | null; onquiz: () => void; onexit: () => void } = $props();
 
   type Overlay = { kind: 'checkpoint'; after: number; question: Question; item: Item } | { kind: 'end' };
+
+  const SKIP_SECONDS = 5;
 
   // svelte-ignore state_referenced_locally
   progress.lessons[lesson.id] ??= { scene: 0, completed: false, completedAt: null };
@@ -41,17 +43,38 @@
   let dialog = $state<HTMLDialogElement>();
   let transcript = $state<HTMLDialogElement>();
   let advance: ReturnType<typeof setTimeout> | undefined;
+  /** Where the scrub bar is being dragged to, in seconds into the lesson. */
+  let scrub = $state<number | null>(null);
+  let resumeAfterScrub = false;
 
-  const scene = $derived(lesson.scenes[index]);
+  const lengths = $derived(lesson.scenes.map((s) => sceneSeconds(lesson.id, s)));
+  /** Where each scene starts in the lesson, in seconds; the extra last entry is the lesson's length. */
+  const starts = $derived(lengths.reduce((all, s, i) => [...all, all[i] + s], [0]));
+  const total = $derived(starts[lengths.length]);
+  const sceneAt = (t: number) => Math.min(last, starts.findLastIndex((s) => s <= t));
+
+  const elapsed = $derived(starts[index] + (narration?.time ?? 0));
+  const position = $derived(scrub ?? elapsed);
+  // While scrubbing, the stage and captions follow the bar.
+  const shown = $derived(scrub === null ? index : sceneAt(scrub));
+  const scene = $derived(lesson.scenes[shown]);
+  /** Characters of this scene's narration reached by the player or the scrub bar. */
+  const reached = $derived(scrub === null ? (narration?.progress ?? 0) : Math.floor(((scrub - starts[shown]) / lengths[shown]) * scene.narration.length));
   // Before the narration starts (e.g. after jumping while paused) the whole scene is shown.
-  const fraction = $derived(narration && (narration.playing || narration.progress > 0) ? narration.progress / narration.text.length : 1);
-  const spoken = $derived(narration && narration.progress > 0 && !narration.done ? narration.progress : 0);
+  const fraction = $derived(scrub !== null || narration?.playing || reached > 0 ? reached / scene.narration.length : 1);
+  const spoken = $derived(narration?.done && scrub === null ? 0 : reached);
   // Captions show the piece of the narration being spoken, so they always fit in two lines.
   const chunks = $derived(captionChunks(scene.narration));
-  const chunk = $derived(chunks[chunkAt(chunks, narration?.progress ?? 0)]);
-  const checkpointAfter = $derived(new Set(lesson.checkpoints.map((c) => c.after)));
+  const chunk = $derived(chunks[chunkAt(chunks, reached)]);
+  const checkpointMarks = $derived(lesson.checkpoints.map((c) => starts[lesson.scenes.findIndex((s) => s.id === c.after) + 1] / total));
+  // The opening title card also says how long the lesson takes.
+  const staged = $derived.by(() => {
+    if (shown > 0) return scene;
+    const length = formatEstimate(estimateOf(lesson));
+    return { ...scene, params: { ...scene.params, length }, onScreen: [...scene.onScreen, length] };
+  });
 
-  function startScene(i: number, play: boolean) {
+  function startScene(i: number, play: boolean, from = 0) {
     clearTimeout(advance);
     narration?.stop();
     overlay = null;
@@ -62,7 +85,43 @@
     const at = index;
     const s = lesson.scenes[at];
     narration = new Narration(s.narration, { audio: narrationOf(lesson.id, s.id), rate: prefs.rate, onend: () => sceneEnded(at) });
+    if (from > 0) narration.seek(from);
     if (play) narration.play();
+  }
+
+  /** Jumps to a time in the lesson. It stops a second short of the end, so the lesson still finishes by playing out. */
+  function seekTo(t: number, play = playingNow()) {
+    const to = Math.max(0, Math.min(t, total - 1));
+    const i = sceneAt(to);
+    if (i !== index || !narration || narration.done) return startScene(i, play, to - starts[i]);
+    narration.seek(to - starts[i]);
+    if (play) narration.play();
+  }
+
+  function skip(seconds: number) {
+    const to = elapsed + seconds;
+    // Skipping forward stops at a checkpoint rather than jumping over it.
+    const checkpoint = to >= starts[index + 1] ? lesson.checkpoints.find((c) => c.after === lesson.scenes[index].id) : undefined;
+    if (!checkpoint) return seekTo(to);
+    clearTimeout(advance);
+    narration?.stop();
+    openCheckpoint(checkpoint, index);
+  }
+
+  function scrubTo(t: number) {
+    if (scrub === null) {
+      resumeAfterScrub = playingNow();
+      clearTimeout(advance);
+      narration?.pause();
+    }
+    scrub = t;
+  }
+
+  function scrubDone() {
+    if (scrub === null) return;
+    const t = scrub;
+    scrub = null;
+    seekTo(t, resumeAfterScrub);
   }
 
   function sceneEnded(i: number) {
@@ -124,7 +183,8 @@
     else narration.play();
   }
 
-  const playingNow = () => !!narration?.playing;
+  // A narration that has just finished counts: the lesson is moving on to the next scene by itself.
+  const playingNow = () => !!narration && (narration.playing || narration.done);
 
   function setRate(rate: number) {
     prefs.rate = rate;
@@ -146,10 +206,11 @@
     if (e.key === ' ') {
       e.preventDefault();
       togglePlay();
-    } else if (e.key === 'ArrowRight') {
-      startScene(index + 1, playingNow());
-    } else if (e.key === 'ArrowLeft') {
-      startScene(index - 1, playingNow());
+    } else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const direction = e.key === 'ArrowRight' ? 1 : -1;
+      if (e.shiftKey) startScene(index + direction, playingNow());
+      else skip(direction * SKIP_SECONDS);
     }
   }
 
@@ -164,7 +225,7 @@
   });
 </script>
 
-<svelte:window {onkeydown} />
+<svelte:window {onkeydown} onpointerup={scrubDone} />
 
 <div class="player">
   <header>
@@ -197,7 +258,7 @@
         <!-- svelte-ignore a11y_media_has_caption -->
         <video src={video} controls class="video"></video>
       {:else}
-        <Scene {scene} {fraction} />
+        <Scene scene={staged} {fraction} />
       {/if}
       {#if overlay?.kind === 'end'}
         <div class="end">
@@ -221,26 +282,35 @@
     {/key}
   {/if}
 
-  <div class="timeline" aria-label="Scenes">
-    {#each lesson.scenes as s, i (s.id)}
-      <button
-        class="segment"
-        class:checkpoint={checkpointAfter.has(s.id)}
-        aria-label="Scene {i + 1}: {s.onScreen[0] ?? ''}{checkpointAfter.has(s.id) ? ' (checkpoint after)' : ''}"
-        aria-current={i === index ? 'step' : undefined}
-        onclick={() => startScene(i, playingNow())}
-      >
-        <span style="width: {i < index ? 100 : i === index ? Math.round(fraction * 100) : 0}%"></span>
-      </button>
-    {/each}
+  <div class="timeline">
+    <div class="bar" style="--at: {position / total}">
+      <input
+        class="scrub"
+        type="range"
+        min="0"
+        max={total}
+        step="1"
+        value={position}
+        aria-label="Lesson position"
+        aria-valuetext="{formatClock(position)} of {formatClock(total)}, scene {shown + 1}"
+        oninput={(e) => scrubTo(Number(e.currentTarget.value))}
+        onchange={scrubDone}
+      />
+      {#each checkpointMarks as mark, i (i)}<span class="mark" style="--at: {mark}"></span>{/each}
+    </div>
+    <span class="clock">{formatClock(position)} / {formatClock(total)}</span>
   </div>
 
   <div class="controls group">
     <button class="secondary" onclick={() => startScene(index - 1, playingNow())} disabled={index === 0} aria-label="Previous scene">⏮</button>
-    <button class="primary play" onclick={togglePlay} aria-label={narration?.playing ? 'Pause' : 'Play'}>{narration?.playing ? 'Pause' : 'Play'}</button>
+    <button class="secondary" onclick={() => skip(-SKIP_SECONDS)} aria-label="Back {SKIP_SECONDS} seconds">−{SKIP_SECONDS}s</button>
+    <button class="primary play" onclick={togglePlay} aria-label={narration?.playing ? 'Pause' : 'Play'}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d={narration?.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M8 5v14l11-7z'} /></svg>
+    </button>
+    <button class="secondary" onclick={() => skip(SKIP_SECONDS)} aria-label="Forward {SKIP_SECONDS} seconds">+{SKIP_SECONDS}s</button>
     <button class="secondary" onclick={() => startScene(index + 1, playingNow())} disabled={index === last} aria-label="Next scene">⏭</button>
     <button class="secondary" onclick={() => startScene(index, true)}>Replay scene</button>
-    <span class="muted count">Scene {index + 1} of {lesson.scenes.length}</span>
+    <span class="muted count">Scene {shown + 1} of {lesson.scenes.length}</span>
   </div>
 </div>
 
@@ -375,40 +445,67 @@
   .timeline {
     flex: none;
     display: flex;
-    gap: 3px;
-    margin: 0.75rem 0;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0.4rem 0;
   }
 
-  .segment {
+  /* --at (0-1) places things on the bar; the thumb's centre stops half a thumb short of each end. */
+  .bar,
+  .mark {
+    --x: calc(var(--thumb) / 2 + (100% - var(--thumb)) * var(--at));
+  }
+
+  .bar {
+    --thumb: 0.9rem;
     position: relative;
     flex: 1;
-    height: 0.6rem;
-    padding: 0;
-    border: 0;
-    border-radius: 3px;
-    background: var(--surface-2);
-    overflow: hidden;
+    min-width: 0;
+    display: flex;
   }
 
-  .segment span {
-    position: absolute;
-    inset: 0 auto 0 0;
+  .scrub {
+    width: 100%;
+    height: 1.25rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .scrub::-webkit-slider-runnable-track {
+    height: 0.4rem;
+    border-radius: 99px;
+    background: linear-gradient(to right, var(--accent) var(--x), color-mix(in srgb, var(--muted) 35%, var(--surface-2)) var(--x));
+  }
+
+  .scrub::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--thumb);
+    height: var(--thumb);
+    margin-top: calc((0.4rem - var(--thumb)) / 2);
+    border-radius: 50%;
     background: var(--accent);
   }
 
-  .segment.checkpoint::after {
-    content: '';
+  /* Checkpoints. */
+  .mark {
     position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
+    top: 50%;
+    left: var(--x);
+    width: 3px;
+    height: 0.4rem;
+    transform: translate(-50%, -50%);
     background: var(--warn);
+    pointer-events: none;
   }
 
-  .segment[aria-current='step'] {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
+  .clock {
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
 
   .top {
@@ -427,10 +524,20 @@
   }
 
   .play {
-    min-width: 5.5rem;
+    display: grid;
+    place-items: center;
+    min-width: 4rem;
+  }
+
+  .play svg {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
   }
 
   .count {
+    margin-left: auto;
     font-size: 0.9rem;
     font-variant-numeric: tabular-nums;
   }

@@ -1,5 +1,6 @@
 import durations from '../../content/narration/durations.json';
-import type { Lesson } from './types.ts';
+import { CHARS_PER_SECOND } from './narrator.svelte';
+import type { Lesson, Scene } from './types.ts';
 
 const lessonFiles = import.meta.glob('../../content/lessons/*.json', { eager: true, import: 'default' }) as Record<string, Lesson>;
 const videoFiles = import.meta.glob('../../content/videos/*.mp4', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
@@ -18,6 +19,12 @@ export function narrationOf(lesson: string, scene: string): { src: string; secon
   const seconds = (durations as Record<string, number>)[`${lesson}/${scene}`];
   return src && seconds ? { src, seconds } : null;
 }
+
+/** A scene's narration length in seconds at normal speed. */
+export const sceneSeconds = (lesson: string, scene: Scene) => narrationOf(lesson, scene.id)?.seconds ?? scene.narration.length / CHARS_PER_SECOND;
+
+/** Rough time to finish a lesson, in seconds: the narration plus half a minute per checkpoint question. */
+export const estimateOf = (lesson: Lesson) => lesson.scenes.reduce((sum, s) => sum + sceneSeconds(lesson.id, s), 0) + lesson.checkpoints.length * 30;
 
 /** URL of content/videos/<id>.mp4 when one was added for the lesson. */
 export const videoUrl = (id: string): string | null => videoFiles[`../../content/videos/${id}.mp4`] ?? null;

@@ -53,7 +53,8 @@
       'Lessons',
       [
         ['Space', 'Play or pause the narration'],
-        ['← →', 'Previous or next scene'],
+        ['← →', 'Back or forward 5 seconds'],
+        ['Shift+← →', 'Previous or next scene'],
       ],
     ],
     [

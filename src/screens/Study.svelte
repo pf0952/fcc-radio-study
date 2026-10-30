@@ -3,7 +3,8 @@
   import LessonPlayer from '../lessons/LessonPlayer.svelte';
   import SectionQuiz from '../lessons/SectionQuiz.svelte';
   import { elements } from '../lib/elements';
-  import { firstSceneOf, lessons, videoUrl } from '../lib/lessons';
+  import { formatEstimate } from '../lib/keys';
+  import { estimateOf, firstSceneOf, lessonList, lessons, videoUrl } from '../lib/lessons';
   import { nav, toTop } from '../lib/nav.svelte';
   import { subelementsOf } from '../lib/pools';
   import { progress } from '../lib/progress.svelte';
@@ -45,10 +46,12 @@
 
   {#each elements as el (el.element)}
     {@const element = el.element}
+    {@const total = lessonList.filter((l) => l.element === element).reduce((sum, l) => sum + estimateOf(l), 0)}
     <section class="element" aria-labelledby="study-el-{el.element}">
       <div class="element-head">
         <h2 id="study-el-{el.element}">Element {el.element}: {el.name}</h2>
-        <button class="secondary small" onclick={() => (view = { kind: 'sheet', element })}>Formula and fact sheet</button>
+        <span class="muted total">{formatEstimate(total)} in all</span>
+        <button class="secondary small sheet" onclick={() => (view = { kind: 'sheet', element })}>Formula and fact sheet</button>
       </div>
       <div class="lessons">
         {#each subelementsOf(el.element) as s (s.letter)}
@@ -57,7 +60,10 @@
           {@const lp = progress.lessons[id]}
           {@const quiz = progress.quizzes[id]}
           <article class="card lesson" class:missing={!lesson}>
-            <p class="eyebrow">{id}</p>
+            <p class="eyebrow">
+              {id}
+              {#if lesson}<span class="length">{formatEstimate(estimateOf(lesson))}</span>{/if}
+            </p>
             <h3>{s.title}</h3>
             {#if lesson}
               <p class="status">
@@ -92,8 +98,16 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 1rem;
+    gap: 0 1rem;
     flex-wrap: wrap;
+  }
+
+  .total {
+    font-size: 0.9rem;
+  }
+
+  .sheet {
+    margin-left: auto;
   }
 
   .lessons {
@@ -118,10 +132,16 @@
   }
 
   .eyebrow {
+    display: flex;
+    justify-content: space-between;
     margin: 0;
     color: var(--muted);
     font-size: 0.8rem;
     font-weight: 700;
+  }
+
+  .length {
+    font-weight: 400;
   }
 
   h3 {

@@ -3,7 +3,7 @@
 // browser reports these files' duration as Infinity. A scene without audio advances at reading speed.
 
 /** Typical speaking speed at rate 1, for scenes without audio. */
-const CHARS_PER_SECOND = 15;
+export const CHARS_PER_SECOND = 15;
 
 export class Narration {
   /** Characters of the text spoken so far. */
@@ -11,6 +11,8 @@ export class Narration {
   playing = $state(false);
   done = $state(false);
   readonly text: string;
+  /** Length at normal speed. */
+  readonly seconds: number;
   #audio: HTMLAudioElement | null;
   #rate: number;
   #onend: () => void;
@@ -18,12 +20,13 @@ export class Narration {
 
   constructor(text: string, options: { audio: { src: string; seconds: number } | null; rate: number; onend: () => void }) {
     this.text = text;
+    this.seconds = options.audio?.seconds ?? text.length / CHARS_PER_SECOND;
     this.#rate = options.rate;
     this.#onend = options.onend;
     const audio = options.audio ? new Audio(options.audio.src) : null;
     this.#audio = audio;
     if (!audio) return;
-    const seconds = options.audio!.seconds;
+    const seconds = this.seconds;
     audio.playbackRate = options.rate;
     audio.ontimeupdate = () => {
       this.progress = Math.min(text.length, Math.floor((audio.currentTime / seconds) * text.length));
@@ -48,6 +51,18 @@ export class Narration {
   /** Stop for good (scene left). */
   stop() {
     this.pause();
+  }
+
+  /** Seconds into the narration. */
+  get time() {
+    return (this.progress / this.text.length) * this.seconds;
+  }
+
+  /** Jumps to a position in seconds. */
+  seek(seconds: number) {
+    const to = Math.max(0, Math.min(this.seconds, seconds));
+    this.progress = Math.floor((to / this.seconds) * this.text.length);
+    if (this.#audio) this.#audio.currentTime = to;
   }
 
   setRate(rate: number) {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { params, fraction }: { params: { kicker?: string; title: string; subtitle?: string }; fraction: number } = $props();
+  let { params, fraction }: { params: { kicker?: string; title: string; subtitle?: string; length?: string }; fraction: number } = $props();
 </script>
 
 <div class="title-card">
@@ -7,6 +7,7 @@
   <h2>{params.title}</h2>
   <span class="rule"></span>
   {#if params.subtitle}<p class="sub" class:shown={fraction > 0.2}>{params.subtitle}</p>{/if}
+  {#if params.length}<p class="length">{params.length}</p>{/if}
 </div>
 
 <style>
@@ -56,6 +57,14 @@
 
   .sub.shown {
     opacity: 1;
+  }
+
+  .length {
+    margin: 2cqi 0 0;
+    color: var(--st-amber);
+    font-size: 1.9cqi;
+    font-weight: 600;
+    animation: rise 0.8s 0.3s ease-out both;
   }
 
   @keyframes rise {
