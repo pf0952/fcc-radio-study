@@ -1,0 +1,139 @@
+{
+  "id": "8-C",
+  "summary": "A faint echo's path through the receiver: mixer, local oscillator, AFC, IF and video stages, clutter, noise, MTI and power supplies.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Echo to picture",
+      "items": [
+        "<b>Radar receivers</b> are microwave receivers. The front end gives no amplification: there's no RF amplifier.",
+        "<b>Mixer:</b> converts a low-level signal to a different frequency. A nonlinear crystal diode mixes echo and local oscillator; their difference is the IF, intermediate frequency."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "The receiver chain",
+      "svg": "<svg viewBox='0 0 320 144' role='img' aria-label='The echo passes the duplexer and goes to the crystal mixer with no RF amplifier, then the IF amplifier, second detector, video amplifier and display. The local oscillator feeds the mixer.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='4' y='52' width='60' height='36' rx='4'/><rect x='112' y='52' width='92' height='36' rx='4'/><rect x='222' y='52' width='94' height='36' rx='4'/><rect x='222' y='104' width='94' height='36' rx='4'/><rect x='112' y='104' width='92' height='36' rx='4'/><rect x='4' y='104' width='60' height='36' rx='4'/></g><rect x='100' y='3' width='116' height='34' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><g fill='none' stroke='#1a5fb4' stroke-width='2'><path d='M34 30 V46'/><path d='M64 70 H106'/><path d='M204 70 H216'/><path d='M269 88 V98'/><path d='M222 122 H210'/><path d='M112 122 H70'/></g><path d='M158 37 V46' fill='none' stroke='#0f8a7e' stroke-width='2'/><g fill='#1a5fb4'><polygon points='34,52 30,45 38,45'/><polygon points='112,70 105,66 105,74'/><polygon points='222,70 215,66 215,74'/><polygon points='269,104 265,97 273,97'/><polygon points='204,122 211,118 211,126'/><polygon points='64,122 71,118 71,126'/></g><polygon points='158,52 154,45 162,45' fill='#0f8a7e'/><g font-size='11' text-anchor='middle' fill='#17202b'><text x='158' y='17' font-weight='700'>Local oscillator</text><text x='158' y='31'>Klystron or Gunn</text><text x='34' y='24' fill='#1a5fb4' font-weight='700'>Echo</text><text x='34' y='67' font-weight='700'>Duplexer</text><text x='34' y='81'>TR cell</text><text x='86' y='63' fill='#c8452f' font-weight='700'>No RF</text><text x='86' y='84' fill='#c8452f' font-weight='700'>amp</text><text x='158' y='67' font-weight='700'>Crystal mixer</text><text x='158' y='81'>Small loss</text><text x='269' y='67' font-weight='700'>IF amplifier</text><text x='269' y='81'>Nearly all gain</text><text x='269' y='119' font-weight='700'>2nd detector</text><text x='269' y='133'>Keeps outline</text><text x='158' y='119' font-weight='700'>Video amp</text><text x='158' y='133'>Feeds display</text><text x='34' y='126' font-weight='700'>Display</text></g></svg>"
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "TR cell:",
+          "def": "transmit-receive, an ion discharge tube. The transmit pulse ionizes it, shorting the receiver path to protect the mixer."
+        },
+        {
+          "term": "Local oscillator:",
+          "def": "a klystron; solid-state sets use a Gunn diode."
+        },
+        {
+          "term": "Klystron tuning:",
+          "def": "small changes by repeller voltage, large by resonant cavity size."
+        },
+        {
+          "term": "AFC:",
+          "def": "automatic frequency control. Varies the klystron to stay 1 IF from the drifting magnetron."
+        },
+        {
+          "term": "Discriminator:",
+          "def": "compares magnetron and klystron; generates the corrective voltage."
+        },
+        {
+          "term": "AGC, IAGC:",
+          "def": "automatic gain control and its instantaneous form. Vary 20 to 40 dB."
+        }
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "AFC loop, Figure 8A1",
+      "svg": "<svg viewBox='0 0 320 128' role='img' aria-label='AFC loop: a magnetron sample passes attenuator 47 to AFC mixer 49, the AFC IF amplifier, discriminator 50 and the AFC output, which corrects klystron 48. The klystron feeds both mixers.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='3' y='5' width='70' height='36' rx='4'/><rect x='88' y='5' width='64' height='36' rx='4'/><rect x='168' y='5' width='66' height='36' rx='4'/><rect x='250' y='5' width='66' height='36' rx='4'/><rect x='236' y='72' width='80' height='36' rx='4'/><rect x='162' y='72' width='58' height='36' rx='4'/><rect x='4' y='72' width='60' height='36' rx='4'/></g><rect x='80' y='72' width='66' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><g fill='none' stroke='#1a5fb4' stroke-width='2'><path d='M73 23 H82'/><path d='M152 23 H162'/><path d='M234 23 H244'/><path d='M283 41 V66'/><path d='M236 90 H226'/></g><path d='M162 90 H152' fill='none' stroke='#c98a00' stroke-width='2'/><path d='M80 90 H70 M113 72 V57 H201 V47' fill='none' stroke='#0f8a7e' stroke-width='2'/><g fill='#1a5fb4'><polygon points='88,23 81,19 81,27'/><polygon points='168,23 161,19 161,27'/><polygon points='250,23 243,19 243,27'/><polygon points='283,72 279,65 287,65'/><polygon points='220,90 227,86 227,94'/></g><polygon points='146,90 153,86 153,94' fill='#c98a00'/><g fill='#0f8a7e'><polygon points='64,90 71,86 71,94'/><polygon points='201,41 197,48 205,48'/></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='38' y='27' font-weight='700'>Magnetron</text><text x='120' y='20' font-weight='700'>47</text><text x='120' y='34'>Attenuator</text><text x='201' y='20' font-weight='700'>49</text><text x='201' y='34'>AFC mixer</text><text x='283' y='20' font-weight='700'>AFC IF</text><text x='283' y='34'>amplifier</text><text x='276' y='87' font-weight='700'>50</text><text x='276' y='101'>Discriminator</text><text x='191' y='87' font-weight='700'>AFC</text><text x='191' y='101'>output</text><text x='113' y='87' font-weight='700'>48</text><text x='113' y='101'>Klystron</text><text x='34' y='87' font-weight='700'>Main</text><text x='34' y='101'>mixer</text><text x='160' y='123' font-weight='700' fill='#8a5f00'>Error voltage to the repeller</text></g></svg>",
+      "caption": "Block 49: crystal detector, the mixer."
+    },
+    {
+      "kind": "formulas",
+      "title": "Worked numbers",
+      "items": [
+        {
+          "name": "IF",
+          "formula": "IF = f<sub>klystron</sub> − f<sub>magnetron</sub>",
+          "means": "3.060 GHz − 3.0 GHz = 60 MHz"
+        },
+        {
+          "name": "Gain",
+          "formula": "G = 20 log(V<sub>out</sub> ÷ V<sub>in</sub>)",
+          "means": "2 µV to 2 V is 10⁶: 20 × 6 = 120 dB"
+        }
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "IF and video stages",
+      "items": [
+        "<b>IF amplifier:</b> usually 30 or 60 MHz. Bandwidth is wide for short ranges, narrow for long ranges.",
+        "<b>Logarithmic</b> receivers can't be saturated: greater dynamic range.",
+        "<b>Overcoupling</b> causes oscillations.",
+        "<b>Second detector:</b> a diode detector.",
+        "<b>Video amplifier:</b> between IF amplifier and display. Broad bandwidth, as weak pulses must be amplified.",
+        "<b>Peaking:</b> inductor in series with input capacitance, in parallel with output capacitance."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Clutter and noise",
+      "items": [
+        "<b>Sea return:</b> reflections from nearby waves. <b>STC</b>, sensitivity time control, suppresses it by decreasing sensitivity for close objects: gain is cut after the pulse, then rises.",
+        "<b>Most common interference:</b> weather and sea return. FTC, fast time constant, handles rain.",
+        "<b>Noise:</b> mainly thermal, from receiver components. Shows as erratic video and sharp intensity changes; masks small targets. Reduced by isolation: shielding, separation, decoupling.",
+        "<b>MTI</b>, moving target indication: a filter blocking stationary targets, so only moving targets display. A faulty one causes glint: clutter shifting each pulse.",
+        "<b>Digital receiver:</b> decision circuitry separates on from off levels."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Switching supplies",
+      "items": [
+        "<b>No line isolation transformer:</b> grounded test equipment may destroy the supply.",
+        "<b>Power MOSFET gate:</b> changes by greater than 2 V.",
+        "<b>Figure 8C10,</b> junction of CR6, CR7 and L1: pulsating DC much higher than line frequency."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Comparator, Figure 8C11",
+      "svg": "<svg viewBox='0 0 320 130' role='img' aria-label='A sine input crosses upper and lower trip points of plus and minus 1.285 volts. The inverting comparator output goes high just past 180 degrees.'><path d='M115 6 V112' stroke='#8593a3' stroke-width='1' stroke-dasharray='3 3'/><g stroke='#0f8a7e' stroke-width='1.5' stroke-dasharray='4 3'><path d='M10 25 H222'/><path d='M10 43 H222'/></g><path d='M10 34 C48.2 -2 76.8 -2 115 34 S181.8 70 220 34' fill='none' stroke='#1a5fb4' stroke-width='2'/><path d='M10 80 H21.4 V108 H126.4' fill='none' stroke='#12355b' stroke-width='2'/><path d='M126.4 80 H220' fill='none' stroke='#12355b' stroke-width='2'/><path d='M126.4 108 V80' fill='none' stroke='#c8452f' stroke-width='2.5'/><g font-size='11' fill='#17202b'><text x='228' y='12' font-weight='700' fill='#1a5fb4'>Input sine</text><text x='228' y='29' fill='#0f8a7e'>Upper +1.285 V</text><text x='228' y='47' fill='#0f8a7e'>Lower −1.285 V</text><text x='112' y='60' text-anchor='end'>180°</text><text x='228' y='84'>High +4.5 V</text><text x='228' y='98' font-weight='700' fill='#12355b'>Output</text><text x='228' y='112'>Low −4.5 V</text><text x='6' y='126' font-weight='700' fill='#c8452f'>Leading edge: 180° after positive zero crossing</text></g></svg>"
+    },
+    {
+      "kind": "formulas",
+      "title": "Supply circuits",
+      "items": [
+        {
+          "name": "Trip points",
+          "formula": "V<sub>trip</sub> = ±4.5 × 2k ÷ (5k + 2k)",
+          "means": "±1.285 V"
+        },
+        {
+          "name": "Switching regulator",
+          "formula": "V<sub>out</sub> = V<sub>in</sub> × duty cycle",
+          "means": "Duty cycle = ON time ÷ period.",
+          "example": "27 µs ON at 20 kHz (50 µs): 0.54 × 165 V = 89.1 V DC"
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Figure 8C9 with no echoes: <b>no output</b>.",
+        "AFC moves the <b>klystron</b>, never the magnetron.",
+        "Magnetron drifts higher: repeller <b>more negative</b>.",
+        "RF attenuator (47): between magnetron and AFC section.",
+        "Mixer: silicon crystal or PIN diode; both if listed apart.",
+        "Resolver isn't a video amplifier input; range, brilliance and contrast are.",
+        "Sea clutter won't reduce: suspect <b>STC</b>, not FTC.",
+        "Radar on a communications receiver: a <b>steady tone</b>."
+      ]
+    }
+  ]
+}

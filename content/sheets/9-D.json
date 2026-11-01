@@ -1,0 +1,187 @@
+{
+  "id": "9-D",
+  "summary": "EPIRB, SART, survival craft VHF and NAVTEX: their jobs in a rescue, the numbers the exam asks for, and when to replace parts.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "4 radios, 1 rescue",
+      "items": [
+        "<b>EPIRB</b>, Emergency Position Indicating Radio Beacon, 406 MHz: raises the alarm by satellite.",
+        "<b>SART</b>, Search And Rescue Radar Transponder, 9 GHz: shows the raft on rescuers' radar.",
+        "<b>Survival craft VHF</b>, channel 16, 156.8 MHz: survivors and rescuers talk.",
+        "<b>NAVTEX</b>, navigational telex, 518 kHz: prints safety warnings from shore stations on every bridge."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "The alert: beacon to rescuers",
+      "svg": "<svg viewBox='0 0 320 150' role='img' aria-label='An EPIRB sends a 406 megahertz alert to a COSPAS-SARSAT satellite, which time-tags and relays it one way to a Local User Terminal, which works out the position from the Doppler shift and passes the ID to a shore database. The satellite gives no follow-on SAR communications.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='70' y='4' width='136' height='38' rx='4'/><rect x='4' y='106' width='72' height='40' rx='4'/><rect x='86' y='106' width='104' height='40' rx='4'/><rect x='212' y='106' width='104' height='40' rx='4'/></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='138' y='19' font-weight='700'>COSPAS-SARSAT</text><text x='138' y='34'>time-tags and relays</text><text x='40' y='122' font-weight='700'>EPIRB</text><text x='40' y='137'>5 W + ID</text><text x='138' y='122' font-weight='700'>LUT</text><text x='138' y='137'>Doppler: position</text><text x='264' y='122' font-weight='700'>Shore database</text><text x='264' y='137'>ID: the vessel</text></g><g stroke='#1a5fb4' stroke-width='2' fill='none'><line x1='40' y1='106' x2='91' y2='48'/><line x1='138' y1='42' x2='138' y2='98'/><line x1='190' y1='126' x2='204' y2='126'/></g><g fill='#1a5fb4'><polygon points='96,42 94,50 89,46'/><polygon points='138,106 133.5,98 142.5,98'/><polygon points='212,126 204,121.5 204,130.5'/></g><text x='58' y='72' text-anchor='end' font-size='11' font-weight='700' fill='#1a5fb4'>406 MHz</text><text x='146' y='78' font-size='11' fill='#4a5666'>one way</text><line x1='206' y1='23' x2='232' y2='23' stroke='#c8452f' stroke-width='2' stroke-dasharray='4 3'/><g font-size='11' font-weight='700' text-anchor='end' fill='#c8452f'><text x='316' y='15'>No follow-on</text><text x='316' y='28'>SAR comms</text></g><text x='222' y='47' font-size='11' font-weight='700' fill='#12355b'>Doppler shift</text><line x1='220' y1='73' x2='316' y2='73' stroke='#8593a3' stroke-width='1' stroke-dasharray='4 3'/><path d='M224 55 C262 55 274 91 312 91' fill='none' stroke='#1a5fb4' stroke-width='2.5'/><text x='312' y='65' text-anchor='end' font-size='11' fill='#4a5666'>higher</text><text x='224' y='96' font-size='11' fill='#4a5666'>lower</text></svg>",
+      "caption": "Satellite nearing: higher. Closest: no shift. Moving away: lower. The LUT calculates the position from that shift."
+    },
+    {
+      "kind": "notes",
+      "title": "EPIRB",
+      "items": [
+        "<b>Hydrostatic release:</b> a few meters underwater, pressure frees the beacon. It floats up and switches on.",
+        "<b>Bracket magnet:</b> prevents accidental operation while the beacon's secured.",
+        "<b>Alert:</b> short digital bursts, 5 W on 406.025 MHz, with the beacon's ID number.",
+        "<b>Homing:</b> 121.5 MHz, low power, for direction finders. Strobe light up close."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "SART",
+      "items": [
+        "<b>Transponder:</b> listens and answers. Switched on by hand in the survival craft, raised on its pole.",
+        "<b>Standby:</b> silent until an X-band (3 cm) radar pulse arrives: radar interrogation. Then it replies."
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "LUT:",
+          "def": "Local User Terminal, a ground station."
+        },
+        {
+          "term": "ARM:",
+          "def": "automatic release mechanism."
+        },
+        {
+          "term": "ERP:",
+          "def": "effective radiated power, what actually leaves the antenna."
+        },
+        {
+          "term": "Sensitivity:",
+          "def": "weakest signal giving clear speech. Smaller number, more sensitive."
+        }
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "A SART on the radar screen",
+      "svg": "<svg viewBox='0 0 320 160' role='img' aria-label='A radar display with a line of 12 dots running outward from the raft along its bearing. Closing in, a few miles off shows 12 dots, getting close shows arcs, very close shows full circles.'><circle cx='80' cy='82' r='76' fill='#eef3fa' stroke='#12355b' stroke-width='2'/><line x1='80' y1='82' x2='93.8' y2='70.4' stroke='#8593a3' stroke-width='1' stroke-dasharray='3 2'/><circle cx='80' cy='82' r='3' fill='#12355b'/><line x1='93.8' y1='70.4' x2='136' y2='35' stroke='#c8452f' stroke-width='3.2' stroke-linecap='round' stroke-dasharray='0 5'/><text x='80' y='99' text-anchor='middle' font-size='11' fill='#17202b'>Own ship</text><text x='84' y='62' text-anchor='end' font-size='11' font-weight='700' fill='#c8452f'>Raft</text><text x='112' y='80' font-size='11' font-weight='700' fill='#c8452f'>12 dots</text><g fill='none' stroke='#12355b' stroke-width='1.5'><circle cx='190' cy='28' r='21'/><circle cx='190' cy='80' r='21'/><circle cx='190' cy='132' r='21'/></g><line x1='194.6' y1='24.1' x2='204.6' y2='15.8' stroke='#c8452f' stroke-width='2' stroke-linecap='round' stroke-dasharray='0 3.2'/><path d='M198 79.3 A8 8 0 0 0 192 72.3 M202 79 A12 12 0 0 0 193 68.4 M206 78.6 A16 16 0 0 0 194 64.5 M209 78.3 A19 19 0 0 0 195 61.6' fill='none' stroke='#c8452f' stroke-width='1.8'/><g fill='none' stroke='#c8452f' stroke-width='1.5'><circle cx='190' cy='132' r='6'/><circle cx='190' cy='132' r='10'/><circle cx='190' cy='132' r='14'/><circle cx='190' cy='132' r='18'/></g><g font-size='11' fill='#17202b'><text x='220' y='26' font-weight='700'>A few miles</text><text x='220' y='40'>12 dots</text><text x='220' y='78' font-weight='700'>Getting close</text><text x='220' y='92'>Dots become arcs</text><text x='220' y='130' font-weight='700'>Very close</text><text x='220' y='144'>Full circles</text></g></svg>",
+      "caption": "12 equally spaced dots run outward along its bearing. Survivors are at the inner end."
+    },
+    {
+      "kind": "figure",
+      "title": "Why 12 dots: the SART sweeps",
+      "svg": "<svg viewBox='0 0 320 120' role='img' aria-label='Frequency against time as a sawtooth: a fast 0.4 microsecond sweep across the 3 centimeter band, then a slow 7.5 microsecond return. Each slow sweep crosses the radar frequency once and makes 1 dot, 12 sweeps in all.'><line x1='10' y1='92' x2='226' y2='92' stroke='#8593a3' stroke-width='1'/><line x1='10' y1='56' x2='226' y2='56' stroke='#c98a00' stroke-width='2'/><path d='M20 24 L84 88 M90 24 L154 88 M160 24 L224 88' fill='none' stroke='#1a5fb4' stroke-width='2.5'/><path d='M14 88 L20 24 M84 88 L90 24 M154 88 L160 24' fill='none' stroke='#0f8a7e' stroke-width='2.5'/><g fill='#c8452f'><circle cx='52' cy='56' r='4'/><circle cx='122' cy='56' r='4'/><circle cx='192' cy='56' r='4'/><circle cx='237' cy='88' r='4'/></g><text x='14' y='14' font-size='11'><tspan font-weight='700' fill='#0f8a7e'>0.4 µs fast</tspan><tspan fill='#4a5666'> across the 3 cm band</tspan></text><path d='M20 98 V106 M84 98 V106 M20 102 H84' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><text x='52' y='117' text-anchor='middle' font-size='11' font-weight='700' fill='#1a5fb4'>7.5 µs slow</text><text x='226' y='117' text-anchor='end' font-size='11' fill='#4a5666'>time</text><text x='232' y='28' font-size='12' font-weight='700' fill='#12355b'>12 sweeps</text><g font-size='11' font-weight='700' fill='#8a5f00'><text x='232' y='53'>Radar's</text><text x='232' y='66'>frequency</text></g><text x='245' y='92' font-size='11' fill='#17202b'>= 1 dot</text></svg>",
+      "caption": "Each slow sweep crosses the radar's frequency once: 1 dot."
+    },
+    {
+      "kind": "formulas",
+      "title": "Dot spacing",
+      "items": [
+        {
+          "name": "Distance between dots",
+          "formula": "d = sweep cycle ÷ radar mile",
+          "means": "A cycle is 7.5 + 0.4 = 7.9 µs. Radar mile: 12.34 µs per nm. Same at any range.",
+          "example": "7.9 µs ÷ 12.34 µs/nm ≈ 0.64 nm"
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Survival craft VHF must have",
+      "head": [
+        "Need",
+        "Value"
+      ],
+      "rows": [
+        [
+          "Channel",
+          "16, plus at least 1 other"
+        ],
+        [
+          "Watertight",
+          "To 1 meter for 5 minutes"
+        ],
+        [
+          "Antenna",
+          "Permanently affixed"
+        ],
+        [
+          "Power",
+          "At least 0.25 W ERP"
+        ],
+        [
+          "Sensitivity",
+          "2.0 µV"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "NAVTEX",
+      "items": [
+        "<b>Single letters</b> identify stations (on a schedule) and categories: A navigational, B meteorological, D search and rescue.",
+        "<b>Rejecting:</b> choose a station's or category's letter (A to Z), then deselect it. A, B and D stay on.",
+        "<b>Accuracy:</b> each character is sent twice, about 280 ms apart. That's collective FEC, forward error correction: no ship can ask for a repeat.",
+        "<b>No new messages,</b> powers on, settings correct: a defective RF amplifier at the antenna base, powered through the coax."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "NAVTEX frequencies",
+      "head": [
+        "kHz",
+        "Use"
+      ],
+      "rows": [
+        [
+          "518",
+          "Primary, international, in English"
+        ],
+        [
+          "490",
+          "National, local language"
+        ],
+        [
+          "4209.5",
+          "HF NAVTEX"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Batteries: 5 years or after use",
+      "head": [
+        "Battery",
+        "Must give"
+      ],
+      "rows": [
+        [
+          "EPIRB",
+          "48 hours transmitting"
+        ],
+        [
+          "SART",
+          "96 hours standby, then 8 hours transmitting"
+        ],
+        [
+          "VHF radio",
+          "8 hours of operation"
+        ],
+        [
+          "EPIRB release",
+          "Not a battery: every 2 years"
+        ]
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "A 406 MHz EPIRB has <b>no aural locator</b>.",
+        "No 1-watt alert, no 121.5 MHz alerting beacon.",
+        "Not SART: 3 GHz S-band, dashes, spirals, 10 sweeps, 0.48 nm.",
+        "<b>Channel 70</b> is DSC only, no voice, so simplex on it is false.",
+        "2187.5 kHz is MF DSC distress, not NAVTEX.",
+        "NAVTEX stations use letters, not two-digit IDs, SELCALL or 00.",
+        "Accuracy isn't a parity check or selective FEC."
+      ]
+    }
+  ]
+}

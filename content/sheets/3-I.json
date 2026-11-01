@@ -1,0 +1,188 @@
+{
+  "id": "3-I",
+  "summary": "Cells and batteries, safe charging, ampere-hours and run time, internal resistance, DC motors and generators, and motor current.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Cells and batteries",
+      "items": [
+        "<b>Cell:</b> 2 different plates in an electrolyte. The chemical reaction makes a voltage.",
+        "<b>Lead-acid:</b> lead plates in sulfuric acid and water. Rechargeable, so it's a storage cell.",
+        "<b>Series:</b> + joined to −, so voltages add. 6 lead-acid cells make a 12-volt battery. 12 nickel-cadmium cells make 15 V."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Volts per cell",
+      "head": [
+        "Cell",
+        "Voltage"
+      ],
+      "rows": [
+        [
+          "Lead-acid, fully charged",
+          "2.06 V on average"
+        ],
+        [
+          "Nickel-cadmium",
+          "About 1.25 V"
+        ],
+        [
+          "Fresh alkaline or carbon-zinc",
+          "1.5 V"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Charging",
+      "items": [
+        "<b>Charging:</b> a higher voltage drives current in backward, reversing the chemistry.",
+        "<b>The hazard:</b> near full charge, <b>hydrogen gas</b> escapes. It's explosive in air, so ventilate and keep sparks and flames away."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Trickle charging",
+      "svg": "<svg viewBox='0 0 320 94' role='img' aria-label='A 110 volt DC line feeds a 12.5 volt battery through a series resistor. The resistor drops 97.5 volts and is 195 ohms. 0.5 amperes flows through both.'><g fill='none' stroke='#12355b' stroke-width='2'><path d='M70 39 V34 H130 l5 -7 10 14 10 -14 10 14 10 -14 10 14 5 -7 H240 V48'/><path d='M240 56 V72 H70 V67'/></g><circle cx='70' cy='53' r='14' fill='#eef3fa' stroke='#12355b' stroke-width='2'/><text x='70' y='58' font-size='13' font-weight='700' text-anchor='middle' fill='#12355b'>+</text><g stroke='#1a5fb4' stroke-width='2.5'><line x1='226' y1='48' x2='254' y2='48'/><line x1='233' y1='56' x2='247' y2='56'/></g><polygon points='150,72 158,68 158,76' fill='#1a5fb4'/><g font-size='11'><text x='50' y='50' font-weight='700' text-anchor='end' fill='#12355b'>110 V</text><text x='50' y='63' text-anchor='end' fill='#17202b'>DC line</text><text x='160' y='16' font-weight='700' text-anchor='middle' fill='#c8452f'>Series resistor: 195 Ω</text><text x='160' y='58' text-anchor='middle' fill='#17202b'>Drops 97.5 V</text><text x='262' y='50' font-weight='700' fill='#1a5fb4'>Battery</text><text x='262' y='63' fill='#17202b'>12.5 V</text><text x='160' y='88' text-anchor='middle' fill='#1a5fb4'>0.5 A through both</text></g></svg>",
+      "caption": "R = (line − battery) ÷ current"
+    },
+    {
+      "kind": "formulas",
+      "title": "Battery math",
+      "items": [
+        {
+          "name": "Ohm's law, power",
+          "formula": "I = E ÷ R,  P = E × I",
+          "means": "E volts, I amperes, R ohms, P watts."
+        },
+        {
+          "name": "Capacity needed",
+          "formula": "Ampere-hours = amperes × hours",
+          "means": "A 50 Ah battery gives 5 A for 10 hours.",
+          "example": "(0.7 × 40 A + 1.5 A) × 6 h = 177 Ah"
+        },
+        {
+          "name": "Run time",
+          "formula": "Hours = Ah ÷ (watts ÷ volts)",
+          "means": "Add the watts first. Part of an hour × 60 = minutes."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Run-time answers",
+      "head": [
+        "Watts",
+        "Ah",
+        "Volts",
+        "Lasts"
+      ],
+      "rows": [
+        [
+          "375",
+          "55",
+          "12.6",
+          "1.8 hours"
+        ],
+        [
+          "365",
+          "50",
+          "12.6",
+          "1 hour 43 minutes"
+        ],
+        [
+          "400",
+          "50",
+          "12",
+          "1 1/2 hours"
+        ],
+        [
+          "350",
+          "8",
+          "12.6",
+          "17 minutes or 0.3 hours"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Internal resistance is in series",
+      "svg": "<svg viewBox='0 0 320 104' role='img' aria-label='A 6 volt battery with 1.2 ohms of internal resistance feeds two 12 ohm bulbs in parallel, which act like 6 ohms. Total 7.2 ohms, so about 0.83 amperes flows.'><rect x='6' y='18' width='120' height='70' rx='4' fill='none' stroke='#8593a3' stroke-width='1.5' stroke-dasharray='4 3'/><g fill='none' stroke='#12355b' stroke-width='2'><path d='M24 52 V34 H50 l4 -6 8 12 8 -12 8 12 8 -12 8 12 4 -6 H270 V46'/><path d='M270 66 V76 H24 V60'/><path d='M200 34 V46'/><path d='M200 66 V76'/></g><g stroke='#1a5fb4' stroke-width='2.5'><line x1='12' y1='52' x2='36' y2='52'/><line x1='18' y1='60' x2='30' y2='60'/></g><g fill='#fdf3dd' stroke='#c98a00' stroke-width='2'><circle cx='200' cy='56' r='10'/><circle cx='270' cy='56' r='10'/></g><g stroke='#c98a00' stroke-width='1.5'><line x1='193' y1='49' x2='207' y2='63'/><line x1='207' y1='49' x2='193' y2='63'/><line x1='263' y1='49' x2='277' y2='63'/><line x1='277' y1='49' x2='263' y2='63'/></g><polygon points='146,34 138,30 138,38' fill='#12355b'/><g font-size='11'><text x='66' y='12' font-weight='700' text-anchor='middle' fill='#4a5666'>Inside the battery</text><text x='235' y='24' font-weight='700' text-anchor='middle' fill='#8a5f00'>Parallel: 6 Ω</text><text x='42' y='60' font-weight='700' fill='#1a5fb4'>6 V</text><text x='76' y='56' font-weight='700' fill='#c8452f'>1.2 Ω</text><text x='216' y='60' fill='#17202b'>12 Ω</text><text x='286' y='60' fill='#17202b'>12 Ω</text><text x='160' y='101' font-weight='700' text-anchor='middle' fill='#12355b'>6 V ÷ 7.2 Ω ≈ 0.83 A</text></g></svg>",
+      "caption": "3 W, 6 V lamp: 12 Ω. Add 0.01 Ω: 6 V ÷ 12.01 Ω, listed as 0.4995 A."
+    },
+    {
+      "kind": "notes",
+      "title": "Motors and generators",
+      "items": [
+        "<b>Motor:</b> electrical power into motion. <b>Generator:</b> the reverse.",
+        "<b>Field winding:</b> a fixed electromagnet. <b>Armature:</b> the coil that spins inside it, fed by <b>brushes</b>.",
+        "<b>Generator voltage</b> depends on speed and flux. A <b>commutator</b>, a rotating switch, gives DC.",
+        "<b>Counter-EMF:</b> a spinning armature also generates, pushing back on the supply. Weaker field, faster motor."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "DC motor runaways",
+      "svg": "<svg viewBox='0 0 320 130' role='img' aria-label='In a series motor the field and armature share one path, and removing the load makes it accelerate until it falls apart. In a shunt motor the field sits across the supply, and opening it makes the motor speed up.'><g fill='none' stroke='#12355b' stroke-width='2'><path d='M14 30 H44 a6 6 0 0 1 12 0 a6 6 0 0 1 12 0 a6 6 0 0 1 12 0 a6 6 0 0 1 12 0 H124 V43'/><path d='M124 69 V82 H14'/><path d='M176 30 H294 V43'/><path d='M294 69 V82 H176'/><path d='M214 30 V34 a6 5.5 0 0 1 0 11 a6 5.5 0 0 1 0 11 a6 5.5 0 0 1 0 11 a6 5.5 0 0 1 0 11 V82'/></g><g fill='#eef3fa' stroke='#1a5fb4' stroke-width='2'><circle cx='124' cy='56' r='13'/><circle cx='294' cy='56' r='13'/></g><g fill='#fff' stroke='#12355b' stroke-width='1.5'><circle cx='14' cy='30' r='3'/><circle cx='14' cy='82' r='3'/><circle cx='176' cy='30' r='3'/><circle cx='176' cy='82' r='3'/></g><g font-size='11'><text x='68' y='18' text-anchor='middle' fill='#17202b'>Field</text><text x='106' y='60' text-anchor='end' fill='#17202b'>Armature</text><text x='204' y='60' text-anchor='end' fill='#17202b'>Field</text><text x='276' y='60' text-anchor='end' fill='#17202b'>Armature</text><text x='79' y='100' font-weight='700' text-anchor='middle' fill='#12355b'>Series motor</text><text x='241' y='100' font-weight='700' text-anchor='middle' fill='#12355b'>Shunt motor</text><text x='79' y='113' text-anchor='middle' fill='#17202b'>1 current through both</text><text x='241' y='113' text-anchor='middle' fill='#17202b'>Field across the supply</text><text x='79' y='126' font-weight='700' text-anchor='middle' fill='#c8452f'>Load removed: falls apart</text><text x='241' y='126' font-weight='700' text-anchor='middle' fill='#c8452f'>Field opened: speeds up</text></g></svg>",
+      "caption": "Series: accelerates until it falls apart. Little current, weak field. Shunt: only residual magnetism."
+    },
+    {
+      "kind": "notes",
+      "title": "Generators in use",
+      "items": [
+        "<b>Shunt-wound DC generator:</b> voltage is highest at no load, lowest at full load.",
+        "<b>Voltage regulation</b> means the voltage fluctuations from load to no-load, as a percentage of full-load volts. 110 V to 100 V is 10%.",
+        "<b>Separately-excited AC generator:</b> at constant speed, the amount of field current controls the output."
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "Motor current",
+      "items": [
+        {
+          "name": "DC",
+          "formula": "I = hp × 746 ÷ efficiency ÷ E",
+          "means": "1 hp ≈ 746 W (745.7).",
+          "example": "3 hp, 85%, 100 V: 26.300 A"
+        },
+        {
+          "name": "AC",
+          "formula": "I = hp × 746 ÷ efficiency ÷ (E × PF)",
+          "means": "PF, power factor, is up to 1. Uses 745.7.",
+          "example": "7 hp, 95%, 120 V, PF 0.8: 57.2 A"
+        }
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "Trickle charge:",
+          "def": "charging slowly with a small, steady current."
+        },
+        {
+          "term": "Ampere-hour:",
+          "def": "1 ampere flowing for 1 hour."
+        },
+        {
+          "term": "Excited:",
+          "def": "supplied with field current."
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Charging's harm is <b>hydrogen</b>, not chlorine, oxygen or plate sulfation.",
+        "1.2 V isn't lead-acid. 1.5 V is alkaline, not nickel-cadmium.",
+        "Forget the 70% and you get the trap <b>249</b>. Ignore the 50 watts.",
+        "28.97 is amperes, not hours. 1.0 A ignores internal resistance.",
+        "Voltage regulation isn't efficiency or a winding ratio.",
+        "Output follows field current, not the armature, brushes or exciter."
+      ]
+    }
+  ]
+}

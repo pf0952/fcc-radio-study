@@ -1,0 +1,199 @@
+{
+  "id": "9-E",
+  "summary": "GMDSS batteries and chargers, and how linear and switching power supplies turn ship's power into steady DC.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Cells and batteries",
+      "items": [
+        "A <b>cell</b> is 2 materials in an electrolyte. Its chemistry sets its voltage.",
+        "<b>Series:</b> voltages add, and the same current flows through every cell."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Normal voltage of 1 cell",
+      "head": [
+        "Cell",
+        "Volts"
+      ],
+      "rows": [
+        [
+          "NICAD (nickel-cadmium)",
+          "1.2 V"
+        ],
+        [
+          "Dry cell",
+          "1.5 V"
+        ],
+        [
+          "Lead acid",
+          "2.1 V"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Checking a lead acid cell",
+      "items": [
+        "<b>Specific gravity:</b> how heavy the electrolyte is compared with water. Full cell <b>1.280</b>, discharged around 1.12. Measure it with a <b>hydrometer</b>.",
+        "<b>Warmer</b> electrolyte expands and reads lower. The charge hasn't changed.",
+        "<b>Reverse polarity:</b> a weak cell runs out first, and the other cells' discharge current charges it in reverse.",
+        "<b>Gel cell:</b> typically sealed. Special charging rates and voltages may be required."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "The GMDSS charger's 3 modes",
+      "svg": "<svg viewBox='0 0 320 130' role='img' aria-label='The charger and supply sits between ship power, the reserve battery and the radios. Charging: charger to battery. Change-over: battery to radios if ship power fails. Parallel: charger and battery feed the radios together.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='2' y='8' width='76' height='50' rx='4'/><rect x='96' y='12' width='80' height='42' rx='4'/><rect x='238' y='12' width='80' height='42' rx='4'/><rect x='96' y='90' width='80' height='36' rx='4'/></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='40' y='23' font-weight='700'>Ship's</text><text x='40' y='36'>main or</text><text x='40' y='49'>emergency</text><text x='136' y='30' font-weight='700'>Charger</text><text x='136' y='44' font-weight='700'>and supply</text><text x='278' y='30' font-weight='700'>Radio</text><text x='278' y='44' font-weight='700'>installation</text><text x='136' y='105' font-weight='700'>Reserve</text><text x='136' y='119' font-weight='700'>battery</text></g><g stroke='#1a5fb4' stroke-width='2' fill='none'><line x1='78' y1='33' x2='89' y2='33'/><line x1='176' y1='33' x2='231' y2='33'/><line x1='136' y1='54' x2='136' y2='83'/></g><path d='M176 108 H278 V61' fill='none' stroke='#0f8a7e' stroke-width='2'/><g fill='#1a5fb4'><polygon points='96,33 88,28.5 88,37.5'/><polygon points='238,33 230,28.5 230,37.5'/><polygon points='136,90 131.5,82 140.5,82'/></g><polygon points='278,54 273.5,62 282.5,62' fill='#0f8a7e'/><text x='207' y='26' text-anchor='middle' font-size='11' font-weight='700' fill='#1a5fb4'>Parallel</text><text x='144' y='76' font-size='11' font-weight='700' fill='#1a5fb4'>Charging</text><text x='228' y='101' text-anchor='middle' font-size='11' font-weight='700' fill='#0f8a7e'>Change-over</text><text x='228' y='122' text-anchor='middle' font-size='11' fill='#4a5666'>if ship's power fails</text></svg>",
+      "caption": "In Parallel, charger and battery feed the radios together."
+    },
+    {
+      "kind": "notes",
+      "title": "Reserve power and charging",
+      "items": [
+        "<b>Reserve Source of Energy:</b> power to operate the radio installation and conduct Distress and Safety communications if main and emergency power fail.",
+        "<b>Charge rates:</b> high (Full) refills fast, float holds full, trickle makes up self-discharge.",
+        "<b>Weekly high charge</b> (standard lead acid): until the gassing range, where water splits into gas. Weak cells catch up.",
+        "The charger then interrupts it to <b>inhibit electrolytic gas</b>.",
+        "<b>Maintenance free lead acid gel:</b> high (Full) mode disabled during setup."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Console readings, 24 V station",
+      "head": [
+        "Reading",
+        "Verdict"
+      ],
+      "rows": [
+        [
+          "On float: around 27 V",
+          "Normal"
+        ],
+        [
+          "Constant 30 V",
+          "<b>Fault:</b> 2.5 V per cell, stuck in high charge"
+        ],
+        [
+          "After a test: 30 V briefly, then 26 V",
+          "Normal"
+        ],
+        [
+          "After a test: high charge rate, falling",
+          "Normal"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "A linear supply, step by step",
+      "svg": "<svg viewBox='0 0 320 104' role='img' aria-label='AC mains at 60 hertz goes through a transformer, then a rectifier that makes one-way pulses, then a filter that gives smooth DC with 120 hertz ripple.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='2' y='3' width='56' height='24' rx='4'/><rect x='72' y='3' width='80' height='24' rx='4'/><rect x='166' y='3' width='70' height='24' rx='4'/><rect x='250' y='3' width='68' height='24' rx='4'/></g><g font-size='11' font-weight='700' text-anchor='middle' fill='#17202b'><text x='30' y='19'>Mains</text><text x='112' y='19'>Transformer</text><text x='201' y='19'>Rectifier</text><text x='284' y='19'>Filter</text></g><g stroke='#1a5fb4' stroke-width='2'><line x1='58' y1='15' x2='66' y2='15'/><line x1='152' y1='15' x2='160' y2='15'/><line x1='236' y1='15' x2='244' y2='15'/></g><g fill='#1a5fb4'><polygon points='72,15 65,11 65,19'/><polygon points='166,15 159,11 159,19'/><polygon points='250,15 243,11 243,19'/></g><g stroke='#8593a3' stroke-width='1'><line x1='6' y1='52' x2='54' y2='52'/><line x1='84' y1='52' x2='140' y2='52'/><line x1='172' y1='68' x2='230' y2='68'/><line x1='256' y1='68' x2='312' y2='68'/></g><g fill='none' stroke='#1a5fb4' stroke-width='2'><path d='M6 52 C12 26 24 26 30 52 S48 78 54 52'/><path d='M84 52 C91 38 105 38 112 52 S133 66 140 52'/><path d='M172 68 C176 38 182 38 186 68 C190 38 197 38 201 68 C205 38 212 38 216 68 C220 38 226 38 230 68'/><path d='M256 44 Q262 41 268 44 T280 44 T292 44 T304 44 T312 44'/></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='30' y='87'>60 Hz AC</text><text x='112' y='87'>Turns set</text><text x='112' y='100'>the voltage</text><text x='201' y='87'>Diodes make</text><text x='201' y='100'>1-way pulses</text><text x='284' y='87'>Smooth DC</text><text x='282' y='100'>120 Hz ripple</text></g></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Rectifiers",
+      "items": [
+        "<b>Half wave:</b> 1 diode. <b>Full wave:</b> 2 diodes with a center tap, or a bridge of 4 with none.",
+        "<b>Ripple:</b> in a full wave supply, twice the input frequency."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Input filters",
+      "head": [
+        "",
+        "Inductive (choke)",
+        "Capacitive"
+      ],
+      "rows": [
+        [
+          "Voltage regulation",
+          "Good",
+          "Poor"
+        ],
+        [
+          "Transformer utilization",
+          "High",
+          "Lower"
+        ],
+        [
+          "Rectifier peak currents",
+          "Low",
+          "High"
+        ],
+        [
+          "Output voltage",
+          "Relatively low",
+          "Higher, toward peak"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Regulated switching supply",
+      "svg": "<svg viewBox='0 0 320 128' role='img' aria-label='Mains goes into the input rectifier and filter, then the inverter or chopper, then the output transformer with a ferrite core, then the output rectifier and filter to the DC output. A feedback loop runs from the DC output to the chopper controller, which sets the inverter duty cycle.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='2' y='18' width='70' height='50' rx='4'/><rect x='84' y='18' width='70' height='50' rx='4'/><rect x='166' y='18' width='72' height='50' rx='4'/><rect x='250' y='18' width='68' height='50' rx='4'/><rect x='250' y='92' width='68' height='32' rx='4'/></g><rect x='82' y='92' width='74' height='32' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><g font-size='11' text-anchor='middle' fill='#17202b'><text x='37' y='33'>Input</text><text x='37' y='47'>rectifier</text><text x='37' y='61'>and filter</text><text x='119' y='40' font-weight='700'>Inverter</text><text x='119' y='54'>(chopper)</text><text x='202' y='33'>Output</text><text x='202' y='47'>transformer</text><text x='202' y='61'>ferrite core</text><text x='284' y='33'>Output</text><text x='284' y='47'>rectifier</text><text x='284' y='61'>and filter</text><text x='284' y='112' font-weight='700'>DC output</text><text x='119' y='105' font-weight='700'>Chopper</text><text x='119' y='119' font-weight='700'>controller</text><text x='2' y='14' font-weight='700' text-anchor='start'>Mains</text></g><g stroke='#1a5fb4' stroke-width='2'><line x1='52' y1='4' x2='52' y2='12'/><line x1='72' y1='43' x2='78' y2='43'/><line x1='154' y1='43' x2='160' y2='43'/><line x1='238' y1='43' x2='244' y2='43'/><line x1='284' y1='68' x2='284' y2='85'/></g><g fill='#1a5fb4'><polygon points='52,18 47.5,11 56.5,11'/><polygon points='84,43 77,39 77,47'/><polygon points='166,43 159,39 159,47'/><polygon points='250,43 243,39 243,47'/><polygon points='284,92 279.5,84 288.5,84'/></g><g stroke='#0f8a7e' stroke-width='2'><line x1='250' y1='108' x2='163' y2='108'/><line x1='119' y1='92' x2='119' y2='75'/></g><g fill='#0f8a7e'><polygon points='156,108 164,103.5 164,112.5'/><polygon points='119,68 114.5,76 123.5,76'/></g><text x='204' y='101' text-anchor='middle' font-size='11' font-weight='700' fill='#0f8a7e'>Feedback loop</text><text x='108' y='84' text-anchor='end' font-size='11' font-weight='700' fill='#0f8a7e'>Sets duty cycle</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Switching supplies",
+      "items": [
+        "<b>Advantages:</b> line voltage directly rectified and filtered to high DC; much smaller, lighter parts; much better efficiency. Also wide input range, DC input.",
+        "<b>Disadvantages:</b> increased complexity, increased cost, radiated RF.",
+        "<b>Ferrite core:</b> reduces losses at high frequencies.",
+        "<b>Duty cycle:</b> the share of each period the switch is on.",
+        "<b>Crowbar:</b> prevents overvoltage damage by shorting the output.",
+        "<b>Input current:</b> short pulses near the AC peaks: high harmonic content, low power factor."
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "Formulas",
+      "items": [
+        {
+          "name": "Battery voltage",
+          "formula": "Volts = cells × 2.1 V",
+          "means": "A 24 V GMDSS bank has 12 cells.",
+          "example": "6 × 2.1 V = 12.6 V"
+        },
+        {
+          "name": "BUCK supply",
+          "formula": "V<sub>out</sub> = duty cycle × V<sub>in</sub>",
+          "means": "Steps down only.",
+          "example": "50%: 0.5 × 10 V = 5 V"
+        }
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "RFI:",
+          "def": "radio-frequency interference."
+        },
+        {
+          "term": "Regulation:",
+          "def": "holding the output steady as the load changes."
+        },
+        {
+          "term": "Choke:",
+          "def": "a coil that resists changes in current."
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "NICAD isn't 1.5 V. 2.5 V isn't a cell voltage.",
+        "Use a <b>hydrometer</b>, not a voltmeter. 1.210 and 1.180 aren't full.",
+        "Float, trickle, Full and boost are <b>rates</b>, not charger modes.",
+        "High charge stops for <b>gas</b>, not heat.",
+        "<b>No RFI problems</b> is no switcher advantage. It's radiated RF, not AF.",
+        "Switcher core: not laminated steel.",
+        "Feedback runs to the controller, not the input."
+      ]
+    }
+  ]
+}

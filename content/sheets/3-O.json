@@ -1,0 +1,161 @@
+{
+  "id": "3-O",
+  "summary": "How radar finds range from an echo, matches pulses to the range, and what its parts, antennas and safety rules do.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "How radar works",
+      "items": [
+        "<b>Echoes:</b> radar sends a short pulse, then listens. The delay gives range; the antenna's direction gives bearing.",
+        "<b>Band:</b> SHF, super high frequency, 3 to 30 GHz. Most ship radars use X-band, near 9.4 GHz.",
+        "<b>Pulse width</b> (PW): 0.05 to 1.0 µs. <b>Pulse repetition rate</b> (PRR): 500 to 2,000 pulses per second (pps), the pulse rate of the magnetron.",
+        "<b>Long ranges:</b> a wide pulse carries more energy; a slow rate lets far echoes return.",
+        "<b>Short ranges:</b> a narrow pulse gives fine detail and a short minimum range; a fast rate gives more hits per sweep."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Pulses and echoes",
+      "svg": "<svg viewBox='0 0 320 146' role='img' aria-label='Two pulse trains. Long range: wide pulses 2,000 microseconds apart at 500 pps, with an echo delayed 12.346 microseconds per nautical mile. Short range: narrow pulses 500 microseconds apart at 2,000 pps.'><text x='8' y='13' font-size='11' font-weight='700' fill='#12355b'>Long range: wide and slow</text><line x1='8' y1='56' x2='312' y2='56' stroke='#8593a3' stroke-width='1'/><rect x='14' y='26' width='12' height='30' fill='#eef3fa' stroke='#1a5fb4' stroke-width='2'/><rect x='274' y='26' width='12' height='30' fill='#eef3fa' stroke='#1a5fb4' stroke-width='2'/><rect x='176' y='46' width='12' height='10' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='2'/><line x1='28' y1='38' x2='176' y2='38' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='182,38 175,34 175,42' fill='#0f8a7e'/><text x='32' y='32' font-size='11' font-weight='700' fill='#0f8a7e'>Echo delay: 12.346 µs per nmi</text><text x='268' y='50' text-anchor='end' font-size='11' fill='#17202b'>Next pulse</text><path d='M14 60 V68 M14 64 H274 M274 60 V68' fill='none' stroke='#8593a3' stroke-width='1.5'/><text x='144' y='79' text-anchor='middle' font-size='11' fill='#17202b'>2,000 µs between pulses at 500 pps</text><text x='8' y='99' font-size='11' font-weight='700' fill='#12355b'>Short range: narrow and fast</text><line x1='8' y1='128' x2='312' y2='128' stroke='#8593a3' stroke-width='1'/><g fill='#1a5fb4'><rect x='14' y='106' width='3' height='22'/><rect x='79' y='106' width='3' height='22'/><rect x='144' y='106' width='3' height='22'/><rect x='209' y='106' width='3' height='22'/><rect x='274' y='106' width='3' height='22'/></g><g fill='#0f8a7e'><rect x='34' y='120' width='3' height='8'/><rect x='99' y='120' width='3' height='8'/><rect x='164' y='120' width='3' height='8'/><rect x='229' y='120' width='3' height='8'/><rect x='294' y='120' width='3' height='8'/></g><path d='M14 132 V140 M14 136 H79 M79 132 V140' fill='none' stroke='#8593a3' stroke-width='1.5'/><text x='86' y='141' font-size='11' fill='#17202b'>500 µs at 2,000 pps</text></svg>"
+    },
+    {
+      "kind": "table",
+      "title": "Settings by range",
+      "head": [
+        "Range",
+        "Pulse width",
+        "Repetition rate"
+      ],
+      "rows": [
+        [
+          "1.5 miles",
+          "0.05 µs",
+          "2,000 pps"
+        ],
+        [
+          "6 miles",
+          "0.25 µs",
+          "1,000 pps"
+        ],
+        [
+          "25 miles",
+          "1.0 µs",
+          "500 pps"
+        ],
+        [
+          "48 miles",
+          "1.0 µs",
+          "500 pps"
+        ]
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "Formulas",
+      "items": [
+        {
+          "name": "Range",
+          "formula": "Range (nmi) = elapsed time ÷ 12.346 µs",
+          "means": "Radar mile: 1 nautical mile, out and back.",
+          "example": "62 µs ÷ 12.346 µs ≈ 5 nmi"
+        },
+        {
+          "name": "Farthest clean range",
+          "formula": "R<sub>max</sub> = time between pulses ÷ 12.346 µs",
+          "means": "Echoes must return before the next pulse.",
+          "example": "500 pps ≈ 162 nmi; 2,000 pps ≈ 40 nmi"
+        },
+        {
+          "name": "Minimum range",
+          "formula": "c·τ ÷ 2",
+          "means": "c is 3×10<sup>8</sup> m/s; τ is pulse width in seconds.",
+          "example": "0.05 µs gives 7.5 m"
+        },
+        {
+          "name": "Duty cycle",
+          "formula": "PW × PRR",
+          "means": "Share of time the transmitter is on.",
+          "example": "1.0 µs × 500 pps: 500 µs of each second"
+        },
+        {
+          "name": "Dish antenna gain",
+          "formula": "G = η(πd/λ)<sup>2</sup>",
+          "means": "η: efficiency. d: dish diameter. λ: wavelength. Double the frequency: λ halves, gain × 4, up 6 dB. Beamwidth is about 70λ/d degrees."
+        }
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Inside a radar",
+      "svg": "<svg viewBox='0 0 320 146' role='img' aria-label='Block diagram. The modulator drives the magnetron, whose pulse passes the ATR box to the duplexer and antenna. Echoes return from the antenna through the duplexer and TR tube to the receiver and display. Synchros send the antenna angle to the display.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='6' y='6' width='90' height='34' rx='4'/><rect x='115' y='6' width='90' height='34' rx='4'/><rect x='224' y='6' width='90' height='34' rx='4'/><rect x='224' y='56' width='90' height='34' rx='4'/><rect x='115' y='56' width='90' height='34' rx='4'/><rect x='224' y='106' width='90' height='34' rx='4'/><rect x='115' y='106' width='90' height='34' rx='4'/><rect x='6' y='106' width='90' height='34' rx='4'/></g><g font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'><text x='51' y='20'>Modulator</text><text x='160' y='20'>Magnetron</text><text x='269' y='20'>ATR box</text><text x='269' y='70'>Duplexer</text><text x='160' y='70'>Antenna</text><text x='269' y='120'>TR tube</text><text x='160' y='120'>Receiver</text><text x='51' y='120'>Display</text></g><g font-size='10.5' fill='#4a5666' text-anchor='middle'><text x='51' y='33'>builds pulse</text><text x='160' y='33'>makes the power</text><text x='269' y='33'>blocks echoes</text><text x='269' y='83'>shares antenna</text><text x='160' y='83'>sends, catches</text><text x='269' y='133'>guards receiver</text><text x='160' y='133'>amplifies</text><text x='51' y='133'>indicator unit</text></g><g stroke='#1a5fb4' stroke-width='2'><line x1='96' y1='23' x2='108' y2='23'/><line x1='205' y1='23' x2='217' y2='23'/><line x1='269' y1='40' x2='269' y2='49'/></g><g fill='#1a5fb4'><polygon points='115,23 108,19 108,27'/><polygon points='224,23 217,19 217,27'/><polygon points='269,56 265,49 273,49'/></g><line x1='212' y1='73' x2='217' y2='73' stroke='#12355b' stroke-width='2'/><g fill='#12355b'><polygon points='205,73 212,69 212,77'/><polygon points='224,73 217,69 217,77'/></g><g stroke='#0f8a7e' stroke-width='2'><line x1='269' y1='90' x2='269' y2='99'/><line x1='224' y1='123' x2='212' y2='123'/><line x1='115' y1='123' x2='103' y2='123'/></g><g fill='#0f8a7e'><polygon points='269,106 265,99 273,99'/><polygon points='205,123 212,119 212,127'/><polygon points='96,123 103,119 103,127'/></g><path d='M115 73 H51 V99' fill='none' stroke='#c98a00' stroke-width='2' stroke-dasharray='5 3'/><polygon points='51,106 47,99 55,99' fill='#c98a00'/><text x='14' y='54' font-size='11' font-weight='700' fill='#8a5f00'>Synchros send</text><text x='14' y='67' font-size='11' font-weight='700' fill='#8a5f00'>antenna angle</text></svg>",
+      "caption": "Blue: pulse out. Teal: echo back."
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "Thyratron, SCR:",
+          "def": "switches that fire the modulator pulse."
+        },
+        {
+          "term": "Klystron:",
+          "def": "receiver local oscillator in older radars."
+        },
+        {
+          "term": "Echo box:",
+          "def": "high-Q cavity for testing performance at sea. Plume length shows health."
+        },
+        {
+          "term": "DSP:",
+          "def": "digital signal processing. Improved weak signal or target enhancement."
+        },
+        {
+          "term": "TWT:",
+          "def": "traveling-wave tube, an amplifier. Its permanent magnetic field prevents electron beam spreading."
+        },
+        {
+          "term": "ARPA:",
+          "def": "Automatic RADAR Plotting Aid. Tracks targets, computes course, speed and closest point of approach."
+        }
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Waveguides and antennas",
+      "items": [
+        "<b>Conductance:</b> through electromagnetic and electrostatic fields in the walls of the waveguide.",
+        "<b>Coupling</b> energy in and out: a thin piece of wire as an antenna. A <b>J-hook</b> extracts the signal.",
+        "<b>Slotted array:</b> the common ship antenna. As gain increases, beamwidth decreases."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Waveguide to beam",
+      "svg": "<svg viewBox='0 0 320 166' role='img' aria-label='A hollow waveguide with a thin wire probe at one end and a J-hook pickup at the other. Below, a rotary joint feeds a slotted array, whose beam is wide at low gain and narrow at high gain.'><text x='8' y='13' font-size='11' font-weight='700' fill='#12355b'>Waveguide: hollow, no center conductor</text><rect x='30' y='20' width='260' height='34' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='2'/><path d='M90 37 Q102 13 114 37 T138 37 T162 37 T186 37 T210 37 T234 37' fill='none' stroke='#0f8a7e' stroke-width='2'/><line x1='60' y1='60' x2='60' y2='36' stroke='#1a5fb4' stroke-width='2.5'/><path d='M262 60 V36 Q262 28 254 28 Q248 28 248 34' fill='none' stroke='#1a5fb4' stroke-width='2.5'/><text x='8' y='72' font-size='11' font-weight='700' fill='#1a5fb4'>Thin wire probe</text><text x='160' y='72' text-anchor='middle' font-size='11' fill='#0f8a7e'>Fields carry it</text><text x='312' y='72' text-anchor='end' font-size='11' font-weight='700' fill='#1a5fb4'>J-hook pickup</text><text x='8' y='104' font-size='11' font-weight='700' fill='#12355b'>Slotted array:</text><text x='8' y='117' font-size='11' fill='#17202b'>slots leak energy</text><text x='8' y='141' font-size='11' font-weight='700' fill='#12355b'>Rotary joint</text><line x1='82' y1='137' x2='134' y2='126' stroke='#8593a3' stroke-width='1'/><path d='M160 123 C186 88 270 88 282 123 C270 158 186 158 160 123 Z' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><path d='M160 123 C200 112 290 112 312 123 C290 134 200 134 160 123 Z' fill='#eef3fa' stroke='#1a5fb4' stroke-width='2'/><rect x='148' y='90' width='12' height='66' rx='2' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><g fill='#fff' stroke='#12355b' stroke-width='1'><rect x='151' y='95' width='6' height='4'/><rect x='151' y='106' width='6' height='4'/><rect x='151' y='117' width='6' height='4'/><rect x='151' y='128' width='6' height='4'/><rect x='151' y='139' width='6' height='4'/><rect x='151' y='149' width='6' height='4'/></g><circle cx='140' cy='123' r='6' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='222' y='92' text-anchor='middle' font-size='11' font-weight='700' fill='#0f8a7e'>Low gain: wide</text><text x='222' y='162' text-anchor='middle' font-size='11' font-weight='700' fill='#1a5fb4'>High gain: narrow</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Safety and equipment",
+      "items": [
+        "<b>Before testing:</b> first assure no personnel are in front of the antenna.",
+        "<b>Exposure limit:</b> 5.0 mW/cm².",
+        "<b>Magnetron magnet:</b> keep metal tools away, no excessive heat, no shocks or blows."
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "PRR isn't the duty cycle's reciprocal.",
+        "2.5 µs and 2,500 pps aren't normal.",
+        "<b>TR</b> (transmit-receive) guards the receiver; <b>ATR</b> (anti-transmit-receive) keeps the received signal out of the transmitter.",
+        "Thyratron, SCR and klystron don't make the output power.",
+        "Synchros don't synchronize pulses.",
+        "Keeping the TR tuned is NOT a magnetron precaution.",
+        "Dish gain: 6 dB, not 3. Don't forget the square.",
+        "Collision avoidance uses gyrocompass, position receiver and speed indicator, not the anemometer."
+      ]
+    }
+  ]
+}

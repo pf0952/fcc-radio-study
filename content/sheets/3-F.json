@@ -1,0 +1,214 @@
+{
+  "id": "3-F",
+  "summary": "The superheterodyne receiver stage by stage: noise, front end, oscillators, mixers and images, IF filters, detectors, squelch, audio processing and interference.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "The superheterodyne",
+      "items": [
+        "A <b>superheterodyne</b> shifts every station to one fixed <b>IF</b>, intermediate frequency, for sharp filters and strong gain."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Figure 3F15: the receiver",
+      "svg": "<svg viewBox='0 0 320 112' role='img' aria-label='Superheterodyne block diagram. RF amplifier feeds mixer, block 1, then IF amplifiers, detector, block 3, and audio. The local oscillator, block 2, feeds the mixer. AGC, block 4, is fed by the detector and sets the IF gain.'><path d='M6 20 V16 H114 V20' fill='none' stroke='#8593a3' stroke-width='1.5'/><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='6' y='26' width='44' height='34' rx='4'/><rect x='64' y='26' width='50' height='34' rx='4'/><rect x='128' y='26' width='48' height='34' rx='4'/><rect x='190' y='26' width='62' height='34' rx='4'/><rect x='266' y='26' width='48' height='34' rx='4'/><rect x='53' y='76' width='72' height='32' rx='4'/><rect x='140' y='76' width='94' height='32' rx='4'/></g><g stroke='#1a5fb4' stroke-width='2'><line x1='50' y1='43' x2='58' y2='43'/><line x1='114' y1='43' x2='122' y2='43'/><line x1='176' y1='43' x2='184' y2='43'/><line x1='252' y1='43' x2='260' y2='43'/><line x1='89' y1='76' x2='89' y2='66'/><line x1='152' y1='76' x2='152' y2='66'/><line x1='221' y1='60' x2='221' y2='70'/></g><g fill='#1a5fb4'><polygon points='58,39 64,43 58,47'/><polygon points='122,39 128,43 122,47'/><polygon points='184,39 190,43 184,47'/><polygon points='260,39 266,43 260,47'/><polygon points='85,66 89,60 93,66'/><polygon points='148,66 152,60 156,66'/><polygon points='217,70 221,76 225,70'/></g><g fill='#12355b'><circle cx='64' cy='26' r='7'/><circle cx='190' cy='26' r='7'/><circle cx='53' cy='76' r='7'/><circle cx='140' cy='76' r='7'/></g><g font-size='11' font-weight='700' text-anchor='middle' fill='#fff'><text x='64' y='30'>1</text><text x='190' y='30'>3</text><text x='53' y='80'>2</text><text x='140' y='80'>4</text></g><g font-size='11' font-weight='700' text-anchor='middle' fill='#17202b'><text x='28' y='40'>RF</text><text x='28' y='53'>amp</text><text x='91' y='47'>Mixer</text><text x='152' y='40'>IF</text><text x='152' y='53'>amps</text><text x='223' y='47'>Detector</text><text x='290' y='47'>Audio</text><text x='92' y='90'>Local</text><text x='92' y='103'>oscillator</text><text x='190' y='90'>AGC</text></g><text x='190' y='103' font-size='10.5' text-anchor='middle' fill='#17202b'>sets IF gain</text><text x='60' y='12' font-size='11' font-weight='700' text-anchor='middle' fill='#4a5666'>Front end</text><text x='122' y='13' font-size='10.5' fill='#4a5666'>Most of the gain</text><g font-size='10.5' fill='#8a5f00'><text x='242' y='84'>DC voltmeter</text><text x='242' y='96'>here: signal</text><text x='242' y='108'>strength</text></g></svg>"
+    },
+    {
+      "kind": "terms",
+      "title": "Noise and strong signals",
+      "items": [
+        {
+          "term": "Noise floor:",
+          "def": "the receiver's own internal noise. It limits sensitivity."
+        },
+        {
+          "term": "Dynamic range:",
+          "def": "ratio of the largest tolerable input to the minimum discernible signal."
+        },
+        {
+          "term": "Noise figure:",
+          "def": "noise generated in the front end and succeeding stages. The RF stage mainly sets it."
+        },
+        {
+          "term": "Desensitizing:",
+          "def": "a strong signal on a nearby frequency reduces sensitivity."
+        },
+        {
+          "term": "Intermodulation:",
+          "def": "strong signals mix into false signals."
+        },
+        {
+          "term": "Cross-modulation:",
+          "def": "a very strong station's modulation is heard on top of yours."
+        }
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Front end",
+      "items": [
+        {
+          "term": "Preselector:",
+          "def": "tuned circuit giving front-end selectivity."
+        },
+        {
+          "term": "RF amplifier:",
+          "def": "mainly improves noise figure. Just enough gain for weak signals to overcome first mixer noise; too much invites intermodulation from nearby transmitters."
+        },
+        {
+          "term": "GaAsFET preamplifier:",
+          "def": "high gain, low noise floor. Low noise amplifiers belong in the VHF front end RF stage."
+        }
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Oscillators",
+      "items": [
+        "Oscillating takes <b>sufficient positive feedback</b>.",
+        "3 majors: <b>Colpitts</b> (capacitive divider), <b>Hartley</b> (tapped coil), <b>Pierce</b> (crystal).",
+        "<b>VFO</b>, variable frequency oscillator: commonly Colpitts, because it's stable.",
+        "<b>VCO</b>, voltage-controlled oscillator: a frequency synthesizer's oscillator stage."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Mixers",
+      "items": [
+        "A mixer combines 2 signals: out come the originals plus their <b>sum and difference</b>.",
+        "Overdriven, a mixer makes <b>spurious mixer products</b>."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Image: same distance, other side",
+      "svg": "<svg viewBox='0 0 320 96' role='img' aria-label='Two examples on a frequency line. Image 129, LO 140 and signal 151 megahertz, each 11 megahertz apart. Image 13.345, VFO 13.8 and signal 14.255 megahertz, each 0.455 megahertz apart.'><g stroke='#8593a3' stroke-width='1.5'><line x1='14' y1='40' x2='306' y2='40'/><line x1='14' y1='90' x2='306' y2='90'/></g><g stroke='#c8452f' stroke-width='2.5'><line x1='57' y1='40' x2='57' y2='18'/><line x1='57' y1='90' x2='57' y2='68'/></g><g stroke='#12355b' stroke-width='2.5'><line x1='160' y1='40' x2='160' y2='18'/><line x1='160' y1='90' x2='160' y2='68'/></g><g stroke='#1a5fb4' stroke-width='2.5'><line x1='263' y1='40' x2='263' y2='18'/><line x1='263' y1='90' x2='263' y2='68'/></g><g stroke='#4a5666' stroke-width='1.5'><line x1='64' y1='33' x2='153' y2='33'/><line x1='167' y1='33' x2='256' y2='33'/><line x1='64' y1='83' x2='153' y2='83'/><line x1='167' y1='83' x2='256' y2='83'/></g><g fill='#4a5666'><polygon points='59,33 65,30 65,36'/><polygon points='158,33 152,30 152,36'/><polygon points='162,33 168,30 168,36'/><polygon points='261,33 255,30 255,36'/><polygon points='59,83 65,80 65,86'/><polygon points='158,83 152,80 152,86'/><polygon points='162,83 168,80 168,86'/><polygon points='261,83 255,80 255,86'/></g><g font-size='11' font-weight='700' text-anchor='middle'><text x='57' y='12' fill='#c8452f'>Image 129 MHz</text><text x='160' y='12' fill='#12355b'>LO 140</text><text x='263' y='12' fill='#1a5fb4'>Signal 151</text><text x='57' y='62' fill='#c8452f'>Image 13.345 MHz</text><text x='160' y='62' fill='#12355b'>VFO 13.8</text><text x='263' y='62' fill='#1a5fb4'>Signal 14.255</text></g><g font-size='10.5' text-anchor='middle' fill='#4a5666'><text x='108' y='28'>IF 11</text><text x='211' y='28'>IF 11</text><text x='108' y='78'>IF 0.455</text><text x='211' y='78'>IF 0.455</text></g></svg>",
+      "caption": "With the LO below the signal, image = LO − IF. It's rejected in the <b>RF stage</b>, before the mixer."
+    },
+    {
+      "kind": "table",
+      "title": "IF selectivity to know",
+      "head": [
+        "Signal",
+        "Width"
+      ],
+      "rows": [
+        [
+          "Wideband FM phone",
+          "15 kHz"
+        ],
+        [
+          "Double-sideband AM",
+          "10 kHz"
+        ],
+        [
+          "SSB voice",
+          "2.4 kHz"
+        ],
+        [
+          "SSB crystal band-pass filter",
+          "2.1 kHz"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Figure 3F16: filter curves",
+      "svg": "<svg viewBox='0 0 320 64' role='img' aria-label='Four graphs of amplitude against frequency. Curve A is low-pass, B is band-pass, C is high-pass and D is band-stop.'><g fill='none' stroke='#8593a3' stroke-width='1.5'><path d='M6 6 V44 H72'/><path d='M86 6 V44 H152'/><path d='M166 6 V44 H232'/><path d='M246 6 V44 H312'/></g><g fill='none' stroke-width='2.5'><path d='M8 14 H36 C46 14 48 40 62 42' stroke='#1a5fb4'/><path d='M88 42 C102 42 104 14 112 14 H126 C134 14 136 42 150 42' stroke='#4a5666'/><path d='M168 42 C182 40 184 14 196 14 H230' stroke='#4a5666'/><path d='M248 14 H262 C270 14 272 42 279 42 C286 42 288 14 296 14 H310' stroke='#1a5fb4'/></g><g font-size='11' font-weight='700' text-anchor='middle' fill='#17202b'><text x='39' y='59'>A low-pass</text><text x='119' y='59'>B band-pass</text><text x='199' y='59'>C high-pass</text><text x='279' y='59'>D band-stop</text></g></svg>",
+      "caption": "Amplitude against frequency. The general groups: high-pass, low-pass and band-pass."
+    },
+    {
+      "kind": "table",
+      "title": "Filter families",
+      "head": [
+        "Filter",
+        "Feature"
+      ],
+      "rows": [
+        [
+          "Butterworth",
+          "Maximally flat passband"
+        ],
+        [
+          "Chebyshev",
+          "Ripple in the passband"
+        ],
+        [
+          "Constant-k",
+          "High attenuation far from the passband"
+        ],
+        [
+          "m-derived",
+          "A trap for frequencies too near cut-off for constant-k"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "IF stages",
+      "items": [
+        "IF bandwidth: <b>slightly wider</b> than the signal. Too wide lets undesired signals reach the audio stage.",
+        "<b>First IF stage:</b> selectivity. <b>Final IF stage:</b> gain.",
+        "Choosing an IF: weigh <b>image rejection</b> and <b>selectivity</b>.",
+        "<b>SAW</b>, surface acoustic wave: an IF filter for micro-miniature circuits."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Detectors",
+      "head": [
+        "Detector",
+        "For",
+        "How"
+      ],
+      "rows": [
+        [
+          "Diode",
+          "AM",
+          "Rectification and filtering of RF"
+        ],
+        [
+          "Product",
+          "SSB, CW",
+          "Mixes with a locally generated carrier"
+        ],
+        [
+          "Frequency discriminator",
+          "FM",
+          "Frequency swings become voltage"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Squelch and audio",
+      "items": [
+        "<b>Detection:</b> recovery of intelligence from the modulated RF signal.",
+        "<b>Squelch</b> works on the presence of noise, <b>CTCSS</b> on tones (about 67 to 254 Hz), <b>Digital Coded Squelch</b> on digital codes.",
+        "The CTCSS tone is filtered out after the discriminator, before the audio section.",
+        "<b>De-emphasis</b> with transmitter pre-emphasis: flat audio and noise reduction.",
+        "<b>DSP</b>, digital signal processing: samples analog signals, processes numbers, converts back. Noise subtraction: adaptive filtering and autocorrelation.",
+        "Op-amp audio filter: select <b>bandpass characteristics</b>."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Keeping it clean",
+      "items": [
+        "<b>Low-pass filters:</b> AVC (AGC) circuit and power supply, not the oscillator.",
+        "<b>Ignition noise:</b> ferrite beads in the primary and secondary ignition leads.",
+        "<b>Popping with engine speed:</b> resistances in series with spark plug wires."
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Extra RF or IF gain adds no selectivity.",
+        "Image of 162.000 MHz? That's the IF added to the channel.",
+        "Colpitts, Hartley and Pierce are oscillators, not filters."
+      ]
+    }
+  ]
+}

@@ -1,15 +1,21 @@
 <script lang="ts">
   import FactSheet from '../components/FactSheet.svelte';
+  import SectionSheet from '../components/SectionSheet.svelte';
   import LessonPlayer from '../lessons/LessonPlayer.svelte';
   import SectionQuiz from '../lessons/SectionQuiz.svelte';
   import { elements } from '../lib/elements';
   import { formatEstimate } from '../lib/keys';
-  import { estimateOf, firstSceneOf, lessonList, lessons, videoUrl } from '../lib/lessons';
+  import { estimateOf, firstSceneOf, lessonList, lessons, sectionSheets, videoUrl } from '../lib/lessons';
   import { nav, toTop } from '../lib/nav.svelte';
   import { subelementsOf } from '../lib/pools';
   import { progress } from '../lib/progress.svelte';
 
-  type View = { kind: 'list' } | { kind: 'play'; id: string; start: number | null } | { kind: 'quiz'; id: string } | { kind: 'sheet'; element: number };
+  type View =
+    | { kind: 'list' }
+    | { kind: 'play'; id: string; start: number | null }
+    | { kind: 'quiz'; id: string }
+    | { kind: 'sheet'; element: number }
+    | { kind: 'section'; id: string; fromLesson: boolean };
 
   function initial(): View {
     const p = nav.params;
@@ -33,8 +39,17 @@
 {#if view.kind === 'play'}
   {@const id = view.id}
   {#key `${id}:${view.start}`}
-    <LessonPlayer lesson={lessons.get(id)!} startAt={view.start} onquiz={() => (view = { kind: 'quiz', id })} onexit={list} />
+    <LessonPlayer
+      lesson={lessons.get(id)!}
+      startAt={view.start}
+      onquiz={() => (view = { kind: 'quiz', id })}
+      onsheet={() => (view = { kind: 'section', id, fromLesson: true })}
+      onexit={list}
+    />
   {/key}
+{:else if view.kind === 'section'}
+  {@const { id, fromLesson } = view}
+  <SectionSheet title="{id} {lessons.get(id)!.title}" sheet={sectionSheets.get(id)!} onback={() => (fromLesson ? play(id) : list())} />
 {:else if view.kind === 'quiz'}
   {@const lesson = lessons.get(view.id)!}
   <SectionQuiz {lesson} onreplay={(t) => play(lesson.id, firstSceneOf(lesson, t))} onclose={list} />
@@ -77,6 +92,9 @@
               <div class="buttons">
                 <button class="primary small" onclick={() => play(id)}>{lp && lp.scene > 0 && !lp.completed ? 'Resume' : lp?.completed ? 'Replay' : 'Play'}</button>
                 <button class="secondary small" onclick={() => (view = { kind: 'quiz', id })}>Section quiz</button>
+                {#if sectionSheets.has(id)}
+                  <button class="secondary small" onclick={() => (view = { kind: 'section', id, fromLesson: false })}>Fact sheet</button>
+                {/if}
                 {#if videoUrl(id)}<span class="muted video">Video available</span>{/if}
               </div>
             {:else}
@@ -112,7 +130,7 @@
 
   .lessons {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
     gap: 0.75rem;
   }
 
@@ -178,6 +196,7 @@
   .buttons {
     margin-top: auto;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.4rem;
   }

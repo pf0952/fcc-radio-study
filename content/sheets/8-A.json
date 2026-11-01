@@ -1,0 +1,200 @@
+{
+  "id": "8-A",
+  "summary": "How radar finds targets: timing, power and wavelength math, the main parts, and Figures 8A1 to 8A8.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Echo timing",
+      "items": [
+        "A <b>pulse</b> goes out, an <b>echo</b> returns, and the wait gives the <b>range</b>. The antenna's direction gives the <b>bearing</b>.",
+        "Range constant: <b>150 meters per microsecond</b>: 300 m per µs ÷ 2 for the round trip.",
+        "<b>1 RADAR mile = 12.34 µs</b>, out and back. One way: 6.17 µs, so 3 nm takes 18.51 µs."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Talk, then listen",
+      "svg": "<svg viewBox='0 0 320 100' role='img' aria-label='A pulse train. Tall narrow pulses at peak power with long gaps where the radar listens. A small echo returns in the gap. The pulse repetition interval runs from the start of one pulse to the start of the next.'><line x1='6' y1='62' x2='314' y2='62' stroke='#8593a3' stroke-width='1.5'/><g fill='#eef3fa' stroke='#1a5fb4' stroke-width='2'><rect x='14' y='18' width='10' height='44'/><rect x='146' y='18' width='10' height='44'/><rect x='278' y='18' width='10' height='44'/></g><rect x='92' y='52' width='8' height='10' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='2'/><text x='30' y='28' font-size='11' font-weight='700' fill='#1a5fb4'>PW: pulse width</text><text x='162' y='28' font-size='11' font-weight='700' fill='#12355b'>Peak power</text><text x='96' y='46' text-anchor='middle' font-size='11' font-weight='700' fill='#0f8a7e'>Echo</text><text x='216' y='50' text-anchor='middle' font-size='11' fill='#4a5666'>Radar listens</text><line x1='24' y1='74' x2='141' y2='74' stroke='#c98a00' stroke-width='1.5'/><polygon points='14,74 24,70 24,78' fill='#c98a00'/><polygon points='146,74 136,70 136,78' fill='#c98a00'/><text x='80' y='92' text-anchor='middle' font-size='11' font-weight='700' fill='#8a5f00'>PRI = 1 ÷ PRF</text><text x='162' y='82' font-size='11' fill='#4a5666'>Each echo returns</text><text x='162' y='96' font-size='11' fill='#4a5666'>before the next pulse</text></svg>"
+    },
+    {
+      "kind": "formulas",
+      "title": "Formulas",
+      "items": [
+        {
+          "name": "Echo time",
+          "formula": "t = R × 12.34 µs",
+          "means": "For range, divide. Never halve.",
+          "example": "5 nm: 61.7 µs. 10 nm: 123.4 µs. 308.5 µs: 25 nm."
+        },
+        {
+          "name": "Pulse interval and duty cycle",
+          "formula": "PRI = 1 ÷ PRF; duty = PW × PRF",
+          "means": "Duty cycle: fraction of time transmitting.",
+          "example": "2500 Hz: 400 µs. 2000 Hz: 0.0005 s. 0.05 µs, 2000 Hz: 0.0001. 0.5 µs, 1000 Hz: 0.0005."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Average power = peak × PW × PRF",
+      "head": [
+        "Peak, kW",
+        "PW, µs",
+        "PRF, Hz",
+        "Average, W"
+      ],
+      "rows": [
+        [
+          "100",
+          "1",
+          "400",
+          "40"
+        ],
+        [
+          "15",
+          "0.5",
+          "900",
+          "6.75"
+        ],
+        [
+          "100",
+          "1",
+          "1000",
+          "100"
+        ],
+        [
+          "100",
+          "0.5",
+          "Every 1600 µs",
+          "31.25"
+        ],
+        [
+          "<b>20</b>",
+          "1",
+          "900",
+          "18"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Highest PRF, or less: 1 ÷ round trip",
+      "head": [
+        "5 nm",
+        "10 nm",
+        "30 nm",
+        "100 nm"
+      ],
+      "rows": [
+        [
+          "16.2 kHz",
+          "About 8.1 kHz",
+          "2.7 kHz",
+          "810 Hz"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "The main parts",
+      "svg": "<svg viewBox='0 0 320 96' role='img' aria-label='Block diagram. The synchronizer triggers the modulator and the indicator. The modulator drives the magnetron, which feeds the duplexer and antenna. Echoes go from the duplexer to the receiver and on to the indicator.'><g fill='#eef3fa' stroke='#12355b' stroke-width='2'><rect x='2' y='4' width='82' height='34' rx='4'/><rect x='94' y='4' width='70' height='34' rx='4'/><rect x='174' y='4' width='66' height='34' rx='4'/><rect x='2' y='58' width='82' height='34' rx='4'/><rect x='94' y='58' width='70' height='34' rx='4'/><rect x='174' y='58' width='66' height='34' rx='4'/><rect x='258' y='58' width='60' height='34' rx='4'/></g><g stroke='#1a5fb4' stroke-width='2'><line x1='84' y1='21' x2='88' y2='21'/><line x1='164' y1='21' x2='168' y2='21'/><line x1='207' y1='38' x2='207' y2='50'/><line x1='43' y1='38' x2='43' y2='50'/><line x1='174' y1='75' x2='170' y2='75'/><line x1='94' y1='75' x2='90' y2='75'/><line x1='246' y1='75' x2='252' y2='75'/></g><g fill='#1a5fb4'><polygon points='94,21 87,17 87,25'/><polygon points='174,21 167,17 167,25'/><polygon points='207,58 203,49 211,49'/><polygon points='43,58 39,49 47,49'/><polygon points='164,75 171,71 171,79'/><polygon points='84,75 91,71 91,79'/><polygon points='240,75 247,71 247,79'/><polygon points='258,75 251,71 251,79'/></g><g text-anchor='middle' font-size='11' font-weight='700' fill='#12355b'><text x='43' y='18'>Synchronizer</text><text x='129' y='18'>Modulator</text><text x='207' y='18'>Magnetron</text><text x='43' y='72'>Indicator</text><text x='129' y='72'>Receiver</text><text x='207' y='72'>Duplexer</text><text x='288' y='79'>Antenna</text></g><g text-anchor='middle' font-size='10.5' fill='#4a5666'><text x='43' y='31'>Controls timing</text><text x='129' y='31'>High voltage</text><text x='207' y='31'>Radio pulse</text><text x='43' y='85'>Shows targets</text><text x='129' y='85'>Amplifies</text><text x='207' y='85'>1 antenna</text></g></svg>",
+      "caption": "Duplexer: 1 antenna transmits and receives. PRF sets the indicator's sweep frequency."
+    },
+    {
+      "kind": "notes",
+      "title": "Range, power and bands",
+      "items": [
+        "<b>Echo size:</b> transmitted power, antenna effective area, transmit and receive losses, RADAR cross section, range to target.",
+        "<b>Recovery time</b> has no effect on maximum range.",
+        "<b>Minimum range</b> is set by transmitted pulse width.",
+        "<b>Average power</b> is measured over a period of time. For peak, divide it by duty cycle.",
+        "<b>Pulses:</b> short range, narrow, fast rate. Long range, wider, lower PRR. Small targets, long, high output power.",
+        "<b>Microwaves</b> give stronger target echoes. Marine radar is <b>SHF</b>.",
+        "<b>Wavelength:</b> λ = c ÷ f. 3 GHz: 10 cm.",
+        "<b>S-band:</b> 2 to 4 GHz, less affected by weather.",
+        "<b>X-band:</b> 8 to 12 GHz, better bearing resolution."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Figure 8A1 receiver",
+      "svg": "<svg viewBox='0 0 320 118' role='img' aria-label='Figure 8A1. Echoes pass block 46, the TR box, to the crystal mixer, IF amplifier, then detector and video amplifier. The local oscillator feeds the mixer. Block 47, the RF attenuator, feeds a sample of the magnetron pulse to the AFC mixer and AFC, which retunes the local oscillator.'><g fill='#eef3fa' stroke='#12355b' stroke-width='2'><rect x='88' y='20' width='60' height='32' rx='4'/><rect x='160' y='20' width='78' height='32' rx='4'/><rect x='250' y='20' width='64' height='32' rx='4'/><rect x='84' y='68' width='68' height='32' rx='4'/><rect x='164' y='68' width='42' height='32' rx='4'/><rect x='218' y='68' width='42' height='32' rx='4'/></g><g fill='#fdf3dd' stroke='#c98a00' stroke-width='2'><rect x='16' y='20' width='60' height='32' rx='4'/><rect x='272' y='68' width='42' height='32' rx='4'/></g><g stroke='#1a5fb4' stroke-width='2'><line x1='2' y1='36' x2='8' y2='36'/><line x1='76' y1='36' x2='81' y2='36'/><line x1='148' y1='36' x2='153' y2='36'/><line x1='238' y1='36' x2='243' y2='36'/><line x1='118' y1='68' x2='118' y2='60'/><line x1='164' y1='84' x2='159' y2='84'/><line x1='218' y1='84' x2='213' y2='84'/><line x1='272' y1='84' x2='267' y2='84'/></g><g fill='#1a5fb4'><polygon points='16,36 8,32 8,40'/><polygon points='88,36 80,32 80,40'/><polygon points='160,36 152,32 152,40'/><polygon points='250,36 242,32 242,40'/><polygon points='118,52 114,60 122,60'/><polygon points='152,84 160,80 160,88'/><polygon points='206,84 214,80 214,88'/><polygon points='260,84 268,80 268,88'/></g><text x='2' y='12' font-size='11' font-weight='700' fill='#1a5fb4'>Echoes from waveguide</text><text x='314' y='12' text-anchor='end' font-size='11' fill='#4a5666'>To the CRT</text><g text-anchor='middle' font-size='11' font-weight='700' fill='#12355b'><text x='46' y='33' fill='#8a5f00'>46</text><text x='46' y='46' fill='#8a5f00'>TR box</text><text x='118' y='33'>Crystal</text><text x='118' y='46'>mixer</text><text x='199' y='40'>IF amp</text><text x='282' y='33'>Detector,</text><text x='282' y='46'>video</text><text x='118' y='81'>Local</text><text x='118' y='94'>oscillator</text><text x='185' y='88'>AFC</text><text x='239' y='81'>AFC</text><text x='239' y='94'>mixer</text><text x='293' y='88' fill='#8a5f00'>47</text></g><text x='314' y='114' text-anchor='end' font-size='11' font-weight='700' fill='#8a5f00'>47: RF attenuator, from the magnetron</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Components",
+      "items": [
+        "<b>Silicon crystals:</b> static-sensitive, stored in lead foil, low current, typically <b>3 mA</b>.",
+        "<b>Magnetron filament:</b> carries dangerous voltages.",
+        "<b>Gunn oscillator:</b> resonant cavity sets the frequency; uses negative resistance and bulk effect.",
+        "<b>Reflex klystron:</b> cavity dimensions set the frequency; repeller voltage fine-tunes.",
+        "<b>Blocking oscillator:</b> T = R × C. <b>Phantastron:</b> a linear ramp when externally triggered.",
+        "<b>Sample-and-hold:</b> analog switch, capacitor, amplifiers, input and output buffers.",
+        "<b>Not</b> an analog-to-digital method: dynamic-range conversion.",
+        "<b>TTL and CMOS NAND:</b> both have active pull-up. At high frequencies, CMOS uses almost TTL's power."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Figure answers",
+      "head": [
+        "Fig",
+        "Answer"
+      ],
+      "rows": [
+        [
+          "8A2",
+          "ALU does arithmetic. Memory and I/O talk to peripherals. Address pointers: general registers."
+        ],
+        [
+          "8A3",
+          "Box X: 51-ohm resistor"
+        ],
+        [
+          "8A4",
+          "Pin 5 high, pin 9 high"
+        ],
+        [
+          "8A5",
+          "More light, more diode current"
+        ],
+        [
+          "8A6",
+          "A or B low: Q<sub>1</sub> saturated, Q<sub>2</sub> off"
+        ],
+        [
+          "8A7",
+          "R<sub>S</sub> = 3.1 V ÷ 0.040 A ≈ 77 Ω"
+        ],
+        [
+          "8A8",
+          "D-type flip-flop, 3-state, inverting"
+        ]
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "PRF, PRR:",
+          "def": "pulses per second, in hertz."
+        },
+        {
+          "term": "AFC, IF:",
+          "def": "automatic frequency control, intermediate frequency."
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "<b>Meters</b>, not yards. 150, not 300.",
+        "Duty cycle: ignore peak power and range.",
+        "PRF answers are always <b>or less</b>.",
+        "PRR means the magnetron, not the local oscillator or klystron."
+      ]
+    }
+  ]
+}

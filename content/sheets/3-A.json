@@ -1,0 +1,189 @@
+{
+  "id": "3-A",
+  "summary": "The basics: charge, voltage and power; AC waves and what meters read; coils, capacitors and magnetism; materials and semiconductors.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Electricity in plain words",
+      "items": [
+        "<b>Current</b> (amperes) is charge on the move: 1 ampere = 1 coulomb per second.",
+        "<b>Voltage</b> (volts), also called EMF, is the push between 2 terminals. No complete path, no current.",
+        "<b>Resistance</b> (ohms) opposes current. A longer wire has more; halve the area and it doubles.",
+        "<b>Power</b> (watts) is how fast energy is used: 1 watt = 1 joule per second."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "One wave, 3 ways to measure it",
+      "svg": "<svg viewBox='0 0 320 142' role='img' aria-label='A sine wave marked with RMS 117 volts, peak 165.5 volts and peak-to-peak 331 volts'><line x1='14' y1='71' x2='198' y2='71' stroke='#8593a3' stroke-width='1'/><path d='M16 71 C48.8 -2 73.2 -2 106 71 S163.2 144 196 71' fill='none' stroke='#1a5fb4' stroke-width='2.5'/><line x1='14' y1='32' x2='198' y2='32' stroke='#0f8a7e' stroke-width='1.5' stroke-dasharray='4 3'/><line x1='61' y1='16' x2='306' y2='16' stroke='#8593a3' stroke-width='1'/><line x1='151' y1='126' x2='306' y2='126' stroke='#8593a3' stroke-width='1'/><line x1='204' y1='16' x2='204' y2='71' stroke='#c98a00' stroke-width='2'/><line x1='306' y1='16' x2='306' y2='126' stroke='#c8452f' stroke-width='2'/><text x='212' y='36' font-size='11' font-weight='700' fill='#0f8a7e'>RMS 117 V</text><text x='212' y='62' font-size='11' font-weight='700' fill='#8a5f00'>Peak 165.5 V</text><text x='300' y='100' text-anchor='end' font-size='11' font-weight='700' fill='#c8452f'>Peak to peak</text><text x='300' y='114' text-anchor='end' font-size='11' font-weight='700' fill='#c8452f'>331 V</text></svg>",
+      "caption": "A household outlet; AC meters read RMS."
+    },
+    {
+      "kind": "formulas",
+      "title": "Formulas",
+      "items": [
+        {
+          "name": "Power",
+          "formula": "P = V × I",
+          "means": "Volts × amperes = watts.",
+          "example": "6 V × 2 A = 12 W"
+        },
+        {
+          "name": "Peak from a meter reading",
+          "formula": "Peak = RMS × 1.414",
+          "means": "Back again: peak × 0.707 = RMS. Average = RMS × 0.9.",
+          "example": "117 V × 1.414 ≈ 165.5 V peak; × 2 ≈ 331 V peak to peak"
+        },
+        {
+          "name": "Reactance",
+          "formula": "X<sub>L</sub> = 2π f L  and  X<sub>C</sub> = 1 / 2π f C",
+          "means": "Coils oppose AC more as frequency rises; capacitors oppose it less."
+        },
+        {
+          "name": "Adding parts",
+          "formula": "C<sub>T</sub> = C<sub>1</sub> + C<sub>2</sub>  and  L<sub>T</sub> = L<sub>1</sub> + L<sub>2</sub>",
+          "means": "Capacitors add in parallel; inductors add in series, like resistors."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "3 kinds of AC power",
+      "head": [
+        "Power",
+        "Unit",
+        "What it is"
+      ],
+      "rows": [
+        [
+          "Apparent",
+          "VA",
+          "Voltmeter × ammeter readings"
+        ],
+        [
+          "True",
+          "Watts",
+          "Apparent × power factor (0 to 1)"
+        ],
+        [
+          "Reactive",
+          "VAR",
+          "Stored and returned; no net work"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Current versus voltage",
+      "head": [
+        "Part",
+        "Phase",
+        "Energy"
+      ],
+      "rows": [
+        [
+          "Resistor",
+          "In phase",
+          "Turned into heat"
+        ],
+        [
+          "Coil",
+          "90°, current lags",
+          "Stored, then returned"
+        ],
+        [
+          "Capacitor",
+          "90°, current leads",
+          "Stored, then returned"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Wave shapes and harmonics",
+      "svg": "<svg viewBox='0 0 320 92' role='img' aria-label='A sine wave has no harmonics, a square wave has odd harmonics, a sawtooth wave has even and odd harmonics'><g fill='none' stroke='#1a5fb4' stroke-width='2'><path d='M8 38 C22 -4 34 -4 48 38 S74 80 88 38'/><path d='M116 58 V14 H156 V58 H196 V14'/><path d='M224 58 L280 14 V58 L312 33'/></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='48' y='76' font-weight='700'>Sine</text><text x='48' y='89'>Fundamental</text><text x='156' y='76' font-weight='700'>Square</text><text x='156' y='89'>+ odd harmonics</text><text x='268' y='76' font-weight='700'>Sawtooth</text><text x='268' y='89'>+ even and odd</text></g></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Fields: capacitors and coils",
+      "items": [
+        "A <b>capacitor</b> is 2 plates and a dielectric. It stores energy in an electrostatic field; capacitance (farads) is charge held per volt.",
+        "<b>Current</b> makes a magnetic field; more current, stronger field. Voltage alone makes none.",
+        "A <b>changing</b> field induces a voltage in a nearby conductor. <b>Lenz's law:</b> the induced current opposes the change.",
+        "A <b>coil</b> stores energy in its magnetic field. More turns, closer turns or a higher-permeability core raise inductance."
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "Flux:",
+          "def": "magnetic lines of force, taken together."
+        },
+        {
+          "term": "Reluctance:",
+          "def": "magnetic \"resistance\"; low in iron."
+        },
+        {
+          "term": "Permeability:",
+          "def": "flux density ÷ magnetizing force."
+        },
+        {
+          "term": "Back EMF:",
+          "def": "a voltage from a coil's own field, opposing the applied EMF."
+        },
+        {
+          "term": "Skin effect:",
+          "def": "RF current crowds into a thin surface layer, raising AC resistance."
+        },
+        {
+          "term": "Dielectric constant:",
+          "def": "capacitance compared with a vacuum, which is exactly 1."
+        },
+        {
+          "term": "Bypass capacitor:",
+          "def": "sends AC to ground and blocks DC."
+        },
+        {
+          "term": "Max power transfer:",
+          "def": "load impedance equals the source's internal impedance."
+        },
+        {
+          "term": "Sacrificial anode:",
+          "def": "a zinc bar that corrodes in place of bronze, steel and copper."
+        }
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Materials",
+      "items": [
+        "Best to worst conductor: <b>silver, copper, aluminum, iron, lead</b>.",
+        "At UHF, <b>mica</b> is the best insulator; rubber and wax paper turn lossy."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Semiconductors",
+      "items": [
+        "<b>N-type</b> has extra electrons, <b>P-type</b> a shortage. Their PN junction makes a diode: conducts forward, blocks reverse.",
+        "<b>PIV</b>, peak inverse voltage: the most reverse voltage it can block.",
+        "<b>Bipolar</b>: small base current controls a large collector current; low input impedance.",
+        "<b>FET</b>: almost no gate current, so high input impedance.",
+        "<b>Common emitter</b> gives real voltage gain; <b>common collector</b> slightly below 1."
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "<b>TRM</b> isn't a measure. It's RMS, root mean square.",
+        "Back EMF is a <b>voltage</b>, not a current.",
+        "Joules measure energy, coulombs charge, watts power.",
+        "A charged capacitor has voltage but no magnetic field: that takes current.",
+        "<b>Lead</b> is a metal: a conductor, not an insulator."
+      ]
+    }
+  ]
+}

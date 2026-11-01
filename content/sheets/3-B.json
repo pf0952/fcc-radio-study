@@ -1,0 +1,223 @@
+{
+  "id": "3-B",
+  "summary": "Ohm's law, power, AC waves, frequency error, time constants, impedance and power supplies.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "The basics",
+      "items": [
+        "<b>Series:</b> same current, resistances add. <b>Parallel:</b> same voltage, total below the smallest.",
+        "<b>Prefixes:</b> k 1000, M 1,000,000; m thousandths, µ millionths, p millionths of µ."
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "Ohm's law and power",
+      "items": [
+        {
+          "name": "E volts, I amps, R ohms",
+          "formula": "I = E÷R, E = I×R, R = E÷I",
+          "means": "I = R÷E is upside down, and incorrect.",
+          "example": "2A×50Ω = 100 V. 200V÷100Ω = 2 A. 90V÷3A = 30 Ω, not 270"
+        },
+        {
+          "name": "Power, watts",
+          "formula": "P = E×I = I²×R = E²÷R",
+          "means": "Halve R at constant voltage: power doubles. Limits: E = √(P×R), I = √(P÷R).",
+          "example": "20W, 2000Ω: 200 V. 200W, 2000Ω: 0.316 A"
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Circuit answers",
+      "head": [
+        "Problem",
+        "Answer"
+      ],
+      "rows": [
+        [
+          "Meter: 50µA at 200V",
+          "4 MΩ"
+        ],
+        [
+          "Relay: 500Ω, 125mA, 110V",
+          "880 − 500 = 380 Ω"
+        ],
+        [
+          "Parallel: 500Ω 2W, 1500Ω 1W",
+          "31.6 V: lower limit"
+        ],
+        [
+          "Figure 3B1: R<sub>1</sub>, diode reverse biased",
+          "5 V"
+        ],
+        [
+          "Figure 3B2: R<sub>1</sub>, 3V Zener clamps",
+          "12 − 3 = 9 V"
+        ],
+        [
+          "100W into 50Ω, peak-to-peak",
+          "200 V"
+        ],
+        [
+          "10V Zener, 20V supply, 5 to 95 mA",
+          "200 Ω"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Sine wave, 5 V peak",
+      "svg": "<svg viewBox='0 0 320 118' role='img' aria-label='A sine wave with a 5 volt peak: plus 4.3 volts at 60 degrees, plus 2.5 volts at 150 degrees, minus 4.3 volts at 240 degrees'><line x1='8' y1='62' x2='308' y2='62' stroke='#8593a3' stroke-width='1'/><path d='M12 62 C64.4 6.3 103.6 6.3 156 62 S247.6 117.7 300 62' fill='none' stroke='#1a5fb4' stroke-width='2.5'/><line x1='58' y1='23' x2='50' y2='15' stroke='#8593a3' stroke-width='1'/><line x1='201' y1='101' x2='191' y2='107' stroke='#8593a3' stroke-width='1'/><g fill='#c8452f'><circle cx='60' cy='26' r='3.5'/><circle cx='132' cy='41' r='3.5'/><circle cx='204' cy='98' r='3.5'/></g><g font-size='11' font-weight='700' fill='#17202b'><text x='4' y='12'>π/3 = 60°: +4.3 V</text><text x='142' y='38'>150°: +2.5 V</text><text x='188' y='113' text-anchor='end'>240°: −4.3 V</text></g><g font-size='10.5' fill='#4a5666'><text x='12' y='75' text-anchor='middle'>0°</text><text x='84' y='75' text-anchor='middle'>90°</text><text x='160' y='57'>180°</text><text x='228' y='57' text-anchor='middle'>270°</text><text x='300' y='57' text-anchor='middle'>360°</text></g></svg>",
+      "caption": "Voltage = peak×sin θ."
+    },
+    {
+      "kind": "notes",
+      "title": "Frequency",
+      "items": [
+        "<b>Harmonics:</b> whole-number multiples. 2×380 kHz = 760 kHz. 2×4146 kHz = 8292 kHz.",
+        "<b>Counter error:</b> MHz × ppm (parts per million) = Hz. 462.1 MHz: ±1.0, 462.1 Hz; ±0.1, 46.21 Hz. 156.52 MHz: ±1.0, 156.52 Hz; ±10, 1565.20 Hz."
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "AC and timing",
+      "items": [
+        {
+          "name": "RMS",
+          "formula": "RMS = 0.707 × peak",
+          "means": "Peak = 1.414×RMS. Peak-to-peak = 2×peak.",
+          "example": "340 V peak-to-peak: 170 V peak, ≈ 120 V RMS"
+        },
+        {
+          "name": "1 time constant: charge to 63.2%",
+          "formula": "RC: τ = R×C. RL: τ = L÷R",
+          "means": "MΩ×µF = seconds. Matched pairs, all series or all parallel: same τ.",
+          "example": "100 µF, 470 kΩ: 47 s. 220 µF, 1 MΩ: 220 s"
+        }
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Time constants (τ)",
+      "svg": "<svg viewBox='0 0 320 116' role='img' aria-label='Charging reaches 63.2 percent after 1 time constant and 86.5 percent after 2. Discharging leaves 36.8 percent after 1 and 13.5 percent after 2'><line x1='40' y1='8' x2='40' y2='100' stroke='#8593a3' stroke-width='1'/><line x1='40' y1='100' x2='292' y2='100' stroke='#8593a3' stroke-width='1'/><line x1='130' y1='8' x2='130' y2='100' stroke='#8593a3' stroke-width='1' stroke-dasharray='3 3'/><line x1='220' y1='8' x2='220' y2='100' stroke='#8593a3' stroke-width='1' stroke-dasharray='3 3'/><polyline fill='none' stroke='#1a5fb4' stroke-width='2.5' points='40 100.0 49 91.2 58 83.3 67 76.2 76 69.7 85 63.8 94 58.5 103 53.7 112 49.3 121 45.4 130 41.8 139 38.6 148 35.7 157 33.1 166 30.7 175 28.5 184 26.6 193 24.8 202 23.2 211 21.8 220 20.5 229 19.3 238 18.2 247 17.2 256 16.3 265 15.6 274 14.8 283 14.2'/><polyline fill='none' stroke='#0f8a7e' stroke-width='2.5' points='40 8.0 49 16.8 58 24.7 67 31.8 76 38.3 85 44.2 94 49.5 103 54.3 112 58.7 121 62.6 130 66.2 139 69.4 148 72.3 157 74.9 166 77.3 175 79.5 184 81.4 193 83.2 202 84.8 211 86.2 220 87.5 229 88.7 238 89.8 247 90.8 256 91.7 265 92.4 274 93.2 283 93.8'/><g fill='#c8452f'><circle cx='130' cy='41.9' r='3.5'/><circle cx='130' cy='66.1' r='3.5'/><circle cx='220' cy='20.4' r='3.5'/><circle cx='220' cy='87.5' r='3.5'/></g><g font-size='10.5' fill='#4a5666'><text x='34' y='12' text-anchor='end'>100%</text><text x='34' y='104' text-anchor='end'>0%</text><text x='130' y='113' text-anchor='middle'>1 τ</text><text x='220' y='113' text-anchor='middle'>2 τ</text></g><g font-size='11' font-weight='700' fill='#1a5fb4'><text x='124' y='35' text-anchor='end'>63.2%</text><text x='214' y='13' text-anchor='end'>86.5%</text><text x='230' y='42'>Charging</text></g><g font-size='11' font-weight='700' fill='#0f8a7e'><text x='124' y='82' text-anchor='end'>36.8%</text><text x='214' y='75' text-anchor='end'>13.5%</text><text x='230' y='70'>Discharging</text></g></svg>"
+    },
+    {
+      "kind": "figure",
+      "title": "Impedance triangles",
+      "svg": "<svg viewBox='0 0 320 118' role='img' aria-label='Impedance triangles. 100 plus j100 is 141 ohms at 45 degrees. 300 minus j400 is 500 ohms at minus 53.1 degrees'><polygon points='22,84 78,84 78,28' fill='#eef3fa' stroke='#1a5fb4' stroke-width='2'/><polygon points='192,30 240,30 240,94' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='2'/><g font-size='11' font-weight='700'><text x='6' y='12' fill='#1a5fb4'>Coil: 100 +j100</text><text x='314' y='12' text-anchor='end' fill='#0f8a7e'>Capacitor: 300 −j400</text><text x='6' y='113' fill='#1a5fb4'>141 ohms, /45 degrees</text><text x='314' y='113' text-anchor='end' fill='#0f8a7e'>500 ohms, /-53.1 degrees</text><text x='42' y='54' text-anchor='end' fill='#17202b'>141</text><text x='208' y='74' text-anchor='end' fill='#17202b'>500</text></g><g font-size='10.5' fill='#4a5666'><text x='50' y='98' text-anchor='middle'>R 100</text><text x='84' y='60'>+j100</text><text x='42' y='80'>45°</text><text x='216' y='25' text-anchor='middle'>R 300</text><text x='246' y='66'>−j400</text><text x='188' y='38' text-anchor='end'>−53.1°</text></g></svg>",
+      "caption": "Z: total opposition. +j: positive angle. −j: negative."
+    },
+    {
+      "kind": "formulas",
+      "title": "Impedance",
+      "items": [
+        {
+          "name": "Series: subtract X<sub>L</sub> and X<sub>C</sub> first",
+          "formula": "|Z| = √(R²+X²), θ = arctan(X÷R)",
+          "means": "Parallel: |Z| = R×X ÷ √(R²+X²), θ = arctan(R÷X).",
+          "example": "6Ω, 17Ω: √325 ≈ 18 Ω"
+        }
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "RMS:",
+          "def": "the DC voltage causing the same heating in a given resistor."
+        },
+        {
+          "term": "Phase:",
+          "def": "position in the cycle. Figure 3B3: B lags A by 90°."
+        },
+        {
+          "term": "Reactance:",
+          "def": "opposition to AC. X<sub>L</sub> = 2πfL, X<sub>C</sub> = 1÷(2πfC)."
+        },
+        {
+          "term": "Polar plot:",
+          "def": "shows magnitude and phase angle."
+        },
+        {
+          "term": "Power factor:",
+          "def": "cos θ: 0.5 at 60°, 0.707 at 45°, 0.866 at 30°. True power = apparent × power factor."
+        },
+        {
+          "term": "Horsepower:",
+          "def": "1 = 746 W: 550 pounds at 1 foot per second."
+        },
+        {
+          "term": "Conductance:",
+          "def": "G = 1÷R, in siemens (mhos). 12 V, 6 A: 0.50 S."
+        },
+        {
+          "term": "Turns ratio:",
+          "def": "√(impedance ratio). 500Ω to 10Ω: √50 ≈ 7.1 to 1."
+        },
+        {
+          "term": "Regulation:",
+          "def": "sag ÷ full-load voltage. 12 V to 10 V: 20%. 25% on 200 V: 250 V no load."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Impedance answers",
+      "head": [
+        "Series, unless marked",
+        "Z"
+      ],
+      "rows": [
+        [
+          "0.1µH, 20Ω, 30MHz",
+          "20 +j19"
+        ],
+        [
+          "0.1µH, 30Ω, 5MHz",
+          "30 +j3"
+        ],
+        [
+          "10µH, 40Ω, 500MHz",
+          "40 +j31400"
+        ],
+        [
+          "1.0mH, 200Ω, 30kHz",
+          "200 +j188"
+        ],
+        [
+          "0.001µF, 400Ω, 500kHz",
+          "400 −j318"
+        ],
+        [
+          "0.01µF parallel 300Ω, 50kHz",
+          "159 −j150"
+        ],
+        [
+          "−j300, +j600, 400Ω",
+          "500 /37°"
+        ],
+        [
+          "+j400 parallel 300Ω",
+          "240 /36.9°"
+        ],
+        [
+          "100pF parallel 4000Ω, 500kHz",
+          "2490 /-51.5°"
+        ]
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "<b>36.8%</b> is what's left discharging, not the charge reached.",
+        "<b>RL:</b> the current reaches 63.2% of maximum, not the voltage.",
+        "<b>0.577</b> is tan 30°, not cos 30°.",
+        "<b>50 to 1</b> is the impedance ratio, not turns."
+      ]
+    }
+  ]
+}

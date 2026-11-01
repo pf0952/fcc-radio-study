@@ -1,0 +1,264 @@
+{
+  "id": "3-C",
+  "summary": "Semiconductors, LEDs, transistors, capacitors, transformers, regulators, diodes, SCRs, TRIACs, crystals and relays.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Semiconductors and light",
+      "items": [
+        "<b>Heat or light</b> frees electrons, each leaving a <b>hole</b>: 2 charge carriers.",
+        "<b>Photoconductive effect:</b> light raises conductivity, so resistance falls.",
+        "<b>Photovoltaic effect:</b> light becomes EMF directly, as in a solar cell.",
+        "<b>Doping</b> gives N-type (extra electrons) and P-type (extra holes), meeting at a <b>PN junction</b>."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "PN junction bias",
+      "svg": "<svg viewBox='0 0 320 102' role='img' aria-label='A PN junction. Forward bias, P side positive, squeezes the depletion layer thin so current flows. Reverse bias, P side negative, widens it so almost no current flows'><g stroke='#12355b' stroke-width='1.5'><rect x='30' y='8' width='56' height='24' fill='#eef3fa'/><rect x='94' y='8' width='56' height='24' fill='#e3f3f1'/><rect x='86' y='8' width='8' height='24' fill='#fbe9e5'/><rect x='30' y='56' width='40' height='24' fill='#eef3fa'/><rect x='110' y='56' width='40' height='24' fill='#e3f3f1'/><rect x='70' y='56' width='40' height='24' fill='#fbe9e5'/></g><line x1='40' y1='42' x2='134' y2='42' stroke='#1a5fb4' stroke-width='2.5'/><polygon points='142,42 133,37.5 133,46.5' fill='#1a5fb4'/><g font-size='12' font-weight='700' text-anchor='middle' fill='#12355b'><text x='58' y='24'>P</text><text x='122' y='24'>N</text><text x='50' y='72'>P</text><text x='130' y='72'>N</text><text x='18' y='24' fill='#c8452f'>+</text><text x='162' y='24'>−</text><text x='18' y='72'>−</text><text x='162' y='72' fill='#c8452f'>+</text></g><text x='90' y='96' text-anchor='middle' font-size='10.5' fill='#c8452f'>Depletion layer</text><g font-size='11' font-weight='700'><text x='176' y='16' fill='#1a5fb4'>Forward: P side +</text><text x='176' y='64' fill='#c8452f'>Reverse: P side −</text></g><g font-size='10.5' fill='#4a5666'><text x='176' y='31'>Thin layer: conducts,</text><text x='176' y='44'>low impedance</text><text x='176' y='79'>Wide layer: blocks,</text><text x='176' y='92'>high impedance</text></g></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "LEDs",
+      "items": [
+        "<b>LED</b> (light-emitting diode): forward bias only. Materials set the color; current sets brightness.",
+        "<b>20 mA:</b> operating current and safe maximum. Needs a <b>series resistor</b>.",
+        "<b>Optoisolator</b> or optocoupler: LED and photosensitive device, light-tight. <b>Optointerrupter:</b> an open slot."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "NPN transistor",
+      "svg": "<svg viewBox='0 0 320 116' role='img' aria-label='An NPN transistor. A small base current lets a large current pass from emitter through the thin base to the collector. The base must be at least 0.7 volts positive of the emitter'><g stroke='#12355b' stroke-width='1.5'><rect x='8' y='30' width='110' height='46' fill='#eef3fa'/><rect x='118' y='30' width='24' height='46' fill='#fdf3dd'/><rect x='142' y='30' width='110' height='46' fill='#eef3fa'/></g><line x1='20' y1='62' x2='262' y2='62' stroke='#1a5fb4' stroke-width='3'/><polygon points='272,62 261,56 261,68' fill='#1a5fb4'/><line x1='130' y1='6' x2='130' y2='20' stroke='#c98a00' stroke-width='2'/><polygon points='130,28 125.5,19 134.5,19' fill='#c98a00'/><g font-size='11' font-weight='700' text-anchor='middle' fill='#12355b'><text x='63' y='47'>Emitter (N)</text><text x='130' y='47'>P</text><text x='197' y='47'>Collector (N)</text></g><text x='140' y='17' font-size='11' font-weight='700' fill='#8a5f00'>Base: small current</text><g font-size='10.5' fill='#4a5666'><text x='278' y='52'>Most</text><text x='278' y='65'>pass</text><text x='278' y='78'>through</text><text x='8' y='93'>Turn on: base at least 0.7 V positive of the emitter</text><text x='8' y='108'>Base changes 1 mA, collector 100 mA: beta = 100</text></g></svg>"
+    },
+    {
+      "kind": "formulas",
+      "title": "Current gain",
+      "items": [
+        {
+          "name": "Alpha, beta",
+          "formula": "α = ΔI<sub>C</sub>÷ΔI<sub>E</sub>, β = ΔI<sub>C</sub>÷ΔI<sub>B</sub>",
+          "means": "Alpha, collector vs emitter: just under 1, 0.95 to 0.995. Beta, collector vs base: about 20 to several hundred. Beta cutoff: emitter current gain down to 0.707 of maximum."
+        }
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "MOSFETs and CMOS",
+      "items": [
+        "<b>MOSFET:</b> metal-oxide semiconductor field-effect transistor. Gate voltage controls the channel; thin oxide insulates the gate.",
+        "<b>CMOS:</b> complementary metal-oxide semiconductor, P-channel and N-channel MOSFETs paired.",
+        "<b>Static charges</b> damage FET and CMOS parts."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Transistor states",
+      "head": [
+        "State",
+        "Base-emitter",
+        "Collector-base",
+        "Collector current"
+      ],
+      "rows": [
+        [
+          "Cutoff",
+          "Reverse",
+          "Reverse",
+          "None: open switch"
+        ],
+        [
+          "Class A",
+          "Forward",
+          "Reverse",
+          "Follows the base"
+        ],
+        [
+          "Saturation",
+          "Forward",
+          "Forward",
+          "Maximum"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "3 wirings",
+      "head": [
+        "Common",
+        "In, out",
+        "Most"
+      ],
+      "rows": [
+        [
+          "Emitter",
+          "Base, collector",
+          "Power gain"
+        ],
+        [
+          "Base",
+          "Emitter, collector",
+          "Voltage gain"
+        ],
+        [
+          "Collector (emitter follower)",
+          "Base, emitter",
+          "Current gain"
+        ]
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "Capacitors and transformers",
+      "items": [
+        {
+          "name": "Capacitance",
+          "formula": "C = εA÷d",
+          "means": "Set by plate spacing and dielectric constant."
+        },
+        {
+          "name": "Transformer",
+          "formula": "E<sub>S</sub> = E<sub>P</sub> × N<sub>S</sub>÷N<sub>P</sub>",
+          "means": "More secondary turns: steps up.",
+          "example": "120V×500÷2250 = 26.7 V. 20V×500÷200 = 50 V"
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Capacitor jobs (figures 3C4, 3C5)",
+      "head": [
+        "Capacitor",
+        "Job"
+      ],
+      "rows": [
+        [
+          "Coupling",
+          "Blocks DC, passes AC"
+        ],
+        [
+          "3C5, capacitor 3",
+          "Bypass"
+        ],
+        [
+          "3C5, 1 µF with pot",
+          "Adjusts tone"
+        ],
+        [
+          "3C4, component 2",
+          "Signal ground"
+        ],
+        [
+          "3C4, dashed line",
+          "Neutralizing: decreases parasitic oscillations"
+        ],
+        [
+          "Series with transformer primary",
+          "Improves power factor"
+        ]
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "Linear regulator:",
+          "def": "control element's conduction varied in direct proportion to line voltage or load current."
+        },
+        {
+          "term": "Switching regulator:",
+          "def": "control device on or off; duty cycle proportional to line or load conditions."
+        },
+        {
+          "term": "Three-terminal regulator:",
+          "def": "voltage reference, error amplifier, sensing resistors and transistors, pass element."
+        },
+        {
+          "term": "Zener:",
+          "def": "reference voltage, 2.4 V to 200 V and above."
+        },
+        {
+          "term": "PIN:",
+          "def": "RF switch."
+        },
+        {
+          "term": "Hot-carrier:",
+          "def": "VHF and UHF mixers and detectors."
+        },
+        {
+          "term": "Tunnel:",
+          "def": "negative resistance; amplifies and oscillates."
+        },
+        {
+          "term": "Varactor:",
+          "def": "capacitance varies with voltage."
+        },
+        {
+          "term": "SCR:",
+          "def": "silicon-controlled rectifier, in light dimmers. A gate pulse latches it on. 2 share a load in parallel, reverse polarity."
+        },
+        {
+          "term": "TRIAC:",
+          "def": "2 complementary SCRs in parallel with a common gate."
+        },
+        {
+          "term": "Unijunction:",
+          "def": "relaxation oscillators, SCR triggers."
+        },
+        {
+          "term": "Piezoelectric effect:",
+          "def": "voltage vibrates a crystal. Quartz: Pierce oscillator."
+        },
+        {
+          "term": "Relay:",
+          "def": "remotely controlled switching device."
+        }
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Power supply",
+      "svg": "<svg viewBox='0 0 320 130' role='img' aria-label='A power supply: transformer, rectifier and filter, then a linear regulator where a Zener reference feeds an error amplifier that steers the pass element carrying the load current'><rect x='4' y='4' width='92' height='32' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><text x='50' y='18' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Transformer</text><text x='50' y='31' text-anchor='middle' font-size='10.5' fill='#4a5666'>steps down</text><rect x='114' y='4' width='92' height='32' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><text x='160' y='18' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Rectifier</text><text x='160' y='31' text-anchor='middle' font-size='10.5' fill='#4a5666'>AC to pulses</text><rect x='224' y='4' width='92' height='32' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><text x='270' y='18' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Filter</text><text x='270' y='31' text-anchor='middle' font-size='10.5' fill='#4a5666'>smooths ripple</text><rect x='4' y='62' width='92' height='32' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><text x='50' y='76' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Zener diode</text><text x='50' y='89' text-anchor='middle' font-size='10.5' fill='#4a5666'>reference</text><rect x='114' y='62' width='92' height='32' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><text x='160' y='76' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Error amplifier</text><text x='160' y='89' text-anchor='middle' font-size='10.5' fill='#4a5666'>compares output</text><rect x='224' y='62' width='92' height='32' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><text x='270' y='76' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Pass element</text><text x='270' y='89' text-anchor='middle' font-size='10.5' fill='#4a5666'>load current</text><line x1='96' y1='20' x2='107' y2='20' stroke='#1a5fb4' stroke-width='2'/><polygon points='114,20 106,16 106,24' fill='#1a5fb4'/><line x1='206' y1='20' x2='217' y2='20' stroke='#1a5fb4' stroke-width='2'/><polygon points='224,20 216,16 216,24' fill='#1a5fb4'/><line x1='96' y1='78' x2='107' y2='78' stroke='#1a5fb4' stroke-width='2'/><polygon points='114,78 106,74 106,82' fill='#1a5fb4'/><line x1='206' y1='78' x2='217' y2='78' stroke='#1a5fb4' stroke-width='2'/><polygon points='224,78 216,74 216,82' fill='#1a5fb4'/><line x1='270' y1='36' x2='270' y2='55' stroke='#1a5fb4' stroke-width='2'/><polygon points='270,62 266,54 274,54' fill='#1a5fb4'/><line x1='270' y1='94' x2='270' y2='105' stroke='#1a5fb4' stroke-width='2'/><polygon points='270,112 266,104 274,104' fill='#1a5fb4'/><path d='M270 104 H160 V101' fill='none' stroke='#0f8a7e' stroke-width='2'/><polygon points='160,94 155.5,102 164.5,102' fill='#0f8a7e'/><circle cx='270' cy='104' r='2.5' fill='#1a5fb4'/><text x='4' y='53' font-size='10.5' font-weight='700' fill='#8a5f00'>Full wave: 60 Hz in, 120 Hz ripple, 2:1</text><text x='4' y='125' font-size='11' font-weight='700' fill='#12355b'>Linear regulator</text><text x='316' y='125' text-anchor='end' font-size='10.5' fill='#4a5666'>Steady DC to the load</text></svg>"
+    },
+    {
+      "kind": "table",
+      "title": "Whose terminals?",
+      "head": [
+        "Part",
+        "Terminals"
+      ],
+      "rows": [
+        [
+          "Bipolar",
+          "Base, collector, emitter"
+        ],
+        [
+          "FET",
+          "Gate, source, drain"
+        ],
+        [
+          "SCR",
+          "Anode, cathode, gate"
+        ],
+        [
+          "TRIAC",
+          "Gate, anode 1, anode 2"
+        ],
+        [
+          "Unijunction",
+          "Base 1, base 2, emitter"
+        ]
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Diode types: <b>junction and point contact</b>. Electrolytic is a capacitor.",
+        "Highest DC resistance: the <b>150 V</b> winding, most turns.",
+        "A FET has a drain, not a <b>sink</b>."
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   import QuestionCard from '../components/QuestionCard.svelte';
   import { newItem } from '../lib/exam.ts';
   import { choiceKey, formatClock, formatEstimate, fromInside, ignoreShortcut } from '../lib/keys';
-  import { estimateOf, narrationOf, replaySceneOf, sceneSeconds, videoUrl } from '../lib/lessons';
+  import { estimateOf, narrationOf, replaySceneOf, sceneSeconds, sectionSheets, videoUrl } from '../lib/lessons';
   import { Narration } from '../lib/narrator.svelte';
   import { pools } from '../lib/pools';
   import { progress, recordAnswer, saveProgress } from '../lib/progress.svelte';
@@ -17,8 +17,9 @@
     lesson,
     startAt = null,
     onquiz,
+    onsheet,
     onexit,
-  }: { lesson: Lesson; startAt?: number | null; onquiz: () => void; onexit: () => void } = $props();
+  }: { lesson: Lesson; startAt?: number | null; onquiz: () => void; onsheet: () => void; onexit: () => void } = $props();
 
   type Overlay = { kind: 'checkpoint'; after: number; question: Question; item: Item } | { kind: 'end' };
 
@@ -240,6 +241,7 @@
         </label>
         <label class="check"><input type="checkbox" bind:checked={prefs.captions} onchange={saveProgress} /> Captions</label>
         <button class="secondary small" onclick={openTranscript}>Transcript</button>
+        {#if sectionSheets.has(lesson.id)}<button class="secondary small" onclick={onsheet}>Fact sheet</button>{/if}
         {#if video}
           <button class="secondary small" aria-pressed={showVideo} onclick={() => ((showVideo = !showVideo), narration?.pause())}>Watch video</button>
         {/if}

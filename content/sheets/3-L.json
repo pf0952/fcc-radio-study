@@ -1,0 +1,193 @@
+{
+  "id": "3-L",
+  "summary": "What each meter and instrument measures, then how to test receivers, repair boards, install equipment and track down faults.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Meters",
+      "items": [
+        "<b>DMM</b> (digital multimeter): its <b>1/2 digit</b> is a leading 0 or 1, giving partial extended accuracy on the lower part of the range.",
+        "<b>Analog movement:</b> current twists a coil, swinging the needle."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Extending a meter movement",
+      "svg": "<svg viewBox='0 0 320 104' role='img' aria-label='A voltmeter with a high series multiplier resistor in line with the movement, beside an ammeter with a low shunt resistor in parallel with the movement'><g font-size='11' font-weight='700' text-anchor='middle' fill='#12355b'><text x='78' y='12'>Voltmeter</text><text x='241' y='12'>Ammeter</text></g><g fill='none' stroke='#1a5fb4' stroke-width='2'><line x1='13' y1='46' x2='30' y2='46'/><path d='M30 46 l4 -7 l8 14 l8 -14 l8 14 l8 -14 l8 14 l4 -7'/><line x1='86' y1='46' x2='98' y2='46'/><line x1='126' y1='46' x2='145' y2='46'/><line x1='173' y1='46' x2='190' y2='46'/><line x1='190' y1='30' x2='190' y2='62'/><line x1='190' y1='30' x2='228' y2='30'/><line x1='254' y1='30' x2='292' y2='30'/><line x1='190' y1='62' x2='213' y2='62'/><path d='M213 62 l4 -7 l8 14 l8 -14 l8 14 l8 -14 l8 14 l4 -7'/><line x1='269' y1='62' x2='292' y2='62'/><line x1='292' y1='30' x2='292' y2='62'/><line x1='292' y1='46' x2='309' y2='46'/></g><g fill='#fff' stroke='#12355b' stroke-width='1.5'><circle cx='10' cy='46' r='3'/><circle cx='148' cy='46' r='3'/><circle cx='170' cy='46' r='3'/><circle cx='312' cy='46' r='3'/></g><circle cx='112' cy='46' r='14' fill='#eef3fa' stroke='#12355b' stroke-width='2'/><circle cx='241' cy='30' r='13' fill='#eef3fa' stroke='#12355b' stroke-width='2'/><g font-size='12' font-weight='700' text-anchor='middle' fill='#12355b'><text x='112' y='50'>M</text><text x='241' y='34'>M</text></g><g font-size='11' text-anchor='middle'><text x='78' y='84' font-weight='700' fill='#1a5fb4'>Series multiplier</text><text x='78' y='99' fill='#17202b'>Raises voltage range</text><text x='241' y='84' font-weight='700' fill='#1a5fb4'>Parallel shunt</text><text x='241' y='99' fill='#17202b'>Raises ampere range</text></g></svg>"
+    },
+    {
+      "kind": "formulas",
+      "title": "Formulas",
+      "items": [
+        {
+          "name": "Half-scale voltage",
+          "formula": "V = I × R",
+          "means": "Half scale takes half the current.",
+          "example": "50 µA, 2,000 Ω movement: 25 µA × 2,000 Ω = 0.05 V"
+        },
+        {
+          "name": "Analog wattmeter error",
+          "formula": "±5% of 100 W = ±5 W",
+          "means": "Fixed at every reading, so only the upper 1/3 is truly calibrated.",
+          "example": "At a 20 W reading, ±5 W is 25%"
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Pick the instrument",
+      "head": [
+        "Job",
+        "Instrument"
+      ],
+      "rows": [
+        [
+          "High and low digital states",
+          "Logic probe"
+        ],
+        [
+          "Antenna working properly",
+          "SWR meter"
+        ],
+        [
+          "Time between events, or frequency",
+          "Frequency counter"
+        ],
+        [
+          "Accurate reference frequency",
+          "Frequency standard"
+        ],
+        [
+          "EMI on a ship or aircraft",
+          "Portable AM receiver"
+        ],
+        [
+          "SSB signal quality",
+          "Oscilloscope"
+        ],
+        [
+          "Spurious signals",
+          "Spectrum analyzer"
+        ],
+        [
+          "Transmission lines",
+          "TDR"
+        ],
+        [
+          "Antennas at operating frequency",
+          "Frequency domain reflectometer"
+        ],
+        [
+          "Frequency, modulation, sensitivity, tones",
+          "Service monitor"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Oscilloscope",
+      "items": [
+        "<b>Maximum frequency response:</b> set by the vertical amplifier.",
+        "<b>Accuracy and stability:</b> limited by sweep oscillator quality and deflection amplifier bandwidth.",
+        "<b>10:1 divider probe</b> decreases circuit loading; multiply the reading by 10.",
+        "<b>Measures</b> voltage, current with a resistor, and phase difference; not the velocity of light with an LED."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Same signal, 2 views",
+      "svg": "<svg viewBox='0 0 320 102' role='img' aria-label='An oscilloscope graph of voltage against time showing a wave, beside a spectrum analyzer graph of amplitude against frequency showing a tall carrier and small spurious peaks'><g font-size='11' font-weight='700' text-anchor='middle' fill='#12355b'><text x='85' y='12'>Oscilloscope</text><text x='253' y='12'>Spectrum analyzer</text></g><g stroke='#4a5666' stroke-width='1.5'><line x1='22' y1='20' x2='22' y2='82'/><line x1='22' y1='82' x2='150' y2='82'/><line x1='190' y1='20' x2='190' y2='82'/><line x1='190' y1='82' x2='316' y2='82'/></g><path d='M24 52 C34.9 22.7 43.1 22.7 54 52 S73.1 81.3 84 52 S103.1 22.7 114 52 S133.1 81.3 144 52' fill='none' stroke='#1a5fb4' stroke-width='2.5'/><line x1='218' y1='82' x2='218' y2='24' stroke='#1a5fb4' stroke-width='3'/><line x1='262' y1='82' x2='262' y2='64' stroke='#c8452f' stroke-width='3'/><line x1='302' y1='82' x2='302' y2='70' stroke='#c8452f' stroke-width='3'/><text x='226' y='34' font-size='11' font-weight='700' fill='#1a5fb4'>Carrier</text><text x='282' y='56' text-anchor='middle' font-size='11' font-weight='700' fill='#c8452f'>Spurious</text><g font-size='11' text-anchor='middle' fill='#17202b'><text x='85' y='96'>Time</text><text x='253' y='96'>Frequency</text><text x='12' y='52' transform='rotate(-90 12 52)'>Voltage</text><text x='180' y='52' transform='rotate(-90 180 52)'>Amplitude</text></g></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Measuring radios",
+      "items": [
+        "<b>Modulation-acceptance bandwidth test:</b> finds a receiver's effective bandwidth. Set RF 6 dB above the 12 dB SINAD point, then raise deviation until SINAD falls back to 12 dB.",
+        "<b>FM voice deviation:</b> 5.0 kHz maximum on a normal wideband channel; 2.5 kHz is narrowband.",
+        "<b>P25</b> (Project 25): a scanner needs P25 decoding.",
+        "<b>CDMA</b> (code division multiple access): RF power on an analog power meter isn't accurate."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Measuring receiver sensitivity",
+      "svg": "<svg viewBox='0 0 320 110' role='img' aria-label='A signal generator feeds RF with a 1000 hertz tone to the receiver, and the recovered audio goes to a SINAD meter. The RF level is lowered until SINAD reads 12 decibels'><rect x='4' y='6' width='84' height='40' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><rect x='118' y='6' width='84' height='40' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><rect x='232' y='6' width='84' height='40' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><g stroke='#1a5fb4' stroke-width='2'><line x1='88' y1='26' x2='110' y2='26'/><line x1='202' y1='26' x2='224' y2='26'/></g><polygon points='118,26 110,21 110,31' fill='#1a5fb4'/><polygon points='232,26 224,21 224,31' fill='#1a5fb4'/><g font-size='11' font-weight='700' text-anchor='middle' fill='#12355b'><text x='46' y='23'>Signal</text><text x='46' y='37'>generator</text><text x='160' y='30'>Receiver</text><text x='274' y='23'>SINAD</text><text x='274' y='37'>meter</text></g><g font-size='11' text-anchor='middle' fill='#1a5fb4'><text x='60' y='61'>RF + 1000 Hz tone</text><text x='230' y='61'>Recovered audio</text></g><rect x='4' y='68' width='312' height='38' rx='4' fill='#fdf3dd' stroke='#c98a00' stroke-width='1.5'/><g font-size='11' text-anchor='middle' fill='#8a5f00'><text x='160' y='83' font-weight='700'>Lower the RF level until SINAD reads 12 dB.</text><text x='160' y='98'>That weakest level is the sensitivity.</text></g></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Repair bench",
+      "items": [
+        "<b>Wrist strap</b> for soldering or CMOS: less than 100,000 Ω, for the exam.",
+        "<b>Plated-through holes:</b> clear with a vacuum device.",
+        "<b>Hot gas bonder:</b> non-contact melting of solder.",
+        "<b>Thermal stripper:</b> ideal for removing insulation.",
+        "<b>Wire ties:</b> flush-cut diagonal pliers, and cut flush.",
+        "<b>Board repair:</b> most important is safety glasses."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Installation",
+      "items": [
+        "<b>25 pair cable:</b> 6th pair is Red/Blue, Blue/Red.",
+        "<b>100-pair binders:</b> blue, orange, <b>green</b> (51–75), brown.",
+        "<b>Vehicle:</b> cables must not interfere with normal operation.",
+        "<b>Tower:</b> UV ruins white or translucent tie wraps.",
+        "<b>Rack:</b> plumb to just inside the bubble.",
+        "<b>SSB tuner to backstay:</b> GTO-15 high-voltage cable."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Troubleshooting",
+      "items": [
+        "<b>150 W SSB, steady 75 W keyed:</b> a defect is transmitting the carrier.",
+        "<b>Elevator tachometer:</b> .01 µF capacitor across the motor/tachometer leads.",
+        "<b>Programming:</b> laptop computer, or infra-red without a wire.",
+        "<b>Software-defined transceiver:</b> built-in self-test.",
+        "<b>Marine DSC:</b> activate with a registered 9-digit MMSI. Verify GPS: latitude and longitude on the display."
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "SINAD:",
+          "def": "signal plus noise and distortion, compared with noise and distortion alone. The meter: AF voltmeter in dB plus a 1000 Hz bandstop filter, for quieting tests."
+        },
+        {
+          "term": "SWR:",
+          "def": "standing wave ratio; low means a good match."
+        },
+        {
+          "term": "EMI:",
+          "def": "electromagnetic interference."
+        },
+        {
+          "term": "TDR:",
+          "def": "time-domain reflectometer: pulse generator plus oscilloscope."
+        },
+        {
+          "term": "DSC:",
+          "def": "digital selective calling."
+        },
+        {
+          "term": "MMSI:",
+          "def": "Maritime Mobile Service Identity."
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "0.10 V is <b>full scale</b>, not half.",
+        "Field time base: <b>rubidium</b>, not cesium beam.",
+        "Counters measure; standards produce.",
+        "Scope: time domain. Analyzer: frequency domain; horizontal is frequency, vertical amplitude.",
+        "Sensitivity isn't 10 dB of SINAD, or 10 or 25 dB of quieting."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "id": "3-N",
+  "summary": "Boat radio gear: VHF, SSB and SITOR, survival beacons, weather fax, NAVTEX and NMEA networks.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "VHF: nearby contacts",
+      "items": [
+        "<b>Channels</b> near 156 MHz sit 25 kHz apart.",
+        "<b>FM deviation:</b> the voice's swing, at most ±5 kHz.",
+        "<b>Channel 16</b>, 156.800 MHz: distress and calling by voice.",
+        "<b>Channel 70</b>, 156.525 MHz: DSC and acknowledgement only, no voice.",
+        "<b>USA-INT:</b> USA changes some duplex channels into simplex. INT restores duplex. Neither adds range.",
+        "<b>GPS check:</b> latitude and longitude, plus speed, on the VHF display."
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "Formula",
+      "items": [
+        {
+          "name": "Carson's rule: FM bandwidth",
+          "formula": "BW = 2(Δf + f<sub>m</sub>)",
+          "means": "Deviation plus top voice pitch, doubled.",
+          "example": "2(5 + 3) = 16 kHz: fits in 25 kHz"
+        }
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "MF and HF: long range",
+      "items": [
+        "<b>SSB:</b> single sideband. No carrier, one sideband: all the power goes into your voice.",
+        "<b>Voice test:</b> current surges with each syllable. The ammeter swings up, voltage drops, and panel indicator lamps may glow.",
+        "<b>Tuner:</b> matches the antenna to each frequency, then holds."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "SSB wiring, fuse fault",
+      "svg": "<svg viewBox='0 0 320 154' role='img' aria-label='Battery feeds the SSB radio through fuses in the red and black leads. Coax runs to the automatic tuner, GTO-15 cable runs to the insulated backstay, and the tuner connects to an RF ground. With the black fuse blown, return current runs through the coax shield, tuner and RF ground.'><text x='312' y='13' text-anchor='end' font-size='11' font-weight='700' fill='#12355b'>Insulated backstay antenna</text><line x1='190' y1='22' x2='304' y2='22' stroke='#12355b' stroke-width='2'/><rect x='184' y='18' width='6' height='8' fill='#fdf3dd' stroke='#c98a00' stroke-width='1.5'/><rect x='304' y='18' width='6' height='8' fill='#fdf3dd' stroke='#c98a00' stroke-width='1.5'/><line x1='253' y1='22' x2='253' y2='60' stroke='#c8452f' stroke-width='2.5'/><text x='247' y='37' text-anchor='end' font-size='11' font-weight='700' fill='#c8452f'>GTO-15 cable</text><text x='247' y='50' text-anchor='end' font-size='11' fill='#c8452f'>very high RF voltage</text><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='6' y='60' width='54' height='32' rx='4'/><rect x='98' y='60' width='58' height='32' rx='4'/><rect x='216' y='60' width='74' height='32' rx='4'/></g><g font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'><text x='33' y='80'>Battery</text><text x='127' y='74'>SSB</text><text x='127' y='87'>radio</text><text x='253' y='74'>Auto</text><text x='253' y='87'>tuner</text></g><line x1='60' y1='68' x2='98' y2='68' stroke='#12355b' stroke-width='2'/><line x1='60' y1='84' x2='98' y2='84' stroke='#12355b' stroke-width='2'/><rect x='73' y='64' width='12' height='8' fill='#fff' stroke='#12355b' stroke-width='1.5'/><rect x='73' y='80' width='12' height='8' fill='#fbe9e5' stroke='#c8452f' stroke-width='1.5'/><path d='M73 80 L85 88 M85 80 L73 88' fill='none' stroke='#c8452f' stroke-width='1.5'/><text x='79' y='59' text-anchor='middle' font-size='11' fill='#17202b'>+ red</text><text x='79' y='101' text-anchor='middle' font-size='11' fill='#17202b'>− black</text><line x1='156' y1='72' x2='216' y2='72' stroke='#1a5fb4' stroke-width='2.5'/><text x='186' y='67' text-anchor='middle' font-size='11' font-weight='700' fill='#1a5fb4'>Coax</text><path d='M156 84 H216 M253 92 V138 H33 V96' fill='none' stroke='#c8452f' stroke-width='2' stroke-dasharray='5 3'/><polygon points='33,92 29,99 37,99' fill='#c8452f'/><polygon points='216,84 209,80 209,88' fill='#c8452f'/><line x1='253' y1='138' x2='253' y2='144' stroke='#12355b' stroke-width='2'/><path d='M244 144 H262 M247 147 H259 M250 150 H256' fill='none' stroke='#12355b' stroke-width='1.5'/><text x='262' y='114' font-size='11' font-weight='700' fill='#12355b'>RF ground</text><text x='262' y='127' font-size='11' fill='#17202b'>seawater</text><text x='143' y='116' text-anchor='middle' font-size='11' fill='#c8452f'>Blown black fuse: more resistance</text><text x='143' y='129' text-anchor='middle' font-size='11' fill='#c8452f'>this way, low voltage on transmit</text></svg>",
+      "caption": "Blown red fuse: the radio shuts off."
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "DSC:",
+          "def": "digital selective calling, a coded data burst."
+        },
+        {
+          "term": "Simplex:",
+          "def": "one frequency, taking turns."
+        },
+        {
+          "term": "Duplex:",
+          "def": "2 frequencies, both talk at once."
+        },
+        {
+          "term": "ARQ:",
+          "def": "automatic repeat request."
+        },
+        {
+          "term": "FEC:",
+          "def": "forward error correction."
+        },
+        {
+          "term": "EPIRB:",
+          "def": "emergency position-indicating radio beacon, the primary GMDSS locating signal."
+        },
+        {
+          "term": "SART:",
+          "def": "search and rescue radar transponder."
+        },
+        {
+          "term": "GMDSS:",
+          "def": "Global Maritime Distress and Safety System."
+        },
+        {
+          "term": "MSI:",
+          "def": "maritime safety information."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "SITOR: simplex teletype over radio",
+      "head": [
+        "Mode",
+        "Direction",
+        "How"
+      ],
+      "rows": [
+        [
+          "ARQ",
+          "Two-way",
+          "SITOR-A: 3-character blocks, each answered"
+        ],
+        [
+          "FEC",
+          "One-way, all stations",
+          "SITOR-B: every character sent twice"
+        ],
+        [
+          "SFEC",
+          "One-way, single station",
+          "Selective FEC"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "2 survival craft beacons",
+      "head": [
+        "",
+        "EPIRB",
+        "SART"
+      ],
+      "rows": [
+        [
+          "Frequency",
+          "406 MHz",
+          "9 GHz (X-band)"
+        ],
+        [
+          "Heard by",
+          "Satellites",
+          "Ship radar"
+        ],
+        [
+          "Signal",
+          "Hexadecimal ID burst",
+          "12 equally spaced dots"
+        ],
+        [
+          "Job",
+          "Identifies vessel, locates beacon",
+          "Guides the rescuer in"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "A SART on radar",
+      "svg": "<svg viewBox='0 0 320 140' role='img' aria-label='The SART sweeps the 9 GHz radar band 12 times. Each sweep crosses the one frequency the radar listens on, making a burst. The radar draws the 12 bursts as 12 dots in a line outward along the SART bearing.'><text x='8' y='12' font-size='11' font-weight='700' fill='#12355b'>SART reply: 12 sweeps</text><path d='M10 62 L23 22 V62 L36 22 V62 L49 22 V62 L62 22 V62 L75 22 V62 L88 22 V62 L101 22 V62 L114 22 V62 L127 22 V62 L140 22 V62 L153 22 V62 L166 22' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><line x1='6' y1='42' x2='170' y2='42' stroke='#c98a00' stroke-width='1.5' stroke-dasharray='4 3'/><g fill='#c8452f'><circle cx='16.5' cy='42' r='2'/><circle cx='29.5' cy='42' r='2'/><circle cx='42.5' cy='42' r='2'/><circle cx='55.5' cy='42' r='2'/><circle cx='68.5' cy='42' r='2'/><circle cx='81.5' cy='42' r='2'/><circle cx='94.5' cy='42' r='2'/><circle cx='107.5' cy='42' r='2'/><circle cx='120.5' cy='42' r='2'/><circle cx='133.5' cy='42' r='2'/><circle cx='146.5' cy='42' r='2'/><circle cx='159.5' cy='42' r='2'/></g><text x='6' y='78' font-size='11' font-weight='700' fill='#8a5f00'>Radar hears 1 frequency</text><text x='6' y='96' font-size='11' fill='#17202b'>Each crossing: 1 burst.</text><text x='6' y='109' font-size='11' fill='#17202b'>Later: drawn farther out.</text><circle cx='250' cy='70' r='64' fill='#eef3fa' stroke='#12355b' stroke-width='2'/><circle cx='250' cy='70' r='32' fill='none' stroke='#8593a3' stroke-width='1'/><circle cx='250' cy='70' r='3' fill='#12355b'/><text x='250' y='85' text-anchor='middle' font-size='11' fill='#12355b'>Own ship</text><ellipse cx='218' cy='112' rx='7' ry='3' fill='#8593a3'/><ellipse cx='292' cy='98' rx='4' ry='6' fill='#8593a3'/><text x='250' y='116' text-anchor='middle' font-size='11' fill='#4a5666'>Echoes</text><g fill='#c8452f'><circle cx='263' cy='57' r='1.7'/><circle cx='266' cy='54' r='1.7'/><circle cx='269' cy='51' r='1.7'/><circle cx='272' cy='48' r='1.7'/><circle cx='275' cy='45' r='1.7'/><circle cx='278' cy='42' r='1.7'/><circle cx='281' cy='39' r='1.7'/><circle cx='284' cy='36' r='1.7'/><circle cx='287' cy='33' r='1.7'/><circle cx='290' cy='30' r='1.7'/><circle cx='293' cy='27' r='1.7'/><circle cx='296' cy='24' r='1.7'/></g><text x='244' y='34' text-anchor='end' font-size='11' font-weight='700' fill='#c8452f'>12 dots</text></svg>",
+      "caption": "Within about a mile, the dots become arcs, then circles."
+    },
+    {
+      "kind": "notes",
+      "title": "Weather fax and NAVTEX",
+      "items": [
+        "<b>Facsimile:</b> printed pictures for permanent display on paper.",
+        "<b>HF weather fax</b>, 3 to 23 MHz: 120 lines per minute, frequency-shift keying with an 800 Hz shift.",
+        "<b>Filter:</b> crystal lattice band-pass, 1 kHz at -6 dB.",
+        "<b>NAVTEX:</b> 518 kHz. Receives MSI in SITOR-B or FEC mode. Ships never transmit.",
+        "<b>Not printed:</b> subject indicator matches one programmed for rejection. Navigational, weather and search and rescue messages can't be rejected."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "NMEA data",
+      "items": [
+        "<b>NMEA 0183:</b> serial link, one talker, multiple listeners. Grounding both shield ends makes a ground loop.",
+        "<b>NMEA 2000:</b> bi-directional, multi-transmitter, multi-receiver network. Backbone also carries 12 V.",
+        "<b>Single location:</b> end-powered network. Long backbone: feed power mid-way."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "2 ways to wire NMEA",
+      "svg": "<svg viewBox='0 0 320 152' role='img' aria-label='NMEA 0183: a talker sends one way to a listener over a shielded pair, with the shield grounded at the talker and left unterminated at the listener. NMEA 2000: five devices hang off a backbone on tees and drop cables, one has failed and the rest carry on.'><text x='8' y='13' font-size='11' font-weight='700' fill='#12355b'>NMEA 0183: 1 talker</text><rect x='8' y='20' width='60' height='24' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><rect x='252' y='20' width='60' height='24' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><g font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'><text x='38' y='36'>Talker</text><text x='282' y='36'>Listener</text></g><line x1='68' y1='32' x2='245' y2='32' stroke='#1a5fb4' stroke-width='2'/><polygon points='252,32 245,28 245,36' fill='#1a5fb4'/><path d='M68 25 H238 M68 39 H238' fill='none' stroke='#0f8a7e' stroke-width='1.5' stroke-dasharray='4 3'/><line x1='74' y1='39' x2='74' y2='48' stroke='#0f8a7e' stroke-width='1.5'/><path d='M66 48 H82 M69 51 H79 M72 54 H76' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><text x='88' y='53' font-size='11' font-weight='700' fill='#0f8a7e'>Shield grounded</text><text x='312' y='54' text-anchor='end' font-size='11' font-weight='700' fill='#0f8a7e'>Left unterminated</text><line x1='8' y1='62' x2='312' y2='62' stroke='#8593a3' stroke-width='1'/><text x='8' y='76' font-size='11' font-weight='700' fill='#12355b'>NMEA 2000: backbone</text><text x='312' y='76' text-anchor='end' font-size='11' font-weight='700' fill='#c8452f'>Failed: the rest carry on</text><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='6' y='84' width='58' height='20' rx='4'/><rect x='68' y='84' width='58' height='20' rx='4'/><rect x='130' y='84' width='58' height='20' rx='4'/><rect x='254' y='84' width='58' height='20' rx='4'/></g><rect x='192' y='84' width='58' height='20' rx='4' fill='#fbe9e5' stroke='#c8452f' stroke-width='1.5'/><g font-size='11' fill='#12355b' text-anchor='middle'><text x='35' y='98'>GPS</text><text x='97' y='98'>Radio</text><text x='159' y='98'>Plotter</text><text x='221' y='98' fill='#c8452f'>Sounder</text><text x='283' y='98'>Autopilot</text></g><g stroke='#1a5fb4' stroke-width='2'><line x1='35' y1='104' x2='35' y2='120'/><line x1='97' y1='104' x2='97' y2='120'/><line x1='159' y1='104' x2='159' y2='120'/><line x1='283' y1='104' x2='283' y2='120'/></g><line x1='221' y1='104' x2='221' y2='120' stroke='#c8452f' stroke-width='2' stroke-dasharray='3 2'/><line x1='6' y1='120' x2='314' y2='120' stroke='#12355b' stroke-width='3'/><g fill='#fff' stroke='#12355b' stroke-width='1.5'><rect x='31' y='116' width='8' height='8'/><rect x='93' y='116' width='8' height='8'/><rect x='155' y='116' width='8' height='8'/><rect x='217' y='116' width='8' height='8'/><rect x='279' y='116' width='8' height='8'/></g><text x='8' y='136' font-size='11' fill='#17202b'>Tee and drop cable</text><text x='312' y='149' text-anchor='end' font-size='11' font-weight='700' fill='#12355b'>Last segment end: 1.5 V drop at most</text></svg>"
+    },
+    {
+      "kind": "formulas",
+      "title": "NMEA 2000 load",
+      "items": [
+        {
+          "name": "Load equivalence number",
+          "formula": "LEN = current ÷ 50 mA",
+          "means": "LEN 1 = 50 mA. Round up.",
+          "example": "300 ÷ 50 = LEN 6"
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Testing with the red distress button sends a real alert.",
+        "<b>GTO-15</b>, not RG-8U or RG-213, feeds the backstay.",
+        "ARQ repeats only when asked. Time diversity is FEC's.",
+        "FEC broadcasts need no two-way contact with the coast station.",
+        "A SART isn't on 406 MHz or 3 GHz, and transmits only when radar interrogates it.",
+        "An EPIRB has no voice and can't say what's wrong."
+      ]
+    }
+  ]
+}

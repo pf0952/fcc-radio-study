@@ -1,0 +1,183 @@
+{
+  "id": "8-F",
+  "summary": "Trace radar faults from symptom to suspect, work Figure 8F12, install, maintain and service safely.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Symptom, then suspect",
+      "items": [
+        "<b>PPI</b>, plan position indicator: paints each echo at its range and bearing.",
+        "<b>Time is distance:</b> just over 12 µs per nautical mile."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Follow the signal",
+      "svg": "<svg viewBox='0 0 320 160' role='img' aria-label='Radar block diagram. Transmit path: timer, modulator, magnetron, TR cell, waveguide, antenna. Receive path: antenna, waveguide, TR cell, mixer with local oscillator, IF amplifier, display. A delay line holds back the sweep, and AFC retunes the local oscillator from a sample of the pulse.'><rect x='1' y='3' width='68' height='36' rx='4' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='35' y='18' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Timer</text><text x='35' y='32' font-size='11' fill='#4a5666' text-anchor='middle'>Fires pulse</text><rect x='84' y='3' width='68' height='36' rx='4' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='118' y='18' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Modulator</text><text x='118' y='32' font-size='11' fill='#4a5666' text-anchor='middle'>Builds pulse</text><rect x='167' y='3' width='68' height='36' rx='4' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='201' y='18' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Magnetron</text><text x='201' y='32' font-size='11' fill='#4a5666' text-anchor='middle'>Microwaves</text><rect x='250' y='3' width='68' height='36' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='284' y='25' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Antenna</text><rect x='1' y='63' width='68' height='36' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='35' y='78' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Delay line</text><text x='35' y='92' font-size='11' fill='#4a5666' text-anchor='middle'>Holds sweep</text><rect x='84' y='63' width='68' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='118' y='78' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Local osc.</text><text x='118' y='92' font-size='11' fill='#4a5666' text-anchor='middle'>Feeds mixer</text><rect x='167' y='63' width='68' height='36' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='201' y='78' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>TR cell</text><text x='201' y='92' font-size='11' fill='#4a5666' text-anchor='middle'>Blocks pulse</text><rect x='250' y='63' width='68' height='36' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='284' y='78' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Waveguide</text><text x='284' y='92' font-size='11' fill='#4a5666' text-anchor='middle'>Metal pipe</text><rect x='1' y='123' width='68' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='35' y='138' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Display</text><text x='35' y='152' font-size='11' fill='#4a5666' text-anchor='middle'>Paints PPI</text><rect x='84' y='123' width='68' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='118' y='138' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>IF amp</text><text x='118' y='152' font-size='11' fill='#4a5666' text-anchor='middle'>Then video</text><rect x='167' y='123' width='68' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='201' y='138' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Mixer</text><text x='201' y='152' font-size='11' fill='#4a5666' text-anchor='middle'>Crystal</text><polyline points='69 21 80 21' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='84 21 78 17.7 78 24.3' fill='#1a5fb4'/><polyline points='152 21 163 21' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='167 21 161 17.7 161 24.3' fill='#1a5fb4'/><polyline points='201 39 201 59' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='201 63 197.7 57 204.3 57' fill='#1a5fb4'/><polyline points='235 76 246 76' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='250 76 244 72.7 244 79.3' fill='#1a5fb4'/><polyline points='250 88 239 88' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='235 88 241 91.3 241 84.7' fill='#0f8a7e'/><polyline points='276 63 276 43' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='276 39 279.3 45 272.7 45' fill='#1a5fb4'/><polyline points='292 39 292 59' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='292 63 288.7 57 295.3 57' fill='#0f8a7e'/><polyline points='201 99 201 119' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='201 123 197.7 117 204.3 117' fill='#0f8a7e'/><polyline points='167 141 156 141' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='152 141 158 144.3 158 137.7' fill='#0f8a7e'/><polyline points='84 141 73 141' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='69 141 75 144.3 75 137.7' fill='#0f8a7e'/><polyline points='35 39 35 59' fill='none' stroke='#12355b' stroke-width='1.5'/><polygon points='35 63 31.7 57 38.3 57' fill='#12355b'/><polyline points='35 99 35 119' fill='none' stroke='#12355b' stroke-width='1.5'/><polygon points='35 123 31.7 117 38.3 117' fill='#12355b'/><polyline points='118 99 118 111 182 111 182 119' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='182 123 178.7 117 185.3 117' fill='#0f8a7e'/><polyline points='182 39 182 55 118 55 118 59' fill='none' stroke='#c98a00' stroke-width='1.5' stroke-dasharray='4 3'/><polygon points='118 63 114.7 57 121.3 57' fill='#c98a00'/><text x='150' y='51' font-size='11' font-weight='700' fill='#8a5f00' text-anchor='middle'>AFC</text><text x='318' y='137' font-size='11' font-weight='700' fill='#1a5fb4' text-anchor='end'>Transmit</text><text x='318' y='151' font-size='11' font-weight='700' fill='#0f8a7e' text-anchor='end'>Receive</text></svg>"
+    },
+    {
+      "kind": "figure",
+      "title": "Read the screen",
+      "svg": "<svg viewBox='0 0 320 168' role='img' aria-label='Six small radar screens: oval rings mean the sweep generation circuit; a blank center means STC or TR cell; a bright wide ring means video RAM or shift register; flashing pie sections mean the AFC crystal; spokes mean interference from nearby ships; rings near the center mean water in the waveguide.'><circle cx='27' cy='28' r='25' fill='#fff' stroke='#12355b' stroke-width='1.5'/><ellipse cx='27' cy='28' rx='21' ry='13' fill='none' stroke='#c8452f' stroke-width='1.5'/><ellipse cx='27' cy='28' rx='11' ry='7' fill='none' stroke='#c8452f' stroke-width='1.5'/><circle cx='27' cy='28' r='1.8' fill='#12355b'/><text x='58' y='19' font-size='11' font-weight='700' fill='#17202b'>Oval rings</text><text x='58' y='32' font-size='11' fill='#1a5fb4'>Sweep generation</text><text x='58' y='45' font-size='11' fill='#1a5fb4'>circuit</text><circle cx='27' cy='84' r='25' fill='#fff' stroke='#12355b' stroke-width='1.5'/><circle cx='27' cy='84' r='10' fill='none' stroke='#c8452f' stroke-width='1.5' stroke-dasharray='3 3'/><circle cx='32.1' cy='69.9' r='1.8' fill='#1a5fb4'/><circle cx='44.9' cy='79.2' r='1.8' fill='#1a5fb4'/><circle cx='43.9' cy='98.1' r='1.8' fill='#1a5fb4'/><circle cx='21.9' cy='98.1' r='1.8' fill='#1a5fb4'/><circle cx='9.1' cy='88.8' r='1.8' fill='#1a5fb4'/><circle cx='12.9' cy='67.1' r='1.8' fill='#1a5fb4'/><circle cx='27' cy='84' r='1.8' fill='#12355b'/><text x='58' y='81.5' font-size='11' font-weight='700' fill='#17202b'>Blank center</text><text x='58' y='94.5' font-size='11' fill='#1a5fb4'>STC, or TR cell</text><circle cx='27' cy='140' r='25' fill='#fff' stroke='#12355b' stroke-width='1.5'/><circle cx='27' cy='140' r='16' fill='none' stroke='#c98a00' stroke-width='5'/><circle cx='32.1' cy='133.9' r='1.8' fill='#1a5fb4'/><circle cx='29.1' cy='147.7' r='1.8' fill='#1a5fb4'/><circle cx='19.5' cy='137.3' r='1.8' fill='#1a5fb4'/><circle cx='27' cy='140' r='1.8' fill='#12355b'/><text x='58' y='131' font-size='11' font-weight='700' fill='#17202b'>Bright wide ring</text><text x='58' y='144' font-size='11' fill='#1a5fb4'>Video RAM or</text><text x='58' y='157' font-size='11' fill='#1a5fb4'>shift register</text><circle cx='187' cy='28' r='25' fill='#fff' stroke='#12355b' stroke-width='1.5'/><path d='M187 28 L195.2 5.4 A24 24 0 0 1 208.2 16.7 Z' fill='#fbe9e5' stroke='#c8452f' stroke-width='1.5'/><path d='M187 28 L202.4 46.4 A24 24 0 0 1 186.2 52 Z' fill='#fbe9e5' stroke='#c8452f' stroke-width='1.5'/><path d='M187 28 L163.2 31.3 A24 24 0 0 1 167.1 14.6 Z' fill='#fbe9e5' stroke='#c8452f' stroke-width='1.5'/><circle cx='187' cy='28' r='1.8' fill='#12355b'/><text x='218' y='19' font-size='11' font-weight='700' fill='#17202b'>Flashing pie</text><text x='218' y='32' font-size='11' font-weight='700' fill='#17202b'>sections</text><text x='218' y='45' font-size='11' fill='#1a5fb4'>AFC crystal</text><circle cx='187' cy='84' r='25' fill='#fff' stroke='#12355b' stroke-width='1.5'/><line x1='187' y1='84' x2='193.2' y2='60.8' stroke='#c8452f' stroke-width='2'/><line x1='187' y1='84' x2='203.9' y2='77.8' stroke='#c8452f' stroke-width='2'/><line x1='187' y1='84' x2='208.2' y2='95.3' stroke='#c8452f' stroke-width='2'/><line x1='187' y1='84' x2='181.8' y2='103.3' stroke='#c8452f' stroke-width='2'/><line x1='187' y1='84' x2='165.2' y2='94.1' stroke='#c8452f' stroke-width='2'/><line x1='187' y1='84' x2='174.7' y2='73.7' stroke='#c8452f' stroke-width='2'/><circle cx='187' cy='84' r='1.8' fill='#12355b'/><text x='218' y='81.5' font-size='11' font-weight='700' fill='#17202b'>Spoking</text><text x='218' y='94.5' font-size='11' fill='#1a5fb4'>Nearby ships</text><circle cx='187' cy='140' r='25' fill='#fff' stroke='#12355b' stroke-width='1.5'/><circle cx='187' cy='140' r='5.5' fill='none' stroke='#c8452f' stroke-width='1.5'/><circle cx='187' cy='140' r='10.5' fill='none' stroke='#c8452f' stroke-width='1.5'/><circle cx='201.6' cy='127.8' r='1.8' fill='#1a5fb4'/><circle cx='187' cy='159' r='1.8' fill='#1a5fb4'/><circle cx='170.5' cy='130.5' r='1.8' fill='#1a5fb4'/><circle cx='187' cy='140' r='1.8' fill='#12355b'/><text x='218' y='131' font-size='11' font-weight='700' fill='#17202b'>Large rings</text><text x='218' y='144' font-size='11' font-weight='700' fill='#17202b'>near center</text><text x='218' y='157' font-size='11' fill='#1a5fb4'>Water in guide</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Receiver front end",
+      "items": [
+        "<b>TR cell</b> (TR tube): shuts off the receiver during each pulse. Malfunction: receiver might be damaged.",
+        "<b>Worn TR (TRL) cell:</b> recovers slowly. The fixed blank distance looks smaller on longer ranges.",
+        "<b>STC</b>, sensitivity time control: front panel gain cut after each pulse. Too high blanks close-in video.",
+        "<b>Silicon crystal:</b> a diode in mixer and detector. Ohmmeter: low one way, high reversed.",
+        "<b>Bad crystal mixer:</b> replace crystal and TR tube.",
+        "<b>Low or no mixer current:</b> local oscillator misadjusted, mixer diode degraded or TR cell failed.",
+        "<b>AFC</b>, automatic frequency control: retunes the local oscillator as the magnetron drifts."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Magnetron",
+      "items": [
+        "Heated cathode gives electrons; a magnet bends them past cavities ringing at microwaves.",
+        "<b>Weak magnet:</b> current (meter deflection) up, power down. High current: defective external magnetic field.",
+        "<b>No field:</b> quickly destroys itself from excessive current.",
+        "Lower duty cycle, weaker pulse: current falls.",
+        "Replace with a <b>non-magnetic screwdriver</b>."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Figure 8F12: summing amp",
+      "svg": "<svg viewBox='0 0 320 118' role='img' aria-label='Figure 8F12, an inverting summing amplifier. Inputs A to D feed 200 K, 100 K, 50 K and 25 K resistors into the minus input of an op amp, with a 10 K feedback resistor to output E. At 5 volts each the currents are 0.025, 0.05, 0.1 and 0.2 milliamps, 0.375 in total, and E reads minus 3.75 volts.'><text x='2' y='28' font-size='11' font-weight='700' fill='#17202b'>A</text><line x1='12' y1='24' x2='18' y2='24' stroke='#12355b' stroke-width='1.5'/><rect x='18' y='17' width='38' height='14' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='37' y='28' font-size='11' fill='#17202b' text-anchor='middle'>200 K</text><line x1='56' y1='24' x2='120' y2='24' stroke='#12355b' stroke-width='1.5'/><text x='61' y='21' font-size='11' fill='#1a5fb4'>0.025 mA</text><text x='2' y='48' font-size='11' font-weight='700' fill='#17202b'>B</text><line x1='12' y1='44' x2='18' y2='44' stroke='#12355b' stroke-width='1.5'/><rect x='18' y='37' width='38' height='14' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='37' y='48' font-size='11' fill='#17202b' text-anchor='middle'>100 K</text><line x1='56' y1='44' x2='120' y2='44' stroke='#12355b' stroke-width='1.5'/><text x='61' y='41' font-size='11' fill='#1a5fb4'>0.05 mA</text><text x='2' y='68' font-size='11' font-weight='700' fill='#17202b'>C</text><line x1='12' y1='64' x2='18' y2='64' stroke='#12355b' stroke-width='1.5'/><rect x='18' y='57' width='38' height='14' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='37' y='68' font-size='11' fill='#17202b' text-anchor='middle'>50 K</text><line x1='56' y1='64' x2='120' y2='64' stroke='#12355b' stroke-width='1.5'/><text x='61' y='61' font-size='11' fill='#1a5fb4'>0.1 mA</text><text x='2' y='88' font-size='11' font-weight='700' fill='#17202b'>D</text><line x1='12' y1='84' x2='18' y2='84' stroke='#12355b' stroke-width='1.5'/><rect x='18' y='77' width='38' height='14' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='37' y='88' font-size='11' fill='#17202b' text-anchor='middle'>25 K</text><line x1='56' y1='84' x2='120' y2='84' stroke='#12355b' stroke-width='1.5'/><text x='61' y='81' font-size='11' fill='#1a5fb4'>0.2 mA</text><line x1='120' y1='8' x2='120' y2='84' stroke='#12355b' stroke-width='1.5'/><line x1='120' y1='54' x2='140' y2='54' stroke='#12355b' stroke-width='1.5'/><polyline points='120 8 160 8' fill='none' stroke='#12355b' stroke-width='1.5'/><rect x='160' y='1' width='62' height='14' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='191' y='12' font-size='11' fill='#17202b' text-anchor='middle'>R<tspan dy='2'>F</tspan><tspan dy='-2'> 10 K</tspan></text><polyline points='222 8 264 8 264 64' fill='none' stroke='#12355b' stroke-width='1.5'/><polygon points='140 38 140 90 198 64' fill='#eef3fa' stroke='#12355b' stroke-width='2'/><text x='144' y='58' font-size='13' font-weight='700' fill='#17202b'>−</text><text x='144' y='80' font-size='13' font-weight='700' fill='#17202b'>+</text><line x1='198' y1='64' x2='295' y2='64' stroke='#12355b' stroke-width='1.5'/><circle cx='264' cy='64' r='2.5' fill='#12355b'/><circle cx='298' cy='64' r='3' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='306' y='68' font-size='12' font-weight='700' fill='#17202b'>E</text><polyline points='140 76 130 76 130 102' fill='none' stroke='#12355b' stroke-width='1.5'/><line x1='123' y1='102' x2='137' y2='102' stroke='#12355b' stroke-width='2'/><line x1='126' y1='106' x2='134' y2='106' stroke='#12355b' stroke-width='1.5'/><line x1='128.5' y1='110' x2='131.5' y2='110' stroke='#12355b' stroke-width='1.5'/><text x='2' y='112' font-size='11' font-weight='700' fill='#1a5fb4'>Total 0.375 mA</text><text x='208' y='88' font-size='11' fill='#17202b'>All at 5 V:</text><text x='208' y='102' font-size='11' font-weight='700' fill='#12355b'>E = −3.75 V</text></svg>"
+    },
+    {
+      "kind": "formulas",
+      "title": "Point E",
+      "items": [
+        {
+          "name": "Currents",
+          "formula": "V<sub>out</sub> = −R<sub>F</sub> × Σ(V/R)",
+          "means": "Volts ÷ kilohms = milliamps. Add them, times R<sub>F</sub>, flip the sign. Card swap, −4.75 V: 0.1 mA too much, the 50 K became a 25 K.",
+          "example": "B, C at 5 V: −10 kΩ × (0.05 + 0.1) mA = −1.5 V"
+        }
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Installing",
+      "items": [
+        "<b>S-band</b> often uses coax: losses stay reasonable, installation cost lower.",
+        "<b>Run waveguide</b> as straight as possible, to reduce distortion. Avoid long horizontal runs: condensation.",
+        "<b>Antenna site:</b> first, not shadowed by other structures.",
+        "<b>Radio interference:</b> ground, bond, shield all units."
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Maintenance",
+      "items": [
+        {
+          "term": "VSWR:",
+          "def": "voltage standing wave ratio, highest voltage ÷ lowest; 1 is a perfect match."
+        },
+        {
+          "term": "Waveguide interior:",
+          "def": "as clean as possible (skin effect)."
+        },
+        {
+          "term": "Echo box:",
+          "def": "high-Q cavity: artificial targets for testing and tuning."
+        },
+        {
+          "term": "Oscilloscope:",
+          "def": "most useful servicing instrument."
+        },
+        {
+          "term": "Rusty dish:",
+          "def": "performance drops, especially on weak targets."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "More symptoms",
+      "head": [
+        "Symptom",
+        "Suspect"
+      ],
+      "rows": [
+        [
+          "Lighthouse range wrong",
+          "Range ring oscillator"
+        ],
+        [
+          "Pier bends concave near center",
+          "Waveguide compensation delay line"
+        ],
+        [
+          "Raster scan: rectangle missing",
+          "Memory area failure"
+        ],
+        [
+          "Radar, visual bearings differ",
+          "Antenna position information"
+        ],
+        [
+          "2 radars, 2 ranges",
+          "Check sweep, timing of both indicators"
+        ],
+        [
+          "Small targets missing",
+          "Magnetron, IF amplifier, receiver tuning"
+        ],
+        [
+          "Distant targets gone during and after rain",
+          "Leak in waveguide or rotary joint"
+        ],
+        [
+          "High VSWR, guide and joint fine",
+          "Waveguide array termination"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Safety",
+      "head": [
+        "Job",
+        "Rule"
+      ],
+      "rows": [
+        [
+          "Solid state boards",
+          "Proper work surfaces, ESD (electrostatic discharge) straps"
+        ],
+        [
+          "ESD damage",
+          "Fails at once, or much later when critically needed"
+        ],
+        [
+          "Testing transmitter",
+          "No explosives or flammable cargo being loaded"
+        ],
+        [
+          "Repairs",
+          "Discharge all high-voltage capacitors to ground"
+        ],
+        [
+          "Removing CRT",
+          "Gloves and goggles; dropped, it might implode"
+        ]
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Video amplifier: brightness, never position.",
+        "AFC fault: flashing wedges, not spikes.",
+        "2 radars: never average readings.",
+        "Bad crystal: not the ATR tube or klystron."
+      ]
+    }
+  ]
+}

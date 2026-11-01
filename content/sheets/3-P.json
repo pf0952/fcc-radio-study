@@ -1,0 +1,155 @@
+{
+  "id": "3-P",
+  "summary": "How Iridium, COSPAS-SARSAT, Inmarsat and GPS work: their orbits, frequencies, services and antennas.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Why satellites",
+      "items": [
+        "<b>Satellite:</b> a radio relay high above the Earth, reaching stations hidden by the Earth's curve.",
+        "<b>Orbit:</b> the lower the satellite, the faster it goes. At one height above the equator a trip takes 1 day, so it seems to hang still: geostationary."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "3 orbits, low to high",
+      "svg": "<svg viewBox='0 0 320 104' role='img' aria-label='Altitude strip to scale from the Earth. Iridium at 485 miles in low orbit, GPS at 12,554 miles in medium orbit, Inmarsat at 22,177 miles in geostationary orbit, with each orbit time and inclination.'><path d='M4 4 Q44 40 4 76 Z' fill='#eef3fa' stroke='#12355b' stroke-width='2'/><text x='13' y='40' text-anchor='middle' font-size='11' font-weight='700' fill='#12355b' transform='rotate(-90 13 40)' dy='4'>Earth</text><line x1='24' y1='40' x2='312' y2='40' stroke='#8593a3' stroke-width='1.5'/><g fill='#1a5fb4'><circle cx='30' cy='40' r='5'/><circle cx='175' cy='40' r='5'/><circle cx='290' cy='40' r='5'/></g><g font-size='11' fill='#4a5666'><text x='30' y='24'>Low orbit</text><text x='175' y='24' text-anchor='middle'>Medium orbit</text><text x='312' y='24' text-anchor='end'>Geostationary</text></g><g font-size='11' font-weight='700' fill='#12355b'><text x='30' y='60'>Iridium</text><text x='175' y='60' text-anchor='middle'>GPS</text><text x='312' y='60' text-anchor='end'>Inmarsat</text></g><g font-size='11' fill='#17202b'><text x='30' y='73'>485 miles</text><text x='30' y='86'>about 100 min</text><text x='30' y='99'>inclined 86.4°</text><text x='175' y='73' text-anchor='middle'>12,554 miles</text><text x='175' y='86' text-anchor='middle'>about 12 hours</text><text x='175' y='99' text-anchor='middle'>inclined 55°</text><text x='312' y='73' text-anchor='end'>22,177 miles</text><text x='312' y='86' text-anchor='end'>1 day</text><text x='312' y='99' text-anchor='end'>over the equator</text></g></svg>",
+      "caption": "Each time is one trip around."
+    },
+    {
+      "kind": "notes",
+      "title": "Iridium",
+      "items": [
+        "<b>Iridium</b> is a satellite telephone network. Low orbit lets small handheld phones reach it.",
+        "<b>Band:</b> 1616 to 1626 MHz for telephone and messaging.",
+        "<b>Service:</b> digital voice and data at 2.4 kbps. No analog voice.",
+        "<b>Spot beams:</b> for the exam, 48 per satellite, with a footprint of 30 miles in diameter. Each is really about 250 miles across.",
+        "<b>Constellation:</b> 66 active satellites in 6 planes."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "COSPAS-SARSAT finds a beacon",
+      "svg": "<svg viewBox='0 0 320 152' role='img' aria-label='An EPIRB on 406 MHz reaches a satellite, which relays to a local user terminal, which alerts a rescue center. Below, the frequency heard by the satellite falls from high while approaching, through no shift at the closest point, to low while moving away.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='4' y='4' width='68' height='46' rx='4'/><rect x='84' y='4' width='68' height='46' rx='4'/><rect x='164' y='4' width='68' height='46' rx='4'/><rect x='244' y='4' width='68' height='46' rx='4'/></g><g font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'><text x='38' y='24'>EPIRB</text><text x='118' y='24'>Satellite</text><text x='198' y='16'>Local user</text><text x='198' y='29'>terminal</text><text x='278' y='16'>Rescue</text><text x='278' y='29'>center</text></g><g font-size='10.5' fill='#4a5666' text-anchor='middle'><text x='38' y='38'>406 MHz</text><text x='118' y='38'>relays</text><text x='198' y='43'>finds it</text><text x='278' y='43'>organizes</text></g><g stroke='#1a5fb4' stroke-width='2'><line x1='72' y1='27' x2='78' y2='27'/><line x1='152' y1='27' x2='158' y2='27'/><line x1='232' y1='27' x2='238' y2='27'/></g><g fill='#1a5fb4'><polygon points='84,27 77,23 77,31'/><polygon points='164,27 157,23 157,31'/><polygon points='244,27 237,23 237,31'/></g><line x1='10' y1='104' x2='310' y2='104' stroke='#8593a3' stroke-width='1.5' stroke-dasharray='4 3'/><path d='M14 78 C90 80 120 84 150 104 S210 128 286 130' fill='none' stroke='#c8452f' stroke-width='2.5'/><circle cx='150' cy='104' r='3.5' fill='#12355b'/><text x='14' y='71' font-size='11' font-weight='700' fill='#c8452f'>Approaching: heard high</text><text x='160' y='97' font-size='11' font-weight='700' fill='#12355b'>Closest: no shift</text><text x='14' y='119' font-size='11' fill='#4a5666'>406 MHz</text><text x='306' y='146' text-anchor='end' font-size='11' font-weight='700' fill='#c8452f'>Moving away: heard low</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Beacon search",
+      "items": [
+        "<b>Main job:</b> monitor 406 MHz for distress calls from EPIRBs and relay them to ground stations, the local user terminals.",
+        "<b>Position:</b> measured from the Doppler shift of the 406 MHz signal at several points in the orbit."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Inmarsat",
+      "items": [
+        "<b>Coverage:</b> geostationary satellites reach vessels in nearly all the world's navigable waters, but not the polar regions."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "4 ocean regions, by longitude",
+      "svg": "<svg viewBox='0 0 320 118' role='img' aria-label='Longitude strip centered on Greenwich at 0 degrees: AOR-W at 54 degrees west, AOR-E at 15.5 degrees west, IOR at 64.5 degrees east, POR at 178 degrees east. Below, a latitude bar: Inmarsat coverage runs from the equator to about 70 degrees, none from there to the pole.'><line x1='10' y1='46' x2='310' y2='46' stroke='#12355b' stroke-width='2'/><line x1='160' y1='36' x2='160' y2='56' stroke='#8593a3' stroke-width='1.5'/><g fill='#1a5fb4'><circle cx='116' cy='46' r='4.5'/><circle cx='147' cy='46' r='4.5'/><circle cx='213' cy='46' r='4.5'/><circle cx='306' cy='46' r='4.5'/></g><g font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'><text x='107' y='15'>AOR-W</text><text x='213' y='15'>IOR</text><text x='147' y='70'>AOR-E</text></g><text x='312' y='15' text-anchor='end' font-size='11' font-weight='700' fill='#12355b'>POR</text><g font-size='11' fill='#17202b' text-anchor='middle'><text x='107' y='28'>54° W</text><text x='213' y='28'>64.5° E</text><text x='147' y='83'>15.5° W</text></g><text x='312' y='28' text-anchor='end' font-size='11' fill='#17202b'>178° E</text><g font-size='11' fill='#4a5666' text-anchor='middle'><text x='160' y='15'>Greenwich</text><text x='160' y='28'>0°</text></g><text x='10' y='62' font-size='11' fill='#4a5666'>West</text><text x='310' y='62' text-anchor='end' font-size='11' fill='#4a5666'>East</text><text x='230' y='93' text-anchor='middle' font-size='11' fill='#17202b'>About 70° latitude</text><rect x='56' y='98' width='174' height='17' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><rect x='230' y='98' width='50' height='17' fill='#fbe9e5' stroke='#c8452f' stroke-width='1.5'/><text x='143' y='110' text-anchor='middle' font-size='11' font-weight='700' fill='#0f8a7e'>Inmarsat coverage</text><text x='255' y='110' text-anchor='middle' font-size='11' font-weight='700' fill='#c8452f'>None</text><text x='50' y='110' text-anchor='end' font-size='11' fill='#4a5666'>Equator</text><text x='286' y='110' font-size='11' fill='#4a5666'>Pole</text></svg>",
+      "caption": "AOR: Atlantic Ocean Region, East or West. POR: Pacific. IOR: Indian."
+    },
+    {
+      "kind": "table",
+      "title": "Inmarsat services",
+      "head": [
+        "Service",
+        "Carries",
+        "Antenna"
+      ],
+      "rows": [
+        [
+          "B",
+          "Voice 16, fax 14.4, data 64/54 kbps, real time",
+          "Larger, directional"
+        ],
+        [
+          "C",
+          "Routine and distress text, store-and-forward, no voice",
+          "Small, omnidirectional"
+        ],
+        [
+          "M",
+          "Voice 6.2, data 2.4, fax 2.4 kbps, e-mail",
+          "Smaller than B"
+        ],
+        [
+          "Mini-M",
+          "Small craft, by spot beams",
+          "Small, light"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Inmarsat details",
+      "items": [
+        "<b>Store-and-forward:</b> the land earth station stores the whole message, then forwards it.",
+        "<b>High-speed data</b>, 64/54 kbps: B, M4 and Fleet. Fast data needs high gain, so a directional antenna.",
+        "<b>Inmarsat-B</b> needs a clear line of sight. A mast on a certain course, a satellite on a low elevation, or going beyond its effective radius can each stop it."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "GPS",
+      "items": [
+        "<b>GPS</b>, Global Positioning System: each satellite broadcasts its exact time and position. Travel time gives distance.",
+        "<b>Constellation:</b> 24 satellites normally in operation, 4 in each of 6 equally spaced orbital planes.",
+        "<b>Frequencies:</b> 1227.6 MHz and 1575.4 MHz.",
+        "<b>4 satellites</b> give complete position and time. 4 unknowns: latitude, longitude, altitude, receiver clock error.",
+        "<b>DGPS</b>, Differential GPS: a surveyed reference station broadcasts correction factors to improve position accuracy."
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "EPIRB:",
+          "def": "emergency position-indicating radio beacon."
+        },
+        {
+          "term": "Inclination:",
+          "def": "an orbital plane's tilt from the equator."
+        },
+        {
+          "term": "Footprint:",
+          "def": "the patch of Earth a satellite's antenna covers."
+        },
+        {
+          "term": "Spot beam:",
+          "def": "a narrow beam aimed at part of the footprint."
+        },
+        {
+          "term": "SES:",
+          "def": "ship earth station, the ship's satellite terminal."
+        },
+        {
+          "term": "CODEC:",
+          "def": "coder-decoder. Used to digitize voice on Inmarsat-B."
+        },
+        {
+          "term": "kbps:",
+          "def": "kilobits per second."
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Iridium isn't 48 satellites in 4 planes, 55° or 85 minutes.",
+        "121.5 MHz is an older beacon frequency. Satellites listen on 406.",
+        "1 satellite's pass is enough. Only beacons with built-in GPS send their own position.",
+        "Inmarsat isn't polar, or truly global.",
+        "Inmarsat-C is omnidirectional. It isn't real time, voice or worldwide.",
+        "GPS isn't polar or geosynchronous. Don't confuse 1226.6 with 1227.6.",
+        "DGPS: D is differential, not digital. Corrections don't come from the GPS satellites."
+      ]
+    }
+  ]
+}

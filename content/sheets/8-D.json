@@ -1,0 +1,155 @@
+{
+  "id": "8-D",
+  "summary": "How echoes become a picture: timing, sweep, range rings, bearings, memory, ARPA and the display power supply.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Timing and sweep",
+      "items": [
+        "<b>Synchronizer</b> (timer): develops synchronizing pulses for the transmitter system. Output: a pulse or square wave.",
+        "It primarily affects the <b>modulator</b> and initiates the sweep drive, together. Resolver output isn't affected.",
+        "<b>Sweep generator:</b> makes a sawtooth, the drive signal to the sweep amplifier.",
+        "<b>Sweep amplifier:</b> drives the 2 CRT deflection coils.",
+        "<b>Video amplifier:</b> provides composite video to the CRT cathode. Inputs: low-level video, fixed rings, variable ring. Not the resolver."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "What drives the CRT",
+      "svg": "<svg viewBox='0 0 320 150' role='img' aria-label='The synchronizer triggers the modulator, the sweep generator and the range rings. The sweep reaches the deflection coils, which also take the resolver bearing. Rings and low-level video pass through the video amplifier to the CRT cathode as composite video.'><rect x='3' y='4' width='80' height='122' rx='4' fill='#fdf3dd' stroke='#c98a00' stroke-width='1.5'/><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='96' y='4' width='62' height='26' rx='4'/><rect x='172' y='4' width='62' height='26' rx='4'/><rect x='96' y='42' width='62' height='36' rx='4'/><rect x='172' y='42' width='62' height='36' rx='4'/><rect x='250' y='42' width='66' height='36' rx='4'/><rect x='96' y='90' width='62' height='36' rx='4'/><rect x='172' y='90' width='62' height='36' rx='4'/><rect x='250' y='90' width='66' height='36' rx='4'/></g><rect x='250' y='4' width='66' height='26' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><g fill='none' stroke='#c98a00' stroke-width='2'><path d='M83 17 H90'/><path d='M83 60 H90'/><path d='M83 108 H90'/></g><g fill='#c98a00'><polygon points='96,17 89,13 89,21'/><polygon points='96,60 89,56 89,64'/><polygon points='96,108 89,104 89,112'/></g><g fill='none' stroke='#1a5fb4' stroke-width='2'><path d='M158 17 H166'/><path d='M158 60 H166'/><path d='M234 60 H244'/><path d='M158 108 H166'/><path d='M234 108 H244'/><path d='M200 137 V132'/></g><g fill='#1a5fb4'><polygon points='172,17 165,13 165,21'/><polygon points='172,60 165,56 165,64'/><polygon points='250,60 243,56 243,64'/><polygon points='172,108 165,104 165,112'/><polygon points='250,108 243,104 243,112'/><polygon points='200,126 196,133 204,133'/></g><path d='M283 30 V36' fill='none' stroke='#0f8a7e' stroke-width='2'/><polygon points='283,42 279,35 287,35' fill='#0f8a7e'/><g font-size='11' text-anchor='middle' fill='#17202b'><text x='43' y='62' font-size='10.5' font-weight='700'>Synchronizer</text><text x='43' y='76'>Timer</text><text x='127' y='21'>Modulator</text><text x='203' y='21'>Magnetron</text><text x='283' y='21'>Resolver</text><text x='127' y='57'>Sweep</text><text x='127' y='71'>generator</text><text x='203' y='57'>Sweep</text><text x='203' y='71'>amplifier</text><text x='283' y='57'>Deflection</text><text x='283' y='71'>coils X, Y</text><text x='127' y='105'>Rings,</text><text x='127' y='119'>VRM</text><text x='203' y='105'>Video</text><text x='203' y='119'>amplifier</text><text x='283' y='105'>CRT</text><text x='283' y='119'>cathode</text><text x='220' y='147' text-anchor='end' fill='#1a5fb4'>Low-level video</text><text x='316' y='147' text-anchor='end' fill='#1a5fb4'>Composite video</text></g></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "The screen",
+      "items": [
+        "<b>CRT</b>, cathode ray tube: anode at 10 to 50 kV, about 17 kV in many radar displays.",
+        "<b>Aquadag:</b> graphite coating. Second anode, protects electrons from strong electric fields, attracts secondary emissions: all of the above.",
+        "<b>Raster scan:</b> the beam goes horizontally and vertically across the CRT face, controlled by clock pulses, with an address bus.",
+        "<b>LCD</b>, liquid crystal display: current passes through the crystals, aligning them. Greater than 200 pixels per inch."
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "Range rings",
+      "items": [
+        {
+          "name": "Ring spacing",
+          "formula": "spacing = T ÷ 12.34 µs",
+          "means": "T = 1 ÷ f, and each cycle is 1 ring. Echoes take 12.34 µs per nautical mile.",
+          "example": "27 kHz: T = 37.04 µs, about 3 nautical miles"
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Exam ring answers",
+      "head": [
+        "Oscillator",
+        "Nautical miles",
+        "Round-trip trap"
+      ],
+      "rows": [
+        [
+          "27 kHz",
+          "3",
+          "6"
+        ],
+        [
+          "20 kHz",
+          "4",
+          "8"
+        ],
+        [
+          "8 kHz",
+          "10",
+          "16 kHz"
+        ],
+        [
+          "322 kHz",
+          "0.25",
+          "644 kHz"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Range and bearing",
+      "items": [
+        "<b>Range markers</b> are determined by the timer. A blocking oscillator gives their very narrow pulses.",
+        "<b>VRM</b>, variable range marker: a single adjustable ring, for accurate range of a moving target. Control: variable resistor. Key part: shift register. Signal feeds the video amplifier.",
+        "<b>VRM accuracy:</b> align minimum and maximum ranges with matching fixed rings.",
+        "<b>EBL</b>, electronic bearing line: a line from own vessel to a specific target, measuring its bearing.",
+        "<b>Gyro</b> signals give own heading and are required to indicate azimuth.",
+        "<b>True bearing:</b> north at the top; heading flasher indicates the vessel's course.",
+        "<b>Bearing resolution:</b> telling apart 2 adjacent targets of equal distance."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Reading the PPI",
+      "svg": "<svg viewBox='0 0 320 166' role='img' aria-label='A PPI with own ship at the center, fixed range rings, the heading flash pointing dead ahead, the EBL running to a target, the VRM ring touching that target, and a second target with a vector line.'><g fill='none' stroke='#8593a3' stroke-width='1'><circle cx='84' cy='84' r='26'/><circle cx='84' cy='84' r='52'/><circle cx='84' cy='84' r='78'/></g><circle cx='84' cy='84' r='65' fill='none' stroke='#c8452f' stroke-width='2' stroke-dasharray='5 3'/><path d='M84 84 V6' fill='none' stroke='#c98a00' stroke-width='2.5'/><path d='M84 84 L133.8 42.2' fill='none' stroke='#0f8a7e' stroke-width='2'/><g fill='none' stroke='#8593a3' stroke-width='1'><path d='M172 10 H86'/><path d='M172 52 L120 54'/><path d='M172 74 L149 78'/><path d='M172 96 H162'/><path d='M172 118 H110'/></g><circle cx='84' cy='84' r='3.5' fill='#12355b'/><circle cx='133.8' cy='42.2' r='4.5' fill='#1a5fb4'/><circle cx='117' cy='107' r='4.5' fill='#1a5fb4'/><path d='M117 107 L100.5 126.5' fill='none' stroke='#12355b' stroke-width='2'/><polygon points='95.6,132 103.1,129.3 97.1,124.1' fill='#12355b'/><g font-size='11' fill='#17202b'><text x='176' y='14' font-weight='700' fill='#8a5f00'>Heading flash</text><text x='176' y='27'>Dead ahead</text><text x='176' y='56' font-weight='700' fill='#0f8a7e'>EBL: bearing</text><text x='176' y='78' font-weight='700' fill='#c8452f'>VRM: range</text><text x='176' y='100' fill='#4a5666'>Fixed rings</text><text x='176' y='122' font-weight='700' fill='#12355b'>Vector</text><text x='176' y='135'>Direction: course</text><text x='176' y='148'>Length: speed</text></g></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Memory and processing",
+      "items": [
+        "<b>Digitized sweep:</b> 360° divided into 4,096 segments.",
+        "<b>Display memory:</b> mainly eliminates fluctuating targets such as sea return.",
+        "<b>Dual memory:</b> successive sweeps are digitized and compared; only signals in both display, so 2 sequential cells.",
+        "<b>Digital processing:</b> major advantage is enhancement of weak target returns.",
+        "<b>Analog-to-digital sampling:</b> greater than 2 times the highest component."
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "PPI:",
+          "def": "plan position indicator."
+        },
+        {
+          "term": "DRAM:",
+          "def": "dynamic random access memory. Charges leak, so it needs a REFRESH cycle."
+        },
+        {
+          "term": "ARPA/CAS:",
+          "def": "automatic radar plotting aid, collision avoidance system. Acquires and tracks targets."
+        },
+        {
+          "term": "CPA:",
+          "def": "closest point of approach: the nearest a target will come to own ship."
+        },
+        {
+          "term": "Trial Mode:",
+          "def": "lets results of proposed maneuvers be assessed."
+        },
+        {
+          "term": "Chopper:",
+          "def": "electronic switch between raw DC and the inverter."
+        },
+        {
+          "term": "Inverter:",
+          "def": "produces the pulsed DC input to the power transformer."
+        }
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Power supply",
+      "svg": "<svg viewBox='0 0 320 118' role='img' aria-label='Raw DC goes through the chopper and inverter to the power transformer. One output is rectified, filtered and regulated for 5 volts and plus or minus 12 volts. Another goes through a tripler for 17 kilovolts DC to the CRT anode.'><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='4' y='4' width='54' height='36' rx='4'/><rect x='74' y='4' width='62' height='36' rx='4'/><rect x='152' y='4' width='62' height='36' rx='4'/><rect x='230' y='4' width='86' height='36' rx='4'/><rect x='92' y='50' width='160' height='28' rx='4'/><rect x='160' y='86' width='92' height='28' rx='4'/></g><g fill='none' stroke='#1a5fb4' stroke-width='2'><path d='M58 22 H68'/><path d='M136 22 H146'/><path d='M214 22 H224'/><path d='M273 40 V100 H258'/><path d='M273 64 H258'/><path d='M92 64 H86'/><path d='M160 100 H86'/></g><g fill='#1a5fb4'><polygon points='74,22 67,18 67,26'/><polygon points='152,22 145,18 145,26'/><polygon points='230,22 223,18 223,26'/><polygon points='252,100 259,96 259,104'/><polygon points='252,64 259,60 259,68'/><polygon points='80,64 87,60 87,68'/><polygon points='80,100 87,96 87,104'/></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='31' y='26' font-weight='700'>Raw DC</text><text x='105' y='19' font-weight='700'>Chopper</text><text x='105' y='33'>18 kHz</text><text x='183' y='19' font-weight='700'>Inverter</text><text x='183' y='33'>Pulsed DC</text><text x='273' y='19' font-weight='700'>Transformer</text><text x='273' y='33'>No steady DC</text><text x='172' y='68'>Rectify, filter, regulate</text><text x='206' y='104' font-weight='700'>Tripler</text></g><g font-size='11' fill='#17202b'><text x='4' y='62' font-weight='700'>5 V, ±12 V</text><text x='4' y='75'>Logic, sweep</text><text x='4' y='98' font-weight='700' fill='#c8452f'>17 kV DC</text><text x='4' y='111'>CRT anode</text></g></svg>"
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Collision computer inputs: position, heading, speed. Not <b>wind</b> from an anemometer.",
+        "Own speed stuck on manual: <b>LOG OUT</b>.",
+        "RC integrator, square wave, period far under 1 time constant: <b>triangle</b> wave.",
+        "Removing stationary objects: <b>discriminator</b> as second detector.",
+        "The exam rounds 3.085 µs to 3.1 µs, giving 322 kHz.",
+        "Pulse forming network voltage isn't a display supply output."
+      ]
+    }
+  ]
+}

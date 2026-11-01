@@ -91,6 +91,17 @@ export type Lesson = {
   video: string | null;
 };
 
+/** One block of a section's one-page sheet. Text may use <b>, <sub> and <sup>. */
+export type SheetBlock =
+  | { kind: 'notes'; title: string; items: string[] }
+  | { kind: 'terms'; title: string; items: { term: string; def: string }[] }
+  | { kind: 'formulas'; title: string; items: { name: string; formula: string; means: string; example?: string }[] }
+  | { kind: 'table'; title: string; head: string[]; rows: string[][] }
+  | { kind: 'traps'; title: string; items: string[] }
+  | { kind: 'figure'; title: string; svg: string; caption?: string };
+
+export type SectionSheet = { id: string; summary: string; blocks: SheetBlock[] };
+
 export type LessonProgress = { scene: number; completed: boolean; completedAt: string | null };
 
 export type QuizResult = { passed: boolean; best: number; last: number; attempts: number; at: string };

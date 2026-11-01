@@ -1,0 +1,208 @@
+{
+  "id": "3-J",
+  "summary": "How antennas radiate and receive, SWR, tuning with coils and capacitors, velocity factor, stubs, and the decibel math of line loss and ERP.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "How an antenna works",
+      "items": [
+        "<b>Half-wave antenna:</b> a wire half a wavelength long, fed at the center. Wavelength in meters = 300 ÷ MHz."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Along a half-wave antenna",
+      "svg": "<svg viewBox='0 0 320 122' role='img' aria-label='Along a half-wave antenna, current is maximum at the center and minimum at the open ends, while voltage is maximum at the ends and minimum at the center.'><line x1='20' y1='90' x2='156' y2='90' stroke='#12355b' stroke-width='2.5'/><line x1='164' y1='90' x2='300' y2='90' stroke='#12355b' stroke-width='2.5'/><path d='M20 90 C122 7 198 7 300 90' fill='none' stroke='#1a5fb4' stroke-width='2'/><path d='M20 28 C69 28 118 65 160 90 C202 65 251 28 300 28' fill='none' stroke='#c8452f' stroke-width='2' stroke-dasharray='5 3'/><g font-size='11' font-weight='700'><text x='6' y='16' fill='#c8452f'>Max voltage</text><text x='160' y='16' text-anchor='middle' fill='#1a5fb4'>Max current</text><text x='314' y='16' text-anchor='end' fill='#c8452f'>Max voltage</text></g><g font-size='11' fill='#17202b'><text x='6' y='106' font-weight='700'>Open end</text><text x='6' y='119'>Min current</text><text x='160' y='106' font-weight='700' text-anchor='middle'>Feed point</text><text x='160' y='119' text-anchor='middle'>Min voltage</text><text x='314' y='106' font-weight='700' text-anchor='end'>Open end</text><text x='314' y='119' text-anchor='end'>Min current</text></g></svg>",
+      "caption": "Current makes the electro-magnetic field, voltage the electro-static. An excited 1/2 wavelength antenna makes both."
+    },
+    {
+      "kind": "notes",
+      "title": "Radiating and receiving",
+      "items": [
+        "<b>Radiation:</b> the changing fields break away as a radio wave.",
+        "<b>Radiation resistance:</b> an equivalent resistance that would dissipate the same power the antenna radiates. Knowing it lets you match impedances for maximum power transfer.",
+        "<b>Receiving antenna</b> voltage is always proportional to the received field strength.",
+        "<b>Vertical 1/4 wave:</b> receives equally from all horizontal directions."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Lines and matching",
+      "items": [
+        "<b>Mismatch:</b> some power reflects, making a standing wave. A detuned antenna coupler can cause it.",
+        "<b>SWR</b>, standing wave ratio: highest ÷ lowest voltage on the line. Best is 1:1.",
+        "<b>Radiated power</b> = forward − reflected: 30 − 5 = 25 W.",
+        "<b>Line current:</b> I = √(P ÷ R). 1,872 W, 52 Ω: √36 = 6 A.",
+        "<b>Isolator:</b> passes RF 1 way with very little loss and absorbs it the other way."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Tuning",
+      "items": [
+        "<b>Resonant frequency:</b> set mostly by length. Longer antenna, lower frequency."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Added in series",
+      "head": [
+        "Part",
+        "Antenna acts",
+        "Resonance"
+      ],
+      "rows": [
+        [
+          "Coil (loading inductor)",
+          "Longer",
+          "Lower"
+        ],
+        [
+          "Capacitor (condenser)",
+          "Shorter",
+          "Higher"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Bandwidth, traps",
+      "items": [
+        "<b>Bandwidth:</b> the frequency range over which an antenna performs well.",
+        "<b>Loading coils</b> make short mobile antennas resonant on lower bands, but bandwidth decreases.",
+        "<b>Trap antenna:</b> parallel LC traps disconnect the outer wire on the higher band, for multiband operation."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Inside the line",
+      "items": [
+        "<b>Velocity factor:</b> wave velocity on the line ÷ velocity of light in a vacuum. Always below 1. Set by the dielectrics.",
+        "<b>Nitrogen</b> prevents moisture from entering the line."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Shorted stub: 1/4 wave",
+      "svg": "<svg viewBox='0 0 320 100' role='img' aria-label='A shorted stub is a quarter wavelength at the fundamental, so it looks open and the signal passes to the antenna. At the 2nd harmonic it is a half wavelength, so it looks like a short and shunts the harmonic to ground.'><g fill='none' stroke='#0f8a7e' stroke-width='2.5'><line x1='6' y1='32' x2='146' y2='32'/></g><polygon points='152,32 144,28 144,36' fill='#0f8a7e'/><g fill='none' stroke='#12355b' stroke-width='2'><path d='M46 32 V78 H58 V32'/><path d='M206 32 V78 H218 V32'/></g><line x1='218' y1='32' x2='310' y2='32' stroke='#8593a3' stroke-width='1.5' stroke-dasharray='4 3'/><path d='M168 32 H212 V62' fill='none' stroke='#c8452f' stroke-width='2.5'/><polygon points='212,70 208,62 216,62' fill='#c8452f'/><g font-size='11'><text x='6' y='14' font-weight='700' fill='#0f8a7e'>Fundamental</text><text x='168' y='14' font-weight='700' fill='#c8452f'>2nd harmonic</text><text x='68' y='52' font-weight='700' fill='#12355b'>1/4 wave</text><text x='68' y='65' fill='#17202b'>Looks open</text><text x='228' y='52' font-weight='700' fill='#12355b'>1/2 wave</text><text x='228' y='65' fill='#17202b'>Looks like a short</text><text x='6' y='94' fill='#17202b'>Passes to the antenna</text><text x='168' y='94' fill='#17202b'>Shunted to ground</text></g></svg>",
+      "caption": "Harmonics: whole-number multiples of the fundamental. The stub absorbs even ones."
+    },
+    {
+      "kind": "formulas",
+      "title": "Decibels",
+      "items": [
+        {
+          "name": "Compare 2 powers",
+          "formula": "dB = 10 log(P<sub>1</sub> ÷ P<sub>2</sub>)",
+          "means": "+3 dB doubles, −3 dB halves, 0 dB is unchanged. Decibels add.",
+          "example": "500 W ÷ 0.5 W = 1,000: 30 dB"
+        },
+        {
+          "name": "ERP, effective radiated power",
+          "formula": "ERP = P × 10<sup>(net dB ÷ 10)</sup>",
+          "means": "Net dB: gain minus losses.",
+          "example": "50 W × 0.794 ≈ 39.7 W"
+        }
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Line loss",
+      "items": [
+        "<b>6 dB per 100 feet,</b> 200 feet, 100 W: 12 dB is 4 halvings, so about 6 W.",
+        "<b>Perfect coax,</b> 7 dB reflected, 5 W in: 1 W out, the exam's answer."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Keeping a net dB tally",
+      "svg": "<svg viewBox='0 0 320 124' role='img' aria-label='A 50 watt repeater chain. The tally falls to minus 4 decibels after the feedline, minus 7 after the duplexer and circulator, and rises to a net minus 1 after the antenna, giving an ERP of 39.7 watts.'><line x1='6' y1='34' x2='314' y2='34' stroke='#8593a3' stroke-width='1' stroke-dasharray='4 3'/><path d='M6 34 H72 V58 H132 V76 H250 V40 H314' fill='none' stroke='#1a5fb4' stroke-width='2.5'/><g font-size='11' font-weight='700'><text x='6' y='24' fill='#12355b'>50 W</text><text x='314' y='24' text-anchor='end' fill='#c8452f'>ERP 39.7 W</text><text x='39' y='48' text-anchor='middle' fill='#1a5fb4'>0 dB</text><text x='102' y='72' text-anchor='middle' fill='#1a5fb4'>−4 dB</text><text x='191' y='90' text-anchor='middle' fill='#1a5fb4'>−7 dB</text><text x='282' y='54' text-anchor='middle' fill='#1a5fb4'>Net −1 dB</text></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='39' y='105'>Transmitter</text><text x='102' y='105'>Feedline</text><text x='191' y='105'>Duplexer, circulator</text><text x='282' y='105'>Antenna</text><text x='102' y='118'>Loss 4</text><text x='191' y='118'>Loss 3</text><text x='282' y='118'>Gain 6</text></g></svg>"
+    },
+    {
+      "kind": "table",
+      "title": "ERP answers",
+      "head": [
+        "Watts",
+        "Losses",
+        "Gain",
+        "Net dB",
+        "ERP watts"
+      ],
+      "rows": [
+        [
+          "50",
+          "4+3",
+          "6",
+          "−1",
+          "39.7"
+        ],
+        [
+          "75",
+          "4+3",
+          "10",
+          "+3",
+          "150"
+        ],
+        [
+          "75",
+          "5+4",
+          "6",
+          "−3",
+          "37.6"
+        ],
+        [
+          "100",
+          "4+3",
+          "7",
+          "0",
+          "100"
+        ],
+        [
+          "100",
+          "5+4",
+          "10",
+          "+1",
+          "126"
+        ],
+        [
+          "50",
+          "5+4",
+          "7",
+          "−2",
+          "31.5"
+        ]
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "Impedance:",
+          "def": "total opposition to AC, in ohms."
+        },
+        {
+          "term": "Hertz antenna:",
+          "def": "the classic half-wave antenna."
+        },
+        {
+          "term": "Duplexer:",
+          "def": "lets transmitter and receiver share 1 antenna."
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "The half-power angle is <b>beamwidth</b>, not bandwidth.",
+        "Radiation resistance isn't element or feed line loss.",
+        "Modulation and power level don't change SWR.",
+        "A circulator acts as an isolator only with 1 port terminated.",
+        "A 1/2 wave stub would short your main signal.",
+        "Nitrogen isn't for skin effect, arcing or SWR.",
+        "Net below 0 dB, ERP is below transmitter power."
+      ]
+    }
+  ]
+}

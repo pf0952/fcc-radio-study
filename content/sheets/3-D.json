@@ -1,0 +1,193 @@
+{
+  "id": "3-D",
+  "summary": "Tuned circuits, op-amps, phase-locked loops, synthesizers and mixers, then the exam's schematic figures.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Resonance",
+      "items": [
+        "<b>Reactance:</b> a coil's opposition to AC (X<sub>L</sub>) rises with frequency; a capacitor's (X<sub>C</sub>) falls.",
+        "<b>Resonance:</b> the one frequency where X<sub>L</sub> = X<sub>C</sub>. They act 180° apart, so they cancel and leave R.",
+        "<b>Phase:</b> coil current lags 90°, capacitor current leads 90°. At resonance voltage and current are in phase: power factor 1."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Impedance through resonance",
+      "svg": "<svg viewBox='0 0 320 114' role='img' aria-label='Impedance against frequency. A series circuit dips to about R, its minimum, at resonance, so current is maximum. A parallel circuit peaks at about R, its maximum, so line current is minimum'><g stroke='#8593a3' stroke-width='1' fill='none'><path d='M30 14 V84 H150'/><path d='M190 14 V84 H310'/></g><g fill='none' stroke='#1a5fb4' stroke-width='2.5'><path d='M34 18 C62 18 66 76 90 76 S118 18 146 18'/><path d='M194 76 C222 76 226 18 250 18 S278 76 306 76'/></g><g fill='#c8452f'><circle cx='90' cy='76' r='3.5'/><circle cx='250' cy='18' r='3.5'/></g><g font-size='11' font-weight='700' fill='#12355b'><text x='90' y='13' text-anchor='middle'>Series</text><text x='194' y='12'>Parallel</text></g><g font-size='10.5' fill='#4a5666'><text x='24' y='24' text-anchor='end'>Z</text><text x='184' y='24' text-anchor='end'>Z</text><text x='152' y='95' text-anchor='end'>f</text><text x='312' y='95' text-anchor='end'>f</text></g><g font-size='10.5' text-anchor='middle'><text x='90' y='98' font-weight='700' fill='#c8452f'>Z ≈ R: minimum</text><text x='250' y='98' font-weight='700' fill='#c8452f'>Z ≈ R: maximum</text><text x='90' y='111' fill='#4a5666'>Current maximum</text><text x='250' y='111' fill='#4a5666'>Line current minimum</text></g></svg>"
+    },
+    {
+      "kind": "table",
+      "title": "Current at resonance",
+      "head": [
+        "Where",
+        "Series",
+        "Parallel"
+      ],
+      "rows": [
+        [
+          "In the line",
+          "Maximum: E÷R",
+          "Minimum"
+        ],
+        [
+          "In L and C",
+          "Same maximum",
+          "Maximum: ≈ Q × line"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Q and the tank",
+      "items": [
+        "<b>Q</b>, quality factor (series: X<sub>L</sub>÷R): coil voltage ≈ Q × applied voltage. Q of 100, 1 V in: about 100 V. <b>Resonance</b> is how voltage across series reactances beats the applied voltage.",
+        "<b>Tank circuit:</b> coil and capacitor in parallel, with current circulating inside."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Op-amps",
+      "items": [
+        "<b>Op-amp</b> (operational amplifier): amplifies the difference between its inverting (−) and non-inverting (+) inputs. Open-loop gain is huge; the output stops at the supply rails.",
+        "<b>External feedback</b>, output to inverting input, sets closed-loop gain.",
+        "<b>Inverting gain</b> = −R<sub>f</sub>÷R<sub>in</sub>. 100 kΩ÷10 kΩ: −10, 10 times bigger and upside down."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Op-amp circuits",
+      "head": [
+        "Circuit",
+        "Feedback",
+        "Result"
+      ],
+      "rows": [
+        [
+          "Inverting",
+          "Output to −",
+          "180° out of phase"
+        ],
+        [
+          "Non-inverting",
+          "Output to −",
+          "In phase"
+        ],
+        [
+          "Active filter",
+          "External network",
+          "Gain, not insertion loss"
+        ],
+        [
+          "Comparator",
+          "None: open loop",
+          "Shows the higher input"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Figure 3D7: inverting summing amp",
+      "svg": "<svg viewBox='0 0 320 118' role='img' aria-label='Figure 3D7, an inverting summing amplifier. 100, 200 and 250 millivolts each feed a 10K resistor into the inverting input. A 100K resistor feeds back from the output, the plus input is grounded, and the output is minus 5.5 volts'><g fill='none' stroke='#12355b' stroke-width='1.8'><path d='M44 36 H46 M46 36 l2.5 -5 l5 10 l5 -10 l5 10 l5 -10 l5 10 l2.5 -5 H104'/><path d='M44 56 H46 M46 56 l2.5 -5 l5 10 l5 -10 l5 10 l5 -10 l5 10 l2.5 -5 H150'/><path d='M44 76 H46 M46 76 l2.5 -5 l5 10 l5 -10 l5 10 l5 -10 l5 10 l2.5 -5 H104'/><path d='M104 36 V76'/><path d='M124 56 V20 H174 M174 20 l2.5 -5 l5 10 l5 -10 l5 10 l5 -10 l5 10 l2.5 -5 H254 V72'/><path d='M214 72 H306'/><path d='M150 88 H132 V104'/><path d='M122 104 H142 M126 109 H138 M130 114 H134'/><polygon points='150,44 150,100 214,72' fill='#eef3fa'/></g><circle cx='104' cy='56' r='2.5' fill='#12355b'/><circle cx='124' cy='56' r='2.5' fill='#12355b'/><circle cx='254' cy='72' r='2.5' fill='#12355b'/><g font-size='12' font-weight='700' fill='#12355b' text-anchor='middle'><text x='158' y='60'>−</text><text x='158' y='92'>+</text></g><g font-size='10.5' fill='#4a5666'><text x='2' y='40'>100 mV</text><text x='2' y='60'>200 mV</text><text x='2' y='80'>250 mV</text><text x='61' y='95' text-anchor='middle'>10K each</text></g><text x='214' y='15' font-size='11' font-weight='700' fill='#12355b'>100K</text><text x='262' y='64' font-size='13' font-weight='700' fill='#c8452f'>−5.5 V</text></svg>"
+    },
+    {
+      "kind": "formulas",
+      "title": "Op-amp sums",
+      "items": [
+        {
+          "name": "Figure 3D7",
+          "formula": "V<sub>out</sub> = −(R<sub>f</sub>÷R<sub>in</sub>) × sum of inputs",
+          "means": "−10 × 550 mV = −5.5 V"
+        },
+        {
+          "name": "Figure 3D6, the oscillator",
+          "formula": "frequency = 1 ÷ period",
+          "means": "C charges through R, and the output is a square wave. Bigger C: longer period, lower frequency."
+        }
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Phase-locked loop",
+      "svg": "<svg viewBox='0 0 320 118' role='img' aria-label='A phase-locked loop. The frequency standard feeds a phase detector, then a low-pass filter, then the VCO, whose output is fed back to the detector. Adding a divider in the feedback path makes a synthesizer'><rect x='4' y='4' width='92' height='32' rx='4' fill='#eef3fa' stroke-width='1.5' stroke='#12355b'/><text x='50' y='18' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Frequency</text><text x='50' y='31' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>standard</text><rect x='114' y='4' width='92' height='32' rx='4' fill='#eef3fa' stroke-width='1.5' stroke='#12355b'/><text x='160' y='18' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Phase detector</text><text x='160' y='31' text-anchor='middle' font-size='10.5' font-weight='400' fill='#4a5666'>error voltage</text><rect x='224' y='4' width='92' height='32' rx='4' fill='#eef3fa' stroke-width='1.5' stroke='#12355b'/><text x='270' y='18' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Low-pass filter</text><text x='270' y='31' text-anchor='middle' font-size='10.5' font-weight='400' fill='#4a5666'>smooths to DC</text><rect x='114' y='64' width='92' height='32' rx='4' fill='#eef3fa' stroke-width='1.5' stroke='#c98a00' stroke-dasharray='4 3'/><text x='160' y='78' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>Divider</text><text x='160' y='91' text-anchor='middle' font-size='10.5' font-weight='400' fill='#4a5666'>chosen number</text><rect x='224' y='64' width='92' height='32' rx='4' fill='#eef3fa' stroke-width='1.5' stroke='#12355b'/><text x='270' y='78' text-anchor='middle' font-size='10.5' font-weight='700' fill='#12355b'>VCO</text><text x='270' y='91' text-anchor='middle' font-size='10.5' font-weight='400' fill='#4a5666'>varactor tuned</text><line x1='96' y1='20' x2='107' y2='20' stroke='#1a5fb4' stroke-width='2'/><polygon points='114,20 106,16 106,24' fill='#1a5fb4'/><line x1='206' y1='20' x2='217' y2='20' stroke='#1a5fb4' stroke-width='2'/><polygon points='224,20 216,16 216,24' fill='#1a5fb4'/><line x1='224' y1='80' x2='213' y2='80' stroke='#1a5fb4' stroke-width='2'/><polygon points='206,80 214,76 214,84' fill='#1a5fb4'/><line x1='160' y1='64' x2='160' y2='43' stroke='#1a5fb4' stroke-width='2'/><polygon points='160,36 156,44 164,44' fill='#1a5fb4'/><line x1='270' y1='36' x2='270' y2='57' stroke='#1a5fb4' stroke-width='2'/><polygon points='270,64 266,56 274,56' fill='#1a5fb4'/><line x1='270' y1='96' x2='270' y2='107' stroke='#1a5fb4' stroke-width='2'/><polygon points='270,114 266,106 274,106' fill='#1a5fb4'/><text x='262' y='54' text-anchor='end' font-size='10.5' fill='#4a5666'>Control voltage</text><text x='152' y='54' text-anchor='end' font-size='10.5' fill='#4a5666'>Fed back</text><g font-size='10.5' font-weight='700' fill='#8a5f00'><text x='4' y='78'>Add a divider:</text><text x='4' y='92'>a synthesizer</text></g><text x='262' y='111' text-anchor='end' font-size='10.5' font-weight='700' fill='#12355b'>Locked output</text></svg>"
+    },
+    {
+      "kind": "terms",
+      "title": "Key terms",
+      "items": [
+        {
+          "term": "VCO:",
+          "def": "voltage-controlled oscillator, tuned by a varactor diode."
+        },
+        {
+          "term": "PLL:",
+          "def": "phase-locked loop, a servo loop of phase detector, low-pass filter and VCO. Its error voltage adjusts the varactor, locking the VCO to a frequency standard."
+        },
+        {
+          "term": "DDS:",
+          "def": "direct digital synthesizer: phase comparator, look-up table, DAC (digital-to-analog converter), low-pass antialias filter."
+        },
+        {
+          "term": "Mixer:",
+          "def": "gives sum, difference and both inputs. RF 200 MHz, local oscillator 150 MHz: 50, 150, 200 and 350 MHz at the IF (intermediate frequency) output."
+        },
+        {
+          "term": "Diode:",
+          "def": "conducts when its anode is more positive, keeping about 0.7 V across it. Lamps light only through forward-biased diodes."
+        },
+        {
+          "term": "Pass transistor:",
+          "def": "the Zener holds its base; its emitter sits about 0.7 V lower."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Exam figures",
+      "head": [
+        "Figure",
+        "Circuit",
+        "Answer"
+      ],
+      "rows": [
+        [
+          "3D6",
+          "Oscillator, double C",
+          "Frequency lower"
+        ],
+        [
+          "3D8",
+          "Diodes and lamps",
+          "2, 3, 4, 7 and 8 lit"
+        ],
+        [
+          "3D9",
+          "9.1 V Zener, NPN supply",
+          "No problem: output about 8.4 V"
+        ],
+        [
+          "3D10",
+          "Integrator: series R, shunt C",
+          "Output 3, shark fin"
+        ],
+        [
+          "3D11",
+          "Series R, shunt diode",
+          "Output 2, clipped at about +0.7 V"
+        ]
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Parallel impedance isn't <b>low</b>: it's about R, its maximum.",
+        "Gain isn't set by an internal network, supply voltage or slew rate. Output to + is <b>positive</b> feedback.",
+        "Impurities: <b>PLL</b> broadband noise, <b>DDS</b> spurs at discrete frequencies.",
+        "A PLL has no <b>ratio detector</b>.",
+        "Coupling capacitor open: no amplification, <b>DC normal</b>.",
+        "3D9: D1 and D2 aren't reversed, R1 isn't too low, TR1 needn't be PNP."
+      ]
+    }
+  ]
+}

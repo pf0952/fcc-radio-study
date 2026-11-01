@@ -1,0 +1,208 @@
+{
+  "id": "9-A",
+  "summary": "Short-range ship radio: channels, controls, FM transmitter and receiver, DSC, antennas, tracing faults.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "The radio",
+      "items": [
+        "<b>VHF-DSC</b>, digital selective calling: short-range radio of GMDSS, the Global Maritime Distress and Safety System."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Channels, MHz",
+      "svg": "<svg viewBox='0 0 320 132' role='img' aria-label='Channel 70 at 156.525 megahertz for DSC, with neighbouring channels 25 kilohertz away. Channel 13 at 156.650 is bridge to bridge. Channel 16 at 156.800 is calling and distress. Further up, channel 26 has ships on 157.300 and coast stations on 161.900, 4.6 megahertz apart, and NOAA broadcasts sit just above that.'><line x1='14' y1='54' x2='306' y2='54' stroke='#8593a3' stroke-width='1.5'/><line x1='50.2' y1='47' x2='50.2' y2='61' stroke='#0f8a7e' stroke-width='2.5'/><line x1='151' y1='47' x2='151' y2='61' stroke='#1a5fb4' stroke-width='2.5'/><line x1='272' y1='47' x2='272' y2='61' stroke='#c8452f' stroke-width='2.5'/><line x1='30' y1='50' x2='30' y2='58' stroke='#8593a3' stroke-width='2.5'/><line x1='70.3' y1='50' x2='70.3' y2='58' stroke='#8593a3' stroke-width='2.5'/><text x='50.2' y='12' font-size='11' font-weight='700' fill='#0f8a7e' text-anchor='middle'>Ch 70</text><text x='50.2' y='25' font-size='11' font-weight='700' fill='#0f8a7e' text-anchor='middle'>156.525</text><text x='50.2' y='38' font-size='11' fill='#17202b' text-anchor='middle'>DSC only</text><text x='151' y='12' font-size='11' font-weight='700' fill='#1a5fb4' text-anchor='middle'>Ch 13</text><text x='151' y='25' font-size='11' font-weight='700' fill='#1a5fb4' text-anchor='middle'>156.650</text><text x='151' y='38' font-size='11' fill='#17202b' text-anchor='middle'>Bridge to bridge</text><text x='272' y='12' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>Ch 16</text><text x='272' y='25' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>156.800</text><text x='272' y='38' font-size='11' fill='#17202b' text-anchor='middle'>Calling, distress</text><text x='50' y='72' font-size='11' fill='#4a5666' text-anchor='middle'>25 kHz apart</text><line x1='14' y1='112' x2='306' y2='112' stroke='#8593a3' stroke-width='1.5'/><line x1='51.4' y1='105' x2='51.4' y2='119' stroke='#1a5fb4' stroke-width='2.5'/><line x1='248.6' y1='105' x2='248.6' y2='119' stroke='#1a5fb4' stroke-width='2.5'/><line x1='270' y1='108' x2='270' y2='116' stroke='#c98a00' stroke-width='2.5'/><line x1='273.2' y1='108' x2='273.2' y2='116' stroke='#c98a00' stroke-width='2.5'/><line x1='276.4' y1='108' x2='276.4' y2='116' stroke='#c98a00' stroke-width='2.5'/><line x1='54.4' y1='103' x2='245.6' y2='103' stroke='#12355b' stroke-width='1.5'/><polygon points='54.4 103 60.4 106.3 60.4 99.7' fill='#12355b'/><polygon points='245.6 103 239.6 99.7 239.6 106.3' fill='#12355b'/><text x='51.4' y='96' font-size='11' font-weight='700' fill='#1a5fb4'>Ship 157.300</text><text x='260.6' y='96' font-size='11' font-weight='700' fill='#1a5fb4' text-anchor='end'>Coast 161.900</text><text x='150' y='128' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Ch 26: 4.6 MHz</text><text x='273' y='128' font-size='11' font-weight='700' fill='#8a5f00' text-anchor='middle'>NOAA</text></svg>",
+      "caption": "Receiver test: NOAA on 162.550, 162.400 or 162.475."
+    },
+    {
+      "kind": "table",
+      "title": "DSC tolerance 10 ppm, less counter accuracy",
+      "head": [
+        "Counter",
+        "Legal readings, kHz"
+      ],
+      "rows": [
+        [
+          "2 ppm",
+          "156,798.758 and 156,526.243"
+        ],
+        [
+          "5 ppm",
+          "156,875.774 and 157,199.321"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Front panel",
+      "items": [
+        "<b>R.I.T.</b> isn't found on VHF-DSC. Distress, Cancel and Squelch are.",
+        "<b>Squelch:</b> just below where noise breaks through.",
+        "<b>Dual Watch:</b> rapidly switches 1 receiver between 2 channels.",
+        "<b>USA-INT:</b> duplex (2 frequencies) to simplex (1) on designated channels in U.S. waters. Left on INT: you're heard, replies aren't, on certain channels."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Transmitter faults",
+      "svg": "<svg viewBox='0 0 320 166' role='img' aria-label='Transmitter chain: microphone, audio amplifier, modulator fed by the synthesizer, power amplifier, wattmeter. An open microphone cable gives 25 watts with no voice. Over 150 percent modulation distorts. Low PA bias gives under 1 watt. A failed PTT circuit stops transmit. A failed VCO shows out of lock. A wattmeter reading of 8.5 watts on high is low but legal.'><text x='42' y='13' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>Open cable:</text><text x='42' y='26' font-size='11' fill='#c8452f' text-anchor='middle'>25 W, no voice</text><text x='200' y='13' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>Over 150%:</text><text x='200' y='26' font-size='11' fill='#c8452f' text-anchor='middle'>distortion</text><text x='282' y='13' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>Low PA bias:</text><text x='282' y='26' font-size='11' fill='#c8452f' text-anchor='middle'>under 1 W</text><rect x='1' y='30' width='70' height='36' rx='4' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='36' y='52' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Mic</text><rect x='83' y='30' width='70' height='36' rx='4' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='118' y='52' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Audio amp</text><rect x='165' y='30' width='70' height='36' rx='4' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='200' y='52' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Modulator</text><rect x='247' y='30' width='70' height='36' rx='4' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='282' y='52' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>PA</text><polyline points='71 48 79 48' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='83 48 77 44.7 77 51.3' fill='#1a5fb4'/><polyline points='153 48 161 48' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='165 48 159 44.7 159 51.3' fill='#1a5fb4'/><polyline points='235 48 243 48' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='247 48 241 44.7 241 51.3' fill='#1a5fb4'/><rect x='1' y='98' width='70' height='36' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='36' y='120' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>PTT</text><rect x='165' y='98' width='70' height='36' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='200' y='113' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Synthesizer</text><text x='200' y='127' font-size='11' fill='#4a5666' text-anchor='middle'>Carrier</text><rect x='247' y='98' width='70' height='36' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='282' y='120' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Wattmeter</text><line x1='36' y1='66' x2='36' y2='98' stroke='#12355b' stroke-width='1.5' stroke-dasharray='4 3'/><polyline points='200 98 200 70' fill='none' stroke='#12355b' stroke-width='1.5'/><polygon points='200 66 203.3 72 196.7 72' fill='#12355b'/><polyline points='282 66 282 94' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='282 98 278.7 92 285.3 92' fill='#1a5fb4'/><text x='44' y='148' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>Failed: receives,</text><text x='44' y='161' font-size='11' fill='#c8452f' text-anchor='middle'>can't transmit</text><text x='200' y='148' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>VCO failed:</text><text x='200' y='161' font-size='11' fill='#c8452f' text-anchor='middle'>out of lock</text><text x='282' y='148' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>Reads 8.5 W:</text><text x='282' y='161' font-size='11' fill='#c8452f' text-anchor='middle'>low, still legal</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Transmitter",
+      "items": [
+        "<b>Power:</b> 1 W, 25 W; HIGH must be 8 to 25 W.",
+        "<b>FM:</b> deviation 5 kHz maximum, many sidebands.",
+        "<b>Index below 1 to 1:</b> unusually low transmit audio.",
+        "<b>G3E</b> is most common: phase modulation, analog, voice, 16 kHz wide.",
+        "<b>Pre-emphasis:</b> boosts higher audio 6 dB per octave; the receiver cuts the same.",
+        "<b>SWR test:</b> SWR meter or directional wattmeter ahead of the antenna coax, unused channel, PTT on.",
+        "<b>Dummy load</b> (artificial antenna): non-inductive 50 Ω resistor.",
+        "<b>Spectrum analyzer:</b> attenuator at maximum, LOW power, inductive probe."
+      ]
+    },
+    {
+      "kind": "formulas",
+      "title": "Formulas",
+      "items": [
+        {
+          "name": "Modulation index",
+          "formula": "m = Δf ÷ f<sub>m</sub>",
+          "means": "Maximum deviation ÷ maximum modulation frequency.",
+          "example": "5 ÷ 2.5 = 2"
+        },
+        {
+          "name": "SWR",
+          "formula": "(1 + Γ) ÷ (1 − Γ)",
+          "means": "Γ = √(reflected ÷ forward).",
+          "example": "25 W forward, 1.5 W reflected: about 1.65:1, near normal 1.5:1"
+        }
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Receiver faults",
+      "svg": "<svg viewBox='0 0 320 162' role='img' aria-label='Receiver chain: RF amplifier, mixer fed by the PLL synthesizer, IF amplifier, limiter, detector, squelch, AF amplifier, speaker. An unlocked PLL drifts off channel. The limiter gives the capture effect. A dead AF amplifier or stuck PTT gives no audio and the squelch has no effect.'><rect x='83' y='2' width='70' height='36' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='118' y='17' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>PLL synth</text><text x='118' y='31' font-size='11' fill='#4a5666' text-anchor='middle'>Local osc.</text><polyline points='118 38 118 42' fill='none' stroke='#12355b' stroke-width='1.5'/><polygon points='118 46 114.7 40 121.3 40' fill='#12355b'/><text x='240' y='15' font-size='11' font-weight='700' fill='#c8452f' text-anchor='middle'>Unlocked:</text><text x='240' y='28' font-size='11' fill='#c8452f' text-anchor='middle'>drifts off channel</text><rect x='1' y='46' width='70' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='36' y='68' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>RF amp</text><rect x='83' y='46' width='70' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='118' y='61' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Mixer</text><text x='118' y='75' font-size='11' fill='#4a5666' text-anchor='middle'>Makes IF</text><rect x='165' y='46' width='70' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='200' y='61' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>IF amp</text><text x='200' y='75' font-size='11' fill='#4a5666' text-anchor='middle'>Most gain</text><rect x='247' y='46' width='70' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='282' y='68' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Limiter</text><polyline points='71 64 79 64' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='83 64 77 60.7 77 67.3' fill='#0f8a7e'/><polyline points='153 64 161 64' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='165 64 159 60.7 159 67.3' fill='#0f8a7e'/><polyline points='235 64 243 64' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='247 64 241 60.7 241 67.3' fill='#0f8a7e'/><polyline points='282 82 282 102' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='282 106 278.7 100 285.3 100' fill='#0f8a7e'/><text x='246' y='98' font-size='11' font-weight='700' fill='#c8452f' text-anchor='end'>Capture effect</text><rect x='247' y='106' width='70' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='282' y='121' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Detector</text><text x='282' y='135' font-size='11' fill='#4a5666' text-anchor='middle'>To audio</text><rect x='165' y='106' width='70' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='200' y='121' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Squelch</text><text x='200' y='135' font-size='11' fill='#4a5666' text-anchor='middle'>Mutes hiss</text><rect x='83' y='106' width='70' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='118' y='128' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>AF amp</text><rect x='1' y='106' width='70' height='36' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='36' y='128' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Speaker</text><polyline points='247 124 239 124' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='235 124 241 127.3 241 120.7' fill='#0f8a7e'/><polyline points='165 124 157 124' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='153 124 159 127.3 159 120.7' fill='#0f8a7e'/><polyline points='83 124 75 124' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='71 124 77 127.3 77 120.7' fill='#0f8a7e'/><text x='160' y='157' font-size='11' fill='#c8452f' text-anchor='middle'>AF amp dead or PTT stuck: silent, squelch no effect</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Receiver",
+      "items": [
+        "<b>Limiter:</b> constant output amplitude from varying input.",
+        "<b>Capture effect:</b> rejects all but the strongest signal.",
+        "<b>Ratio detector:</b> ratio arm balance control bridge sets signal-to-noise.",
+        "<b>10 dB quieting:</b> about 1 µV is normal.",
+        "<b>Full quieting:</b> signal strong enough to completely quiet the background noise.",
+        "<b>SINAD:</b> (S + N + D) ÷ (N + D); reference 12 dB.",
+        "<b>Minimum discernible signal:</b> raise a signal generator from near 0 until AF output rises 3 dB."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "More faults",
+      "head": [
+        "Symptom",
+        "Cause"
+      ],
+      "rows": [
+        [
+          "Near 0 W on HIGH, rest normal",
+          "SWR protection engaged"
+        ],
+        [
+          "0 V on DC line, fuse 0 Ω",
+          "Crowbar stopped over current"
+        ],
+        [
+          "DC line 9.6 V (normal 12.8 to 13.8)",
+          "Sensitivity loss"
+        ],
+        [
+          "Crackling",
+          "Defective potentiometer, AF stage"
+        ],
+        [
+          "Emitter-base low both ways",
+          "Shorted transistor"
+        ],
+        [
+          "Same voltage, both leads, 100K-ohm bias resistor",
+          "A fault"
+        ],
+        [
+          "Audio distorted",
+          "Oscilloscope, each AF stage"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "DSC",
+      "head": [
+        "Item",
+        "Fact"
+      ],
+      "rows": [
+        [
+          "Tones",
+          "1300 and 2100 Hz, 1700 Hz sub-carrier"
+        ],
+        [
+          "Speed",
+          "1200 baud, index 2.0 ± 10%"
+        ],
+        [
+          "Time diversity",
+          "33⅓ ms, every character twice"
+        ],
+        [
+          "Radio check",
+          "Menu TEST, coast station's MMSI, send"
+        ],
+        [
+          "Locked MMSI",
+          "Contact the manufacturer"
+        ],
+        [
+          "Voltmeter on data",
+          "Fluctuates 0 to 2 V DC"
+        ]
+      ]
+    },
+    {
+      "kind": "terms",
+      "title": "Antennas",
+      "items": [
+        {
+          "term": "Temporary:",
+          "def": "quarter wave, 234 ÷ 156.8 ≈ 1.49 ft ≈ 18 inches."
+        },
+        {
+          "term": "Collinear array:",
+          "def": "phased elements, omnidirectional, up to 9 dB gain."
+        },
+        {
+          "term": "High gain:",
+          "def": "signal dropout in severe weather on small craft."
+        },
+        {
+          "term": "Base coil reads shorted:",
+          "def": "may be normal, shunt fed."
+        },
+        {
+          "term": "Long run:",
+          "def": "RG-8/U coax, UHF connector (PL-259)."
+        }
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Swapping RG-59/U for 50 ohm coax is no fault.",
+        "Exam misprints: 156.526.243, 157.199.321."
+      ]
+    }
+  ]
+}

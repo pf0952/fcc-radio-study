@@ -1,12 +1,16 @@
 import durations from '../../content/narration/durations.json';
 import { CHARS_PER_SECOND } from './narrator.svelte';
-import type { Lesson, Scene } from './types.ts';
+import type { Lesson, Scene, SectionSheet } from './types.ts';
 
 const lessonFiles = import.meta.glob('../../content/lessons/*.json', { eager: true, import: 'default' }) as Record<string, Lesson>;
+const sheetFiles = import.meta.glob('../../content/sheets/*.json', { eager: true, import: 'default' }) as Record<string, SectionSheet>;
 const videoFiles = import.meta.glob('../../content/videos/*.mp4', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
 
 /** Built lessons by id ("9-D"). Lessons not written yet are simply absent. */
 export const lessons = new Map(Object.values(lessonFiles).map((l) => [l.id, l]));
+
+/** Each section's one-page sheet, by lesson id. */
+export const sectionSheets = new Map(Object.values(sheetFiles).map((s) => [s.id, s]));
 
 /** All lessons in study order: Element 3, 8, 9, each by subelement letter. */
 export const lessonList = [...lessons.values()].sort((a, b) => a.element - b.element || a.id.localeCompare(b.id));

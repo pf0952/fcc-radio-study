@@ -1,0 +1,186 @@
+{
+  "id": "9-C",
+  "summary": "A GMDSS ship's satellite gear: Inmarsat-C, GPS, LRIT and Fleet Broadband, how each works, and how to reason out common faults.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Ship to shore",
+      "items": [
+        "Terminal, uplink, satellite, downlink, <b>LES</b> (Land Earth Station), shore networks.",
+        "<b>Inmarsat</b> satellites are geostationary: each covers an ocean region."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Frequencies, MHz",
+      "svg": "<svg viewBox='0 0 320 104' role='img' aria-label='A frequency strip. GPS L2 at 1227.60 measures the ionospheric delay. The ship receives on 1530.0 to 1545.0. GPS L1 at 1575.42 carries the navigation message and SPS codes. The ship transmits on 1626.5 to 1645.5. 1650.5 is not a GPS frequency.'><g stroke='#8593a3' stroke-width='1.5'><line x1='4' y1='46' x2='64' y2='46'/><line x1='76' y1='46' x2='316' y2='46'/><line x1='62' y1='52' x2='68' y2='40'/><line x1='72' y1='52' x2='78' y2='40'/></g><rect x='137' y='38' width='21' height='16' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='2'/><rect x='270' y='38' width='26' height='16' fill='#fdf3dd' stroke='#c98a00' stroke-width='2'/><g stroke='#12355b' stroke-width='3'><line x1='30' y1='35' x2='30' y2='57'/><line x1='200' y1='35' x2='200' y2='57'/></g><line x1='304' y1='38' x2='304' y2='54' stroke='#c8452f' stroke-width='2' stroke-dasharray='3 2'/><g font-size='11' text-anchor='middle' fill='#0f8a7e'><text x='147' y='14' font-weight='700'>Ship receives</text><text x='147' y='28'>1530.0–1545.0</text></g><g font-size='11' text-anchor='end' fill='#8a5f00'><text x='316' y='14' font-weight='700'>Ship transmits</text><text x='316' y='28'>1626.5–1645.5</text></g><g font-size='11' fill='#17202b'><text x='4' y='72' font-weight='700' fill='#12355b'>L2 1227.60</text><text x='4' y='86'>Ionospheric</text><text x='4' y='100'>delay</text></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='200' y='72' font-weight='700' fill='#12355b'>L1 1575.42</text><text x='200' y='86'>Navigation message</text><text x='200' y='100'>and SPS codes</text></g><g font-size='11' text-anchor='end' fill='#c8452f'><text x='316' y='72' font-weight='700'>1650.5</text><text x='316' y='86'>not GPS</text></g></svg>",
+      "caption": "Receive low, transmit high."
+    },
+    {
+      "kind": "notes",
+      "title": "Weak signals",
+      "items": [
+        "<b>LNA</b>, low noise amplifier: receives and amplifies the very weak satellite signal, at or near the antenna. It sets the noise figure.",
+        "<b>SNR</b>, signal to noise ratio: compares signal level to background noise level. 10 dB: signal power is 10 × noise power.",
+        "<b>Fade margin:</b> a design allowance for expected fading."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Above deck, below deck",
+      "svg": "<svg viewBox='0 0 320 126' role='img' aria-label='Above deck equipment holds the antenna, the LNA and a fuse. One coax carries the signal down to the terminal and DC power up to the LNA through the fuse. No voltage at the center pin means a blown fuse in the ADE.'><rect x='2' y='2' width='150' height='102' rx='4' fill='none' stroke='#8593a3' stroke-width='1.5' stroke-dasharray='4 3'/><text x='10' y='16' font-size='11' font-weight='700' fill='#4a5666'>ADE, above deck</text><g fill='#eef3fa' stroke='#12355b' stroke-width='1.5'><rect x='10' y='26' width='58' height='34' rx='4'/><rect x='84' y='26' width='60' height='34' rx='4'/><rect x='236' y='18' width='82' height='74' rx='4'/></g><g font-size='11' text-anchor='middle' fill='#17202b'><text x='39' y='47'>Antenna</text><text x='114' y='47' font-weight='700'>LNA</text><text x='277' y='50' font-weight='700'>Terminal</text><text x='277' y='64'>below deck</text></g><g stroke='#1a5fb4' stroke-width='2'><line x1='68' y1='43' x2='77' y2='43'/><line x1='144' y1='36' x2='229' y2='36'/></g><g fill='#1a5fb4'><polygon points='84,43 76,38.5 76,47.5'/><polygon points='236,36 228,31.5 228,40.5'/></g><path d='M236 74 H114 V68' fill='none' stroke='#c98a00' stroke-width='2'/><polygon points='114,60 109.5,68 118.5,68' fill='#c98a00'/><rect x='122' y='69' width='20' height='10' fill='#fbe9e5' stroke='#c8452f' stroke-width='1.5'/><text x='132' y='94' text-anchor='middle' font-size='11' font-weight='700' fill='#c8452f'>Fuse</text><text x='194' y='29' text-anchor='middle' font-size='11' font-weight='700' fill='#1a5fb4'>Signal down</text><text x='194' y='67' text-anchor='middle' font-size='11' font-weight='700' fill='#8a5f00'>DC power up</text><text x='194' y='89' text-anchor='middle' font-size='11' fill='#4a5666'>Same coax</text><text x='2' y='121' font-size='11' font-weight='700' fill='#c8452f'>No voltage on the center pin: blown fuse in the ADE</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Inmarsat-C: text only",
+      "items": [
+        "<b>Store-and-forward:</b> the LES stores each message, then forwards it. No voice, so no VoIP.",
+        "<b>NCS</b>, Network Coordination Station: just 1 per ocean region per system.",
+        "<b>EGC</b>, Enhanced Group Call: SafetyNET, FleetNET and System messages.",
+        "<b>LOOP BACK test:</b> send yourself a test message.",
+        "<b>Ground</b> the terminal chassis, to minimize shock hazard, and the antenna, to its mast.",
+        "<b>Antenna:</b> RHC (right-hand circular), omni-directional, mounted high, free from shadowing."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "GPS",
+      "items": [
+        "<b>Usual arrangement:</b> 24 satellites, 6 orbital planes, 4 per plane, 20,200 km altitude, 55° inclination.",
+        "<b>At least 4</b> satellites for highest accuracy.",
+        "<b>DGPS</b>, Differential GPS: a fixed station transmits corrections by radio.",
+        "<b>Bridge link:</b> NMEA-0183 or NMEA-2000 LAN."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "LRIT",
+      "items": [
+        "<b>LRIT</b>, Long Range Identification and Tracking: a GPS position sent over Inmarsat-C. A separate tracking system for each flag state's security.",
+        "<b>APR</b>, automatic position report: every 6 hours, at least 4 a day. A poll gets a <b>PR</b>, position report, back automatically.",
+        "Not reporting? Check the GMDSS console's Inmarsat-C terminal."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "Fleet Broadband",
+      "items": [
+        "Calls and Internet: maritime BGAN, Broadband Global Area Network.",
+        "<b>Radome:</b> stabilized antenna, RF unit, Antenna Control Unit, GPS antenna.",
+        "<b>SIM:</b> integrated circuit device storing the Inmarsat identity and an authentication key. <b>PUK</b>, PIN Unlock Key, unlocks it.",
+        "<b>Streaming:</b> exclusive, high priority, time critical. <b>Standard IP</b> is shared: a busy channel lowers the bit rate.",
+        "<b>Distress test:</b> arranged with the LES in advance, via service number 33."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Terminal ports",
+      "svg": "<svg viewBox='0 0 320 148' role='img' aria-label='The Fleet Broadband terminal below deck holds settings, interfaces and LEDs. Its LAN port serves a PC over TCP/IP and an IP handset that gets Power over Ethernet. Its ISDN port serves an ISDN handset. RJ11 ports 1 and 2 serve a phone on standard voice or a fax on 3.1 kilohertz audio.'><rect x='2' y='4' width='112' height='140' rx='4' fill='#eef3fa' stroke='#12355b' stroke-width='1.5'/><g font-size='11' fill='#17202b'><text x='8' y='22' font-weight='700'>Terminal</text><text x='8' y='52'>Settings,</text><text x='8' y='66'>interfaces,</text><text x='8' y='80'>LEDs</text></g><g fill='#fff' stroke='#1a5fb4' stroke-width='1.5'><rect x='68' y='20' width='42' height='22' rx='4'/><rect x='68' y='63' width='42' height='22' rx='4'/><rect x='68' y='100' width='42' height='34' rx='4'/></g><g font-size='11' font-weight='700' text-anchor='middle' fill='#1a5fb4'><text x='89' y='35'>LAN</text><text x='89' y='78'>ISDN</text><text x='89' y='114'>RJ11</text><text x='89' y='128'>1, 2</text></g><path d='M110 31 H120 V16 H128 M120 31 V45 H128 M110 74 H128 M110 117 H120 V103 H128 M120 117 V132 H128' fill='none' stroke='#1a5fb4' stroke-width='2'/><g fill='#fff' stroke='#12355b' stroke-width='1.5'><rect x='128' y='4' width='190' height='24' rx='4'/><rect x='128' y='33' width='190' height='24' rx='4'/><rect x='128' y='62' width='190' height='24' rx='4'/><rect x='128' y='91' width='190' height='24' rx='4'/><rect x='128' y='120' width='190' height='24' rx='4'/></g><g font-size='11' fill='#17202b'><text x='135' y='20'><tspan font-weight='700'>PC:</tspan> TCP/IP, setup, Internet</text><text x='135' y='49'><tspan font-weight='700'>IP handset:</tspan> VoIP, gets PoE</text><text x='135' y='78'><tspan font-weight='700'>ISDN handset</tspan></text><text x='135' y='107'><tspan font-weight='700'>Phone:</tspan> standard voice</text><text x='135' y='136'><tspan font-weight='700'>Fax:</tspan> 3.1 kHz audio, Group 3</text></g></svg>"
+    },
+    {
+      "kind": "terms",
+      "title": "Antenna terms",
+      "items": [
+        {
+          "term": "Polarization:",
+          "def": "orientation of the electric field."
+        },
+        {
+          "term": "Parabolic dish:",
+          "def": "feedhorn at the focal point."
+        },
+        {
+          "term": "Phased array:",
+          "def": "RF from multiple antennas varied to make a radiation pattern."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Faults",
+      "head": [
+        "Symptom",
+        "Answer"
+      ],
+      "rows": [
+        [
+          "Test ADE logs in",
+          "Replace ADE"
+        ],
+        [
+          "Antenna not connected",
+          "Short coax end: above 1 ohm, replace"
+        ],
+        [
+          "Passes satellite, won't initialize",
+          "Antenna control module"
+        ],
+        [
+          "Creeps up and down",
+          "EL step motor, power off: stiff, replace"
+        ],
+        [
+          "Points straight up, stops",
+          "Level platform sensor"
+        ],
+        [
+          "Keeps changing azimuth",
+          "Web interface event log"
+        ],
+        [
+          "AC in, no power up",
+          "Power supply component failure"
+        ],
+        [
+          "Laptop won't connect",
+          "In ISDN port, or wrong IP address"
+        ],
+        [
+          "No DTE link",
+          "Null modem cable"
+        ],
+        [
+          "Interference",
+          "3-30 MHz or radars; ferrite clamps for HF"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Codes",
+      "head": [
+        "Shown",
+        "Means"
+      ],
+      "rows": [
+        [
+          "Test flag",
+          "Test alert"
+        ],
+        [
+          "ACB on a Non-Delivery Notification",
+          "Access barred"
+        ],
+        [
+          "RX2 or ACU Comm error",
+          "RX2 to ACU link failed"
+        ],
+        [
+          "00F0h, 00F1h",
+          "Not registered to MPDS"
+        ]
+      ]
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "GPS doesn't support LRIT: it only broadcasts.",
+        "LRIT isn't AIS or AMVER.",
+        "Never insulate the antenna from its mast.",
+        "IP handset: no polling, and it doesn't power the terminal.",
+        "Fax: no Group 5, no 5.1 kHz."
+      ]
+    }
+  ]
+}

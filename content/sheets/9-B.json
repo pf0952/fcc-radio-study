@@ -1,0 +1,276 @@
+{
+  "id": "9-B",
+  "summary": "Long-range ship radio: frequencies, signals, DSC, SITOR, receiver, transmitter, antenna and faults.",
+  "blocks": [
+    {
+      "kind": "notes",
+      "title": "Reach",
+      "items": [
+        "<b>2 MHz ground wave:</b> about 100 to 150 nm by day.",
+        "<b>2182 kHz</b> by day: no contact at 60 miles is a malfunction; at 600 nm it's normal.",
+        "<b>DSC</b>, digital selective calling, makes the call; then a follow-on frequency carries voice or <b>SITOR</b> (NBDP), radio telex."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "kHz (bold: exam follow-on sets)",
+      "head": [
+        "MHz",
+        "2",
+        "4",
+        "6",
+        "8",
+        "12",
+        "16"
+      ],
+      "rows": [
+        [
+          "DSC",
+          "2187.5",
+          "4207.5",
+          "6312",
+          "8414.5",
+          "12577",
+          "16804.5"
+        ],
+        [
+          "Voice",
+          "2182",
+          "<b>4125</b>",
+          "6215",
+          "<b>8291</b>",
+          "12290",
+          "<b>16420</b>"
+        ],
+        [
+          "NBDP",
+          "<b>2174.5</b>",
+          "4177.5",
+          "<b>6268</b>",
+          "8376.5",
+          "<b>12520</b>",
+          "16695"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Signals",
+      "head": [
+        "Code",
+        "What it is"
+      ],
+      "rows": [
+        [
+          "A3E",
+          "AM, both sidebands"
+        ],
+        [
+          "H3E",
+          "SSB, full carrier"
+        ],
+        [
+          "J3E",
+          "SSB, carrier suppressed: 2.8 kHz wide, 3.0 kHz spacing"
+        ],
+        [
+          "J2B",
+          "SITOR on SSB tones: 300 Hz wide, 500 Hz spacing"
+        ],
+        [
+          "F1B",
+          "Frequency-shift telex"
+        ],
+        [
+          "A1A",
+          "Morse"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Making J3E and J2B",
+      "svg": "<svg viewBox='0 0 320 123' role='img' aria-label='Making J3E. A3E has a carrier and two sidebands. The balanced mixer cancels the carrier. A sideband filter passes the upper sideband and blocks the lower, leaving J3E. Below, J2B: two alternating sidebands of 1615 and 1785 hertz, 1700 hertz from the carrier.'><line x1='8' y1='32' x2='98' y2='32' stroke='#8593a3' stroke-width='1.5'/><line x1='53' y1='32' x2='53' y2='2' stroke='#c8452f' stroke-width='2.5'/><polygon points='50 32 50 8 17 32' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='56 32 56 8 89 32' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='53' y='45' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>A3E</text><text x='53' y='58' font-size='11' fill='#4a5666' text-anchor='middle'>Both sidebands</text><line x1='115' y1='32' x2='205' y2='32' stroke='#8593a3' stroke-width='1.5'/><polygon points='157 32 157 8 124 32' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><polygon points='163 32 163 8 196 32' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='160' y='45' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Double balanced</text><text x='160' y='58' font-size='11' fill='#4a5666' text-anchor='middle'>Mixer: no carrier</text><line x1='222' y1='32' x2='312' y2='32' stroke='#8593a3' stroke-width='1.5'/><polygon points='270 32 270 8 303 32' fill='#eef3fa' stroke='#1a5fb4' stroke-width='1.5'/><text x='267' y='45' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Sideband filter</text><text x='267' y='58' font-size='11' fill='#4a5666' text-anchor='middle'>Upper stays: J3E</text><polyline points='100 20 108 20' fill='none' stroke='#12355b' stroke-width='1.5'/><polygon points='112 20 106 16.7 106 23.3' fill='#12355b'/><polyline points='207 20 215 20' fill='none' stroke='#12355b' stroke-width='1.5'/><polygon points='219 20 213 16.7 213 23.3' fill='#12355b'/><text x='0' y='74' font-size='11' font-weight='700' fill='#1a5fb4'>J2B: 2 alternating sidebands</text><line x1='8' y1='108' x2='312' y2='108' stroke='#8593a3' stroke-width='1.5'/><line x1='20' y1='108' x2='20' y2='92' stroke='#8593a3' stroke-width='2' stroke-dasharray='3 2'/><text x='2' y='120' font-size='11' fill='#4a5666'>Carrier</text><line x1='210' y1='108' x2='210' y2='82' stroke='#1a5fb4' stroke-width='2.5'/><text x='210' y='76' font-size='11' font-weight='700' fill='#1a5fb4' text-anchor='middle'>1615</text><line x1='290' y1='108' x2='290' y2='82' stroke='#1a5fb4' stroke-width='2.5'/><text x='290' y='76' font-size='11' font-weight='700' fill='#1a5fb4' text-anchor='middle'>1785 Hz</text><line x1='250' y1='108' x2='250' y2='98' stroke='#c98a00' stroke-width='1.5' stroke-dasharray='3 2'/><line x1='24' y1='98' x2='246' y2='98' stroke='#c98a00' stroke-width='1.5'/><polygon points='24 98 30 101.3 30 94.7' fill='#c98a00'/><polygon points='246 98 240 94.7 240 101.3' fill='#c98a00'/><text x='118' y='93' font-size='11' fill='#8a5f00' text-anchor='middle'>1700 Hz offset</text></svg>"
+    },
+    {
+      "kind": "notes",
+      "title": "Transmitter and antenna",
+      "items": [
+        "<b>Tolerance:</b> 10 Hz. With a 2 ppm counter, pick 2182.006 and 4124.995 kHz.",
+        "<b>First call:</b> 150 W PEP, peak envelope power.",
+        "<b>PLL synthesizer:</b> master oscillator, frequency dividers, phase comparator, loop filter, VCO. Comparator: both divided outputs.",
+        "<b>Tuner:</b> matches the antenna to the operating frequency.",
+        "<b>Series L</b> electrically lengthens; <b>series C</b> shortens.",
+        "<b>Use</b> RG-8 50 ohm coax, PL-259. <b>Whip lost:</b> 35-40 ft wire."
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "DSC call",
+      "items": [
+        "<b>Dot pattern</b> of 200 bits precedes phasing. 10-bit code: 7 information, 3 error correction.",
+        "<b>Distress:</b> MMSI, position, nature, follow-on by J3E or F1B.",
+        "<b>MMSI 003669999:</b> all Coast Guard coast stations; may test equipment."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "DSC",
+      "head": [
+        "",
+        "MF-HF",
+        "VHF"
+      ],
+      "rows": [
+        [
+          "Tones",
+          "1700 ± 85 Hz",
+          "1300, 2100 Hz"
+        ],
+        [
+          "Speed",
+          "100 baud",
+          "1200 baud"
+        ],
+        [
+          "Time diversity",
+          "400 ms",
+          "33-1/3 ms"
+        ]
+      ]
+    },
+    {
+      "kind": "notes",
+      "title": "SITOR telex",
+      "items": [
+        "<b>ARQ:</b> two-way. ISS sends 3 characters; IRS checks parity, then proceed or resend.",
+        "<b>FEC:</b> one-way to all; each character twice.",
+        "<b>SFEC:</b> one-way to 1 station keeping radio silence.",
+        "<b>ISS, IRS:</b> information sending, receiving station.",
+        "<b>Commands</b> end in +: HELP+, MSG+, AMV+, OPR+.",
+        "<b>Direct:</b> DIRTLX0xxyyyy+; KKKK ends it.",
+        "<b>MSI:</b> always FEC TELEX: 518 kHz within NAVTEX range, else 1 of 8 HF frequencies."
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Receiver",
+      "svg": "<svg viewBox='0 0 320 112' role='img' aria-label='Receiver chain: RF amplifier, mixer, high first I.F. that rejects images, low second I.F. for selectivity, then a 2.8 kilohertz filter for voice or a 500 hertz filter for SITOR, then the detector fed by the BFO, and the AF amplifier.'><rect x='1' y='2' width='70' height='34' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='36' y='23' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>RF amp</text><rect x='83' y='2' width='70' height='34' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='118' y='17' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Mixer</text><text x='118' y='31' font-size='11' fill='#4a5666' text-anchor='middle'>Makes I.F.</text><rect x='165' y='2' width='70' height='34' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='200' y='17' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>High I.F.</text><text x='200' y='31' font-size='11' fill='#4a5666' text-anchor='middle'>No images</text><rect x='247' y='2' width='70' height='34' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='282' y='17' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Low I.F.</text><text x='282' y='31' font-size='11' fill='#4a5666' text-anchor='middle'>Selectivity</text><polyline points='71 19 79 19' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='83 19 77 15.7 77 22.3' fill='#0f8a7e'/><polyline points='153 19 161 19' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='165 19 159 15.7 159 22.3' fill='#0f8a7e'/><polyline points='235 19 243 19' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='247 19 241 15.7 241 22.3' fill='#0f8a7e'/><polyline points='282 36 282 44' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='282 48 278.7 42 285.3 42' fill='#0f8a7e'/><rect x='247' y='48' width='70' height='28' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='282' y='66' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>2.8 kHz</text><rect x='247' y='82' width='70' height='28' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='282' y='100' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>500 Hz</text><polyline points='247 62 157 62' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='153 62 159 65.3 159 58.7' fill='#0f8a7e'/><polyline points='247 96 190 96 190 62' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><text x='240' y='58' font-size='11' font-weight='700' fill='#0f8a7e' text-anchor='end'>Voice</text><text x='240' y='92' font-size='11' font-weight='700' fill='#0f8a7e' text-anchor='end'>NBDP</text><rect x='83' y='48' width='70' height='28' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='118' y='66' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>Detector</text><rect x='83' y='82' width='70' height='28' rx='4' fill='#fff' stroke='#12355b' stroke-width='1.5'/><text x='118' y='100' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>BFO</text><polyline points='118 82 118 80' fill='none' stroke='#12355b' stroke-width='1.5'/><polygon points='118 76 121.3 82 114.7 82' fill='#12355b'/><rect x='1' y='48' width='70' height='28' rx='4' fill='#e3f3f1' stroke='#0f8a7e' stroke-width='1.5'/><text x='36' y='66' font-size='11' font-weight='700' fill='#12355b' text-anchor='middle'>AF amp</text><polyline points='83 62 75 62' fill='none' stroke='#0f8a7e' stroke-width='1.5'/><polygon points='71 62 77 65.3 77 58.7' fill='#0f8a7e'/></svg>",
+      "caption": "All fail alike: a shared part. 1 mode fails: its own path."
+    },
+    {
+      "kind": "terms",
+      "title": "Controls",
+      "items": [
+        {
+          "term": "TUNE:",
+          "def": "tunes the antenna to the transmit frequency."
+        },
+        {
+          "term": "ENTER:",
+          "def": "accepts input. <b>TLX:</b> SITOR mode."
+        },
+        {
+          "term": "RF Gain:",
+          "def": "down reduces sensitivity."
+        },
+        {
+          "term": "AGC:",
+          "def": "constant AF output. SSB wants fast attack, slow decay."
+        },
+        {
+          "term": "BFO:",
+          "def": "re-injects the carrier in the detector. Off, only A3E and H3E are received."
+        },
+        {
+          "term": "R.I.T.",
+          "def": "(clarifier): slight receive-frequency change for garbled voices."
+        },
+        {
+          "term": "Noise blanker:",
+          "def": "noise pulses blank the I.F. amplifier."
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Faults",
+      "head": [
+        "Symptom",
+        "Cause"
+      ],
+      "rows": [
+        [
+          "All SSB garbled",
+          "BFO failed"
+        ],
+        [
+          "1 high-pitched voice",
+          "That transmitter off frequency"
+        ],
+        [
+          "PLL faulty",
+          "VCO inoperative"
+        ],
+        [
+          "AGC inoperative",
+          "Variable gain amplifier, RF stage"
+        ],
+        [
+          "Strong hiss, no signals",
+          "Dummy load or open transmission line"
+        ],
+        [
+          "Hiss never mutes",
+          "Squelch failed"
+        ],
+        [
+          "No AF, speaker near 0 Ω",
+          "Audio amplifier failed"
+        ],
+        [
+          "No AF, TX lit",
+          "Shorted PTT in microphone"
+        ],
+        [
+          "Signal meter mid scale to 0",
+          "Intermittent antenna-coupler connection"
+        ],
+        [
+          "Only voice works",
+          "500 Hz filter, or \"1615 kHz\" audio oscillator"
+        ],
+        [
+          "Only NBDP works",
+          "2.8 kHz filter"
+        ],
+        [
+          "J3E: no power speaking",
+          "Malfunction"
+        ],
+        [
+          "Very low RF",
+          "High SWR"
+        ],
+        [
+          "Zero RF",
+          "Supply crowbar activated"
+        ]
+      ]
+    },
+    {
+      "kind": "figure",
+      "title": "Power meter",
+      "svg": "<svg viewBox='0 0 320 139' role='img' aria-label='Transmitter power meter traces. J3E keyed but silent shows no output. J3E speaking flickers up to 60 watts on a 60 watt set. ARQ swings regularly from 0 to full, 210 millisecond blocks repeating every 450 milliseconds. FEC holds steady: 225 to 250 watts on a 250 watt set.'><text x='0' y='12' font-size='11' font-weight='700' fill='#12355b'>J3E, silent</text><text x='0' y='25' font-size='11' fill='#4a5666'>No output</text><line x1='104' y1='25' x2='318' y2='25' stroke='#8593a3' stroke-width='1'/><text x='0' y='43' font-size='11' font-weight='700' fill='#12355b'>J3E, speaking</text><text x='0' y='56' font-size='11' fill='#4a5666'>Flickers to 60 W</text><line x1='104' y1='56' x2='318' y2='56' stroke='#8593a3' stroke-width='1'/><polyline points='108 56 116 48 122 53 130 40 138 50 146 44 154 56 172 56 180 46 188 52 196 40 206 49 214 56 230 56 238 43 248 51 256 45 266 56 282 56 290 48 298 42 308 56' fill='none' stroke='#1a5fb4' stroke-width='1.5'/><text x='0' y='74' font-size='11' font-weight='700' fill='#12355b'>ARQ</text><text x='0' y='87' font-size='11' fill='#4a5666'>Swings 0 to full</text><line x1='104' y1='87' x2='318' y2='87' stroke='#8593a3' stroke-width='1'/><polyline points='108 87 108 71 142 71 142 87 180 87 180 71 214 71 214 87 252 87 252 71 286 71 286 87' fill='none' stroke='#0f8a7e' stroke-width='2'/><line x1='108' y1='92' x2='142' y2='92' stroke='#0f8a7e' stroke-width='1.5'/><line x1='108' y1='89' x2='108' y2='95' stroke='#0f8a7e' stroke-width='1.5'/><line x1='142' y1='89' x2='142' y2='95' stroke='#0f8a7e' stroke-width='1.5'/><text x='125' y='105' font-size='11' fill='#0f8a7e' text-anchor='middle'>210 ms</text><line x1='180' y1='92' x2='252' y2='92' stroke='#0f8a7e' stroke-width='1.5'/><line x1='180' y1='89' x2='180' y2='95' stroke='#0f8a7e' stroke-width='1.5'/><line x1='252' y1='89' x2='252' y2='95' stroke='#0f8a7e' stroke-width='1.5'/><text x='216' y='105' font-size='11' fill='#0f8a7e' text-anchor='middle'>450 ms cycle</text><text x='0' y='123' font-size='11' font-weight='700' fill='#12355b'>FEC, 250 W</text><text x='0' y='136' font-size='11' fill='#4a5666'>Steady 225 to 250</text><line x1='104' y1='136' x2='318' y2='136' stroke='#8593a3' stroke-width='1'/><line x1='108' y1='124' x2='312' y2='124' stroke='#1a5fb4' stroke-width='2.5'/></svg>"
+    },
+    {
+      "kind": "traps",
+      "title": "Exam traps",
+      "items": [
+        "Fluctuating 0 to 150 W: proper in ARQ, improper in FEC.",
+        "Spectrum analyzer deviation test isn't valid for F1B.",
+        "4:3 ratio code: SITOR, not DSC."
+      ]
+    }
+  ]
+}
